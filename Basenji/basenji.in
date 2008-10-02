@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd "@expanded_libdir@/@PACKAGE@"
+exec mono Basenji.exe "$@"

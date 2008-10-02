@@ -1,0 +1,8 @@
+Basenji/bin
+Hal/bin
+Platform/bin
+Platform.Common.DB/bin
+VolumeDB/bin
+*.pidb
+*.userprefs
+*.usertasks

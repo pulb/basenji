@@ -1,0 +1,32 @@
+<Combine name="Basenji" fileversion="2.0">
+  <Configurations active="Debug">
+    <Configuration name="Debug" ctype="CombineConfiguration">
+      <Entry build="True" name="Basenji" configuration="Debug" />
+      <Entry build="True" name="VolumeDB" configuration="Debug" />
+      <Entry build="True" name="Platform" configuration="Debug" />
+      <Entry build="True" name="Platform.Common.DB" configuration="Debug" />
+      <Entry build="True" name="Hal" configuration="Debug" />
+    </Configuration>
+    <Configuration name="Release" ctype="CombineConfiguration">
+      <Entry build="True" name="Basenji" configuration="Release" />
+      <Entry build="True" name="VolumeDB" configuration="Release" />
+      <Entry build="True" name="Platform" configuration="Release" />
+      <Entry build="True" name="Platform.Common.DB" configuration="Release" />
+      <Entry build="True" name="Hal" configuration="Release" />
+    </Configuration>
+  </Configurations>
+  <StartMode startupentry="Basenji" single="True">
+    <Execute type="None" entry="Basenji" />
+    <Execute type="None" entry="VolumeDB" />
+    <Execute type="None" entry="Platform" />
+    <Execute type="None" entry="Platform.Common.DB" />
+    <Execute type="None" entry="Hal" />
+  </StartMode>
+  <Entries>
+    <Entry filename="Basenji/Basenji.mdp" />
+    <Entry filename="VolumeDB/VolumeDB.mdp" />
+    <Entry filename="Platform/Platform.mdp" />
+    <Entry filename="Platform.Common.DB/Platform.Common.DB.mdp" />
+    <Entry filename="Hal/Hal.mdp" />
+  </Entries>
+</Combine>

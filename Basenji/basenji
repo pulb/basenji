@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd "@ProgramFiles@"
+exec mono Basenji.exe "$@"
