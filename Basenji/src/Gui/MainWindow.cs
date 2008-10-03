@@ -93,7 +93,7 @@ namespace Basenji.Gui
 				tvVolumes.Fill(volumes);
 				EnableGui(true);
 				SetWindowTitle(path);
-				SetStatus(string.Format("{0} Volumes loaded.", volumes.Length));
+				SetStatus(string.Format("{0} volumes loaded.", volumes.Length));
 				
 				App.Settings.MostRecentDBPath = path;
 				App.Settings.Save();
