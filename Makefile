@@ -16,6 +16,12 @@ endif
 ifeq ($(CONFIG),RELEASE)
  SUBDIRS =  Platform.Common.DB Hal Platform VolumeDB Basenji
 endif
+ifeq ($(CONFIG),GNOME_DEBUG)
+ SUBDIRS =  Platform.Common.DB Hal Platform VolumeDB Basenji
+endif
+ifeq ($(CONFIG),GNOME_RELEASE)
+ SUBDIRS =  Platform.Common.DB Hal Platform VolumeDB Basenji
+endif
 
 
 CONFIG_MAKE=$(top_srcdir)/config.make

@@ -15,7 +15,7 @@
         <Command type="AfterBuild" command="./custom_build_commands.sh --after-build ${TargetDir}" workingdir="${ProjectDir}" />
         <Command type="AfterClean" command="./custom_build_commands.sh --after-clean ${TargetDir}" workingdir="${ProjectDir}" />
       </CustomCommands>
-      <Output directory="bin/Release" assembly="Basenji" />
+      <Output directory="bin/Release" assemblyKeyFile="." assembly="Basenji" />
       <Build debugmode="False" target="WinExe" />
       <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_2_0" />
       <CodeGeneration compiler="Mcs" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" mainclass="" generatexmldocumentation="False" win32Icon="images/basenji.ico" ctype="CSharpCompilerParameters" />

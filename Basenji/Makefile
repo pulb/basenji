@@ -60,6 +60,58 @@ PLATFORM_DLL_MDB=
 
 endif
 
+ifeq ($(CONFIG),GNOME_DEBUG)
+ASSEMBLY_COMPILER_COMMAND = gmcs
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ -debug "-define:DEBUG"
+
+ASSEMBLY = bin/Debug/Basenji.exe
+ASSEMBLY_MDB = $(ASSEMBLY).mdb
+COMPILE_TARGET = winexe
+PROJECT_REFERENCES =  \
+	../Platform/bin/Debug/Platform.dll \
+	../VolumeDB/bin/Debug/VolumeDB.dll
+BUILD_DIR = bin/Debug
+
+HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
+VOLUMEDB_DLL_MDB_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll.mdb
+VOLUMEDB_DLL_MDB=$(BUILD_DIR)/VolumeDB.dll.mdb
+PLATFORM_DLL_CONFIG_SOURCE=../Platform/bin/Debug/Platform.dll.config
+PLATFORM_DLL_CONFIG=$(BUILD_DIR)/Platform.dll.config
+VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll
+PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll
+PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
+PLATFORM_COMMON_DB_DLL_MDB_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll.mdb
+PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
+HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
+HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
+PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
+PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
+
+endif
+
+ifeq ($(CONFIG),GNOME_RELEASE)
+ASSEMBLY_COMPILER_COMMAND = gmcs
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+
+ASSEMBLY = bin/Release/Basenji.exe
+ASSEMBLY_MDB = 
+COMPILE_TARGET = winexe
+PROJECT_REFERENCES =  \
+	../Platform/bin/Release/Platform.dll \
+	../VolumeDB/bin/Release/VolumeDB.dll
+BUILD_DIR = bin/Release
+
+HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
+VOLUMEDB_DLL_MDB=
+PLATFORM_DLL_CONFIG=
+VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Release/VolumeDB.dll
+PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
+PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
+PLATFORM_COMMON_DB_DLL_MDB=
+HAL_DLL_MDB=
+PLATFORM_DLL_MDB=
+
+endif
+
 AL=al2
 SATELLITE_ASSEMBLY_NAME=.resources.dll
 
@@ -187,6 +239,18 @@ RELEASE_AfterBuild:
 	(cd $(srcdir) && ./custom_build_commands.sh --after-build $(BUILD_DIR))
 
 RELEASE_AfterClean:
+	(cd $(srcdir) && ./custom_build_commands.sh --after-clean $(BUILD_DIR))
+
+GNOME_DEBUG_AfterBuild:
+	(cd $(srcdir) && ./custom_build_commands.sh --after-build $(BUILD_DIR))
+
+GNOME_DEBUG_AfterClean:
+	(cd $(srcdir) && ./custom_build_commands.sh --after-clean $(BUILD_DIR))
+
+GNOME_RELEASE_AfterBuild:
+	(cd $(srcdir) && ./custom_build_commands.sh --after-build $(BUILD_DIR))
+
+GNOME_RELEASE_AfterClean:
 	(cd $(srcdir) && ./custom_build_commands.sh --after-clean $(BUILD_DIR))
 
 

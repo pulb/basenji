@@ -10,7 +10,7 @@ include $(top_srcdir)/config.make
 
 ifeq ($(CONFIG),DEBUG)
 ASSEMBLY_COMPILER_COMMAND = gmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ -debug -define:DEBUG "-define:UNIX,GNOME,DEBUG"
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ -debug -define:DEBUG "-define:UNIX,DEBUG"
 
 ASSEMBLY = bin/Debug/Platform.dll
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
@@ -27,6 +27,41 @@ HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
 endif
 
 ifeq ($(CONFIG),RELEASE)
+ASSEMBLY_COMPILER_COMMAND = gmcs
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ "-define:UNIX"
+
+ASSEMBLY = bin/Release/Platform.dll
+ASSEMBLY_MDB = 
+COMPILE_TARGET = library
+PROJECT_REFERENCES =  \
+	../Hal/bin/Release/Hal.dll
+BUILD_DIR = bin/Release
+
+HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
+PLATFORM_DLL_CONFIG_SOURCE=Platform.dll.config
+HAL_DLL_MDB=
+
+endif
+
+ifeq ($(CONFIG),GNOME_DEBUG)
+ASSEMBLY_COMPILER_COMMAND = gmcs
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ -debug -define:DEBUG "-define:UNIX,DEBUG,GNOME"
+
+ASSEMBLY = bin/Debug/Platform.dll
+ASSEMBLY_MDB = $(ASSEMBLY).mdb
+COMPILE_TARGET = library
+PROJECT_REFERENCES =  \
+	../Hal/bin/Debug/Hal.dll
+BUILD_DIR = bin/Debug
+
+HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
+PLATFORM_DLL_CONFIG_SOURCE=Platform.dll.config
+HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
+HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
+
+endif
+
+ifeq ($(CONFIG),GNOME_RELEASE)
 ASSEMBLY_COMPILER_COMMAND = gmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ "-define:UNIX,GNOME"
 

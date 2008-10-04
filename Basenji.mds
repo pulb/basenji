@@ -1,5 +1,5 @@
 <Combine name="Basenji" fileversion="2.0">
-  <Configurations active="Debug">
+  <Configurations active="Gnome_Debug">
     <Configuration name="Debug" ctype="CombineConfiguration">
       <Entry build="True" name="Basenji" configuration="Debug" />
       <Entry build="True" name="VolumeDB" configuration="Debug" />
@@ -11,6 +11,20 @@
       <Entry build="True" name="Basenji" configuration="Release" />
       <Entry build="True" name="VolumeDB" configuration="Release" />
       <Entry build="True" name="Platform" configuration="Release" />
+      <Entry build="True" name="Platform.Common.DB" configuration="Release" />
+      <Entry build="True" name="Hal" configuration="Release" />
+    </Configuration>
+    <Configuration name="Gnome_Debug" ctype="CombineConfiguration">
+      <Entry build="True" name="Basenji" configuration="Debug" />
+      <Entry build="True" name="VolumeDB" configuration="Debug" />
+      <Entry build="True" name="Platform" configuration="Gnome_Debug" />
+      <Entry build="True" name="Platform.Common.DB" configuration="Debug" />
+      <Entry build="True" name="Hal" configuration="Debug" />
+    </Configuration>
+    <Configuration name="Gnome_Release" ctype="CombineConfiguration">
+      <Entry build="True" name="Basenji" configuration="Release" />
+      <Entry build="True" name="VolumeDB" configuration="Release" />
+      <Entry build="True" name="Platform" configuration="Gnome_Release" />
       <Entry build="True" name="Platform.Common.DB" configuration="Release" />
       <Entry build="True" name="Hal" configuration="Release" />
     </Configuration>

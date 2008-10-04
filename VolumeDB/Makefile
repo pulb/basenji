@@ -55,6 +55,53 @@ HAL_DLL_MDB=
 
 endif
 
+ifeq ($(CONFIG),GNOME_DEBUG)
+ASSEMBLY_COMPILER_COMMAND = gmcs
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ -debug "-define:DEBUG"
+
+ASSEMBLY = bin/Debug/VolumeDB.dll
+ASSEMBLY_MDB = $(ASSEMBLY).mdb
+COMPILE_TARGET = library
+PROJECT_REFERENCES =  \
+	../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll \
+	../Platform/bin/Debug/Platform.dll
+BUILD_DIR = bin/Debug
+
+HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
+PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
+PLATFORM_COMMON_DB_DLL_MDB_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll.mdb
+PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
+PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
+PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
+PLATFORM_DLL_CONFIG_SOURCE=../Platform/bin/Debug/Platform.dll.config
+PLATFORM_DLL_CONFIG=$(BUILD_DIR)/Platform.dll.config
+PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll
+HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
+HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
+
+endif
+
+ifeq ($(CONFIG),GNOME_RELEASE)
+ASSEMBLY_COMPILER_COMMAND = gmcs
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+
+ASSEMBLY = bin/Release/VolumeDB.dll
+ASSEMBLY_MDB = 
+COMPILE_TARGET = library
+PROJECT_REFERENCES =  \
+	../Platform.Common.DB/bin/Release/Platform.Common.DB.dll \
+	../Platform/bin/Release/Platform.dll
+BUILD_DIR = bin/Release
+
+HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
+PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
+PLATFORM_COMMON_DB_DLL_MDB=
+PLATFORM_DLL_MDB=
+PLATFORM_DLL_CONFIG=
+PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
+HAL_DLL_MDB=
+
+endif
+
 AL=al2
 SATELLITE_ASSEMBLY_NAME=.resources.dll
 
