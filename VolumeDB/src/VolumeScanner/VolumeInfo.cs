@@ -20,6 +20,10 @@ namespace VolumeDB.VolumeScanner
 		
 		internal abstract void Reset();
 		
+		// The VolumeID should not be exposed here to prevent users from accessing the 
+		// Volume in the database before it and its items have been written to database completely.
+		// The VolumeID will be available in the scanners ScanCompleted event that will be 
+		// raised when scanning has been finished.
 		public string			ArchiveNr	{ get { return volume.ArchiveNr;	} }
 		public string			Title		{ get { return volume.Title;		} }
 		public DateTime			Added		{ get { return volume.Added;		} }

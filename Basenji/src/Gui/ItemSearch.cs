@@ -121,7 +121,7 @@ namespace Basenji.Gui
 			if (item == null)
 				return;
 			
-			itemInfo.ShowInfo(item);
+			itemInfo.ShowInfo(item, database);
 		}
 		
 		private void OnDeleteEvent(object sender, DeleteEventArgs args) {

@@ -56,6 +56,11 @@ namespace Basenji
 			set { properties["ScannerComputeHashs"] = value ? "1" : "0"; }
 		}
 		
+		public bool ScannerGenerateThumbnails {
+			get { return properties["ScannerGenerateThumbnails"] == "1"; }
+			set { properties["ScannerGenerateThumbnails"] = value ? "1" : "0"; }
+		}
+		
 		public bool OpenMostRecentDB {
 			get { return properties["OpenMostRecentDB"] == "1"; }
 			set { properties["OpenMostRecentDB"] = value ? "1" : "0"; }
@@ -104,6 +109,7 @@ namespace Basenji
 			properties.Add("ScannerBufferSize",				"10"); // WARNING: the higher the value, the longer it will take the cancellation (triggered by CancelAsync()) to complete.
 			properties.Add("ScannerDiscardSymLinks",		"0");			 
 			properties.Add("ScannerComputeHashs",			"0");
+			properties.Add("ScannerGenerateThumbnails",		"1");
 			properties.Add("OpenMostRecentDB",				"1");
 			properties.Add("MostRecentDBPath",				"");
 			properties.Add("MainWindowWidth",				"640");

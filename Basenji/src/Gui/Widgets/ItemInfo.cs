@@ -19,6 +19,8 @@
 // TODO : show meta info (e.g. mp3 bitrate, width/height of pictures...) 
 // of files rather then generic file info
 using System;
+using System.IO;
+using System.Collections.Generic;
 using Gtk;
 using Basenji.Gui.Base;
 using Basenji.Icons;
@@ -28,19 +30,25 @@ namespace Basenji.Gui.Widgets
 {
 	public partial class ItemInfo : BinBase
 	{
-		private const IconSize ICON_SIZE = IconSize.Dialog;
+		private const int MAX_THUMB_WIDTH	= 100;
+		private const int MAX_THUMB_HEIGHT	= 100;
+		private const IconSize ICON_SIZE	= IconSize.Dialog;
 
 		private ItemIcons itemIcons;
+		private Dictionary<string, Gdk.Pixbuf> thumbnailCache;
 		
 		public ItemInfo() {
 			BuildGui();
 			itemIcons = new ItemIcons(this);
+			thumbnailCache = new Dictionary<string, Gdk.Pixbuf>();
 		}
 		
-		public void ShowInfo(VolumeItem item) {
+		public void ShowInfo(VolumeItem item, VolumeDatabase db) {
 			if (item == null)
 				throw new ArgumentNullException("item");
-
+			if (db == null)
+				throw new ArgumentNullException("db");
+			
 			Table tbl;
 			
 			switch(item.GetVolumeItemType()) {
@@ -52,7 +60,7 @@ namespace Basenji.Gui.Widgets
 					throw new NotImplementedException("Iteminfo has not been implemented for this itemtype yet");
 			}
 			
-			Box box = CreateBox(item, tbl);
+			Box box = CreateBox(item, db, tbl);
 			ShowChild(box);
 		}
 		
@@ -122,15 +130,58 @@ namespace Basenji.Gui.Widgets
 			return tbl;
 		}
 		
-		private Box CreateBox(VolumeItem item, Table tbl) {
+		private Box CreateBox(VolumeItem item, VolumeDatabase db, Table tbl) {
 			HBox box = new HBox(false, 6);
 
 			Image img = new Image();
-			img.FromPixbuf = itemIcons.GetIconForItem(item, ICON_SIZE);
+			Gdk.Pixbuf pb;
+			
+			img.WidthRequest	= MAX_THUMB_WIDTH;
+			img.HeightRequest	= MAX_THUMB_HEIGHT;
+			
+			string thumbName = System.IO.Path.Combine(
+				DbData.GetVolumeDataThumbsPath(db, item.VolumeID), 
+				string.Format("{0}.png", item.ItemID));
+				
+			if (!thumbnailCache.TryGetValue(thumbName, out pb)) {
+				if (File.Exists(thumbName)) {
+					Gdk.Pixbuf newThumb = new Gdk.Pixbuf(thumbName); 
+					pb = Resize(newThumb, MAX_THUMB_WIDTH, MAX_THUMB_HEIGHT);
+					if (pb != newThumb)
+						newThumb.Dispose();
+					thumbnailCache.Add(thumbName, pb);
+				} else {
+					pb = itemIcons.GetIconForItem(item, ICON_SIZE);
+				}
+			}
+			
+			img.FromPixbuf = pb;
 				
 			box.PackStart(img, false, false, 0);
 			box.PackStart(tbl, true, true, 0);
 			return box;
+		}
+		
+		private static Gdk.Pixbuf Resize(Gdk.Pixbuf original, int maxWidth, int maxHeight) {
+			if (original.Width > maxWidth || original.Height > maxHeight) {
+				// width or height is bigger than max
+				int width, height;
+				float resizeFactor;
+				if (original.Width > original.Height) {
+					// width > height => width isbigger than max width
+					resizeFactor = (float)maxWidth / original.Width;
+					width = maxWidth;
+					height = (int)(original.Height * resizeFactor);					
+				} else {
+					// height >= width => height is bigger than max height
+					resizeFactor = (float)maxHeight / original.Height;
+					height = maxHeight;
+					width = (int)(original.Width * resizeFactor);
+				}
+				return original.ScaleSimple(width, height, Gdk.InterpType.Bilinear);
+			} else {
+				return original;
+			}
 		}
 	}
 }

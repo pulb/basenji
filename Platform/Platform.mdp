@@ -16,13 +16,13 @@
       <Output directory="bin/Debug" assemblyKeyFile="." assembly="Platform" />
       <Build debugmode="True" target="Library" />
       <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_2_0" />
-      <CodeGeneration compiler="Mcs" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" definesymbols="UNIX,DEBUG,GNOME" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
+      <CodeGeneration compiler="Mcs" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" definesymbols="UNIX,DEBUG,GNOME" generatexmldocumentation="False" additionalargs="-pkg:gnome-sharp-2.0" ctype="CSharpCompilerParameters" />
     </Configuration>
     <Configuration name="Gnome_Release" ctype="DotNetProjectConfiguration">
       <Output directory="bin/Release" assemblyKeyFile="." assembly="Platform" />
       <Build debugmode="False" target="Library" />
       <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_2_0" />
-      <CodeGeneration compiler="Mcs" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" definesymbols="UNIX,GNOME" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
+      <CodeGeneration compiler="Mcs" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" definesymbols="UNIX,GNOME" generatexmldocumentation="False" additionalargs="-pkg:gnome-sharp-2.0" ctype="CSharpCompilerParameters" />
     </Configuration>
   </Configurations>
   <Contents>
@@ -43,6 +43,8 @@
     <File name="src/Win32/Mime/RegistryMime.cs" subtype="Code" buildaction="Compile" />
     <File name="src/AssemblyInfo.cs" subtype="Code" buildaction="Compile" />
     <File name="Platform.dll.config" subtype="Code" buildaction="FileCopy" />
+    <File name="src/Common/ThumbnailGenerator.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/Gnome/ThumbnailGenerator.cs" subtype="Code" buildaction="Compile" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />

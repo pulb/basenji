@@ -50,6 +50,9 @@ namespace VolumeDB.VolumeScanner
 		
 		private bool					disposed;
 		
+		// note:
+		// do not allow to modify the constuctor parameters (i.e. database, bufferSize, computeHashs...)
+		// through public properties later, since the scanner may already use them after scanning has been started.
 		internal VolumeScannerBase(string device, bool requiresMountpoint, VolumeDatabase database, int bufferSize, bool computeHashs) {
 			
 			if (device == null)

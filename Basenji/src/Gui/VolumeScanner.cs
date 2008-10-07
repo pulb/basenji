@@ -58,9 +58,10 @@ namespace Basenji.Gui
 			int bufferSize			= App.Settings.ScannerBufferSize;
 			bool enableHashing		= App.Settings.ScannerComputeHashs;
 			bool discardSymLinks	= App.Settings.ScannerDiscardSymLinks;
+			bool generateThumbnails	= App.Settings.ScannerGenerateThumbnails;
 			
 			// TODO : scanner = VolumeProber.GetScanner(device,...)
-			scanner = new FilesystemVolumeScanner(device, database, bufferSize, enableHashing, discardSymLinks);
+			scanner = new FilesystemVolumeScanner(device, database, bufferSize, enableHashing, discardSymLinks, generateThumbnails, DbData.GetDbDataPath(database));
 			
 			// scanner eventhandlers
 			scanner.BeforeScanItem	  += scanner_BeforeScanItem;
@@ -88,7 +89,7 @@ namespace Basenji.Gui
 
 				//Log(new LogItem(LogIcon.Info, string.Format("Scanning of drive '{0}' started. [buffersize: {1}, hashing: {2}]", driveName, bufferSize, enableHashing ? "on" : "off")));
 				////m_scanner.BeginScanning(driveName, false);
-				UpdateLog(LogIcon.Info, string.Format("Scanning of drive '{0}' started. [buffersize: {1}, hashing: {2}, discard symlinks: {3}]", device, bufferSize, enableHashing ? "on" : "off", discardSymLinks ? "yes" : "no"));
+				UpdateLog(LogIcon.Info, string.Format("Scanning of drive '{0}' started. [thumbs: {1}, hashing: {2}, discard symlinks: {3}]", device, BoolToStr(generateThumbnails), BoolToStr(enableHashing), BoolToStr(discardSymLinks)));
 				scanner.RunAsync(); // starts scanning on a new thread and returns
 			} catch {
 				//RemoveIdleHandler();
@@ -180,6 +181,10 @@ namespace Basenji.Gui
 				return false;			 
 			}
 			return true;
+		}
+		
+		private static string BoolToStr(bool val) {
+			return val ? "yes" : "no";
 		}
 		
 		public event NewVolumeAddedEventHandler NewVolumeAdded;

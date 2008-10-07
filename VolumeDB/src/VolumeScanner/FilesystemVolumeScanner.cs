@@ -22,6 +22,7 @@ using System.Text;
 using System.Threading;
 using System.Security.Cryptography;
 using System.Collections.Generic;
+using Platform.Common;
 using Platform.Common.IO;
 using Platform.Common.Mime;
 using VolumeDB.Searching;
@@ -35,33 +36,74 @@ namespace VolumeDB.VolumeScanner
 		private const char		PATH_SEPARATOR		= '/';
 		private const string	MIME_TYPE_DIRECTORY = "x-directory/normal";
 		
+		private bool				disposed;
 		//private MimeInfo			  mimeInfo;
 		private StringBuilder		sbPathFixer;
 		private List<SymLinkItem>	symLinkItems;
 		private bool				discardSymLinks;
+		private bool				generateThumbnails;
+		private Paths				paths;
+		private ThumbnailGenerator	thumbGen;
 
-		public FilesystemVolumeScanner(string device, VolumeDatabase database, int bufferSize, bool computeHashs) : this(device, database, bufferSize, computeHashs, false) {}
-		public FilesystemVolumeScanner(string device, VolumeDatabase database, int bufferSize, bool computeHashs, bool discardSymLinks)
+		// note:
+		// do not allow to modify the constuctor parameters (i.e. discardSymlinks, generateThumbnails, dbDataPath)
+		// through public properties later, since the scanner may already use them after scanning has been started.
+		public FilesystemVolumeScanner(string device, VolumeDatabase database, int bufferSize, bool computeHashs) : this(device, database, bufferSize, computeHashs, false, false, null) {}
+		public FilesystemVolumeScanner(string device, VolumeDatabase database, int bufferSize, bool computeHashs, bool discardSymLinks, bool generateThumbnails, string dbDataPath)
 			: base(device, true, database, bufferSize, computeHashs)
 		{
+		
+			if (generateThumbnails && string.IsNullOrEmpty(dbDataPath))
+				throw new ArgumentException("dbDataPath", "Thumbnail generation requires dbDataPath to be set");
+			
+			disposed				= false;
 			//this.mimeInfo			  = new MimeInfo(false);
 			this.sbPathFixer		= new StringBuilder(1024);
 			this.symLinkItems		= new List<SymLinkItem>();
-			this.discardSymLinks	= discardSymLinks;
+			this.discardSymLinks	= discardSymLinks;			
+			this.generateThumbnails	= generateThumbnails;
+			this.paths				= new Paths(dbDataPath, null, null);
+			this.thumbGen			= new ThumbnailGenerator();
 		}
 		
 		internal override void ScanningThreadMain(Platform.Common.IO.DriveInfo driveInfo, FileSystemVolume volume, BufferedVolumeItemWriter writer, bool computeHashs) {
-			string rootPath = driveInfo.RootPath;
-			// remove possible ending path seperator except for _system_ root paths
-			rootPath = RemoveEndingSlash(rootPath);
-//			  if ((rootPath.Length > 1) && (rootPath[rootPath.Length - 1] == Path.DirectorySeparatorChar))
-//				  rootPath = rootPath.Substring(0, rootPath.Length - 1);
-			
-			DirectoryInfo dir = new DirectoryInfo(rootPath);				
-			RecursiveDump(rootPath, dir, writer, computeHashs, VolumeDatabase.ID_NONE);
-			InsertSymLinkItems(writer, volume.VolumeID);
-			
-			volume.SetFileSystemVolumeFields(VolumeInfo.Files, VolumeInfo.Directories, VolumeInfo.Size);
+			try {
+				if (generateThumbnails) {
+					paths.volumeDataPath = Path.Combine(paths.dbDataPath, volume.VolumeID.ToString());
+					
+					// make sure there is no directory with the same name as the volume directory 
+					// that is about to be created
+					// (the volume directory will be deleted in the catch block on failure, 
+					// so make sure that no existing dir will be deleted)
+					if (Directory.Exists(paths.volumeDataPath))
+						throw new ArgumentException("dbDataPath already contains a directory for this volume");
+					
+					// thumbnails will be stored in <dbdataPath>/<volumeID>/thumbs
+					paths.thumbnailPath = Path.Combine(paths.volumeDataPath, "thumbs");
+					Directory.CreateDirectory(paths.thumbnailPath);
+				}
+				
+				string rootPath = driveInfo.RootPath;
+				// remove possible ending path seperator except for _system_ root paths
+				rootPath = RemoveEndingSlash(rootPath);
+	//			  if ((rootPath.Length > 1) && (rootPath[rootPath.Length - 1] == Path.DirectorySeparatorChar))
+	//				  rootPath = rootPath.Substring(0, rootPath.Length - 1);
+				
+				DirectoryInfo dir = new DirectoryInfo(rootPath);				
+				RecursiveDump(rootPath, dir, writer, computeHashs, VolumeDatabase.ID_NONE);
+				InsertSymLinkItems(writer, volume.VolumeID);
+				
+				volume.SetFileSystemVolumeFields(VolumeInfo.Files, VolumeInfo.Directories, VolumeInfo.Size);
+			} catch(Exception) {
+				// try to cleanup
+				try {
+					if((paths.volumeDataPath != null) && Directory.Exists(paths.volumeDataPath))
+						Directory.Delete(paths.volumeDataPath, true);
+				} catch(Exception) { /* just shut up */ }
+				
+				// rethrow initial exception
+				throw;
+			}
 		}
 		
 		protected override void Reset() {
@@ -73,12 +115,17 @@ namespace VolumeDB.VolumeScanner
 		}
 		
 		protected override void Dispose(bool disposing) {
-			//if (disposing) {
-			//	  // clean up managed stuff?				
-			//}
+			if (!disposed) {
+				if (disposing) {
+					thumbGen.Dispose();				
+				}
 
-			sbPathFixer		= null;
-			symLinkItems	= null;
+				thumbGen		= null;
+				sbPathFixer		= null;
+				symLinkItems	= null;
+				paths			= null;
+			}
+			disposed = true;
 			
 			base.Dispose(disposing);
 		}
@@ -132,8 +179,8 @@ namespace VolumeDB.VolumeScanner
 			}
 				
 			/* insert dirname */
-			long itemID = InsertDir(rootPath, dir, writer, parentID);
-			parentID = itemID;
+			long dirID = InsertDir(rootPath, dir, writer, parentID);
+			parentID = dirID;
 			// TODO : check m_cancel here (?)
 			
 //			  /* do not dump symlinks to directories */
@@ -158,9 +205,10 @@ namespace VolumeDB.VolumeScanner
 
 					if (isRegularFile) {
 						
-						string mimeType = null;
-						string metaData = null;
-						string hash		= null;
+						string	mimeType			= null;
+						string	metaData			= null;
+						string	hash				= null;
+						bool	thumbGenerated		= false;
 						
 						FileStream fs	= null;
 						try {
@@ -178,9 +226,14 @@ namespace VolumeDB.VolumeScanner
 								hash = ComputeHash(fs);
 								// TODO : check m_cancel here? hashing can be a lengthy operation on big files.
 							}
+							
+							if (generateThumbnails) {
+								thumbGenerated = thumbGen.GenerateThumbnail(files[i], mimeType);
+							}
 								
 						} catch (Exception e) {
-							// ### exception caught: hash, mime and/or metadata may be null!
+							// ### exception caught: hash, mime and/or metadata may be null 
+							// and the thumbnail may not have been generated!
 							if (e is UnauthorizedAccessException || e is IOException) {
 								/* may throw ScanCancelledException */
 								SendScannerWarning(string.Format("Error opening file '{0}', can't retrieve any mime/metadata. ({1})", files[i].FullName, e.Message), e);
@@ -192,7 +245,9 @@ namespace VolumeDB.VolumeScanner
 								fs.Close();
 						}
 						
-						InsertFile(rootPath, files[i], writer, parentID, mimeType, metaData, hash);
+						long fileID = InsertFile(rootPath, files[i], writer, parentID, mimeType, metaData, hash);
+						if (thumbGenerated)
+							thumbGen.SaveThumbnail(Path.Combine(paths.thumbnailPath, string.Format("{0}.png", fileID)));
 						
 					} else if (isSymLink) {
 						
@@ -578,6 +633,19 @@ namespace VolumeDB.VolumeScanner
 			public string	sourceLocation;			   
 			public string	targetName;
 			public string	targetLocation;
+		}
+		
+		private class Paths
+		{
+			public string dbDataPath;
+			public string volumeDataPath;
+			public string thumbnailPath;
+			
+			public Paths(string dbDataPath, string volumeDataPath, string thumbnailPath) {
+				this.dbDataPath		= dbDataPath;
+				this.volumeDataPath	= volumeDataPath;
+				this.thumbnailPath	= thumbnailPath;
+			}
 		}
 		
 	}

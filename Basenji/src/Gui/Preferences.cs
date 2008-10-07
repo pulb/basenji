@@ -187,9 +187,10 @@ namespace Basenji.Gui
 				}
 			}
 			
-//			  scaleBufferSize.Value		  = s.ScannerBufferSize;
-			chkDiscardSymLinks.Active	= s.ScannerDiscardSymLinks;
-			chkComputeHashs.Active		= s.ScannerComputeHashs;
+//			  scaleBufferSize.Value		  	= s.ScannerBufferSize;
+			chkGenerateThumbnails.Active	= s.ScannerGenerateThumbnails;
+			chkDiscardSymLinks.Active		= s.ScannerDiscardSymLinks;
+			chkComputeHashs.Active			= s.ScannerComputeHashs;
 		}
 		
 		private void Save() {
@@ -212,8 +213,9 @@ namespace Basenji.Gui
 			App.Settings.ScannerDevice = scannerDevice;
 			
 //			  App.Settings.ScannerBufferSize	  = (int)scaleBufferSize.Value;
-			App.Settings.ScannerDiscardSymLinks = chkDiscardSymLinks.Active;
-			App.Settings.ScannerComputeHashs	= chkComputeHashs.Active;
+			App.Settings.ScannerGenerateThumbnails	= chkGenerateThumbnails.Active;
+			App.Settings.ScannerDiscardSymLinks 	= chkDiscardSymLinks.Active;
+			App.Settings.ScannerComputeHashs		= chkComputeHashs.Active;
 			
 			App.Settings.Save();
 			
@@ -230,6 +232,7 @@ namespace Basenji.Gui
 		
 		private ComboBox	cmbScannerDevice;
 //		private HScale		scaleBufferSize;
+		private CheckButton chkGenerateThumbnails;
 		private CheckButton chkDiscardSymLinks;
 		private CheckButton chkComputeHashs;
 		private Button		btnReset;
@@ -302,7 +305,7 @@ namespace Basenji.Gui
 		}
 		
 		private void AppendScannerPage(Notebook nb) {
-			Table tbl = CreateTable(3, 2);
+			Table tbl = CreateTable(4, 2);
 			tbl.BorderWidth = 12;
 			
 			// labels
@@ -324,13 +327,20 @@ namespace Basenji.Gui
 //			  
 //			  TblAttach(tbl, scaleBufferSize, 1, 1, AttachOptions.Expand | AttachOptions.Fill | AttachOptions.Shrink, AttachOptions.Fill);
 			
+			// checkbox generateThumbnails
+			chkGenerateThumbnails = new CheckButton("Generate Thumbnails");
+			TblAttach(tbl, chkGenerateThumbnails, 0, 1, 2, 1, AttachOptions.Fill, AttachOptions.Fill);
+			// FIXME : currently thumbnail generation is implemented for GNOME only
+			if (!Platform.Common.Diagnostics.CurrentPlatform.IsGnome)
+				chkGenerateThumbnails.Sensitive = false;
+			
 			// checkbox discardSymLinks
 			chkDiscardSymLinks = new CheckButton("Discard symbolic links");
-			TblAttach(tbl, chkDiscardSymLinks, 0, 1, 2, 1, AttachOptions.Fill, AttachOptions.Fill);
+			TblAttach(tbl, chkDiscardSymLinks, 0, 2, 2, 1, AttachOptions.Fill, AttachOptions.Fill);
 			
 			// checkbox computeHashs
 			chkComputeHashs = new CheckButton("Compute hashcodes for files (slow!)");
-			TblAttach(tbl, chkComputeHashs, 0, 2, 2, 1, AttachOptions.Fill, AttachOptions.Fill);			
+			TblAttach(tbl, chkComputeHashs, 0, 3, 2, 1, AttachOptions.Fill, AttachOptions.Fill);			
 			
 			nb.AppendPage(tbl, new Label("Scanner"));		 
 		}

@@ -45,7 +45,7 @@ endif
 
 ifeq ($(CONFIG),GNOME_DEBUG)
 ASSEMBLY_COMPILER_COMMAND = gmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ -debug -define:DEBUG "-define:UNIX,DEBUG,GNOME"
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ -debug -define:DEBUG -pkg:gnome-sharp-2.0  "-define:UNIX,DEBUG,GNOME"
 
 ASSEMBLY = bin/Debug/Platform.dll
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
@@ -63,7 +63,7 @@ endif
 
 ifeq ($(CONFIG),GNOME_RELEASE)
 ASSEMBLY_COMPILER_COMMAND = gmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ "-define:UNIX,GNOME"
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ -pkg:gnome-sharp-2.0  "-define:UNIX,GNOME"
 
 ASSEMBLY = bin/Release/Platform.dll
 ASSEMBLY_MDB = 
@@ -110,7 +110,9 @@ FILES = \
 	src/Unix/IO/UnixFileHelper.cs \
 	src/Unix/Mime/Mime.cs \
 	src/Win32/Mime/RegistryMime.cs \
-	src/AssemblyInfo.cs 
+	src/AssemblyInfo.cs \
+	src/Common/ThumbnailGenerator.cs \
+	src/Gnome/ThumbnailGenerator.cs 
 
 DATA_FILES = \
 	Platform.dll.config 

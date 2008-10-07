@@ -407,6 +407,7 @@ namespace Basenji.Gui
 		}
 		
 		private void OnTvItemsSelectionChanged(object o, EventArgs args) {
+			// get selected item
 			TreeIter iter;
 			if (!tvItems.GetSelectedIter(out iter))
 				return;
@@ -415,7 +416,7 @@ namespace Basenji.Gui
 			if (item == null) // null -> not an item row (e.g. the "loading" row)
 				return;
 			
-			itemInfo.ShowInfo(item);
+			itemInfo.ShowInfo(item, database);
 		}
 		
 		private void OnDeleteEvent(object sender, DeleteEventArgs args) {
