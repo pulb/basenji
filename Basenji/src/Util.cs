@@ -17,7 +17,9 @@
 //
 
 using System;
+using System.Runtime.InteropServices;
 using System.Reflection;
+using Platform.Common.Diagnostics;
 
 namespace Basenji
 {
@@ -48,15 +50,27 @@ namespace Basenji
 			return asm.GetName().Version.ToString();		
 		}
 		
-//		public static void DebugWrite(string message) { DebugWrite(message, new object[] {}); }
-//		
-//		public static void DebugWrite(string message, params object[] args) {
-//#if DEBUG
-//			  message = string.Format(message, args);
-//			Console.WriteLine("{0} DBG: {1}", App.Name, message);
-//			//System.Diagnostics.Debug.WriteLine(message);
-//#endif
-//		}
+		public static void SetProcName(string name) {
+			const int PR_SET_NAME = 0x0F;
+			
+			IntPtr arg = Marshal.StringToHGlobalAnsi(name);
+			try {
+				if (prctl(PR_SET_NAME, (ulong)arg.ToInt64(), 0, 0, 0) != 0)
+					Debug.WriteLine("prctl() failed");
+			} catch (EntryPointNotFoundException) {
+				IntPtr fmt = Marshal.StringToHGlobalAnsi("%s");
+				setproctitle(fmt, arg);
+				Marshal.FreeHGlobal(fmt);
+			}
+			Marshal.FreeHGlobal(arg);
+		}
 		
+		// linux
+		[DllImport("libc")]
+		private static extern int prctl (int option, ulong arg2, ulong arg3, ulong arg4, ulong arg5);
+		
+		// bsd
+		[DllImport("libc")]
+		private static extern void setproctitle(IntPtr format, IntPtr arg);
 	}
 }

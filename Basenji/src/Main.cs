@@ -27,8 +27,11 @@ namespace Basenji
 		public static void Main (string[] args) {
 			Debug.WriteLine(string.Format("{0} {1}", App.Name, App.Version));
 			Debug.WriteLine(string.Format("Used runtime: {0}", System.Runtime.InteropServices.RuntimeEnvironment.GetRuntimeDirectory()));
-						
-			Application.Init ();
+			
+			if (Platform.Common.Diagnostics.CurrentPlatform.IsUnix)
+				Util.SetProcName(App.Name);
+				
+			Application.Init();
 			
 			// GLib.Timeout / GLib.Application.Invoke() won't work without this
 			// see http://bugzilla.ximian.com/show_bug.cgi?id=77130
@@ -42,15 +45,36 @@ namespace Basenji
 				GLib.Thread.Init();
 			*/			  
 
-			// load custom icon theme
-			string themeLocation = App.Settings.CustomThemeLocation;
-			string themeName = App.Settings.CustomThemeName;
-			if (!string.IsNullOrEmpty(themeLocation) && !string.IsNullOrEmpty(themeName))
-				Icons.CustomIconTheme.Load(System.IO.Path.Combine(themeLocation, themeName));			 
+			using(new InstanceLock()) {
+				// load custom icon theme
+				string themeLocation = App.Settings.CustomThemeLocation;
+				string themeName = App.Settings.CustomThemeName;
+				if (!string.IsNullOrEmpty(themeLocation) && !string.IsNullOrEmpty(themeName))
+					Icons.CustomIconTheme.Load(System.IO.Path.Combine(themeLocation, themeName));			 
+				
+				Gui.MainWindow win = new Gui.MainWindow ();
+				win.Show ();
+				Application.Run();
+			}
+		}
+		
+		// allows only one instance of the app
+		private class InstanceLock : IDisposable
+		{
+			private System.Threading.Mutex mtx;
 			
-			Gui.MainWindow win = new Gui.MainWindow ();
-			win.Show ();
-			Application.Run ();
+			public InstanceLock() {
+			 	mtx = new System.Threading.Mutex(false, "715829bd-de3b-44c0-8bbc-a542eec8d8be");
+				if (!mtx.WaitOne(1, true)) {
+					MsgDialog.Show(null, MessageType.Error, ButtonsType.Ok, "Error", string.Format("{0} is already running.", App.Name));
+					Environment.Exit(0);
+				}
+			}
+			
+			public void Dispose() {
+				mtx.ReleaseMutex();
+				mtx.Close();
+			}
 		}
 	}
 }
