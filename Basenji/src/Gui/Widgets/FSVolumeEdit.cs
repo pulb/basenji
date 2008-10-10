@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 using Gtk;
 using Basenji.Gui.Base;
+using Platform.Common.Globalization;
 using VolumeDB;
 using VolumeDB.VolumeScanner;
 
@@ -59,9 +60,9 @@ namespace Basenji.Gui.Widgets
 			lblTotalSize	= WindowBase.CreateLabel();
 			
 			infoLabels.AddRange( new InfoLabel[] { 
-				new InfoLabel("Files:", lblFiles),
-				new InfoLabel("Directories:", lblDirectories),
-				new InfoLabel("Total size:", lblTotalSize)
+				new InfoLabel(S._("Files:"), lblFiles),
+				new InfoLabel(S._("Directories:"), lblDirectories),
+				new InfoLabel(S._("Total size:"), lblTotalSize)
 			} );
 		}
 			

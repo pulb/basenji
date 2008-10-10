@@ -45,7 +45,7 @@ namespace VolumeDB.VolumeScanner
 				throw new ArgumentNullException("device");
 			
 			if (device.Length == 0)
-				throw new ArgumentException("Invalid devicename.");
+				throw new ArgumentException("Invalid devicename");
 				
 			// TODO : implement me!
 			// use Platform.Common.IO.DriveInfo.FromDevice(device);

@@ -23,6 +23,7 @@ using Gtk;
 using Gdk;
 using Basenji.Gui.Base;
 using Platform.Common.IO;
+using Platform.Common.Globalization;
 using Platform.Common.Diagnostics;
 
 namespace Basenji.Gui
@@ -61,7 +62,7 @@ namespace Basenji.Gui
 			
 			if (CurrentPlatform.IsWin32) {
 				ListStore store = new ListStore(typeof(string));
-				store.AppendValues("Waiting for drives...");
+				store.AppendValues(S._("Waiting for drives..."));
 				SetColumns(tvDrives, true);
 				tvDrives.Model = store;
 			}
@@ -130,12 +131,12 @@ namespace Basenji.Gui
 				col.MinWidth = 22;
 				tv.AppendColumn(col);
 
-				col = new TreeViewColumn("Drive", leftAlignedTR, "text", 1);
+				col = new TreeViewColumn(S._("Drive"), leftAlignedTR, "text", 1);
 				col.Resizable = true;
 				col.Alignment = 0.0f;
 				tv.AppendColumn(col);
 				
-				col = new TreeViewColumn("Label", leftAlignedTR, "text", 2);
+				col = new TreeViewColumn(S._("Label"), leftAlignedTR, "text", 2);
 				col.Resizable = true;
 				col.Alignment = 0.0f;
 				tv.AppendColumn(col);
@@ -144,7 +145,7 @@ namespace Basenji.Gui
 				CellRendererText rightAlignedTR = new CellRendererText();
 				rightAlignedTR.Xalign = 1.0f;
 				
-				col = new TreeViewColumn("Size", rightAlignedTR, "text", 3);
+				col = new TreeViewColumn(S._("Size"), rightAlignedTR, "text", 3);
 				col.Resizable = true;
 				col.Alignment = 1.0f;
 				tv.AppendColumn(col);
@@ -168,7 +169,7 @@ namespace Basenji.Gui
 			if (label.Length > 0)
 				return label;
 			else if(d.IsMounted && d.RootPath == "/")
-				return "Filesystem";
+				return S._("Filesystem");
 			else
 				return "--";
 		}
@@ -229,7 +230,7 @@ namespace Basenji.Gui
 			
 			//general window settings
 			this.BorderWidth		= 0 /* = 2 */; // TODO : somehow the dialog already has a 2 px border.. vbox? bug in gtk#?
-			this.Title				= "Please select a drive to scan";
+			this.Title				= S._("Please select a drive to scan");
 			this.DefaultWidth		= 320;
 			this.DefaultHeight		= 340;
 

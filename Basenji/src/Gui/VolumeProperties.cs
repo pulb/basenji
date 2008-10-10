@@ -19,6 +19,7 @@
 using System;
 using Basenji.Gui.Base;
 using Basenji.Gui.Widgets;
+using Platform.Common.Globalization;
 using VolumeDB;
 using Gtk;
 
@@ -38,7 +39,7 @@ namespace Basenji.Gui
 				volEdit.Save();
 				this.Destroy();
 			} catch (Widgets.VolumeEdit.ValidationException e) {
-				MsgDialog.ShowError(this, "Invalid data", string.Format("\"{0}\" is {1}.\n\nExpected format: {2}\nPlease correct or remove the data you entered." , e.WidgetName, e.Message, e.ExpectedFormat));
+				MsgDialog.ShowError(this, S._("Invalid data"), string.Format(S._("\"{0}\" is {1}.\n\nExpected format: {2}\nPlease correct or remove the data you entered.") , e.WidgetName, e.Message, e.ExpectedFormat));
 				return false;			 
 			}
 			return true;
@@ -80,7 +81,7 @@ namespace Basenji.Gui
 			this.DefaultHeight		= 400;
 			this.Modal				= true;
 			this.SkipTaskbarHint	= true;
-			this.Title				= "Volume Properties";
+			this.Title				= S._("Volume Properties");
 			
 			// vbOuter			  
 			VBox vbOuter = new VBox();

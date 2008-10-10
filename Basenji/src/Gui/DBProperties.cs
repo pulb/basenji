@@ -21,6 +21,7 @@
 using System;
 using VolumeDB;
 using Gtk;
+using Platform.Common.Globalization;
 using Basenji.Gui.Base;
 
 namespace Basenji.Gui
@@ -78,7 +79,7 @@ namespace Basenji.Gui
 			this.DefaultHeight		= 240;
 			this.Modal				= true;
 			this.SkipTaskbarHint	= true;
-			this.Title				= "Database Properties";
+			this.Title				= S._("Database Properties");
 			this.Icon = this.RenderIcon(Basenji.Icons.Icon.Stock_Properties, IconSize.Menu);
 			
 			// vbOuter			  
@@ -89,9 +90,9 @@ namespace Basenji.Gui
 			Table tbl = CreateTable(3, 2);
 			
 			// labels
-			TblAttach(tbl, CreateLabel("Name:"), 0, 0);
-			TblAttach(tbl, CreateLabel("Description:", false, 0.0f, 0.0f), 0, 1);
-			TblAttach(tbl, CreateLabel("Created:"), 0, 2);
+			TblAttach(tbl, CreateLabel(S._("Name:")), 0, 0);
+			TblAttach(tbl, CreateLabel(S._("Description:"), false, 0.0f, 0.0f), 0, 1);
+			TblAttach(tbl, CreateLabel(S._("Created:")), 0, 2);
 			
 			// name entry
 			entName = new Entry(DatabaseProperties.MAX_NAME_LENGTH);

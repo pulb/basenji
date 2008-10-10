@@ -24,6 +24,7 @@ using IO = System.IO;
 using Gtk;
 using Gdk;
 //using Platform;
+using Platform.Common.Globalization;
 using VolumeDB;
 using VolumeDB.VolumeScanner;
 
@@ -89,7 +90,7 @@ namespace Basenji.Gui
 
 				//Log(new LogItem(LogIcon.Info, string.Format("Scanning of drive '{0}' started. [buffersize: {1}, hashing: {2}]", driveName, bufferSize, enableHashing ? "on" : "off")));
 				////m_scanner.BeginScanning(driveName, false);
-				UpdateLog(LogIcon.Info, string.Format("Scanning of drive '{0}' started. [thumbs: {1}, hashing: {2}, discard symlinks: {3}]", device, BoolToStr(generateThumbnails), BoolToStr(enableHashing), BoolToStr(discardSymLinks)));
+				UpdateLog(LogIcon.Info, string.Format(S._("Scanning of drive '{0}' started. [thumbs: {1}, hashing: {2}, discard symlinks: {3}]"), device, BoolToStr(generateThumbnails), BoolToStr(enableHashing), BoolToStr(discardSymLinks)));
 				scanner.RunAsync(); // starts scanning on a new thread and returns
 			} catch {
 				//RemoveIdleHandler();
@@ -105,11 +106,11 @@ namespace Basenji.Gui
 			col.MinWidth = 30;
 			tvLog.AppendColumn(col);
 
-			col = new TreeViewColumn("Time", new CellRendererText(), "text", 1);
+			col = new TreeViewColumn(S._("Time"), new CellRendererText(), "text", 1);
 			col.MinWidth = 40;
 			tvLog.AppendColumn(col);
 
-			col = new TreeViewColumn("Message", new CellRendererText(), "text", 2);
+			col = new TreeViewColumn(S._("Message"), new CellRendererText(), "text", 2);
 			col.Sizing = TreeViewColumnSizing.Fixed; // TODO : is there smarter way?
 			tvLog.AppendColumn(col);
 
@@ -177,14 +178,14 @@ namespace Basenji.Gui
 
 				this.Destroy();
 			} catch (Widgets.VolumeEdit.ValidationException e) {
-				MsgDialog.ShowError(this, "Invalid data", string.Format("\"{0}\" is {1}.\n\nExpected format: {2}\nPlease correct or remove the data you entered." , e.WidgetName, e.Message, e.ExpectedFormat));
+				MsgDialog.ShowError(this, S._("Invalid data"), string.Format(S._("\"{0}\" is {1}.\n\nExpected format: {2}\nPlease correct or remove the data you entered.") , e.WidgetName, e.Message, e.ExpectedFormat));
 				return false;			 
 			}
 			return true;
 		}
 		
 		private static string BoolToStr(bool val) {
-			return val ? "yes" : "no";
+			return val ? S._("yes") : S._("no");
 		}
 		
 		public event NewVolumeAddedEventHandler NewVolumeAdded;
@@ -207,7 +208,7 @@ namespace Basenji.Gui
 		
 		private void OnDeleteEvent(object o, Gtk.DeleteEventArgs args) {
 			if (scanner.IsBusy) {		 
-				MsgDialog.ShowError(this, "Scan in progress", "You must stop scanning before closing this window.");
+				MsgDialog.ShowError(this, S._("Scan in progress"), S._("You must stop scanning before closing this window."));
 				args.RetVal = true;
 			} else {
 				bool cancel = !SaveAndClose(); 
@@ -217,7 +218,7 @@ namespace Basenji.Gui
 
 		private void OnBtnAbortClicked(object sender, System.EventArgs args) {
 			if (btnAbort.Label == Stock.Cancel) {
-				UpdateLog(LogIcon.Info, "Stopping Scanner and performing rollback...");
+				UpdateLog(LogIcon.Info, S._("Stopping Scanner and performing rollback..."));
 				if (scanner.IsBusy) {
 					scanner.CancelAsync();
 					/* disable button, 
@@ -259,8 +260,8 @@ namespace Basenji.Gui
 
 		private void scanner_Error(object sender, ErrorEventArgs e) {
 			Application.Invoke(delegate {
-				UpdateLog(LogIcon.Error, string.Format("An unhandled exception occured ({0}).", e.Exception.Message));
-				UpdateLog(LogIcon.Info, "All database changes have been rolled back.");
+				UpdateLog(LogIcon.Error, string.Format(S._("An unhandled exception occured ({0})."), e.Exception.Message));
+				UpdateLog(LogIcon.Info, S._("All database changes have been rolled back."));
 			});
 		}
 
@@ -283,11 +284,11 @@ namespace Basenji.Gui
 				//}
 
 				if (e.Error != null) {
-					UpdateLog(LogIcon.Error, string.Format("Scanning failed. Reason: an unhandled exception occured ({0}).", e.Error.Message));
+					UpdateLog(LogIcon.Error, string.Format(S._("Scanning failed. Reason: an unhandled exception occured ({0})."), e.Error.Message));
 				} else if (e.Cancelled) {
-					UpdateLog(LogIcon.Error, "Scanning aborted.");
+					UpdateLog(LogIcon.Error, S._("Scanning aborted."));
 				} else {
-					UpdateLog(LogIcon.Info, "Scanning completed successfully.");
+					UpdateLog(LogIcon.Info, S._("Scanning completed successfully."));
 					volEdit.Load(e.Volume);					   
 					volEdit.Sensitive = true;
 					//mainWindow.RefreshVolumeList(); // TODO : slow on dbs containing many volumes?
@@ -386,7 +387,7 @@ namespace Basenji.Gui
 			this.DefaultHeight		= 600;
 			this.Modal				= true;
 			this.SkipTaskbarHint	= true;
-			this.Title				= "VolumeScanner";
+			this.Title				= S._("VolumeScanner");
 			
 			// vbOuter
 			VBox vbOuter = new VBox();
@@ -398,7 +399,7 @@ namespace Basenji.Gui
 			vbVolEdit.BorderWidth = 12;
 			
 			volEdit = Widgets.VolumeEdit.CreateInstance(scanner.VolumeInfo.GetVolumeType());
-			vbVolEdit.PackStart(CreateLabel("<b>Volume Information:</b>", true, 0, 0), false, false, 0);
+			vbVolEdit.PackStart(CreateLabel(S._("<b>Volume Information:</b>"), true, 0, 0), false, false, 0);
 			vbVolEdit.PackStart(LeftAlign(volEdit), true, true, 0);
 			
 			vbOuter.PackStart(vbVolEdit, false, false, 0);
@@ -408,7 +409,7 @@ namespace Basenji.Gui
 			vbScannerLog.Spacing = 6;
 			vbScannerLog.BorderWidth = 12;
 			
-			vbScannerLog.PackStart(CreateLabel("<b>Scanner Log:</b>", true, 0, 0), false, false, 0);
+			vbScannerLog.PackStart(CreateLabel(S._("<b>Scanner Log:</b>"), true, 0, 0), false, false, 0);
 			vbScannerLog.PackStart(LeftAlign(CreateScrolledView<TreeView>(out tvLog, false)), true, true, 0);			 
 			
 			vbOuter.PackStart(vbScannerLog, true, true, 0);
@@ -425,7 +426,7 @@ namespace Basenji.Gui
 			
 			led = new Widgets.Led(false);			 
 			hbLed.PackStart(led, false, false, 0);
-			hbLed.PackStart(CreateLabel("Database access"));
+			hbLed.PackStart(CreateLabel(S._("Database access")));
 
 			hbbox.PackStart(hbLed, false, false, 0);
 			

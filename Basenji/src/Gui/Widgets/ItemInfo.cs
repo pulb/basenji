@@ -22,6 +22,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using Gtk;
+using Platform.Common.Globalization;
 using Basenji.Gui.Base;
 using Basenji.Icons;
 using VolumeDB;
@@ -87,11 +88,11 @@ namespace Basenji.Gui.Widgets
 			Table tbl = WindowBase.CreateTable(5, 3);
 			
 			// caption labels
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel("<b>Name:</b>", true), 0, 0);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel("<b>Location:</b>", true), 0, 1);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel("<b>Last write time:</b>", true), 0, 2);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel("<b>Size:</b>", true), 0, 3);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel("<b>Hash:</b>", true), 0, 4);
+			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("<b>Name:</b>"), true), 0, 0);
+			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("<b>Location:</b>"), true), 0, 1);
+			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("<b>Last write time:</b>"), true), 0, 2);
+			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("<b>Size:</b>"), true), 0, 3);
+			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("<b>Hash:</b>"), true), 0, 4);
 			
 			// value labels
 			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(item.Name), 1, 0);
@@ -106,7 +107,7 @@ namespace Basenji.Gui.Widgets
 				else
 					targetPath = targetItem.Location + targetItem.Name;
 				
-				location = string.Format("{0} <i>(link to {1}</i>)", item.Location, targetPath);
+				location = string.Format(S._("{0} <i>(link to {1}</i>)"), item.Location, targetPath);
 			} else {
 				location = item.Location;
 			}

@@ -18,6 +18,7 @@
 
 using System;
 using Gtk;
+using Platform.Common.Globalization;
 using Basenji.Gui.Base;
 
 namespace Basenji
@@ -50,12 +51,12 @@ namespace Basenji
 
 			FileFilter ff;
 			ff = new FileFilter();
-			ff.Name = "VolumeDatabase files";
+			ff.Name = S._("VolumeDatabase files");
 			ff.AddPattern("*.vdb");
 			fc.AddFilter(ff);
 			
 			ff = new FileFilter();
-			ff.Name = "All files";
+			ff.Name = S._("All files");
 			ff.AddPattern("*.*");
 			fc.AddFilter(ff);
 			

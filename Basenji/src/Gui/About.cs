@@ -19,6 +19,7 @@
 using System;
 using System.Text;
 using Gtk;
+using Platform.Common.Globalization;
 using Basenji.Gui.Base;
 
 namespace Basenji.Gui
@@ -46,7 +47,7 @@ namespace Basenji.Gui
 			this.Modal				= true;
 			this.SkipTaskbarHint	= true;
 			this.Resizable			= false;
-			this.Title				= string.Format("About {0}", App.Name);
+			this.Title				= string.Format(S._("About {0}"), App.Name);
 			this.Icon				= this.RenderIcon(Basenji.Icons.Icon.Stock_About, IconSize.Menu);
 			
 			// vbOuter			  
@@ -77,9 +78,9 @@ namespace Basenji.Gui
 			StringBuilder sb = new StringBuilder();
 		   
 			sb.Append("<b><span size=\"xx-large\">").Append(App.Name).Append(" ").Append(App.Version).Append("</span></b>\n\n");
-			sb.Append("Copyright (c) ").Append(App.Copyright).Append("\n");
+			sb.Append(S._("Copyright (c) ")).Append(App.Copyright).Append("\n");
 			
-			sb.AppendFormat("Using VolumeDB v{0}.", Util.GetVolumeDBVersion());
+			sb.AppendFormat(S._("Using VolumeDB v{0}."), Util.GetVolumeDBVersion());
 			
 			return sb.ToString();
 		}

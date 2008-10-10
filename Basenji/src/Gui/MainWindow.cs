@@ -24,6 +24,7 @@ using Gtk;
 //using GtkSharp;
 using System.IO;
 using VolumeDB;
+using Platform.Common.Globalization;
 using PlatformIO = Platform.Common.IO;
 
 namespace Basenji.Gui
@@ -58,7 +59,7 @@ namespace Basenji.Gui
 			string dbpath = App.Settings.MostRecentDBPath;
 			if (App.Settings.OpenMostRecentDB && dbpath.Length > 0) {
 				if (!File.Exists(dbpath)) {
-					MsgDialog.ShowError(this, "Error", "Database '{0}' not found.", dbpath);
+					MsgDialog.ShowError(this, S._("Error"), S._("Database '{0}' not found."), dbpath);
 					// clear path so the error won't occur again on next startup					
 					App.Settings.MostRecentDBPath = string.Empty;
 					App.Settings.Save();
@@ -83,7 +84,7 @@ namespace Basenji.Gui
 			try {				
 				database = new VolumeDatabase(path, createNew);
 			} catch (UnsupportedDbVersionException e) {
-				MsgDialog.ShowError(this, "Unsupported database version", "This database version is not supported.");
+				MsgDialog.ShowError(this, S._("Unsupported database version"), S._("This database version is not supported."));
 				return;
 			}
 			
@@ -93,7 +94,7 @@ namespace Basenji.Gui
 				tvVolumes.Fill(volumes);
 				EnableGui(true);
 				SetWindowTitle(path);
-				SetStatus(string.Format("{0} volumes loaded.", volumes.Length));
+				SetStatus(string.Format(S._("{0} volumes loaded."), volumes.Length));
 				
 				App.Settings.MostRecentDBPath = path;
 				App.Settings.Save();
@@ -157,7 +158,7 @@ namespace Basenji.Gui
 		
 		private void SelectNewDB() {
 			string db;
-			ResponseType result = FileDialog.Show(FileChooserAction.Save, this, "Please enter the name for the new database", out db);
+			ResponseType result = FileDialog.Show(FileChooserAction.Save, this, S._("Please enter the name for the new database"), out db);
 			
 			if (result == ResponseType.Ok && db.Length > 0) {
 				if (System.IO.Path.GetExtension(db).Length == 0)
@@ -165,7 +166,7 @@ namespace Basenji.Gui
 				
 				bool create = true;
 				if (File.Exists(db))
-					create = (MsgDialog.Show(this, MessageType.Question, ButtonsType.YesNo, "Database exists", "Database already exists. Overwrite?") == ResponseType.Yes);
+					create = (MsgDialog.Show(this, MessageType.Question, ButtonsType.YesNo, S._("Database exists"), S._("Database already exists. Overwrite?")) == ResponseType.Yes);
 
 				if (create) {
 					OpenDB(db, true, false, ShowDBProperties); // no async list refresh necessary - new database
@@ -176,13 +177,13 @@ namespace Basenji.Gui
 		
 		private void SelectExistingDB() {
 			string db;
-			ResponseType result = FileDialog.Show(FileChooserAction.Open, this, "Please select a database", out db);
+			ResponseType result = FileDialog.Show(FileChooserAction.Open, this, S._("Please select a database"), out db);
 			
 			if (result == ResponseType.Ok && db.Length > 0) {
 				// check if the file existst before calling OpenDB()
 				// so the currently loaded db won't be unloaded
 				if (!File.Exists(db))
-					MsgDialog.ShowError(this, "Error", "Database not found.");
+					MsgDialog.ShowError(this, S._("Error"), S._("Database not found."));
 				else
 					OpenDB(db, false, true, null);
 			}
@@ -201,7 +202,7 @@ namespace Basenji.Gui
 				try {
 					drive = PlatformIO.DriveInfo.FromDevice(App.Settings.ScannerDevice);
 				} catch(ArgumentException e) { // e.g. drive not found
-					MsgDialog.ShowError(this, "Error", "An error occured while accessing drive {0}:\n{1}", App.Settings.ScannerDevice, e.Message);
+					MsgDialog.ShowError(this, S._("Error"), S._("An error occured while accessing drive {0}:\n{1}"), App.Settings.ScannerDevice, e.Message);
 					return;
 				}
 				
@@ -216,7 +217,7 @@ namespace Basenji.Gui
 			}
 			
 			if (!drive.IsReady) {
-				MsgDialog.ShowError(this, "Error", "Drive {0} is not ready.", drive.Device); // e.g. no volume inserted
+				MsgDialog.ShowError(this, S._("Error"), S._("Drive {0} is not ready."), drive.Device); // e.g. no volume inserted
 				return;
 			}
 			
@@ -231,11 +232,11 @@ namespace Basenji.Gui
 		private void RemoveVolume() {
 
 			if (tvVolumes.Selection.CountSelectedRows() == 0) {
-				MsgDialog.ShowError(this, "No volume selected", "Please select a volume record to remove.");
+				MsgDialog.ShowError(this, S._("No volume selected"), S._("Please select a volume record to remove."));
 				return;
 			}
 
-			ResponseType result = MsgDialog.Show(this, MessageType.Question, ButtonsType.YesNo, "Confirmation", "Are you sure you really want to remove the selected volume?");
+			ResponseType result = MsgDialog.Show(this, MessageType.Question, ButtonsType.YesNo, S._("Confirmation"), S._("Are you sure you really want to remove the selected volume?"));
 			
 			if (result == ResponseType.Yes) {
 //				TreeModel model;
@@ -498,43 +499,43 @@ namespace Basenji.Gui
 			ActionGroup ag = new ActionGroup("default");			
 			
 			// file menu
-			actFile = CreateAction("file", "_File", null, null, null);
+			actFile = CreateAction("file", S._("_File"), null, null, null);
 			ag.Add(actFile, null);
 			
-			actNewDB = CreateAction("newdb", "_New Database", null, Stock.New, OnActNewDBActivated);
+			actNewDB = CreateAction("newdb", S._("_New Database"), null, Stock.New, OnActNewDBActivated);
 			ag.Add(actNewDB, "<control>N");
 			
-			actOpenDB = CreateAction("opendb", "_Open Database", null, Stock.Open, OnActOpenDBActivated);
+			actOpenDB = CreateAction("opendb", S._("_Open Database"), null, Stock.Open, OnActOpenDBActivated);
 			ag.Add(actOpenDB, "<control>O");
 			
-			actQuit = CreateAction("quit", "_Quit", null, Stock.Quit, OnActQuitActivated);
+			actQuit = CreateAction("quit", S._("_Quit"), null, Stock.Quit, OnActQuitActivated);
 			ag.Add(actQuit, "<control>Q");			  
 			
 			// edit menu
-			actEdit = CreateAction("edit", "_Edit", null, null, null);
+			actEdit = CreateAction("edit", S._("_Edit"), null, null, null);
 			ag.Add(actEdit, null);
 			
-			actAddVolume = CreateAction("addvolume", "_Add Volume", null, Stock.Add, OnActAddVolumeActivated);
+			actAddVolume = CreateAction("addvolume", S._("_Add Volume"), null, Stock.Add, OnActAddVolumeActivated);
 			ag.Add(actAddVolume, "<control>A");			 
 			
-			actRemoveVolume = CreateAction("removevolume", "_Remove Volume", null, Stock.Remove, OnActRemoveVolumeActivated);
+			actRemoveVolume = CreateAction("removevolume", S._("_Remove Volume"), null, Stock.Remove, OnActRemoveVolumeActivated);
 			ag.Add(actRemoveVolume, "<control>R");
 			
-			actPreferences = CreateAction("preferences", "_Preferences", null, Stock.Preferences, OnActPreferencesActivated);
+			actPreferences = CreateAction("preferences", S._("_Preferences"), null, Stock.Preferences, OnActPreferencesActivated);
 			ag.Add(actPreferences, "<control>P");			 
 			
 			// help menu
-			actHelp = CreateAction("help", "_Help", null, null, null);
+			actHelp = CreateAction("help", S._("_Help"), null, null, null);
 			ag.Add(actHelp, null);
 			
-			actInfo = CreateAction("info", "_Info", null, Stock.About, OnActInfoActivated);
+			actInfo = CreateAction("info", S._("_Info"), null, Stock.About, OnActInfoActivated);
 			ag.Add(actInfo, "<control>I");	
 			
 			// shared actions (used in toolbar buttons / menu items)
-			actDBProperties = CreateAction("dbproperties", "_Database Properties", null, Stock.Properties, OnActDBPropertiesActivated);
+			actDBProperties = CreateAction("dbproperties", S._("_Database Properties"), null, Stock.Properties, OnActDBPropertiesActivated);
 			ag.Add(actDBProperties, "<control>D");
 			
-			actSearch = CreateAction("searchitems", "_Search", null, Stock.Find, OnActSearchActivated);
+			actSearch = CreateAction("searchitems", S._("_Search"), null, Stock.Find, OnActSearchActivated);
 			ag.Add(actSearch, "<control>S");
 			
 			// ui manager

@@ -18,6 +18,7 @@
 
 using System;
 using Gtk;
+using Platform.Common.Globalization;
 using VolumeDB;
 using VolumeDB.Searching;
 
@@ -66,13 +67,13 @@ namespace Basenji.Gui
 					Application.Invoke(delegate {
 						tvSearchResult.Fill(items);
 						TimeSpan time = DateTime.Now.Subtract((DateTime)ar.AsyncState);
-						SetStatus(string.Format("Found {0} items in {1:F3} seconds.", items.Length, time.TotalSeconds));
+						SetStatus(string.Format(S._("Found {0} items in {1:F3} seconds."), items.Length, time.TotalSeconds));
 					});
 				} catch (TimeoutException) {
 					// couldn't get connection lock
 					Application.Invoke(delegate {
 						tvSearchResult.Clear();
-						SetStatus("Timeout: another search is probably still in progress.");
+						SetStatus(S._("Timeout: another search is probably still in progress."));
 					});
 				} finally {
 					Application.Invoke(delegate {
@@ -84,7 +85,7 @@ namespace Basenji.Gui
 			
 			try {
 				btnSearch.Sensitive = false;
-				SetStatus("Searching...");
+				SetStatus(S._("Searching..."));
 				database.BeginSearchItem(criteria, callback, DateTime.Now);
 			} catch(Exception) {
 				btnSearch.Sensitive = true;
@@ -149,7 +150,7 @@ namespace Basenji.Gui
 			this.DefaultHeight		= 600;
 			this.Modal				= true;
 			this.SkipTaskbarHint	= true;
-			this.Title				= "Search Items";
+			this.Title				= S._("Search Items");
 			this.Icon				= this.RenderIcon(Basenji.Icons.Icon.Stock_Find, IconSize.Menu);
 			
 			// vbOuter			  
@@ -172,7 +173,7 @@ namespace Basenji.Gui
 			VBox vbSearchResult = new VBox();
 			vbSearchResult.Spacing = 6;
 			
-			vbSearchResult.PackStart(CreateLabel("<b>Search results:</b>", true), false, false, 0);
+			vbSearchResult.PackStart(CreateLabel(S._("<b>Search results:</b>"), true), false, false, 0);
 			
 			ScrolledWindow swSearchResult = CreateScrolledView<Widgets.SearchResultView>(out tvSearchResult, true);
 			vbSearchResult.PackStart(swSearchResult, true, true, 0);

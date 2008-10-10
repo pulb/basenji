@@ -72,7 +72,7 @@ namespace Basenji.Gui.Widgets
 				if (value == null)
 					throw new ArgumentNullException();
 				if (value.Length == 0)
-					throw new ArgumentException("string must not be empty");
+					throw new ArgumentException("The string must not be empty");
 				
 				datePattern = value;
 			}

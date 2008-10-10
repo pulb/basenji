@@ -232,7 +232,7 @@ namespace VolumeDB
 				EnsureOpen();
 
 				if (!CurrentThreadHasStartedTransaction)
-					throw new InvalidOperationException("The current thread has not started a transaction.");
+					throw new InvalidOperationException("The current thread has not started a transaction");
 					
 				try {
 					transaction.Commit();

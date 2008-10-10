@@ -30,7 +30,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("2007 Patrick Ulbrich")]
+[assembly: AssemblyCopyright("2008 Patrick Ulbrich")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

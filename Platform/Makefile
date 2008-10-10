@@ -112,7 +112,8 @@ FILES = \
 	src/Win32/Mime/RegistryMime.cs \
 	src/AssemblyInfo.cs \
 	src/Common/ThumbnailGenerator.cs \
-	src/Gnome/ThumbnailGenerator.cs 
+	src/Gnome/ThumbnailGenerator.cs \
+	src/Common/Globalization/Catalog.cs 
 
 DATA_FILES = \
 	Platform.dll.config 

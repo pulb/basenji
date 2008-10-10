@@ -18,6 +18,7 @@
 
 using System;
 using Gtk;
+using Platform.Common.Globalization;
 using Platform.Common.Diagnostics;
 
 namespace Basenji
@@ -28,7 +29,7 @@ namespace Basenji
 			Debug.WriteLine(string.Format("{0} {1}", App.Name, App.Version));
 			Debug.WriteLine(string.Format("Used runtime: {0}", System.Runtime.InteropServices.RuntimeEnvironment.GetRuntimeDirectory()));
 			
-			if (Platform.Common.Diagnostics.CurrentPlatform.IsUnix)
+			if (CurrentPlatform.IsUnix)
 				Util.SetProcName(App.Name);
 				
 			Application.Init();
@@ -66,7 +67,7 @@ namespace Basenji
 			public InstanceLock() {
 			 	mtx = new System.Threading.Mutex(false, "715829bd-de3b-44c0-8bbc-a542eec8d8be");
 				if (!mtx.WaitOne(1, true)) {
-					MsgDialog.Show(null, MessageType.Error, ButtonsType.Ok, "Error", string.Format("{0} is already running.", App.Name));
+					MsgDialog.Show(null, MessageType.Error, ButtonsType.Ok, S._("Error"), string.Format(S._("{0} is already running."), App.Name));
 					Environment.Exit(0);
 				}
 			}

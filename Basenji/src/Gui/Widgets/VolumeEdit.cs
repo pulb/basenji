@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using Gtk;
 using Basenji;
 using Basenji.Gui.Base;
+using Platform.Common.Globalization;
 using VolumeDB;
 using VolumeDB.VolumeScanner;
 using Platform.Common.Diagnostics;
@@ -43,13 +44,13 @@ namespace Basenji.Gui.Widgets
 		// - place "new" button next to the category combobox, which will open a dialog to add/edit categories (e.g. add "Roms" category)
 		// - suggest category depending on cd content
 		private string[] categories = {
-			"Backup",
-			"Documents",			
-			"Music",
-			"Movies",
-			"Pictures",
-			"Misc",
-			"Other"
+			S._("Backup"),
+			S._("Documents"),			
+			S._("Music"),
+			S._("Movies"),
+			S._("Pictures"),
+			S._("Misc"),
+			S._("Other")
 		};
 		
 		protected VolumeEdit(string volumeType) {
@@ -179,7 +180,7 @@ namespace Basenji.Gui.Widgets
 		
 		private void UpdateInfoLabels(bool isHashed, DateTime added) {
 			lblVolumeType.LabelProp = volumeType;
-			lblHashed.LabelProp		= isHashed ? "Yes" : "No";
+			lblHashed.LabelProp		= isHashed ? S._("Yes") : S._("No");
 			lblAdded.LabelProp		= added.ToShortDateString();		
 		}
 		
@@ -189,9 +190,9 @@ namespace Basenji.Gui.Widgets
 			lblAdded = WindowBase.CreateLabel();
 
 			infoLabels.AddRange( new InfoLabel[] { 
-				new InfoLabel("Volume type:", lblVolumeType),
-				new InfoLabel("Hashed:", lblHashed),
-				new InfoLabel("Added:", lblAdded)
+				new InfoLabel(S._("Volume type:"), lblVolumeType),
+				new InfoLabel(S._("Hashed:"), lblHashed),
+				new InfoLabel(S._("Added:"), lblAdded)
 			} );
 		}
 		
@@ -267,14 +268,14 @@ namespace Basenji.Gui.Widgets
 			Table tbl = WindowBase.CreateTable(8, 2);
 
 			// labels
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel("Archive Nr:"),	0, 0);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel("Category:"),		0, 1);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel("Title:"),			0, 2);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel("Description:", false, 0F, 0F),   0, 3);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel("Keywords:"),		0, 4);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel("Loaned to:"),		0, 5);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel("Loaned date:"),	0, 6);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel("Return date:"),	0, 7);
+			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Archive Nr:")),			0, 0);
+			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Category:")),				0, 1);
+			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Title:")),				0, 2);
+			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Description:"), false, 	0F, 0F),   0, 3);
+			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Keywords:")),				0, 4);
+			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Loaned to:")),			0, 5);
+			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Loaned date:")),			0, 6);
+			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Return date:")),			0, 7);
 			
 			// widgets
 			txtArchiveNr	= new Entry(Volume.MAX_ARCHIVE_NR_LENGTH);

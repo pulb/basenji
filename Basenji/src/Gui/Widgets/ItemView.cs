@@ -19,6 +19,7 @@
 using System;
 using Gtk;
 using VolumeDB;
+using Platform.Common.Globalization;
 using Basenji.Gui.Base;
 using Basenji.Icons;
 
@@ -26,10 +27,10 @@ namespace Basenji.Gui.Widgets
 {
 	public class ItemView : ViewBase
 	{
-		private const		string		STR_LOADING		= "Loading...";
-		private const		string		STR_EMPTY		= "(empty)";
+		private readonly		string		STR_LOADING		= S._("Loading...");
+		private readonly		string		STR_EMPTY		= S._("(empty)");
 		
-		private const		IconSize	ICON_SIZE		= IconSize.Button;
+		private const			IconSize	ICON_SIZE		= IconSize.Button;
 		
 		private ItemIcons itemIcons;
 		private Gdk.Pixbuf loadingIcon;

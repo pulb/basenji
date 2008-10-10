@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using Gtk;
+using Platform.Common.Globalization;
 using Basenji.Gui.Base;
 using Basenji.Icons;
 using VolumeDB;
@@ -48,7 +49,7 @@ namespace Basenji.Gui.Widgets
 			col = new TreeViewColumn();
 			col.SortColumnId = 1;
 			col.Resizable = true;
-			col.Title = "Name";
+			col.Title = S._("Name");
 			col.MaxWidth = 300;
 			col.PackStart(pix, false);
 			col.PackStart(txt, false);
@@ -58,21 +59,21 @@ namespace Basenji.Gui.Widgets
 			AppendColumn(col);
 			
 			// location
-			col = new TreeViewColumn("Location", new CellRendererText(), "text", 2);
+			col = new TreeViewColumn(S._("Location"), new CellRendererText(), "text", 2);
 			col.SortColumnId = 2;
 			col.Resizable = true;			 
 			col.MaxWidth = 320;
 			AppendColumn(col);
 			
 			// volumename
-			col = new TreeViewColumn("Volume", new CellRendererText(), "text", 3);
+			col = new TreeViewColumn(S._("Volume"), new CellRendererText(), "text", 3);
 			col.SortColumnId = 3;
 			col.Resizable = true;			 
 			col.MaxWidth = 100;				
 			AppendColumn(col);
 			
 			// archive nr
-			col = new TreeViewColumn("Archive Nr.", new CellRendererText(), "text", 4);
+			col = new TreeViewColumn(S._("Archive Nr."), new CellRendererText(), "text", 4);
 			col.SortColumnId = 4;
 			col.Resizable = true;			 
 			col.MaxWidth = 100;

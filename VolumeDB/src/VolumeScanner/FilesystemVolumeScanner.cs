@@ -25,6 +25,7 @@ using System.Collections.Generic;
 using Platform.Common;
 using Platform.Common.IO;
 using Platform.Common.Mime;
+using Platform.Common.Globalization;
 using VolumeDB.Searching;
 
 namespace VolumeDB.VolumeScanner
@@ -151,7 +152,7 @@ namespace VolumeDB.VolumeScanner
 
 			if ((ft != FileType.Directory) && !dirIsSymLink) {
 				/* may throw ScanCancelledException */
-				SendScannerWarning(string.Format("Skipped item '{0}' as it doesn't seem to be a real directory.", dir.FullName));
+				SendScannerWarning(string.Format(S._("Skipped item '{0}' as it doesn't seem to be a real directory."), dir.FullName));
 				return;    
 			}
 			
@@ -161,13 +162,13 @@ namespace VolumeDB.VolumeScanner
 
 					if (!Directory.Exists(symLinkTarget)) {
 						/* may throw ScanCancelledException */
-						SendScannerWarning(string.Format("Skipped symlink item '{0}' as the target does not exist.", dir.FullName));
+						SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as the target does not exist."), dir.FullName));
 						return;
 					}
 					
 					if (!symLinkTarget.StartsWith(rootPath)) {	// skip symlinks outside of rootPath (in addition, GetLocation()/FixPath() need paths relative to rootPath)
 						/* may throw ScanCancelledException */
-						SendScannerWarning(string.Format("Skipped symlink item '{0}' as it appears to point to a different drive ('{1}').", dir.FullName, symLinkTarget));
+						SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as it appears to point to a different drive ('{1}')."), dir.FullName, symLinkTarget));
 						return;
 					}
 					
@@ -236,7 +237,7 @@ namespace VolumeDB.VolumeScanner
 							// and the thumbnail may not have been generated!
 							if (e is UnauthorizedAccessException || e is IOException) {
 								/* may throw ScanCancelledException */
-								SendScannerWarning(string.Format("Error opening file '{0}', can't retrieve any mime/metadata. ({1})", files[i].FullName, e.Message), e);
+								SendScannerWarning(string.Format(S._("Error opening file '{0}', can't retrieve any mime/metadata. ({1})"), files[i].FullName, e.Message), e);
 							} else {
 								throw;								  
 							}
@@ -259,7 +260,7 @@ namespace VolumeDB.VolumeScanner
 							if (Directory.Exists(symLinkTarget)) { /* START fix to bug #385765 */
 								if (!symLinkTarget.StartsWith(rootPath)) {	// skip symlinks outside of rootPath (in addition, GetLocation()/FixPath() need paths relative to rootPath)
 									/* may throw ScanCancelledException */
-									SendScannerWarning(string.Format("Skipped symlink item '{0}' as it appears to point to a different drive ('{1}').", files[i].FullName, symLinkTarget));
+									SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as it appears to point to a different drive ('{1}')."), files[i].FullName, symLinkTarget));
 								} else {
 										symLinkItems.Add(SymLinkItem.CreateInstance(files[i], symLinkTarget, parentID, true, rootPath, this));
 								}
@@ -267,13 +268,13 @@ namespace VolumeDB.VolumeScanner
 								
 								if (!File.Exists(symLinkTarget)) {
 									/* may throw ScanCancelledException */
-									SendScannerWarning(string.Format("Skipped symlink item '{0}' as the target does not exist.", files[i].FullName));
+									SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as the target does not exist."), files[i].FullName));
 								} else if (!symLinkTarget.StartsWith(rootPath)) { // skip symlinks outside of rootPath (in addition, GetLocation()/FixPath() need paths relative to rootPath)
 									/* may throw ScanCancelledException */
-									SendScannerWarning(string.Format("Skipped symlink item '{0}' as it appears to point to a different drive ('{1}').", files[i].FullName, symLinkTarget));
+									SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as it appears to point to a different drive ('{1}')."), files[i].FullName, symLinkTarget));
 								} else if (FileHelper.GetFileType(symLinkTarget, false) != FileType.RegularFile) { // also skipps symlinks pointing to symlinks (hard to implement)
 									/* may throw ScanCancelledException */
-									SendScannerWarning(string.Format("Skipped symlink item '{0}' as it does not point to a regular file ('{1}').", files[i].FullName, symLinkTarget));
+									SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."), files[i].FullName, symLinkTarget));
 								} else {
 									//symLinkItems.add(new SymLinkItem(parentID, files[i].fullName, files[i].Name, GetLocation(files[i].FullName, rootPath), FixPath(symLinkTarget, rootPath), false));
 									symLinkItems.Add(SymLinkItem.CreateInstance(files[i], symLinkTarget, parentID, false, rootPath, this));
@@ -282,7 +283,7 @@ namespace VolumeDB.VolumeScanner
 						}
 					} else {
 						/* may throw ScanCancelledException */
-						SendScannerWarning(string.Format("Skipped item '{0}' as it appears to be some kind of special file.", files[i].FullName));
+						SendScannerWarning(string.Format(S._("Skipped item '{0}' as it appears to be some kind of special file."), files[i].FullName));
 					}
 					// TODO : check m_cancel here (?)
 				}
@@ -297,7 +298,7 @@ namespace VolumeDB.VolumeScanner
 				//OnScannerWarning(args); // may throw ScanCancelledException
 
 				/* may throw ScanCancelledException */
-				SendScannerWarning(string.Format("Unable to dump dir '{0}'. ({1})", dir.FullName, e.Message), e);
+				SendScannerWarning(string.Format(S._("Unable to dump dir '{0}'. ({1})"), dir.FullName, e.Message), e);
 			}
 		}
 		
@@ -448,7 +449,7 @@ namespace VolumeDB.VolumeScanner
 				
 				if (!targetItems.TryGetValue(sli.targetLocation + sli.targetName, out targetItem)) {
 					/* may throw ScanCancelledException */
-					SendScannerWarning(string.Format("Failed to resolve target item for symlink '{0}'.", sli.fullSourceName));
+					SendScannerWarning(string.Format(S._("Failed to resolve target item for symlink '{0}'."), sli.fullSourceName));
 				} else {
 					
 					FileSystemVolumeItem newItem;
@@ -490,7 +491,7 @@ namespace VolumeDB.VolumeScanner
 				lastWriteTime = DateTime.MinValue;
 
 				/* may throw ScanCancelledException */
-				SendScannerWarning(string.Format("Can't read LastWriteTime from item '{0}' ({1}).", f.FullName, e.Message));
+				SendScannerWarning(string.Format(S._("Can't read LastWriteTime from item '{0}' ({1})."), f.FullName, e.Message));
 			}
 			return lastWriteTime;
 		}

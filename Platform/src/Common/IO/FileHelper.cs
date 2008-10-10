@@ -73,7 +73,7 @@ namespace Platform.Common.IO
 					ft = FileType.Socket;
 					break;
 				default:
-					throw new NotImplementedException(string.Format("UnixFileType {0} has no equivalent FileType value yet.", ft.ToString()));
+					throw new NotImplementedException(string.Format("UnixFileType {0} has no equivalent FileType value yet", ft.ToString()));
 			}
 			return ft;
 #endif		

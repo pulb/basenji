@@ -28,6 +28,7 @@ using System.IO;
 using System.Threading;
 using Gtk;
 using Gdk;
+using Platform.Common.Globalization;
 using PlatformIO = Platform.Common.IO;
 
 namespace Basenji.Gui
@@ -104,7 +105,7 @@ namespace Basenji.Gui
 			
 			//stockID = Stock.Cancel;
 			icon = RenderIcon(Icons.Icon.Stock_Cancel, IconSize.Button);
-			store.AppendValues(icon, "None");
+			store.AppendValues(icon, S._("None"));
 			
 			foreach(PlatformIO.DriveInfo d in drives) {
 				// list removable drives only (auto scanning of fixed drives does not make sense)
@@ -220,7 +221,7 @@ namespace Basenji.Gui
 			App.Settings.Save();
 			
 			if (iconThemeChanged)			 
-				MsgDialog.Show(this, MessageType.Info, ButtonsType.Ok, "Restart required", string.Format("You must restart {0} for icontheme changes to take effect.", App.Name));
+				MsgDialog.Show(this, MessageType.Info, ButtonsType.Ok, S._("Restart required"), string.Format(S._("You must restart {0} for icontheme changes to take effect."), App.Name));
 		}
 	}
 	
@@ -246,7 +247,7 @@ namespace Basenji.Gui
 			this.DefaultHeight		= 400;
 			this.Modal				= true;
 			this.SkipTaskbarHint	= true;
-			this.Title				= "Preferences";
+			this.Title				= S._("Preferences");
 			this.Icon				= this.RenderIcon(Basenji.Icons.Icon.Stock_Preferences, IconSize.Menu);
 			
 			// vbOuter			  
@@ -267,7 +268,7 @@ namespace Basenji.Gui
 			//bbox.Spacing = 6
 			
 			// reset button
-			btnReset = CreateCustomButton(RenderIcon(Icons.Icon.Stock_Clear, IconSize.Button), "_Load Defaults", OnBtnResetClicked);
+			btnReset = CreateCustomButton(RenderIcon(Icons.Icon.Stock_Clear, IconSize.Button), S._("_Load Defaults"), OnBtnResetClicked);
 
 			bbox.PackStart(btnReset, false, false, 0);
 			
@@ -292,16 +293,16 @@ namespace Basenji.Gui
 			tbl.BorderWidth = 12;			 
 			
 			// label
-			TblAttach(tbl, CreateLabel("Icon theme:"), 0, 0);  
+			TblAttach(tbl, CreateLabel(S._("Icon theme:")), 0, 0);  
 			// combobox icon theme
 			cmbIconTheme = ComboBox.NewText();
 			TblAttach(tbl, cmbIconTheme, 1, 0, AttachOptions.Expand | AttachOptions.Fill | AttachOptions.Shrink, AttachOptions.Fill);
 			
 			// reopen db checkbox
-			chkReopenDB = new CheckButton("Reopen most recent database on startup");
+			chkReopenDB = new CheckButton(S._("Reopen most recent database on startup"));
 			TblAttach(tbl, chkReopenDB, 0, 1, 2, 1);
 			
-			nb.AppendPage(tbl, new Label("General"));		 
+			nb.AppendPage(tbl, new Label(S._("General")));		 
 		}
 		
 		private void AppendScannerPage(Notebook nb) {
@@ -309,7 +310,7 @@ namespace Basenji.Gui
 			tbl.BorderWidth = 12;
 			
 			// labels
-			TblAttach(tbl, CreateLabel("Don't prompt, always scan:"), 0, 0);			
+			TblAttach(tbl, CreateLabel(S._("Don't prompt, always scan:")), 0, 0);			
 //			  TblAttach(tbl, CreateLabel("Buffersize:"), 0, 1);
 			
 			// combobox scannerdevice
@@ -328,21 +329,21 @@ namespace Basenji.Gui
 //			  TblAttach(tbl, scaleBufferSize, 1, 1, AttachOptions.Expand | AttachOptions.Fill | AttachOptions.Shrink, AttachOptions.Fill);
 			
 			// checkbox generateThumbnails
-			chkGenerateThumbnails = new CheckButton("Generate Thumbnails");
+			chkGenerateThumbnails = new CheckButton(S._("Generate Thumbnails"));
 			TblAttach(tbl, chkGenerateThumbnails, 0, 1, 2, 1, AttachOptions.Fill, AttachOptions.Fill);
 			// FIXME : currently thumbnail generation is implemented for GNOME only
 			if (!Platform.Common.Diagnostics.CurrentPlatform.IsGnome)
 				chkGenerateThumbnails.Sensitive = false;
 			
 			// checkbox discardSymLinks
-			chkDiscardSymLinks = new CheckButton("Discard symbolic links");
+			chkDiscardSymLinks = new CheckButton(S._("Discard symbolic links"));
 			TblAttach(tbl, chkDiscardSymLinks, 0, 2, 2, 1, AttachOptions.Fill, AttachOptions.Fill);
 			
 			// checkbox computeHashs
-			chkComputeHashs = new CheckButton("Compute hashcodes for files (slow!)");
+			chkComputeHashs = new CheckButton(S._("Compute hashcodes for files (slow!)"));
 			TblAttach(tbl, chkComputeHashs, 0, 3, 2, 1, AttachOptions.Fill, AttachOptions.Fill);			
 			
-			nb.AppendPage(tbl, new Label("Scanner"));		 
+			nb.AppendPage(tbl, new Label(S._("Scanner")));		 
 		}
 
 	}
