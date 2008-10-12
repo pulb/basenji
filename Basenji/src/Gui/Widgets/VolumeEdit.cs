@@ -18,13 +18,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using Gtk;
 using Basenji;
 using Basenji.Gui.Base;
 using Platform.Common.Globalization;
+using Platform.Common.Diagnostics;
 using VolumeDB;
 using VolumeDB.VolumeScanner;
-using Platform.Common.Diagnostics;
 
 namespace Basenji.Gui.Widgets
 {
@@ -43,21 +44,31 @@ namespace Basenji.Gui.Widgets
 		// TODO : 
 		// - place "new" button next to the category combobox, which will open a dialog to add/edit categories (e.g. add "Roms" category)
 		// - suggest category depending on cd content
-		private string[] categories = {
-			S._("Backup"),
-			S._("Documents"),			
-			S._("Music"),
-			S._("Movies"),
-			S._("Pictures"),
-			S._("Misc"),
-			S._("Other")
+		private OrderedDictionary categories = new OrderedDictionary() {
+			{ S._("Backup"),	"Backup"	},
+			{ S._("Documents"),	"Documents"	},
+			{ S._("Music"),		"Music"		},
+			{ S._("Movies"),	"Movies"	},
+			{ S._("Pictures"),	"Pictures"	},
+			{ S._("Misc"),		"Misc"		},
+			{ S._("Other"),		"Other"		}
 		};
+//		private string[] categories = {
+//			S._("Backup"),
+//			S._("Documents"),			
+//			S._("Music"),
+//			S._("Movies"),
+//			S._("Pictures"),
+//			S._("Misc"),
+//			S._("Other")
+//		};
 		
 		protected VolumeEdit(string volumeType) {
 			dataChanged = false;
 			this.volumeType = volumeType;			 
 			infoLabels = new List<InfoLabel>(); 
-			AddInfoLabels(infoLabels);			  
+			AddInfoLabels(infoLabels);
+
 			BuildGui();
 		}
 		
@@ -132,7 +143,7 @@ namespace Basenji.Gui.Widgets
 		protected virtual void SaveToVolume(VolumeDB.Volume volume) {
 			// save form
 			volume.ArchiveNr	= txtArchiveNr.Text.Trim();
-			volume.Category		= cmbCategory.ActiveText;
+			volume.Category		= (string)categories[cmbCategory.ActiveText];
 			volume.Title		= txtTitle.Text.Trim();
 			volume.Description	= tvDescription.Buffer.Text;
 			volume.Keywords		= txtKeywords.Text.Trim();
@@ -150,13 +161,20 @@ namespace Basenji.Gui.Widgets
 				TreeModel model = cmbCategory.Model;
 				TreeIter iter;
 				// select category
-				for (int i = 0; i < model.IterNChildren(); i++) {				 
-					model.IterNthChild(out iter, i);
-					if ((string)model.GetValue(iter, 0) == volume.Category) {
+				for (int i = 0; i < categories.Count; i++) {
+					if (((string)categories[i]) == volume.Category) {
+						model.IterNthChild(out iter, i);
 						cmbCategory.SetActiveIter(iter);
 						break;
 					}					 
 				}
+//				for (int i = 0; i < model.IterNChildren(); i++) {				 
+//					model.IterNthChild(out iter, i);
+//					if ((string)model.GetValue(iter, 0) == volume.Category) {
+//						cmbCategory.SetActiveIter(iter);
+//						break;
+//					}					 
+//				}
 			}
 			
 			txtTitle.Text				= volume.Title;
@@ -300,8 +318,10 @@ namespace Basenji.Gui.Widgets
 			WindowBase.TblAttach(tbl, dcReturnDate,		1, 7, xAttachOpts, yAttachOpts);
 			
 			// fill combobox
-			for (int i = 0; i < categories.Length; i++)
-				cmbCategory.AppendText(categories[i]);
+			foreach(string key in categories.Keys)
+				cmbCategory.AppendText(key);
+			//for (int i = 0; i < categories.Length; i++)
+			//	cmbCategory.AppendText(categories[i]);
 
 			// events 
 			txtArchiveNr.Changed			+= OnChanged;

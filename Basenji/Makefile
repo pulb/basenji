@@ -10,7 +10,7 @@ include $(top_srcdir)/config.make
 
 ifeq ($(CONFIG),DEBUG)
 ASSEMBLY_COMPILER_COMMAND = gmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ -debug "-define:DEBUG"
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ -debug -langversion:linq  "-define:DEBUG"
 
 ASSEMBLY = bin/Debug/Basenji.exe
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
@@ -39,7 +39,7 @@ endif
 
 ifeq ($(CONFIG),RELEASE)
 ASSEMBLY_COMPILER_COMMAND = gmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ -langversion:linq 
 ASSEMBLY = bin/Release/Basenji.exe
 ASSEMBLY_MDB = 
 COMPILE_TARGET = winexe
@@ -62,7 +62,7 @@ endif
 
 ifeq ($(CONFIG),GNOME_DEBUG)
 ASSEMBLY_COMPILER_COMMAND = gmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ -debug "-define:DEBUG"
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ -debug -langversion:linq  "-define:DEBUG"
 
 ASSEMBLY = bin/Debug/Basenji.exe
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
@@ -91,7 +91,7 @@ endif
 
 ifeq ($(CONFIG),GNOME_RELEASE)
 ASSEMBLY_COMPILER_COMMAND = gmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ -langversion:linq 
 ASSEMBLY = bin/Release/Basenji.exe
 ASSEMBLY_MDB = 
 COMPILE_TARGET = winexe
