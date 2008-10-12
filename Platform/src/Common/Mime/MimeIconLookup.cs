@@ -18,9 +18,9 @@
 
 using System;
 using System.Collections.Generic;
-#if GNOME
-using Platform.Gnome;
-#endif
+//#if GNOME
+//using Platform.Gnome;
+//#endif
 
 namespace Platform.Common.Mime
 {	
@@ -68,7 +68,17 @@ namespace Platform.Common.Mime
 			if (mimeIcons.TryGetValue(mimeType, out iconName))
 				return iconName;
 #if GNOME
-			iconName = GnomeNative.gnome_icon_lookup(GnomeNative.gtk_icon_theme_get_default(), IntPtr.Zero, null, null, IntPtr.Zero, mimeType, 0, IntPtr.Zero);
+			//iconName = GnomeNative.gnome_icon_lookup(GnomeNative.gtk_icon_theme_get_default(), IntPtr.Zero, null, null, IntPtr.Zero, mimeType, 0, IntPtr.Zero);
+			global::Gnome.IconLookupResultFlags result;
+			iconName = global::Gnome.Icon.Lookup(
+				Gtk.IconTheme.Default,
+				null,
+				null,
+				null,
+				null,
+				mimeType,
+				global::Gnome.IconLookupFlags.None,
+				out result);
 #else
 			// TODO : find a portable implementation
 			iconName = null;

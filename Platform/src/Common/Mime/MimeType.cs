@@ -26,8 +26,10 @@ namespace Platform.Common.Mime
 		
 #if GNOME
 		static MimeType() {
-			if (!Platform.Gnome.GnomeNative.gnome_vfs_initialized())
-				Platform.Gnome.GnomeNative.gnome_vfs_init();
+//			if (!Platform.Gnome.GnomeNative.gnome_vfs_initialized())
+//				Platform.Gnome.GnomeNative.gnome_vfs_init();
+			if (!global::Gnome.Vfs.Vfs.Initialized)
+				global::Gnome.Vfs.Vfs.Initialize();
 		}
 #endif
 		public static string GetMimeTypeForFile(string filename) {
@@ -35,7 +37,9 @@ namespace Platform.Common.Mime
 #if GNOME
 			// gnome vfs backend
 			// (returns null if the file does not exist)
-			mimeType = Platform.Gnome.GnomeNative.gnome_vfs_get_mime_type(filename);
+			string uri = global::Gnome.Vfs.Uri.GetUriFromLocalPath(filename);
+			mimeType = global::Gnome.Vfs.MimeType.GetMimeTypeForUri(uri);
+//			mimeType = Platform.Gnome.GnomeNative.gnome_vfs_get_mime_type(filename);
 #elif UNIX
 			// mono winforms backend
 			// (always returns a mimetype, even if the file does not exist)
