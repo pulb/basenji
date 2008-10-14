@@ -19,6 +19,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Reflection;
+using Platform.Common.Globalization;
 using Platform.Common.Diagnostics;
 
 namespace Basenji
@@ -32,9 +33,9 @@ namespace Basenji
 		
 		public static string GetSizeStr(long size) {
 			if (size < 1024)
-				return string.Format("{0} Bytes", size);
+				return string.Format(S._("{0} Bytes"), size);
 
-			string[] units = { "Bytes", "KB", "MB", "GB", "TB" };
+			string[] units = { S._("Bytes"), S._("KB"), S._("MB"), S._("GB"), S._("TB") };
 			double dblSize = size; // TODO : use float?
 			int n = 0;
 
