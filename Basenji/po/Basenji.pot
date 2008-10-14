@@ -1,0 +1,539 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-10-14 20:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/Util.cs:36
+#, csharp-format
+msgid "{0} Bytes"
+msgstr ""
+
+#: src/Util.cs:38
+msgid "Bytes"
+msgstr ""
+
+#: src/Util.cs:38
+msgid "KB"
+msgstr ""
+
+#: src/Util.cs:38
+msgid "MB"
+msgstr ""
+
+#: src/Util.cs:38
+msgid "GB"
+msgstr ""
+
+#: src/Util.cs:38
+msgid "TB"
+msgstr ""
+
+#: src/FileDialog.cs:54
+msgid "VolumeDatabase files"
+msgstr ""
+
+#: src/FileDialog.cs:59
+msgid "All files"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:62 src/Gui/MainWindow.cs:186
+#: src/Gui/MainWindow.cs:205 src/Gui/MainWindow.cs:220 src/Main.cs:70
+msgid "Error"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:62
+#, csharp-format
+msgid "Database '{0}' not found."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:87
+msgid "Unsupported database version"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:87
+msgid "This database version is not supported."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:97
+#, csharp-format
+msgid "{0} volumes loaded."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:161
+msgid "Please enter the name for the new database"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:169
+msgid "Database exists"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:169
+msgid "Database already exists. Overwrite?"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:180
+msgid "Please select a database"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:186
+msgid "Database not found."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:205
+#, csharp-format
+msgid ""
+"An error occured while accessing drive {0}:\n"
+"{1}"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:220
+#, csharp-format
+msgid "Drive {0} is not ready."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:235
+msgid "No volume selected"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:235
+msgid "Please select a volume record to remove."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:239
+msgid "Confirmation"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:239
+msgid "Are you sure you really want to remove the selected volume?"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:502
+msgid "_File"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:505
+msgid "_New Database"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:508
+msgid "_Open Database"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:511
+msgid "_Quit"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:515
+msgid "_Edit"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:518
+msgid "_Add Volume"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:521
+msgid "_Remove Volume"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:524
+msgid "_Preferences"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:528
+msgid "_Help"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:531
+msgid "_Info"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:535
+msgid "_Database Properties"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:538
+msgid "_Search"
+msgstr ""
+
+#: src/Gui/Preferences.cs:108
+msgid "None"
+msgstr ""
+
+#: src/Gui/Preferences.cs:224
+msgid "Restart required"
+msgstr ""
+
+#: src/Gui/Preferences.cs:224
+#, csharp-format
+msgid "You must restart {0} for icontheme changes to take effect."
+msgstr ""
+
+#: src/Gui/Preferences.cs:250
+msgid "Preferences"
+msgstr ""
+
+#: src/Gui/Preferences.cs:271
+msgid "_Load Defaults"
+msgstr ""
+
+#: src/Gui/Preferences.cs:296
+msgid "Icon theme:"
+msgstr ""
+
+#: src/Gui/Preferences.cs:302
+msgid "Reopen most recent database on startup"
+msgstr ""
+
+#: src/Gui/Preferences.cs:305
+msgid "General"
+msgstr ""
+
+#: src/Gui/Preferences.cs:313
+msgid "Don't prompt, always scan:"
+msgstr ""
+
+#: src/Gui/Preferences.cs:332
+msgid "Generate Thumbnails"
+msgstr ""
+
+#: src/Gui/Preferences.cs:339
+msgid "Discard symbolic links"
+msgstr ""
+
+#: src/Gui/Preferences.cs:343
+msgid "Compute hashcodes for files (slow!)"
+msgstr ""
+
+#: src/Gui/Preferences.cs:346
+msgid "Scanner"
+msgstr ""
+
+#: src/Gui/VolumeProperties.cs:42 src/Gui/VolumeScanner.cs:181
+msgid "Invalid data"
+msgstr ""
+
+#: src/Gui/VolumeProperties.cs:42 src/Gui/VolumeScanner.cs:181
+#, csharp-format
+msgid ""
+"\"{0}\" is {1}.\n"
+"\n"
+"Expected format: {2}\n"
+"Please correct or remove the data you entered."
+msgstr ""
+
+#: src/Gui/VolumeProperties.cs:84
+msgid "Volume Properties"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:93
+#, csharp-format
+msgid ""
+"Scanning of drive '{0}' started. [thumbs: {1}, hashing: {2}, discard "
+"symlinks: {3}]"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:109
+msgid "Time"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:113
+msgid "Message"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:188
+msgid "yes"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:188
+msgid "no"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:211
+msgid "Scan in progress"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:211
+msgid "You must stop scanning before closing this window."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:221
+msgid "Stopping Scanner and performing rollback..."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:263
+#, csharp-format
+msgid "An unhandled exception occured ({0})."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:264
+msgid "All database changes have been rolled back."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:287
+#, csharp-format
+msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:289
+msgid "Scanning aborted."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:291
+msgid "Scanning completed successfully."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:390
+msgid "VolumeScanner"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:402
+msgid "<b>Volume Information:</b>"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:412
+msgid "<b>Scanner Log:</b>"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:429
+msgid "Database access"
+msgstr ""
+
+#: src/Gui/DBProperties.cs:82
+msgid "Database Properties"
+msgstr ""
+
+#: src/Gui/DBProperties.cs:93
+msgid "Name:"
+msgstr ""
+
+#: src/Gui/DBProperties.cs:94 src/Gui/Widgets/VolumeEdit.cs:292
+msgid "Description:"
+msgstr ""
+
+#: src/Gui/DBProperties.cs:95
+msgid "Created:"
+msgstr ""
+
+#: src/Gui/About.cs:50
+#, csharp-format
+msgid "About {0}"
+msgstr ""
+
+#: src/Gui/About.cs:81
+msgid "Copyright (c) "
+msgstr ""
+
+#: src/Gui/About.cs:83
+#, csharp-format
+msgid "Using VolumeDB v{0}."
+msgstr ""
+
+#: src/Gui/DriveSelection.cs:65
+msgid "Waiting for drives..."
+msgstr ""
+
+#: src/Gui/DriveSelection.cs:134
+msgid "Drive"
+msgstr ""
+
+#: src/Gui/DriveSelection.cs:139
+msgid "Label"
+msgstr ""
+
+#: src/Gui/DriveSelection.cs:148
+msgid "Size"
+msgstr ""
+
+#: src/Gui/DriveSelection.cs:172
+msgid "Filesystem"
+msgstr ""
+
+#: src/Gui/DriveSelection.cs:233
+msgid "Please select a drive to scan"
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:70
+#, csharp-format
+msgid "Found {0} items in {1:F3} seconds."
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:76
+msgid "Timeout: another search is probably still in progress."
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:88
+msgid "Searching..."
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:153
+msgid "Search Items"
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:176
+msgid "<b>Search results:</b>"
+msgstr ""
+
+#: src/Gui/Widgets/FSVolumeEdit.cs:63
+msgid "Files:"
+msgstr ""
+
+#: src/Gui/Widgets/FSVolumeEdit.cs:64
+msgid "Directories:"
+msgstr ""
+
+#: src/Gui/Widgets/FSVolumeEdit.cs:65
+msgid "Total size:"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:48
+msgid "Backup"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:49
+msgid "Documents"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:50
+msgid "Music"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:51
+msgid "Movies"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:52
+msgid "Pictures"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:53
+msgid "Misc"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:54
+msgid "Other"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:201
+msgid "Yes"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:201
+msgid "No"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:211
+msgid "Volume type:"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:212
+msgid "Hashed:"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:213
+msgid "Added:"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:289
+msgid "Archive Nr:"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:290
+msgid "Category:"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:291
+msgid "Title:"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:293
+msgid "Keywords:"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:294
+msgid "Loaned to:"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:295
+msgid "Loaned date:"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeEdit.cs:296
+msgid "Return date:"
+msgstr ""
+
+#: src/Gui/Widgets/SearchResultView.cs:52
+msgid "Name"
+msgstr ""
+
+#: src/Gui/Widgets/SearchResultView.cs:62
+msgid "Location"
+msgstr ""
+
+#: src/Gui/Widgets/SearchResultView.cs:69
+msgid "Volume"
+msgstr ""
+
+#: src/Gui/Widgets/SearchResultView.cs:76
+msgid "Archive Nr."
+msgstr ""
+
+#: src/Gui/Widgets/VolumeView.cs:97
+#, csharp-format
+msgid ""
+"<b>{0}</b>\n"
+"Category: {1}\n"
+"Added: {2}\n"
+"Files: {3}\n"
+"Size: {4}"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:91
+msgid "<b>Name:</b>"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:92
+msgid "<b>Location:</b>"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:93
+msgid "<b>Last write time:</b>"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:94
+msgid "<b>Size:</b>"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:95
+msgid "<b>Hash:</b>"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:110
+#, csharp-format
+msgid "{0} <i>(link to {1}</i>)"
+msgstr ""
+
+#: src/Gui/Widgets/ItemView.cs:30
+msgid "Loading..."
+msgstr ""
+
+#: src/Gui/Widgets/ItemView.cs:31
+msgid "(empty)"
+msgstr ""
+
+#: src/Main.cs:70
+#, csharp-format
+msgid "{0} is already running."
+msgstr ""
