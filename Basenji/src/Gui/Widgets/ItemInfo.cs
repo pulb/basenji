@@ -17,7 +17,7 @@
 //
 
 // TODO : show meta info (e.g. mp3 bitrate, width/height of pictures...) 
-// of files rather then generic file info
+// of files rather than/additional to generic file info
 using System;
 using System.IO;
 using System.Collections.Generic;
@@ -66,13 +66,17 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		public void Clear() {
-			if (this.Child != null)
-				this.Remove(this.Child);
+			//if (this.Child != null)
+			//	this.Remove(this.Child);
+			Widget child = this.eventBox.Child; 
+			if (child != null)
+				this.eventBox.Remove(child);
 		}
 		
 		private void ShowChild(Widget w) {
 			Clear();
-			this.Add(w);
+			//this.Add(w);
+			this.eventBox.Add(w);
 			this.ShowAll();			   
 		}
 	}
@@ -80,7 +84,15 @@ namespace Basenji.Gui.Widgets
 	// gui initialization
 	public partial class ItemInfo : BinBase
 	{
-		protected override void BuildGui() {}
+		private EventBox eventBox;
+		
+		protected override void BuildGui() {
+			eventBox = new EventBox();
+			eventBox.ModifyBg(Gtk.StateType.Normal, new Gdk.Color(255, 255, 255));
+			Frame frame = new Frame();			
+			frame.Add(eventBox);
+			this.Add(frame);
+		}
 		
 		private static Table CreateFSInfoTable(FileSystemVolumeItem item) {
 			bool isHashed = (item is FileVolumeItem) && !string.IsNullOrEmpty(((FileVolumeItem)item).Hash);

@@ -21,7 +21,6 @@
 using System;
 using System.Threading;
 using Gtk;
-//using GtkSharp;
 using System.IO;
 using VolumeDB;
 using Platform.Common.Globalization;
@@ -397,6 +396,7 @@ namespace Basenji.Gui
 			
 			tvItems.Clear();
 			itemInfo.Clear();
+			itemInfo.Hide();
 			
 			TreeIter iter;
 			if (!tvVolumes.GetSelectedIter(out iter))

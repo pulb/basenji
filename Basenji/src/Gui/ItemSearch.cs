@@ -37,6 +37,8 @@ namespace Basenji.Gui
 			this.database = db;
 			BuildGui();
 			btnSearch.Sensitive = false;
+			// the widget should be visible the first time when the user clicks on an item
+			itemInfo.Hide();
 		}
 		
 		private void SetStatus(string message) {
