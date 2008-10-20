@@ -25,7 +25,6 @@ using System.Collections.Generic;
 using Platform.Common;
 using Platform.Common.IO;
 using Platform.Common.Mime;
-using Platform.Common.Globalization;
 using VolumeDB.Searching;
 
 namespace VolumeDB.VolumeScanner

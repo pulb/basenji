@@ -18,7 +18,6 @@
 
 using System;
 using Gtk;
-using Platform.Common.Globalization;
 using Basenji.Gui.Base;
 using Basenji.Icons;
 using VolumeDB;
@@ -93,8 +92,15 @@ namespace Basenji.Gui.Widgets
 			switch (v.GetVolumeType()) {
 				case VolumeType.FileSystemVolume:
 					FileSystemVolume fsv = (FileSystemVolume)v;
+					string category;
+					
+					if (string.IsNullOrEmpty(v.Category))
+						category = "-";
+					else if (!VolumeEdit.categories.TryGetTranslatedString(v.Category, out category))
+						category = v.Category;
+						
 					// TODO: add colors. add ArchivNr. only show important info, otherwise its too gluttered, too high!)
-					return string.Format(S._("<b>{0}</b>\nCategory: {1}\nAdded: {2}\nFiles: {3}\nSize: {4}"), v.Title, v.Category, v.Added.ToShortDateString(), fsv.Files.ToString(), Util.GetSizeStr(fsv.Size));
+					return string.Format(S._("<b>{0}</b>\nCategory: {1}\nAdded: {2}\nFiles: {3}\nSize: {4}"), v.Title, category, v.Added.ToShortDateString(), fsv.Files.ToString(), Util.GetSizeStr(fsv.Size));
 					break;
 				//case VolumeType.Cdda: ...
 				default:

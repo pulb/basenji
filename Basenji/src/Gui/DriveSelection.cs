@@ -23,7 +23,6 @@ using Gtk;
 using Gdk;
 using Basenji.Gui.Base;
 using Platform.Common.IO;
-using Platform.Common.Globalization;
 using Platform.Common.Diagnostics;
 
 namespace Basenji.Gui

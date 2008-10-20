@@ -18,7 +18,6 @@
 
 using System;
 using Gtk;
-using Platform.Common.Globalization;
 using VolumeDB;
 using VolumeDB.Searching;
 

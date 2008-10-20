@@ -24,7 +24,6 @@ using IO = System.IO;
 using Gtk;
 using Gdk;
 //using Platform;
-using Platform.Common.Globalization;
 using VolumeDB;
 using VolumeDB.VolumeScanner;
 

@@ -18,12 +18,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
+//using System.Collections.Specialized;
 using Gtk;
 using Basenji;
 using Basenji.Gui.Base;
-using Platform.Common.Globalization;
 using Platform.Common.Diagnostics;
+using Platform.Common.Globalization;
 using VolumeDB;
 using VolumeDB.VolumeScanner;
 
@@ -40,18 +40,19 @@ namespace Basenji.Gui.Widgets
 		
 		private Volume	volume;
 		private bool	dataChanged;
+		private TreeIter customCategory;
 		
 		// TODO : 
 		// - place "new" button next to the category combobox, which will open a dialog to add/edit categories (e.g. add "Roms" category)
 		// - suggest category depending on cd content
-		private OrderedDictionary categories = new OrderedDictionary() {
-			{ S._("Backup"),	"Backup"	},
-			{ S._("Documents"),	"Documents"	},
-			{ S._("Music"),		"Music"		},
-			{ S._("Movies"),	"Movies"	},
-			{ S._("Pictures"),	"Pictures"	},
-			{ S._("Misc"),		"Misc"		},
-			{ S._("Other"),		"Other"		}
+		public static readonly TranslatedStringTable categories = new TranslatedStringTable() {
+			{ "Backup",		S._("Backup")		},
+			{ "Documents",	S._("Documents")	},
+			{ "Music",		S._("Music")		},
+			{ "Movies",		S._("Movies")		},
+			{ "Pictures",	S._("Pictures")		},
+			{ "Misc",		S._("Misc")			},
+			{ "Other",		S._("Other")		}
 		};
 //		private string[] categories = {
 //			S._("Backup"),
@@ -65,6 +66,7 @@ namespace Basenji.Gui.Widgets
 		
 		protected VolumeEdit(string volumeType) {
 			dataChanged = false;
+			customCategory = TreeIter.Zero;
 			this.volumeType = volumeType;			 
 			infoLabels = new List<InfoLabel>(); 
 			AddInfoLabels(infoLabels);
@@ -79,7 +81,7 @@ namespace Basenji.Gui.Widgets
 					break;
 				//case VolumeType.CDDAVolume:
 				default:
-					throw new NotImplementedException(string.Format("VolumeEdit widget for VolumeType {0} is not implemented.", volType.ToString()));
+					throw new NotImplementedException(string.Format("VolumeEdit widget for VolumeType {0} is not implemented", volType.ToString()));
 			}
 		}
 		
@@ -143,7 +145,18 @@ namespace Basenji.Gui.Widgets
 		protected virtual void SaveToVolume(VolumeDB.Volume volume) {
 			// save form
 			volume.ArchiveNr	= txtArchiveNr.Text.Trim();
-			volume.Category		= (string)categories[cmbCategory.ActiveText];
+			
+			// if cmbCategory.ActiveText is empty, no category has been selected for a new volume
+			// or the form has been loaded with an empty category string
+			if (string.IsNullOrEmpty(cmbCategory.ActiveText)) {
+				volume.Category = null;
+			} else {
+				string category;
+				if (!categories.TryGetUntranslatedString(cmbCategory.ActiveText, out category))
+					category = cmbCategory.ActiveText; // set user-specified custom category
+				volume.Category	= category;
+			}
+			
 			volume.Title		= txtTitle.Text.Trim();
 			volume.Description	= tvDescription.Buffer.Text;
 			volume.Keywords		= txtKeywords.Text.Trim();
@@ -153,21 +166,41 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		protected virtual void LoadFromVolume(VolumeDB.Volume volume) {
-			// form			   
+			//
+			// form
+			//
 			txtArchiveNr.Text = volume.ArchiveNr;
 			
+			// remove user-specied custom category, 
+			// that possibly has been appended on a previous load of another volume
+			if (!customCategory.Equals(TreeIter.Zero)) {
+				((ListStore)cmbCategory.Model).Remove(ref customCategory);
+				customCategory = TreeIter.Zero;
+			}
+			
+			// unselect category
 			cmbCategory.SetActiveIter(TreeIter.Zero);
 			if (volume.Category.Length > 0) {
 				TreeModel model = cmbCategory.Model;
 				TreeIter iter;
+				bool selected = false;
 				// select category
 				for (int i = 0; i < categories.Count; i++) {
-					if (((string)categories[i]) == volume.Category) {
+					if ((categories.GetUntranslatedString(i)) == volume.Category) {
 						model.IterNthChild(out iter, i);
 						cmbCategory.SetActiveIter(iter);
+						selected = true;
 						break;
 					}					 
 				}
+				
+				// volume.Category is a user-specified custom category -> append it to the combobox
+				if(!selected) {
+					cmbCategory.AppendText(volume.Category);
+					model.IterNthChild(out customCategory, categories.Count);
+					cmbCategory.SetActiveIter(customCategory);
+				}
+				
 //				for (int i = 0; i < model.IterNChildren(); i++) {				 
 //					model.IterNthChild(out iter, i);
 //					if ((string)model.GetValue(iter, 0) == volume.Category) {
@@ -192,7 +225,9 @@ namespace Basenji.Gui.Widgets
 			else
 				dcReturnDate.Clear();
 			
+			//
 			// info labels
+			//
 			UpdateInfoLabels(volume.IsHashed, volume.Added);
 		}
 		
@@ -318,8 +353,8 @@ namespace Basenji.Gui.Widgets
 			WindowBase.TblAttach(tbl, dcReturnDate,		1, 7, xAttachOpts, yAttachOpts);
 			
 			// fill combobox
-			foreach(string key in categories.Keys)
-				cmbCategory.AppendText(key);
+			foreach(string translated in categories.TranslatedStrings)
+				cmbCategory.AppendText(translated);
 			//for (int i = 0; i < categories.Length; i++)
 			//	cmbCategory.AppendText(categories[i]);
 

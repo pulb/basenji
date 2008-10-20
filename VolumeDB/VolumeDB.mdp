@@ -55,6 +55,8 @@
     <File name="src/VolumeItem.cs" subtype="Code" buildaction="Compile" />
     <File name="src/VolumeItemType.cs" subtype="Code" buildaction="Compile" />
     <File name="src/VolumeType.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/S.cs" subtype="Code" buildaction="Compile" />
+    <File name="po/de.resources" subtype="Code" buildaction="EmbedAsResource" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />

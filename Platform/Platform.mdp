@@ -45,6 +45,7 @@
     <File name="src/Gnome/ThumbnailGenerator.cs" subtype="Code" buildaction="Compile" />
     <File name="src/Common/Globalization" subtype="Directory" buildaction="Compile" />
     <File name="src/Common/Globalization/Catalog.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/Common/Globalization/TranslatedStringTable.cs" subtype="Code" buildaction="Compile" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />

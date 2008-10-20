@@ -19,7 +19,6 @@
 using System;
 using Basenji.Gui.Base;
 using Basenji.Gui.Widgets;
-using Platform.Common.Globalization;
 using VolumeDB;
 using Gtk;
 

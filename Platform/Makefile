@@ -106,7 +106,8 @@ FILES = \
 	src/AssemblyInfo.cs \
 	src/Common/ThumbnailGenerator.cs \
 	src/Gnome/ThumbnailGenerator.cs \
-	src/Common/Globalization/Catalog.cs 
+	src/Common/Globalization/Catalog.cs \
+	src/Common/Globalization/TranslatedStringTable.cs 
 
 DATA_FILES = 
 

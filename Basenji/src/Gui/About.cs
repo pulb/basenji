@@ -19,7 +19,6 @@
 using System;
 using System.Text;
 using Gtk;
-using Platform.Common.Globalization;
 using Basenji.Gui.Base;
 
 namespace Basenji.Gui

@@ -21,7 +21,6 @@
 using System;
 using VolumeDB;
 using Gtk;
-using Platform.Common.Globalization;
 using Basenji.Gui.Base;
 
 namespace Basenji.Gui

@@ -18,7 +18,6 @@
 
 using System;
 using Gtk;
-using Platform.Common.Globalization;
 using Platform.Common.Diagnostics;
 
 namespace Basenji

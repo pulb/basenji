@@ -26,8 +26,6 @@ PLATFORM_COMMON_DB_DLL_MDB_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Commo
 PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
-PLATFORM_DLL_CONFIG_SOURCE=../Platform/bin/Debug/Platform.dll.config
-PLATFORM_DLL_CONFIG=$(BUILD_DIR)/Platform.dll.config
 PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll
 HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
 HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
@@ -49,7 +47,6 @@ HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
 PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
 PLATFORM_COMMON_DB_DLL_MDB=
 PLATFORM_DLL_MDB=
-PLATFORM_DLL_CONFIG=
 PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
 HAL_DLL_MDB=
 
@@ -73,8 +70,6 @@ PLATFORM_COMMON_DB_DLL_MDB_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Commo
 PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
-PLATFORM_DLL_CONFIG_SOURCE=../Platform/bin/Debug/Platform.dll.config
-PLATFORM_DLL_CONFIG=$(BUILD_DIR)/Platform.dll.config
 PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll
 HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
 HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
@@ -96,7 +91,6 @@ HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
 PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
 PLATFORM_COMMON_DB_DLL_MDB=
 PLATFORM_DLL_MDB=
-PLATFORM_DLL_CONFIG=
 PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
 HAL_DLL_MDB=
 
@@ -110,7 +104,6 @@ PROGRAMFILES = \
 	$(PLATFORM_DLL) \
 	$(PLATFORM_COMMON_DB_DLL_MDB) \
 	$(PLATFORM_DLL_MDB) \
-	$(PLATFORM_DLL_CONFIG) \
 	$(PLATFORM_COMMON_DB_DLL) \
 	$(HAL_DLL_MDB)  
 
@@ -164,11 +157,13 @@ FILES = \
 	src/VolumeDriveType.cs \
 	src/VolumeItem.cs \
 	src/VolumeItemType.cs \
-	src/VolumeType.cs 
+	src/VolumeType.cs \
+	src/S.cs 
 
 DATA_FILES = 
 
-RESOURCES = 
+RESOURCES = \
+	po/de.resources 
 
 EXTRAS = \
 	volumedb.pc.in 
@@ -193,7 +188,6 @@ $(eval $(call emit-deploy-target,HAL_DLL))
 $(eval $(call emit-deploy-target,PLATFORM_DLL))
 $(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL_MDB))
 $(eval $(call emit-deploy-target,PLATFORM_DLL_MDB))
-$(eval $(call emit-deploy-target,PLATFORM_DLL_CONFIG))
 $(eval $(call emit-deploy-wrapper,VOLUMEDB_PC,volumedb.pc))
 $(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL))
 $(eval $(call emit-deploy-target,HAL_DLL_MDB))
@@ -213,7 +207,7 @@ $(ASSEMBLY) $(ASSEMBLY_MDB): $(build_sources) $(build_resources) $(build_datafil
 	make $(CONFIG)_AfterBuild
 	make post-all-local-hook prefix=$(prefix)
 
-install-local: $(ASSEMBLY) $(ASSEMBLY_MDB) $(HAL_DLL) $(PLATFORM_DLL) $(PLATFORM_COMMON_DB_DLL_MDB) $(PLATFORM_DLL_MDB) $(PLATFORM_DLL_CONFIG) $(VOLUMEDB_PC) $(PLATFORM_COMMON_DB_DLL) $(HAL_DLL_MDB)
+install-local: $(ASSEMBLY) $(ASSEMBLY_MDB) $(HAL_DLL) $(PLATFORM_DLL) $(PLATFORM_COMMON_DB_DLL_MDB) $(PLATFORM_DLL_MDB) $(VOLUMEDB_PC) $(PLATFORM_COMMON_DB_DLL) $(HAL_DLL_MDB)
 	make pre-install-local-hook prefix=$(prefix)
 	mkdir -p $(DESTDIR)$(libdir)/$(PACKAGE)
 	cp $(ASSEMBLY) $(ASSEMBLY_MDB) $(DESTDIR)$(libdir)/$(PACKAGE)
@@ -221,14 +215,13 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB) $(HAL_DLL) $(PLATFORM_DLL) $(PLATFORM
 	test -z '$(PLATFORM_DLL)' || cp $(PLATFORM_DLL) $(DESTDIR)$(libdir)/$(PACKAGE)
 	test -z '$(PLATFORM_COMMON_DB_DLL_MDB)' || cp $(PLATFORM_COMMON_DB_DLL_MDB) $(DESTDIR)$(libdir)/$(PACKAGE)
 	test -z '$(PLATFORM_DLL_MDB)' || cp $(PLATFORM_DLL_MDB) $(DESTDIR)$(libdir)/$(PACKAGE)
-	test -z '$(PLATFORM_DLL_CONFIG)' || cp $(PLATFORM_DLL_CONFIG) $(DESTDIR)$(libdir)/$(PACKAGE)
 	mkdir -p $(DESTDIR)$(libdir)/pkgconfig
 	test -z '$(VOLUMEDB_PC)' || cp $(VOLUMEDB_PC) $(DESTDIR)$(libdir)/pkgconfig
 	test -z '$(PLATFORM_COMMON_DB_DLL)' || cp $(PLATFORM_COMMON_DB_DLL) $(DESTDIR)$(libdir)/$(PACKAGE)
 	test -z '$(HAL_DLL_MDB)' || cp $(HAL_DLL_MDB) $(DESTDIR)$(libdir)/$(PACKAGE)
 	make post-install-local-hook prefix=$(prefix)
 
-uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB) $(HAL_DLL) $(PLATFORM_DLL) $(PLATFORM_COMMON_DB_DLL_MDB) $(PLATFORM_DLL_MDB) $(PLATFORM_DLL_CONFIG) $(VOLUMEDB_PC) $(PLATFORM_COMMON_DB_DLL) $(HAL_DLL_MDB)
+uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB) $(HAL_DLL) $(PLATFORM_DLL) $(PLATFORM_COMMON_DB_DLL_MDB) $(PLATFORM_DLL_MDB) $(VOLUMEDB_PC) $(PLATFORM_COMMON_DB_DLL) $(HAL_DLL_MDB)
 	make pre-uninstall-local-hook prefix=$(prefix)
 	rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(ASSEMBLY))
 	test -z '$(ASSEMBLY_MDB)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(ASSEMBLY_MDB))
@@ -236,7 +229,6 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB) $(HAL_DLL) $(PLATFORM_DLL) $(PLATFO
 	test -z '$(PLATFORM_DLL)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(PLATFORM_DLL))
 	test -z '$(PLATFORM_COMMON_DB_DLL_MDB)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(PLATFORM_COMMON_DB_DLL_MDB))
 	test -z '$(PLATFORM_DLL_MDB)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(PLATFORM_DLL_MDB))
-	test -z '$(PLATFORM_DLL_CONFIG)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(PLATFORM_DLL_CONFIG))
 	test -z '$(VOLUMEDB_PC)' || rm -f $(DESTDIR)$(libdir)/pkgconfig/$(notdir $(VOLUMEDB_PC))
 	test -z '$(PLATFORM_COMMON_DB_DLL)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(PLATFORM_COMMON_DB_DLL))
 	test -z '$(HAL_DLL_MDB)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(HAL_DLL_MDB))

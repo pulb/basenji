@@ -20,7 +20,6 @@ using System;
 using System.Collections.Generic;
 using Gtk;
 using Basenji.Gui.Base;
-using Platform.Common.Globalization;
 using VolumeDB;
 using VolumeDB.VolumeScanner;
 

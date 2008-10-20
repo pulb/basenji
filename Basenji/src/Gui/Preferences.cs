@@ -28,7 +28,6 @@ using System.IO;
 using System.Threading;
 using Gtk;
 using Gdk;
-using Platform.Common.Globalization;
 using PlatformIO = Platform.Common.IO;
 
 namespace Basenji.Gui

@@ -21,19 +21,17 @@ PROJECT_REFERENCES =  \
 BUILD_DIR = bin/Debug
 
 HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
-VOLUMEDB_DLL_MDB_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll.mdb
-VOLUMEDB_DLL_MDB=$(BUILD_DIR)/VolumeDB.dll.mdb
-PLATFORM_DLL_CONFIG_SOURCE=../Platform/bin/Debug/Platform.dll.config
-PLATFORM_DLL_CONFIG=$(BUILD_DIR)/Platform.dll.config
-VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll
-PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll
 PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
+VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll
 PLATFORM_COMMON_DB_DLL_MDB_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll.mdb
 PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
-HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
-HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
+PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll
+HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
+HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
+VOLUMEDB_DLL_MDB_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll.mdb
+VOLUMEDB_DLL_MDB=$(BUILD_DIR)/VolumeDB.dll.mdb
 
 endif
 
@@ -49,14 +47,13 @@ PROJECT_REFERENCES =  \
 BUILD_DIR = bin/Release
 
 HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
-VOLUMEDB_DLL_MDB=
-PLATFORM_DLL_CONFIG=
-VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Release/VolumeDB.dll
-PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
 PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
+VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Release/VolumeDB.dll
 PLATFORM_COMMON_DB_DLL_MDB=
-HAL_DLL_MDB=
 PLATFORM_DLL_MDB=
+PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
+HAL_DLL_MDB=
+VOLUMEDB_DLL_MDB=
 
 endif
 
@@ -73,19 +70,17 @@ PROJECT_REFERENCES =  \
 BUILD_DIR = bin/Debug
 
 HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
-VOLUMEDB_DLL_MDB_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll.mdb
-VOLUMEDB_DLL_MDB=$(BUILD_DIR)/VolumeDB.dll.mdb
-PLATFORM_DLL_CONFIG_SOURCE=../Platform/bin/Debug/Platform.dll.config
-PLATFORM_DLL_CONFIG=$(BUILD_DIR)/Platform.dll.config
-VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll
-PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll
 PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
+VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll
 PLATFORM_COMMON_DB_DLL_MDB_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll.mdb
 PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
-HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
-HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
+PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll
+HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
+HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
+VOLUMEDB_DLL_MDB_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll.mdb
+VOLUMEDB_DLL_MDB=$(BUILD_DIR)/VolumeDB.dll.mdb
 
 endif
 
@@ -101,14 +96,13 @@ PROJECT_REFERENCES =  \
 BUILD_DIR = bin/Release
 
 HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
-VOLUMEDB_DLL_MDB=
-PLATFORM_DLL_CONFIG=
-VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Release/VolumeDB.dll
-PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
 PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
+VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Release/VolumeDB.dll
 PLATFORM_COMMON_DB_DLL_MDB=
-HAL_DLL_MDB=
 PLATFORM_DLL_MDB=
+PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
+HAL_DLL_MDB=
+VOLUMEDB_DLL_MDB=
 
 endif
 
@@ -117,14 +111,13 @@ SATELLITE_ASSEMBLY_NAME=.resources.dll
 
 PROGRAMFILES = \
 	$(HAL_DLL) \
-	$(VOLUMEDB_DLL_MDB) \
-	$(PLATFORM_DLL_CONFIG) \
-	$(VOLUMEDB_DLL) \
-	$(PLATFORM_COMMON_DB_DLL) \
 	$(PLATFORM_DLL) \
+	$(VOLUMEDB_DLL) \
 	$(PLATFORM_COMMON_DB_DLL_MDB) \
+	$(PLATFORM_DLL_MDB) \
+	$(PLATFORM_COMMON_DB_DLL) \
 	$(HAL_DLL_MDB) \
-	$(PLATFORM_DLL_MDB)  
+	$(VOLUMEDB_DLL_MDB)  
 
 LINUX_DESKTOPAPPLICATIONS = \
 	$(BASENJI_DESKTOP)  
@@ -135,11 +128,11 @@ BINARIES = \
 
 
 HAL_DLL = $(BUILD_DIR)/Hal.dll
+PLATFORM_DLL = $(BUILD_DIR)/Platform.dll
 VOLUMEDB_DLL = $(BUILD_DIR)/VolumeDB.dll
 BASENJI_DESKTOP = $(BUILD_DIR)/basenji.desktop
-BASENJI = $(BUILD_DIR)/basenji
 PLATFORM_COMMON_DB_DLL = $(BUILD_DIR)/Platform.Common.DB.dll
-PLATFORM_DLL = $(BUILD_DIR)/Platform.dll
+BASENJI = $(BUILD_DIR)/basenji
 
 FILES = \
 	src/Gui/About.cs \
@@ -178,7 +171,8 @@ FILES = \
 	src/Main.cs \
 	src/MsgDialog.cs \
 	src/Settings.cs \
-	src/Util.cs 
+	src/Util.cs \
+	src/S.cs 
 
 DATA_FILES = \
 	app.desktop \
@@ -186,7 +180,8 @@ DATA_FILES = \
 
 RESOURCES = \
 	images/LED_Off.png \
-	images/LED_On.png 
+	images/LED_On.png \
+	po/de.resources 
 
 EXTRAS = \
 	basenji.desktop.in \
@@ -211,16 +206,15 @@ include $(srcdir)/custom-hooks.make
 
 
 $(eval $(call emit-deploy-target,HAL_DLL))
-$(eval $(call emit-deploy-target,VOLUMEDB_DLL_MDB))
-$(eval $(call emit-deploy-target,PLATFORM_DLL_CONFIG))
+$(eval $(call emit-deploy-target,PLATFORM_DLL))
 $(eval $(call emit-deploy-target,VOLUMEDB_DLL))
 $(eval $(call emit-deploy-wrapper,BASENJI_DESKTOP,basenji.desktop))
-$(eval $(call emit-deploy-wrapper,BASENJI,basenji))
-$(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL))
-$(eval $(call emit-deploy-target,PLATFORM_DLL))
 $(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL_MDB))
-$(eval $(call emit-deploy-target,HAL_DLL_MDB))
 $(eval $(call emit-deploy-target,PLATFORM_DLL_MDB))
+$(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL))
+$(eval $(call emit-deploy-wrapper,BASENJI,basenji))
+$(eval $(call emit-deploy-target,HAL_DLL_MDB))
+$(eval $(call emit-deploy-target,VOLUMEDB_DLL_MDB))
 
 
 $(build_xamlg_list): %.xaml.g.cs: %.xaml
@@ -262,40 +256,38 @@ $(ASSEMBLY) $(ASSEMBLY_MDB): $(build_sources) $(build_resources) $(build_datafil
 	make $(CONFIG)_AfterBuild
 	make post-all-local-hook prefix=$(prefix)
 
-install-local: $(ASSEMBLY) $(ASSEMBLY_MDB) $(HAL_DLL) $(VOLUMEDB_DLL_MDB) $(PLATFORM_DLL_CONFIG) $(VOLUMEDB_DLL) $(BASENJI_DESKTOP) $(BASENJI) $(PLATFORM_COMMON_DB_DLL) $(PLATFORM_DLL) $(PLATFORM_COMMON_DB_DLL_MDB) $(HAL_DLL_MDB) $(PLATFORM_DLL_MDB)
+install-local: $(ASSEMBLY) $(ASSEMBLY_MDB) $(HAL_DLL) $(PLATFORM_DLL) $(VOLUMEDB_DLL) $(BASENJI_DESKTOP) $(PLATFORM_COMMON_DB_DLL_MDB) $(PLATFORM_DLL_MDB) $(PLATFORM_COMMON_DB_DLL) $(BASENJI) $(HAL_DLL_MDB) $(VOLUMEDB_DLL_MDB)
 	make pre-install-local-hook prefix=$(prefix)
 	mkdir -p $(DESTDIR)$(libdir)/$(PACKAGE)
 	cp $(ASSEMBLY) $(ASSEMBLY_MDB) $(DESTDIR)$(libdir)/$(PACKAGE)
 	test -z '$(HAL_DLL)' || cp $(HAL_DLL) $(DESTDIR)$(libdir)/$(PACKAGE)
-	test -z '$(VOLUMEDB_DLL_MDB)' || cp $(VOLUMEDB_DLL_MDB) $(DESTDIR)$(libdir)/$(PACKAGE)
-	test -z '$(PLATFORM_DLL_CONFIG)' || cp $(PLATFORM_DLL_CONFIG) $(DESTDIR)$(libdir)/$(PACKAGE)
+	test -z '$(PLATFORM_DLL)' || cp $(PLATFORM_DLL) $(DESTDIR)$(libdir)/$(PACKAGE)
 	test -z '$(VOLUMEDB_DLL)' || cp $(VOLUMEDB_DLL) $(DESTDIR)$(libdir)/$(PACKAGE)
 	mkdir -p $(DESTDIR)$(datadir)/applications
 	test -z '$(BASENJI_DESKTOP)' || cp $(BASENJI_DESKTOP) $(DESTDIR)$(datadir)/applications
+	test -z '$(PLATFORM_COMMON_DB_DLL_MDB)' || cp $(PLATFORM_COMMON_DB_DLL_MDB) $(DESTDIR)$(libdir)/$(PACKAGE)
+	test -z '$(PLATFORM_DLL_MDB)' || cp $(PLATFORM_DLL_MDB) $(DESTDIR)$(libdir)/$(PACKAGE)
+	test -z '$(PLATFORM_COMMON_DB_DLL)' || cp $(PLATFORM_COMMON_DB_DLL) $(DESTDIR)$(libdir)/$(PACKAGE)
 	mkdir -p $(DESTDIR)$(bindir)
 	test -z '$(BASENJI)' || cp $(BASENJI) $(DESTDIR)$(bindir)
-	test -z '$(PLATFORM_COMMON_DB_DLL)' || cp $(PLATFORM_COMMON_DB_DLL) $(DESTDIR)$(libdir)/$(PACKAGE)
-	test -z '$(PLATFORM_DLL)' || cp $(PLATFORM_DLL) $(DESTDIR)$(libdir)/$(PACKAGE)
-	test -z '$(PLATFORM_COMMON_DB_DLL_MDB)' || cp $(PLATFORM_COMMON_DB_DLL_MDB) $(DESTDIR)$(libdir)/$(PACKAGE)
 	test -z '$(HAL_DLL_MDB)' || cp $(HAL_DLL_MDB) $(DESTDIR)$(libdir)/$(PACKAGE)
-	test -z '$(PLATFORM_DLL_MDB)' || cp $(PLATFORM_DLL_MDB) $(DESTDIR)$(libdir)/$(PACKAGE)
+	test -z '$(VOLUMEDB_DLL_MDB)' || cp $(VOLUMEDB_DLL_MDB) $(DESTDIR)$(libdir)/$(PACKAGE)
 	make post-install-local-hook prefix=$(prefix)
 
-uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB) $(HAL_DLL) $(VOLUMEDB_DLL_MDB) $(PLATFORM_DLL_CONFIG) $(VOLUMEDB_DLL) $(BASENJI_DESKTOP) $(BASENJI) $(PLATFORM_COMMON_DB_DLL) $(PLATFORM_DLL) $(PLATFORM_COMMON_DB_DLL_MDB) $(HAL_DLL_MDB) $(PLATFORM_DLL_MDB)
+uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB) $(HAL_DLL) $(PLATFORM_DLL) $(VOLUMEDB_DLL) $(BASENJI_DESKTOP) $(PLATFORM_COMMON_DB_DLL_MDB) $(PLATFORM_DLL_MDB) $(PLATFORM_COMMON_DB_DLL) $(BASENJI) $(HAL_DLL_MDB) $(VOLUMEDB_DLL_MDB)
 	make pre-uninstall-local-hook prefix=$(prefix)
 	rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(ASSEMBLY))
 	test -z '$(ASSEMBLY_MDB)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(ASSEMBLY_MDB))
 	test -z '$(HAL_DLL)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(HAL_DLL))
-	test -z '$(VOLUMEDB_DLL_MDB)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(VOLUMEDB_DLL_MDB))
-	test -z '$(PLATFORM_DLL_CONFIG)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(PLATFORM_DLL_CONFIG))
+	test -z '$(PLATFORM_DLL)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(PLATFORM_DLL))
 	test -z '$(VOLUMEDB_DLL)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(VOLUMEDB_DLL))
 	test -z '$(BASENJI_DESKTOP)' || rm -f $(DESTDIR)$(datadir)/applications/$(notdir $(BASENJI_DESKTOP))
-	test -z '$(BASENJI)' || rm -f $(DESTDIR)$(bindir)/$(notdir $(BASENJI))
-	test -z '$(PLATFORM_COMMON_DB_DLL)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(PLATFORM_COMMON_DB_DLL))
-	test -z '$(PLATFORM_DLL)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(PLATFORM_DLL))
 	test -z '$(PLATFORM_COMMON_DB_DLL_MDB)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(PLATFORM_COMMON_DB_DLL_MDB))
-	test -z '$(HAL_DLL_MDB)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(HAL_DLL_MDB))
 	test -z '$(PLATFORM_DLL_MDB)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(PLATFORM_DLL_MDB))
+	test -z '$(PLATFORM_COMMON_DB_DLL)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(PLATFORM_COMMON_DB_DLL))
+	test -z '$(BASENJI)' || rm -f $(DESTDIR)$(bindir)/$(notdir $(BASENJI))
+	test -z '$(HAL_DLL_MDB)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(HAL_DLL_MDB))
+	test -z '$(VOLUMEDB_DLL_MDB)' || rm -f $(DESTDIR)$(libdir)/$(PACKAGE)/$(notdir $(VOLUMEDB_DLL_MDB))
 	make post-uninstall-local-hook prefix=$(prefix)
 
 install: install-local

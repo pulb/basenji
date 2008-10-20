@@ -27,49 +27,69 @@ using System.Globalization;
 
 namespace Platform.Common.Globalization
 {
-	// shorthand to Catalog.GetString()
-	public static class S
+	public class Catalog
 	{
-		public static string _(string msgid) {
-			return Catalog.GetString(msgid);
-		}
-	}
+		private CultureInfo ci;
+		private ResourceManager rm;
 		
-	public static class Catalog
-	{
-		private static ResourceManager rm;
-		private static Assembly asm;
-		
-		static Catalog() {
-			asm = Assembly.GetCallingAssembly();
-			
-			CultureInfo c = CultureInfo.CurrentUICulture;				
-			// try to set sub-language, e.g. "de_CH"
-			if (!SetCulture(c)) {
-				if (c.Parent != null) {
-					// try to set parent language, e.g. "de"
-					SetCulture(c.Parent);
-				}
-			}
+		private Catalog(CultureInfo ci, ResourceManager rm) {
+			this.ci = ci;
+			this.rm = rm;
 		}
 		
-		public static bool SetCulture(CultureInfo c) {
-			rm = null;
-			
-			string cultureName = c.Name.Replace('-', '_'); // fix minus in sub-languages
-			if (asm.GetManifestResourceInfo(cultureName + ".resources") != null) {
-				rm = new ResourceManager(cultureName, asm);
-				return true;
-			}
-			return false;
-		}
-		
-		public static string GetString(string msgid) {
+		public string GetString(string msgid) {
 			if (rm == null)
 				return msgid;
 				
 			string translated = rm.GetString(msgid);
 			return translated ?? msgid;
 		}
+		
+		// returns the actual culure used
+		// (may be different than the requested culture)
+		public CultureInfo Culture {
+			get {
+				// may be null
+				return ci;
+			}
+		}
+		
+		// if useFallbacksOnFailure is set, a Catolog object will be returned in every case:
+		// if the catalog for the requested culture can't be created, it tries to
+		// create a catalog for the parent culture. if this fails as well, it returns a catalog that 
+		// returns the orginal, untranslated strings.
+		public static Catalog GetCatalogForCulture(CultureInfo ci, bool useFallbacksOnFailure) {
+			if (ci == null)
+				throw new ArgumentNullException("ci");
+				
+			Assembly asm = Assembly.GetCallingAssembly();
+			ResourceManager rm;
+			
+			// try to set sub-language, e.g. "de_CH"
+			rm = GetResourceManagerForCulture(ci, asm); 
+			if (rm == null ) {
+				if (!useFallbacksOnFailure)
+					return null;
+					
+				// try to set parent language, e.g. "de"
+				ci = ci.Parent;
+				if (ci != null) {
+					rm = GetResourceManagerForCulture(ci, asm);
+					if (rm == null)
+						ci = null;
+				}
+			}
+			
+			return new Catalog(ci, rm);
+		}
+		
+		private static ResourceManager GetResourceManagerForCulture(CultureInfo ci, Assembly asm) {
+			string cultureName = ci.Name.Replace('-', '_'); // replace minus in sub-languages
+			if (asm.GetManifestResourceInfo(cultureName + ".resources") != null)
+				return new ResourceManager(cultureName, asm);
+			else
+				return null;
+		}
 	}
+
 }

@@ -23,7 +23,6 @@ using System.Threading;
 using Gtk;
 using System.IO;
 using VolumeDB;
-using Platform.Common.Globalization;
 using PlatformIO = Platform.Common.IO;
 
 namespace Basenji.Gui
