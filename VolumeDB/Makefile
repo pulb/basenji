@@ -163,7 +163,8 @@ FILES = \
 DATA_FILES = 
 
 RESOURCES = \
-	po/de.resources 
+	po/de.resources \
+	po/he.resources 
 
 EXTRAS = \
 	volumedb.pc.in 

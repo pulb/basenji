@@ -181,7 +181,8 @@ DATA_FILES = \
 RESOURCES = \
 	images/LED_Off.png \
 	images/LED_On.png \
-	po/de.resources 
+	po/de.resources \
+	po/he.resources 
 
 EXTRAS = \
 	basenji.desktop.in \

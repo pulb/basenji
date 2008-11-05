@@ -426,7 +426,8 @@ namespace Basenji.Gui
 		
 		private void OnActInfoActivated(object sender, System.EventArgs args) {
 			About a = new About();
-			a.Show();
+			a.Run();
+			a.Destroy();
 			return;
 		}
 	}

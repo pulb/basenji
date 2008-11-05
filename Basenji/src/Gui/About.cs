@@ -19,70 +19,36 @@
 using System;
 using System.Text;
 using Gtk;
-using Basenji.Gui.Base;
+using Gdk;
 
 namespace Basenji.Gui
 {
-	public partial class About : WindowBase
+	public partial class About : AboutDialog
 	{
+		private static readonly string		subTitle			= S._("A portable volume indexing tool");
+		private static readonly string		dbVersion			= string.Format(S._("Using VolumeDB v{0}."), Util.GetVolumeDBVersion());
+		private static readonly string		comments			= string.Format("{0}\n{1}", subTitle, dbVersion);
+		private static readonly string		copyright			= string.Format("{0}{1}", S._("Copyright (c) "), App.Copyright);
+		private static readonly string[]	authors				= new string[] { "Patrick Ulbrich <zulu99@gmx.net>" };
+		private static readonly string		translatorCredits	= 
+@"Yaron, https://launchpad.net/~sh-yaron
+nanker, https://launchpad.net/~nanker
+Patrick Ulbrich, https://launchpad.net/~pulb";
+		
 		public About() {
-			BuildGui();
+			// general window settings
+			this.Modal = true;
+			SkipTaskbarHint	= true;
+			Icon = Basenji.Icons.Icon.Stock_About.Render(this, IconSize.Menu);
+			
+			// about dialog settings
+			Logo				= new Pixbuf("data/basenji.svg", 200, 200);
+			Name				= App.Name;
+			Version				= App.Version;
+			Comments			= comments;
+			Copyright			= copyright;
+			Authors				= authors;
+			TranslatorCredits	= translatorCredits;
 		}
-		
-		protected virtual void OnBtnCloseClicked(object sender, System.EventArgs e) {
-			this.Destroy(); // TODO : not neccessary?
-		}
-	}
-	
-	// gui initialization
-	public partial class About : WindowBase
-	{
-		private Button btnClose;
-		
-		protected override void BuildGui() {
-			base.BuildGui();
-			
-			//general window settings
-			this.Modal				= true;
-			this.SkipTaskbarHint	= true;
-			this.Resizable			= false;
-			this.Title				= string.Format(S._("About {0}"), App.Name);
-			this.Icon				= this.RenderIcon(Basenji.Icons.Icon.Stock_About, IconSize.Menu);
-			
-			// vbOuter			  
-			VBox vbOuter = new VBox();
-			vbOuter.Spacing = 24;
-			
-			Image img = new Image(new Gdk.Pixbuf("data/basenji.svg", 200, 200)); // TODO : fix path (e.g. /usr/share/icons)
-			vbOuter.PackStart(img, true, true, 0);
-			
-			Label text = CreateLabel(GetText(), true);
-			vbOuter.PackStart(text, false, false, 0);
-			
-			// hbuttonbox
-			HButtonBox bbox = new HButtonBox();
-			//bbox.Spacing = 6;
-			bbox.LayoutStyle = ButtonBoxStyle.End;
-			
-			btnClose = CreateButton(Stock.Close, true, OnBtnCloseClicked);
-			
-			bbox.PackStart(btnClose, false, false, 0);
-			vbOuter.PackStart(bbox, false, false, 0);	
-			
-			this.Add(vbOuter);
-			ShowAll();
-		}
-		
-		private string GetText() {
-			StringBuilder sb = new StringBuilder();
-		   
-			sb.Append("<b><span size=\"xx-large\">").Append(App.Name).Append(" ").Append(App.Version).Append("</span></b>\n\n");
-			sb.Append(S._("Copyright (c) ")).Append(App.Copyright).Append("\n");
-			
-			sb.AppendFormat(S._("Using VolumeDB v{0}."), Util.GetVolumeDBVersion());
-			
-			return sb.ToString();
-		}
-	}
-	
+	}	
 }
