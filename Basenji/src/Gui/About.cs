@@ -47,6 +47,8 @@ Patrick Ulbrich, https://launchpad.net/~pulb";
 			Version				= App.Version;
 			Comments			= comments;
 			Copyright			= copyright;
+			Website				= "http://www.launchpad.net/basenji";
+			//WebsiteLabel		= "Basenji Homepage";
 			Authors				= authors;
 			TranslatorCredits	= translatorCredits;
 		}
