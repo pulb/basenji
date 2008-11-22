@@ -80,6 +80,7 @@ namespace Basenji.Gui
 					Application.Invoke(delegate {
 						btnSearch.Sensitive = true;						   
 						itemInfo.Clear();
+						itemInfo.Hide();
 					});
 				}
 			};

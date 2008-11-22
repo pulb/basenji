@@ -528,10 +528,13 @@ namespace VolumeDB.VolumeScanner
 
 		#region Exceptions
 
-		// TODO : move ScanCancelledException here if this bug has been fixed:
-		// http://bugzilla.ximian.com/show_bug.cgi?id=82215
-		// (make the exception protected again)
-
+		/// <summary>
+		/// Signals that scanning has been cancelled.
+		/// </summary>
+		protected class ScanCancelledException : Exception {
+			public ScanCancelledException() : base() { }
+		}
+	
 		#endregion
 
 		//TODO : remove this method if generic constraints allow internal and parameterized constructors.
@@ -547,12 +550,5 @@ namespace VolumeDB.VolumeScanner
 			return (T)ci.Invoke(args);
 		}
 		
-	}
-	
-	/// <summary>
-	/// Signals that scanning has been cancelled.
-	/// </summary>
-	internal /*protected*/ class ScanCancelledException : Exception {
-		public ScanCancelledException() : base() { }
-	}
+	}	
 }
