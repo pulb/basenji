@@ -23,6 +23,7 @@
 #define ALLOW_FREETEXTSEARCH_METADATA
 
 using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace VolumeDB.Searching
@@ -33,6 +34,20 @@ namespace VolumeDB.Searching
 	 */
 	public struct FreeTextSearchField
 	{
+		private static Dictionary<string, FreeTextSearchField> stringMapping = new Dictionary<string, FreeTextSearchField>() {
+			{ "FILENAME", 		FreeTextSearchField.FileName		},
+			{ "DIRECTORYNAME",	FreeTextSearchField.DirectoryName	},
+			{ "LOCATION",		FreeTextSearchField.Location		},
+			{ "NOTE",			FreeTextSearchField.Note			},
+			{ "KEYWORDS",		FreeTextSearchField.Keywords		},
+#if ALLOW_FREETEXTSEARCH_MIMETYPE			
+			{ "MIMETYPE",		FreeTextSearchField.MimeType		},
+#endif
+#if ALLOW_FREETEXTSEARCH_METADATA
+			{ "METADATA",		FreeTextSearchField.MetaData		}
+#endif			
+		};
+		
 		private int value;
 		
 		private FreeTextSearchField(int value) {
@@ -52,6 +67,18 @@ namespace VolumeDB.Searching
 		public static FreeTextSearchField MetaData		{ get { return new FreeTextSearchField(64); }}
 #endif
 		public static FreeTextSearchField AnyName		{ get { return new FreeTextSearchField((FileName | DirectoryName).value); }}
+		
+		public static FreeTextSearchField FromString(string fieldName) {
+			FreeTextSearchField sf = FreeTextSearchField.None;
+			
+			if (fieldName == null)
+				throw new ArgumentNullException("fieldName");
+				
+			if (!stringMapping.TryGetValue(fieldName.ToUpper(), out sf))
+				throw new ArgumentException("Unknown fieldname", "fieldName");
+			
+			return sf;
+		}
 		
 		public static bool operator ==(FreeTextSearchField a, FreeTextSearchField b) {
 			return a.value == b.value;
