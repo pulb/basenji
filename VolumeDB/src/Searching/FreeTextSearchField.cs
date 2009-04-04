@@ -144,7 +144,7 @@ namespace VolumeDB.Searching
 //		  }
 		
 		private bool ContainsField(FreeTextSearchField field) {
-			return (this & field) != None;
+			return (this & field) == field;
 		}
 		
 		private static void Append(StringBuilder sql, string condition, MatchRule fieldMatchRule) {
