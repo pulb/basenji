@@ -50,8 +50,12 @@ namespace VolumeDB.Searching
 			if (searchString == null)
 				throw new ArgumentNullException("searchString");
 
+			if (searchString.Length < VolumeDatabase.MIN_SEARCHSTR_LENGTH)
+				throw new ArgumentException(string.Format("Length of a searchstring must be at least {0}",
+											VolumeDatabase.MIN_SEARCHSTR_LENGTH), "searchString");
+				
 			if (fields == FreeTextSearchField.None)
-				throw new ArgumentException("No searchfield specified.", "fields");
+				throw new ArgumentException("No searchfield specified", "fields");
 
 			this.searchString	   = searchString.Replace("'","''");
 			this.fields			   = fields;

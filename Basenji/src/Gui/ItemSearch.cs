@@ -25,9 +25,6 @@ namespace Basenji.Gui
 {
 	public partial class ItemSearch : Base.WindowBase
 	{
-		// prevent long wating time / massive mem consumption by limiting the searchstr length
-		private const int MIN_SEARCHSTR_LENGTH = 3;
-		
 		private VolumeDatabase database;
 		private volatile bool windowDeleted;
 		
@@ -107,7 +104,7 @@ namespace Basenji.Gui
 		}
 		
 		private void OnTxtSearchStringChanged(object o, EventArgs args) {
-			btnSearch.Sensitive = (txtSearchString.Text.Length >= MIN_SEARCHSTR_LENGTH);
+			btnSearch.Sensitive = (txtSearchString.Text.Length >= VolumeDatabase.MIN_SEARCHSTR_LENGTH);
 		}
 		
 		/*

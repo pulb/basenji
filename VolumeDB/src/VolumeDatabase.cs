@@ -50,8 +50,12 @@ namespace VolumeDB
 	///</summary>
 	public sealed partial class VolumeDatabase : IDisposable
 	{
-		private const	int		DB_VERSION = 1;
+		
+		private	const	int		DB_VERSION = 1;
 		private const	string	SQL_DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+		
+		// prevent long wating time / massive mem consumption by limiting the searchstr length
+		public	const	int		MIN_SEARCHSTR_LENGTH = 3;
 		
 		internal const	long	ID_NONE  = 0; // represents a "not-set" value for foreign keys to ID fields (e.g. Volumes.VolumeID, Items.ItemID)
 		internal const	long	ID_FIRST = 1; // first ID of a table record		
