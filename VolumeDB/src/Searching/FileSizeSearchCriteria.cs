@@ -28,8 +28,8 @@ namespace VolumeDB.Searching
 		/// <summary>
 		/// 
 		/// </summary>
-		/// <param name="size">filesize in bytes</param>
-		/// <param name="compareType">type that specifies how to compare filesizes</param>
+		/// <param name="fileSize">filesize in bytes</param>
+		/// <param name="compareOperator">operator that specifies how to compare filesizes</param>
 		public FileSizeSearchCriteria(long fileSize, CompareOperator compareOperator) {
 			if (fileSize < 0)
 				throw new ArgumentOutOfRangeException("fileSize");
@@ -73,7 +73,9 @@ namespace VolumeDB.Searching
 //					  throw new Exception("Invalid CompareOperator.");
 //			  }
 //			  return string.Format("(Items.Size {0} {1}) AND (ItemType = {2})", strOp, fileSize, (int)VolumeItemType.FileVolumeItem);
-			  return string.Format("({0}) AND (ItemType = {1})", compareOperator.GetSqlCompareString("Item.Size", fileSize.ToString()), (int)VolumeItemType.FileVolumeItem);
+			  return string.Format("({0}) AND (ItemType = {1})",
+			  						compareOperator.GetSqlCompareString("Item.Size", fileSize.ToString()),
+			  						(int)VolumeItemType.FileVolumeItem);
 		}
 
 		#endregion
