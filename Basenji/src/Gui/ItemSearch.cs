@@ -52,7 +52,7 @@ namespace Basenji.Gui
 			try {
 				criteria = new EUSLSearchCriteria(txtSearchString.Text);
 			} catch (ArgumentException e) {				
-				SetStatus(FormatExceptionMsg(e));
+				SetStatus(Util.FormatExceptionMsg(e));
 				return;				
 			}
 			
@@ -128,14 +128,6 @@ namespace Basenji.Gui
 		
 		private void OnDeleteEvent(object sender, DeleteEventArgs args) {
 			windowDeleted = true;		 
-		}
-		
-		private static string FormatExceptionMsg(Exception e) {
-			string msg = e.Message;
-			int breakPos = msg.IndexOfAny(Environment.NewLine.ToCharArray());
-			if (breakPos > -1)
-				msg = msg.Substring(0, breakPos);
-			return msg + ".";
 		}
 	}
 	

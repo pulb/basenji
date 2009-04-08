@@ -45,6 +45,14 @@ namespace Basenji
 			return string.Format("{0:N2} {1}", dblSize, units[n]);
 		}
 		
+		public static string FormatExceptionMsg(Exception e) {
+			string msg = e.Message;
+			int breakPos = msg.IndexOfAny(Environment.NewLine.ToCharArray());
+			if (breakPos > -1)
+				msg = msg.Substring(0, breakPos);
+			return msg + ".";
+		}
+		
 		public static string GetVolumeDBVersion() {
 			Assembly asm = Assembly.GetAssembly(typeof(VolumeDB.VolumeDatabase));
 			return asm.GetName().Version.ToString();		
