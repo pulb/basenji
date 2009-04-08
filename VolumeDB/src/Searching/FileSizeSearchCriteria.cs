@@ -74,7 +74,7 @@ namespace VolumeDB.Searching
 //			  }
 //			  return string.Format("(Items.Size {0} {1}) AND (ItemType = {2})", strOp, fileSize, (int)VolumeItemType.FileVolumeItem);
 			  return string.Format("({0}) AND (ItemType = {1})",
-			  						compareOperator.GetSqlCompareString("Item.Size", fileSize.ToString()),
+			  						compareOperator.GetSqlCompareString("Items.Size", fileSize.ToString()),
 			  						(int)VolumeItemType.FileVolumeItem);
 		}
 
