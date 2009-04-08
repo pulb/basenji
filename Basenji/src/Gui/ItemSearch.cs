@@ -48,12 +48,13 @@ namespace Basenji.Gui
 			if (!btnSearch.Sensitive)
 				return;
 			
-			// TODO : implement smarter searchstring parsing (like banshee), see tomboy note
-			FreeTextSearchCriteria criteria = new FreeTextSearchCriteria(
-																		 txtSearchString.Text,
-																		 FreeTextSearchField.AnyName,
-																		 TextCompareOperator.Contains
-																		 );
+			ISearchCriteria criteria = null;
+			try {
+				criteria = new EUSLSearchCriteria(txtSearchString.Text);
+			} catch (ArgumentException e) {				
+				SetStatus(FormatExceptionMsg(e));
+				return;				
+			}
 			
 			// callback called when searching has been finished
 			AsyncCallback callback = delegate(IAsyncResult ar) {
@@ -73,6 +74,7 @@ namespace Basenji.Gui
 						tvSearchResult.Clear();
 						SetStatus(S._("Timeout: another search is probably still in progress."));
 					});
+				//} catch (Exception e) { SetStatus(e.Message);
 				} finally {
 					Application.Invoke(delegate {
 						btnSearch.Sensitive = true;						   
@@ -128,6 +130,13 @@ namespace Basenji.Gui
 			windowDeleted = true;		 
 		}
 		
+		private static string FormatExceptionMsg(Exception e) {
+			string msg = e.Message;
+			int breakPos = msg.IndexOfAny(Environment.NewLine.ToCharArray());
+			if (breakPos > -1)
+				msg = msg.Substring(0, breakPos);
+			return msg + ".";
+		}
 	}
 	
 	// gui initialization
