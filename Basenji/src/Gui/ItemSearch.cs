@@ -74,6 +74,11 @@ namespace Basenji.Gui
 						tvSearchResult.Clear();
 						SetStatus(S._("Timeout: another search is probably still in progress."));
 					});
+				} catch (TooManyResultsException) {
+					Application.Invoke(delegate {
+						tvSearchResult.Clear();
+						SetStatus(S._("Too many search results. Please refine your search criteria."));
+					});
 				//} catch (Exception e) { SetStatus(e.Message);
 				} finally {
 					Application.Invoke(delegate {

@@ -64,13 +64,18 @@ namespace VolumeDB
 
 		private SqlBackend		sql;
 		
+		// prevents nasty item searches with too many results 
+		// from cosuming all mem (and time...). -1 = disabled.
+		private int				searchResultsLimit;
+		
 		public VolumeDatabase(string dbPath) : this(dbPath, false) {}
 		public VolumeDatabase(string dbPath, bool create) {
 			if (dbPath == null)
 				throw new ArgumentNullException("dbPath");
 			
-			disposed = false;
-			sql = new SqlBackend(dbPath, create, this);			
+			disposed			= false;
+			sql					= new SqlBackend(dbPath, create, this);			
+			searchResultsLimit	= -1;
 			
 			if (create) {
 				CreateTables();
@@ -230,8 +235,16 @@ namespace VolumeDB
 			EnsureOpen();
 
 			// TODO : VolumeDatabase shouldnt hardcode table fields or table names
-			VolumeItem[] items = QueryItems<VolumeItem>(string.Format("SELECT * FROM Items WHERE VolumeID = {0} AND ItemID = {1}", volumeID, itemID));
+			VolumeItem[] items = QueryItems<VolumeItem>(
+											string.Format("SELECT * FROM Items WHERE VolumeID = {0} AND ItemID = {1}", volumeID, itemID),
+											-1);
+
 			return items.Length == 0 ? null : items[0];
+		}
+		
+		public int SearchResultsLimit {
+			get { return searchResultsLimit; }
+			set { searchResultsLimit = value; }
 		}
 		
 		public IAsyncResult BeginSearchItem(ISearchCriteria searchCriteria, AsyncCallback callback, object state) {
@@ -283,7 +296,7 @@ namespace VolumeDB
 			string sqlQuery = string.Format("SELECT * FROM Items WHERE {0};", condition);
 
 			Debug.WriteLine(string.Format("_SearchItem() executes query: '{0}'", sqlQuery));
-			return QueryItems<VolumeItem>(sqlQuery);
+			return QueryItems<VolumeItem>(sqlQuery, searchResultsLimit);
 		}
 		
 		// used by Volume.GetRoot() and specific implementations of Volume.GetRoot()
@@ -292,7 +305,10 @@ namespace VolumeDB
 		{
 			EnsureOpen();
 			// TODO : VolumeDatabase shouldnt hardcode table fields or table names
-			TRootItem[] items = QueryItems<TRootItem>(string.Format("SELECT * FROM Items WHERE (VolumeID = {0}) AND (ParentID = {1})", volumeID, ID_NONE));
+			TRootItem[] items = QueryItems<TRootItem>(
+										string.Format("SELECT * FROM Items WHERE (VolumeID = {0}) AND (ParentID = {1})", volumeID, ID_NONE),
+										-1);
+			
 			return items.Length == 0 ? default(TRootItem) : items[0];
 		}
 		
@@ -302,7 +318,9 @@ namespace VolumeDB
 		{
 			EnsureOpen();
 			// TODO : VolumeDatabase shouldnt hardcode table fields or table names
-			return QueryItems<TContainerItem>(string.Format("SELECT * FROM Items WHERE (VolumeID = {0}) AND (ParentID = {1}) AND (IsContainer = 1)", volumeID, itemID));
+			return QueryItems<TContainerItem>(
+							string.Format("SELECT * FROM Items WHERE (VolumeID = {0}) AND (ParentID = {1}) AND (IsContainer = 1)", volumeID, itemID),
+							-1);
 		}
 		
 		// used by IContainerItem.GetItems() and specific implementations of IContainerItem.GetItems()
@@ -311,7 +329,9 @@ namespace VolumeDB
 		{
 			EnsureOpen();
 			// TODO : VolumeDatabase shouldnt hardcode table fields or table names
-			return QueryItems<TChildItem>(string.Format("SELECT * FROM Items WHERE (VolumeID = {0}) AND (ParentID = {1}) AND (IsContainer = 0)", volumeID, itemID));
+			return QueryItems<TChildItem>(
+							string.Format("SELECT * FROM Items WHERE (VolumeID = {0}) AND (ParentID = {1}) AND (IsContainer = 0)", volumeID, itemID),
+							-1);
 		}
 		
 		internal long GetNextVolumeID() {
@@ -629,15 +649,22 @@ namespace VolumeDB
 			return list.ToArray();
 		}
 		
-		private TItem[] QueryItems<TItem>(string sqlQuery)
+		private TItem[] QueryItems<TItem>(string sqlQuery, int limit)
 			where TItem : IChildItem // IChildItem is the least common denominator of all volumeitems and related interfaces (e.g. DirectoryVolumeItem, FileVolumeItem, ..., IContainerItem, IChildItem) 
 		{
 		
 			List<TItem> list = new List<TItem>();
-
+			int n = 0;
+			
 			sql.ExecuteReader(sqlQuery, delegate(IDataReader reader, IRecordData readerRecData) {
 				while(reader.Read()) {
-					// TODO : if possible, don't hardcode 'reader["ItemType"]' here, 
+					if ((limit > -1) && (++n > limit)) {
+						list.Clear();
+						throw new TooManyResultsException(
+							string.Format("The result limit of {0} items has been reached", limit));
+					}
+					
+					// TODO : if possible, don't hardcode 'reader["ItemType"]' here,
 					// use something like reader[AnInterface.TypeField]. VolumeDatabase shouldnt include table-/fieldnames if possible. 
 					// the classes representing the data should hold the names.
 					// TODO : why do i have to cast to (IChildItem) first?
