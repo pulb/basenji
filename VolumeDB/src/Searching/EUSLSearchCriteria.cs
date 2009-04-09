@@ -75,8 +75,11 @@ namespace VolumeDB.Searching
 																 	TextCompareOperator.Contains
 																 );
 						break;
-					case TermType.Select:	
-						if (e.Keyword.ToUpper() == "FILESIZE") {
+					case TermType.Select:
+					
+						string keyword = e.Keyword.ToUpper();
+						
+						if (keyword == "FILESIZE") {
 							
 							if (e.Number == -1L)
 								throw new ArgumentException(
@@ -108,7 +111,7 @@ namespace VolumeDB.Searching
 							
 							currCriteria = new FileSizeSearchCriteria(e.Number, cOp);
 						
-						/*else if (e.Keyword.ToUpper() == "TYPE") {
+						/*else if (keyword == "TYPE") {
 							
 							// TODO : implement MediaTypeSearchCriteria
 							// and MediaType struct (e.g. Audio, Video, Image, Text, ...)
