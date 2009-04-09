@@ -158,7 +158,22 @@ FILES = \
 	src/VolumeItem.cs \
 	src/VolumeItemType.cs \
 	src/VolumeType.cs \
-	src/S.cs 
+	src/S.cs \
+	src/Searching/ExcludedSearchCriteria.cs \
+	src/Searching/EUSL/Parsing/Collect.cs \
+	src/Searching/EUSL/Parsing/EventHandlers.cs \
+	src/Searching/EUSL/Parsing/Parser.cs \
+	src/Searching/EUSL/Parsing/Relation.cs \
+	src/Searching/EUSL/Parsing/TermType.cs \
+	src/Searching/EUSL/Parsing/UnexpectedTokenException.cs \
+	src/Searching/EUSL/Scanning/Scanner.cs \
+	src/Searching/EUSL/Scanning/ScannerException.cs \
+	src/Searching/EUSL/Scanning/Token.cs \
+	src/Searching/EUSL/Scanning/TokenKind.cs \
+	src/Searching/EUSLSearchCriteria.cs \
+	src/TooManyResultsException.cs \
+	src/Searching/MediaTypeSearchCriteria.cs \
+	src/Searching/MediaType.cs 
 
 DATA_FILES = 
 

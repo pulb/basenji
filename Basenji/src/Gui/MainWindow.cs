@@ -84,7 +84,7 @@ namespace Basenji.Gui
 			try {				
 				database = new VolumeDatabase(path, createNew);
 				database.SearchResultsLimit = SEARCHRESULTS_LIMIT;
-			} catch (UnsupportedDbVersionException e) {
+			} catch (UnsupportedDbVersionException) {
 				MsgDialog.ShowError(this, S._("Unsupported database version"), S._("This database version is not supported."));
 				return;
 			}

@@ -111,26 +111,20 @@ namespace VolumeDB.Searching
 							
 							currCriteria = new FileSizeSearchCriteria(e.Number, cOp);
 						
-						/*else if (keyword == "TYPE") {
-							
-							// TODO : implement MediaTypeSearchCriteria
-							// and MediaType struct (e.g. Audio, Video, Image, Text, ...)
-							// Mediatypes are mapped to the the beginning of the mimetype field.
-							// e.g. LIKE 'text/%', LIKE 'audio/%' ...
-							
-							if (string.IsNullOrEmtpy(e.Word)
+						} else if (keyword == "TYPE") {
+						
+							if (string.IsNullOrEmpty(e.Word))
 								throw new ArgumentException(
 									"Operand for keyword 'type' must be a string",
 									"euslQuery");
 									
-							// try to map the keyword to an MediaType
-							MediaType mt = MediaType.None;
-							
+							// try to map the word of the type selector to an MediaType
+							MediaType type = MediaType.None;							
 							try {
-								MediaType.FromString(e.Keyword);
+								type = MediaType.FromString(e.Word);
 							} catch (ArgumentException) {
 								throw new ArgumentException(
-											string.Format("Unknown Type '{0}'", e.Word),
+											string.Format("Unknown type '{0}'", e.Word),
 											"euslQuery");
 							}
 							
@@ -140,8 +134,8 @@ namespace VolumeDB.Searching
 											"euslQuery");
 							}
 							
-							currCriteria = new MediaTypeSearchCriteria(mt);
-						*/	
+							currCriteria = new MediaTypeSearchCriteria(type);
+	
 						} else {
 						
 							// try to map the keyword to a freetextsearchfield 
