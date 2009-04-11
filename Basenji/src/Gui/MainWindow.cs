@@ -29,8 +29,6 @@ namespace Basenji.Gui
 {
 	public partial class MainWindow : Base.WindowBase
 	{
-		private const int SEARCHRESULTS_LIMIT = 10000;
-		
 		private VolumeDatabase database = null;
 		
 		public MainWindow () {
@@ -83,7 +81,7 @@ namespace Basenji.Gui
 
 			try {				
 				database = new VolumeDatabase(path, createNew);
-				database.SearchResultsLimit = SEARCHRESULTS_LIMIT;
+				database.SearchResultsLimit = App.SEARCHRESULTS_LIMIT;
 			} catch (UnsupportedDbVersionException) {
 				MsgDialog.ShowError(this, S._("Unsupported database version"), S._("This database version is not supported."));
 				return;

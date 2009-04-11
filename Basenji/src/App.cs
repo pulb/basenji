@@ -24,6 +24,10 @@ namespace Basenji
 	/* static class providing several info about the application */
 	static class App
 	{
+		// search result limit,
+		// limits the result size in the item search window
+		public const int SEARCHRESULTS_LIMIT = 10000;
+		
 		private static string name;
 		private static string version;
 		private static string copyright;
