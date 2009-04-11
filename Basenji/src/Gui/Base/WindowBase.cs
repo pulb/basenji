@@ -29,7 +29,7 @@ namespace Basenji.Gui.Base
 		public WindowBase() : base(Gtk.WindowType.Toplevel) {}
 
 		protected virtual void BuildGui() {
-			this.BorderWidth	= 12;
+			this.BorderWidth	= 0;
 			this.WindowPosition = Gtk.WindowPosition.Center;
 			this.Icon			= DEFAULT_ICON;
 		}

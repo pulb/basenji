@@ -83,7 +83,8 @@ namespace Basenji.Gui
 			
 			// vbOuter			  
 			VBox vbOuter = new VBox();
-			vbOuter.Spacing = 24;
+			vbOuter.BorderWidth = 12;
+			vbOuter.Spacing = 18;
 			
 			// table
 			Table tbl = CreateTable(3, 2);

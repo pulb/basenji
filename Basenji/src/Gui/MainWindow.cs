@@ -488,7 +488,7 @@ namespace Basenji.Gui
 			int splitterPos		= App.Settings.MainWindowSplitterPosition;
 			
 			//general window settings
-			this.BorderWidth	= 2;
+			//this.BorderWidth	= 0;
 			this.DefaultWidth	= w;
 			this.DefaultHeight	= h;
 			if (isMaximized)			
@@ -588,6 +588,7 @@ namespace Basenji.Gui
 			
 			// hpaned			 
 			hpaned = new HPaned();
+			hpaned.BorderWidth = 6;
 			//hpaned.CanFocus = true;
 			hpaned.Position = splitterPos;
 			
@@ -629,7 +630,7 @@ namespace Basenji.Gui
 			vbRight.PackStart(itemInfo, false, false, 0);
 			hpaned.Pack2(vbRight, false, false);
 			
-			vbOuter.PackStart(hpaned, true, true, 6);
+			vbOuter.PackStart(hpaned, true, true, 0);
 			
 			// statusbar
 			statusbar = new Statusbar();

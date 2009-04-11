@@ -183,7 +183,8 @@ RESOURCES = \
 	images/LED_On.png \
 	po/de.resources \
 	po/he.resources \
-	po/da.resources 
+	po/da.resources \
+	images/search.png 
 
 EXTRAS = \
 	basenji.desktop.in \

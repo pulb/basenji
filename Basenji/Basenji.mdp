@@ -68,6 +68,7 @@
     <File name="po/de.resources" subtype="Code" buildaction="EmbedAsResource" />
     <File name="po/he.resources" subtype="Code" buildaction="EmbedAsResource" />
     <File name="po/da.resources" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="images/search.png" subtype="Code" buildaction="EmbedAsResource" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="gtk-sharp, Version=2.10.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />

@@ -84,7 +84,8 @@ namespace Basenji.Gui
 			
 			// vbOuter			  
 			VBox vbOuter = new VBox();
-			vbOuter.Spacing = 24;
+			vbOuter.BorderWidth = 12;
+			vbOuter.Spacing = 18;
 			
 			// volEdit
 			volEdit = VolumeEdit.CreateInstance(volume.GetVolumeType());

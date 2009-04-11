@@ -381,7 +381,7 @@ namespace Basenji.Gui
 			base.BuildGui();
 			
 			// general window settings
-			this.BorderWidth		= 2;
+			//this.BorderWidth		= 2;
 			this.DefaultWidth		= 580;
 			this.DefaultHeight		= 600;
 			this.Modal				= true;

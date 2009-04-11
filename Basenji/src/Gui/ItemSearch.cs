@@ -150,7 +150,7 @@ namespace Basenji.Gui
 			base.BuildGui();
 
 			// general window settings
-			this.BorderWidth		= 2;
+			//this.BorderWidth		= 0;
 			this.DefaultWidth		= 800;
 			this.DefaultHeight		= 600;
 			this.Modal				= true;
@@ -160,17 +160,25 @@ namespace Basenji.Gui
 			
 			// vbOuter			  
 			VBox vbOuter = new VBox();
-			vbOuter.Spacing = 24;
+			vbOuter.Spacing = 0;
 			
 			// search box
 			HBox hbSearch = new HBox();
 			hbSearch.Spacing = 6;
+			hbSearch.BorderWidth = 12;
+			
+			Image img = new Image(Gdk.Pixbuf.LoadFromResource("search.png"));
+			hbSearch.PackStart(img, false, false, 0);
+			
+			hbSearch.PackStart(CreateLabel(S._("Search:")), false, false, 0);
 			
 			txtSearchString = new Entry();
 			hbSearch.PackStart(txtSearchString, true, true, 0);
 			
 			btnSearch = CreateButton(Stock.Find, true, OnBtnSearchClicked);
-			hbSearch.PackStart(btnSearch, false, false, 0); 
+			Alignment algn = new Alignment(0.5f, 0.5f, 0f, 0f);
+			algn.Add(btnSearch);
+			hbSearch.PackStart(algn, false, false, 0); 
 			
 			vbOuter.PackStart(hbSearch, false, false, 0);
 			

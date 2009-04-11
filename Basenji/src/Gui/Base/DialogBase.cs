@@ -26,7 +26,7 @@ namespace Basenji.Gui.Base
 		public DialogBase() : base() {}
 
 		protected virtual void BuildGui() {
-			this.BorderWidth		= 12;
+			this.BorderWidth		= 0;
 			this.WindowPosition		= Gtk.WindowPosition.CenterOnParent;
 			this.Modal				= true;
 			this.DestroyWithParent	= true;
