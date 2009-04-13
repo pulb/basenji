@@ -31,9 +31,9 @@ namespace VolumeDB.Searching
 			{ "TEXT",	MediaType.Text	}
 		};
 		
-		private int value;
+		private uint value;
 		
-		private MediaType(int value) {
+		private MediaType(uint value) {
 			this.value = value;
 		}
 		
@@ -80,7 +80,7 @@ namespace VolumeDB.Searching
 		}
 		
 		public override int GetHashCode() {
-			return value;
+			return (int)value;
 		}
 		
 		/* 
@@ -89,12 +89,7 @@ namespace VolumeDB.Searching
 		*/
 		public bool IsCombined {
 			get {
-				if (value == 0)
-					return false;
-				// if value is a power of 2, exp is a whole number
-				double exp = Math.Log(value, 2);
-				bool isWhole = (exp - (int)exp) < 0.0001;
-				return !isWhole;
+				return Util.IsCombined(value);
 			}
 		}
 		

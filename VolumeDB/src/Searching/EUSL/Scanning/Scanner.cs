@@ -231,8 +231,8 @@ namespace VolumeDB.Searching.EUSL.Scanning
    		 *    C := { valid automat chars } (see IsValidAutomatChar())
    		 */
 
-   		private const int INCOMPLETE_STATE = (1 << 1);
-		private enum ScanState : int {
+   		private const uint INCOMPLETE_STATE = (1 << 1);
+		private enum ScanState : uint {
 			Start				= (1 << 2),
 			A					= (1 << 3)	| INCOMPLETE_STATE,
 			AN					= (1 << 4)	| INCOMPLETE_STATE,
@@ -379,7 +379,7 @@ namespace VolumeDB.Searching.EUSL.Scanning
    					break;
    				default:
    					lookAheadToken.kind = TokenKind.WORD_OR_KEYWORD;
-   					if (((int)state & INCOMPLETE_STATE) == INCOMPLETE_STATE) {
+   					if (((uint)state & INCOMPLETE_STATE) == INCOMPLETE_STATE) {
    						// set word text of incomplete states (A, AN, a, an, O, o)
    						lookAheadToken.text = state.ToString(); // reflection magic
    					} else {
