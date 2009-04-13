@@ -59,7 +59,7 @@ namespace VolumeDB
 				return false;
 				
 			uint n = 1;
-			while (n < flags)
+			while (n < flags && n != 0)
 				n = n << 1; // n = n * 2
 			
 			// if n != flags, value is not a power of 2 
