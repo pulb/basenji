@@ -38,7 +38,7 @@ namespace Basenji.Gui.Widgets
 			TreeViewColumn col;
 			
 			col = new TreeViewColumn(string.Empty, new CellRendererPixbuf(), "pixbuf", 0);			
-			col.MinWidth = 30; // TODO : adjust to icon size
+			col.MinWidth = 48; // TODO : adjust to icon size
 			AppendColumn(col);
  
 			col = new TreeViewColumn(string.Empty, new CellRendererText(), "markup", 1);
@@ -100,7 +100,12 @@ namespace Basenji.Gui.Widgets
 						category = v.Category;
 						
 					// TODO: add colors. add ArchivNr. only show important info, otherwise its too gluttered, too high!)
-					return string.Format(S._("<b>{0}</b>\nCategory: {1}\nAdded: {2}\nFiles: {3}\nSize: {4}"), v.Title, category, v.Added.ToShortDateString(), fsv.Files.ToString(), Util.GetSizeStr(fsv.Size));
+					return string.Format(S._("<b>{0}</b>\n<span size=\"medium\"><i>Category:</i> {1}\n<i>Added:</i> {2}\n<i>Files:</i> {3}\n<i>Size:</i> {4}</span>"), 
+												v.Title,
+												category,
+												v.Added.ToShortDateString(),
+												fsv.Files.ToString(),
+												Util.GetSizeStr(fsv.Size));
 					break;
 				//case VolumeType.Cdda: ...
 				default:
