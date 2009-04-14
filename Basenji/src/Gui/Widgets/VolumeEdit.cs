@@ -321,7 +321,7 @@ namespace Basenji.Gui.Widgets
 			Table tbl = WindowBase.CreateTable(8, 2);
 
 			// labels
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Archive Nr:")),			0, 0);
+			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Archive No.:")),			0, 0);
 			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Category:")),				0, 1);
 			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Title:")),				0, 2);
 			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Description:"), false, 	0F, 0F),   0, 3);
