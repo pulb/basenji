@@ -486,7 +486,6 @@ namespace Basenji.Gui
 			int splitterPos		= App.Settings.MainWindowSplitterPosition;
 			
 			//general window settings
-			//this.BorderWidth	= 0;
 			this.DefaultWidth	= w;
 			this.DefaultHeight	= h;
 			if (isMaximized)			

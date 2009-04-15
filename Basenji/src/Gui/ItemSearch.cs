@@ -186,7 +186,6 @@ namespace Basenji.Gui
 			base.BuildGui();
 
 			// general window settings
-			//this.BorderWidth		= 0;
 			this.DefaultWidth		= 800;
 			this.DefaultHeight		= 600;
 			this.Modal				= true;
@@ -236,13 +235,7 @@ namespace Basenji.Gui
 			
 			vbRight.PackStart(navi, false, false, 0);
 			
-//			VBox vbSearchResult = new VBox();
-//			vbSearchResult.Spacing = 6;
-//			
-//			vbSearchResult.PackStart(CreateLabel(S._("<b>Search results:</b>"), true), false, false, 0);
-			
 			ScrolledWindow swSearchResult = CreateScrolledView<SearchResultView>(out tvSearchResult, true);
-//			vbSearchResult.PackStart(swSearchResult, true, true, 0);
 			vbRight.PackStart(swSearchResult, true, true, 0);
 			
 			// item info
@@ -252,8 +245,6 @@ namespace Basenji.Gui
 			hpaned.Pack2(vbRight, true, true);
 			
 			vbOuter.PackStart(hpaned, true, true, 0);
-			
-			
 			
 			/*
 			// hbuttonbox

@@ -27,14 +27,11 @@ namespace Basenji.Gui
 {	
 	public partial class DBProperties : WindowBase
 	{
-		//private const int MAX_NAME = 50;
-		//private const int MAX_DESCRIPTION = 255;
-		
 		private VolumeDatabase		db;
 		private DatabaseProperties	props;
 		
 		public DBProperties(VolumeDatabase db) {
-			BuildGui(); //Stetic.Gui.Build(this, typeof(MediaIDX.DBProperties));
+			BuildGui();
 			
 			this.db = db;
 			props	= db.GetDBProperties();
