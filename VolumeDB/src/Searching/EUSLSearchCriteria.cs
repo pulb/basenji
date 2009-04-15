@@ -17,6 +17,7 @@
 //
 
 using System;
+using System.Globalization;
 using VolumeDB.Searching.EUSL.Scanning;
 using VolumeDB.Searching.EUSL.Parsing;
 
@@ -81,11 +82,17 @@ namespace VolumeDB.Searching
 						
 						if (keyword == "FILESIZE") {
 							
-							if (e.Number == -1L)
-								throw new ArgumentException(
-									"Operand for keyword 'filesize' must be a number",
-									"euslQuery");
-								
+							long byteSize = e.Number;
+							if (byteSize == -1L) {
+								try {
+									byteSize = GetByteSize(e.Word);
+								} catch (ArgumentException) {
+									throw new ArgumentException(
+										"Operand for keyword 'filesize' must be a number with an optional multiplier",
+										"euslQuery");
+								}
+							}
+							
 							CompareOperator cOp = CompareOperator.Equal;
 							switch(e.Relation) {
 								case Relation.Equal:
@@ -109,7 +116,7 @@ namespace VolumeDB.Searching
 											"euslQuery");
 							}
 							
-							currCriteria = new FileSizeSearchCriteria(e.Number, cOp);
+							currCriteria = new FileSizeSearchCriteria(byteSize, cOp);
 						
 						} else if (keyword == "TYPE") {
 						
@@ -233,6 +240,50 @@ namespace VolumeDB.Searching
 			searchCriteria = outerOrGroup;
 		}
 		
+		private static long GetByteSize(string sizeStr) {
+			int exp = 0;
+			
+			if (string.IsNullOrEmpty(sizeStr))
+				throw new ArgumentException("sizeStr is empty", "sizeStr");
+				
+			if (sizeStr[sizeStr.Length - 1] == 'B' || sizeStr[sizeStr.Length - 1] == 'b')
+				sizeStr = sizeStr.Substring(0, sizeStr.Length - 1);
+				
+			if (sizeStr.Length > 1) {
+				switch(sizeStr[sizeStr.Length - 1]) {
+					case 'k':
+					case 'K':
+						exp = 10;
+						sizeStr = sizeStr.Substring(0, sizeStr.Length - 1);
+						break;
+					case 'm':
+					case 'M':
+						exp = 20;
+						sizeStr = sizeStr.Substring(0, sizeStr.Length - 1);
+						break;
+					case 'g':
+					case 'G':
+						exp = 30;
+						sizeStr = sizeStr.Substring(0, sizeStr.Length - 1);
+						break;
+					case 't':
+					case 'T':
+						exp = 40;
+						sizeStr = sizeStr.Substring(0, sizeStr.Length - 1);
+						break;
+				}				
+			}
+			
+			double factor;
+			NumberStyles ns = NumberStyles.AllowDecimalPoint;
+			NumberFormatInfo ni = CultureInfo.InvariantCulture.NumberFormat;
+			if (!double.TryParse(sizeStr, ns, ni, out factor))
+				throw new ArgumentException("Bad size format");
+			
+			long bytes = (long)((factor * Math.Pow(2, exp)) + 0.5);
+			return bytes;
+		}
+
 		#region ISearchCriteria Members
 		string ISearchCriteria.GetSqlSearchCondition() {
 			return searchCriteria.GetSqlSearchCondition();
