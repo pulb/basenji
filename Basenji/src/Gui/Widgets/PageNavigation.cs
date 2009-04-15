@@ -24,7 +24,7 @@ namespace Basenji.Gui.Widgets
 {
 	public partial class PageNavigation<ItemType> : BinBase
 	{
-		private const string DEFAULT_EMPTY_CAPTION = "No items.";
+		private readonly string DEFAULT_EMPTY_CAPTION = S._("No items.");
 		
 		private ItemType[] items;
 		

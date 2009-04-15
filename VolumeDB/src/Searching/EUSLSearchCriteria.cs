@@ -88,7 +88,7 @@ namespace VolumeDB.Searching
 									byteSize = GetByteSize(e.Word);
 								} catch (ArgumentException) {
 									throw new ArgumentException(
-										"Operand for keyword 'filesize' must be a number with an optional multiplier",
+										S._("Operand for keyword 'filesize' must be a number with an optional multiplier"),
 										"euslQuery");
 								}
 							}
@@ -112,7 +112,7 @@ namespace VolumeDB.Searching
 									break;
 								default:
 									throw new ArgumentException(
-											"Invalid compare operator for keyword 'filesize'",
+											S._("Invalid compare operator for keyword 'filesize'"),
 											"euslQuery");
 							}
 							
@@ -122,7 +122,7 @@ namespace VolumeDB.Searching
 						
 							if (string.IsNullOrEmpty(e.Word))
 								throw new ArgumentException(
-									"Operand for keyword 'type' must be a string",
+									S._("Operand for keyword 'type' must be a string"),
 									"euslQuery");
 									
 							// try to map the word of the type selector to an MediaType
@@ -131,13 +131,13 @@ namespace VolumeDB.Searching
 								type = MediaType.FromString(e.Word);
 							} catch (ArgumentException) {
 								throw new ArgumentException(
-											string.Format("Unknown type '{0}'", e.Word),
+											string.Format(S._("Unknown type '{0}'"), e.Word),
 											"euslQuery");
 							}
 							
 							if (e.Relation != Relation.Contains && e.Relation != Relation.Equal) {
 								throw new ArgumentException(
-											"Keyword 'type' only supports '=' and ':' operators",
+											S._("Keyword 'type' only supports '=' and ':' operators"),
 											"euslQuery");
 							}
 							
@@ -151,7 +151,7 @@ namespace VolumeDB.Searching
 								sf = FreeTextSearchField.FromString(e.Keyword);
 							} catch (ArgumentException) {
 								throw new ArgumentException(
-											string.Format("Unknown keyword '{0}'", e.Keyword),
+											string.Format(S._("Unknown keyword '{0}'"), e.Keyword),
 											"euslQuery");
 							}
 							
@@ -165,7 +165,7 @@ namespace VolumeDB.Searching
 									break;
 								default:
 									throw new ArgumentException(
-												"Invalid compare operator for a keyword that maps to textual content",
+												S._("Invalid compare operator for a keyword that maps to textual content"),
 												"euslQuery");
 							}
 							
@@ -218,11 +218,11 @@ namespace VolumeDB.Searching
 				
 			} catch (UnexpectedTokenException e) {
 				throw new ArgumentException(
-					string.Format("Parsing error: search statement is malformed at position {0}", e.Token.pos),
+					string.Format(S._("Parsing error: search statement is malformed at position {0}"), e.Token.pos),
 					"euslQuery", e);
 			} catch (ScannerException e) {
 				throw new ArgumentException(
-					string.Format("Parsing error: search statement is malformed at position {0}", e.Pos),
+					string.Format(S._("Parsing error: search statement is malformed at position {0}"), e.Pos),
 					"euslQuery", e);
 			}
 			
