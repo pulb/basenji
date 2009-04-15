@@ -23,7 +23,8 @@ using Platform.Common.Diagnostics;
 
 namespace Basenji.Icons
 {
-	// all icons used in this app (except icons loaded by mime-type dynamically)
+	// all icons used in this app 
+	// (except icons loaded by mime-type dynamically)
 	public struct Icon
 	{	
 		// fields
@@ -82,7 +83,7 @@ namespace Basenji.Icons
 		[NameInCustomIconTheme("dialog-question.png")]
 		public static Icon Stock_DialogQuestion		{ get { return new Icon(Stock.DialogQuestion);	  } }
 		
-		// icons used by the page navigation
+		// icons used by the page navigation widget
 		[NameInCustomIconTheme("go_previous.png")]
 		public static Icon Stock_GoBack				{ get { return new Icon(Stock.GoBack);	 			} }
 		[NameInCustomIconTheme("go_next.png")]
