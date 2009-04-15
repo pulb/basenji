@@ -49,8 +49,11 @@ namespace Basenji
 				// load custom icon theme
 				string themeLocation = App.Settings.CustomThemeLocation;
 				string themeName = App.Settings.CustomThemeName;
-				if (!string.IsNullOrEmpty(themeLocation) && !string.IsNullOrEmpty(themeName))
-					Icons.CustomIconTheme.Load(System.IO.Path.Combine(themeLocation, themeName));			 
+				if (!string.IsNullOrEmpty(themeLocation) && !string.IsNullOrEmpty(themeName)) {
+					string path = System.IO.Path.Combine(themeLocation, themeName);
+					string fullPath = System.IO.Path.GetFullPath(path);
+					Icons.CustomIconTheme.Load(fullPath);
+				}
 				
 				Gui.MainWindow win = new Gui.MainWindow ();
 				win.Show ();

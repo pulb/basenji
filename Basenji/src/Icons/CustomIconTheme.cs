@@ -37,6 +37,10 @@ namespace Basenji.Icons
 			if (themePath.Length == 0)
 				throw new ArgumentException("Argument is empty", "themePath");
 			
+			// gtk requires an absolute path
+			if (!Path.IsPathRooted(themePath))
+				throw new ArgumentException("Path must be absolute", "themePath");
+				
 			if (!Directory.Exists(themePath))
 				throw new DirectoryNotFoundException(string.Format("Path to theme \"{0}\" not found", themePath));
 
