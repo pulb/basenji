@@ -24,14 +24,19 @@ namespace Basenji.Gui.Widgets
 {
 	public partial class PageNavigation<ItemType> : BinBase
 	{
+		private const string DEFAULT_EMPTY_CAPTION = "No items.";
+		
 		private ItemType[] items;
 		
 		private int currentPage;
 		private int totalPages;
 		private int pageSize;
 		
-		public PageNavigation(){			
+		private string emptyCaption;
+		
+		public PageNavigation() {			
 			pageSize = 10;
+			emptyCaption = DEFAULT_EMPTY_CAPTION;
 			
 			BuildGui();
 			Clear();
@@ -109,6 +114,16 @@ namespace Basenji.Gui.Widgets
 			}
 		}
 		
+		public string EmptyCaption {
+			get {
+				return emptyCaption;
+			}
+			set {
+				emptyCaption = value;
+				UpdateCaption();
+			}
+		}
+		
 		public void Clear() {
 			items = new ItemType[0];
 			currentPage = 0;
@@ -119,16 +134,20 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		private void UpdateCaption() {
-			int start, length;
-			GetRange(out start, out length);
+			if (totalPages > 0) {
+				int start, length;
+				GetRange(out start, out length);
 				
-			lbl.Markup = string.Format(	S._("<b>Page {0}/{1}</b>  ({2} - {3} of {4} items)"),
-										currentPage + 1,
-										totalPages,
-										start + 1,
-										start + length,
-										items.Length);
-										
+				lbl.Markup = string.Format(	S._("<b>Page {0}/{1}</b>  ({2} - {3} of {4} items)"),
+											currentPage + 1,
+											totalPages,
+											start + 1,
+											start + length,
+											items.Length);
+			} else {
+				lbl.Markup = string.IsNullOrEmpty(emptyCaption) ? string.Empty : emptyCaption;
+			}
+			
 			lbl.Sensitive = (totalPages > 0);
 		}
 		
