@@ -18,6 +18,7 @@
 
 using System;
 using Gtk;
+using Basenji.Gui.Widgets;
 using VolumeDB;
 using VolumeDB.Searching;
 
@@ -33,7 +34,9 @@ namespace Basenji.Gui
 			this.database = db;
 			BuildGui();
 			btnSearch.Sensitive = false;
-			// the widget should be visible the first time when the user clicks on an item
+			
+			// the widget should be visible the first time
+			// when the user clicks on an item
 			itemInfo.Hide();
 		}
 		
@@ -63,19 +66,27 @@ namespace Basenji.Gui
 				
 				try {
 					VolumeItem[] items = database.EndSearchItem(ar);
-					Application.Invoke(delegate {
-						tvSearchResult.Fill(items);
+					
+					Application.Invoke(delegate {						
+						// calls selection changed handler
+						// that fills the searchrestult view
+						tvCategory.Categorize(items);
+
 						TimeSpan time = DateTime.Now.Subtract((DateTime)ar.AsyncState);
 						SetStatus(string.Format(S._("Found {0} items in {1:F3} seconds."), items.Length, time.TotalSeconds));
 					});
 				} catch (TimeoutException) {
 					// couldn't get connection lock
 					Application.Invoke(delegate {
+						tvCategory.Clear();
+						navi.Clear();
 						tvSearchResult.Clear();
 						SetStatus(S._("Timeout: another search is probably still in progress."));
 					});
 				} catch (TooManyResultsException) {
 					Application.Invoke(delegate {
+						tvCategory.Clear();
+						navi.Clear();
 						tvSearchResult.Clear();
 						SetStatus(S._("Too many search results. Please refine your search criteria."));
 					});
@@ -100,7 +111,7 @@ namespace Basenji.Gui
 			}
 		}
 		
-		private void OnBtnSearchClicked(object sender, System.EventArgs e) {
+		private void OnBtnSearchClicked(object o, System.EventArgs args) {
 			BeginSearch();
 		}
 		
@@ -113,11 +124,34 @@ namespace Basenji.Gui
 		private void OnTxtSearchStringChanged(object o, EventArgs args) {
 			btnSearch.Sensitive = (txtSearchString.Text.Length >= VolumeDatabase.MIN_SEARCHSTR_LENGTH);
 		}
-		
+
 		/*
 		private void OnBtnCloseClicked(object sender, System.EventArgs e) {
 			this.Destroy(); // TODO : not neccessary?		 
 		}*/
+		
+		private void OnTvCategorySelectionChanged(object o, EventArgs args) {
+			TreeIter iter;
+			CategoryView.Category c = CategoryView.Category.None;
+			if (tvCategory.GetSelectedIter(out iter))
+				c = tvCategory.GetCategory(iter);
+			
+			VolumeItem[] categoryItems = tvCategory.GetCategoryItems(c);
+//			tvSearchResult.Fill(categoryItems);
+			
+			navi.SetItems(categoryItems);
+			tvSearchResult.Fill(navi.PageItems);
+			
+			itemInfo.Clear();
+			itemInfo.Hide();
+		}
+		
+		private void OnNaviNavigate(object o, NavigateEventArgs args) {
+			tvSearchResult.Fill(navi.PageItems);
+			
+			itemInfo.Clear();
+			itemInfo.Hide();
+		}
 		
 		private void OnTvSearchResultSelectionChanged(object o, EventArgs args) {
 			TreeIter iter;
@@ -141,8 +175,10 @@ namespace Basenji.Gui
 		
 		private Entry						txtSearchString;
 		private Button						btnSearch;
-		private Widgets.SearchResultView	tvSearchResult;
-		private Widgets.ItemInfo			itemInfo;
+		private CategoryView				tvCategory;
+		private PageNavigation<VolumeItem>	navi; 
+		private SearchResultView			tvSearchResult;
+		private ItemInfo					itemInfo;
 		//private Button			  btnClose;
 		private Statusbar					statusbar;
 		
@@ -182,19 +218,40 @@ namespace Basenji.Gui
 			
 			vbOuter.PackStart(hbSearch, false, false, 0);
 			
-			// search result box
-			VBox vbSearchResult = new VBox();
-			vbSearchResult.Spacing = 6;
+			// hpaned
+			HPaned hpaned = new HPaned();
+			hpaned.BorderWidth = 6;
+			hpaned.Position = 180;
 			
-			vbSearchResult.PackStart(CreateLabel(S._("<b>Search results:</b>"), true), false, false, 0);
+			// category
+			ScrolledWindow swCategory = CreateScrolledView<CategoryView>(out tvCategory, true);
+			hpaned.Pack1(swCategory, false, false);
 			
-			ScrolledWindow swSearchResult = CreateScrolledView<Widgets.SearchResultView>(out tvSearchResult, true);
-			vbSearchResult.PackStart(swSearchResult, true, true, 0);
-			vbOuter.PackStart(vbSearchResult, true, true, 0);
+			// search results
+			VBox vbRight = new VBox();
+			vbRight.Spacing = 6;
+			
+			navi = new PageNavigation<VolumeItem>();
+			vbRight.PackStart(navi, false, false, 0);
+			
+//			VBox vbSearchResult = new VBox();
+//			vbSearchResult.Spacing = 6;
+//			
+//			vbSearchResult.PackStart(CreateLabel(S._("<b>Search results:</b>"), true), false, false, 0);
+			
+			ScrolledWindow swSearchResult = CreateScrolledView<SearchResultView>(out tvSearchResult, true);
+//			vbSearchResult.PackStart(swSearchResult, true, true, 0);
+			vbRight.PackStart(swSearchResult, true, true, 0);
 			
 			// item info
-			itemInfo = new Widgets.ItemInfo();
-			vbOuter.PackStart(itemInfo, false, false, 0);
+			itemInfo = new ItemInfo();
+			vbRight.PackStart(itemInfo, false, false, 0);
+			
+			hpaned.Pack2(vbRight, true, true);
+			
+			vbOuter.PackStart(hpaned, true, true, 0);
+			
+			
 			
 			/*
 			// hbuttonbox
@@ -218,6 +275,8 @@ namespace Basenji.Gui
 			// event handlers
 			txtSearchString.KeyPressEvent		+= OnTxtSearchStringKeyPressEvent;
 			txtSearchString.Changed				+= OnTxtSearchStringChanged;
+			tvCategory.Selection.Changed		+= OnTvCategorySelectionChanged;
+			navi.Navigate						+= OnNaviNavigate;
 			tvSearchResult.Selection.Changed	+= OnTvSearchResultSelectionChanged;
 			this.DeleteEvent					+= OnDeleteEvent;
 				

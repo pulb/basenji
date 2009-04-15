@@ -27,67 +27,36 @@ namespace Basenji.Gui.Widgets
 {
 	public class SearchResultView : ViewBase
 	{	
-		private const IconSize ICON_SIZE = IconSize.Button;
+		private const IconSize ICON_SIZE = IconSize.Dialog;
 		
 		private ItemIcons itemIcons;
 		private Dictionary<long, Volume> volumeCache;
 		
 		public SearchResultView() {
-			HeadersVisible = true;
 			itemIcons = new ItemIcons(this);
 			volumeCache = new Dictionary<long,Volume>();
 			
 			//
 			// setup columns
 			//
+			const int MIN_COL_WIDTH = 400;
+			
 			TreeViewColumn col;
-				
-			// icon/name			
-			CellRendererPixbuf pix = new CellRendererPixbuf();
-			CellRendererText txt = new CellRendererText();
-			col = new TreeViewColumn();
-			col.SortColumnId = 1;
-			col.Resizable = true;
-			col.Title = S._("Name");
-			col.MaxWidth = 300;
-			col.PackStart(pix, false);
-			col.PackStart(txt, false);
-			col.SetAttributes(pix, "pixbuf", 0);
-			col.SetAttributes(txt, "text", 1);
 			
+			col = new TreeViewColumn(string.Empty, new CellRendererPixbuf(), "pixbuf", 0);			
+			col.MinWidth = 48; // TODO : adjust to icon size
 			AppendColumn(col);
-			
-			// location
-			col = new TreeViewColumn(S._("Location"), new CellRendererText(), "text", 2);
-			col.SortColumnId = 2;
-			col.Resizable = true;			 
-			col.MaxWidth = 320;
-			AppendColumn(col);
-			
-			// volumename
-			col = new TreeViewColumn(S._("Volume"), new CellRendererText(), "text", 3);
-			col.SortColumnId = 3;
-			col.Resizable = true;			 
-			col.MaxWidth = 100;				
-			AppendColumn(col);
-			
-			// archive nr
-			col = new TreeViewColumn(S._("Archive Nr."), new CellRendererText(), "text", 4);
-			col.SortColumnId = 4;
-			col.Resizable = true;			 
-			col.MaxWidth = 100;
+ 
+			col = new TreeViewColumn(string.Empty, new CellRendererText(), "markup", 1);
+			//col.SortColumnId = (int)Columns.Id;
+			col.MinWidth = MIN_COL_WIDTH;
 			AppendColumn(col);
 		}
 		
 		public void Fill(VolumeItem[] items) {
-			ListStore store = new ListStore(
-											typeof(Gdk.Pixbuf),
-											typeof(string),
-											typeof(string),
-											typeof(string),
-											typeof(string),
-											/* VolumeItem - not visible */ typeof(VolumeItem)
-											);
+			ListStore store = new Gtk.ListStore(	typeof(Gdk.Pixbuf),
+													typeof(string),
+													typeof(VolumeItem)); /* VolumeItem - not visible */
 			
 			foreach(VolumeItem item in items) {
 				Volume vol;
@@ -102,7 +71,16 @@ namespace Basenji.Gui.Widgets
 					case VolumeItemType.DirectoryVolumeItem:
 						
 						FileSystemVolumeItem fsvi = (FileSystemVolumeItem)item;
-						store.AppendValues(itemIcons.GetIconForItem(fsvi, ICON_SIZE), fsvi.Name, fsvi.Location, vol.Title, vol.ArchiveNr, fsvi);
+						string description = string.Format(S._("<b>{0}</b>\n<span size=\"smaller\"><i>Location:</i> {1}\n<i>Volume:</i> {2}, <i>Archive No.:</i> {3}</span>"),
+																fsvi.Name,
+																fsvi.Location,
+																vol.Title, 
+																vol.ArchiveNr);
+																
+						store.AppendValues(	itemIcons.GetIconForItem(fsvi, ICON_SIZE),
+											description,
+											fsvi);
+						
 						break;
 					//case VolumeItemType.CDDAVolumeItem
 					//	  ...
@@ -123,7 +101,7 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		public VolumeItem GetItem(TreeIter iter) {
-			VolumeItem item = (VolumeItem)Model.GetValue(iter, 5);
+			VolumeItem item = (VolumeItem)Model.GetValue(iter, 2);
 			return item;
 		}
 	}

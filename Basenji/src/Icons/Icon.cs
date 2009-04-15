@@ -82,6 +82,30 @@ namespace Basenji.Icons
 		[NameInCustomIconTheme("dialog-question.png")]
 		public static Icon Stock_DialogQuestion		{ get { return new Icon(Stock.DialogQuestion);	  } }
 		
+		// icons used by the page navigation
+		[NameInCustomIconTheme("go_previous.png")]
+		public static Icon Stock_GoBack				{ get { return new Icon(Stock.GoBack);	 			} }
+		[NameInCustomIconTheme("go_next.png")]
+		public static Icon Stock_GoForward			{ get { return new Icon(Stock.GoForward); 			} }
+		
+		// icons used by the cateroyview widget:
+		[NameInCustomIconTheme("text.png")]
+		public static Icon Category_Texts			{ get { return new Icon("text-x-generic");			} }
+		[NameInCustomIconTheme("document.png")]
+		public static Icon Category_Documents		{ get { return new Icon("x-office-document");		} }
+		[NameInCustomIconTheme("audio.png")]
+		public static Icon Category_Music			{ get { return new Icon("audio-x-generic");			} }
+		[NameInCustomIconTheme("video.png")]
+		public static Icon Category_Movies			{ get { return new Icon("video-x-generic");			} }
+		[NameInCustomIconTheme("image.png")]
+		public static Icon Category_Images			{ get { return new Icon("image-x-generic");			} }		
+		[NameInCustomIconTheme("application.png")]
+		public static Icon Category_Applications	{ get { return new Icon("application-x-executable");	} }
+		[NameInCustomIconTheme("archive.png")]
+		public static Icon Category_Archives		{ get { return new Icon("package-x-generic");		} }		
+		[NameInCustomIconTheme("development.png")]
+		public static Icon Category_Development		{ get { return new Icon("applications-development");	} }
+		
 		public Pixbuf Render(Widget w, Gtk.IconSize size) {
 			Pixbuf pb = w.RenderIcon(this.name, size, string.Empty);			
 			

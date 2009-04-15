@@ -149,7 +149,6 @@ FILES = \
 	src/Gui/Base/ViewBase.cs \
 	src/Gui/Base/WindowBase.cs \
 	src/Gui/Widgets/DateChooser.cs \
-	src/Gui/Widgets/Events.cs \
 	src/Gui/Widgets/FSVolumeEdit.cs \
 	src/Gui/Widgets/ItemInfo.cs \
 	src/Gui/Widgets/ItemView.cs \
@@ -172,7 +171,11 @@ FILES = \
 	src/MsgDialog.cs \
 	src/Settings.cs \
 	src/Util.cs \
-	src/S.cs 
+	src/S.cs \
+	src/Gui/Widgets/CategoryView.cs \
+	src/Gui/Widgets/PageNavigation.cs \
+	src/Gui/Widgets/VolumeEditEvents.cs \
+	src/Gui/Widgets/PageNavigationEvents.cs 
 
 DATA_FILES = \
 	app.desktop \
