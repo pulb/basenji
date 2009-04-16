@@ -88,7 +88,7 @@ namespace Basenji.Gui
 					} else if (e is TooManyResultsException) {						
 						Application.Invoke((o, args) => SetStatus(S._("Too many search results. Please refine your search criteria.")));
 					} else {
-						//Application.Invoke((o, args) => SetStatus(e.Message));
+						//Application.Invoke((o, args) => SetStatus(Util.FormatExceptionMsg(e)));
 						throw;
 					}
 				} finally {
