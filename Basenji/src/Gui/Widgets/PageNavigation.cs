@@ -113,7 +113,7 @@ namespace Basenji.Gui.Widgets
 				pageSize = value;
 				
 				// reset view
-				if (items.Length > 0)
+				if (totalPages > 0)
 					SetItems(items);
 			}
 		}
