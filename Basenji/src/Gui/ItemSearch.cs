@@ -137,7 +137,6 @@ namespace Basenji.Gui
 				c = tvCategory.GetCategory(iter);
 			
 			VolumeItem[] categoryItems = tvCategory.GetCategoryItems(c);
-//			tvSearchResult.Fill(categoryItems);
 			
 			navi.SetItems(categoryItems);
 			tvSearchResult.Fill(navi.PageItems);
