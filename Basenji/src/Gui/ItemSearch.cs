@@ -231,7 +231,7 @@ namespace Basenji.Gui
 			vbRight.Spacing = 6;
 			
 			navi = new PageNavigation<VolumeItem>();
-			navi.PageSize = App.SEARCH_RESULTPAGE_SIZE;
+			navi.PageSize = App.Settings.SearchResultPageSize;
 			navi.EmptyCaption = S._("No search results.");
 			
 			vbRight.PackStart(navi, false, false, 0);

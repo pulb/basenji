@@ -101,6 +101,11 @@ namespace Basenji
 			set { properties["CustomThemeName"] = value; }
 		}
 		
+		public int SearchResultPageSize {
+			get { return int.Parse(properties["SearchResultPageSize"]); }
+			set { properties["SearchResultPageSize"] = value.ToString(); }
+		}
+		
 		// restore default settings
 		public void Reset() {
 			properties = new Dictionary<string, string>();
@@ -118,6 +123,7 @@ namespace Basenji
 			properties.Add("MainWindowSplitterPosition",	"240");
 			properties.Add("CustomThemeLocation",			Path.Combine("data", "themes"));
 			properties.Add("CustomThemeName",				"");
+			properties.Add("SearchResultPageSize",			"10");
 		}
 		
 		// returns a Settings instance with defaults loaded

@@ -27,9 +27,6 @@ namespace Basenji
 		// search result limit,
 		// limits the result size in the item search window
 		public const int SEARCH_RESULTS_LIMIT = 10000;
-		// specifies the number of items in a results page 
-		// in the item search window
-		public const int SEARCH_RESULTPAGE_SIZE = 10;
 		
 		private static string name;
 		private static string version;
