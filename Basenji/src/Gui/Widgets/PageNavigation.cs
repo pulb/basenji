@@ -111,6 +111,10 @@ namespace Basenji.Gui.Widgets
 				if (pageSize < 1)
 					throw new ArgumentException("Pagesize must be greater than 0");
 				pageSize = value;
+				
+				// reset view
+				if (items.Length > 0)
+					SetItems(items);
 			}
 		}
 		
