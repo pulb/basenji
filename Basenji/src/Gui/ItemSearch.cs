@@ -60,14 +60,14 @@ namespace Basenji.Gui
 			}
 			
 			// callback called when searching has been finished
-			AsyncCallback callback = delegate(IAsyncResult ar) {
+			AsyncCallback callback = ar => {
 				if (windowDeleted)
 					return;
 				
 				try {
 					VolumeItem[] items = database.EndSearchItem(ar);
 					
-					Application.Invoke(delegate {						
+					Application.Invoke((o, args) => {						
 						// calls selection changed handler
 						// that fills the searchrestult view
 						tvCategory.Categorize(items);
@@ -75,24 +75,24 @@ namespace Basenji.Gui
 						TimeSpan time = DateTime.Now.Subtract((DateTime)ar.AsyncState);
 						SetStatus(string.Format(S._("Found {0} items in {1:F3} seconds."), items.Length, time.TotalSeconds));
 					});
-				} catch (TimeoutException) {
-					// couldn't get connection lock
-					Application.Invoke(delegate {
+				} catch (Exception e) {
+					Application.Invoke((o, args) => {
 						tvCategory.Clear();
 						navi.Clear();
 						tvSearchResult.Clear();
-						SetStatus(S._("Timeout: another search is probably still in progress."));
 					});
-				} catch (TooManyResultsException) {
-					Application.Invoke(delegate {
-						tvCategory.Clear();
-						navi.Clear();
-						tvSearchResult.Clear();
-						SetStatus(S._("Too many search results. Please refine your search criteria."));
-					});
-				//} catch (Exception e) { SetStatus(e.Message);
+					
+					if (e is TimeoutException) {
+						// couldn't get connection lock
+						Application.Invoke((o, args) => SetStatus(S._("Timeout: another search is probably still in progress.")));
+					} else if (e is TooManyResultsException) {						
+						Application.Invoke((o, args) => SetStatus(S._("Too many search results. Please refine your search criteria.")));
+					} else {
+						//Application.Invoke((o, args) => SetStatus(e.Message));
+						throw;
+					}
 				} finally {
-					Application.Invoke(delegate {
+					Application.Invoke((o, args) => {
 						btnSearch.Sensitive = true;						   
 						itemInfo.Clear();
 						itemInfo.Hide();
