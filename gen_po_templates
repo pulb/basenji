@@ -1,0 +1,28 @@
+#!/bin/bash
+# extracts strings from *.cs files and
+# generates gettext .pot templates 
+# for Basenji and VolumeDB.
+
+keyword="S._"
+
+generate_pot() {
+	dirname=${PWD##*/}
+	pot_name=./po/$dirname.pot
+
+	if [ ! -d ./po ]; then
+		mkdir ./po
+	fi
+	if [ -f $pot_name ]; then
+		rm $pot_name
+	fi
+
+	find -iname *.cs | xgettext --language=C# --from-code=UTF-8 --keyword=$keyword --output=$pot_name --files-from=-
+}
+
+cd ./Basenji
+generate_pot
+cd ..
+
+cd ./VolumeDB
+generate_pot
+cd ..

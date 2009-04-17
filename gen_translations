@@ -1,0 +1,22 @@
+#!/bin/bash
+# generates translated string resources 
+# for Basenji and VolumeDB.
+
+keyword="S._"
+
+generate_resources() {
+	cd ./po
+	rm *.resources 2> /dev/null
+	for po in *.po; do
+		msgfmt --csharp-resources -o ${po%.po}.resources $po 	
+	done
+	cd ..
+}
+
+cd ./Basenji
+generate_resources
+cd ..
+
+cd ./VolumeDB
+generate_resources
+cd ..
