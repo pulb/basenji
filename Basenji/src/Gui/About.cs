@@ -43,7 +43,7 @@ Patrick Ulbrich, https://launchpad.net/~pulb";
 			
 			// about dialog settings
 			Logo				= new Pixbuf("data/basenji.svg", 200, 200);
-			Name				= App.Name;
+			ProgramName			= App.Name;
 			Version				= App.Version;
 			Comments			= comments;
 			Copyright			= copyright;
