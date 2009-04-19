@@ -154,6 +154,9 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		public void Categorize(VolumeItem[] items) {
+			if (items == null)
+				throw new ArgumentNullException("items");
+				
 			ListStore store	= GetNewStore();
 			TreeIter iter	= TreeIter.Zero;
 			
@@ -186,6 +189,7 @@ namespace Basenji.Gui.Widgets
 			}
 			
 			Model = store;
+			ColumnsAutosize();
 			
 			// select "all items"
 			if (!iter.Equals(TreeIter.Zero))

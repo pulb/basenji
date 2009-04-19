@@ -27,9 +27,22 @@ namespace Basenji.Gui.Base
 	public abstract class ViewBase : TreeView
 	{
 		public ViewBase() {
-			HeadersVisible = false;		   
+			HeadersVisible = false;
 		}
 		
+		// bug (?) workaround:
+		// sometimes, if a new store is assigned to the model,
+		// the vertical scrollposition of a parent scrolledwindow
+		// does not seem to be reset to 0.
+		public new TreeModel Model {
+			get {
+				return base.Model;
+			}
+			set {				
+				base.Model = value;
+				Vadjustment.Value = 0;
+			}
+		}
 //		  protected abstract void FillingThread(VolumeDatabase database);
 //		  
 //		  public IAsyncResult BeginFill(VolumeDatabase database, AsyncCallback callback, object state) {

@@ -54,6 +54,9 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		public void Fill(VolumeItem[] items) {
+			if (items == null)
+				throw new ArgumentNullException("items");
+				
 			ListStore store = new Gtk.ListStore(	typeof(Gdk.Pixbuf),
 													typeof(string),
 													typeof(VolumeItem)); /* VolumeItem - not visible */
@@ -91,6 +94,7 @@ namespace Basenji.Gui.Widgets
 			}
 			
 			this.Model = store;
+			ColumnsAutosize();			
 		}
 		
 		public void Clear() {

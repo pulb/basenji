@@ -64,6 +64,7 @@ namespace Basenji.Gui
 				store.AppendValues(S._("Waiting for drives..."));
 				SetColumns(tvDrives, true);
 				tvDrives.Model = store;
+				/*ColumnsAutosize();*/
 			}
 
 			new Thread(
@@ -100,6 +101,7 @@ namespace Basenji.Gui
 						Application.Invoke(delegate {
 							SetColumns(tvDrives, false);
 							tvDrives.Model = store;
+							/*ColumnsAutosize();*/
 
 							// select selectedIter							
 							tvDrives.Selection.SelectIter(selectedIter);

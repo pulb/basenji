@@ -112,9 +112,11 @@ namespace Basenji.Gui
 			col = new TreeViewColumn(S._("Message"), new CellRendererText(), "text", 2);
 			col.Sizing = TreeViewColumnSizing.Fixed; // TODO : is there smarter way?
 			tvLog.AppendColumn(col);
-
+			
 			logStore = new ListStore(typeof(Gdk.Pixbuf), typeof(string), typeof(string));
+			
 			tvLog.Model = logStore;
+			/*ColumnsAutosize();*/
 		}
 		
 		private void UpdateLog(LogIcon icon, string message) {

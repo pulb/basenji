@@ -57,6 +57,7 @@ namespace Basenji.Gui.Widgets
 				AddVolume(store, v);
 
 			Model = store;
+			ColumnsAutosize();
 		}
 		
 		public void Clear() {

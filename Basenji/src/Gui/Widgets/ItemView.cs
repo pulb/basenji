@@ -46,7 +46,10 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		public void FillRoot(Volume volume) {
-			TreeStore store;
+			if (volume == null)
+				throw new ArgumentNullException("volume");
+				
+			TreeStore store;			
 			ResetView();
 			
 			switch (volume.GetVolumeType()) {
@@ -60,6 +63,7 @@ namespace Basenji.Gui.Widgets
 					AppendDirRows(store, TreeIter.Zero, item);
 
 					Model = store;
+					/*ColumnsAutosize();*/
 					break;
 				//case VolumeType.CDDAVolume
 				//	  ...
