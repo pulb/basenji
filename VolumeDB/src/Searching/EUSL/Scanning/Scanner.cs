@@ -351,7 +351,7 @@ namespace VolumeDB.Searching.EUSL.Scanning
    					case ScanState.Number:
    						if (char.IsNumber(currentChar)) {
    							AppendDigit(ref num, currentChar);
-   						} else { // e.g. 10a, 10b, 0x10
+   						} else { // e.g. 10a, 10b, 0x10, 10.2mb
    							wordBuf.Append(num).Append(currentChar);
    							state = ScanState.Word_Or_Keyword;
    						}

@@ -40,7 +40,8 @@ namespace Basenji.Gui.Base
 			}
 			set {				
 				base.Model = value;
-				Vadjustment.Value = 0;
+				if (Vadjustment.Value > 0)
+					Vadjustment.Value = 0;
 			}
 		}
 //		  protected abstract void FillingThread(VolumeDatabase database);
