@@ -109,6 +109,7 @@ namespace Basenji.Gui.Widgets
 				/* applications */
 				{ "application/x-executable",							CATEGORIES[6] },
 				{ "application/x-shellscript",							CATEGORIES[6] },
+				{ "application/x-ms-dos-executable",					CATEGORIES[6] },
 				/* archives */
 				{ "application/x-tar",									CATEGORIES[7] },
 				{ "application/zip",									CATEGORIES[7] },
