@@ -25,10 +25,11 @@ namespace VolumeDB.Searching
 	public struct MediaType
 	{
 		private static Dictionary<string, MediaType> stringMapping = new Dictionary<string, MediaType>() {
-			{ "AUDIO",	MediaType.Audio	},
-			{ "VIDEO",	MediaType.Video	},
-			{ "IMAGE",	MediaType.Image	},
-			{ "TEXT",	MediaType.Text	}
+			{ "AUDIO",		MediaType.Audio		},
+			{ "VIDEO",		MediaType.Video		},
+			{ "IMAGE",		MediaType.Image		},
+			{ "TEXT",		MediaType.Text		},
+			{ "DIRECTORY",	MediaType.Directory	}
 		};
 		
 		private uint value;
@@ -38,11 +39,12 @@ namespace VolumeDB.Searching
 		}
 		
 		// mimetype sections
-		public static MediaType None	{ get { return new MediaType(0);	}} // required for binary &
-		public static MediaType Audio	{ get { return new MediaType(1);	}}
-		public static MediaType Video	{ get { return new MediaType(2);	}}		
-		public static MediaType Image	{ get { return new MediaType(4);	}}
-		public static MediaType Text	{ get { return new MediaType(8);	}}
+		public static MediaType None		{ get { return new MediaType(0);	}} // required for binary &
+		public static MediaType Audio		{ get { return new MediaType(1);	}}
+		public static MediaType Video		{ get { return new MediaType(2);	}}		
+		public static MediaType Image		{ get { return new MediaType(4);	}}
+		public static MediaType Text		{ get { return new MediaType(8);	}}
+		public static MediaType Directory	{ get { return new MediaType(16);	}}
 		
 		public static MediaType FromString(string mediaType) {
 			MediaType type = MediaType.None;
@@ -121,6 +123,9 @@ namespace VolumeDB.Searching
 			
 			if (this.ContainsType(Text))
 				Append(sql, "Items.MimeType LIKE 'text/%'", typeMatchRule);
+				
+			if (this.ContainsType(Directory))
+				Append(sql, "Items.MimeType = 'x-directory/normal'", typeMatchRule);
 				
 			return sql.ToString();
 		}
