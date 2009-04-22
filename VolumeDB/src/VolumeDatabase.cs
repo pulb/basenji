@@ -66,16 +66,16 @@ namespace VolumeDB
 		
 		// prevents nasty item searches with too many results 
 		// from cosuming all mem (and time...). -1 = disabled.
-		private int				searchResultsLimit;
+		private int				searchItemResultsLimit;
 		
 		public VolumeDatabase(string dbPath) : this(dbPath, false) {}
 		public VolumeDatabase(string dbPath, bool create) {
 			if (dbPath == null)
 				throw new ArgumentNullException("dbPath");
 			
-			disposed			= false;
-			sql					= new SqlBackend(dbPath, create, this);			
-			searchResultsLimit	= -1;
+			disposed				= false;
+			sql						= new SqlBackend(dbPath, create, this);			
+			searchItemResultsLimit	= -1;
 			
 			if (create) {
 				CreateTables();
@@ -242,9 +242,9 @@ namespace VolumeDB
 			return items.Length == 0 ? null : items[0];
 		}
 		
-		public int SearchResultsLimit {
-			get { return searchResultsLimit; }
-			set { searchResultsLimit = value; }
+		public int SearchItemResultsLimit {
+			get { return searchItemResultsLimit; }
+			set { searchItemResultsLimit = value; }
 		}
 		
 		public IAsyncResult BeginSearchItem(ISearchCriteria searchCriteria, AsyncCallback callback, object state) {
@@ -296,7 +296,7 @@ namespace VolumeDB
 			string sqlQuery = string.Format("SELECT * FROM Items WHERE {0};", condition);
 
 			Debug.WriteLine(string.Format("_SearchItem() executes query: '{0}'", sqlQuery));
-			return QueryItems<VolumeItem>(sqlQuery, searchResultsLimit);
+			return QueryItems<VolumeItem>(sqlQuery, searchItemResultsLimit);
 		}
 		
 		// used by Volume.GetRoot() and specific implementations of Volume.GetRoot()
