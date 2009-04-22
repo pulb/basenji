@@ -91,6 +91,15 @@ namespace Basenji.Gui
 			
 			Util.Callback<Volume[]> updateGui = delegate(Volume[] volumes) {
 				tvVolumes.Fill(volumes);
+
+				// select first volume
+				/*
+				// this clearly harms startup time
+				TreeIter iter;
+				if (tvVolumes.Model.GetIterFirst(out iter))
+					tvVolumes.Selection.SelectIter(iter);
+				*/
+				
 				EnableGui(true);
 				SetWindowTitle(path);
 				SetStatus(string.Format(S._("{0} volumes loaded."), volumes.Length));
@@ -103,20 +112,12 @@ namespace Basenji.Gui
 			};
 			
 			if (loadAsync) {
-				// delegate that will be called when asynchronous volume loading (searching) has been finished
+				// delegate that will be called 
+				// when asynchronous volume loading (searching) has been finished
 				AsyncCallback cb = delegate(IAsyncResult ar) {
 					Volume[] volumes = database.EndSearchVolume(ar);
 					Application.Invoke(delegate {
 						updateGui(volumes);
-//						  tvVolumes.Fill(volumes);
-//						  EnableGui(true);
-//						  SetWindowTitle(path);
-//						  
-//						  App.Settings.MostRecentDBPath = path;
-//						App.Settings.Save();
-//						  
-//						  if (onsuccess != null)
-//							  onsuccess();	// must be called on the gui thread
 					});
 				};
 				
@@ -125,15 +126,6 @@ namespace Basenji.Gui
 			} else {
 				Volume[] volumes = database.SearchVolume();
 				updateGui(volumes);
-//				  tvVolumes.Fill(volumes);
-//				  EnableGui(true);
-//				  SetWindowTitle(path);
-//				  
-//				  App.Settings.MostRecentDBPath = path;
-//				App.Settings.Save();
-//				  
-//				  if (onsuccess != null)
-//					  onsuccess();
 			}
 		}
 		
