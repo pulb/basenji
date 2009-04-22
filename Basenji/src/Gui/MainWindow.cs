@@ -39,7 +39,7 @@ namespace Basenji.Gui
 			
 			// create default db on first startup
 			if (!App.Settings.SettingsFileExists()) {
-				string defaultDB = System.IO.Path.Combine(App.Settings.GetSettingsDirectory().FullName, "volumes.vdb");
+				string defaultDB = System.IO.Path.Combine(App.Settings.GetSettingsDirectory().FullName, App.DEFAULT_DB);
 				// do not overwrite existing db				   
 				if (!File.Exists(defaultDB)) {
 					// creates default db and if successful,  
