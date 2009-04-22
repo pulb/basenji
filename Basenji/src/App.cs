@@ -26,9 +26,10 @@ namespace Basenji
 	{
 		// search result limit,
 		// limits the result size in the item search window
-		public const int SEARCH_RESULTS_LIMIT = 10000;
+		public const int SEARCH_RESULTS_LIMIT	= 10000;
 		
-		public const string DEFAULT_DB = "volumes.vdb";
+		public const string DEFAULT_DB			= "volumes.vdb";
+		public const string WINDOW_DEFAULT_ICON	= "data/basenji.svg";
 		
 		private static string name;
 		private static string version;

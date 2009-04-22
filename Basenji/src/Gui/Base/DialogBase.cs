@@ -27,10 +27,10 @@ namespace Basenji.Gui.Base
 
 		protected virtual void BuildGui() {
 			this.BorderWidth		= 0;
-			this.WindowPosition		= Gtk.WindowPosition.CenterOnParent;
+			this.WindowPosition		= WindowPosition.CenterOnParent;
 			this.Modal				= true;
-			this.DestroyWithParent	= true;
 			this.SkipTaskbarHint	= true;
+			this.DestroyWithParent	= true;			
 			this.HasSeparator		= false;
 			this.Icon				= WindowBase.DEFAULT_ICON;
 				

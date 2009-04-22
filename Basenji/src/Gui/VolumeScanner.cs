@@ -383,10 +383,9 @@ namespace Basenji.Gui
 			base.BuildGui();
 			
 			// general window settings
+			SetDialogStyle();
 			this.DefaultWidth		= 580;
 			this.DefaultHeight		= 600;
-			this.Modal				= true;
-			this.SkipTaskbarHint	= true;
 			this.Title				= S._("VolumeScanner");
 			
 			// vbOuter

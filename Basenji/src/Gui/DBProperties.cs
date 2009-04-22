@@ -71,10 +71,9 @@ namespace Basenji.Gui
 			base.BuildGui();
 			
 			//general window settings
+			SetDialogStyle();
 			this.DefaultWidth		= 400;
 			this.DefaultHeight		= 240;
-			this.Modal				= true;
-			this.SkipTaskbarHint	= true;
 			this.Title				= S._("Database Properties");
 			this.Icon = this.RenderIcon(Basenji.Icons.Icon.Stock_Properties, IconSize.Menu);
 			

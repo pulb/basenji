@@ -185,10 +185,9 @@ namespace Basenji.Gui
 			base.BuildGui();
 
 			// general window settings
+			SetDialogStyle();
 			this.DefaultWidth		= 800;
 			this.DefaultHeight		= 600;
-			this.Modal				= true;
-			this.SkipTaskbarHint	= true;
 			this.Title				= S._("Search Items");
 			this.Icon				= this.RenderIcon(Basenji.Icons.Icon.Stock_Find, IconSize.Menu);
 			

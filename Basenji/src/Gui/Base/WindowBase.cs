@@ -24,15 +24,22 @@ namespace Basenji.Gui.Base
 {	
 	public abstract class WindowBase : Gtk.Window
 	{	
-		public static readonly Pixbuf DEFAULT_ICON = new Gdk.Pixbuf("data/basenji.svg"); // TODO : fix path (e.g. /usr/share/icons) 
+		public static readonly Pixbuf DEFAULT_ICON = new Gdk.Pixbuf(App.WINDOW_DEFAULT_ICON); // TODO : fix path (e.g. /usr/share/icons) 
 
 		public WindowBase() : base(Gtk.WindowType.Toplevel) {}
 
 		protected virtual void BuildGui() {
 			this.BorderWidth	= 0;
-			this.WindowPosition = Gtk.WindowPosition.Center;
+			this.WindowPosition = WindowPosition.Center;
 			this.Icon			= DEFAULT_ICON;
 		}
+		
+		protected void SetDialogStyle() {
+			this.Modal				= true;
+			this.SkipTaskbarHint	= true;
+			this.TypeHint			= WindowTypeHint.Dialog; // disable minimize button
+		}
+		
 		/*
 		protected void ShowAll() {
 			if (this.Child != null)
