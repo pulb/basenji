@@ -102,7 +102,7 @@ namespace Basenji.Gui
 				
 				EnableGui(true);
 				SetWindowTitle(path);
-				SetStatus(string.Format(S._("{0} volumes loaded."), volumes.Length));
+				SetTempStatus(string.Format(S._("{0} volumes loaded."), volumes.Length));
 				
 				App.Settings.MostRecentDBPath = path;
 				App.Settings.Save();
@@ -263,6 +263,14 @@ namespace Basenji.Gui
 		private void SetStatus(string message) {
 			statusbar.Pop(1);
 			statusbar.Push(1, message);
+		}
+		
+		private void SetTempStatus(string message) {
+			SetStatus(message);
+			Gtk.Timeout.Add(2000, delegate {
+				statusbar.Pop(1);
+				return false;
+			});
 		}
 		
 		private void Quit()	{
