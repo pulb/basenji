@@ -97,6 +97,7 @@ namespace Basenji.Gui.Widgets
 				{ "image/bmp",											CATEGORIES[5] },
 				{ "image/x-xpixmap",									CATEGORIES[5] },
 				{ "image/gif",											CATEGORIES[5] },
+				{ "image/tiff",											CATEGORIES[5] },
 				{ "image/x-pcx",										CATEGORIES[5] },
 				{ "image/x-xcf",										CATEGORIES[5] },
 				{ "image/x-psd",										CATEGORIES[5] },
