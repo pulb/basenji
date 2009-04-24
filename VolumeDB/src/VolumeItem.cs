@@ -133,7 +133,7 @@ namespace VolumeDB
 			/*
 				do not cache, 
 				always pull a fresh instance from the database
-				to get possible changes made to the owner media record.
+				to get possible changes made to the owner volume record.
 			*/
 			return Database.GetVolume(volumeID);
 		}
