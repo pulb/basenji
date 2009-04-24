@@ -53,6 +53,12 @@ namespace Basenji.Gui.Widgets
 			AppendColumn(col);
 		}
 		
+		public void Fill(VolumeItem[] items, bool clearVolumeCache) {
+			if (clearVolumeCache)
+				volumeCache.Clear();
+			Fill(items);
+		}
+		
 		public void Fill(VolumeItem[] items) {
 			if (items == null)
 				throw new ArgumentNullException("items");
