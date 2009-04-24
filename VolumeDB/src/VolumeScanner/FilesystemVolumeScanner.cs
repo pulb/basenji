@@ -26,6 +26,7 @@ using Platform.Common;
 using Platform.Common.IO;
 using Platform.Common.Mime;
 using VolumeDB.Searching;
+using VolumeDB.Searching.ItemSearchCriteria;
 
 namespace VolumeDB.VolumeScanner
 {

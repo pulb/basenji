@@ -18,9 +18,9 @@
 
 using System;
 
-namespace VolumeDB.Searching
+namespace VolumeDB.Searching.ItemSearchCriteria
 {
-	public class MediaTypeSearchCriteria : ISearchCriteria
+	public sealed class MediaTypeSearchCriteria : ISearchCriteria
 	{		
 		private MediaType types;
 		private MatchRule typeMatchRule;
@@ -45,6 +45,10 @@ namespace VolumeDB.Searching
 		#region ISearchCriteria Members
 		string ISearchCriteria.GetSqlSearchCondition() {
 			return types.GetSqlSearchCondition(typeMatchRule);
+		}
+		
+		SearchCriteriaType ISearchCriteria.SearchCriteriaType {
+			get { return Searching.SearchCriteriaType.ItemSearchCriteria; }
 		}
 		#endregion
 	}

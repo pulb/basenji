@@ -21,11 +21,11 @@ using System.Globalization;
 using VolumeDB.Searching.EUSL.Scanning;
 using VolumeDB.Searching.EUSL.Parsing;
 
-namespace VolumeDB.Searching
+namespace VolumeDB.Searching.ItemSearchCriteria
 {
-	public class EUSLSearchCriteria  : ISearchCriteria
+	public sealed class EUSLSearchCriteria  : ISearchCriteria
 	{	
-		private ISearchCriteria searchCriteria;
+		private ISearchCriteria	searchCriteria;
 		
 		public EUSLSearchCriteria(string euslQuery)	{
 			// TODO :
@@ -142,17 +142,26 @@ namespace VolumeDB.Searching
 							}
 							
 							currCriteria = new MediaTypeSearchCriteria(type);
-	
-						} else {
 						
-							// try to map the keyword to a freetextsearchfield 
-							FreeTextSearchField sf = FreeTextSearchField.None;
-							try {
-								sf = FreeTextSearchField.FromString(e.Keyword);
-							} catch (ArgumentException) {
-								throw new ArgumentException(
-											string.Format(S._("Unknown keyword '{0}'"), e.Keyword),
-											"euslQuery");
+						} else {
+							// try to map the keyword to freetextsearch fields
+							
+							IFreeTextSearchField sf;
+							
+							// try to map the keyword to a VOLUME freetextsearchfield.
+							// note: keywords mapping to foreign table fields 
+							//       should be prefixed with the respective table name.
+							if (keyword == "VOLUME-TITLE") {
+								sf = VolumeSearchCriteria.FreeTextSearchField.Title;
+							} else {
+								// try to map the keyword to an ITEM freetextsearchfield
+								try {
+									sf = FreeTextSearchField.FromString(e.Keyword);
+								} catch (ArgumentException) {
+									throw new ArgumentException(
+												string.Format(S._("Unknown keyword '{0}'"), e.Keyword),
+												"euslQuery");
+								}
 							}
 							
 							TextCompareOperator tcOp = TextCompareOperator.Contains;							
@@ -287,6 +296,10 @@ namespace VolumeDB.Searching
 		#region ISearchCriteria Members
 		string ISearchCriteria.GetSqlSearchCondition() {
 			return searchCriteria.GetSqlSearchCondition();
+		}
+		
+		SearchCriteriaType ISearchCriteria.SearchCriteriaType {
+			get { return searchCriteria.SearchCriteriaType; }
 		}
 		#endregion
 	}

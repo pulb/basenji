@@ -1,6 +1,6 @@
-// ISearchCriteria.cs
+// IFreeTextSearchField.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2009 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,18 +19,16 @@
 using System;
 
 namespace VolumeDB.Searching
-{	
+{
 	// implement this one explicitely, 
-	// to hide members GetSqlSearchCondition() and SearchCriteriaType.
-	public interface ISearchCriteria
+	// to hide members GetSqlSearchCondition(), SearchCriteriaType and IsEmpty.
+	public interface IFreeTextSearchField
 	{
-		/*
-		 * conventions: 
-		 * - returned string must not be null or 0-length
-		 * - returned string is only a part of the WHERE clause
-		 * - returned string must prefix columns with the tablename (e.g. "(table.a = 1 AND table.b = 2)" )
-		 */
-		string GetSqlSearchCondition();
-		SearchCriteriaType SearchCriteriaType { get; }
+		string GetSqlSearchCondition(	string searchString,
+										TextCompareOperator compareOperator,
+										MatchRule fieldMatchRule);
+		
+		SearchCriteriaType	ResultingSearchCriteriaType	{ get; }
+		bool				IsEmpty						{ get; }
 	}
 }

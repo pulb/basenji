@@ -21,6 +21,7 @@ using Gtk;
 using Basenji.Gui.Widgets;
 using VolumeDB;
 using VolumeDB.Searching;
+using VolumeDB.Searching.ItemSearchCriteria;
 
 namespace Basenji.Gui
 {

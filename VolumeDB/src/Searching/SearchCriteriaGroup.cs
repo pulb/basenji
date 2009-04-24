@@ -28,10 +28,12 @@ namespace VolumeDB.Searching
 	{
 		private MatchRule				membersMatchRule;
 		private List<ISearchCriteria>	memberCriteria;
+		private SearchCriteriaType		searchCriteriaType;
 		
 		public SearchCriteriaGroup(MatchRule membersMatchRule) {
 			this.membersMatchRule	= membersMatchRule;
 			this.memberCriteria		= new List<ISearchCriteria>();
+			this.searchCriteriaType	= SearchCriteriaType.None;
 		}
 		
 		public void AddSearchCriteria(ISearchCriteria searchCriteria) {
@@ -39,6 +41,7 @@ namespace VolumeDB.Searching
 				throw new ArgumentNullException("searchCriteria");
 			
 			memberCriteria.Add(searchCriteria);
+			searchCriteriaType = searchCriteriaType | searchCriteria.SearchCriteriaType; 
 		}
 		
 		public MatchRule MembersMatchRule {
@@ -51,13 +54,6 @@ namespace VolumeDB.Searching
 		
 		public ISearchCriteria this[int index] {
 			get { return memberCriteria[index]; }
-		}
-		
-		private void Append(StringBuilder sql, string condition) {
-			if (sql.Length > 0)
-				sql.AppendFormat(" {0} ", membersMatchRule.GetSqlLogicalOperator());
-
-			sql.Append('(').Append(condition).Append(')');
 		}
 		
 		#region IEnumerable<ISearchCriteria> Members
@@ -85,9 +81,13 @@ namespace VolumeDB.Searching
 			foreach(ISearchCriteria sc in memberCriteria) {
 				string condition = sc.GetSqlSearchCondition();
 				if (condition.Length > 0)
-					Append(sql, condition);
+					SearchUtils.Append(sql, condition, membersMatchRule);
 			}
 			return sql.ToString();
+		}
+		
+		SearchCriteriaType ISearchCriteria.SearchCriteriaType {
+			get { return searchCriteriaType; }
 		}
 		
 		#endregion

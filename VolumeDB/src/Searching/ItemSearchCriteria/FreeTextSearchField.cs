@@ -26,13 +26,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace VolumeDB.Searching
+namespace VolumeDB.Searching.ItemSearchCriteria
 {
 	/* 
-	 * Fields that FreetextSearchCriterias can search.
+	 * Fields that the FreetextSearchCriteria can search.
 	 * Fields can be combined via the binary or operator ("|").
 	 */
-	public struct FreeTextSearchField
+	public struct FreeTextSearchField : IFreeTextSearchField
 	{
 		private static Dictionary<string, FreeTextSearchField> stringMapping = new Dictionary<string, FreeTextSearchField>() {
 			{ "FILENAME", 		FreeTextSearchField.FileName		},
@@ -113,64 +113,34 @@ namespace VolumeDB.Searching
 		*/
 		public bool IsCombined {
 			get {
-				return Util.IsCombined(value);
+				return SearchUtils.IsCombined(value);
 			}
 		}
-		
-//		internal string GetSqlFieldName() {
-//			// method behaves analog .ToString() on a [Flag()]enum.
-//			StringBuilder fields = new StringBuilder();
-//			if (((this & FreeTextSearchField.FileName) != FreeTextSearchField.None) || ((this & FreeTextSearchField.DirectoryName) != FreeTextSearchField.None))
-//				Append(fields, "Items.Name");
-//			if ((this & FreeTextSearchField.Location) != FreeTextSearchField.None)
-//				Append(fields, "Items.Location");
-//			if ((this & FreeTextSearchField.Note) != FreeTextSearchField.None)
-//				Append(fields, "Items.Note");
-//			if ((this & FreeTextSearchField.Keywords) != FreeTextSearchField.None)
-//				Append(fields, "Items.Keywords");
-//			return fields.ToString();
-//		}
-
-//		private static void Append(StringBuilder fields, string fieldName) {
-//			  if (fields.Length > 0)
-//				  fields.Append(", ");
-//
-//			  fields.Append(fieldName);
-//		  }
 		
 		private bool ContainsField(FreeTextSearchField field) {
 			return (this & field) == field;
 		}
 		
-		private static void Append(StringBuilder sql, string condition, MatchRule fieldMatchRule) {
-			if (sql.Length > 0)
-				sql.AppendFormat(" {0} ", fieldMatchRule.GetSqlLogicalOperator());
-
-			sql.Append('(').Append(condition).Append(')');
-		}
-		
+		#region IFreeTextSearchField members
 		/* get the sql search condition of this/these field/fields */
-		internal string GetSqlSearchCondition(string searchString, TextCompareOperator compareOperator) { return GetSqlSearchCondition(searchString, compareOperator, MatchRule.AnyMustMatch); }
-		internal string GetSqlSearchCondition(string searchString, TextCompareOperator compareOperator, MatchRule fieldMatchRule) {
+		string IFreeTextSearchField.GetSqlSearchCondition(string searchString, TextCompareOperator compareOperator, MatchRule fieldMatchRule) {
 			
 			StringBuilder sql = new StringBuilder();
 			
 			if (this.ContainsField(AnyName)) {
 				// search name fields of _all_ possible volume itemtypes (e.g. DirectoryName, FileName, ...)
-				Append(sql, compareOperator.GetSqlCompareString("Items.Name", searchString), fieldMatchRule);
+				SearchUtils.Append(sql, compareOperator.GetSqlCompareString("Items.Name", searchString), fieldMatchRule);
 			} else {
-				//f = FreeTextSearchField.DirectoryName;
 				if (this.ContainsField(DirectoryName)) {
-					Append(
+					SearchUtils.Append(
 						sql, compareOperator.GetSqlCompareString("Items.Name", searchString) 
 						+ string.Format(" AND (Items.ItemType = {0})", (int)VolumeItemType.DirectoryVolumeItem),
 						fieldMatchRule
 					);
 				}
 				
-				//f = FreeTextSearchField.FileName;
 				if (this.ContainsField(FileName)) {
-					Append(
+					SearchUtils.Append(
 						sql, compareOperator.GetSqlCompareString("Items.Name", searchString) 
 						+ string.Format(" AND (Items.ItemType = {0})", (int)VolumeItemType.FileVolumeItem),
 						fieldMatchRule
@@ -178,38 +148,46 @@ namespace VolumeDB.Searching
 				}
 			}
 			
-			//f = FreeTextSearchField.Keywords;
 			if (this.ContainsField(Keywords)) {
-				Append(sql, compareOperator.GetSqlCompareString("Items.Keywords", searchString), fieldMatchRule);
+				SearchUtils.Append(sql, compareOperator.GetSqlCompareString("Items.Keywords", searchString), fieldMatchRule);
 			}
 			
-			//f = FreeTextSearchField.Location;
 			if (this.ContainsField(Location)) {
-				Append(
+				SearchUtils.Append(
 					sql, compareOperator.GetSqlCompareString("Items.Location", searchString) 
 					+ string.Format(" AND ((Items.ItemType = {0}) OR (Items.ItemType = {1}))", (int)VolumeItemType.FileVolumeItem, (int)VolumeItemType.DirectoryVolumeItem),
 					fieldMatchRule
 				);
 			}
 			
-			//f = FreeTextSearchField.Note;
 			if (this.ContainsField(Note)) {
-				Append(sql, compareOperator.GetSqlCompareString("Items.Note", searchString), fieldMatchRule);
+				SearchUtils.Append(sql, compareOperator.GetSqlCompareString("Items.Note", searchString), fieldMatchRule);
 			}
 			
 #if ALLOW_FREETEXTSEARCH_MIMETYPE
 			if (this.ContainsField(MimeType)) {
-				Append(sql, compareOperator.GetSqlCompareString("Items.MimeType", searchString), fieldMatchRule);
+				SearchUtils.Append(sql, compareOperator.GetSqlCompareString("Items.MimeType", searchString), fieldMatchRule);
 			}
 #endif
 #if ALLOW_FREETEXTSEARCH_METADATA
 			if (this.ContainsField(MetaData)) {
-				Append(sql, compareOperator.GetSqlCompareString("Items.MetaData", searchString), fieldMatchRule);
+				SearchUtils.Append(sql, compareOperator.GetSqlCompareString("Items.MetaData", searchString), fieldMatchRule);
 			}
 #endif
 
 			return sql.ToString();
 		}
+		
+		SearchCriteriaType IFreeTextSearchField.ResultingSearchCriteriaType {
+			get { return SearchCriteriaType.ItemSearchCriteria; }
+		}
+		
+		bool IFreeTextSearchField.IsEmpty {
+			get {
+				return (this == FreeTextSearchField.None);
+			}
+		}
+		#endregion
 		
 	}
 }

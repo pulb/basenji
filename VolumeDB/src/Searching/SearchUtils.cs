@@ -1,6 +1,6 @@
-// ExcludedSearchCriteria.cs
+// SearchUtils.cs
 // 
-// Copyright (C) 2009 [name of author]
+// Copyright (C) 2009 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,28 +17,32 @@
 //
 
 using System;
+using System.Text;
 
 namespace VolumeDB.Searching
 {
-	public sealed class ExcludedSearchCriteria : ISearchCriteria
-	{	
-		private ISearchCriteria searchCriteria;
-		
-		public ExcludedSearchCriteria(ISearchCriteria searchCriteria) {
-			if (searchCriteria == null)
-				throw new ArgumentNullException("searchCriteria");
+	internal static class SearchUtils
+	{
+		// indicates whether a uint is a combination of flag bits
+		public static bool IsCombined(uint flags) {
+			if (flags == 0)
+				return false;
 				
-			this.searchCriteria = searchCriteria;
+			uint n = 1;
+			while (n < flags && n != 0)
+				n = n << 1; // n = n * 2
+			
+			// if n != flags, value is not a power of 2 
+			// and thus a combination of multiple bits
+			return n != flags;
 		}
 		
-		#region ISearchCriteria Members
-		string ISearchCriteria.GetSqlSearchCondition() {
-			return string.Format("NOT ({0})", searchCriteria.GetSqlSearchCondition());
+		// append a searchcondition to a sql string
+		public static void Append(StringBuilder sql, string condition, MatchRule mr) {
+			if (sql.Length > 0)
+				sql.AppendFormat(" {0} ", mr.GetSqlLogicalOperator());
+
+			sql.Append('(').Append(condition).Append(')');
 		}
-		
-		SearchCriteriaType ISearchCriteria.SearchCriteriaType {
-			get { return searchCriteria.SearchCriteriaType; }
-		}
-		#endregion
 	}
 }

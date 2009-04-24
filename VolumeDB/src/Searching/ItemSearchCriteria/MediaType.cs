@@ -20,7 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace VolumeDB.Searching
+namespace VolumeDB.Searching.ItemSearchCriteria
 {	
 	public struct MediaType
 	{
@@ -91,7 +91,7 @@ namespace VolumeDB.Searching
 		*/
 		public bool IsCombined {
 			get {
-				return Util.IsCombined(value);
+				return SearchUtils.IsCombined(value);
 			}
 		}
 		
@@ -99,33 +99,25 @@ namespace VolumeDB.Searching
 			return (this & type) == type;
 		}
 		
-		private static void Append(StringBuilder sql, string condition, MatchRule typeMatchRule) {
-			if (sql.Length > 0)
-				sql.AppendFormat(" {0} ", typeMatchRule.GetSqlLogicalOperator());
-
-			sql.Append('(').Append(condition).Append(')');
-		}
-		
 		/* get the sql search condition of this/these type/types */
-		internal string GetSqlSearchCondition() { return GetSqlSearchCondition(MatchRule.AnyMustMatch); }
 		internal string GetSqlSearchCondition(MatchRule typeMatchRule) {
 			
 			StringBuilder sql = new StringBuilder();
 
 			if (this.ContainsType(Audio))
-				Append(sql, "Items.MimeType LIKE 'audio/%'", typeMatchRule);
+				SearchUtils.Append(sql, "Items.MimeType LIKE 'audio/%'", typeMatchRule);
 			
 			if (this.ContainsType(Video))
-				Append(sql, "Items.MimeType LIKE 'video/%'", typeMatchRule);
+				SearchUtils.Append(sql, "Items.MimeType LIKE 'video/%'", typeMatchRule);
 				
 			if (this.ContainsType(Image))
-				Append(sql, "Items.MimeType LIKE 'image/%'", typeMatchRule);
+				SearchUtils.Append(sql, "Items.MimeType LIKE 'image/%'", typeMatchRule);
 			
 			if (this.ContainsType(Text))
-				Append(sql, "Items.MimeType LIKE 'text/%'", typeMatchRule);
+				SearchUtils.Append(sql, "Items.MimeType LIKE 'text/%'", typeMatchRule);
 				
 			if (this.ContainsType(Directory))
-				Append(sql, "Items.MimeType = 'x-directory/normal'", typeMatchRule);
+				SearchUtils.Append(sql, "Items.MimeType = 'x-directory/normal'", typeMatchRule);
 				
 			return sql.ToString();
 		}

@@ -52,19 +52,5 @@ namespace VolumeDB
 				}
 				);
 		}
-		
-		// indicates whether a uint is a combination of flag bits
-		public static bool IsCombined(uint flags) {
-			if (flags == 0)
-				return false;
-				
-			uint n = 1;
-			while (n < flags && n != 0)
-				n = n << 1; // n = n * 2
-			
-			// if n != flags, value is not a power of 2 
-			// and thus a combination of multiple bits
-			return n != flags;
-		}
 	}
 }

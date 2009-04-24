@@ -119,11 +119,6 @@ PLATFORM_COMMON_DB_DLL = $(BUILD_DIR)/Platform.Common.DB.dll
 
 FILES = \
 	src/Searching/CompareOperator.cs \
-	src/Searching/FileSizeSearchCriteria.cs \
-	src/Searching/FreeTextSearchCriteria.cs \
-	src/Searching/FreeTextSearchField.cs \
-	src/Searching/IDSearchCriteria.cs \
-	src/Searching/IDSearchField.cs \
 	src/Searching/ISearchCriteria.cs \
 	src/Searching/MatchRule.cs \
 	src/Searching/SearchCriteriaGroup.cs \
@@ -170,10 +165,21 @@ FILES = \
 	src/Searching/EUSL/Scanning/ScannerException.cs \
 	src/Searching/EUSL/Scanning/Token.cs \
 	src/Searching/EUSL/Scanning/TokenKind.cs \
-	src/Searching/EUSLSearchCriteria.cs \
 	src/TooManyResultsException.cs \
-	src/Searching/MediaTypeSearchCriteria.cs \
-	src/Searching/MediaType.cs 
+	src/Searching/ItemSearchCriteria/FileSizeSearchCriteria.cs \
+	src/Searching/ItemSearchCriteria/FreeTextSearchField.cs \
+	src/Searching/ItemSearchCriteria/IDSearchCriteria.cs \
+	src/Searching/ItemSearchCriteria/IDSearchField.cs \
+	src/Searching/ItemSearchCriteria/MediaType.cs \
+	src/Searching/ItemSearchCriteria/MediaTypeSearchCriteria.cs \
+	src/Searching/SearchCriteriaType.cs \
+	src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs \
+	src/Searching/VolumeSearchCriteria/QuantitySearchCriteria.cs \
+	src/Searching/VolumeSearchCriteria/QuantityField.cs \
+	src/Searching/SearchUtils.cs \
+	src/Searching/FreeTextSearchCriteria.cs \
+	src/Searching/IFreeTextSearchField.cs \
+	src/Searching/VolumeSearchCriteria/FreeTextSearchField.cs 
 
 DATA_FILES = 
 

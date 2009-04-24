@@ -18,7 +18,7 @@
 
 using System;
 
-namespace VolumeDB.Searching
+namespace VolumeDB.Searching.ItemSearchCriteria
 {
 	public sealed class IDSearchCriteria : ISearchCriteria
 	{
@@ -51,6 +51,10 @@ namespace VolumeDB.Searching
 
 		string ISearchCriteria.GetSqlSearchCondition() {
 			return field.GetSqlSearchCondition(id, compareOperator);
+		}
+		
+		SearchCriteriaType ISearchCriteria.SearchCriteriaType {
+			get { return Searching.SearchCriteriaType.ItemSearchCriteria; }
 		}
 		
 		#endregion

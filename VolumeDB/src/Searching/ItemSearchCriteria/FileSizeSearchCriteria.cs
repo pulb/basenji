@@ -18,7 +18,7 @@
 
 using System;
 
-namespace VolumeDB.Searching
+namespace VolumeDB.Searching.ItemSearchCriteria
 {
 	public sealed class FileSizeSearchCriteria : ISearchCriteria
 	{
@@ -73,11 +73,15 @@ namespace VolumeDB.Searching
 //					  throw new Exception("Invalid CompareOperator.");
 //			  }
 //			  return string.Format("(Items.Size {0} {1}) AND (ItemType = {2})", strOp, fileSize, (int)VolumeItemType.FileVolumeItem);
-			  return string.Format("({0}) AND (ItemType = {1})",
+			  return string.Format("({0}) AND (Items.ItemType = {1})",
 			  						compareOperator.GetSqlCompareString("Items.Size", fileSize.ToString()),
 			  						(int)VolumeItemType.FileVolumeItem);
 		}
 
+		SearchCriteriaType ISearchCriteria.SearchCriteriaType {
+			get { return Searching.SearchCriteriaType.ItemSearchCriteria; }
+		}
+		
 		#endregion
 		
 	}

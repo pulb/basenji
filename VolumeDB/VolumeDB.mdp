@@ -16,11 +16,6 @@
   <Contents>
     <File name="src" subtype="Directory" buildaction="Compile" />
     <File name="src/Searching/CompareOperator.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Searching/FileSizeSearchCriteria.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Searching/FreeTextSearchCriteria.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Searching/FreeTextSearchField.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Searching/IDSearchCriteria.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Searching/IDSearchField.cs" subtype="Code" buildaction="Compile" />
     <File name="src/Searching/ISearchCriteria.cs" subtype="Code" buildaction="Compile" />
     <File name="src/Searching/MatchRule.cs" subtype="Code" buildaction="Compile" />
     <File name="src/Searching/SearchCriteriaGroup.cs" subtype="Code" buildaction="Compile" />
@@ -70,10 +65,22 @@
     <File name="src/Searching/EUSL/Scanning/ScannerException.cs" subtype="Code" buildaction="Compile" />
     <File name="src/Searching/EUSL/Scanning/Token.cs" subtype="Code" buildaction="Compile" />
     <File name="src/Searching/EUSL/Scanning/TokenKind.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Searching/EUSLSearchCriteria.cs" subtype="Code" buildaction="Compile" />
     <File name="src/TooManyResultsException.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Searching/MediaTypeSearchCriteria.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Searching/MediaType.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/Searching/ItemSearchCriteria/FileSizeSearchCriteria.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/Searching/ItemSearchCriteria/FreeTextSearchField.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/Searching/ItemSearchCriteria/IDSearchCriteria.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/Searching/ItemSearchCriteria/IDSearchField.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/Searching/ItemSearchCriteria/MediaType.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/Searching/ItemSearchCriteria/MediaTypeSearchCriteria.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/Searching/SearchCriteriaType.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/Searching/VolumeSearchCriteria" subtype="Directory" buildaction="Compile" />
+    <File name="src/Searching/VolumeSearchCriteria/QuantitySearchCriteria.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/Searching/VolumeSearchCriteria/QuantityField.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/Searching/SearchUtils.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/Searching/FreeTextSearchCriteria.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/Searching/IFreeTextSearchField.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/Searching/VolumeSearchCriteria/FreeTextSearchField.cs" subtype="Code" buildaction="Compile" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />

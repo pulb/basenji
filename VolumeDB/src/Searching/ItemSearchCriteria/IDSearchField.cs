@@ -18,7 +18,7 @@
 
 using System;
 
-namespace VolumeDB.Searching
+namespace VolumeDB.Searching.ItemSearchCriteria
 {
 	/* 
 	 * Fields that the IDSearchCriteria can search.

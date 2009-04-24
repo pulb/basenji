@@ -49,8 +49,7 @@ namespace VolumeDB
 	///Class representing the database that holds contents/infotmation of scanned volumes.
 	///</summary>
 	public sealed partial class VolumeDatabase : IDisposable
-	{
-		
+	{		
 		private	const	int		DB_VERSION = 1;
 		private const	string	SQL_DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 		
@@ -144,12 +143,26 @@ namespace VolumeDB
 		}
 		
 		public IAsyncResult BeginSearchVolume(AsyncCallback callback, object state) {
-			// TODO : check passed arguments here (as in SearchItem())
-
+			//if (callback == null)
+			//	  throw new ArgumentNullException("callback");
+			
 			EnsureOpen();
 
-			BeginSearchVolumeDelegate d = new BeginSearchVolumeDelegate(_SearchVolume);
-			return d.BeginInvoke(callback, state);
+			BeginSearchDelegate<Volume> d = new BeginSearchDelegate<Volume>(_SearchVolume);
+			return d.BeginInvoke(null, callback, state);
+		}
+		
+		public IAsyncResult BeginSearchVolume(ISearchCriteria searchCriteria, AsyncCallback callback, object state) {
+			if (searchCriteria == null)
+				throw new ArgumentNullException("searchCriteria");
+
+			//if (callback == null)
+			//	  throw new ArgumentNullException("callback");
+			
+			EnsureOpen();
+			
+			BeginSearchDelegate<Volume> d = new BeginSearchDelegate<Volume>(_SearchVolume);
+			return d.BeginInvoke(searchCriteria, callback, state);
 		}
 		
 		public Volume[] EndSearchVolume(IAsyncResult asyncResult) {
@@ -157,22 +170,55 @@ namespace VolumeDB
 			if (asyncResult == null)
 				throw new ArgumentNullException("asyncResult");
 
-			BeginSearchVolumeDelegate d = (BeginSearchVolumeDelegate) ((AsyncResult)asyncResult).AsyncDelegate;
+			BeginSearchDelegate<Volume> d = (BeginSearchDelegate<Volume>) ((AsyncResult)asyncResult).AsyncDelegate;
 			return d.EndInvoke(asyncResult);
 		}
 		
 		public Volume[] SearchVolume() {
-			// TODO : check passed arguments here (as in SearchItem())
-			
 			EnsureOpen();
-			return _SearchVolume();
+			return _SearchVolume(null);
 		 }
 		
-		// TODO : add VolumeSearchCriterias later (analog SearchItem())
-		private Volume[] _SearchVolume() {
-			 // TODO : VolumeDatabase shouldnt name table fields
-			//	TODO : Volume.TableName, Volume.IDField?
-			return QueryVolumes("SELECT * FROM Volumes ORDER BY VolumeID");
+		public Volume[] SearchVolume(ISearchCriteria searchCriteria) {
+			if (searchCriteria == null)
+				throw new ArgumentNullException("searchCriteria");
+
+			EnsureOpen();
+
+			return _SearchVolume(searchCriteria);
+		}
+		
+		private Volume[] _SearchVolume(ISearchCriteria searchCriteria) {
+			// TODO : check SQL output! implemetation was rewritten from scratch!!
+			// TODO : VolumeDatabase shouln't hardcode fieldnames or tablenames
+			// TODO : Volume.TableName, Volume.IDField?
+			//const string ORDER_FIELD = "Volumes.VolumeID"; // slows down searching 
+
+			/*** build sql query ***/
+			string sqlQuery;
+			//sqlQuery = string.Format("SELECT * FROM Volumes WHERE {0} ORDER BY {1};", condition, ORDER_FIELD);
+			
+			if (searchCriteria == null) {
+				// when searching volumes, the searchcriteria may be optional
+				// since the resultset can not become as big as in in item searches.
+				// apart from that there must be a way to retrieve all volumes in the database.
+				sqlQuery = "SELECT * FROM Volumes;"; 
+			} else {
+				string condition = searchCriteria.GetSqlSearchCondition();
+
+				if (condition.Length == 0) // e.g. empty SearchCriteriaGroup
+				   throw new ArgumentException("SearchCriteria is empty", "searchCriteria");
+				
+				if ((searchCriteria.SearchCriteriaType & SearchCriteriaType.ItemSearchCriteria) == SearchCriteriaType.ItemSearchCriteria) {
+					// searchriteria contains item searchriteria -> join items table
+					sqlQuery = string.Format("SELECT DISTINCT Volumes.* FROM Volumes, Items WHERE ({0}) AND (Volumes.VolumeID = Items.VolumeID);", condition);
+				} else {					
+					sqlQuery = string.Format("SELECT * FROM Volumes WHERE {0};", condition);
+				}
+			}
+			
+			Debug.WriteLine(string.Format("_SearchVolume() executes query: '{0}'", sqlQuery));
+			return QueryVolumes(sqlQuery);
 		}
 		
 		/// <summary>
@@ -188,7 +234,7 @@ namespace VolumeDB
 		/// </summary>
 		/// <param name="volumeID">ID of the volume to be removed from the database.</param>
 		public void RemoveVolume(long volumeID) {
-			// TODO : what if a volume has been deleted from the database physicaly, but Insert/Updataehanges() is called on the object representing the volume?
+			// TODO : what if a volume has been deleted from the database physicaly, but Insert/UpdataeChanges() is called on the object representing the volume?
 			// TODO : the same applies to VolumeItems..
 			// TODO : it's a general problem affecting volume/volumeitem operations on the database (e.g. VolumeItem.GetOwnerVolume())
 			// TODO : review whether that's ok / how to improve that
@@ -257,7 +303,7 @@ namespace VolumeDB
 			
 			EnsureOpen();
 			
-			BeginSearchItemDelegate d = new BeginSearchItemDelegate(_SearchItem);
+			BeginSearchDelegate<VolumeItem> d = new BeginSearchDelegate<VolumeItem>(_SearchItem);
 			return d.BeginInvoke(searchCriteria, callback, state);
 		}
 		
@@ -266,7 +312,7 @@ namespace VolumeDB
 			if (asyncResult == null)
 				throw new ArgumentNullException("asyncResult");
 
-			BeginSearchItemDelegate d = (BeginSearchItemDelegate) ((AsyncResult)asyncResult).AsyncDelegate;
+			BeginSearchDelegate<VolumeItem> d = (BeginSearchDelegate<VolumeItem>) ((AsyncResult)asyncResult).AsyncDelegate;
 			return d.EndInvoke(asyncResult);
 		}
 		
@@ -281,8 +327,8 @@ namespace VolumeDB
 		}
 		
 		private VolumeItem[] _SearchItem(ISearchCriteria searchCriteria) {
-			// TODO: check SQL output! implemetation was rewritten from scratch!!
-			// TODO : VolumeDatabase shoulnt hardcode fieldnames
+			// TODO : check SQL output! implemetation was rewritten from scratch!!
+			// TODO : VolumeDatabase shouln't hardcode fieldnames or tablenames
 			//const string ORDER_FIELD = "Items.VolumeID"; // slows down searching drastically 
 
 			/*** build sql query ***/
@@ -291,10 +337,15 @@ namespace VolumeDB
 			if (condition.Length == 0) // e.g. empty SearchCriteriaGroup
 			   throw new ArgumentException("SearchCriteria is empty", "searchCriteria");
 			
-			// TODO : VolumeDatabase shoulnt hardcode fieldnames or tablenames
-			//string sqlQuery = string.Format("SELECT * FROM Items WHERE {0} ORDER BY {1};", condition, ORDER_FIELD);
-			string sqlQuery = string.Format("SELECT * FROM Items WHERE {0};", condition);
-
+			string sqlQuery;
+			if ((searchCriteria.SearchCriteriaType & SearchCriteriaType.VolumeSearchCriteria) == SearchCriteriaType.VolumeSearchCriteria) {
+				// searchriteria contains volume searchriteria -> join volumes table
+				sqlQuery = string.Format("SELECT Items.* FROM Items, Volumes WHERE ({0}) AND (Items.VolumeID = Volumes.VolumeID);", condition);
+			} else {
+				//sqlQuery = string.Format("SELECT * FROM Items WHERE {0} ORDER BY {1};", condition, ORDER_FIELD);
+				sqlQuery = string.Format("SELECT * FROM Items WHERE {0};", condition);
+			}
+			
 			Debug.WriteLine(string.Format("_SearchItem() executes query: '{0}'", sqlQuery));
 			return QueryItems<VolumeItem>(sqlQuery, searchItemResultsLimit);
 		}
@@ -727,7 +778,6 @@ namespace VolumeDB
 			disposed = true;
 		}
 
-		private delegate Volume[]		BeginSearchVolumeDelegate();
-		private delegate VolumeItem[]	BeginSearchItemDelegate(ISearchCriteria searchCriteria);
+		private delegate T[] BeginSearchDelegate<T>(ISearchCriteria searchCriteria);
 	}
 }
