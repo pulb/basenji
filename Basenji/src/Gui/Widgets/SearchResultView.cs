@@ -78,7 +78,7 @@ namespace Basenji.Gui.Widgets
 																fsvi.Name,
 																fsvi.Location,
 																vol.Title, 
-																vol.ArchiveNr);
+																vol.ArchiveNo);
 																
 						store.AppendValues(	itemIcons.GetIconForItem(fsvi, ICON_SIZE),
 											description,

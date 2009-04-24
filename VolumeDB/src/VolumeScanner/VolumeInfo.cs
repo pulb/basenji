@@ -42,7 +42,7 @@ namespace VolumeDB.VolumeScanner
 		// Volume in the database before it and its items have been written to database completely.
 		// The VolumeID will be available in the scanners ScanCompleted event that will be 
 		// raised when scanning has been finished.
-		public string			ArchiveNr	{ get { return volume.ArchiveNr;	} }
+		public string			ArchiveNo	{ get { return volume.ArchiveNo;	} }
 		public string			Title		{ get { return volume.Title;		} }
 		public DateTime			Added		{ get { return volume.Added;		} }
 		public bool				IsHashed	{ get { return volume.IsHashed;		} }

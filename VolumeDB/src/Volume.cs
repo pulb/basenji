@@ -31,7 +31,7 @@ namespace VolumeDB
 		// - VolumeDatabase when creating tables
 		// - this class to validate property values
 		public const int MAX_TITLE_LENGTH		= 64;
-		public const int MAX_ARCHIVE_NR_LENGTH	= 16;
+		public const int MAX_ARCHIVE_NO_LENGTH	= 16;
 		public const int MAX_LOANED_TO_LENGTH	= 64;
 		public const int MAX_CATEGORY_LENGTH	= 64;
 		public const int MAX_DESCRIPTION_LENGTH = 4096;
@@ -46,7 +46,7 @@ namespace VolumeDB
 		private DateTime		added;
 		private bool			isHashed;
 		
-		private string			archiveNr;
+		private string			archiveNo;
 		private VolumeDriveType driveType;
 		private string			loanedTo;
 		private DateTime		loanedDate;
@@ -68,7 +68,7 @@ namespace VolumeDB
 			this.added			= DateTime.MinValue;
 			this.isHashed		= false;
 
-			this.archiveNr		= null;
+			this.archiveNo		= null;
 			this.driveType		= VolumeDriveType.Unknown;
 			this.loanedTo		= null;
 			this.loanedDate		= DateTime.MinValue;
@@ -101,7 +101,7 @@ namespace VolumeDB
 			DateTime added,
 			bool isHashed,
 
-			string archiveNr,
+			string archiveNo,
 			VolumeDriveType driveType,
 			string loanedTo,
 			DateTime loanedDate,
@@ -116,7 +116,7 @@ namespace VolumeDB
 			this.added		   = added;
 			this.isHashed	   = isHashed;
 
-			this.archiveNr	   = archiveNr;
+			this.archiveNo	   = archiveNo;
 			this.driveType	   = driveType;
 			this.loanedTo	   = loanedTo;
 			this.loanedDate    = loanedDate;
@@ -141,7 +141,7 @@ namespace VolumeDB
 			added		  = (DateTime)					  recordData["Added"];
 			isHashed	  = (bool)						  recordData["IsHashed"];
 
-			archiveNr	  = ReplaceDBNull<string>(		  recordData["ArchiveNr"],	  null);
+			archiveNo	  = ReplaceDBNull<string>(		  recordData["ArchiveNr"],	  null);
 			driveType	  = (VolumeDriveType)(int)(long)  recordData["DriveType"];
 			loanedTo	  = ReplaceDBNull<string>(		  recordData["Loaned_To"],	  null);
 			loanedDate	  = ReplaceDBNull<DateTime>(	  recordData["Loaned_Date"],  DateTime.MinValue);
@@ -159,7 +159,7 @@ namespace VolumeDB
 			recordData.AddField("VolumeType",	volumeType);
 			recordData.AddField("IsHashed",		isHashed);
 
-			recordData.AddField("ArchiveNr",	archiveNr);
+			recordData.AddField("ArchiveNr",	archiveNo);
 			recordData.AddField("DriveType",	driveType);
 			recordData.AddField("Loaned_To",	loanedTo);
 			recordData.AddField("Loaned_Date",	loanedDate);
@@ -224,11 +224,11 @@ namespace VolumeDB
 			}
 		}
 
-		public string ArchiveNr {
-			get { return archiveNr ?? string.Empty; }
+		public string ArchiveNo {
+			get { return archiveNo ?? string.Empty; }
 			set {
-				EnsurePropertyLength(value, MAX_ARCHIVE_NR_LENGTH);
-				archiveNr = value;
+				EnsurePropertyLength(value, MAX_ARCHIVE_NO_LENGTH);
+				archiveNo = value;
 			}
 		}
 

@@ -473,7 +473,7 @@ namespace VolumeDB
 			DatabaseProperties.MAX_NAME_LENGTH,
 
 			Volume.MAX_TITLE_LENGTH,
-			Volume.MAX_ARCHIVE_NR_LENGTH,
+			Volume.MAX_ARCHIVE_NO_LENGTH,
 			Volume.MAX_LOANED_TO_LENGTH,
 			Volume.MAX_CATEGORY_LENGTH,
 

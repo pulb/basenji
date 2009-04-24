@@ -88,7 +88,7 @@ namespace Basenji.Gui.Widgets
 		public bool Sensitive {
 			get { 
 				// just test the first widget				 
-				return tblWidgets[txtArchiveNr].Child.Sensitive;
+				return tblWidgets[txtArchiveNo].Child.Sensitive;
 			}
 			set {
 				tblWidgets.Foreach(delegate(Widget w) {
@@ -144,7 +144,7 @@ namespace Basenji.Gui.Widgets
 		
 		protected virtual void SaveToVolume(VolumeDB.Volume volume) {
 			// save form
-			volume.ArchiveNr	= txtArchiveNr.Text.Trim();
+			volume.ArchiveNo = txtArchiveNo.Text.Trim();
 			
 			// if cmbCategory.ActiveText is empty, no category has been selected for a new volume
 			// or the form has been loaded with an empty category string
@@ -169,7 +169,7 @@ namespace Basenji.Gui.Widgets
 			//
 			// form
 			//
-			txtArchiveNr.Text = volume.ArchiveNr;
+			txtArchiveNo.Text = volume.ArchiveNo;
 			
 			// remove user-specied custom category, 
 			// that possibly has been appended on a previous load of another volume
@@ -288,14 +288,8 @@ namespace Basenji.Gui.Widgets
 	// gui initialization
 	public abstract partial class VolumeEdit : BinBase
 	{
-		//private const int MAX_ARCHIVE_NR	  = 10;
-		//private const int MAX_TITLE		  = 50;
-		//private const int MAX_DESCRIPTION   = 255;
-		//private const int MAX_KEYWORDS	  = 255;
-		//private const int MAX_LOANED_TO	  = 255;
-		
 		private Table		tblWidgets;
-		private Entry		txtArchiveNr;
+		private Entry		txtArchiveNo;
 		private ComboBox	cmbCategory;
 		private Entry		txtTitle;
 		private TextView	tvDescription;
@@ -331,7 +325,7 @@ namespace Basenji.Gui.Widgets
 			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Return date:")),			0, 7);
 			
 			// widgets
-			txtArchiveNr	= new Entry(Volume.MAX_ARCHIVE_NR_LENGTH);
+			txtArchiveNo	= new Entry(Volume.MAX_ARCHIVE_NO_LENGTH);
 			cmbCategory		= ComboBox.NewText();			 
 			txtTitle		= new Entry(Volume.MAX_TITLE_LENGTH);
 			ScrolledWindow swDescription = WindowBase.CreateScrolledTextView(out tvDescription, Volume.MAX_DESCRIPTION_LENGTH);
@@ -343,7 +337,7 @@ namespace Basenji.Gui.Widgets
 			AttachOptions xAttachOpts = AttachOptions.Expand | AttachOptions.Fill | AttachOptions.Shrink;
 			AttachOptions yAttachOpts = AttachOptions.Fill;
 			
-			WindowBase.TblAttach(tbl, txtArchiveNr,		1, 0, xAttachOpts, yAttachOpts);
+			WindowBase.TblAttach(tbl, txtArchiveNo,		1, 0, xAttachOpts, yAttachOpts);
 			WindowBase.TblAttach(tbl, cmbCategory,		1, 1, xAttachOpts, yAttachOpts);
 			WindowBase.TblAttach(tbl, txtTitle,			1, 2, xAttachOpts, yAttachOpts);
 			WindowBase.TblAttach(tbl, swDescription,	1, 3, xAttachOpts, yAttachOpts);
@@ -359,7 +353,7 @@ namespace Basenji.Gui.Widgets
 			//	cmbCategory.AppendText(categories[i]);
 
 			// events 
-			txtArchiveNr.Changed			+= OnChanged;
+			txtArchiveNo.Changed			+= OnChanged;
 			cmbCategory.Changed				+= OnChanged;
 			txtTitle.Changed				+= OnChanged;
 			tvDescription.Buffer.Changed	+= OnChanged;
