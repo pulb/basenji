@@ -88,7 +88,7 @@ namespace Basenji.Gui.Widgets
 		protected override void BuildGui() {
 			eventBox = new EventBox();
 			eventBox.ModifyBg(Gtk.StateType.Normal, new Gdk.Color(255, 255, 255));
-			Frame frame = new Frame();			
+			Frame frame = new Frame();
 			frame.Add(eventBox);
 			this.Add(frame);
 		}
@@ -143,8 +143,9 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		private Box CreateBox(VolumeItem item, VolumeDatabase db, Table tbl) {
-			HBox box = new HBox(false, 6);
-
+			HBox box = new HBox(false, 12);
+			box.BorderWidth = 6;
+			
 			Image img = new Image();
 			Gdk.Pixbuf pb;
 			
@@ -180,7 +181,7 @@ namespace Basenji.Gui.Widgets
 				int width, height;
 				float resizeFactor;
 				if (original.Width > original.Height) {
-					// width > height => width isbigger than max width
+					// width > height => width is bigger than max width
 					resizeFactor = (float)maxWidth / original.Width;
 					width = maxWidth;
 					height = (int)(original.Height * resizeFactor);					
