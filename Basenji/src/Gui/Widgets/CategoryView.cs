@@ -27,6 +27,8 @@ namespace Basenji.Gui.Widgets
 {
 	public class CategoryView : ViewBase
 	{
+		private const	IconSize							ICON_SIZE = IconSize.Button;
+		
 		private readonly Gdk.Pixbuf							PIXBUF_ALL_ITEMS;		
 		private readonly CategoryInfo[]						CATEGORIES;		
 		private readonly Dictionary<string, CategoryInfo>	MIME_MAPPING;
@@ -49,7 +51,7 @@ namespace Basenji.Gui.Widgets
 		
 		public CategoryView() {
 		
-			PIXBUF_ALL_ITEMS = RenderIcon(Icons.Icon.Stock_File, IconSize.Button);
+			PIXBUF_ALL_ITEMS = RenderIcon(Icons.Icon.Stock_File, ICON_SIZE);
 			
 			// all categories
 			CATEGORIES = new CategoryInfo[] {
@@ -234,7 +236,7 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		private CategoryInfo _ci(Icons.Icon icon, string caption) {
-			return new CategoryInfo(RenderIcon(icon, IconSize.Button), caption);
+			return new CategoryInfo(RenderIcon(icon, ICON_SIZE), caption);
 		}
 		
 		private class CategoryInfo
