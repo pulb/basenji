@@ -44,6 +44,8 @@ namespace Basenji.Icons
 		public static Icon Stock_Add				{ get { return new Icon(Stock.Add);				  } }
 		[NameInCustomIconTheme("remove.png")]
 		public static Icon Stock_Remove				{ get { return new Icon(Stock.Remove);			  } }
+		[NameInCustomIconTheme("edit.png")]
+		public static Icon Stock_Edit				{ get { return new Icon(Stock.Edit);			  } }
 		[NameInCustomIconTheme("new.png")]
 		public static Icon Stock_New				{ get { return new Icon(Stock.New);				  } }
 		[NameInCustomIconTheme("open.png")]
