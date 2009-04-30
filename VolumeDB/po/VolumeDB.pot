@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-15 21:32+0200\n"
+"POT-Creation-Date: 2009-04-30 15:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,90 +16,90 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/Searching/EUSLSearchCriteria.cs:91
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:91
 msgid ""
 "Operand for keyword 'filesize' must be a number with an optional multiplier"
 msgstr ""
 
-#: src/Searching/EUSLSearchCriteria.cs:115
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:115
 msgid "Invalid compare operator for keyword 'filesize'"
 msgstr ""
 
-#: src/Searching/EUSLSearchCriteria.cs:125
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:125
 msgid "Operand for keyword 'type' must be a string"
 msgstr ""
 
-#: src/Searching/EUSLSearchCriteria.cs:134
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:134
 #, csharp-format
 msgid "Unknown type '{0}'"
 msgstr ""
 
-#: src/Searching/EUSLSearchCriteria.cs:140
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:140
 msgid "Keyword 'type' only supports '=' and ':' operators"
 msgstr ""
 
-#: src/Searching/EUSLSearchCriteria.cs:154
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:162
 #, csharp-format
 msgid "Unknown keyword '{0}'"
 msgstr ""
 
-#: src/Searching/EUSLSearchCriteria.cs:168
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:177
 msgid "Invalid compare operator for a keyword that maps to textual content"
 msgstr ""
 
-#: src/Searching/EUSLSearchCriteria.cs:221
-#: src/Searching/EUSLSearchCriteria.cs:225
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:230
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:234
 #, csharp-format
 msgid "Parsing error: search statement is malformed at position {0}"
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:154
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:155
 #, csharp-format
 msgid "Skipped item '{0}' as it doesn't seem to be a real directory."
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:164
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:270
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:165
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:271
 #, csharp-format
 msgid "Skipped symlink item '{0}' as the target does not exist."
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:170
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:262
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:273
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:171
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:263
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:274
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it appears to point to a different drive "
 "('{1}')."
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:239
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:240
 #, csharp-format
 msgid "Error opening file '{0}', can't retrieve any mime/metadata. ({1})"
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:276
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:277
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:285
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:286
 #, csharp-format
 msgid "Skipped item '{0}' as it appears to be some kind of special file."
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:300
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:301
 #, csharp-format
 msgid "Unable to dump dir '{0}'. ({1})"
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:451
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:452
 #, csharp-format
 msgid "Failed to resolve target item for symlink '{0}'."
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:493
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:494
 #, csharp-format
 msgid "Can't read LastWriteTime from item '{0}' ({1})."
 msgstr ""
