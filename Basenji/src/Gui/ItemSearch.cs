@@ -48,7 +48,7 @@ namespace Basenji.Gui
 		
 		private void BeginSearch() {
 			// make sure searching is enabled 
-			// (another search may be in progress or searchstring too short)			
+			// (searchstring may be too short)			
 			if (!btnSearch.Sensitive)
 				return;
 			
@@ -90,11 +90,11 @@ namespace Basenji.Gui
 						Application.Invoke((o, args) => SetStatus(S._("Too many search results. Please refine your search criteria.")));
 					} else {
 						//Application.Invoke((o, args) => SetStatus(Util.FormatExceptionMsg(e)));
+						Application.Invoke((o, args) => SetStatus(string.Empty));
 						throw;
 					}
 				} finally {
 					Application.Invoke((o, args) => {
-						btnSearch.Sensitive = true;						   
 						itemInfo.Clear();
 						itemInfo.Hide();
 					});
@@ -102,11 +102,9 @@ namespace Basenji.Gui
 			};
 			
 			try {
-				btnSearch.Sensitive = false;
 				SetStatus(S._("Searching..."));
 				database.BeginSearchItem(criteria, callback, DateTime.Now);
 			} catch(Exception) {
-				btnSearch.Sensitive = true;
 				SetStatus(string.Empty);
 				throw;			  
 			}

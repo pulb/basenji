@@ -345,7 +345,6 @@ namespace Basenji.Gui
 					}
 				} finally {
 					Application.Invoke(delegate {
-						txtSearchString.Sensitive = true;
 						// treeview filling has stolen the focus.
 						txtSearchString.GrabFocus();
 					});
@@ -353,7 +352,6 @@ namespace Basenji.Gui
 			};
 			
 			try {
-				txtSearchString.Sensitive = false;
 				SetStatus(S._("Searching..."));
 				
 				if (criteria != null)
@@ -361,7 +359,6 @@ namespace Basenji.Gui
 				else
 					database.BeginSearchVolume(cb, null);
 			} catch(Exception) {
-				txtSearchString.Sensitive = true;
 				SetStatus(string.Empty);
 				throw;			  
 			}
