@@ -435,10 +435,17 @@ namespace Basenji.Gui
 		
 		[GLib.ConnectBefore()]
 		private void OnTvVolumesButtonPressEvent(object o, ButtonPressEventArgs args) {
-			 if ((args.Event.Button == 1) && (args.Event.Type == Gdk.EventType.TwoButtonPress)) {
+			TreePath path;
+			tvVolumes.GetPathAtPos((int)args.Event.X, (int)args.Event.Y, out path);
+			if (path == null)
+				return;
+				
+			if ((args.Event.Button == 1) && (args.Event.Type == Gdk.EventType.TwoButtonPress)) {
 				EditVolume();
 			} else if ((args.Event.Button == 3) && (args.Event.Type == Gdk.EventType.ButtonPress)) {
-				volumeContextMenu.Popup();
+				uint btn = args.Event.Button;
+				uint time = args.Event.Time;
+				volumeContextMenu.Popup(null, null, null, btn, time);
 			}
 		}
 		
