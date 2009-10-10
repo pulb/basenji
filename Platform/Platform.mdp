@@ -4,25 +4,25 @@
       <Output directory="bin/Debug" assemblyKeyFile="." assembly="Platform" />
       <Build debugmode="True" target="Library" />
       <Execution runwithwarnings="True" consolepause="False" runtime="MsNet" clr-version="Net_2_0" />
-      <CodeGeneration compiler="Mcs" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" definesymbols="UNIX,DEBUG" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
+      <CodeGeneration compiler="Mcs" warninglevel="3" optimize="False" unsafecodeallowed="False" generateoverflowchecks="True" definesymbols="UNIX,DEBUG" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
     </Configuration>
     <Configuration name="Release" ctype="DotNetProjectConfiguration">
       <Output directory="bin/Release" assemblyKeyFile="." assembly="Platform" />
       <Build debugmode="False" target="Library" />
       <Execution runwithwarnings="True" consolepause="False" runtime="MsNet" clr-version="Net_2_0" />
-      <CodeGeneration compiler="Mcs" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" definesymbols="UNIX" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
+      <CodeGeneration compiler="Mcs" warninglevel="3" optimize="True" unsafecodeallowed="False" generateoverflowchecks="False" definesymbols="UNIX" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
     </Configuration>
     <Configuration name="Gnome_Debug" ctype="DotNetProjectConfiguration">
       <Output directory="bin/Debug" assemblyKeyFile="." assembly="Platform" />
       <Build debugmode="True" target="Library" />
       <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_2_0" />
-      <CodeGeneration compiler="Mcs" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" definesymbols="UNIX,DEBUG,GNOME" generatexmldocumentation="False" additionalargs="-pkg:gnome-sharp-2.0" ctype="CSharpCompilerParameters" />
+      <CodeGeneration compiler="Mcs" warninglevel="3" optimize="False" unsafecodeallowed="False" generateoverflowchecks="True" definesymbols="UNIX,DEBUG,GNOME" generatexmldocumentation="False" additionalargs="-pkg:gnome-sharp-2.0" ctype="CSharpCompilerParameters" />
     </Configuration>
     <Configuration name="Gnome_Release" ctype="DotNetProjectConfiguration">
       <Output directory="bin/Release" assemblyKeyFile="." assembly="Platform" />
       <Build debugmode="False" target="Library" />
       <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_2_0" />
-      <CodeGeneration compiler="Mcs" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" definesymbols="UNIX,GNOME" generatexmldocumentation="False" additionalargs="-pkg:gnome-sharp-2.0" ctype="CSharpCompilerParameters" />
+      <CodeGeneration compiler="Mcs" warninglevel="3" optimize="True" unsafecodeallowed="False" generateoverflowchecks="False" definesymbols="UNIX,GNOME" generatexmldocumentation="False" additionalargs="-pkg:gnome-sharp-2.0" ctype="CSharpCompilerParameters" />
     </Configuration>
   </Configurations>
   <Contents>
