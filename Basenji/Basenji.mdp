@@ -72,6 +72,7 @@
     <File name="src/Gui/Widgets/PageNavigation.cs" subtype="Code" buildaction="Compile" />
     <File name="src/Gui/Widgets/VolumeEditEvents.cs" subtype="Code" buildaction="Compile" />
     <File name="src/Gui/Widgets/PageNavigationEvents.cs" subtype="Code" buildaction="Compile" />
+    <File name="LibExtractor.dll.config" subtype="Code" buildaction="FileCopy" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
