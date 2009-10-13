@@ -59,9 +59,17 @@ namespace Basenji.Gui
 			bool enableHashing		= App.Settings.ScannerComputeHashs;
 			bool discardSymLinks	= App.Settings.ScannerDiscardSymLinks;
 			bool generateThumbnails	= App.Settings.ScannerGenerateThumbnails;
-			
+			bool extractMetaData	= App.Settings.ScannerExtractMetaData;
+
 			// TODO : scanner = VolumeProber.GetScanner(device,...)
-			scanner = new FilesystemVolumeScanner(device, database, bufferSize, enableHashing, discardSymLinks, generateThumbnails, DbData.GetDbDataPath(database));
+			scanner = new FilesystemVolumeScanner(device,
+			                                      database,
+			                                      bufferSize,
+			                                      enableHashing,
+			                                      discardSymLinks,
+			                                      generateThumbnails,
+			                                      extractMetaData,
+			                                      DbData.GetDbDataPath(database));
 			
 			// scanner eventhandlers
 			scanner.BeforeScanItem	  += scanner_BeforeScanItem;

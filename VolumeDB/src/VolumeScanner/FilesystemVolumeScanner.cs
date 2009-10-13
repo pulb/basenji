@@ -27,6 +27,7 @@ using Platform.Common.IO;
 using Platform.Common.Mime;
 using VolumeDB.Searching;
 using VolumeDB.Searching.ItemSearchCriteria;
+using LibExtractor;
 
 namespace VolumeDB.VolumeScanner
 {
@@ -43,14 +44,18 @@ namespace VolumeDB.VolumeScanner
 		private List<SymLinkItem>	symLinkItems;
 		private bool				discardSymLinks;
 		private bool				generateThumbnails;
+		private bool				extractMetaData;
 		private Paths				paths;
 		private ThumbnailGenerator	thumbGen;
+		private Extractor			extractor;
 
 		// note:
 		// do not allow to modify the constuctor parameters (i.e. discardSymlinks, generateThumbnails, dbDataPath)
 		// through public properties later, since the scanner may already use them after scanning has been started.
-		public FilesystemVolumeScanner(string device, VolumeDatabase database, int bufferSize, bool computeHashs) : this(device, database, bufferSize, computeHashs, false, false, null) {}
-		public FilesystemVolumeScanner(string device, VolumeDatabase database, int bufferSize, bool computeHashs, bool discardSymLinks, bool generateThumbnails, string dbDataPath)
+		public FilesystemVolumeScanner(string device, VolumeDatabase database, int bufferSize, bool computeHashs)
+			: this(device, database, bufferSize, computeHashs, false, false, false, null) {}
+		
+		public FilesystemVolumeScanner(string device, VolumeDatabase database, int bufferSize, bool computeHashs, bool discardSymLinks, bool generateThumbnails, bool extractMetaData, string dbDataPath)
 			: base(device, true, database, bufferSize, computeHashs)
 		{
 		
@@ -63,8 +68,18 @@ namespace VolumeDB.VolumeScanner
 			this.symLinkItems		= new List<SymLinkItem>();
 			this.discardSymLinks	= discardSymLinks;			
 			this.generateThumbnails	= generateThumbnails;
+			this.extractMetaData	= extractMetaData;
 			this.paths				= new Paths(dbDataPath, null, null);
 			this.thumbGen			= new ThumbnailGenerator();
+
+			this.extractor			= null;
+			if (extractMetaData) {
+				try {
+					this.extractor	= Extractor.GetDefault();
+				} catch(DllNotFoundException) {
+					// a warning will be sent in ScanningThreadMain().
+				}
+			}
 		}
 		
 		internal override void ScanningThreadMain(Platform.Common.IO.DriveInfo driveInfo, FileSystemVolume volume, BufferedVolumeItemWriter writer, bool computeHashs) {
@@ -82,6 +97,10 @@ namespace VolumeDB.VolumeScanner
 					// thumbnails will be stored in <dbdataPath>/<volumeID>/thumbs
 					paths.thumbnailPath = Path.Combine(paths.volumeDataPath, "thumbs");
 					Directory.CreateDirectory(paths.thumbnailPath);
+				}
+
+				if (extractMetaData && extractor == null) {
+					SendScannerWarning(S._("libExtractor not found. Metadata extraction disabled."));
 				}
 				
 				string rootPath = driveInfo.RootPath;
@@ -118,10 +137,14 @@ namespace VolumeDB.VolumeScanner
 		protected override void Dispose(bool disposing) {
 			if (!disposed) {
 				if (disposing) {
-					thumbGen.Dispose();				
+					thumbGen.Dispose();
+
+					if (extractor != null)
+						extractor.Dispose();
 				}
 
 				thumbGen		= null;
+				extractor		= null;
 				sbPathFixer		= null;
 				symLinkItems	= null;
 				paths			= null;
@@ -219,9 +242,9 @@ namespace VolumeDB.VolumeScanner
 							
 							mimeType = MimeType.GetMimeTypeForFile(files[i].FullName);
 							
-							// TODO : call a appropriate parser for the mimetype here
-							// metaData = parser.GetMetaData();
-							// fs.Seek(0, SeekOrigin.Begin);
+							if (extractMetaData && extractor != null) {
+								metaData = FormatExtractorKeywords(extractor.GetKeywords(files[i].FullName));
+							}
 							
 							if (computeHashs) {
 								hash = ComputeHash(fs);
@@ -584,6 +607,31 @@ namespace VolumeDB.VolumeScanner
 				foreach (byte b in hash)
 					sb.Append(b.ToString("X2"));
 			//}
+			return sb.ToString();
+		}
+
+		private static string FormatExtractorKeywords(Keyword[] keywords) {
+			if (keywords == null || keywords.Length == 0)
+				return null;
+
+			StringBuilder sb = new StringBuilder();
+			foreach(Keyword kw in keywords) {
+				// skip data that is already available in other
+				// database fields or unreliable.
+				if (	(kw.keywordType == KeywordType.EXTRACTOR_MIMETYPE) ||
+				    	(kw.keywordType == KeywordType.EXTRACTOR_THUMBNAILS) ||
+				    	(kw.keywordType == KeywordType.EXTRACTOR_THUMBNAIL_DATA)
+				    )
+						continue;
+				
+				if (sb.Length > 0)
+					sb.Append(';');
+				
+				sb.Append((int)kw.keywordType);
+				sb.Append(':');
+				sb.Append(kw.keyword);
+			}
+
 			return sb.ToString();
 		}
 		

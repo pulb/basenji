@@ -17,6 +17,9 @@
 //
 
 using System;
+using System.Collections.Generic;
+using LibExtractor;
+
 // TODO : IDiposable to free VolumeDatabase? (if yes, do so in Volume class as well!)
 namespace VolumeDB
 {
@@ -278,6 +281,33 @@ namespace VolumeDB
 			}
 		}
 		#endregion
+
+		/// <summary>
+		/// Parses the raw metadata and returns a (type, keyword) dictionary.
+		/// </summary>
+		/// <returns>
+		/// A <see cref="Dictionary"/> containing (type, keyword) pairs.
+		/// </returns>
+		public Dictionary<String, String> ParseMetaData() {
+			Dictionary<string, string> dict = new Dictionary<string, string>();
+
+			if (string.IsNullOrEmpty(metaData))
+			    return dict;
+
+			string[] pairs = metaData.Split(new char[] { ';' });
+			char[] sep = { ':' };
+			foreach (string pair in pairs) {
+				string[] p = pair.Split(sep);
+				KeywordType type = (KeywordType)int.Parse(p[0]);
+				string keyword = p[1];
+
+				// may throw DllNotFoundException
+				string typestr = Extractor.GetKeywordTypeAsString(type);
+				dict.Add(typestr, keyword);
+			}
+
+			return dict;
+		}
 		
 		public override string ToString() {
 			return Name;		

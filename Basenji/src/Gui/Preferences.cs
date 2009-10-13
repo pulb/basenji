@@ -189,6 +189,7 @@ namespace Basenji.Gui
 			
 //			  scaleBufferSize.Value		  	= s.ScannerBufferSize;
 			chkGenerateThumbnails.Active	= s.ScannerGenerateThumbnails;
+			chkExtractMetaData.Active		= s.ScannerExtractMetaData;
 			chkDiscardSymLinks.Active		= s.ScannerDiscardSymLinks;
 			chkComputeHashs.Active			= s.ScannerComputeHashs;
 		}
@@ -214,6 +215,7 @@ namespace Basenji.Gui
 			
 //			  App.Settings.ScannerBufferSize	  = (int)scaleBufferSize.Value;
 			App.Settings.ScannerGenerateThumbnails	= chkGenerateThumbnails.Active;
+			App.Settings.ScannerExtractMetaData		= chkExtractMetaData.Active;
 			App.Settings.ScannerDiscardSymLinks 	= chkDiscardSymLinks.Active;
 			App.Settings.ScannerComputeHashs		= chkComputeHashs.Active;
 			
@@ -233,6 +235,7 @@ namespace Basenji.Gui
 		private ComboBox	cmbScannerDevice;
 //		private HScale		scaleBufferSize;
 		private CheckButton chkGenerateThumbnails;
+		private CheckButton chkExtractMetaData;
 		private CheckButton chkDiscardSymLinks;
 		private CheckButton chkComputeHashs;
 		private Button		btnReset;
@@ -305,7 +308,7 @@ namespace Basenji.Gui
 		}
 		
 		private void AppendScannerPage(Notebook nb) {
-			Table tbl = CreateTable(4, 2);
+			Table tbl = CreateTable(5, 2);
 			tbl.BorderWidth = 12;
 			
 			// labels
@@ -333,14 +336,18 @@ namespace Basenji.Gui
 			// FIXME : currently thumbnail generation is implemented for GNOME only
 			if (!Platform.Common.Diagnostics.CurrentPlatform.IsGnome)
 				chkGenerateThumbnails.Sensitive = false;
+
+			// checkbox discardSymLinks
+			chkExtractMetaData = new CheckButton(S._("Extract metadata"));
+			TblAttach(tbl, chkExtractMetaData, 0, 2, 2, 1, AttachOptions.Fill, AttachOptions.Fill);
 			
 			// checkbox discardSymLinks
 			chkDiscardSymLinks = new CheckButton(S._("Discard symbolic links"));
-			TblAttach(tbl, chkDiscardSymLinks, 0, 2, 2, 1, AttachOptions.Fill, AttachOptions.Fill);
+			TblAttach(tbl, chkDiscardSymLinks, 0, 3, 2, 1, AttachOptions.Fill, AttachOptions.Fill);
 			
 			// checkbox computeHashs
 			chkComputeHashs = new CheckButton(S._("Compute hashcodes for files (slow!)"));
-			TblAttach(tbl, chkComputeHashs, 0, 3, 2, 1, AttachOptions.Fill, AttachOptions.Fill);			
+			TblAttach(tbl, chkComputeHashs, 0, 4, 2, 1, AttachOptions.Fill, AttachOptions.Fill);			
 			
 			nb.AppendPage(tbl, new Label(S._("Scanner")));		 
 		}

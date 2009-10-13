@@ -3,6 +3,7 @@ Hal/bin
 Platform/bin
 Platform.Common.DB/bin
 VolumeDB/bin
+LibExtractor/bin
 *.pidb
 *.userprefs
 *.usertasks
