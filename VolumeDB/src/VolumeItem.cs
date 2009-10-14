@@ -28,7 +28,11 @@ namespace VolumeDB
 	/// </summary>
 	public abstract class VolumeItem : VolumeDBDataType, IChildItem
 	{
-		public const int MAX_NAME_LENGTH		= 64;
+		// length constants used by 
+		// - client programs to validate user input
+		// - VolumeDatabase when creating tables
+		// - this class to validate property values
+		public const int MAX_NAME_LENGTH		= 256;
 		public const int MAX_NOTE_LENGTH		= 4096;
 		public const int MAX_KEYWORDS_LENGTH	= 4096;
 
