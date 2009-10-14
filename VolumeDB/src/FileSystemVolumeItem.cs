@@ -100,11 +100,7 @@ namespace VolumeDB
 		#region read-only properties
 		public string Location {
 			get { return location ?? string.Empty; }
-			internal set {
-				//ValidatePath(value);
-				EnsurePropertyLength(value, MAX_LOCATION_LENGTH);
-				location = value;
-			}
+			internal set { location = value; }
 		}
 
 		//public DateTime CreatedDate

@@ -27,9 +27,9 @@ namespace VolumeDB
 	public abstract class Volume : VolumeDBDataType
 	{	
 		// length constants used by 
-		// - client programs to validate user input
+		// - client programs to validate user input		
+		// - this class to validate _user_ input to _public_ properties
 		// - VolumeDatabase when creating tables
-		// - this class to validate property values
 		public const int MAX_TITLE_LENGTH		= 64;
 		public const int MAX_ARCHIVE_NO_LENGTH	= 16;
 		public const int MAX_LOANED_TO_LENGTH	= 64;

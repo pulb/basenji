@@ -29,9 +29,9 @@ namespace VolumeDB
 	public abstract class VolumeItem : VolumeDBDataType, IChildItem
 	{
 		// length constants used by 
-		// - client programs to validate user input
+		// - client programs to validate user input		
+		// - this class to validate _user_ input to _public_ properties
 		// - VolumeDatabase when creating tables
-		// - this class to validate property values
 		public const int MAX_NAME_LENGTH		= 256;
 		public const int MAX_NOTE_LENGTH		= 4096;
 		public const int MAX_KEYWORDS_LENGTH	= 4096;
@@ -243,26 +243,17 @@ namespace VolumeDB
 
 		public string Name {
 			get				{ return name ?? string.Empty; }
-			internal set	{
-				EnsurePropertyLength(value, MAX_NAME_LENGTH);
-				name = value;
-			}
+			internal set	{ name = value; }
 		}
 		
 		public string MimeType {
 			get				{ return mimeType ?? string.Empty; }
-			internal set	{
-				EnsurePropertyLength(value, MAX_MIMETYPE_LENGTH);
-				mimeType = value;
-			}
+			internal set	{ mimeType = value; }
 		}
 		
 		public string MetaData {
 			get				{ return metaData ?? string.Empty; }
-			internal set	{
-				EnsurePropertyLength(value, MAX_METADATA_LENGTH);
-				metaData = value;
-			}
+			internal set	{ metaData = value;	}
 		}
 
 		#endregion

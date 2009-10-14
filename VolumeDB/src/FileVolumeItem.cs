@@ -113,10 +113,7 @@ namespace VolumeDB
 
 		public string Hash {
 			get				{ return hash ?? string.Empty; }
-			internal set	{
-				EnsurePropertyLength(value, VolumeItem.MAX_HASH_LENGTH);
-				hash = value;
-			}
+			internal set	{ hash = value; }
 		}
 		
 		#endregion
