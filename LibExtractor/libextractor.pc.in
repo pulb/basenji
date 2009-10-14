@@ -1,0 +1,6 @@
+Name: LibExtractor
+Description: LibExtractor
+Version: 
+
+Requires: 
+Libs: -r:@expanded_libdir@/@PACKAGE@/LibExtractor.dll

@@ -1,8 +1,8 @@
 <Combine fileversion="2.0" name="Basenji">
   <Policies>
-    <StandardHeader inheritsSet="LGPLv2License" />
-    <DotNetNamingPolicy DirectoryNamespaceAssociation="None" ResourceNamePolicy="FileFormatDefault" />
     <TextStylePolicy FileWidth="120" TabWidth="4" TabsToSpaces="False" NoTabsAfterNonTabs="False" RemoveTrailingWhitespace="True" EolMarker="Unix" />
+    <DotNetNamingPolicy DirectoryNamespaceAssociation="None" ResourceNamePolicy="FileFormatDefault" />
+    <StandardHeader inheritsSet="LGPLv2License" />
   </Policies>
   <Configurations active="Gnome_Debug">
     <Configuration name="Debug" ctype="CombineConfiguration">
@@ -27,7 +27,7 @@
       <Entry build="True" name="Platform" configuration="Gnome_Debug" />
       <Entry build="True" name="Platform.Common.DB" configuration="Debug" />
       <Entry build="True" name="Hal" configuration="Debug" />
-      <Entry build="True" name="LibExtractor" configuration="Gnome_Debug" />
+      <Entry build="True" name="LibExtractor" configuration="Debug" />
     </Configuration>
     <Configuration name="Gnome_Release" ctype="CombineConfiguration">
       <Entry build="True" name="Basenji" configuration="Release" />
@@ -35,7 +35,7 @@
       <Entry build="True" name="Platform" configuration="Gnome_Release" />
       <Entry build="True" name="Platform.Common.DB" configuration="Release" />
       <Entry build="True" name="Hal" configuration="Release" />
-      <Entry build="True" name="LibExtractor" configuration="Gnome_Release" />
+      <Entry build="True" name="LibExtractor" configuration="Release" />
     </Configuration>
   </Configurations>
   <StartMode startupentry="Basenji" single="True">

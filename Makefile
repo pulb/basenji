@@ -12,16 +12,16 @@ include $(top_srcdir)/rules.make
 
 #Warning: This is an automatically generated file, do not edit!
 ifeq ($(CONFIG),DEBUG)
- SUBDIRS =  Platform.Common.DB Hal Platform VolumeDB Basenji
+ SUBDIRS =  Platform.Common.DB Hal LibExtractor Platform VolumeDB Basenji
 endif
 ifeq ($(CONFIG),RELEASE)
- SUBDIRS =  Platform.Common.DB Hal Platform VolumeDB Basenji
+ SUBDIRS =  Platform.Common.DB Hal LibExtractor Platform VolumeDB Basenji
 endif
 ifeq ($(CONFIG),GNOME_DEBUG)
- SUBDIRS =  Platform.Common.DB Hal Platform VolumeDB Basenji
+ SUBDIRS =  Platform.Common.DB Hal LibExtractor Platform VolumeDB Basenji
 endif
 ifeq ($(CONFIG),GNOME_RELEASE)
- SUBDIRS =  Platform.Common.DB Hal Platform VolumeDB Basenji
+ SUBDIRS =  Platform.Common.DB Hal LibExtractor Platform VolumeDB Basenji
 endif
 
 
