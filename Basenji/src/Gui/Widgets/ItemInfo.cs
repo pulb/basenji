@@ -99,14 +99,14 @@ namespace Basenji.Gui.Widgets
 			Table tbl = WindowBase.CreateTable(5, 3);
 			
 			// caption labels
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("<b>Name:</b>"), true), 0, 0);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("<b>Location:</b>"), true), 0, 1);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("<b>Last write time:</b>"), true), 0, 2);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("<b>Size:</b>"), true), 0, 3);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("<b>Hash:</b>"), true), 0, 4);
-			
+			tbl.Attach(WindowBase.CreateLabel(S._("<b>Name:</b>"), true, true), 0, 1, 0, 1);
+			tbl.Attach(WindowBase.CreateLabel(S._("<b>Location:</b>"), true, true), 0, 1, 1, 2);
+			tbl.Attach(WindowBase.CreateLabel(S._("<b>Last write time:</b>"), true, true), 0, 1, 2, 3);
+			tbl.Attach(WindowBase.CreateLabel(S._("<b>Size:</b>"), true, true), 0, 1, 3, 4);
+			tbl.Attach(WindowBase.CreateLabel(S._("<b>Hash:</b>"), true, true), 0, 1, 4, 5);
+						
 			// value labels
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(item.Name), 1, 0);
+			tbl.Attach(WindowBase.CreateLabel(item.Name, false, true), 1, 2, 0, 1);
 			
 			string location;
 			if (item.IsSymLink) {
@@ -123,8 +123,8 @@ namespace Basenji.Gui.Widgets
 				location = item.Location;
 			}
 
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(location, true), 1, 1);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(item.LastWriteTime.ToString()), 1, 2);
+			tbl.Attach(WindowBase.CreateLabel(location, true, true), 1, 2, 1, 2);
+			tbl.Attach(WindowBase.CreateLabel(item.LastWriteTime.ToString(), false, true), 1, 2, 2, 3);
 
 			string sizeStr, hash;
 			if (item is FileVolumeItem) {
@@ -136,8 +136,8 @@ namespace Basenji.Gui.Widgets
 				hash = null;
 			}
 
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(sizeStr), 1, 3);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(string.IsNullOrEmpty(hash) ? "-" : hash), 1, 4);
+			tbl.Attach(WindowBase.CreateLabel(sizeStr, false, true), 1, 2, 3, 4);
+			tbl.Attach(WindowBase.CreateLabel(string.IsNullOrEmpty(hash) ? "-" : hash, false, true), 1, 2, 4, 5);
 			
 			return tbl;
 		}

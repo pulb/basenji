@@ -318,7 +318,7 @@ namespace Basenji.Gui.Widgets
 			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Archive No.:")),			0, 0);
 			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Category:")),				0, 1);
 			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Title:")),				0, 2);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Description:"), false, 	0F, 0F),   0, 3);
+			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Description:"), false, false,	0F, 0F),   0, 3);
 			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Keywords:")),				0, 4);
 			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Loaned to:")),			0, 5);
 			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Loaned date:")),			0, 6);
