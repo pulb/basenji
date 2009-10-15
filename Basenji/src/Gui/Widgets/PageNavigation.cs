@@ -200,7 +200,7 @@ namespace Basenji.Gui.Widgets
 			HBox hbox = new HBox();
 			hbox.Spacing = 6;
 			
-			lbl = WindowBase.CreateLabel(string.Empty, true, false, 0.5F, 0.5F);
+			lbl = WindowBase.CreateLabel(string.Empty, true, 0.5F, 0.5F);
 			hbox.PackStart(lbl, true, true, 0);
 			
 			prev = WindowBase.CreateCustomButton(Icons.Icon.Stock_GoBack.Render(this, IconSize.Button), null, OnBtnPrevClicked); 

@@ -58,17 +58,13 @@ namespace Basenji.Gui.Base
 		
 		internal static Label CreateLabel() { return CreateLabel(string.Empty); }
 		internal static Label CreateLabel(string caption) { return CreateLabel(caption, false); }
-		internal static Label CreateLabel(string caption, bool useMarkup) { return CreateLabel(caption, useMarkup, false, 0.0f, 0.5f); }
-		internal static Label CreateLabel(string caption, bool useMarkup, bool ellipsize) { return CreateLabel(caption, useMarkup, ellipsize, 0.0f, 0.5f); }
-		internal static Label CreateLabel(string caption, bool useMarkup, bool ellipsize, float xalign, float yalign) {
+		internal static Label CreateLabel(string caption, bool useMarkup) { return CreateLabel(caption, useMarkup, 0.0f, 0.5f); }
+		internal static Label CreateLabel(string caption, bool useMarkup, float xalign, float yalign) {
 			Label lbl = new Label();
 			lbl.UseMarkup = useMarkup;
 			lbl.Xalign = xalign;
 			lbl.Yalign = yalign;
 			lbl.LabelProp = caption;
-
-			if (ellipsize)
-				lbl.Ellipsize = Pango.EllipsizeMode.End;
 			
 			return lbl;
 		}

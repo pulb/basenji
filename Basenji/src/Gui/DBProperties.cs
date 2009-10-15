@@ -87,7 +87,7 @@ namespace Basenji.Gui
 			
 			// labels
 			TblAttach(tbl, CreateLabel(S._("Name:")), 0, 0);
-			TblAttach(tbl, CreateLabel(S._("Description:"), false, false, 0.0f, 0.0f), 0, 1);
+			TblAttach(tbl, CreateLabel(S._("Description:"), false, 0.0f, 0.0f), 0, 1);
 			TblAttach(tbl, CreateLabel(S._("Created:")), 0, 2);
 			
 			// name entry

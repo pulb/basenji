@@ -406,7 +406,7 @@ namespace Basenji.Gui
 			vbVolEdit.BorderWidth = 12;
 			
 			volEdit = Widgets.VolumeEdit.CreateInstance(scanner.VolumeInfo.GetVolumeType());
-			vbVolEdit.PackStart(CreateLabel(S._("<b>Volume Information:</b>"), true, false, 0, 0), false, false, 0);
+			vbVolEdit.PackStart(CreateLabel(S._("<b>Volume Information:</b>"), true, 0, 0), false, false, 0);
 			vbVolEdit.PackStart(LeftAlign(volEdit), true, true, 0);
 			
 			vbOuter.PackStart(vbVolEdit, false, false, 0);
@@ -416,7 +416,7 @@ namespace Basenji.Gui
 			vbScannerLog.Spacing = 6;
 			vbScannerLog.BorderWidth = 12;
 			
-			vbScannerLog.PackStart(CreateLabel(S._("<b>Scanner Log:</b>"), true, false, 0, 0), false, false, 0);
+			vbScannerLog.PackStart(CreateLabel(S._("<b>Scanner Log:</b>"), true, 0, 0), false, false, 0);
 			vbScannerLog.PackStart(LeftAlign(CreateScrolledView<TreeView>(out tvLog, false)), true, true, 0);			 
 			
 			vbOuter.PackStart(vbScannerLog, true, true, 0);

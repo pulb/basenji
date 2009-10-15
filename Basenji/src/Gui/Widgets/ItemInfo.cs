@@ -99,32 +99,33 @@ namespace Basenji.Gui.Widgets
 			Table tbl = WindowBase.CreateTable(5, 3);
 			
 			// caption labels
-			tbl.Attach(WindowBase.CreateLabel(S._("<b>Name:</b>"), true, true), 0, 1, 0, 1);
-			tbl.Attach(WindowBase.CreateLabel(S._("<b>Location:</b>"), true, true), 0, 1, 1, 2);
-			tbl.Attach(WindowBase.CreateLabel(S._("<b>Last write time:</b>"), true, true), 0, 1, 2, 3);
-			tbl.Attach(WindowBase.CreateLabel(S._("<b>Size:</b>"), true, true), 0, 1, 3, 4);
-			tbl.Attach(WindowBase.CreateLabel(S._("<b>Hash:</b>"), true, true), 0, 1, 4, 5);
+			AttachTooltipLabel(S._("Name:"), "b", tbl, 0, 0);
+			AttachTooltipLabel(S._("Location:"), "b", tbl, 0, 1);
+			AttachTooltipLabel(S._("Last write time:"), "b", tbl, 0, 2);
+			AttachTooltipLabel(S._("Size:"), "b", tbl, 0, 3);
+			AttachTooltipLabel(S._("Hash:"), "b", tbl, 0, 4);
 						
 			// value labels
-			tbl.Attach(WindowBase.CreateLabel(item.Name, false, true), 1, 2, 0, 1);
+		 	AttachTooltipLabel(item.Name, null, tbl, 1, 0);
 			
-			string location;
+			//string location;
+			string symlinkTargetPath = null;
 			if (item.IsSymLink) {
 				FileSystemVolumeItem targetItem = item.GetSymLinkTargetItem();
 				
-				string targetPath;
+				//string targetPath;
 				if (targetItem.Location != "/" && targetItem.Name != "/")
-					targetPath = string.Format("{0}/{1}", targetItem.Location, targetItem.Name);
+					symlinkTargetPath = string.Format("{0}/{1}", targetItem.Location, targetItem.Name);
 				else
-					targetPath = targetItem.Location + targetItem.Name;
+					symlinkTargetPath = targetItem.Location + targetItem.Name;
 				
-				location = string.Format(S._("{0} <i>(link to {1}</i>)"), item.Location, targetPath);
-			} else {
-				location = item.Location;
+				//location = string.Format(S._("{0} <i>(link to {1}</i>)"), item.Location, targetPath);
+			//} else {
+				//location = item.Location;
 			}
 
-			tbl.Attach(WindowBase.CreateLabel(location, true, true), 1, 2, 1, 2);
-			tbl.Attach(WindowBase.CreateLabel(item.LastWriteTime.ToString(), false, true), 1, 2, 2, 3);
+			AttachTooltipLabel(item.Location, null, tbl, 1, 1);
+			AttachTooltipLabel(item.LastWriteTime.ToString(), null, tbl, 1, 2);
 
 			string sizeStr, hash;
 			if (item is FileVolumeItem) {
@@ -136,10 +137,24 @@ namespace Basenji.Gui.Widgets
 				hash = null;
 			}
 
-			tbl.Attach(WindowBase.CreateLabel(sizeStr, false, true), 1, 2, 3, 4);
-			tbl.Attach(WindowBase.CreateLabel(string.IsNullOrEmpty(hash) ? "-" : hash, false, true), 1, 2, 4, 5);
+		 	AttachTooltipLabel(sizeStr, null, tbl, 1, 3);
+			AttachTooltipLabel(string.IsNullOrEmpty(hash) ? "-" : hash, null, tbl, 1, 4);
 			
 			return tbl;
+		}
+
+		private static void AttachTooltipLabel(string caption, string tag, Table tbl, int x, int y) {
+			Label lbl;
+
+			if (!string.IsNullOrEmpty(tag))
+				lbl = WindowBase.CreateLabel(String.Format("<{0}>{1}</{0}>", tag, caption), true);
+			else
+				lbl = WindowBase.CreateLabel(caption, false);
+			
+			lbl.Ellipsize = Pango.EllipsizeMode.End;
+			lbl.TooltipText = caption;
+			
+			tbl.Attach(lbl, (uint)x, (uint)(x + 1), (uint)y, (uint)(y + 1));
 		}
 		
 		private Box CreateBox(VolumeItem item, VolumeDatabase db, Table tbl) {
