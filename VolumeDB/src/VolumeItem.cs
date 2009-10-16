@@ -298,7 +298,11 @@ namespace VolumeDB
 
 				// may throw DllNotFoundException
 				string typestr = Extractor.GetKeywordTypeAsString(type);
-				dict.Add(typestr, keyword);
+				string existing;
+				if (dict.TryGetValue(typestr, out existing))
+					dict[typestr] =  string.Format("{0}, {1}", existing, keyword);
+				else
+					dict.Add(typestr, keyword);
 			}
 
 			return dict;
