@@ -255,8 +255,8 @@ namespace Basenji.Gui.Widgets
 						}
 
 #if DEBUG
-					 Platform.Common.Diagnostics.Debug.WriteLine(
-						String.Format("{0}: {1}", pair.Key, pair.Value));
+					 	Platform.Common.Diagnostics.Debug.WriteLine(
+							String.Format("{0}: {1}", pair.Key, pair.Value));
 #endif
 				 	}
 				} catch(DllNotFoundException) { /* libextractor package not installed */}
