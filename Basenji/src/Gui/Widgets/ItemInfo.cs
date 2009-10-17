@@ -114,11 +114,6 @@ namespace Basenji.Gui.Widgets
 				
 				AttachTooltipLabel(String.Format("{0}:", p.name), "b", tbl, x, y);
 				AttachTooltipLabel(p.value, null, tbl, x + 1, y);
-
-#if DEBUG
-			 Platform.Common.Diagnostics.Debug.WriteLine(
-				String.Format("Keyword: {0}, Value: {1}", p.name, p.value));
-#endif
 			}
 			return tbl;
 		}
@@ -258,6 +253,11 @@ namespace Basenji.Gui.Widgets
 							string[] filenames = pair.Value.Split(new char[] { ',' });
 							properties.Add(new ItemProperty(S._("File count"), filenames.Length.ToString(), 117));
 						}
+
+#if DEBUG
+					 Platform.Common.Diagnostics.Debug.WriteLine(
+						String.Format("{0}: {1}", pair.Key, pair.Value));
+#endif
 				 	}
 				} catch(DllNotFoundException) { /* libextractor package not installed */}
 	
