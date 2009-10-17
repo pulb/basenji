@@ -120,14 +120,18 @@ namespace Basenji.Gui.Widgets
 		
 		private static void AttachTooltipLabel(string caption, string tag, Table tbl, int x, int y) {
 			Label lbl;
+			string tooltip = caption;
 
+			// remove linebreaks
+			caption = caption.Replace('\n', ' ').Replace('\r', ' ');
+			
 			if (!string.IsNullOrEmpty(tag))
 				lbl = WindowBase.CreateLabel(String.Format("<{0}>{1}</{0}>", tag, caption), true);
 			else
 				lbl = WindowBase.CreateLabel(caption, false);
 			
 			lbl.Ellipsize = Pango.EllipsizeMode.End;
-			lbl.TooltipText = caption;
+			lbl.TooltipText = tooltip;
 			
 			tbl.Attach(lbl, (uint)x, (uint)(x + 1), (uint)y, (uint)(y + 1));
 		}
