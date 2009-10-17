@@ -58,9 +58,9 @@ namespace VolumeDB
 			if (string.IsNullOrEmpty(strPacked))
 				return null;
 
-			int headerEndIdx = strPacked.IndexOf('>');
-			string strHeader = strPacked.Substring(1,  headerEndIdx - 1);
-			strPacked = strPacked.Remove(0, headerEndIdx + 1);
+			int headerEndIdx	= strPacked.IndexOf('>');
+			string strHeader	= strPacked.Substring(1,  headerEndIdx - 1);
+			strPacked			= strPacked.Remove(0, headerEndIdx + 1);
 
 			string[] headerVals = strHeader.Split(new char[] { ':' });
 			Keyword[] keywords = new Keyword[headerVals.Length / 2];
