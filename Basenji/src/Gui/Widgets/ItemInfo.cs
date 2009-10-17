@@ -16,8 +16,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-// TODO : show meta info (e.g. mp3 bitrate, width/height of pictures...) 
-// of files rather than/additional to generic file info
 using System;
 using System.IO;
 using System.Collections.Generic;
@@ -30,9 +28,10 @@ namespace Basenji.Gui.Widgets
 {
 	public partial class ItemInfo : BinBase
 	{
-		private const int MAX_THUMB_WIDTH	= 100;
-		private const int MAX_THUMB_HEIGHT	= 100;
-		private const IconSize ICON_SIZE	= IconSize.Dialog;
+		private const int MAX_ITEM_PROPERTIES	= 12; // must be a multiple of 2
+		private const int MAX_THUMB_WIDTH		= 100;
+		private const int MAX_THUMB_HEIGHT		= 100;
+		private const IconSize ICON_SIZE		= IconSize.Dialog;
 
 		private ItemIcons itemIcons;
 		private Dictionary<string, Gdk.Pixbuf> thumbnailCache;
@@ -92,57 +91,38 @@ namespace Basenji.Gui.Widgets
 			frame.Add(eventBox);
 			this.Add(frame);
 		}
-		
+
 		private static Table CreateFSInfoTable(FileSystemVolumeItem item) {
-			bool isHashed = (item is FileVolumeItem) && !string.IsNullOrEmpty(((FileVolumeItem)item).Hash);
+			ItemProperty[] properties = ItemProperty.GetFSItemProperties(item);
 
-			Table tbl = WindowBase.CreateTable(5, 3);
-			
-			// caption labels
-			AttachTooltipLabel(S._("Name:"), "b", tbl, 0, 0);
-			AttachTooltipLabel(S._("Location:"), "b", tbl, 0, 1);
-			AttachTooltipLabel(S._("Last write time:"), "b", tbl, 0, 2);
-			AttachTooltipLabel(S._("Size:"), "b", tbl, 0, 3);
-			AttachTooltipLabel(S._("Hash:"), "b", tbl, 0, 4);
-						
-			// value labels
-		 	AttachTooltipLabel(item.Name, null, tbl, 1, 0);
-			
-			//string location;
-			string symlinkTargetPath = null;
-			if (item.IsSymLink) {
-				FileSystemVolumeItem targetItem = item.GetSymLinkTargetItem();
+			int itemCount = (properties.Length < MAX_ITEM_PROPERTIES) ? properties.Length : MAX_ITEM_PROPERTIES;
+			int hCount = 2;
+			int vCount = MAX_ITEM_PROPERTIES / hCount;
+			if (itemCount <= vCount)
+				hCount = 1;
+
+			Table tbl = WindowBase.CreateTable(vCount, hCount * 2);
+
+			int x = 0, y = 0;
+			for(int i = 0; i < itemCount; i++, y++) {
+				ItemProperty p = properties[i];
+
+				if (i == vCount) {
+					y = 0;
+					x+= 2;
+				}
 				
-				//string targetPath;
-				if (targetItem.Location != "/" && targetItem.Name != "/")
-					symlinkTargetPath = string.Format("{0}/{1}", targetItem.Location, targetItem.Name);
-				else
-					symlinkTargetPath = targetItem.Location + targetItem.Name;
-				
-				//location = string.Format(S._("{0} <i>(link to {1}</i>)"), item.Location, targetPath);
-			//} else {
-				//location = item.Location;
+				AttachTooltipLabel(String.Format("{0}:", p.name), "b", tbl, x, y);
+				AttachTooltipLabel(p.value, null, tbl, x + 1, y);
+
+#if DEBUG
+			 Platform.Common.Diagnostics.Debug.WriteLine(
+				String.Format("Keyword: {0}, Value: {1}", p.name, p.value));
+#endif
 			}
-
-			AttachTooltipLabel(item.Location, null, tbl, 1, 1);
-			AttachTooltipLabel(item.LastWriteTime.ToString(), null, tbl, 1, 2);
-
-			string sizeStr, hash;
-			if (item is FileVolumeItem) {
-				FileVolumeItem fvi = (FileVolumeItem)item;
-				sizeStr = Util.GetSizeStr(fvi.Size);
-				hash = fvi.Hash;
-			} else {
-				sizeStr = Util.GetSizeStr(0L);
-				hash = null;
-			}
-
-		 	AttachTooltipLabel(sizeStr, null, tbl, 1, 3);
-			AttachTooltipLabel(string.IsNullOrEmpty(hash) ? "-" : hash, null, tbl, 1, 4);
-			
 			return tbl;
 		}
-
+		
 		private static void AttachTooltipLabel(string caption, string tag, Table tbl, int x, int y) {
 			Label lbl;
 
@@ -209,6 +189,107 @@ namespace Basenji.Gui.Widgets
 				return original.ScaleSimple(width, height, Gdk.InterpType.Bilinear);
 			} else {
 				return original;
+			}
+		}
+
+		private class ItemProperty : IComparable<ItemProperty>
+		{
+			public string	name;
+			public string	value;
+			public int		priority;
+			
+			private ItemProperty(string name, string value, int priority) {
+				this.name		= name;
+				this.value		= value;
+				this.priority	= priority;
+			}
+
+			public int CompareTo(ItemProperty p) {
+				return (this.priority - p.priority);
+			}
+			
+			public static ItemProperty[] GetFSItemProperties(FileSystemVolumeItem item) {
+				List<ItemProperty> properties = new List<ItemProperty>();
+				
+				// add metadata properties first (higher priority)
+				try {
+				 	Dictionary<string, string> metadata = item.ParseMetaData();
+					
+					foreach (KeyValuePair<string, string> pair in metadata) {
+				 		// cherry-pick interesting properties
+						/* audio properties*/
+						if (pair.Key == "genre") {
+							properties.Add(new ItemProperty(S._("Genre"), pair.Value, 105));
+						} else if (pair.Key == "artist") {
+							properties.Add(new ItemProperty(S._("Artist"), pair.Value, 101));
+						} else if (pair.Key == "title") {
+							properties.Add(new ItemProperty(S._("Title"), pair.Value, 102));
+						} else if (pair.Key == "album") {
+							properties.Add(new ItemProperty(S._("Album"), pair.Value, 103));
+						} else if (pair.Key == "year") {
+							properties.Add(new ItemProperty(S._("Year"), pair.Value, 104));
+						/* audio / picture / video properties */
+						} else if (pair.Key == "duration") {
+							properties.Add(new ItemProperty(S._("Duration"), pair.Value, 106));
+						} else if (pair.Key == "size") {
+							properties.Add(new ItemProperty(S._("Dimensions"), pair.Value, 107));
+						/* html properties */
+						} else if (pair.Key == "description") {
+							properties.Add(new ItemProperty(S._("Description"), pair.Value, 110));
+						} else if (pair.Key == "author") {
+							properties.Add(new ItemProperty(S._("Author"), pair.Value, 111));
+						/* other properties*/
+						} else if (pair.Key == "format") {
+							properties.Add(new ItemProperty(S._("Format"), pair.Value, 108));
+						} else if (pair.Key == "copyright") {
+							properties.Add(new ItemProperty(S._("Copyright"), pair.Value, 112));
+						} else if (pair.Key == "producer") {
+							properties.Add(new ItemProperty(S._("Producer"), pair.Value, 115));
+						} else if (pair.Key == "creator") {
+							properties.Add(new ItemProperty(S._("Creator"), pair.Value, 114));
+						} else if (pair.Key == "software") {
+							properties.Add(new ItemProperty(S._("Software"), pair.Value, 116));
+						} else if (pair.Key == "language") {
+							properties.Add(new ItemProperty(S._("Language"), pair.Value, 113));
+						} else if (pair.Key == "page count") {
+							properties.Add(new ItemProperty(S._("Page count"), pair.Value, 109));
+						} else if (pair.Key == "filename") {
+							// count files in archives
+							string[] filenames = pair.Value.Split(new char[] { ',' });
+							properties.Add(new ItemProperty(S._("File count"), filenames.Length.ToString(), 117));
+						}
+				 	}
+				} catch(DllNotFoundException) { /* libextractor package not installed */}
+	
+				// add common item properties (shown only if there's room left)
+				properties.Add(new ItemProperty(S._("Name"), item.Name, 201));
+				properties.Add(new ItemProperty(S._("Location"), item.Location, 202));
+				properties.Add(new ItemProperty(S._("Last write time"), item.LastWriteTime.ToString(), 205));
+				
+				if (item.IsSymLink) {
+					FileSystemVolumeItem targetItem = item.GetSymLinkTargetItem();
+					string symlinkTargetPath = null;
+					
+					if (targetItem.Location != "/" && targetItem.Name != "/")
+						symlinkTargetPath = string.Format("{0}/{1}", targetItem.Location, targetItem.Name);
+					else
+						symlinkTargetPath = targetItem.Location + targetItem.Name;
+				
+					properties.Add(new ItemProperty(S._("Symlink target"), symlinkTargetPath, 203));
+				}
+				
+				if (item is FileVolumeItem) {
+					FileVolumeItem fvi = (FileVolumeItem)item;
+					string sizeStr = Util.GetSizeStr(fvi.Size);
+					string hash = fvi.Hash;
+
+					properties.Add(new ItemProperty(S._("Size"), sizeStr, 204));
+					if (!string.IsNullOrEmpty(hash))
+						properties.Add(new ItemProperty(S._("Hash"), hash, 206));
+				}
+				
+				properties.Sort(); // sort by priority
+				return properties.ToArray();
 			}
 		}
 	}

@@ -243,7 +243,7 @@ namespace VolumeDB.VolumeScanner
 							mimeType = MimeType.GetMimeTypeForFile(files[i].FullName);
 							
 							if (extractMetaData && extractor != null) {
-								metaData = FormatExtractorKeywords(extractor.GetKeywords(files[i].FullName));
+								metaData = MetaDataHelper.PackExtractorKeywords(extractor.GetKeywords(files[i].FullName));
 							}
 							
 							if (computeHashs) {
@@ -607,31 +607,6 @@ namespace VolumeDB.VolumeScanner
 				foreach (byte b in hash)
 					sb.Append(b.ToString("X2"));
 			//}
-			return sb.ToString();
-		}
-
-		private static string FormatExtractorKeywords(Keyword[] keywords) {
-			if (keywords == null || keywords.Length == 0)
-				return null;
-
-			StringBuilder sb = new StringBuilder();
-			foreach(Keyword kw in keywords) {
-				// skip data that is already available in other
-				// database fields or unreliable.
-				if (	(kw.keywordType == KeywordType.EXTRACTOR_MIMETYPE) ||
-				    	(kw.keywordType == KeywordType.EXTRACTOR_THUMBNAILS) ||
-				    	(kw.keywordType == KeywordType.EXTRACTOR_THUMBNAIL_DATA)
-				    )
-						continue;
-				
-				if (sb.Length > 0)
-					sb.Append(';');
-				
-				sb.Append((int)kw.keywordType);
-				sb.Append(':');
-				sb.Append(kw.keyword);
-			}
-
 			return sb.ToString();
 		}
 		

@@ -39,7 +39,7 @@ namespace VolumeDB
 		internal const int MAX_MIMETYPE_LENGTH	= 64;
 		internal const int MAX_METADATA_LENGTH	= 4096;
 		internal const int MAX_HASH_LENGTH		= 64;
-		
+
 		// table info required by VolumeDBDataType
 		private const			string		tableName			= "Items";
 		private static readonly string[]	primarykeyFields	= { "VolumeID", "ItemID" };
@@ -284,27 +284,25 @@ namespace VolumeDB
 		/// A <see cref="Dictionary"/> containing (type, keyword) pairs.
 		/// </returns>
 		public Dictionary<String, String> ParseMetaData() {
+			// Don't expose the libextractor Keyword enum outside volumedb
+			// - calling code should not depend on libextractor.
+			// Return a dictionary containig string representations instead.
 			Dictionary<string, string> dict = new Dictionary<string, string>();
 
 			if (string.IsNullOrEmpty(metaData))
 			    return dict;
 
-			string[] pairs = metaData.Split(new char[] { ';' });
-			char[] sep = { ':' };
-			foreach (string pair in pairs) {
-				string[] p = pair.Split(sep);
-				KeywordType type = (KeywordType)int.Parse(p[0]);
-				string keyword = p[1];
-
+			Keyword[] keywords = MetaDataHelper.UnpackExtractorKeywords(metaData);
+			foreach (Keyword kw in keywords) {
 				// may throw DllNotFoundException
-				string typestr = Extractor.GetKeywordTypeAsString(type);
+				string typestr = Extractor.GetKeywordTypeAsString(kw.keywordType);
 				string existing;
+				
 				if (dict.TryGetValue(typestr, out existing))
-					dict[typestr] =  string.Format("{0}, {1}", existing, keyword);
+					dict[typestr] =  string.Format("{0}, {1}", existing, kw.keyword);
 				else
-					dict.Add(typestr, keyword);
+					dict.Add(typestr, kw.keyword);
 			}
-
 			return dict;
 		}
 		
