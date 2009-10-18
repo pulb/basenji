@@ -1,38 +1,38 @@
-// ItemInfo.cs
-// 
-// Copyright (C) 2008 Patrick Ulbrich
-//
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
-//
-
-using System;
-using System.IO;
-using System.Collections.Generic;
-using Gtk;
-using Basenji.Gui.Base;
-using Basenji.Icons;
-using VolumeDB;
-
-namespace Basenji.Gui.Widgets
-{
+	// ItemInfo.cs
+	// 
+	// Copyright (C) 2008 Patrick Ulbrich
+	//
+	// This program is free software: you can redistribute it and/or modify
+	// it under the terms of the GNU General Public License as published by
+	// the Free Software Foundation, either version 3 of the License, or
+	// (at your option) any later version.
+	//
+	// This program is distributed in the hope that it will be useful,
+	// but WITHOUT ANY WARRANTY; without even the implied warranty of
+	// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	// GNU General Public License for more details.
+	//
+	// You should have received a copy of the GNU General Public License
+	// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	//
+	
+	using System;
+	using System.IO;
+	using System.Collections.Generic;
+	using Gtk;
+	using Basenji.Gui.Base;
+	using Basenji.Icons;
+	using VolumeDB;
+	
+	namespace Basenji.Gui.Widgets
+	{
 	public partial class ItemInfo : BinBase
 	{
 		private const int MAX_ITEM_PROPERTIES	= 12; // must be a multiple of 2
 		private const int MAX_THUMB_WIDTH		= 100;
 		private const int MAX_THUMB_HEIGHT		= 100;
 		private const IconSize ICON_SIZE		= IconSize.Dialog;
-
+	
 		private ItemIcons itemIcons;
 		private Dictionary<string, Gdk.Pixbuf> thumbnailCache;
 		
@@ -91,22 +91,22 @@ namespace Basenji.Gui.Widgets
 			frame.Add(eventBox);
 			this.Add(frame);
 		}
-
+	
 		private static Table CreateFSInfoTable(FileSystemVolumeItem item) {
 			ItemProperty[] properties = ItemProperty.GetFSItemProperties(item);
-
+	
 			int itemCount = (properties.Length < MAX_ITEM_PROPERTIES) ? properties.Length : MAX_ITEM_PROPERTIES;
 			int hCount = 2;
 			int vCount = MAX_ITEM_PROPERTIES / hCount;
 			if (itemCount <= vCount)
 				hCount = 1;
-
+	
 			Table tbl = WindowBase.CreateTable(vCount, hCount * 2);
-
+	
 			int x = 0, y = 0;
 			for(int i = 0; i < itemCount; i++, y++) {
 				ItemProperty p = properties[i];
-
+	
 				if (i == vCount) {
 					y = 0;
 					x+= 2;
@@ -121,7 +121,7 @@ namespace Basenji.Gui.Widgets
 		private static void AttachTooltipLabel(string caption, string tag, Table tbl, int x, int y) {
 			Label lbl;
 			string tooltip = caption;
-
+	
 			// remove linebreaks
 			caption = caption.Replace('\n', ' ').Replace('\r', ' ');
 			
@@ -190,7 +190,7 @@ namespace Basenji.Gui.Widgets
 				return original;
 			}
 		}
-
+	
 		private class ItemProperty : IComparable<ItemProperty>
 		{
 			public string	name;
@@ -202,7 +202,7 @@ namespace Basenji.Gui.Widgets
 				this.value		= value;
 				this.priority	= priority;
 			}
-
+	
 			public int CompareTo(ItemProperty p) {
 				return (this.priority - p.priority);
 			}
@@ -211,61 +211,63 @@ namespace Basenji.Gui.Widgets
 				List<ItemProperty> properties = new List<ItemProperty>();
 				
 				// add metadata properties first (higher priority)
-				try {
-				 	Dictionary<string, string> metadata = item.ParseMetaData();
-					
-					foreach (KeyValuePair<string, string> pair in metadata) {
-				 		// cherry-pick interesting properties
-						/* audio properties*/
-						if (pair.Key == "genre") {
-							properties.Add(new ItemProperty(S._("Genre"), pair.Value, 105));
-						} else if (pair.Key == "artist") {
-							properties.Add(new ItemProperty(S._("Artist"), pair.Value, 101));
-						} else if (pair.Key == "title") {
-							properties.Add(new ItemProperty(S._("Title"), pair.Value, 102));
-						} else if (pair.Key == "album") {
-							properties.Add(new ItemProperty(S._("Album"), pair.Value, 103));
-						} else if (pair.Key == "year") {
-							properties.Add(new ItemProperty(S._("Year"), pair.Value, 104));
-						/* audio / picture / video properties */
-						} else if (pair.Key == "duration") {
-							properties.Add(new ItemProperty(S._("Duration"), pair.Value, 106));
-						} else if (pair.Key == "size") {
-							properties.Add(new ItemProperty(S._("Dimensions"), pair.Value, 107));
-						/* html properties */
-						} else if (pair.Key == "description") {
-							properties.Add(new ItemProperty(S._("Description"), pair.Value, 110));
-						} else if (pair.Key == "author") {
-							properties.Add(new ItemProperty(S._("Author"), pair.Value, 111));
-						/* other properties*/
-						} else if (pair.Key == "format") {
-							properties.Add(new ItemProperty(S._("Format"), pair.Value, 108));
-						} else if (pair.Key == "copyright") {
-							properties.Add(new ItemProperty(S._("Copyright"), pair.Value, 112));
-						} else if (pair.Key == "producer") {
-							properties.Add(new ItemProperty(S._("Producer"), pair.Value, 115));
-						} else if (pair.Key == "creator") {
-							properties.Add(new ItemProperty(S._("Creator"), pair.Value, 114));
-						} else if (pair.Key == "software") {
-							properties.Add(new ItemProperty(S._("Software"), pair.Value, 116));
-						} else if (pair.Key == "language") {
-							properties.Add(new ItemProperty(S._("Language"), pair.Value, 113));
-						} else if (pair.Key == "page count") {
-							properties.Add(new ItemProperty(S._("Page count"), pair.Value, 109));
-						} else if (pair.Key == "filename") {
-							// count files in archives
-							string[] filenames = pair.Value.Split(new char[] { ',' });
-							properties.Add(new ItemProperty(S._("File count"), filenames.Length.ToString(), 117));
-						}
-
-#if DEBUG
-					 	Platform.Common.Diagnostics.Debug.WriteLine(
-							String.Format("{0}: {1}", pair.Key, pair.Value));
-#endif
-				 	}
-				} catch(DllNotFoundException) { /* libextractor package not installed */}
+				if (!string.IsNullOrEmpty(item.MetaData)) {
+					try {
+					 	Dictionary<string, string> metadata = item.ParseMetaData();
+						
+						foreach (KeyValuePair<string, string> pair in metadata) {
+					 		// cherry-pick interesting properties
+							/* audio properties*/
+							if (pair.Key == "genre") {
+								properties.Add(new ItemProperty(S._("Genre"), pair.Value, 105));
+							} else if (pair.Key == "artist") {
+								properties.Add(new ItemProperty(S._("Artist"), pair.Value, 101));
+							} else if (pair.Key == "title") {
+								properties.Add(new ItemProperty(S._("Title"), pair.Value, 102));
+							} else if (pair.Key == "album") {
+								properties.Add(new ItemProperty(S._("Album"), pair.Value, 103));
+							} else if (pair.Key == "year") {
+								properties.Add(new ItemProperty(S._("Year"), pair.Value, 104));
+							/* audio / picture / video properties */
+							} else if (pair.Key == "duration") {
+								properties.Add(new ItemProperty(S._("Duration"), pair.Value, 106));
+							} else if (pair.Key == "size") {
+								properties.Add(new ItemProperty(S._("Dimensions"), pair.Value, 107));
+							/* html properties */
+							} else if (pair.Key == "description") {
+								properties.Add(new ItemProperty(S._("Description"), pair.Value, 110));
+							} else if (pair.Key == "author") {
+								properties.Add(new ItemProperty(S._("Author"), pair.Value, 111));
+							/* other properties*/
+							} else if (pair.Key == "format") {
+								properties.Add(new ItemProperty(S._("Format"), pair.Value, 108));
+							} else if (pair.Key == "copyright") {
+								properties.Add(new ItemProperty(S._("Copyright"), pair.Value, 112));
+							} else if (pair.Key == "producer") {
+								properties.Add(new ItemProperty(S._("Producer"), pair.Value, 115));
+							} else if (pair.Key == "creator") {
+								properties.Add(new ItemProperty(S._("Creator"), pair.Value, 114));
+							} else if (pair.Key == "software") {
+								properties.Add(new ItemProperty(S._("Software"), pair.Value, 116));
+							} else if (pair.Key == "language") {
+								properties.Add(new ItemProperty(S._("Language"), pair.Value, 113));
+							} else if (pair.Key == "page count") {
+								properties.Add(new ItemProperty(S._("Page count"), pair.Value, 109));
+							} else if (pair.Key == "filename") {
+								// count files in archives
+								string[] filenames = pair.Value.Split(new char[] { ',' });
+								properties.Add(new ItemProperty(S._("File count"), filenames.Length.ToString(), 117));
+							}
 	
-				// add common item properties (shown only if there's room left)
+#if DEBUG
+						 	Platform.Common.Diagnostics.Debug.WriteLine(
+								String.Format("{0}: {1}", pair.Key, pair.Value));
+#endif
+					 	}
+					} catch(DllNotFoundException) { /* libextractor package not installed */}
+				}
+				
+				// add common item properties (low priority, shown only if there's room left)
 				properties.Add(new ItemProperty(S._("Name"), item.Name, 201));
 				properties.Add(new ItemProperty(S._("Location"), item.Location, 202));
 				properties.Add(new ItemProperty(S._("Last write time"), item.LastWriteTime.ToString(), 205));
