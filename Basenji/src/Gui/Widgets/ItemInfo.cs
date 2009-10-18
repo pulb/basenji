@@ -211,6 +211,10 @@
 				List<ItemProperty> properties = new List<ItemProperty>();
 				
 				// add metadata properties first (higher priority)
+				
+				// check if metadata is present before parsing
+				// (prevents unnecessary DllNotFoundExceptions 
+				// if libextractor is not installed and there is no metadata anyway).
 				if (!string.IsNullOrEmpty(item.MetaData)) {
 					try {
 					 	Dictionary<string, string> metadata = item.ParseMetaData();
