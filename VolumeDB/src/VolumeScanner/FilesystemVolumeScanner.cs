@@ -243,7 +243,15 @@ namespace VolumeDB.VolumeScanner
 							mimeType = MimeType.GetMimeTypeForFile(files[i].FullName);
 							
 							if (extractMetaData && extractor != null) {
-								metaData = MetaDataHelper.PackExtractorKeywords(extractor.GetKeywords(files[i].FullName));
+								Keyword[] keywords = extractor.GetKeywords(files[i].FullName);
+								// removes duplicates like the same year in idv2 and idv3 tags,
+								// does not remove keywords of the same type (e.g. filename)
+								keywords = Extractor.RemoveDuplicateKeywords(keywords,
+								                                             DuplicateOptions.DUPLICATES_REMOVE_UNKNOWN | 
+								                                             DuplicateOptions.DUPLICATES_TYPELESS);
+								// removes whitespace-only keywords
+								keywords = Extractor.RemoveEmptyKeywords(keywords);
+								metaData = MetaDataHelper.PackExtractorKeywords(keywords);
 							}
 							
 							if (computeHashs) {
