@@ -1,8 +1,8 @@
 <Combine fileversion="2.0" name="Basenji">
   <Policies>
-    <TextStylePolicy FileWidth="120" TabWidth="4" TabsToSpaces="False" NoTabsAfterNonTabs="False" RemoveTrailingWhitespace="True" EolMarker="Unix" />
-    <DotNetNamingPolicy DirectoryNamespaceAssociation="None" ResourceNamePolicy="FileFormatDefault" />
     <StandardHeader inheritsSet="LGPLv2License" />
+    <DotNetNamingPolicy DirectoryNamespaceAssociation="None" ResourceNamePolicy="FileFormatDefault" />
+    <TextStylePolicy FileWidth="120" TabWidth="4" TabsToSpaces="False" NoTabsAfterNonTabs="False" RemoveTrailingWhitespace="True" EolMarker="Unix" />
   </Policies>
   <Configurations active="Gnome_Debug">
     <Configuration name="Debug" ctype="CombineConfiguration">

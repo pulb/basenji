@@ -1,6 +1,6 @@
 // Extractor.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich, zulu99@gmx.net
+// Copyright (C) 2008, 2009 Patrick Ulbrich, zulu99@gmx.net
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -16,6 +16,20 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
+// NOTE:
+//
+// The following functions have been implemented directly (based on the libextractor original code)
+// as a pinvoke call into the native library would involve a complicated conversion
+// of the managed Keyword[] array into a unmanaged linked list.
+// On top of that the native library would also try to free that list :-(.
+// The code of those functions is so simple that it isn't worth it anyway...
+//
+// EXTRACTOR_KeywordList * EXTRACTOR_removeDuplicateKeywords(EXTRACTOR_KeywordList * list, unsigned int options);
+// EXTRACTOR_KeywordList * EXTRACTOR_removeEmptyKeywords (EXTRACTOR_KeywordList * list);
+// EXTRACTOR_KeywordList * EXTRACTOR_removeKeywordsOfType(EXTRACTOR_KeywordList * list, EXTRACTOR_KeywordType type);
+// const char * EXTRACTOR_extractLast(EXTRACTOR_KeywordType type, EXTRACTOR_KeywordList * keywords);
+// const char * EXTRACTOR_extractLastByString(const char * type, EXTRACTOR_KeywordList * keywords);
+
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -29,7 +43,7 @@ namespace LibExtractor
 		
 		public Extractor() {
 			disposed = false;
-			pExtractors = IntPtr.Zero;			
+			pExtractors = IntPtr.Zero;
 		}
 		
 		~Extractor() {
@@ -50,28 +64,28 @@ namespace LibExtractor
 		public void LoadConfigLibraries(string config) {
 			EnsureNotDisposed();
 			EnsureValidStringParam(config, "config");
-			// prev parameter may be null, so don't test for loaded extractors
+			// prev parameter may be null, so don't test for loaded extractors.
 			pExtractors = EXTRACTOR_loadConfigLibraries(pExtractors, config);
 		}
 		
 		public void AddLibrary(string library) {
 			EnsureNotDisposed();
 			EnsureValidStringParam(library, "library");
-			// prev parameter may be null, so don't test for loaded extractors
+			// prev parameter may be null, so don't test for loaded extractors.
 			pExtractors = EXTRACTOR_addLibrary(pExtractors, library);
 		}
 		
 		public void AddLibraryLast(string library) {
 			EnsureNotDisposed();
 			EnsureValidStringParam(library, "library");
-			// prev parameter may be null, so don't test for loaded extractors
+			// prev parameter may be null, so don't test for loaded extractors.
 			pExtractors = EXTRACTOR_addLibraryLast(pExtractors, library);
 		}
 		
 		public void RemoveLibrary(string library) {
 			EnsureNotDisposed();
 			EnsureValidStringParam(library, "library");
-			// prev parameter may be null, so don't test for loaded extractors
+			// prev parameter may be null, so don't test for loaded extractors.
 			pExtractors = EXTRACTOR_removeLibrary(pExtractors, library);
 		}
 		
@@ -142,7 +156,7 @@ namespace LibExtractor
 		/// Static members
 		///
 		
-		// returns an Extractor instance with the default library set loaded
+		// Returns an Extractor instance with the default library set loaded.
 		public static Extractor GetDefault() {
 			Extractor e = new Extractor();
 			e.LoadDefaultLibraries();
@@ -150,7 +164,7 @@ namespace LibExtractor
 		}
 		
 		public static string GetKeywordTypeAsString(KeywordType type) {
-			// NOTE : string does NOT need to be freed
+			// NOTE : string does NOT need to be freed.
 			IntPtr pStr = EXTRACTOR_getKeywordTypeAsString(type);
 			string str = Marshal.PtrToStringAnsi(pStr);
 			return str;
@@ -158,6 +172,104 @@ namespace LibExtractor
 		
 		public static KeywordType GetHighestKeywordTypeNumber() {
 			return EXTRACTOR_getHighestKeywordTypeNumber();
+		}
+		
+		public static Keyword[] RemoveDuplicateKeywords(Keyword[] keywords, DuplicateOptions options) {
+			List<Keyword> lst = new List<Keyword>();
+
+			for (int i = 0; i < keywords.Length; i++) {
+				Keyword pos	= keywords[i];
+				bool remove	= false;
+				
+				for (int j = 0; j < lst.Count; j++) {					
+					KeywordType type	= lst[j].keywordType;
+					string keyword		= lst[j].keyword;
+					
+					if ( (pos.keyword == keyword) &&
+					 ( (pos.keywordType == type) ||
+					   ( ((options & DuplicateOptions.DUPLICATES_TYPELESS) > 0) &&
+					     ( (pos.keywordType == KeywordType.EXTRACTOR_SPLIT) ||
+					       (type != KeywordType.EXTRACTOR_SPLIT)) ) ||
+					   ( ((options & DuplicateOptions.DUPLICATES_REMOVE_UNKNOWN) > 0) &&
+					     (pos.keywordType == KeywordType.EXTRACTOR_UNKNOWN)) ) ) {
+						remove = true;
+						break; // break inner for
+					}
+				}
+				
+				if (!remove) {
+					lst.Add(pos);
+				}
+			}
+			
+			if (lst.Count == keywords.Length)
+				return keywords;
+			else
+				return lst.ToArray();
+		}
+		
+		public static Keyword[] RemoveEmptyKeywords(Keyword[] keywords) {
+			List<Keyword> lst = new List<Keyword>();
+			
+			for (int i = 0; i < keywords.Length; i++) {
+				Keyword pos = keywords[i];
+				string keyword = pos.keyword;
+				bool allWhite = true;
+				
+				for (int j = 0; j < keyword.Length; j++) {
+					if (!char.IsWhiteSpace(keyword[j])) {
+						allWhite = false;
+						break;
+					}
+				}
+				
+				if (!allWhite)
+					lst.Add(pos);
+			}
+			
+			if (lst.Count == keywords.Length)
+				return keywords;
+			else
+				return lst.ToArray();
+		}
+		
+		public static Keyword[] RemoveKeywordsOfType(Keyword[] keywords, KeywordType type) {
+			List<Keyword> lst = new List<Keyword>();
+			
+			for (int i = 0; i < keywords.Length; i++) {
+				Keyword pos = keywords[i];
+				if (pos.keywordType != type) {
+					lst.Add(pos);
+				}
+			}
+			
+			if (lst.Count == keywords.Length)
+				return keywords;
+			else
+				return lst.ToArray();
+		}
+		
+		public static string ExtractLast(KeywordType type, Keyword[] keywords) {
+			string result = null;
+			for (int i = 0; i < keywords.Length; i++) {
+				Keyword pos = keywords[i];
+				if (pos.keywordType == type) {
+					result = pos.keyword;
+				}
+			}
+			return result;
+		}
+		
+		// NOTE : does not work with translated strings.
+		public static string ExtractLastByString(string type, Keyword[] keywords) {
+			string result = null;
+			for (int i = 0; i < keywords.Length; i++) {
+				Keyword pos = keywords[i];
+				if (GetKeywordTypeAsString(pos.keywordType) == type) {
+					result = pos.keyword;
+				}
+			}
+			return result;
 		}
 		
 		/// 
@@ -230,7 +342,7 @@ namespace LibExtractor
 		private static extern IntPtr EXTRACTOR_getKeywords(IntPtr extractors, string filename);
 		
 		[DllImport("libextractor")]
-		private static extern IntPtr EXTRACTOR_getKeywords2(IntPtr extractor, IntPtr data, int size);
+		private static extern IntPtr EXTRACTOR_getKeywords2(IntPtr extractors, IntPtr data, int size);
 		
 		[DllImport("libextractor")]
 		private static extern void EXTRACTOR_freeKeywords(IntPtr keywords);		

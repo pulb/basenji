@@ -20,21 +20,19 @@ PROJECT_REFERENCES =  \
 	../LibExtractor/bin/Debug/LibExtractor.dll
 BUILD_DIR = bin/Debug
 
-HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
-VOLUMEDB_DLL_MDB_SOURCE=bin/Debug/VolumeDB.dll.mdb
-VOLUMEDB_DLL_MDB=$(BUILD_DIR)/VolumeDB.dll.mdb
-PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll
-LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll
 PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
+HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
 LIBEXTRACTOR_DLL_CONFIG_SOURCE=../LibExtractor/LibExtractor.dll.config
 PLATFORM_COMMON_DB_DLL_MDB_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll.mdb
 PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
-HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
-HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
-LIBEXTRACTOR_DLL_MDB_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll.mdb
-LIBEXTRACTOR_DLL_MDB=$(BUILD_DIR)/LibExtractor.dll.mdb
+LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
+PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll
+HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
+HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
+VOLUMEDB_DLL_MDB_SOURCE=bin/Debug/VolumeDB.dll.mdb
+VOLUMEDB_DLL_MDB=$(BUILD_DIR)/VolumeDB.dll.mdb
 
 endif
 
@@ -50,16 +48,15 @@ PROJECT_REFERENCES =  \
 	../LibExtractor/bin/Release/LibExtractor.dll
 BUILD_DIR = bin/Release
 
-HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
-VOLUMEDB_DLL_MDB=
-PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
-LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Release/LibExtractor.dll
 PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
+HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
 LIBEXTRACTOR_DLL_CONFIG_SOURCE=../LibExtractor/LibExtractor.dll.config
 PLATFORM_COMMON_DB_DLL_MDB=
-HAL_DLL_MDB=
-LIBEXTRACTOR_DLL_MDB=
+LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Release/LibExtractor.dll
 PLATFORM_DLL_MDB=
+PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
+HAL_DLL_MDB=
+VOLUMEDB_DLL_MDB=
 
 endif
 
@@ -75,21 +72,19 @@ PROJECT_REFERENCES =  \
 	../LibExtractor/bin/Debug/LibExtractor.dll
 BUILD_DIR = bin/Debug
 
-HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
-VOLUMEDB_DLL_MDB_SOURCE=bin/Debug/VolumeDB.dll.mdb
-VOLUMEDB_DLL_MDB=$(BUILD_DIR)/VolumeDB.dll.mdb
-PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll
-LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll
 PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
+HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
 LIBEXTRACTOR_DLL_CONFIG_SOURCE=../LibExtractor/LibExtractor.dll.config
 PLATFORM_COMMON_DB_DLL_MDB_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll.mdb
 PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
-HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
-HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
-LIBEXTRACTOR_DLL_MDB_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll.mdb
-LIBEXTRACTOR_DLL_MDB=$(BUILD_DIR)/LibExtractor.dll.mdb
+LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
+PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll
+HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
+HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
+VOLUMEDB_DLL_MDB_SOURCE=bin/Debug/VolumeDB.dll.mdb
+VOLUMEDB_DLL_MDB=$(BUILD_DIR)/VolumeDB.dll.mdb
 
 endif
 
@@ -105,16 +100,15 @@ PROJECT_REFERENCES =  \
 	../LibExtractor/bin/Release/LibExtractor.dll
 BUILD_DIR = bin/Release
 
-HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
-VOLUMEDB_DLL_MDB=
-PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
-LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Release/LibExtractor.dll
 PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
+HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
 LIBEXTRACTOR_DLL_CONFIG_SOURCE=../LibExtractor/LibExtractor.dll.config
 PLATFORM_COMMON_DB_DLL_MDB=
-HAL_DLL_MDB=
-LIBEXTRACTOR_DLL_MDB=
+LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Release/LibExtractor.dll
 PLATFORM_DLL_MDB=
+PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
+HAL_DLL_MDB=
+VOLUMEDB_DLL_MDB=
 
 endif
 
@@ -122,16 +116,15 @@ AL=al2
 SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 
 PROGRAMFILES = \
-	$(HAL_DLL) \
-	$(VOLUMEDB_DLL_MDB) \
-	$(PLATFORM_COMMON_DB_DLL) \
-	$(LIBEXTRACTOR_DLL) \
 	$(PLATFORM_DLL) \
+	$(HAL_DLL) \
 	$(LIBEXTRACTOR_DLL_CONFIG) \
 	$(PLATFORM_COMMON_DB_DLL_MDB) \
+	$(LIBEXTRACTOR_DLL) \
+	$(PLATFORM_DLL_MDB) \
+	$(PLATFORM_COMMON_DB_DLL) \
 	$(HAL_DLL_MDB) \
-	$(LIBEXTRACTOR_DLL_MDB) \
-	$(PLATFORM_DLL_MDB)  
+	$(VOLUMEDB_DLL_MDB)  
 
 LINUX_PKGCONFIG = \
 	$(VOLUMEDB_PC)  
@@ -139,12 +132,12 @@ LINUX_PKGCONFIG = \
 
 RESGEN=resgen2
 
+PLATFORM_DLL = $(BUILD_DIR)/Platform.dll
 HAL_DLL = $(BUILD_DIR)/Hal.dll
+LIBEXTRACTOR_DLL_CONFIG = $(BUILD_DIR)/LibExtractor.dll.config
+LIBEXTRACTOR_DLL = $(BUILD_DIR)/LibExtractor.dll
 VOLUMEDB_PC = $(BUILD_DIR)/volumedb.pc
 PLATFORM_COMMON_DB_DLL = $(BUILD_DIR)/Platform.Common.DB.dll
-LIBEXTRACTOR_DLL = $(BUILD_DIR)/LibExtractor.dll
-PLATFORM_DLL = $(BUILD_DIR)/Platform.dll
-LIBEXTRACTOR_DLL_CONFIG = $(BUILD_DIR)/LibExtractor.dll.config
 
 FILES = \
 	src/Searching/CompareOperator.cs \
@@ -208,7 +201,8 @@ FILES = \
 	src/Searching/SearchUtils.cs \
 	src/Searching/FreeTextSearchCriteria.cs \
 	src/Searching/IFreeTextSearchField.cs \
-	src/Searching/VolumeSearchCriteria/FreeTextSearchField.cs 
+	src/Searching/VolumeSearchCriteria/FreeTextSearchField.cs \
+	src/MetaDataHelper.cs 
 
 DATA_FILES = 
 
@@ -236,16 +230,15 @@ include $(top_srcdir)/Makefile.include
 
 
 
-$(eval $(call emit-deploy-target,HAL_DLL))
-$(eval $(call emit-deploy-wrapper,VOLUMEDB_PC,volumedb.pc))
-$(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL))
-$(eval $(call emit-deploy-target,LIBEXTRACTOR_DLL))
 $(eval $(call emit-deploy-target,PLATFORM_DLL))
+$(eval $(call emit-deploy-target,HAL_DLL))
 $(eval $(call emit-deploy-target,LIBEXTRACTOR_DLL_CONFIG))
 $(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL_MDB))
-$(eval $(call emit-deploy-target,HAL_DLL_MDB))
-$(eval $(call emit-deploy-target,LIBEXTRACTOR_DLL_MDB))
+$(eval $(call emit-deploy-target,LIBEXTRACTOR_DLL))
 $(eval $(call emit-deploy-target,PLATFORM_DLL_MDB))
+$(eval $(call emit-deploy-wrapper,VOLUMEDB_PC,volumedb.pc))
+$(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL))
+$(eval $(call emit-deploy-target,HAL_DLL_MDB))
 
 
 $(eval $(call emit_resgen_targets))
@@ -267,18 +260,17 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	mkdir -p '$(DESTDIR)$(libdir)/$(PACKAGE)'
 	$(call cp,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(PLATFORM_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(HAL_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(VOLUMEDB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(LIBEXTRACTOR_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(PLATFORM_COMMON_DB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(LIBEXTRACTOR_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	mkdir -p '$(DESTDIR)$(libdir)/pkgconfig'
 	$(call cp,$(VOLUMEDB_PC),$(DESTDIR)$(libdir)/pkgconfig)
 	$(call cp,$(PLATFORM_COMMON_DB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(LIBEXTRACTOR_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(PLATFORM_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(LIBEXTRACTOR_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(PLATFORM_COMMON_DB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(HAL_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(LIBEXTRACTOR_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(VOLUMEDB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	make post-install-local-hook prefix=$(prefix)
 
 uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
@@ -286,17 +278,16 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	make uninstall-satellite-assemblies prefix=$(prefix)
 	$(call rm,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(HAL_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(VOLUMEDB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(VOLUMEDB_PC),$(DESTDIR)$(libdir)/pkgconfig)
-	$(call rm,$(PLATFORM_COMMON_DB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(LIBEXTRACTOR_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(HAL_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(LIBEXTRACTOR_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_COMMON_DB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(HAL_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(LIBEXTRACTOR_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(LIBEXTRACTOR_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(VOLUMEDB_PC),$(DESTDIR)$(libdir)/pkgconfig)
+	$(call rm,$(PLATFORM_COMMON_DB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(HAL_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(VOLUMEDB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	make post-uninstall-local-hook prefix=$(prefix)
 
 install: install-local

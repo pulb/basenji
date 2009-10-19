@@ -1,6 +1,6 @@
-// Keyword.cs
+// DuplicateOptions.cs
 // 
-// Copyright (C) 2008, 2009 Patrick Ulbrich, zulu99@gmx.net
+// Copyright (C) 2009 Patrick Ulbrich, zulu99@gmx.net
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -15,25 +15,18 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
-
 using System;
-using System.Runtime.InteropServices;
 
 namespace LibExtractor
-{
-	[StructLayout(LayoutKind.Sequential)]
-	public class Keyword {
-		/* the keyword that was found */
-		[MarshalAs(UnmanagedType.LPStr)]
-		public string keyword;
-		/* the type of the keyword (classification) */
-		public KeywordType keywordType;
-		/* the next entry in the list */
-		internal IntPtr next;
-
-		public override string ToString() {
-			return string.Format("{0} - {1}", Extractor.GetKeywordTypeAsString(keywordType), keyword);
-		}
-
+{	
+	public enum DuplicateOptions
+	{
+		NONE						= 0,
+		/* ignore the 'type' of the keyword when eliminating duplicates */
+		DUPLICATES_TYPELESS			= 1,
+		/* remove type 'UNKNOWN' if there is a duplicate keyword of
+		   known type, even if usually different types should be
+		   preserved */
+		DUPLICATES_REMOVE_UNKNOWN	= 2
 	}
 }
