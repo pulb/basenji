@@ -297,9 +297,11 @@ namespace VolumeDB
 				// may throw DllNotFoundException
 				string typestr = Extractor.GetKeywordTypeAsString(kw.keywordType);
 				string existing;
-				
+
+				// join keywords of the same type 
+				// (a dictionary can't contain the same key multiple times)
 				if (dict.TryGetValue(typestr, out existing))
-					dict[typestr] =  string.Format("{0}, {1}", existing, kw.keyword);
+					dict[typestr] =  string.Format("{0}; {1}", existing, kw.keyword);
 				else
 					dict.Add(typestr, kw.keyword);
 			}
