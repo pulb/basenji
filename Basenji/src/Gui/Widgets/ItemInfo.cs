@@ -499,7 +499,7 @@ namespace Basenji.Gui.Widgets
 		private class PropertyBox : VBox
 		{
 			private Label		lblName;
-			private Image		btnImg;
+			private Arrow		btnArrow;
 			private Table[]		tbls;
 			private HBox		hbox;
 			private Label[] 	captionLbls;
@@ -510,19 +510,19 @@ namespace Basenji.Gui.Widgets
 			private const int WIDTH					= 2;
 			private const int HEIGHT				= MAX_ITEM_PROPERTIES / WIDTH;
 
-			private Gdk.Pixbuf pbUp;
-			private Gdk.Pixbuf pbDown;
+			//private Gdk.Pixbuf pbUp;
+			//private Gdk.Pixbuf pbDown;
 			
 			public PropertyBox(ItemInfo owner) : base(false, 12) {
 				this.owner = owner;
 				
-				this.pbUp	= Icons.Icon.Stock_GoBack.Render(this, IconSize.Button);
-				this.pbDown	= Icons.Icon.Stock_GoForward.Render(this, IconSize.Button);
+				//this.pbUp	= Icons.Icon.Stock_GoBack.Render(this, IconSize.Button);
+				//this.pbDown	= Icons.Icon.Stock_GoForward.Render(this, IconSize.Button);
 				
 				this.captionLbls	= new Label[MAX_ITEM_PROPERTIES];
 				this.valueLbls		= new Label[MAX_ITEM_PROPERTIES];
 				
-				this.lblName	= WindowBase.CreateLabel(string.Empty, true);
+				this.lblName = WindowBase.CreateLabel(string.Empty, true);
 				this.lblName.Ellipsize = Pango.EllipsizeMode.End;
 
 				this.tbls = new Table[WIDTH];
@@ -553,8 +553,8 @@ namespace Basenji.Gui.Widgets
 
 				// button
 				HBox hb = new HBox(false, 6);
-				this.btnImg = new Image(pbDown);
-				hb.PackStart(btnImg, false, false, 0);
+				this.btnArrow = new Arrow(ArrowType.Down, ShadowType.None);
+				hb.PackStart(btnArrow, false, false, 0);
 				hb.PackStart(lblName, true, true, 0);
 				
 				Button btn = new Button(hb);
@@ -606,10 +606,10 @@ namespace Basenji.Gui.Widgets
 				}
 				set {					
 					if (value) {
-						btnImg.Pixbuf = pbUp;
+						btnArrow.ArrowType = ArrowType.Right;
 						hbox.Visible = false;
 					} else {
-						btnImg.Pixbuf = pbDown;
+						btnArrow.ArrowType = ArrowType.Down;
 						hbox.Visible = true;
 					}
 					
