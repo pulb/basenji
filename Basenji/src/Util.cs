@@ -17,7 +17,6 @@
 //
 
 using System;
-using System.Text;
 using System.Runtime.InteropServices;
 using System.Reflection;
 using Platform.Common.Diagnostics;
@@ -47,15 +46,17 @@ namespace Basenji
 		}
 
 		public static string Escape(string str) {
-			StringBuilder sb = new StringBuilder(str);
+			// Note : String.Replace() is better suited than
+			// Stringbuilder.Replace() in this case, 
+			// as String.Replace() returns the same string instance 
+			// if oldValue can't be found (which applies in the majority of cases).
+			str = str.Replace("&", "&amp;");
+			str = str.Replace("<", "&lt;");
+			str = str.Replace(">", "&gt;");
+			str = str.Replace("\"", "&quot;");
+			str = str.Replace("'", "&apos;");			
 			
-			sb.Replace("&", "&amp;");
-			sb.Replace("<", "&lt;");
-			sb.Replace(">", "&gt;");
-			sb.Replace("\"", "&quot;");
-			sb.Replace("'", "&apos;");			
-			
-			return sb.ToString();
+			return str;
 		}
 		
 		public static string FormatExceptionMsg(Exception e) {
