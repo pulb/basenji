@@ -1,6 +1,6 @@
 // Util.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2009 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@
 //
 
 using System;
+using System.Text;
 using System.Runtime.InteropServices;
 using System.Reflection;
 using Platform.Common.Diagnostics;
@@ -43,6 +44,18 @@ namespace Basenji
 				n++;
 			}
 			return string.Format("{0:N2} {1}", dblSize, units[n]);
+		}
+
+		public static string Escape(string str) {
+			StringBuilder sb = new StringBuilder(str);
+			
+			sb.Replace("&", "&amp;");
+			sb.Replace("<", "&lt;");
+			sb.Replace(">", "&gt;");
+			sb.Replace("\"", "&quot;");
+			sb.Replace("'", "&apos;");			
+			
+			return sb.ToString();
 		}
 		
 		public static string FormatExceptionMsg(Exception e) {
