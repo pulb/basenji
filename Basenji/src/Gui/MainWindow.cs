@@ -1,6 +1,6 @@
 // MainWindow.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2009 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -722,7 +722,7 @@ namespace Basenji.Gui
 			vbRight.PackStart(swRight, true, true, 0);
 			
 			// item info
-			itemInfo = new Widgets.ItemInfo();		  
+			itemInfo = new Widgets.ItemInfo();
 			
 			vbRight.PackStart(itemInfo, false, false, 0);
 			hpaned.Pack2(vbRight, false, false);
@@ -748,6 +748,7 @@ namespace Basenji.Gui
 			this.DeleteEvent				+= OnDeleteEvent;
 			
 			ShowAll();
+			itemInfo.Hide();
 		}
 	}
 }
