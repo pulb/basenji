@@ -1,6 +1,6 @@
 // Settings.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2009 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -90,6 +90,16 @@ namespace Basenji
 			get { return properties["MainWindowIsMaximized"] == "1"; }
 			set { properties["MainWindowIsMaximized"] = value ? "1" : "0"; }
 		}
+
+		public bool ItemInfoMinimized1 {
+			get { return properties["ItemInfoMinimized1"] == "1"; }
+			set { properties["ItemInfoMinimized1"] = value ? "1" : "0"; }
+		}
+
+		public bool ItemInfoMinimized2 {
+			get { return properties["ItemInfoMinimized2"] == "1"; }
+			set { properties["ItemInfoMinimized2"] = value ? "1" : "0"; }
+		}
 		
 		public int MainWindowSplitterPosition {
 			get { return int.Parse(properties["MainWindowSplitterPosition"]); }
@@ -126,6 +136,8 @@ namespace Basenji
 			properties.Add("MainWindowWidth",				"640");
 			properties.Add("MainWindowHeight",				"480");
 			properties.Add("MainWindowIsMaximized",			"0");
+			properties.Add("ItemInfoMinimized1",			"0");
+			properties.Add("ItemInfoMinimized2",			"0");
 			properties.Add("MainWindowSplitterPosition",	"240");
 			properties.Add("CustomThemeLocation",			Path.Combine("data", "themes"));
 			properties.Add("CustomThemeName",				"");

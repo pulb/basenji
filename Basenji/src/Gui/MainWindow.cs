@@ -391,6 +391,7 @@ namespace Basenji.Gui
 			App.Settings.MainWindowHeight = h;
 			App.Settings.MainWindowIsMaximized = isMaximized;
 			App.Settings.MainWindowSplitterPosition = hpaned.Position;
+			App.Settings.ItemInfoMinimized1 = itemInfo.Minimized;
 			App.Settings.Save();
 			
 			Application.Quit();
@@ -570,10 +571,11 @@ namespace Basenji.Gui
 			base.BuildGui();
 			
 			// restore window state
-			int w				= App.Settings.MainWindowWidth;
-			int h				= App.Settings.MainWindowHeight;
-			bool isMaximized	= App.Settings.MainWindowIsMaximized;
-			int splitterPos		= App.Settings.MainWindowSplitterPosition;
+			int w					= App.Settings.MainWindowWidth;
+			int h					= App.Settings.MainWindowHeight;
+			bool isMaximized		= App.Settings.MainWindowIsMaximized;
+			int splitterPos			= App.Settings.MainWindowSplitterPosition;
+			bool itemInfoMinimized	= App.Settings.ItemInfoMinimized1;
 			
 			// general window settings
 			this.DefaultWidth	= w;
@@ -748,6 +750,9 @@ namespace Basenji.Gui
 			this.DeleteEvent				+= OnDeleteEvent;
 			
 			ShowAll();
+
+			// must be called _after_ ShowAll()
+			itemInfo.Minimized = itemInfoMinimized;
 			itemInfo.Hide();
 		}
 	}
