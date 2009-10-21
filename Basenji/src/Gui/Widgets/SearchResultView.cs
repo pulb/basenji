@@ -1,6 +1,6 @@
 // SearchResultView.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2009 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -81,10 +81,10 @@ namespace Basenji.Gui.Widgets
 						
 						FileSystemVolumeItem fsvi = (FileSystemVolumeItem)item;
 						string description = string.Format(S._("<b>{0}</b>\n<span size=\"smaller\"><i>Location:</i> {1}\n<i>Volume:</i> {2}, <i>Archive No.:</i> {3}</span>"),
-																fsvi.Name,
-																fsvi.Location,
-																vol.Title, 
-																vol.ArchiveNo);
+																Util.Escape(fsvi.Name),
+																Util.Escape(fsvi.Location),
+																Util.Escape(vol.Title), 
+																Util.Escape(vol.ArchiveNo));
 																
 						store.AppendValues(	itemIcons.GetIconForItem(fsvi, ICON_SIZE),
 											description,

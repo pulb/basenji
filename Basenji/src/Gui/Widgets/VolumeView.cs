@@ -1,6 +1,6 @@
 // VolumeView.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2009 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -102,9 +102,9 @@ namespace Basenji.Gui.Widgets
 						
 					// TODO: add colors. add ArchivNr. only show important info, otherwise its too gluttered, too high!)
 					return string.Format(S._("<b>{0}</b>\n<span size=\"medium\"><i>Category:</i> {1}\n<i>Added:</i> {2}\n<i>Files:</i> {3}\n<i>Size:</i> {4}</span>"), 
-												v.Title,
-												category,
-												v.Added.ToShortDateString(),
+												Util.Escape(v.Title),
+												Util.Escape(category),
+												Util.Escape(v.Added.ToShortDateString()),
 												fsv.Files.ToString(),
 												Util.GetSizeStr(fsv.Size));
 					break;
