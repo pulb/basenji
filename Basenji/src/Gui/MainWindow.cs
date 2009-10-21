@@ -87,6 +87,7 @@ namespace Basenji.Gui
 			tvVolumes.Clear();
 			tvItems.Clear();
 			itemInfo.Clear();
+			itemInfo.Hide();
 			
 			if (database != null)
 				database.Close();
