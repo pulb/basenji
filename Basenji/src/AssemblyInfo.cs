@@ -1,6 +1,6 @@
 // AssemblyInfo.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2009 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("2008 Patrick Ulbrich")]
+[assembly: AssemblyCopyright("2008, 2009 Patrick Ulbrich")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
