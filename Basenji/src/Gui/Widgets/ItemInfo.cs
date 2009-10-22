@@ -51,39 +51,13 @@ namespace Basenji.Gui.Widgets
 			if (db == null)
 				throw new ArgumentNullException("db");
 			
-			//Table tbl;
-
-			/*
-			switch(item.GetVolumeItemType()) {
-				case VolumeItemType.FileVolumeItem:
-				case VolumeItemType.DirectoryVolumeItem:
-					// TODO : nur einmalig erstellen
-					propertyBox = CreateFSItemBox((FileSystemVolumeItem)item);
-					break;
-				default:
-					throw new NotImplementedException("Iteminfo has not been implemented for this itemtype yet");
-			}*/
-
-			//// must be called _before_ FillPropertyBox()
-			//// as this method may hide some widgets.
-			//this.Show();
-			
-			//Box box = CreateBox(item, db, tbl);
-			//ShowChild(box);
 			UpdateImage(item, db);
-			//ShowPropertyBox(propertyBbox);
 			FillPropertyBox(item);
-
+			
 			this.Show();
 		}
 
 		public void Clear() {
-			/*
-			//if (this.Child != null)
-			//	this.Remove(this.Child);
-			Widget child = this.eventBox.Child; 
-			if (child != null)
-				this.eventBox.Remove(child);*/
 			img.Clear();
 			propertyBox.Clear();
 		}
@@ -98,21 +72,6 @@ namespace Basenji.Gui.Widgets
 					propertyBox.Minimized = value;
 			}
 		}
-		/*
-		private void ShowPropertyBox(VBox propertyBox) {
-			//Clear();
-			////this.Add(w);
-			//this.eventBox.Add(w);
-			//this.ShowAll();
-
-			if (currentPropertyBox != null)
-				outerBox.Remove(currentPropertyBox);
-			
-			outerBox.PackStart(propertyBox, true, true, 0);
-			currentPropertyBox = propertyBox;
-			
-			this.ShowAll();
-		}*/
 		
 		private void UpdateImage(VolumeItem item, VolumeDatabase db) {
 			Gdk.Pixbuf pb;
@@ -294,10 +253,10 @@ namespace Basenji.Gui.Widgets
 								tmp.Add(new ItemProperty(S._("File count"), filenames.Length.ToString(), 117));
 							}
 	
-	#if DEBUG
+#if DEBUG
 						 	Platform.Common.Diagnostics.Debug.WriteLine(
 								String.Format("{0}: {1}", pair.Key, pair.Value));
-	#endif
+#endif
 					 	}
 					} catch (DllNotFoundException) { /* libextractor package not installed */}
 				}
@@ -353,7 +312,7 @@ namespace Basenji.Gui.Widgets
 				// In this case the shorter one is removed.				
 				// Fully equal keywords can not occur, they have been filtered out in the scanning process.
 				// NOTE: This function may fail if the keyword itself contains the separator string ("; ").
-
+				
 				if (separatedTags.IndexOf(KEYWORD_SEPARATORS[0]) > -1) {
 					string[] tags = separatedTags.Split(KEYWORD_SEPARATORS, StringSplitOptions.None);
 					if (tags.Length == 2) {
@@ -400,101 +359,6 @@ namespace Basenji.Gui.Widgets
 			this.Add(frame);
 		}
 		
-		/*
-		private static Table CreateFSInfoTable(FileSystemVolumeItem item) {
-			ItemProperty[] properties = ItemProperty.GetFSItemProperties(item);
-	
-			int itemCount = (properties.Length < MAX_ITEM_PROPERTIES) ? properties.Length : MAX_ITEM_PROPERTIES;
-			int hCount = 2;
-			int vCount = MAX_ITEM_PROPERTIES / hCount;
-			if (itemCount <= vCount)
-				hCount = 1;
-	
-			Table tbl = WindowBase.CreateTable(vCount, hCount * 2);
-			
-			int x = 0, y = 0;
-			for (int i = 0; i < itemCount; i++, y++) {
-				ItemProperty p = properties[i];
-	
-				if (i == vCount) {
-					y = 0;
-					x+= 2;
-				}
-				
-				AttachTooltipLabel(String.Format("{0}:", p.name), "b", tbl, x, y);
-				AttachTooltipLabel(p.value, null, tbl, x + 1, y);
-			}
-	
-			// fill remainding cell with empty labels to avoid a "jumping" widget height
-			if (itemCount < (vCount * hCount)) {
-				int remainder = (vCount * hCount) - itemCount;
-			
-				for (int i = vCount - remainder; i < vCount; i++, y++) {
-					AttachTooltipLabel(string.Empty, null, tbl, x, y);
-				}
-			}
-			
-			
-			return tbl;
-		}*/
-	
-		/*
-		private static void AttachTooltipLabel(string caption, string tag, Table tbl, int x, int y) {
-			Label lbl;
-			string tooltip = caption;
-	
-			// remove linebreaks
-			caption = caption.Replace('\n', ' ').Replace('\r', ' ');
-			
-			if (!string.IsNullOrEmpty(tag))
-				lbl = WindowBase.CreateLabel(String.Format("<{0}>{1}</{0}>", tag, caption), true);
-			else
-				lbl = WindowBase.CreateLabel(caption, false);
-			
-			lbl.Ellipsize = Pango.EllipsizeMode.End;
-			
-			if (tooltip.Length > 0)
-				lbl.TooltipText = tooltip;
-			
-			tbl.Attach(lbl, (uint)x, (uint)(x + 1), (uint)y, (uint)(y + 1));
-		}*/
-
-		/*
-		private Box CreateBox(VolumeItem item, VolumeDatabase db, Table tbl) {
-			HBox box = new HBox(false, 12);
-			box.BorderWidth = 6;
-			
-			Image img = new Image();
-			Gdk.Pixbuf pb;
-			
-			img.WidthRequest	= MAX_THUMB_WIDTH;
-			img.HeightRequest	= MAX_THUMB_HEIGHT;
-			
-			string thumbName = System.IO.Path.Combine(
-				DbData.GetVolumeDataThumbsPath(db, item.VolumeID), 
-				string.Format("{0}.png", item.ItemID));
-				
-			if (!thumbnailCache.TryGetValue(thumbName, out pb)) {
-				if (File.Exists(thumbName)) {
-					Gdk.Pixbuf newThumb = new Gdk.Pixbuf(thumbName); 
-					pb = Resize(newThumb, MAX_THUMB_WIDTH, MAX_THUMB_HEIGHT);
-					if (pb != newThumb)
-						newThumb.Dispose();
-					thumbnailCache.Add(thumbName, pb);
-				} else {
-					pb = itemIcons.GetIconForItem(item, ICON_SIZE);
-				}
-			}
-			
-			img.FromPixbuf = pb;
-				
-			box.PackStart(img, false, false, 0);
-			box.PackStart(tbl, true, true, 0);
-			return box;
-		}
-		*/
-
-		
 #region PropertyBox class
 		private class PropertyBox : VBox
 		{
@@ -509,15 +373,9 @@ namespace Basenji.Gui.Widgets
 			private const int MAX_ITEM_PROPERTIES	= 8; // must be a multiple of 2
 			private const int WIDTH					= 2;
 			private const int HEIGHT				= MAX_ITEM_PROPERTIES / WIDTH;
-
-			//private Gdk.Pixbuf pbUp;
-			//private Gdk.Pixbuf pbDown;
 			
 			public PropertyBox(ItemInfo owner) : base(false, 12) {
 				this.owner = owner;
-				
-				//this.pbUp	= Icons.Icon.Stock_GoBack.Render(this, IconSize.Button);
-				//this.pbDown	= Icons.Icon.Stock_GoForward.Render(this, IconSize.Button);
 				
 				this.captionLbls	= new Label[MAX_ITEM_PROPERTIES];
 				this.valueLbls		= new Label[MAX_ITEM_PROPERTIES];
@@ -579,14 +437,17 @@ namespace Basenji.Gui.Widgets
 					ItemProperty p = properties[i];
 					
 					captionLbls[i].LabelProp = string.Format("<b>{0}:</b>", p.name);
+					captionLbls[i].TooltipText = p.name;
+					
 					// remove linebreaks
 					valueLbls[i].LabelProp = p.value.Replace('\n', ' ').Replace('\r', ' ');
 					valueLbls[i].TooltipText = p.value;
 				}
 				
-				// clear remainding labels
+				// clear remaining labels
 				for (int i = itemCount; i < MAX_ITEM_PROPERTIES; i++) {
 					captionLbls[i].LabelProp = string.Empty;
+					captionLbls[i].TooltipText = string.Empty;
 					valueLbls[i].LabelProp = string.Empty;
 					valueLbls[i].TooltipText = string.Empty;
 				}
@@ -596,7 +457,7 @@ namespace Basenji.Gui.Widgets
 				SetNameProperty(string.Empty, string.Empty);
 				for (int i = 0; i < MAX_ITEM_PROPERTIES; i++) {
 					captionLbls[i].LabelProp = captionLbls[i].TooltipText = String.Empty;
-					valueLbls[i].LabelProp	= valueLbls[i].TooltipText = String.Empty;
+					valueLbls[i].LabelProp = valueLbls[i].TooltipText = String.Empty;
 				}
 			}
 
@@ -619,15 +480,6 @@ namespace Basenji.Gui.Widgets
 			}
 			
 			private void OnBtnClicked(object sender, System.EventArgs args) {
-				/*if (hbox.Visible) {
-					owner.img.Visible = false;
-					hbox.Visible = false;
-					btnImg.Pixbuf = pbUp;
-				} else {
-					owner.img.Visible = true;
-					hbox.Visible = true;
-					btnImg.Pixbuf = pbDown;
-				}*/
 				Minimized = !Minimized;
 			}
 		}
