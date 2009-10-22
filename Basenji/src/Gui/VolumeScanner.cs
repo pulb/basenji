@@ -1,6 +1,6 @@
 // VolumeScanner.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2009 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -15,8 +15,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
-
-//#pragma warning disable 649
 
 using System;
 using System.Text;
@@ -97,7 +95,13 @@ namespace Basenji.Gui
 
 				//Log(new LogItem(LogIcon.Info, string.Format("Scanning of drive '{0}' started. [buffersize: {1}, hashing: {2}]", driveName, bufferSize, enableHashing ? "on" : "off")));
 				////m_scanner.BeginScanning(driveName, false);
-				UpdateLog(LogIcon.Info, string.Format(S._("Scanning of drive '{0}' started. [thumbs: {1}, hashing: {2}, discard symlinks: {3}]"), device, BoolToStr(generateThumbnails), BoolToStr(enableHashing), BoolToStr(discardSymLinks)));
+				UpdateLog(LogIcon.Info, string.Format(S._("Scanning of drive '{0}' started."), device));
+				UpdateLog(LogIcon.Info, string.Format(S._("Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, hashing: {3}."),
+				                                      BoolToStr(generateThumbnails),
+				                                      BoolToStr(extractMetaData),
+				                                      BoolToStr(discardSymLinks),
+				                                      BoolToStr(enableHashing)));
+				
 				scanner.RunAsync(); // starts scanning on a new thread and returns
 			} catch {
 				//RemoveIdleHandler();
