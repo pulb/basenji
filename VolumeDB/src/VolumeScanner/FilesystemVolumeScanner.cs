@@ -245,7 +245,7 @@ namespace VolumeDB.VolumeScanner
 							if (extractMetaData && extractor != null) {
 								Keyword[] keywords = extractor.GetKeywords(files[i].FullName);
 								// removes duplicates like the same year in idv2 and idv3 tags,
-								// does not remove keywords of the same type (e.g. filename)
+								// does not remove keywords of the same type with different data (e.g. filename)
 								keywords = Extractor.RemoveDuplicateKeywords(keywords,
 								                                             DuplicateOptions.DUPLICATES_REMOVE_UNKNOWN | 
 								                                             DuplicateOptions.DUPLICATES_TYPELESS);
