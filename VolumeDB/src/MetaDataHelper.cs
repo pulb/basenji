@@ -30,7 +30,7 @@ namespace VolumeDB
 			StringBuilder sbHeader	= new StringBuilder();
 			StringBuilder sbData	= new StringBuilder();
 
-			sbHeader.Append('<');
+			sbHeader.Append('[');
 			foreach(Keyword kw in keywords) {
 				// skip data that is already available in other
 				// database fields or unreliable.
@@ -46,7 +46,7 @@ namespace VolumeDB
 				sbHeader.Append((int)kw.keywordType).Append(':').Append(kw.keyword.Length.ToString());
 				sbData.Append(kw.keyword);
 			}
-			sbHeader.Append('>');
+			sbHeader.Append(']');
 
 			if (sbData.Length == 0)
 				return null;
@@ -58,7 +58,7 @@ namespace VolumeDB
 			if (string.IsNullOrEmpty(strPacked))
 				return null;
 
-			int headerEndIdx	= strPacked.IndexOf('>');
+			int headerEndIdx	= strPacked.IndexOf(']');
 			string strHeader	= strPacked.Substring(1,  headerEndIdx - 1);
 			strPacked			= strPacked.Remove(0, headerEndIdx + 1);
 
