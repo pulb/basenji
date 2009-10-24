@@ -1,5 +1,8 @@
 <Project name="LibExtractor" fileversion="2.0" language="C#" clr-version="Net_2_0" targetFramework="2.0" ctype="DotNetProject">
-  <Configurations active="Gnome_Debug">
+  <Policies>
+    <StandardHeader IncludeInNewFiles="False" inheritsSet="LGPLv2License" />
+  </Policies>
+  <Configurations active="Debug">
     <Configuration name="Debug" ctype="DotNetProjectConfiguration">
       <Output directory="bin/Debug" assembly="LibExtractor" />
       <Build debugmode="True" target="Library" />

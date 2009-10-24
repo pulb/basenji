@@ -175,15 +175,22 @@ namespace LibExtractor
 		}
 		
 		public static Keyword[] RemoveDuplicateKeywords(Keyword[] keywords, DuplicateOptions options) {
-			List<Keyword> lst = new List<Keyword>();
-
+			int removed = 0;
+			
 			for (int i = 0; i < keywords.Length; i++) {
-				Keyword pos	= keywords[i];
-				bool remove	= false;
+				Keyword current = keywords[i];
 				
-				for (int j = 0; j < lst.Count; j++) {					
-					KeywordType type	= lst[j].keywordType;
-					string keyword		= lst[j].keyword;
+				if (current == null)
+					continue;
+				
+				KeywordType type = current.keywordType;
+				string keyword = current.keyword;
+				
+				for (int j = 0; j < keywords.Length; j++) {
+					Keyword pos = keywords[j];
+					
+					if ((i == j) || (pos == null))
+						continue;
 					
 					if ( (pos.keyword == keyword) &&
 					 ( (pos.keywordType == type) ||
@@ -192,24 +199,26 @@ namespace LibExtractor
 					       (type != KeywordType.EXTRACTOR_SPLIT)) ) ||
 					   ( ((options & DuplicateOptions.DUPLICATES_REMOVE_UNKNOWN) > 0) &&
 					     (pos.keywordType == KeywordType.EXTRACTOR_UNKNOWN)) ) ) {
-						remove = true;
-						break; // break inner for
+						
+						if (removed == 0) {
+							// do not modify the original array.
+							// lazy copy - copy only if the array
+							// will be modified.
+							keywords = CopyKeywords(keywords);
+						}
+						
+						// mark keyword as removed.
+						keywords[j] = null;
+						removed++;
 					}
-				}
-				
-				if (!remove) {
-					lst.Add(pos);
 				}
 			}
 			
-			if (lst.Count == keywords.Length)
-				return keywords;
-			else
-				return lst.ToArray();
+			return RemoveNullKeywords(keywords, removed);
 		}
 		
 		public static Keyword[] RemoveEmptyKeywords(Keyword[] keywords) {
-			List<Keyword> lst = new List<Keyword>();
+			List<Keyword> lst = null;
 			
 			for (int i = 0; i < keywords.Length; i++) {
 				Keyword pos = keywords[i];
@@ -223,27 +232,41 @@ namespace LibExtractor
 					}
 				}
 				
-				if (!allWhite)
-					lst.Add(pos);
+				if (allWhite) {
+					if (lst == null) {
+						// lazy copy -
+						// copy only if keywords will actually be removed.
+						lst = new List<Keyword>(keywords.Length);
+						lst.AddRange(keywords);
+					}
+					lst.Remove(pos);
+				}
 			}
 			
-			if (lst.Count == keywords.Length)
+			if (lst == null)
 				return keywords;
 			else
 				return lst.ToArray();
 		}
 		
 		public static Keyword[] RemoveKeywordsOfType(Keyword[] keywords, KeywordType type) {
-			List<Keyword> lst = new List<Keyword>();
+			List<Keyword> lst = null;
 			
 			for (int i = 0; i < keywords.Length; i++) {
 				Keyword pos = keywords[i];
-				if (pos.keywordType != type) {
-					lst.Add(pos);
+				
+				if (pos.keywordType == type) {
+					if (lst == null) {
+						// lazy copy -
+						// copy only if keywords will actually be removed.
+						lst = new List<Keyword>(keywords.Length);
+						lst.AddRange(keywords);
+					}
+					lst.Remove(pos);
 				}
 			}
 			
-			if (lst.Count == keywords.Length)
+			if (lst == null)
 				return keywords;
 			else
 				return lst.ToArray();
@@ -270,6 +293,27 @@ namespace LibExtractor
 				}
 			}
 			return result;
+		}
+		
+		private static Keyword[] CopyKeywords(Keyword[] original) {
+			Keyword[] copy = new Keyword[original.Length];
+			Array.Copy(original, copy, original.Length);
+			return copy;
+		}
+		
+		private static Keyword[] RemoveNullKeywords(Keyword[] keywords, int nullCount) {
+			if (nullCount < 1)
+				return keywords;
+			
+			Keyword[] copy = new Keyword[keywords.Length - nullCount];
+			int n = 0;
+			
+			for (int i = 0; i < keywords.Length; i++) {
+				if (keywords[i] != null)
+					copy[n++] = keywords[i];
+			}
+			
+			return copy;
 		}
 		
 		/// 
