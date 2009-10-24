@@ -1,6 +1,0 @@
-Name: Platform.Common.DB
-Description: Platform.Common.DB
-Version: 
-
-Requires: 
-Libs: -r:@expanded_libdir@/@PACKAGE@/Platform.Common.DB.dll

@@ -1,6 +1,0 @@
-Name: Platform
-Description: Platform
-Version: 
-
-Requires: 
-Libs: -r:@expanded_libdir@/@PACKAGE@/Platform.dll

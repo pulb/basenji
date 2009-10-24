@@ -1,6 +1,0 @@
-Name: Hal
-Description: Hal
-Version: 
-
-Requires: 
-Libs: -r:@expanded_libdir@/@PACKAGE@/Hal.dll

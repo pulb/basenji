@@ -33,6 +33,8 @@ PLATFORM_COMMON_DB_DLL_MDB_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Commo
 PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
 HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
 HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
+LIBEXTRACTOR_DLL_MDB_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll.mdb
+LIBEXTRACTOR_DLL_MDB=$(BUILD_DIR)/LibExtractor.dll.mdb
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
 
@@ -59,6 +61,7 @@ PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
 LIBEXTRACTOR_DLL_CONFIG_SOURCE=LibExtractor.dll.config
 PLATFORM_COMMON_DB_DLL_MDB=
 HAL_DLL_MDB=
+LIBEXTRACTOR_DLL_MDB=
 PLATFORM_DLL_MDB=
 
 endif
@@ -88,6 +91,8 @@ PLATFORM_COMMON_DB_DLL_MDB_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Commo
 PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
 HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
 HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
+LIBEXTRACTOR_DLL_MDB_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll.mdb
+LIBEXTRACTOR_DLL_MDB=$(BUILD_DIR)/LibExtractor.dll.mdb
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
 
@@ -114,6 +119,7 @@ PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
 LIBEXTRACTOR_DLL_CONFIG_SOURCE=LibExtractor.dll.config
 PLATFORM_COMMON_DB_DLL_MDB=
 HAL_DLL_MDB=
+LIBEXTRACTOR_DLL_MDB=
 PLATFORM_DLL_MDB=
 
 endif
@@ -132,6 +138,7 @@ PROGRAMFILES = \
 	$(LIBEXTRACTOR_DLL_CONFIG) \
 	$(PLATFORM_COMMON_DB_DLL_MDB) \
 	$(HAL_DLL_MDB) \
+	$(LIBEXTRACTOR_DLL_MDB) \
 	$(PLATFORM_DLL_MDB)  
 
 LINUX_DESKTOPAPPLICATIONS = \
@@ -237,6 +244,7 @@ $(eval $(call emit-deploy-target,PLATFORM_DLL))
 $(eval $(call emit-deploy-target,LIBEXTRACTOR_DLL_CONFIG))
 $(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL_MDB))
 $(eval $(call emit-deploy-target,HAL_DLL_MDB))
+$(eval $(call emit-deploy-target,LIBEXTRACTOR_DLL_MDB))
 $(eval $(call emit-deploy-target,PLATFORM_DLL_MDB))
 
 
@@ -298,6 +306,7 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call cp,$(LIBEXTRACTOR_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_COMMON_DB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(HAL_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(LIBEXTRACTOR_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	make post-install-local-hook prefix=$(prefix)
 
@@ -318,6 +327,7 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call rm,$(LIBEXTRACTOR_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_COMMON_DB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(HAL_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(LIBEXTRACTOR_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	make post-uninstall-local-hook prefix=$(prefix)
 
