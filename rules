@@ -1,0 +1,38 @@
+#!/usr/bin/make -f
+export DH_VERBOSE=1
+
+include /usr/share/cli-common/cli.make
+
+configure: configure-stamp
+configure-stamp:
+	dh_testdir
+	./configure --prefix=/usr --config=GNOME_RELEASE
+#	dh_auto_configure -- --prefix=/usr
+	touch configure-stamp
+
+build: configure-stamp
+	dh $@ --after configure
+
+#build: build-stamp
+#build-stamp: configure-stamp
+#	dh_testdir
+#	make
+#	touch $@
+
+#install: build
+#	dh_testdir
+#	dh_testroot
+#	dh_clean -k
+#	dh_installdirs
+
+install: build
+	dh $@
+
+binary: binary-indep
+binary-indep: build install
+	dh $@
+
+clean: configure-stamp
+	dh $@
+##	make clean
+#	dh clean

@@ -1,0 +1,21 @@
+Source: basenji
+Section: gnome
+Priority: optional
+Maintainer: Patrick Ulbrich <zulu99@gmx.net>
+Build-Depends: debhelper (>= 7), autotools-dev
+Standards-Version: 3.8.0
+Homepage: http://launchpad.net/basenji
+
+Package: basenji
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${cli:Depends}
+Description: A portable volume indexing tool
+ Basenji is a volume indexing tool designed for easy and fast indexing 
+ of volume collections. It currently supports indexing of removable media 
+ such as CDs and USB sticks and stores them as volume objects in a database. 
+ After being stored in this database, volumes can be browsed and searched trough 
+ for specific files very quickly.
+ .
+ Basenji has been developed with platform independency in mind right from the start 
+ and presently consists of a GTK+ GUI frontend and a reusable library backend (VolumeDB) 
+ that implements the actual indexing, searching and database logic.
