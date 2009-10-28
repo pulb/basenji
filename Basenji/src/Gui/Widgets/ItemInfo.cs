@@ -209,6 +209,7 @@ namespace Basenji.Gui.Widgets
 					 		// cherry-pick interesting properties
 							/* audio properties*/
 							if (pair.Key == "genre") {
+								// NOTE: genre keyword is used in e.g. deb packages as well
 								tmp.Add(new ItemProperty(S._("Genre"), RemoveSimilarIDTags(pair.Value), 105));
 							} else if (pair.Key == "artist") {
 								//tmp2.Add(new ItemProperty(S._("Artist"), pair.Value, 101));
@@ -229,7 +230,9 @@ namespace Basenji.Gui.Widgets
 							} else if (pair.Key == "duration") {
 								tmp.Add(new ItemProperty(S._("Duration"), pair.Value, 106));
 							} else if (pair.Key == "size") {
-								tmp.Add(new ItemProperty(S._("Dimensions"), pair.Value, 107));
+								// NOTE: size keyword is used in e.g. deb packages as well (unpacked size in kb)
+								if(item.MimeType.StartsWith("image") || item.MimeType.StartsWith("video"))
+									tmp.Add(new ItemProperty(S._("Dimensions"), pair.Value, 107));
 							/* other properties*/
 							} else if (pair.Key == "format") {
 								tmp.Add(new ItemProperty(S._("Format"), pair.Value, 108));
