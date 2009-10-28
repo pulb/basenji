@@ -229,12 +229,12 @@ namespace VolumeDB.VolumeScanner
 
 					if (isRegularFile) {
 						
-						string	mimeType			= null;
-						string	metaData			= null;
-						string	hash				= null;
-						bool	thumbGenerated		= false;
+						string	mimeType		= null;
+						string	metaData		= null;
+						string	hash			= null;
+						bool	thumbGenerated	= false;
 						
-						FileStream fs	= null;
+						FileStream fs = null;
 						try {
 							// OpenRead() must be called _before_ MimeInfo.GetMimeType(),
 							// since this method returns a mimetype even if the file does not exist / can't be accessed.
@@ -242,7 +242,7 @@ namespace VolumeDB.VolumeScanner
 							
 							mimeType = MimeType.GetMimeTypeForFile(files[i].FullName);
 							
-							if (extractMetaData && extractor != null) {
+							if (extractMetaData && (extractor != null)) {
 								Keyword[] keywords = extractor.GetKeywords(files[i].FullName);
 								// removes duplicates like the same year in idv2 and idv3 tags,
 								// does not remove keywords of the same type with different data (e.g. filename)
@@ -426,7 +426,8 @@ namespace VolumeDB.VolumeScanner
 				return;
 			}
 			
-			// make sure all files/dirs have been written to the database before searching for symlink targets
+			// make sure all files/dirs have been written to the database 
+			// before searching for symlink targets
 			writer.Flush();
 			
 			const int partSize = 20;
