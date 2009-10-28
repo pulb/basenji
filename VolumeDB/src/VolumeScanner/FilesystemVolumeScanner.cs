@@ -99,7 +99,7 @@ namespace VolumeDB.VolumeScanner
 					Directory.CreateDirectory(paths.thumbnailPath);
 				}
 
-				if (extractMetaData && extractor == null) {
+				if (extractMetaData && (extractor == null)) {
 					SendScannerWarning(S._("libExtractor not found. Metadata extraction disabled."));
 				}
 				
