@@ -7,67 +7,71 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-04-15 21:32+0200\n"
+"POT-Creation-Date: 2009-10-28 17:24+0100\n"
 "PO-Revision-Date: 2008-11-21 23:07+0000\n"
 "Last-Translator: nanker <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-17 17:56+0000\n"
+"X-Launchpad-Export-Date: 2009-11-18 21:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: src/Searching/EUSLSearchCriteria.cs:91
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:91
 msgid ""
 "Operand for keyword 'filesize' must be a number with an optional multiplier"
 msgstr ""
 
-#: src/Searching/EUSLSearchCriteria.cs:115
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:115
 msgid "Invalid compare operator for keyword 'filesize'"
 msgstr ""
 
-#: src/Searching/EUSLSearchCriteria.cs:125
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:125
 msgid "Operand for keyword 'type' must be a string"
 msgstr ""
 
-#: src/Searching/EUSLSearchCriteria.cs:134
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:134
 #, csharp-format
 msgid "Unknown type '{0}'"
 msgstr ""
 
-#: src/Searching/EUSLSearchCriteria.cs:140
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:140
 msgid "Keyword 'type' only supports '=' and ':' operators"
 msgstr ""
 
-#: src/Searching/EUSLSearchCriteria.cs:154
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:162
 #, csharp-format
 msgid "Unknown keyword '{0}'"
 msgstr ""
 
-#: src/Searching/EUSLSearchCriteria.cs:168
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:177
 msgid "Invalid compare operator for a keyword that maps to textual content"
 msgstr ""
 
-#: src/Searching/EUSLSearchCriteria.cs:221
-#: src/Searching/EUSLSearchCriteria.cs:225
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:230
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:234
 #, csharp-format
 msgid "Parsing error: search statement is malformed at position {0}"
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:154
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:103
+msgid "libExtractor not found. Metadata extraction disabled."
+msgstr ""
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:178
 #, csharp-format
 msgid "Skipped item '{0}' as it doesn't seem to be a real directory."
 msgstr "Opgav emne '{0}' da det ikke synes at være et katalog."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:164
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:270
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:188
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:300
 #, csharp-format
 msgid "Skipped symlink item '{0}' as the target does not exist."
 msgstr "Opgav symlink emne '{0}' da den ikke eksisterer."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:170
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:262
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:273
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:194
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:292
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:303
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it appears to point to a different drive "
@@ -76,35 +80,35 @@ msgstr ""
 "Opgav symlink emne '{0}' da det tilsyneladende peger på et andet drev "
 "('{1}')."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:239
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:269
 #, csharp-format
 msgid "Error opening file '{0}', can't retrieve any mime/metadata. ({1})"
 msgstr ""
 "Fejl ved åbning af fil '{0}', kan ikke finde nogle mime/metadata. ({1})"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:276
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:306
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."
 msgstr ""
 "Opgav symlink emne '{0}' da det ikke peger på en regulær fil ('{1}')."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:285
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:315
 #, csharp-format
 msgid "Skipped item '{0}' as it appears to be some kind of special file."
 msgstr "Opgav emne '{0}' da det ser ud til at være en speciel fil."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:300
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:330
 #, csharp-format
 msgid "Unable to dump dir '{0}'. ({1})"
 msgstr "Kunne ikke slette dir '{0}'. ({1})"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:451
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:482
 #, csharp-format
 msgid "Failed to resolve target item for symlink '{0}'."
 msgstr "Mislykkedes at finde emne for symlink '{0}'."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:493
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:524
 #, csharp-format
 msgid "Can't read LastWriteTime from item '{0}' ({1})."
 msgstr "Kan ikke læse LastWriteTime fra emne '{0}' ({1})."
