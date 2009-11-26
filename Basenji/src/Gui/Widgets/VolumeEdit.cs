@@ -369,7 +369,9 @@ namespace Basenji.Gui.Widgets
 			Table tbl = WindowBase.CreateTable(infoLabels.Count, 2);
 			
 			for (int i = 0; i < infoLabels.Count; i++) {
-				WindowBase.TblAttach(tbl, WindowBase.CreateLabel(infoLabels[i].caption), 0, i);								   
+				string caption = string.Format("<i>{0}</i>", infoLabels[i].caption);
+				
+				WindowBase.TblAttach(tbl, WindowBase.CreateLabel(caption, true), 0, i);								   
 				WindowBase.TblAttach(tbl, infoLabels[i].label, 1, i);
 				infoLabels[i].label.LabelProp = "-";
 			}
