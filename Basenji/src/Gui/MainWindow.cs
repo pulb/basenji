@@ -622,6 +622,7 @@ namespace Basenji.Gui
 			
 			// shared actions (used in toolbar buttons / menu items / context menus)
 			actAddVolume = CreateAction("addvolume", S._("_Add Volume"), null, Stock.Add, OnActAddVolumeActivated);
+			actAddVolume.IsImportant = true;
 			ag.Add(actAddVolume, "<control>A");
 			
 			actRemoveVolume = CreateAction("removevolume", S._("_Remove Volume"), null, Stock.Remove, OnActRemoveVolumeActivated);
@@ -681,7 +682,7 @@ namespace Basenji.Gui
 			// gtk will use SmallToolbar on windows by default 
 			// (no custom icons available for this size)
 			toolbar.IconSize		= IconSize.LargeToolbar;
-			toolbar.ToolbarStyle	= Gtk.ToolbarStyle.Both;
+			toolbar.ToolbarStyle	= Gtk.ToolbarStyle.BothHoriz;
 			toolbar.ShowArrow		= false;
 			
 			vbOuter.PackStart(menubar, false, false, 0);
