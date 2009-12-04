@@ -16,7 +16,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-//#pragma warning disable 649
 using System;
 using System.Threading;
 using Gtk;
@@ -42,6 +41,7 @@ namespace Basenji.Gui
 		public DriveSelection() {
 			BuildGui();
 
+			btnOk.Sensitive = false;
 			isDestroyed = false;
 			selectedDrive = null;
 			
@@ -57,7 +57,7 @@ namespace Basenji.Gui
 		 * because this operation can take a few seconds on windows systems.
 		 */
 		private void RefreshListAsync() {
-			btnOk.Sensitive = false;
+			//btnOk.Sensitive = false;
 			
 			if (CurrentPlatform.IsWin32) {
 				ListStore store = new ListStore(typeof(string));
@@ -106,7 +106,7 @@ namespace Basenji.Gui
 							// select selectedIter							
 							tvDrives.Selection.SelectIter(selectedIter);
 
-							btnOk.Sensitive = true;
+							//btnOk.Sensitive = true;
 						});
 					}
 				}).Start();
@@ -196,6 +196,10 @@ namespace Basenji.Gui
 			TreeIter iter;
 			
 			if (tvDrives.Selection.GetSelected(out model, out iter)) {
+				// enable ok button on first selection
+				if (selectedDrive == null)
+					btnOk.Sensitive = true;
+				
 				selectedDrive = (DriveInfo)model.GetValue(iter, 4);
 				Debug.WriteLine("selected drive '{0}'", selectedDrive.Device);
 			}	 
@@ -204,7 +208,7 @@ namespace Basenji.Gui
 		[GLib.ConnectBefore()]
 		private void OnTvDrivesKeyPressEvent(object o, Gtk.KeyPressEventArgs args) {
 			if (IsListReady) {
-				if (args.Event.Key == Gdk.Key.Return)
+				if ((selectedDrive != null) && (args.Event.Key == Gdk.Key.Return))
 					this.Respond(ResponseType.Ok);
 			}
 		}
@@ -212,6 +216,12 @@ namespace Basenji.Gui
 		[GLib.ConnectBefore()]
 		private void OnTvDrivesButtonPressEvent(object o, Gtk.ButtonPressEventArgs args) {
 			if (IsListReady) {
+				
+				TreePath path;
+				tvDrives.GetPathAtPos((int)args.Event.X, (int)args.Event.Y, out path);
+				if (path == null)
+					return;
+				
 				if (args.Event.Type == EventType.TwoButtonPress)
 					this.Respond(ResponseType.Ok);
 			}
