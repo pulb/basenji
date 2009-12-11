@@ -33,6 +33,7 @@ namespace Basenji.Gui
 		private static readonly string		translatorCredits	= 
 @"Yaron, https://launchpad.net/~sh-yaron
 nanker, https://launchpad.net/~nanker
+Nicolás M. Zahlut, https://launchpad.net/~nzahlut
 Patrick Ulbrich, https://launchpad.net/~pulb";
 		
 		public About() {
