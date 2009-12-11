@@ -1,13 +1,13 @@
-<Project name="Basenji" fileversion="2.0" language="C#" clr-version="Net_2_0" targetFramework="3.5" ctype="DotNetProject">
+<Project name="Basenji" fileversion="2.0" DefaultNamespace="Basenji" language="C#" clr-version="Net_2_0" targetFramework="3.5" ctype="DotNetProject">
   <Configurations active="Gnome_Debug">
     <Configuration name="Debug" ctype="DotNetProjectConfiguration">
       <CustomCommands>
         <Command type="AfterBuild" command="./custom_build_commands.sh --after-build ${TargetDir}" workingdir="${ProjectDir}" />
         <Command type="AfterClean" command="./custom_build_commands.sh --after-clean ${TargetDir}" workingdir="${ProjectDir}" />
       </CustomCommands>
-      <Output directory="bin/Debug" assemblyKeyFile="." assembly="Basenji" />
+      <Output directory="bin/Debug" assembly="Basenji" assemblyKeyFile="." />
       <Build debugmode="True" target="WinExe" />
-      <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_2_0" />
+      <Execution consolepause="True" runwithwarnings="True" runtime="MsNet" clr-version="Net_2_0" />
       <CodeGeneration compiler="Mcs" warninglevel="3" optimize="False" unsafecodeallowed="False" generateoverflowchecks="True" definesymbols="DEBUG" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
     </Configuration>
     <Configuration name="Release" ctype="DotNetProjectConfiguration">
@@ -15,64 +15,65 @@
         <Command type="AfterBuild" command="./custom_build_commands.sh --after-build ${TargetDir}" workingdir="${ProjectDir}" />
         <Command type="AfterClean" command="./custom_build_commands.sh --after-clean ${TargetDir}" workingdir="${ProjectDir}" />
       </CustomCommands>
-      <Output directory="bin/Release" assemblyKeyFile="." assembly="Basenji" />
+      <Output directory="bin/Release" assembly="Basenji" assemblyKeyFile="." />
       <Build debugmode="False" target="WinExe" />
-      <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_2_0" />
+      <Execution consolepause="True" runwithwarnings="True" runtime="MsNet" clr-version="Net_2_0" />
       <CodeGeneration compiler="Mcs" warninglevel="3" optimize="True" unsafecodeallowed="False" generateoverflowchecks="False" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
     </Configuration>
   </Configurations>
   <Contents>
-    <File name="app.desktop" subtype="Code" DeployService.HasPathReferences="True" DeployService.TargetDirectoryId="Linux.DesktopApplications" buildaction="FileCopy" />
-    <File name="images/LED_Off.png" subtype="Code" buildaction="EmbedAsResource" />
-    <File name="images/LED_On.png" subtype="Code" buildaction="EmbedAsResource" />
-    <File name="src" subtype="Directory" buildaction="Compile" />
-    <File name="src/Gui/About.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/DBProperties.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/DriveSelection.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/Events.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/ItemSearch.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/MainWindow.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/Preferences.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/VolumeProperties.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/VolumeScanner.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/Base/BinBase.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/Base/DialogBase.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/Base/ViewBase.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/Base/WindowBase.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/Widgets/DateChooser.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/Widgets/FSVolumeEdit.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/Widgets/ItemInfo.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/Widgets/ItemView.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/Widgets/Led.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/Widgets/SearchResultView.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/Widgets/VolumeEdit.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/Widgets/VolumeView.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Icons/CustomIconTheme.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Icons/Icon.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Icons/IconCache.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Icons/IconUtils.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Icons/ItemIcons.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Icons/MimeIconCache.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Icons/NameInCustomIconNameAttribute.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/App.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/AssemblyInfo.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/DbData.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/FileDialog.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Main.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/MsgDialog.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Settings.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Util.cs" subtype="Code" buildaction="Compile" />
-    <File name="basenji" subtype="Code" DeployService.HasPathReferences="True" DeployService.TargetDirectoryId="Binaries" buildaction="FileCopy" />
-    <File name="src/S.cs" subtype="Code" buildaction="Compile" />
-    <File name="po/de.resources" subtype="Code" buildaction="EmbedAsResource" />
-    <File name="po/he.resources" subtype="Code" buildaction="EmbedAsResource" />
-    <File name="po/da.resources" subtype="Code" buildaction="EmbedAsResource" />
-    <File name="images/search.png" subtype="Code" buildaction="EmbedAsResource" />
-    <File name="src/Gui/Widgets/CategoryView.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/Widgets/PageNavigation.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/Widgets/VolumeEditEvents.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/Gui/Widgets/PageNavigationEvents.cs" subtype="Code" buildaction="Compile" />
-    <File name="LibExtractor.dll.config" subtype="Code" buildaction="FileCopy" />
+    <File subtype="Code" name="app.desktop" DeployService.Deploy="True" DeployService.HasPathReferences="True" DeployService.TargetDirectoryId="Linux.DesktopApplications" buildaction="FileCopy" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="images/LED_Off.png" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="images/LED_On.png" />
+    <File subtype="Directory" buildaction="Compile" name="src" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/About.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/DBProperties.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/DriveSelection.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Events.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/ItemSearch.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/MainWindow.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Preferences.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/VolumeProperties.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/VolumeScanner.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Base/BinBase.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Base/DialogBase.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Base/ViewBase.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Base/WindowBase.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/DateChooser.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/FSVolumeEdit.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/ItemInfo.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/ItemView.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/Led.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/SearchResultView.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/VolumeEdit.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/VolumeView.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Icons/CustomIconTheme.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Icons/Icon.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Icons/IconCache.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Icons/IconUtils.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Icons/ItemIcons.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Icons/MimeIconCache.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Icons/NameInCustomIconNameAttribute.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/App.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/AssemblyInfo.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/DbData.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/FileDialog.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Main.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/MsgDialog.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Settings.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Util.cs" />
+    <File subtype="Code" name="basenji" DeployService.Deploy="True" DeployService.HasPathReferences="True" DeployService.TargetDirectoryId="Binaries" buildaction="FileCopy" />
+    <File subtype="Code" buildaction="Compile" name="src/S.cs" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="po/de.resources" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="po/he.resources" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="po/da.resources" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="images/search.png" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/CategoryView.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/PageNavigation.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/VolumeEditEvents.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/PageNavigationEvents.cs" />
+    <File subtype="Code" name="LibExtractor.dll.config" buildaction="FileCopy" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/IconEntry.cs" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />

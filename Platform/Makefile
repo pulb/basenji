@@ -19,10 +19,10 @@ PROJECT_REFERENCES =  \
 BUILD_DIR = bin/Debug
 
 HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
-PLATFORM_DLL_MDB_SOURCE=bin/Debug/Platform.dll.mdb
-PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
 HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
 HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
+PLATFORM_DLL_MDB_SOURCE=bin/Debug/Platform.dll.mdb
+PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
 
 endif
 
@@ -37,8 +37,8 @@ PROJECT_REFERENCES =  \
 BUILD_DIR = bin/Release
 
 HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
-PLATFORM_DLL_MDB=
 HAL_DLL_MDB=
+PLATFORM_DLL_MDB=
 
 endif
 
@@ -53,10 +53,10 @@ PROJECT_REFERENCES =  \
 BUILD_DIR = bin/Debug
 
 HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
-PLATFORM_DLL_MDB_SOURCE=bin/Debug/Platform.dll.mdb
-PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
 HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
 HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
+PLATFORM_DLL_MDB_SOURCE=bin/Debug/Platform.dll.mdb
+PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
 
 endif
 
@@ -71,8 +71,8 @@ PROJECT_REFERENCES =  \
 BUILD_DIR = bin/Release
 
 HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
-PLATFORM_DLL_MDB=
 HAL_DLL_MDB=
+PLATFORM_DLL_MDB=
 
 endif
 
@@ -81,8 +81,8 @@ SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 
 PROGRAMFILES = \
 	$(HAL_DLL) \
-	$(PLATFORM_DLL_MDB) \
-	$(HAL_DLL_MDB)  
+	$(HAL_DLL_MDB) \
+	$(PLATFORM_DLL_MDB)  
 
 
 RESGEN=resgen2
@@ -140,7 +140,8 @@ $(build_xamlg_list): %.xaml.g.cs: %.xaml
 	xamlg '$<'
 
 
-$(ASSEMBLY) $(ASSEMBLY_MDB): $(build_sources) $(build_resources) $(build_datafiles) $(DLL_REFERENCES) $(PROJECT_REFERENCES) $(build_xamlg_list) $(build_satellite_assembly_list)
+$(ASSEMBLY_MDB): $(ASSEMBLY)
+$(ASSEMBLY): $(build_sources) $(build_resources) $(build_datafiles) $(DLL_REFERENCES) $(PROJECT_REFERENCES) $(build_xamlg_list) $(build_satellite_assembly_list)
 	make pre-all-local-hook prefix=$(prefix)
 	mkdir -p $(shell dirname $(ASSEMBLY))
 	make $(CONFIG)_BeforeBuild
@@ -155,8 +156,8 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call cp,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(HAL_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(HAL_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	make post-install-local-hook prefix=$(prefix)
 
 uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
@@ -165,8 +166,8 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call rm,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(HAL_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(HAL_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	make post-uninstall-local-hook prefix=$(prefix)
 
 install: install-local

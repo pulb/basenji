@@ -312,6 +312,25 @@ namespace Basenji.Gui
 			};
 		}
 		
+		private void BeginVolumeSearch() {
+			ISearchCriteria criteria = null;
+			
+			if (txtSearchString.Text.Length > 0) {
+				try {
+					// TODO : use EUSL searchcriteria for volumes
+					// analog to the item search window.
+					criteria = new FreeTextSearchCriteria(txtSearchString.Text,
+					                                      FreeTextSearchField.Title,
+					                                      TextCompareOperator.Contains);
+				} catch(ArgumentException e) {
+					SetStatus(Util.FormatExceptionMsg(e));
+					return;
+				}
+			}
+
+			SearchVolumeAsync(criteria);
+		}
+		
 		private void SearchVolumeAsync(ISearchCriteria criteria) {			
 			// delegate that will be called 
 			// when asynchronous volume searching has been finished.
@@ -486,26 +505,25 @@ namespace Basenji.Gui
 		}
 		
 		[GLib.ConnectBefore()]
-		private void OnTxtSearchStringKeyPressEvent(object o, Gtk.KeyPressEventArgs args) {
+		private void OnTxtSearchStringKeyPressEvent(object o, Gtk.KeyPressEventArgs args) {                    
 			if (args.Event.Key != Gdk.Key.Return)
 				return;
 			
-			ISearchCriteria criteria = null;
+			BeginVolumeSearch();
+		}
+		
+		private void OnTxtSearchStringChanged(object o, EventArgs args) {
+			if (txtSearchString.Text.Length > 0)
+				txtSearchString.SetIconFromStock(Icons.Icon.Stock_Clear.Name, Widgets.EntryIconPosition.Secondary);
+			else
+				txtSearchString.SetIconFromStock(null, Widgets.EntryIconPosition.Secondary);
+		}
+		
+		private void OnTxtSearchStringIconPressEvent(object o, Widgets.IconPressReleaseEventArgs args) {
+			if (args.IconPos == Basenji.Gui.Widgets.EntryIconPosition.Secondary)
+				txtSearchString.Text = String.Empty;
 			
-			if (txtSearchString.Text.Length > 0) {
-				try {
-					// TODO : use EUSL searchcriteria for volumes
-					// analog to the item search window.
-					criteria = new FreeTextSearchCriteria(txtSearchString.Text,
-					                                      FreeTextSearchField.Title,
-					                                      TextCompareOperator.Contains);
-				} catch(ArgumentException e) {
-					SetStatus(Util.FormatExceptionMsg(e));
-					return;
-				}
-			}
-
-			SearchVolumeAsync(criteria);
+			BeginVolumeSearch();
 		}
 		
 		private void OnDeleteEvent(object sender, DeleteEventArgs args) {
@@ -552,7 +570,7 @@ namespace Basenji.Gui
 		private Menu volumeContextMenu;
 		
 		// search entry
-		private Entry txtSearchString;
+		private Widgets.IconEntry txtSearchString;
 		
 		// treeviews
 		private Widgets.VolumeView	tvVolumes;
@@ -708,7 +726,9 @@ namespace Basenji.Gui
 			
 			hbSearch.PackStart(CreateLabel(S._("Search:")), false, false, 0);
 			
-			txtSearchString = new Entry();
+			txtSearchString = new Widgets.IconEntry();
+			txtSearchString.SetIconFromStock(Icons.Icon.Stock_Find.Name, Widgets.EntryIconPosition.Primary);
+			
 			hbSearch.PackStart(txtSearchString, true, true, 0);
 			
 			vbLeft.PackStart(hbSearch, false, false, 0);
@@ -742,6 +762,8 @@ namespace Basenji.Gui
 			
 			// eventhandlers
 			txtSearchString.KeyPressEvent	+= OnTxtSearchStringKeyPressEvent;
+			txtSearchString.Changed			+= OnTxtSearchStringChanged;
+			txtSearchString.IconPress		+= OnTxtSearchStringIconPressEvent;
 			tvVolumes.Selection.Changed		+= OnTvVolumesSelectionChanged;
 			tvVolumes.ButtonPressEvent		+= OnTvVolumesButtonPressEvent;
 			tvVolumes.KeyPressEvent			+= OnTvVolumesKeyPressEvent;

@@ -19,24 +19,24 @@ PROJECT_REFERENCES =  \
 	../VolumeDB/bin/Debug/VolumeDB.dll
 BUILD_DIR = bin/Debug
 
-HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
-BASENJI_EXE_MDB_SOURCE=bin/Debug/Basenji.exe.mdb
-BASENJI_EXE_MDB=$(BUILD_DIR)/Basenji.exe.mdb
-VOLUMEDB_DLL_MDB_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll.mdb
-VOLUMEDB_DLL_MDB=$(BUILD_DIR)/VolumeDB.dll.mdb
-VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll
-PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll
-LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll
-PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
 LIBEXTRACTOR_DLL_CONFIG_SOURCE=LibExtractor.dll.config
-PLATFORM_COMMON_DB_DLL_MDB_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll.mdb
-PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
+PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
+HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
 HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
 HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
-LIBEXTRACTOR_DLL_MDB_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll.mdb
-LIBEXTRACTOR_DLL_MDB=$(BUILD_DIR)/LibExtractor.dll.mdb
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
+VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll
+PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll
+PLATFORM_COMMON_DB_DLL_MDB_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll.mdb
+PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
+LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll
+LIBEXTRACTOR_DLL_MDB_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll.mdb
+LIBEXTRACTOR_DLL_MDB=$(BUILD_DIR)/LibExtractor.dll.mdb
+VOLUMEDB_DLL_MDB_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll.mdb
+VOLUMEDB_DLL_MDB=$(BUILD_DIR)/VolumeDB.dll.mdb
+BASENJI_EXE_MDB_SOURCE=bin/Debug/Basenji.exe.mdb
+BASENJI_EXE_MDB=$(BUILD_DIR)/Basenji.exe.mdb
 
 endif
 
@@ -51,18 +51,18 @@ PROJECT_REFERENCES =  \
 	../VolumeDB/bin/Release/VolumeDB.dll
 BUILD_DIR = bin/Release
 
+LIBEXTRACTOR_DLL_CONFIG_SOURCE=LibExtractor.dll.config
+PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
 HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
-BASENJI_EXE_MDB=
-VOLUMEDB_DLL_MDB=
+HAL_DLL_MDB=
+PLATFORM_DLL_MDB=
 VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Release/VolumeDB.dll
 PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
-LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Release/LibExtractor.dll
-PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
-LIBEXTRACTOR_DLL_CONFIG_SOURCE=LibExtractor.dll.config
 PLATFORM_COMMON_DB_DLL_MDB=
-HAL_DLL_MDB=
+LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Release/LibExtractor.dll
 LIBEXTRACTOR_DLL_MDB=
-PLATFORM_DLL_MDB=
+VOLUMEDB_DLL_MDB=
+BASENJI_EXE_MDB=
 
 endif
 
@@ -77,24 +77,24 @@ PROJECT_REFERENCES =  \
 	../VolumeDB/bin/Debug/VolumeDB.dll
 BUILD_DIR = bin/Debug
 
-HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
-BASENJI_EXE_MDB_SOURCE=bin/Debug/Basenji.exe.mdb
-BASENJI_EXE_MDB=$(BUILD_DIR)/Basenji.exe.mdb
-VOLUMEDB_DLL_MDB_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll.mdb
-VOLUMEDB_DLL_MDB=$(BUILD_DIR)/VolumeDB.dll.mdb
-VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll
-PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll
-LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll
-PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
 LIBEXTRACTOR_DLL_CONFIG_SOURCE=LibExtractor.dll.config
-PLATFORM_COMMON_DB_DLL_MDB_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll.mdb
-PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
+PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
+HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
 HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
 HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
-LIBEXTRACTOR_DLL_MDB_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll.mdb
-LIBEXTRACTOR_DLL_MDB=$(BUILD_DIR)/LibExtractor.dll.mdb
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
+VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll
+PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll
+PLATFORM_COMMON_DB_DLL_MDB_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll.mdb
+PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
+LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll
+LIBEXTRACTOR_DLL_MDB_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll.mdb
+LIBEXTRACTOR_DLL_MDB=$(BUILD_DIR)/LibExtractor.dll.mdb
+VOLUMEDB_DLL_MDB_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll.mdb
+VOLUMEDB_DLL_MDB=$(BUILD_DIR)/VolumeDB.dll.mdb
+BASENJI_EXE_MDB_SOURCE=bin/Debug/Basenji.exe.mdb
+BASENJI_EXE_MDB=$(BUILD_DIR)/Basenji.exe.mdb
 
 endif
 
@@ -109,37 +109,23 @@ PROJECT_REFERENCES =  \
 	../VolumeDB/bin/Release/VolumeDB.dll
 BUILD_DIR = bin/Release
 
+LIBEXTRACTOR_DLL_CONFIG_SOURCE=LibExtractor.dll.config
+PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
 HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
-BASENJI_EXE_MDB=
-VOLUMEDB_DLL_MDB=
+HAL_DLL_MDB=
+PLATFORM_DLL_MDB=
 VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Release/VolumeDB.dll
 PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
-LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Release/LibExtractor.dll
-PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
-LIBEXTRACTOR_DLL_CONFIG_SOURCE=LibExtractor.dll.config
 PLATFORM_COMMON_DB_DLL_MDB=
-HAL_DLL_MDB=
+LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Release/LibExtractor.dll
 LIBEXTRACTOR_DLL_MDB=
-PLATFORM_DLL_MDB=
+VOLUMEDB_DLL_MDB=
+BASENJI_EXE_MDB=
 
 endif
 
 AL=al2
 SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
-
-PROGRAMFILES = \
-	$(HAL_DLL) \
-	$(BASENJI_EXE_MDB) \
-	$(VOLUMEDB_DLL_MDB) \
-	$(VOLUMEDB_DLL) \
-	$(PLATFORM_COMMON_DB_DLL) \
-	$(LIBEXTRACTOR_DLL) \
-	$(PLATFORM_DLL) \
-	$(LIBEXTRACTOR_DLL_CONFIG) \
-	$(PLATFORM_COMMON_DB_DLL_MDB) \
-	$(HAL_DLL_MDB) \
-	$(LIBEXTRACTOR_DLL_MDB) \
-	$(PLATFORM_DLL_MDB)  
 
 LINUX_DESKTOPAPPLICATIONS = \
 	$(BASENJI_DESKTOP)  
@@ -147,17 +133,31 @@ LINUX_DESKTOPAPPLICATIONS = \
 BINARIES = \
 	$(BASENJI)  
 
+PROGRAMFILES = \
+	$(LIBEXTRACTOR_DLL_CONFIG) \
+	$(PLATFORM_DLL) \
+	$(HAL_DLL) \
+	$(HAL_DLL_MDB) \
+	$(PLATFORM_DLL_MDB) \
+	$(VOLUMEDB_DLL) \
+	$(PLATFORM_COMMON_DB_DLL) \
+	$(PLATFORM_COMMON_DB_DLL_MDB) \
+	$(LIBEXTRACTOR_DLL) \
+	$(LIBEXTRACTOR_DLL_MDB) \
+	$(VOLUMEDB_DLL_MDB) \
+	$(BASENJI_EXE_MDB)  
+
 
 RESGEN=resgen2
 
-HAL_DLL = $(BUILD_DIR)/Hal.dll
-VOLUMEDB_DLL = $(BUILD_DIR)/VolumeDB.dll
 BASENJI_DESKTOP = $(BUILD_DIR)/basenji.desktop
 BASENJI = $(BUILD_DIR)/basenji
+LIBEXTRACTOR_DLL_CONFIG = $(BUILD_DIR)/LibExtractor.dll.config
+PLATFORM_DLL = $(BUILD_DIR)/Platform.dll
+HAL_DLL = $(BUILD_DIR)/Hal.dll
+VOLUMEDB_DLL = $(BUILD_DIR)/VolumeDB.dll
 PLATFORM_COMMON_DB_DLL = $(BUILD_DIR)/Platform.Common.DB.dll
 LIBEXTRACTOR_DLL = $(BUILD_DIR)/LibExtractor.dll
-PLATFORM_DLL = $(BUILD_DIR)/Platform.dll
-LIBEXTRACTOR_DLL_CONFIG = $(BUILD_DIR)/LibExtractor.dll.config
 
 FILES = \
 	src/Gui/About.cs \
@@ -200,7 +200,8 @@ FILES = \
 	src/Gui/Widgets/CategoryView.cs \
 	src/Gui/Widgets/PageNavigation.cs \
 	src/Gui/Widgets/VolumeEditEvents.cs \
-	src/Gui/Widgets/PageNavigationEvents.cs 
+	src/Gui/Widgets/PageNavigationEvents.cs \
+	src/Gui/Widgets/IconEntry.cs 
 
 DATA_FILES = 
 
@@ -213,6 +214,9 @@ RESOURCES = \
 	images/search.png 
 
 EXTRAS = \
+	app.desktop \
+	basenji \
+	LibExtractor.dll.config \
 	basenji.desktop.in \
 	basenji.in 
 
@@ -223,29 +227,29 @@ REFERENCES =  \
 
 DLL_REFERENCES = 
 
-CLEANFILES = $(PROGRAMFILES) $(LINUX_DESKTOPAPPLICATIONS) $(BINARIES) 
+CLEANFILES = $(LINUX_DESKTOPAPPLICATIONS) $(BINARIES) $(PROGRAMFILES) 
 
 #Targets
-all: $(ASSEMBLY) $(PROGRAMFILES) $(LINUX_DESKTOPAPPLICATIONS) $(BINARIES)  $(top_srcdir)/config.make
+all: $(ASSEMBLY) $(LINUX_DESKTOPAPPLICATIONS) $(BINARIES) $(PROGRAMFILES)  $(top_srcdir)/config.make
 
 include $(top_srcdir)/Makefile.include
 include $(srcdir)/custom-hooks.make
 
 
 
-$(eval $(call emit-deploy-target,HAL_DLL))
-$(eval $(call emit-deploy-target,VOLUMEDB_DLL_MDB))
-$(eval $(call emit-deploy-target,VOLUMEDB_DLL))
 $(eval $(call emit-deploy-wrapper,BASENJI_DESKTOP,basenji.desktop))
 $(eval $(call emit-deploy-wrapper,BASENJI,basenji))
-$(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL))
-$(eval $(call emit-deploy-target,LIBEXTRACTOR_DLL))
-$(eval $(call emit-deploy-target,PLATFORM_DLL))
 $(eval $(call emit-deploy-target,LIBEXTRACTOR_DLL_CONFIG))
-$(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL_MDB))
+$(eval $(call emit-deploy-target,PLATFORM_DLL))
+$(eval $(call emit-deploy-target,HAL_DLL))
 $(eval $(call emit-deploy-target,HAL_DLL_MDB))
-$(eval $(call emit-deploy-target,LIBEXTRACTOR_DLL_MDB))
 $(eval $(call emit-deploy-target,PLATFORM_DLL_MDB))
+$(eval $(call emit-deploy-target,VOLUMEDB_DLL))
+$(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL))
+$(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL_MDB))
+$(eval $(call emit-deploy-target,LIBEXTRACTOR_DLL))
+$(eval $(call emit-deploy-target,LIBEXTRACTOR_DLL_MDB))
+$(eval $(call emit-deploy-target,VOLUMEDB_DLL_MDB))
 
 
 $(eval $(call emit_resgen_targets))
@@ -278,7 +282,8 @@ GNOME_RELEASE_AfterClean:
 	(cd $(srcdir) && ./custom_build_commands.sh --after-clean $(BUILD_DIR))
 
 
-$(ASSEMBLY) $(ASSEMBLY_MDB): $(build_sources) $(build_resources) $(build_datafiles) $(DLL_REFERENCES) $(PROJECT_REFERENCES) $(build_xamlg_list) $(build_satellite_assembly_list)
+$(ASSEMBLY_MDB): $(ASSEMBLY)
+$(ASSEMBLY): $(build_sources) $(build_resources) $(build_datafiles) $(DLL_REFERENCES) $(PROJECT_REFERENCES) $(build_xamlg_list) $(build_satellite_assembly_list)
 	make pre-all-local-hook prefix=$(prefix)
 	mkdir -p $(shell dirname $(ASSEMBLY))
 	make $(CONFIG)_BeforeBuild
@@ -292,22 +297,22 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	mkdir -p '$(DESTDIR)$(libdir)/$(PACKAGE)'
 	$(call cp,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(HAL_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(BASENJI_EXE_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(VOLUMEDB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(VOLUMEDB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	mkdir -p '$(DESTDIR)$(datadir)/applications'
 	$(call cp,$(BASENJI_DESKTOP),$(DESTDIR)$(datadir)/applications)
 	mkdir -p '$(DESTDIR)$(bindir)'
 	$(call cp,$(BASENJI),$(DESTDIR)$(bindir))
-	$(call cp,$(PLATFORM_COMMON_DB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(LIBEXTRACTOR_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(PLATFORM_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(LIBEXTRACTOR_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(PLATFORM_COMMON_DB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(PLATFORM_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(HAL_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(HAL_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(LIBEXTRACTOR_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(VOLUMEDB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(PLATFORM_COMMON_DB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(PLATFORM_COMMON_DB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(LIBEXTRACTOR_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(LIBEXTRACTOR_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(VOLUMEDB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(BASENJI_EXE_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	make post-install-local-hook prefix=$(prefix)
 
 uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
@@ -315,20 +320,20 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	make uninstall-satellite-assemblies prefix=$(prefix)
 	$(call rm,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(HAL_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(BASENJI_EXE_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(VOLUMEDB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(VOLUMEDB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(BASENJI_DESKTOP),$(DESTDIR)$(datadir)/applications)
 	$(call rm,$(BASENJI),$(DESTDIR)$(bindir))
-	$(call rm,$(PLATFORM_COMMON_DB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(LIBEXTRACTOR_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(PLATFORM_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(LIBEXTRACTOR_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(PLATFORM_COMMON_DB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(PLATFORM_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(HAL_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(HAL_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(LIBEXTRACTOR_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(VOLUMEDB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(PLATFORM_COMMON_DB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(PLATFORM_COMMON_DB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(LIBEXTRACTOR_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(LIBEXTRACTOR_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(VOLUMEDB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(BASENJI_EXE_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	make post-uninstall-local-hook prefix=$(prefix)
 
 install: install-local

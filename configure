@@ -3,8 +3,8 @@ VERSION=0.1
 PACKAGE=basenji
 prefix=/usr/local
 config=GNOME_RELEASE
-configurations=" RELEASE GNOME_RELEASE GNOME_DEBUG DEBUG"
-common_packages=" glib-sharp-2.0;2.12.8 gtk-sharp-2.0;2.12.8 ndesk-dbus-1.0;0.6.0 ndesk-dbus-glib-1.0;0.4.1"
+configurations=" DEBUG RELEASE GNOME_DEBUG GNOME_RELEASE"
+common_packages=" glib-sharp-2.0;2.12.9 gtk-sharp-2.0;2.12.9 ndesk-dbus-1.0;0.6.0 ndesk-dbus-glib-1.0;0.4.1"
 
 
 usage ()
