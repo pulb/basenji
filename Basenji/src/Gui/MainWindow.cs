@@ -46,18 +46,9 @@ namespace Basenji.Gui
 			
 			// create default db on first startup
 			if (!App.Settings.SettingsFileExists()) {
-				string defaultDB = System.IO.Path.Combine(App.Settings.GetSettingsDirectory().FullName,
-				                                          App.DEFAULT_DB);
-				// do not overwrite existing db				   
-				if (!File.Exists(defaultDB)) {
-					// creates default db and if successful,  
-					// sets the db path and calls settings.Save()
-					OpenDB(defaultDB, true, true, null);
-				} else {
-					// opens existing default db and if successful, 
-					// sets the db path and calls settings.Save()
-					OpenDB(defaultDB, false, true, null);
-				}
+				// creates (or opens existing) default db and if successful,  
+				// sets the db path and calls settings.Save()
+				CreateOrOpenDefaultDB();
 				return;		  
 			}
 			
@@ -79,6 +70,19 @@ namespace Basenji.Gui
 			}			 
 		}
 
+		private void CreateOrOpenDefaultDB() {
+			// do not overwrite existing db				   
+			if (File.Exists(App.DefaultDB)) {
+				// opens existing default db and if successful, 
+				// sets the db path and calls settings.Save()
+				OpenDB(App.DefaultDB, false, true, null);				
+			} else {
+				// creates default db and if successful,  
+				// sets the db path and calls settings.Save()
+				OpenDB(App.DefaultDB, true, true, null);
+			}
+		}
+		
 		private void OpenDB(string path, bool createNew, bool loadAsync, Util.Callback onsuccess) {
 			EnableGui(false); // will be re-enabled after opening AND loading has been completed successfully
 			SetWindowTitle(null);				 
@@ -424,6 +428,10 @@ namespace Basenji.Gui
 			SelectExistingDB();
 		}
 		
+		private void OnActOpenDefaultDBActivated(object sender, System.EventArgs args) {
+			CreateOrOpenDefaultDB();
+		}
+		
 		private void OnActSearchActivated(object sender, System.EventArgs args) {
 			ItemSearch s = new ItemSearch(database);
 			s.Show();
@@ -552,6 +560,7 @@ namespace Basenji.Gui
 		
 		private Action actNewDB;
 		private Action actOpenDB;
+		private Action actOpenDefaultDB;
 		private Action actDBProperties;
 		private Action actSearch;
 		private Action actQuit;
@@ -618,6 +627,9 @@ namespace Basenji.Gui
 			actOpenDB = CreateAction("opendb", S._("_Open Database"), null, Stock.Open, OnActOpenDBActivated);
 			ag.Add(actOpenDB, "<control>O");
 			
+			actOpenDefaultDB = CreateAction("open_default_db", S._("Open Default Database"), null, null, OnActOpenDefaultDBActivated);
+			ag.Add(actOpenDefaultDB);
+			
 			actDBProperties = CreateAction("dbproperties", S._("_Database Properties"), null, Stock.Properties, OnActDBPropertiesActivated);
 			ag.Add(actDBProperties, "<control>D");
 			
@@ -663,6 +675,7 @@ namespace Basenji.Gui
 					<menu action=""file"">
 						<menuitem action=""newdb""/>
 						<menuitem action=""opendb""/>
+						<menuitem action=""open_default_db""/>
 						<menuitem action=""dbproperties""/>
 						<menuitem action=""searchitems""/>
 						<separator/>

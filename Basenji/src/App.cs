@@ -1,6 +1,6 @@
 // App.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2009 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@
 //
 
 using System;
+using System.IO;
 using System.Reflection;
 
 namespace Basenji
@@ -28,7 +29,7 @@ namespace Basenji
 		// limits the result size in the item search window
 		public const int SEARCH_RESULTS_LIMIT	= 10000;
 		
-		public const string DEFAULT_DB			= "volumes.vdb";
+//		public const string DEFAULT_DB			= "volumes.vdb";
 		public const string WINDOW_DEFAULT_ICON	= "data/basenji.svg";
 		
 		private static string name;
@@ -36,6 +37,7 @@ namespace Basenji
 		private static string copyright;
 		
 		private static Settings settings;
+		private static string defaultDB;
 		
 		static App() {
 			Assembly asm = Assembly.GetExecutingAssembly();
@@ -46,7 +48,8 @@ namespace Basenji
 			object[] attr = asm.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
 			copyright = ((AssemblyCopyrightAttribute)attr[0]).Copyright;
 			
-			settings = null;
+			settings = null; // lazy initialized
+			defaultDB = null; // lazy initialied as well (depends on lazy initialized Settings)
 		}
 		
 		public static string Name {
@@ -66,6 +69,18 @@ namespace Basenji
 				if (settings == null)
 					settings = new Settings();
 				return settings;
+			}
+		}
+		
+		public static string DefaultDB {
+			get {
+				if (defaultDB == null) {
+					defaultDB = Path.Combine(
+					                         Settings.GetSettingsDirectory().FullName,
+					                         "volumes.vdb"
+					                         );
+				}
+				return defaultDB;
 			}
 		}
 		
