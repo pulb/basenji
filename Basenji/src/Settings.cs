@@ -133,12 +133,12 @@ namespace Basenji
 			properties.Add("ScannerExtractMetaData",		"1");
 			properties.Add("OpenMostRecentDB",				"1");
 			properties.Add("MostRecentDBPath",				"");
-			properties.Add("MainWindowWidth",				"640");
+			properties.Add("MainWindowWidth",				"800");
 			properties.Add("MainWindowHeight",				"480");
 			properties.Add("MainWindowIsMaximized",			"0");
 			properties.Add("ItemInfoMinimized1",			"0");
 			properties.Add("ItemInfoMinimized2",			"0");
-			properties.Add("MainWindowSplitterPosition",	"240");
+			properties.Add("MainWindowSplitterPosition",	"260");
 			properties.Add("CustomThemeLocation",			Path.Combine("data", "themes"));
 			properties.Add("CustomThemeName",				"");
 			properties.Add("SearchResultPageSize",			"10");

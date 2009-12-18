@@ -48,7 +48,7 @@ namespace Basenji.Gui
 			if (!App.Settings.SettingsFileExists()) {
 				// creates (or opens existing) default db and if successful,  
 				// sets the db path and calls settings.Save()
-				CreateOrOpenDefaultDB();
+				OpenOrCreateDefaultDB(false);
 				return;		  
 			}
 			
@@ -70,13 +70,20 @@ namespace Basenji.Gui
 			}			 
 		}
 
-		private void CreateOrOpenDefaultDB() {
+		private void OpenOrCreateDefaultDB(bool confirmCreation) {
 			// do not overwrite existing db				   
 			if (File.Exists(App.DefaultDB)) {
 				// opens existing default db and if successful, 
 				// sets the db path and calls settings.Save()
 				OpenDB(App.DefaultDB, false, true, null);				
 			} else {
+				if (confirmCreation && !(MsgDialog.Show(this,
+				                                       MessageType.Question,
+				                                       ButtonsType.YesNo,
+				                                       S._("Database not found"),
+				                                       S._("Default database not found. Create?")) == ResponseType.Yes)) {
+					return;
+				}
 				// creates default db and if successful,  
 				// sets the db path and calls settings.Save()
 				OpenDB(App.DefaultDB, true, true, null);
@@ -420,6 +427,10 @@ namespace Basenji.Gui
 			Application.Quit();
 		}
 		
+		private static string AppendDots(string s) {
+			return string.Format("{0} ...", s);
+		}
+		
 		private void OnActNewDBActivated(object sender, System.EventArgs args) {
 			SelectNewDB();
 		}
@@ -429,7 +440,7 @@ namespace Basenji.Gui
 		}
 		
 		private void OnActOpenDefaultDBActivated(object sender, System.EventArgs args) {
-			CreateOrOpenDefaultDB();
+			OpenOrCreateDefaultDB(true);
 		}
 		
 		private void OnActSearchActivated(object sender, System.EventArgs args) {
@@ -621,10 +632,10 @@ namespace Basenji.Gui
 			actFile = CreateAction("file", S._("_File"), null, null, null);
 			ag.Add(actFile, null);
 			
-			actNewDB = CreateAction("newdb", S._("_New Database"), null, Stock.New, OnActNewDBActivated);
+			actNewDB = CreateAction("newdb", AppendDots(S._("_New Database")), null, Stock.New, OnActNewDBActivated);
 			ag.Add(actNewDB, "<control>N");
 			
-			actOpenDB = CreateAction("opendb", S._("_Open Database"), null, Stock.Open, OnActOpenDBActivated);
+			actOpenDB = CreateAction("opendb", AppendDots(S._("_Open Database")), null, Stock.Open, OnActOpenDBActivated);
 			ag.Add(actOpenDB, "<control>O");
 			
 			actOpenDefaultDB = CreateAction("open_default_db", S._("Open Default Database"), null, null, OnActOpenDefaultDBActivated);
