@@ -99,15 +99,15 @@ namespace Basenji.Gui.Widgets
 			if (original.Width > maxWidth || original.Height > maxHeight) {
 				// width or height is bigger than max
 				int width, height;
-				float resizeFactor;
+				double resizeFactor;
 				if (original.Width > original.Height) {
 					// width > height => width is bigger than max width
-					resizeFactor = (float)maxWidth / original.Width;
+					resizeFactor = (double)maxWidth / original.Width;
 					width = maxWidth;
 					height = (int)(original.Height * resizeFactor);					
 				} else {
 					// height >= width => height is bigger than max height
-					resizeFactor = (float)maxHeight / original.Height;
+					resizeFactor = (double)maxHeight / original.Height;
 					height = maxHeight;
 					width = (int)(original.Width * resizeFactor);
 				}
