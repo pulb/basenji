@@ -35,7 +35,7 @@ namespace Basenji
 				return string.Format(S._("{0} Bytes"), size);
 
 			string[] units = { S._("Bytes"), S._("KB"), S._("MB"), S._("GB"), S._("TB") };
-			double dblSize = size; // TODO : use float?
+			double dblSize = size;
 			int n = 0;
 
 			while(dblSize >= 1024.0) {
