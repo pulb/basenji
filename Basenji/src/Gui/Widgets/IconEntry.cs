@@ -25,7 +25,7 @@ namespace Basenji.Gui.Widgets
 {
 	// Temporary hack that enables icons in Gtk's 2.16 Entry widget.
 	// This file can be removed when gtk# 2.16 bindings are ready.
-	class IconEntry : Entry
+	public class IconEntry : Entry
 	{
 		public void SetIconFromStock(string stockIcon, EntryIconPosition iconPos) {
 			try {

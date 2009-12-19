@@ -201,7 +201,8 @@ FILES = \
 	src/Gui/Widgets/PageNavigation.cs \
 	src/Gui/Widgets/VolumeEditEvents.cs \
 	src/Gui/Widgets/PageNavigationEvents.cs \
-	src/Gui/Widgets/IconEntry.cs 
+	src/Gui/Widgets/IconEntry.cs \
+	src/Gui/Widgets/SearchEntry.cs 
 
 DATA_FILES = 
 

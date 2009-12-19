@@ -523,25 +523,7 @@ namespace Basenji.Gui
 			itemInfo.ShowInfo(item, database);
 		}
 		
-		[GLib.ConnectBefore()]
-		private void OnTxtSearchStringKeyPressEvent(object o, Gtk.KeyPressEventArgs args) {                    
-			if (args.Event.Key != Gdk.Key.Return)
-				return;
-			
-			BeginVolumeSearch();
-		}
-		
-		private void OnTxtSearchStringChanged(object o, EventArgs args) {
-			if (txtSearchString.Text.Length > 0)
-				txtSearchString.SetIconFromStock(Icons.Icon.Stock_Clear.Name, Widgets.EntryIconPosition.Secondary);
-			else
-				txtSearchString.SetIconFromStock(null, Widgets.EntryIconPosition.Secondary);
-		}
-		
-		private void OnTxtSearchStringIconPressEvent(object o, Widgets.IconPressReleaseEventArgs args) {
-			if (args.IconPos == Basenji.Gui.Widgets.EntryIconPosition.Secondary)
-				txtSearchString.Text = String.Empty;
-			
+		private void OnTxtSearchStringSearch(object o, Widgets.SearchEventArgs args) {
 			BeginVolumeSearch();
 		}
 		
@@ -590,7 +572,7 @@ namespace Basenji.Gui
 		private Menu volumeContextMenu;
 		
 		// search entry
-		private Widgets.IconEntry txtSearchString;
+		private Widgets.SearchEntry txtSearchString;
 		
 		// treeviews
 		private Widgets.VolumeView	tvVolumes;
@@ -744,18 +726,11 @@ namespace Basenji.Gui
 			ScrolledWindow swLeft = CreateScrolledView<Widgets.VolumeView>(out tvVolumes, true);
 			vbLeft.PackStart(swLeft, true, true, 0);
 			
-			// search box
-			HBox hbSearch = new HBox();
-			hbSearch.Spacing = 6;
+			// volumes filter entry
+			txtSearchString = new Widgets.SearchEntry();
+			txtSearchString.PlaceholderText = S._("Filter volumes");
 			
-			hbSearch.PackStart(CreateLabel(S._("Search:")), false, false, 0);
-			
-			txtSearchString = new Widgets.IconEntry();
-			txtSearchString.SetIconFromStock(Icons.Icon.Stock_Find.Name, Widgets.EntryIconPosition.Primary);
-			
-			hbSearch.PackStart(txtSearchString, true, true, 0);
-			
-			vbLeft.PackStart(hbSearch, false, false, 0);
+			vbLeft.PackStart(txtSearchString, false, false, 0);
 			
 			hpaned.Pack1(vbLeft, false, false);
 			
@@ -785,9 +760,7 @@ namespace Basenji.Gui
 			this.Add(vbOuter);
 			
 			// eventhandlers
-			txtSearchString.KeyPressEvent	+= OnTxtSearchStringKeyPressEvent;
-			txtSearchString.Changed			+= OnTxtSearchStringChanged;
-			txtSearchString.IconPress		+= OnTxtSearchStringIconPressEvent;
+			txtSearchString.Search			+= OnTxtSearchStringSearch;
 			tvVolumes.Selection.Changed		+= OnTvVolumesSelectionChanged;
 			tvVolumes.ButtonPressEvent		+= OnTvVolumesButtonPressEvent;
 			tvVolumes.KeyPressEvent			+= OnTvVolumesKeyPressEvent;
