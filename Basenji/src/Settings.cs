@@ -201,7 +201,7 @@ namespace Basenji
 			// support a local settings dir for users that want to
 			// carry Basenji around on a USB key.
 			string localSettingsPath = Path.Combine(Environment.CurrentDirectory,
-			                                        "settings");
+			                                        "app_data");
 			
 			if (Directory.Exists(localSettingsPath)) {
 				return localSettingsPath;
