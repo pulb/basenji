@@ -198,13 +198,22 @@ namespace Basenji
 		}
 		
 		private static string GetSettingsPath() {
-			string appDataPath	= Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-			string settingsPath = Path.Combine(appDataPath, App.Name);
-
-			if (!Directory.Exists(settingsPath))
-				Directory.CreateDirectory(settingsPath);
+			// support a local settings dir for users that want to
+			// carry Basenji around on a USB key.
+			string localSettingsPath = Path.Combine(Environment.CurrentDirectory,
+			                                        "settings");
+			
+			if (Directory.Exists(localSettingsPath)) {
+				return localSettingsPath;
+			} else {
+				string appDataPath	= Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+				string settingsPath = Path.Combine(appDataPath, App.Name);
+	
+				if (!Directory.Exists(settingsPath))
+					Directory.CreateDirectory(settingsPath);
 				
-			return settingsPath;
+				return settingsPath;
+			}
 		}
 	}
 }
