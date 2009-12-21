@@ -32,14 +32,7 @@ namespace Basenji
 				Util.SetProcName(App.Name);
 				
 			Application.Init();
-/*			
-			// GLib.Timeout / GLib.Application.Invoke() won't work without this
-			// see http://bugzilla.ximian.com/show_bug.cgi?id=77130
-			// TODO : remove this if this situation has changed
-			if (CurrentPlatform.IsWin32)
-				GLib.Thread.Init();			   
-*/
-			// TODO : test _ON WINDOWS AND LINUX_ with: (the recommended way! no need to check for WIN32 then)
+
 			// see http://bugzilla.ximian.com/show_bug.cgi?id=77130
 			if (!GLib.Thread.Supported)
 				GLib.Thread.Init();
