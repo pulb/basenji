@@ -51,6 +51,11 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		public void Preview(VolumeItem item, VolumeDatabase db) {
+			if (item == null)
+				throw new ArgumentNullException("item");
+			if (db == null)
+				throw new ArgumentNullException("db");
+			
 			// free old pixbuf (but not a _cached_ icon!)
 			if (!isIcon && (this.pb != null)) {
 				this.pb.Dispose();
