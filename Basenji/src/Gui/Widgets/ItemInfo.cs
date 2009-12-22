@@ -17,32 +17,32 @@
 //
 
 using System;
-using System.IO;
+//using System.IO;
 using System.Collections.Generic;
 using System.Text;
 using Gtk;
 using Basenji.Gui.Base;
-using Basenji.Icons;
+//using Basenji.Icons;
 using VolumeDB;
 
 namespace Basenji.Gui.Widgets
 {
 	public partial class ItemInfo : BinBase
 	{
-		private const int MAX_THUMB_WIDTH		= 100;
-		private const int MAX_THUMB_HEIGHT		= 100;
-		private const IconSize ICON_SIZE		= IconSize.Dialog;
+		private const int MAX_THUMB_WIDTH		= 128; // native thumbnail size
+		private const int MAX_THUMB_HEIGHT		= 128; // native thumbnail size
+//		private const IconSize ICON_SIZE		= IconSize.Dialog;
 		
 		private static readonly string STR_BY	= S._("by");
 		private static readonly string STR_FROM	= S._("from");
 		
-		private ItemIcons itemIcons;
-		private Dictionary<string, Gdk.Pixbuf> thumbnailCache;
+//		private ItemIcons itemIcons;
+//		private Dictionary<string, Gdk.Pixbuf> thumbnailCache;
 		
 		public ItemInfo() {
 			BuildGui();
-			itemIcons		= new ItemIcons(this);
-			thumbnailCache	= new Dictionary<string, Gdk.Pixbuf>();
+//			itemIcons		= new ItemIcons(this);
+//			thumbnailCache	= new Dictionary<string, Gdk.Pixbuf>();
 		}
 		
 		public void ShowInfo(VolumeItem item, VolumeDatabase db) {
@@ -51,28 +51,33 @@ namespace Basenji.Gui.Widgets
 			if (db == null)
 				throw new ArgumentNullException("db");
 			
-			UpdateImage(item, db);
+//			UpdateImage(item, db);
+			itemPreview.Preview(item, db);
 			FillPropertyBox(item);
 			
 			this.Show();
 		}
 
 		public void Clear() {
-			img.Clear();
+//			img.Clear();
+			itemPreview.Clear();
 			propertyBox.Clear();
 		}
 
 		public bool Minimized {
 			get {
-				return !img.Visible;
+//				return !img.Visible;
+				return !itemPreview.Visible;
 			}
 			set {
-				img.Visible = !value;
+//				img.Visible = !value;
+				itemPreview.Visible = !value;
 				if (propertyBox.Minimized != value)
 					propertyBox.Minimized = value;
 			}
 		}
 		
+		/*
 		private void UpdateImage(VolumeItem item, VolumeDatabase db) {
 			Gdk.Pixbuf pb;
 
@@ -93,8 +98,9 @@ namespace Basenji.Gui.Widgets
 			}
 			
 			img.FromPixbuf = pb;
-		}
+		}*/
 		
+		/*
 		private static Gdk.Pixbuf Resize(Gdk.Pixbuf original, int maxWidth, int maxHeight) {
 			if (original.Width > maxWidth || original.Height > maxHeight) {
 				// width or height is bigger than max
@@ -115,7 +121,7 @@ namespace Basenji.Gui.Widgets
 			} else {
 				return original;
 			}
-		}
+		}*/
 		
 		private void FillPropertyBox(VolumeItem item) {
 			switch(item.GetVolumeItemType()) {
@@ -336,22 +342,28 @@ namespace Basenji.Gui.Widgets
 	{
 		private EventBox	eventBox;
 		private HBox		outerBox;
-		private Image		img;
+//		private Image		img;
+		ItemPreview			itemPreview;
 		private PropertyBox	propertyBox;
 		
 		protected override void BuildGui() {
 			eventBox = new EventBox();
 			eventBox.ModifyBg(Gtk.StateType.Normal, new Gdk.Color(255, 255, 255));
 			
-			img = new Image();
-			img.WidthRequest	= MAX_THUMB_WIDTH;
-			img.HeightRequest	= MAX_THUMB_HEIGHT;
+//			img = new Image();
+//			img.WidthRequest	= MAX_THUMB_WIDTH;
+//			img.HeightRequest	= MAX_THUMB_HEIGHT;
+			itemPreview = new ItemPreview();
+			itemPreview.RoundedCorners	= true;
+			itemPreview.WidthRequest	= MAX_THUMB_WIDTH;
+			itemPreview.HeightRequest	= MAX_THUMB_HEIGHT;
 
 			propertyBox = new PropertyBox(this);
 	
 			outerBox = new HBox(false, 12);
 			outerBox.BorderWidth = 6;
-			outerBox.PackStart(img, false, false, 0);
+//			outerBox.PackStart(img, false, false, 0);
+			outerBox.PackStart(itemPreview, false, false, 0);
 			outerBox.PackStart(propertyBox, true, true, 0);
 			
 			eventBox.Add(outerBox);
@@ -482,7 +494,7 @@ namespace Basenji.Gui.Widgets
 				}
 			}
 			
-			private void OnBtnClicked(object sender, System.EventArgs args) {
+			private void OnBtnClicked(object sender, EventArgs args) {
 				Minimized = !Minimized;
 			}
 		}

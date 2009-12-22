@@ -202,7 +202,8 @@ FILES = \
 	src/Gui/Widgets/VolumeEditEvents.cs \
 	src/Gui/Widgets/PageNavigationEvents.cs \
 	src/Gui/Widgets/IconEntry.cs \
-	src/Gui/Widgets/SearchEntry.cs 
+	src/Gui/Widgets/SearchEntry.cs \
+	src/Gui/Widgets/ItemPreview.cs 
 
 DATA_FILES = 
 
@@ -224,7 +225,8 @@ EXTRAS = \
 REFERENCES =  \
 	System \
 	-pkg:gtk-sharp-2.0 \
-	-pkg:glib-sharp-2.0
+	-pkg:glib-sharp-2.0 \
+	-pkg:mono-cairo
 
 DLL_REFERENCES = 
 

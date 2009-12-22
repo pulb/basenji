@@ -4,7 +4,7 @@ PACKAGE=basenji
 prefix=/usr/local
 config=GNOME_RELEASE
 configurations=" DEBUG RELEASE GNOME_DEBUG GNOME_RELEASE"
-common_packages=" glib-sharp-2.0;2.12.9 gtk-sharp-2.0;2.12.9 ndesk-dbus-1.0;0.6.0 ndesk-dbus-glib-1.0;0.4.1"
+common_packages=" glib-sharp-2.0;2.12.9 gtk-sharp-2.0;2.12.9 mono-cairo;2.4.2.3 ndesk-dbus-1.0;0.6.0 ndesk-dbus-glib-1.0;0.4.1"
 
 
 usage ()
