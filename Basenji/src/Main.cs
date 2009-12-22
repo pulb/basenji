@@ -26,7 +26,8 @@ namespace Basenji
 	{
 		public static void Main (string[] args) {
 			Debug.WriteLine(string.Format("{0} {1}", App.Name, App.Version));
-			Debug.WriteLine(string.Format("Used runtime: {0}", System.Runtime.InteropServices.RuntimeEnvironment.GetRuntimeDirectory()));
+			Debug.WriteLine(string.Format("Used runtime: {0}",
+			                              System.Runtime.InteropServices.RuntimeEnvironment.GetRuntimeDirectory()));
 			
 			if (CurrentPlatform.IsUnix)
 				Util.SetProcName(App.Name);
