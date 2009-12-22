@@ -37,7 +37,7 @@ namespace Basenji
 			if (!GLib.Thread.Supported)
 				GLib.Thread.Init();
 
-			using(new InstanceLock()) {
+			using (new InstanceLock()) {
 				// load custom icon theme
 				string themeLocation = App.Settings.CustomThemeLocation;
 				string themeName = App.Settings.CustomThemeName;
