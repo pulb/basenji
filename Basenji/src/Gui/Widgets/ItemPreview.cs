@@ -39,11 +39,12 @@ namespace Basenji.Gui.Widgets
 		private bool			isIcon;
 		
 		public ItemPreview() {
-			this.RoundedCorners	= true;
+			this.RoundedCorners		= true;
+			this.EnableGenericIcons = true;
 			
-			this.itemIcons		= new ItemIcons(this);
-			this.pb				= null;
-			this.isIcon			= false;
+			this.itemIcons			= new ItemIcons(this);
+			this.pb					= null;
+			this.isIcon				= false;
 			
 			// change backgroundcolor to white
 			ModifyBg(StateType.Normal, 
@@ -70,7 +71,10 @@ namespace Basenji.Gui.Widgets
 				this.pb = new Gdk.Pixbuf(thumbName);
 				this.isIcon = false;
 			} else {
-				this.pb = itemIcons.GetIconForItem(item, ICON_SIZE);
+				if (EnableGenericIcons)
+					this.pb = itemIcons.GetIconForItem(item, ICON_SIZE);
+				else
+					this.pb = null;
 				this.isIcon = true;
 			}
 			
@@ -89,6 +93,15 @@ namespace Basenji.Gui.Widgets
 		public bool RoundedCorners {
 			get;
 			set;
+		}
+		
+		public bool EnableGenericIcons {
+			get;
+			set;
+		}
+		
+		public bool IsThumbnailPreview {
+			get {return !this.isIcon; }
 		}
 		
 		protected override bool OnExposeEvent (EventExpose args) {

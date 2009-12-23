@@ -156,10 +156,12 @@ namespace Basenji.Gui.Base
 			return sw;
 		}
 		
-		internal static Table CreateTable(int rows, int cols) {
+		// default to 12 pix columnspacing (between label and widget, as proposed in the HIG)
+		internal static Table CreateTable(int rows, int cols) { return CreateTable(rows, cols, 12); }
+		internal static Table CreateTable(int rows, int cols, int colSpacing) {
 			Table tbl = new Table((uint)rows, (uint)cols, false);
 			tbl.RowSpacing = 6;
-			tbl.ColumnSpacing = 12;			   
+			tbl.ColumnSpacing = (uint)colSpacing;			   
 			return tbl;
 		}
 		

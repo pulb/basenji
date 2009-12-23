@@ -27,13 +27,21 @@ namespace Basenji.Gui.Widgets
 {
 	public partial class ItemInfo : BinBase
 	{
-		private const int MAX_THUMB_WIDTH		= 128; // native thumbnail size
-		private const int MAX_THUMB_HEIGHT		= 128; // native thumbnail size
+		private const int MAX_PREVIEW_WIDTH	= 128; // native thumbnail size
+		/* The previews height is determined by its parent Iteminfo widget automatically,
+		 * which should be ~MAX_PREVIEW_WIDTH.
+		 * Don't force a height or the iteminfo widget will do crazy 
+		 * up/down jumps when showing/hiding the preview.
+		private const int MAX_PREVIEW_HEIGHT = 128; // native thumbnail size
+		*/
 		
 		private static readonly string STR_BY	= S._("by");
 		private static readonly string STR_FROM	= S._("from");
 		
+		private bool isMinimized;
+		
 		public ItemInfo() {
+			isMinimized = false;
 			BuildGui();
 		}
 		
@@ -43,7 +51,16 @@ namespace Basenji.Gui.Widgets
 			if (db == null)
 				throw new ArgumentNullException("db");
 			
+			// update item preview
 			itemPreview.Preview(item, db);
+			if (!itemPreview.EnableGenericIcons && !Minimized) {
+				if (itemPreview.IsThumbnailPreview)
+					itemPreview.Show();
+				else
+					itemPreview.Hide();
+			}
+			
+			// update item properties
 			FillPropertyBox(item);
 			
 			this.Show();
@@ -56,10 +73,19 @@ namespace Basenji.Gui.Widgets
 
 		public bool Minimized {
 			get {
-				return !itemPreview.Visible;
+				return isMinimized;
 			}
 			set {
-				itemPreview.Visible = !value;
+				isMinimized = value;
+				
+				if (!itemPreview.EnableGenericIcons) {
+					// do not show hidden generic icon
+					if (itemPreview.IsThumbnailPreview || value)
+						itemPreview.Visible = !value;
+				} else {
+					itemPreview.Visible = !value;
+				}
+				
 				if (propertyBox.Minimized != value)
 					propertyBox.Minimized = value;
 			}
@@ -209,7 +235,7 @@ namespace Basenji.Gui.Widgets
 								String.Format("{0}: {1}", pair.Key, pair.Value));
 #endif
 					 	}
-					} catch (DllNotFoundException) { /* libextractor package not installed */}
+					} catch (DllNotFoundException) { /* libextractor package not installed */ }
 				}
 
 				//
@@ -289,12 +315,14 @@ namespace Basenji.Gui.Widgets
 		
 		protected override void BuildGui() {
 			eventBox = new EventBox();
-			eventBox.ModifyBg(Gtk.StateType.Normal, new Gdk.Color(255, 255, 255));
+			eventBox.ModifyBg(Gtk.StateType.Normal,
+			                  new Gdk.Color(255, 255, 255));
 			
 			itemPreview = new ItemPreview();
-			itemPreview.RoundedCorners	= true;
-			itemPreview.WidthRequest	= MAX_THUMB_WIDTH;
-			itemPreview.HeightRequest	= MAX_THUMB_HEIGHT;
+			itemPreview.RoundedCorners		= true;
+			itemPreview.EnableGenericIcons	= false;
+			itemPreview.WidthRequest		= MAX_PREVIEW_WIDTH;
+			/*itemPreview.HeightRequest	= MAX_PREVIEW_HEIGHT;*/
 
 			propertyBox = new PropertyBox(this);
 	
@@ -336,10 +364,10 @@ namespace Basenji.Gui.Widgets
 				this.lblName.Ellipsize = Pango.EllipsizeMode.End;
 
 				this.tbls = new Table[WIDTH];
-				this.hbox = new HBox();
+				this.hbox = new HBox(false, 12);
 				
 				for (int i = 0; i < WIDTH; i++) {
-					this.tbls[i] = WindowBase.CreateTable(HEIGHT, 2); // 2 = caption + value
+					this.tbls[i] = WindowBase.CreateTable(HEIGHT, 2, 6); // 2 = caption + value
 					this.hbox.PackStart(tbls[i], true, true, 0);
 				}
 	
@@ -351,17 +379,19 @@ namespace Basenji.Gui.Widgets
 						tbl++;
 					}
 					
+					// create caption label
 					this.captionLbls[i] = WindowBase.CreateLabel(string.Empty, true);
-					this.captionLbls[i].Ellipsize = Pango.EllipsizeMode.End;
-						
+					
+					// create value label
 					this.valueLbls[i] = WindowBase.CreateLabel(string.Empty, false);
 					this.valueLbls[i].Ellipsize = Pango.EllipsizeMode.End;
-	
-					this.tbls[tbl].Attach(captionLbls[i], 0, 1, (uint)y, (uint)(y + 1));
+					
+					// attach caption and value labels to the table
+					WindowBase.TblAttach(tbls[tbl], captionLbls[i], 0, y);
 					this.tbls[tbl].Attach(valueLbls[i], 1, 2, (uint)y, (uint)(y + 1));
 				}
 
-				// button
+				// custom button
 				HBox hb = new HBox(false, 6);
 				this.btnArrow = new Arrow(ArrowType.Down, ShadowType.None);
 				hb.PackStart(btnArrow, false, false, 0);
@@ -389,7 +419,6 @@ namespace Basenji.Gui.Widgets
 					ItemProperty p = properties[i];
 					
 					captionLbls[i].LabelProp = string.Format("<b>{0}:</b>", p.name);
-					captionLbls[i].TooltipText = p.name;
 					
 					// remove linebreaks
 					valueLbls[i].LabelProp = p.value.Replace('\n', ' ').Replace('\r', ' ');
@@ -399,7 +428,7 @@ namespace Basenji.Gui.Widgets
 				// clear remaining labels
 				for (int i = itemCount; i < MAX_ITEM_PROPERTIES; i++) {
 					captionLbls[i].LabelProp = string.Empty;
-					captionLbls[i].TooltipText = string.Empty;
+
 					valueLbls[i].LabelProp = string.Empty;
 					valueLbls[i].TooltipText = string.Empty;
 				}
@@ -408,7 +437,7 @@ namespace Basenji.Gui.Widgets
 			public void Clear() {
 				SetNameProperty(string.Empty, string.Empty);
 				for (int i = 0; i < MAX_ITEM_PROPERTIES; i++) {
-					captionLbls[i].LabelProp = captionLbls[i].TooltipText = String.Empty;
+					captionLbls[i].LabelProp = String.Empty;
 					valueLbls[i].LabelProp = valueLbls[i].TooltipText = String.Empty;
 				}
 			}
