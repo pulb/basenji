@@ -19,12 +19,14 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
+using Platform.Common.Diagnostics;
 
 namespace Basenji
 {	
 	public class Settings
 	{		
-		private const string SETTINGS_FILE = "settings";
+		private const string SETTINGS_FILE			= "settings";
+		private const string NON_GNOME_CUSTOM_THEME	= "Tango";
 		
 		private Dictionary<string, string> properties;
 		
@@ -140,7 +142,7 @@ namespace Basenji
 			properties.Add("ItemInfoMinimized2",			"0");
 			properties.Add("MainWindowSplitterPosition",	"260");
 			properties.Add("CustomThemeLocation",			Path.Combine("data", "themes"));
-			properties.Add("CustomThemeName",				"");
+			properties.Add("CustomThemeName",				CurrentPlatform.IsGnome ? "" : NON_GNOME_CUSTOM_THEME);
 			properties.Add("SearchResultPageSize",			"10");
 		}
 		
