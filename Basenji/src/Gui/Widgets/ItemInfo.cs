@@ -314,11 +314,13 @@ namespace Basenji.Gui.Widgets
 		private PropertyBox	propertyBox;
 		
 		protected override void BuildGui() {
+			Gdk.Color baseColor = Style.Base(StateType.Normal);
+			
 			eventBox = new EventBox();
-			eventBox.ModifyBg(Gtk.StateType.Normal,
-			                  new Gdk.Color(255, 255, 255));
+			eventBox.ModifyBg(Gtk.StateType.Normal, baseColor);
 			
 			itemPreview = new ItemPreview();
+			itemPreview.ModifyBg(StateType.Normal, baseColor);
 			itemPreview.RoundedCorners		= true;
 			itemPreview.EnableGenericIcons	= false;
 			itemPreview.WidthRequest		= MAX_PREVIEW_WIDTH;

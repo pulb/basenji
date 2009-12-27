@@ -45,10 +45,6 @@ namespace Basenji.Gui.Widgets
 			this.itemIcons			= new ItemIcons(this);
 			this.pb					= null;
 			this.isIcon				= false;
-			
-			// change backgroundcolor to white
-			ModifyBg(StateType.Normal, 
-			         new Gdk.Color(255, 255, 255));
 		}
 		
 		public void Preview(VolumeItem item, VolumeDatabase db) {
