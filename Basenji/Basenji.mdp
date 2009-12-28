@@ -23,8 +23,8 @@
   </Configurations>
   <Contents>
     <File subtype="Code" name="app.desktop" DeployService.Deploy="True" DeployService.HasPathReferences="True" DeployService.TargetDirectoryId="Linux.DesktopApplications" buildaction="FileCopy" />
-    <File subtype="Code" buildaction="EmbedAsResource" name="images/LED_Off.png" />
-    <File subtype="Code" buildaction="EmbedAsResource" name="images/LED_On.png" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="images/LED_Off.png" resource_id="Basenji.images.LED_Off.png" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="images/LED_On.png" resource_id="Basenji.images.LED_On.png" />
     <File subtype="Directory" buildaction="Compile" name="src" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/About.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/DBProperties.cs" />
@@ -64,10 +64,10 @@
     <File subtype="Code" buildaction="Compile" name="src/Util.cs" />
     <File subtype="Code" name="basenji" DeployService.Deploy="True" DeployService.HasPathReferences="True" DeployService.TargetDirectoryId="Binaries" buildaction="FileCopy" />
     <File subtype="Code" buildaction="Compile" name="src/S.cs" />
-    <File subtype="Code" buildaction="EmbedAsResource" name="po/de.resources" />
-    <File subtype="Code" buildaction="EmbedAsResource" name="po/he.resources" />
-    <File subtype="Code" buildaction="EmbedAsResource" name="po/da.resources" />
-    <File subtype="Code" buildaction="EmbedAsResource" name="images/search.png" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="po/de.resources" resource_id="Basenji.po.de.resources" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="po/he.resources" resource_id="Basenji.po.he.resources" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="po/da.resources" resource_id="Basenji.po.da.resources" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="images/search.png" resource_id="Basenji.images.search.png" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/CategoryView.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/PageNavigation.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/VolumeEditEvents.cs" />

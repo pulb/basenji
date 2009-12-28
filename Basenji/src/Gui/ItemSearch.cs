@@ -202,7 +202,7 @@ namespace Basenji.Gui
 			hbSearch.Spacing = 6;
 			hbSearch.BorderWidth = 12;
 			
-			Image img = new Image(Gdk.Pixbuf.LoadFromResource("search.png"));
+			Image img = new Image(Gdk.Pixbuf.LoadFromResource("Basenji.images.search.png"));
 			hbSearch.PackStart(img, false, false, 0);
 			
 			hbSearch.PackStart(CreateLabel(S._("Search:")), false, false, 0);

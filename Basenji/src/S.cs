@@ -1,6 +1,6 @@
 // S.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2009 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -18,6 +18,7 @@
 
 using System;
 using System.Globalization;
+using System.Reflection;
 using Platform.Common.Globalization;
 
 namespace Basenji
@@ -25,7 +26,15 @@ namespace Basenji
 	// shorthand to Catalog.GetString()
 	internal static class S
 	{
-		private static Catalog c = Catalog.GetCatalogForCulture(CultureInfo.CurrentUICulture, true);
+		private static Catalog c;
+		
+		static S() {
+			string ns = String.Format("{0}.{1}",
+			                          Assembly.GetCallingAssembly().GetName().Name,
+			                          "po");
+			
+			c = Catalog.GetCatalogForCulture(CultureInfo.CurrentUICulture, ns, true);
+		}
 		
 		public static string _(string msgid) {
 			return c.GetString(msgid);

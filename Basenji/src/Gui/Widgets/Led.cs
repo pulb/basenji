@@ -33,8 +33,8 @@ namespace Basenji.Gui.Widgets
 		public Led(bool initialState) {
 			BuildGui();
 			
-			this.pixbufLedOn   = Pixbuf.LoadFromResource("LED_On.png");
-			this.pixbufLedOff  = Pixbuf.LoadFromResource("LED_Off.png");
+			this.pixbufLedOn   = Pixbuf.LoadFromResource("Basenji.images.LED_On.png");
+			this.pixbufLedOff  = Pixbuf.LoadFromResource("Basenji.images.LED_Off.png");
 
 			State = initialState;
 		}

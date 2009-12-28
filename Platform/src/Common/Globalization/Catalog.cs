@@ -1,6 +1,6 @@
 // Catalog.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2009 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -58,15 +58,20 @@ namespace Platform.Common.Globalization
 		// if the catalog for the requested culture can't be created, it tries to
 		// create a catalog for the parent culture. if this fails as well, it returns a catalog that 
 		// returns the orginal, untranslated strings.
-		public static Catalog GetCatalogForCulture(CultureInfo ci, bool useFallbacksOnFailure) {
+		public static Catalog GetCatalogForCulture(CultureInfo ci,
+		                                           string resourceNamespace,
+		                                           bool useFallbacksOnFailure) {
 			if (ci == null)
 				throw new ArgumentNullException("ci");
+			
+			if (resourceNamespace == null)
+				throw new ArgumentNullException("resourceNamespace");
 				
 			Assembly asm = Assembly.GetCallingAssembly();
 			ResourceManager rm;
 			
 			// try to set sub-language, e.g. "de_CH"
-			rm = GetResourceManagerForCulture(ci, asm); 
+			rm = GetResourceManagerForCulture(ci, asm, resourceNamespace); 
 			if (rm == null ) {
 				if (!useFallbacksOnFailure)
 					return null;
@@ -74,7 +79,7 @@ namespace Platform.Common.Globalization
 				// try to set parent language, e.g. "de"
 				ci = ci.Parent;
 				if (ci != null) {
-					rm = GetResourceManagerForCulture(ci, asm);
+					rm = GetResourceManagerForCulture(ci, asm, resourceNamespace);
 					if (rm == null)
 						ci = null;
 				}
@@ -83,10 +88,16 @@ namespace Platform.Common.Globalization
 			return new Catalog(ci, rm);
 		}
 		
-		private static ResourceManager GetResourceManagerForCulture(CultureInfo ci, Assembly asm) {
-			string cultureName = ci.Name.Replace('-', '_'); // replace minus in sub-languages
-			if (asm.GetManifestResourceInfo(cultureName + ".resources") != null)
-				return new ResourceManager(cultureName, asm);
+		private static ResourceManager GetResourceManagerForCulture(CultureInfo ci,
+		                                                            Assembly asm,
+		                                                            string resourceNamespace) {
+			string baseName = string.Format("{0}.{1}", 
+			                                   resourceNamespace,
+			                                   /* replace minus in sub-languages */
+			                                   ci.Name.Replace('-', '_'));
+			
+			if (asm.GetManifestResourceInfo(baseName + ".resources") != null)
+				return new ResourceManager(baseName, asm);
 			else
 				return null;
 		}
