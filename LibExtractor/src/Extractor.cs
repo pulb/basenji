@@ -364,37 +364,37 @@ namespace LibExtractor
 		///
 		
 		#region Native imports
-		[DllImport("libextractor")]
+		[DllImport("libextractor-1")]
 		private static extern IntPtr EXTRACTOR_loadDefaultLibraries();
 		
-		[DllImport("libextractor")]
+		[DllImport("libextractor-1")]
 		private static extern IntPtr EXTRACTOR_loadConfigLibraries(IntPtr prev, string config);
 		
-		[DllImport("libextractor")]
+		[DllImport("libextractor-1")]
 		private static extern IntPtr EXTRACTOR_addLibrary(IntPtr prev, string library);
 		
-		[DllImport("libextractor")]
+		[DllImport("libextractor-1")]
 		private static extern IntPtr EXTRACTOR_addLibraryLast(IntPtr prev, string library);
 		
-		[DllImport("libextractor")]
+		[DllImport("libextractor-1")]
 		private static extern IntPtr EXTRACTOR_removeLibrary(IntPtr prev, string library);
 			
-		[DllImport("libextractor")]
+		[DllImport("libextractor-1")]
 		private static extern void EXTRACTOR_removeAll(IntPtr libraries);
 		
-		[DllImport("libextractor")]
+		[DllImport("libextractor-1")]
 		private static extern IntPtr EXTRACTOR_getKeywords(IntPtr extractors, string filename);
 		
-		[DllImport("libextractor")]
+		[DllImport("libextractor-1")]
 		private static extern IntPtr EXTRACTOR_getKeywords2(IntPtr extractors, IntPtr data, int size);
 		
-		[DllImport("libextractor")]
+		[DllImport("libextractor-1")]
 		private static extern void EXTRACTOR_freeKeywords(IntPtr keywords);		
 		
-		[DllImport("libextractor")]
+		[DllImport("libextractor-1")]
 		private static extern IntPtr EXTRACTOR_getKeywordTypeAsString(KeywordType type);
 		
-		[DllImport("libextractor")]
+		[DllImport("libextractor-1")]
 		private static extern KeywordType EXTRACTOR_getHighestKeywordTypeNumber();
 		#endregion
 	}
