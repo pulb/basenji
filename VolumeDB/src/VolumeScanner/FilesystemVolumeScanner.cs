@@ -77,7 +77,6 @@ namespace VolumeDB.VolumeScanner
 				try {
 					this.extractor	= Extractor.GetDefault();
 				} catch(DllNotFoundException) {
-				} catch(EntryPointNotFoundException) {
 					// a warning will be sent in ScanningThreadMain().
 				}
 			}

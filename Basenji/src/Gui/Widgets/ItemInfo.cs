@@ -235,8 +235,7 @@ namespace Basenji.Gui.Widgets
 								String.Format("{0}: {1}", pair.Key, pair.Value));
 #endif
 					 	}
-					} catch (DllNotFoundException) {
-					} catch (EntryPointNotFoundException) { /* libextractor package not installed */ }
+					} catch (DllNotFoundException) { /* libextractor package not installed */ }
 				}
 
 				//
