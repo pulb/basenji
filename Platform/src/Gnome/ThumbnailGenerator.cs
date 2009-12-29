@@ -26,7 +26,7 @@ namespace Platform.Gnome
 {
 	internal class ThumbnailGenerator : Platform.Common.IThumbnailGenerator
 	{	
-		private const ThumbnailSize THUMB_SIZE = ThumbnailSize.Normal;
+		private const ThumbnailSize THUMB_SIZE = ThumbnailSize.Normal; // 100 pix
 		
 		private ThumbnailFactory tf;
 		private Pixbuf thumbnail;

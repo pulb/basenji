@@ -107,7 +107,9 @@ FILES = \
 	src/Common/ThumbnailGenerator.cs \
 	src/Gnome/ThumbnailGenerator.cs \
 	src/Common/Globalization/Catalog.cs \
-	src/Common/Globalization/TranslatedStringTable.cs 
+	src/Common/Globalization/TranslatedStringTable.cs \
+	src/Win32/ThumbnailCreator.cs \
+	src/Win32/ThumbnailGenerator.cs 
 
 DATA_FILES = 
 

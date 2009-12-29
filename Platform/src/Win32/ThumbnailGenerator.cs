@@ -1,6 +1,6 @@
 // ThumbnailGenerator.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2009 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,58 +14,53 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-//
 
+#if WIN32
 using System;
 using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
+using vbAccelerator.Components.Shell;
 
-namespace Platform.Common
-{	
-	internal interface IThumbnailGenerator : IDisposable
+namespace Platform.Win32
+{
+	internal class ThumbnailGenerator : Platform.Common.IThumbnailGenerator
 	{
-		bool GenerateThumbnail(FileInfo fi, string mimeType);
-		void SaveThumbnail(string filename);
-	}
-	
-	public class ThumbnailGenerator : IThumbnailGenerator, IDisposable
-	{
-		private IThumbnailGenerator tg;
+		private const int THUMB_SIZE = 100;
+		
 		private bool disposed;
-	
-		public ThumbnailGenerator() {
+		private ThumbnailCreator tg;
+		private Bitmap thumbnail;
+		
+		public ThumbnailGenerator () {
 			disposed = false;
-#if GNOME
-			tg = new Platform.Gnome.ThumbnailGenerator();
-#elif WIN32
-			tg = new Platform.Win32.ThumbnailGenerator();
-#else
-			tg = null;
-#endif	
-
+			tg = new ThumbnailCreator();
+			tg.DesiredSize = new Size(THUMB_SIZE, THUMB_SIZE);
+			thumbnail = null;
 		}
 		
 		public bool GenerateThumbnail(FileInfo fi, string mimeType) {
-			EnsureNotDisposed();
+			if (thumbnail != null) {
+				thumbnail.Dispose();
+				thumbnail = null;
+			}
 			
-			if (fi == null)
-				throw new ArgumentNullException("fi");
-			if (mimeType == null)
-				throw new ArgumentNullException("mimeType");
-
-			if (tg != null)
-				return tg.GenerateThumbnail(fi, mimeType);
-			else
-				return false;
+			try {
+				// FIXME : 
+				// tg.GetThumbNail() seems to throw a FileNotFoundException
+				// for every single file it can't create a thumbnail for.
+				// Only generate thumbnails for cherry-picked mimetypes?
+				thumbnail = tg.GetThumbNail(fi.FullName);
+			} catch (Exception) { }
+			
+			return (thumbnail != null);
 		}
 		
 		public void SaveThumbnail(string filename) {
-			EnsureNotDisposed();
+			if (thumbnail == null)
+				throw new InvalidOperationException("no thumbnail generated");
 			
-			if (filename == null)
-				throw new ArgumentNullException("filename");
-			
-			if (tg != null)
-				tg.SaveThumbnail(filename);
+			thumbnail.Save(filename, ImageFormat.Png);
 		}
 		
 		public void Dispose() {
@@ -75,17 +70,12 @@ namespace Platform.Common
 		private void Dispose(bool disposing) {
 			if (!disposed) {
 				if (disposing) {
-					if (tg != null)
-						tg.Dispose();
+					tg.Dispose();
 				}
 				tg = null;
 			}
 			disposed = true;
 		}
-		
-		private void EnsureNotDisposed() {
-			if (disposed)
-				throw new ObjectDisposedException("ThumbnailGenerator");
-		}
 	}
 }
+#endif

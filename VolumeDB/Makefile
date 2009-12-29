@@ -214,9 +214,9 @@ FILES = \
 DATA_FILES = 
 
 RESOURCES = \
-	po/de.resources \
-	po/he.resources \
-	po/da.resources 
+	po/de.resources,VolumeDB.po.de.resources \
+	po/he.resources,VolumeDB.po.he.resources \
+	po/da.resources,VolumeDB.po.da.resources 
 
 EXTRAS = \
 	volumedb.pc.in 

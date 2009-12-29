@@ -208,12 +208,12 @@ FILES = \
 DATA_FILES = 
 
 RESOURCES = \
-	images/LED_Off.png \
-	images/LED_On.png \
-	po/de.resources \
-	po/he.resources \
-	po/da.resources \
-	images/search.png 
+	images/LED_Off.png,Basenji.images.LED_Off.png \
+	images/LED_On.png,Basenji.images.LED_On.png \
+	po/de.resources,Basenji.po.de.resources \
+	po/he.resources,Basenji.po.he.resources \
+	po/da.resources,Basenji.po.da.resources \
+	images/search.png,Basenji.images.search.png 
 
 EXTRAS = \
 	app.desktop \
