@@ -12,7 +12,7 @@
     <AssemblyName>Basenji</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ApplicationIcon>basenji.ico</ApplicationIcon>
+    <ApplicationIcon>images\basenji.ico</ApplicationIcon>
     <StartupObject>
     </StartupObject>
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
@@ -43,7 +43,7 @@
   </Target>
   -->
   <ItemGroup>
-    <Content Include="basenji.ico" />
+    <Content Include="images\basenji.ico" />
     <EmbeddedResource Include="images\LED_Off.png" />
     <EmbeddedResource Include="images\LED_On.png" />
     <EmbeddedResource Include="images\search.png" />
