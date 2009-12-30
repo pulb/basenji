@@ -333,9 +333,6 @@ namespace Basenji.Gui
 			// checkbox generateThumbnails
 			chkGenerateThumbnails = new CheckButton(S._("Generate Thumbnails"));
 			TblAttach(tbl, chkGenerateThumbnails, 0, 1, 2, 1, AttachOptions.Fill, AttachOptions.Fill);
-			// FIXME : currently thumbnail generation is implemented for GNOME only
-			if (!Platform.Common.Diagnostics.CurrentPlatform.IsGnome)
-				chkGenerateThumbnails.Sensitive = false;
 
 			// checkbox discardSymLinks
 			chkExtractMetaData = new CheckButton(S._("Extract metadata"));
