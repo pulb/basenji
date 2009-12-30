@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9D64337F-0383-47B8-8CAB-D7B7C3FE143C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Basenji</RootNamespace>
+    <AssemblyName>Basenji</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>basenji.ico</ApplicationIcon>
+    <StartupObject>
+    </StartupObject>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <Content Include="basenji.ico" />
+    <EmbeddedResource Include="images\LED_Off.png" />
+    <EmbeddedResource Include="images\LED_On.png" />
+    <EmbeddedResource Include="images\search.png" />
+    <EmbeddedResource Include="po\da.resources" />
+    <EmbeddedResource Include="po\de.resources" />
+    <EmbeddedResource Include="po\he.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="Mono.Cairo, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL" />
+    <Reference Include="pango-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Platform\Platform_win32.csproj">
+      <Project>{A8624816-6F0F-42EC-96AE-84C001272CD8}</Project>
+      <Name>Platform_win32</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VolumeDB\VolumeDB_win32.csproj">
+      <Project>{59B6E0D9-AF8C-40B1-A2F3-22C37503174C}</Project>
+      <Name>VolumeDB_win32</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="src\App.cs" />
+    <Compile Include="src\AssemblyInfo.cs" />
+    <Compile Include="src\DbData.cs" />
+    <Compile Include="src\FileDialog.cs" />
+    <Compile Include="src\Gui\About.cs" />
+    <Compile Include="src\Gui\Base\BinBase.cs" />
+    <Compile Include="src\Gui\Base\DialogBase.cs" />
+    <Compile Include="src\Gui\Base\ViewBase.cs" />
+    <Compile Include="src\Gui\Base\WindowBase.cs" />
+    <Compile Include="src\Gui\DBProperties.cs" />
+    <Compile Include="src\Gui\DriveSelection.cs" />
+    <Compile Include="src\Gui\Events.cs" />
+    <Compile Include="src\Gui\ItemSearch.cs" />
+    <Compile Include="src\Gui\MainWindow.cs" />
+    <Compile Include="src\Gui\Preferences.cs" />
+    <Compile Include="src\Gui\VolumeProperties.cs" />
+    <Compile Include="src\Gui\VolumeScanner.cs" />
+    <Compile Include="src\Gui\Widgets\CategoryView.cs" />
+    <Compile Include="src\Gui\Widgets\DateChooser.cs" />
+    <Compile Include="src\Gui\Widgets\FSVolumeEdit.cs" />
+    <Compile Include="src\Gui\Widgets\IconEntry.cs" />
+    <Compile Include="src\Gui\Widgets\ItemInfo.cs" />
+    <Compile Include="src\Gui\Widgets\ItemPreview.cs" />
+    <Compile Include="src\Gui\Widgets\ItemView.cs" />
+    <Compile Include="src\Gui\Widgets\Led.cs" />
+    <Compile Include="src\Gui\Widgets\PageNavigation.cs" />
+    <Compile Include="src\Gui\Widgets\PageNavigationEvents.cs" />
+    <Compile Include="src\Gui\Widgets\SearchEntry.cs" />
+    <Compile Include="src\Gui\Widgets\SearchResultView.cs" />
+    <Compile Include="src\Gui\Widgets\VolumeEdit.cs" />
+    <Compile Include="src\Gui\Widgets\VolumeEditEvents.cs" />
+    <Compile Include="src\Gui\Widgets\VolumeView.cs" />
+    <Compile Include="src\Icons\CustomIconTheme.cs" />
+    <Compile Include="src\Icons\Icon.cs" />
+    <Compile Include="src\Icons\IconCache.cs" />
+    <Compile Include="src\Icons\IconUtils.cs" />
+    <Compile Include="src\Icons\ItemIcons.cs" />
+    <Compile Include="src\Icons\MimeIconCache.cs" />
+    <Compile Include="src\Icons\NameInCustomIconNameAttribute.cs" />
+    <Compile Include="src\Main.cs" />
+    <Compile Include="src\MsgDialog.cs" />
+    <Compile Include="src\S.cs" />
+    <Compile Include="src\Settings.cs" />
+    <Compile Include="src\Util.cs" />
+  </ItemGroup>
+  <PropertyGroup>
+    <PostBuildEvent>IF NOT EXIST "$(TargetDir)data" GOTO NO_DATA_DIR
+rmdir "$(TargetDir)data" /s /q
+:NO_DATA_DIR
+mkdir  "$(TargetDir)data"
+mkdir  "$(TargetDir)data\themes"
+xcopy "$(ProjectDir)images\basenji.svg" "$(TargetDir)data"
+xcopy "$(ProjectDir)images\themes" "$(TargetDir)data\themes\" /e
+</PostBuildEvent>
+  </PropertyGroup>
+</Project>
