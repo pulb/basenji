@@ -59,6 +59,40 @@ namespace Basenji
 			return str;
 		}
 		
+		// Copied from Banshee.Hyena.Gui.GtkUtilities
+		// Copyright (C) 2007 Aaron Bockover <abockover@novell.com>
+		public static Gdk.Color ColorBlend(Gdk.Color a, Gdk.Color b) {
+			// at some point, might be nice to allow any blend?
+			double blend = 0.5;
+			
+			if (blend < 0.0 || blend > 1.0) {
+				throw new ApplicationException ("blend < 0.0 || blend > 1.0");
+			}
+			
+			double blendRatio = 1.0 - blend;
+			
+			int aR = a.Red >> 8;
+			int aG = a.Green >> 8;
+			int aB = a.Blue >> 8;
+			
+			int bR = b.Red >> 8;
+			int bG = b.Green >> 8;
+			int bB = b.Blue >> 8;
+			
+			double mR = aR + bR;
+			double mG = aG + bG;
+			double mB = aB + bB;
+			
+			double blR = mR * blendRatio;
+			double blG = mG * blendRatio;
+			double blB = mB * blendRatio;
+			
+			Gdk.Color color = new Gdk.Color ((byte)blR, (byte)blG, (byte)blB);
+			Gdk.Colormap.System.AllocColor (ref color, true, true);
+			
+			return color;
+        }
+		
 		public static string FormatExceptionMsg(Exception e) {
 			string msg = e.Message;
 			int breakPos = msg.IndexOfAny(Environment.NewLine.ToCharArray());

@@ -94,14 +94,28 @@ namespace Basenji.Gui.Widgets
 			store.AppendValues(GetVolumeIcon(v), GetVolumeDescription(v), v);
 		}
 		
-		private static string GetVolumeDescription(Volume v) {
+		private string GetVolumeDescription(Volume v) {
 			switch (v.GetVolumeType()) {
 				case VolumeType.FileSystemVolume:
 					FileSystemVolume fsv = (FileSystemVolume)v;
 					
-					string title = string.IsNullOrEmpty(v.Title) ? STR_UNNAMED : Util.Escape(v.Title);
+					string title;
 					string category;
 					
+				 	if (string.IsNullOrEmpty(v.Title)) {
+						Gdk.Color a = Parent.Style.Base(Gtk.StateType.Normal);
+						Gdk.Color b = Parent.Style.Text(Gtk.StateType.Normal);
+						Gdk.Color c = Util.ColorBlend(a, b);
+						string col = string.Format("#{0:X2}{1:X2}{2:X2}",
+					                           c.Red / 255,
+					                           c.Green / 255,
+					                           c.Blue / 255);
+						
+						title = string.Format("<span fgcolor=\"{0}\">{1}</span>", col, STR_UNNAMED);
+					} else {
+						title = Util.Escape(v.Title);
+					}
+				
 					if (string.IsNullOrEmpty(v.ArchiveNo)) {
 						title = string.Format("<b>{0}</b>", title);
 					} else {
