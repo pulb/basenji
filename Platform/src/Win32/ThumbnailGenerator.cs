@@ -26,7 +26,7 @@ namespace Platform.Win32
 {
 	internal class ThumbnailGenerator : Platform.Common.IThumbnailGenerator
 	{
-		private const int THUMB_SIZE = 100;
+		private const int THUMB_SIZE = 128;
 		
 		private bool disposed;
 		private ThumbnailCreator tg;
