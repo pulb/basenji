@@ -119,7 +119,7 @@ namespace Basenji.Gui.Widgets
 						category = v.Category;
 						
 					// only show important info, otherwise its too cluttered, too high!
-					return string.Format(S._("{0}\n<span size=\"medium\"><i>{1}</i> {2}\n<i>{3}</i> {4} / {5} {6}</span>"), 
+					return string.Format("{0}\n<span size=\"medium\"><i>{1}</i> {2}\n<i>{3}</i> {4} / {5} {6}</span>", 
 												title,
 				                     			STR_CATEGORY,
 												Util.Escape(category),
