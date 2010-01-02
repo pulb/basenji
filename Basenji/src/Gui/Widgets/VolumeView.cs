@@ -26,6 +26,11 @@ namespace Basenji.Gui.Widgets
 {
 	public class VolumeView : ViewBase
 	{
+		private static readonly string STR_UNNAMED	= S._("Unnamed");
+		private static readonly string STR_CATEGORY	= S._("Category:");
+		private static readonly string STR_SIZE		= S._("Size:");
+		private static readonly string STR_FILES	= S._("files");
+		
 		private const IconSize ICON_SIZE = IconSize.Dialog;
 		private IconCache iconCache;
 		
@@ -93,20 +98,35 @@ namespace Basenji.Gui.Widgets
 			switch (v.GetVolumeType()) {
 				case VolumeType.FileSystemVolume:
 					FileSystemVolume fsv = (FileSystemVolume)v;
+					
+					string title = string.IsNullOrEmpty(v.Title) ? STR_UNNAMED : Util.Escape(v.Title);
 					string category;
+					
+					if (string.IsNullOrEmpty(v.ArchiveNo)) {
+						title = string.Format("<b>{0}</b>", title);
+					} else {
+						title = string.Format("<b>{0}</b> <small>({1})</small>",
+					                      title,
+					                      Util.Escape(v.ArchiveNo));
+					}
+				
+					if (!string.IsNullOrEmpty(v.LoanedTo))
+						title = string.Format("<span fgcolor=\"red\">{0}</span>", title);
 					
 					if (string.IsNullOrEmpty(v.Category))
 						category = "-";
 					else if (!VolumeEdit.categories.TryGetTranslatedString(v.Category, out category))
 						category = v.Category;
 						
-					// TODO: add colors. add ArchivNr. only show important info, otherwise its too gluttered, too high!)
-					return string.Format(S._("<b>{0}</b>\n<span size=\"medium\"><i>Category:</i> {1}\n<i>Added:</i> {2}\n<i>Files:</i> {3}\n<i>Size:</i> {4}</span>"), 
-												Util.Escape(v.Title),
+					// only show important info, otherwise its too cluttered, too high!
+					return string.Format(S._("{0}\n<span size=\"medium\"><i>{1}</i> {2}\n<i>{3}</i> {4} / {5} {6}</span>"), 
+												title,
+				                     			STR_CATEGORY,
 												Util.Escape(category),
-												Util.Escape(v.Added.ToShortDateString()),
-												fsv.Files.ToString(),
-												Util.GetSizeStr(fsv.Size));
+				                     			STR_SIZE,
+												Util.GetSizeStr(fsv.Size),
+				                     			fsv.Files.ToString(),
+				                     			STR_FILES);
 					break;
 				//case VolumeType.Cdda: ...
 				default:
