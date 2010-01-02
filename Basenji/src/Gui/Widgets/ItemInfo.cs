@@ -1,6 +1,6 @@
 // ItemInfo.cs
 // 
-// Copyright (C) 2008, 2009 Patrick Ulbrich
+// Copyright (C) 2008 - 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Gtk;
+using Cairo;
 using Basenji.Gui.Base;
 using VolumeDB;
 
@@ -62,6 +63,12 @@ namespace Basenji.Gui.Widgets
 			
 			// update item properties
 			FillPropertyBox(item);
+			
+			// HACK :
+			// somehow the cells of the outer hbox
+			// don't match the gradient of this widget
+			// if ShowInfo() is called a second time.
+			outerBox.QueueDraw();
 			
 			this.Show();
 		}
@@ -308,23 +315,18 @@ namespace Basenji.Gui.Widgets
 	// gui initialization
 	public partial class ItemInfo : BinBase
 	{
-		private EventBox	eventBox;
 		private HBox		outerBox;
-		ItemPreview			itemPreview;
+		private ItemPreview	itemPreview;
 		private PropertyBox	propertyBox;
 		
 		protected override void BuildGui() {
-			Gdk.Color baseColor = Style.Base(StateType.Normal);
-			
-			eventBox = new EventBox();
-			eventBox.ModifyBg(Gtk.StateType.Normal, baseColor);
-			
 			itemPreview = new ItemPreview();
-			itemPreview.ModifyBg(StateType.Normal, baseColor);
 			itemPreview.RoundedCorners		= true;
 			itemPreview.EnableGenericIcons	= false;
-			itemPreview.WidthRequest		= MAX_PREVIEW_WIDTH;
 			/*itemPreview.HeightRequest	= MAX_PREVIEW_HEIGHT;*/
+			itemPreview.WidthRequest		= MAX_PREVIEW_WIDTH;
+			// set no_window flag to disable background drawing
+			itemPreview.SetFlag(WidgetFlags.NoWindow);
 
 			propertyBox = new PropertyBox(this);
 	
@@ -333,12 +335,44 @@ namespace Basenji.Gui.Widgets
 			outerBox.PackStart(itemPreview, false, false, 0);
 			outerBox.PackStart(propertyBox, true, true, 0);
 			
-			eventBox.Add(outerBox);
-			
+			// (Gtk.Frame derives from Gtk.Bin which has no window)
 			Frame frame = new Frame();
-			frame.Add(eventBox);
+			frame.Add(outerBox);
+			frame.ExposeEvent += OnExposeEvent;
 			
 			this.Add(frame);
+		}
+
+		[GLib.ConnectBefore()]
+		private void OnExposeEvent (object o, ExposeEventArgs args)	{
+			int x = args.Event.Area.X;
+			int y = args.Event.Area.Y;
+			int width = args.Event.Area.Width;
+			int height = args.Event.Area.Height;
+			
+			Gdk.Color startColor = Style.Mid(StateType.Normal);
+			Gdk.Color stopColor = Style.Light(StateType.Normal);
+			double alpha = .7;
+			
+			using (Context cr = Gdk.CairoHelper.Create(args.Event.Window)) {	
+				cr.MoveTo (x, y);
+				cr.Rectangle(x, y, width, height);
+				
+				Gradient pat = new LinearGradient(x, y, x, y + height / 1.2);
+				pat.AddColorStop(0, ToCairoColor(startColor, alpha));
+				pat.AddColorStop(1, ToCairoColor(stopColor, alpha));
+				
+				cr.Pattern = pat;
+				cr.Fill();
+			}
+		}
+		
+		private static Cairo.Color ToCairoColor(Gdk.Color c, double alpha) {
+			double gdk_max = (double)ushort.MaxValue;
+			return new Cairo.Color(c.Red / gdk_max,
+			                       c.Green / gdk_max,
+			                       c.Blue / gdk_max,
+			                       alpha);
 		}
 		
 #region PropertyBox class

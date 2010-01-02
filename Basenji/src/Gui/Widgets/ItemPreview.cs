@@ -1,6 +1,6 @@
 // ItemPreview.cs
 // 
-// Copyright (C) 2009 Patrick Ulbrich
+// Copyright (C) 2009, 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -100,16 +100,16 @@ namespace Basenji.Gui.Widgets
 			get {return !this.isIcon; }
 		}
 		
-		protected override bool OnExposeEvent (EventExpose args) {
+		protected override bool OnExposeEvent (EventExpose evnt) {
 			if (pb == null)
 				return true;
 			
 			double sf = 1.0; // pixbuf scale factor
 			
 			// if any image dimension > widget area => calc downscale factor
-			if ((pb.Width > args.Area.Width) || (pb.Height > args.Area.Height)) {
-				double sfWidth = (double)args.Area.Width / pb.Width;
-				double sfHeight = (double)args.Area.Height / pb.Height;
+			if ((pb.Width > evnt.Area.Width) || (pb.Height > evnt.Area.Height)) {
+				double sfWidth = (double)evnt.Area.Width / pb.Width;
+				double sfHeight = (double)evnt.Area.Height / pb.Height;
 				sf = Math.Min(sfWidth, sfHeight);
 			} 
 			
@@ -118,10 +118,10 @@ namespace Basenji.Gui.Widgets
 			int height = (int)(pb.Height * sf);
 			
 			// center in the widget area
-			double x = Math.Floor((args.Area.Width / 2.0) - (width / 2.0));
-			double y = Math.Floor((args.Area.Height / 2.0) - (height / 2.0));
+			double x = Math.Floor(evnt.Area.X + (evnt.Area.Width / 2.0) - (width / 2.0));
+			double y = Math.Floor(evnt.Area.Y + (evnt.Area.Height / 2.0) - (height / 2.0));
 			
-			using (Context cr = Gdk.CairoHelper.Create(args.Window)) {			
+			using (Context cr = Gdk.CairoHelper.Create(evnt.Window)) {			
 				cr.MoveTo(x, y);
 				
 				if (RoundedCorners && !isIcon && 
@@ -146,7 +146,7 @@ namespace Basenji.Gui.Widgets
 				cr.Paint();
 			}
 			
-			return true;
+			return base.OnExposeEvent(evnt);
 		}
 	}
 }
