@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-22 14:39+0100\n"
+"POT-Creation-Date: 2010-01-02 19:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -162,7 +162,7 @@ msgid "Created:"
 msgstr ""
 
 #: src/Gui/MainWindow.cs:60 src/Gui/MainWindow.cs:216
-#: src/Gui/MainWindow.cs:237 src/Gui/MainWindow.cs:259 src/Main.cs:64
+#: src/Gui/MainWindow.cs:237 src/Gui/MainWindow.cs:259 src/Main.cs:65
 msgid "Error"
 msgstr ""
 
@@ -324,7 +324,7 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: src/Gui/DriveSelection.cs:149 src/Gui/Widgets/ItemInfo.cs:305
+#: src/Gui/DriveSelection.cs:149 src/Gui/Widgets/ItemInfo.cs:280
 msgid "Size"
 msgstr ""
 
@@ -377,19 +377,19 @@ msgstr ""
 msgid "Generate Thumbnails"
 msgstr ""
 
-#: src/Gui/Preferences.cs:341
+#: src/Gui/Preferences.cs:338
 msgid "Extract metadata"
 msgstr ""
 
-#: src/Gui/Preferences.cs:345
+#: src/Gui/Preferences.cs:342
 msgid "Discard symbolic links"
 msgstr ""
 
-#: src/Gui/Preferences.cs:349
+#: src/Gui/Preferences.cs:346
 msgid "Compute hashcodes for files (slow!)"
 msgstr ""
 
-#: src/Gui/Preferences.cs:352
+#: src/Gui/Preferences.cs:349
 msgid "Scanner"
 msgstr ""
 
@@ -418,14 +418,28 @@ msgstr ""
 msgid "Volume Properties"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeView.cs:104
+#: src/Gui/Widgets/VolumeView.cs:29
+msgid "Unnamed"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/VolumeEdit.cs:319
+msgid "Category:"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeView.cs:31
+msgid "Size:"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeView.cs:32
+msgid "files"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeView.cs:122
 #, csharp-format
 msgid ""
-"<b>{0}</b>\n"
-"<span size=\"medium\"><i>Category:</i> {1}\n"
-"<i>Added:</i> {2}\n"
-"<i>Files:</i> {3}\n"
-"<i>Size:</i> {4}</span>"
+"{0}\n"
+"<span size=\"medium\"><i>{1}</i> {2}\n"
+"<i>{3}</i> {4} / {5} {6}</span>"
 msgstr ""
 
 #: src/Gui/Widgets/ItemView.cs:29
@@ -436,87 +450,87 @@ msgstr ""
 msgid "(empty)"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:36
+#: src/Gui/Widgets/ItemInfo.cs:39
 msgid "by"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:37
+#: src/Gui/Widgets/ItemInfo.cs:40
 msgid "from"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:219
+#: src/Gui/Widgets/ItemInfo.cs:194
 msgid "Genre"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:231
+#: src/Gui/Widgets/ItemInfo.cs:206
 msgid "Year"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:234
+#: src/Gui/Widgets/ItemInfo.cs:209
 msgid "Description"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:237
+#: src/Gui/Widgets/ItemInfo.cs:212
 msgid "Duration"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:241
+#: src/Gui/Widgets/ItemInfo.cs:216
 msgid "Dimensions"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:244
+#: src/Gui/Widgets/ItemInfo.cs:219
 msgid "Format"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:246
+#: src/Gui/Widgets/ItemInfo.cs:221
 msgid "Author"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:248
+#: src/Gui/Widgets/ItemInfo.cs:223
 msgid "Copyright"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:250
+#: src/Gui/Widgets/ItemInfo.cs:225
 msgid "Producer"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:252
+#: src/Gui/Widgets/ItemInfo.cs:227
 msgid "Creator"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:254
+#: src/Gui/Widgets/ItemInfo.cs:229
 msgid "Software"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:256
+#: src/Gui/Widgets/ItemInfo.cs:231
 msgid "Language"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:258
+#: src/Gui/Widgets/ItemInfo.cs:233
 msgid "Page count"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:262
+#: src/Gui/Widgets/ItemInfo.cs:237
 msgid "File count"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:285
+#: src/Gui/Widgets/ItemInfo.cs:260
 msgid "Location"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:286
+#: src/Gui/Widgets/ItemInfo.cs:261
 msgid "Last write time"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:297
+#: src/Gui/Widgets/ItemInfo.cs:272
 msgid "Symlink target"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:307
+#: src/Gui/Widgets/ItemInfo.cs:282
 msgid "Hash"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:311
+#: src/Gui/Widgets/ItemInfo.cs:286
 msgid "Filetype"
 msgstr ""
 
@@ -625,10 +639,6 @@ msgstr ""
 msgid "Archive No.:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:319
-msgid "Category:"
-msgstr ""
-
 #: src/Gui/Widgets/VolumeEdit.cs:320
 msgid "Title:"
 msgstr ""
@@ -665,7 +675,7 @@ msgstr ""
 msgid "All files"
 msgstr ""
 
-#: src/Main.cs:64
+#: src/Main.cs:65
 #, csharp-format
 msgid "{0} is already running."
 msgstr ""
