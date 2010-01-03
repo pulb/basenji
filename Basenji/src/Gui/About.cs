@@ -35,7 +35,9 @@ namespace Basenji.Gui
   DiegoJ (https://launchpad.net/~diegojromerolopez)
   Emiliano (https://launchpad.net/~emilianohfernandez)
   Feder Sáiz (https://launchpad.net/~federsaiz)
+  monkey (https://launchpad.net/~monkey-libre)  
   Nicolás M. Zahlut (https://launchpad.net/~nzahlut)
+  Paco Molinero (https://launchpad.net/~franciscomol)
 
 German:
   Patrick Ulbrich (https://launchpad.net/~pulb)
