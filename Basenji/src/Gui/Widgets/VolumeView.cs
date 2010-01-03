@@ -112,7 +112,7 @@ namespace Basenji.Gui.Widgets
 					                           (int)(255 * (c.Green / gdk_max)),
 					                           (int)(255 * (c.Blue / gdk_max)));
 						
-						title = string.Format("<span fgcolor=\"{0}\">{1}</span>", col, STR_UNNAMED);
+						title = string.Format("<span foreground=\"{0}\">{1}</span>", col, STR_UNNAMED);
 					} else {
 						title = Util.Escape(v.Title);
 					}
@@ -126,7 +126,7 @@ namespace Basenji.Gui.Widgets
 					}
 				
 					if (!string.IsNullOrEmpty(v.LoanedTo))
-						title = string.Format("<span fgcolor=\"red\">{0}</span>", title);
+						title = string.Format("<span foreground=\"red\">{0}</span>", title);
 					
 					if (string.IsNullOrEmpty(v.Category))
 						category = "-";
