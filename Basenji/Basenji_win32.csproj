@@ -49,6 +49,7 @@
     <EmbeddedResource Include="images\search.png" />
     <EmbeddedResource Include="po\da.resources" />
     <EmbeddedResource Include="po\de.resources" />
+    <EmbeddedResource Include="po\es.resources" />
     <EmbeddedResource Include="po\he.resources" />
   </ItemGroup>
   <ItemGroup>
