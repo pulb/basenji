@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-10-28 17:24+0100\n"
-"PO-Revision-Date: 2009-10-28 16:47+0000\n"
+"POT-Creation-Date: 2010-01-02 20:04+0100\n"
+"PO-Revision-Date: 2010-01-02 19:04+0000\n"
 "Last-Translator: Patrick Ulbrich <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-11-18 21:00+0000\n"
+"X-Launchpad-Export-Date: 2010-01-03 14:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/Util.cs:35
@@ -42,237 +42,6 @@ msgstr "GB"
 msgid "TB"
 msgstr "TB"
 
-#: src/FileDialog.cs:53
-msgid "VolumeDatabase files"
-msgstr "VolumeDatabase Dateien"
-
-#: src/FileDialog.cs:58
-msgid "All files"
-msgstr "Alle Dateien"
-
-#: src/Gui/MainWindow.cs:69 src/Gui/MainWindow.cs:205
-#: src/Gui/MainWindow.cs:226 src/Gui/MainWindow.cs:248 src/Main.cs:72
-msgid "Error"
-msgstr "Fehler"
-
-#: src/Gui/MainWindow.cs:70
-#, csharp-format
-msgid "Database '{0}' not found."
-msgstr "Datenbank '{0}' wurde nicht gefunden."
-
-#: src/Gui/MainWindow.cs:102
-msgid "Unsupported database version"
-msgstr "Nicht unterstützte Datenbankversion"
-
-#: src/Gui/MainWindow.cs:103
-msgid "This database version is not supported."
-msgstr "Diese Datenbankversion wird nicht untersützt."
-
-#: src/Gui/MainWindow.cs:122
-#, csharp-format
-msgid "{0} volumes loaded."
-msgstr "{0} Datenträger geladen."
-
-#: src/Gui/MainWindow.cs:171
-msgid "Please enter the name for the new database"
-msgstr "Bitte geben Sie den Namen der neuen Datenbank ein"
-
-#: src/Gui/MainWindow.cs:183
-msgid "Database exists"
-msgstr "Datenbank existiert bereits"
-
-#: src/Gui/MainWindow.cs:184
-msgid "Database already exists. Overwrite?"
-msgstr "Die Datenbank existiert bereits. Überschreiben?"
-
-#: src/Gui/MainWindow.cs:197
-msgid "Please select a database"
-msgstr "Bitte wählen Sie eine Datenbank"
-
-#: src/Gui/MainWindow.cs:206
-msgid "Database not found."
-msgstr "Die Datenbank wurde nicht gefunden."
-
-#: src/Gui/MainWindow.cs:227
-#, csharp-format
-msgid ""
-"An error occured while accessing drive {0}:\n"
-"{1}"
-msgstr ""
-"Ein Fehler trat beim Zugriff auf das Laufwerk {0} auf:\n"
-"{1}"
-
-#: src/Gui/MainWindow.cs:249
-#, csharp-format
-msgid "Drive {0} is not ready."
-msgstr "Das Laufwerk {0} ist nicht bereit."
-
-#: src/Gui/MainWindow.cs:276 src/Gui/MainWindow.cs:302
-msgid "No volume selected"
-msgstr "Kein Datenträger gewählt"
-
-#: src/Gui/MainWindow.cs:277
-msgid "Please select a volume record to remove."
-msgstr "Bitte wählen Sie einen Datenträger zum Entfernen."
-
-#: src/Gui/MainWindow.cs:284
-msgid "Confirmation"
-msgstr "Bestätigung"
-
-#: src/Gui/MainWindow.cs:285
-msgid "Are you sure you really want to remove the selected volume?"
-msgstr ""
-"Sind Sie wirklich sicher, dass sie den gewählten Datenträger entfernen "
-"möchten?"
-
-#: src/Gui/MainWindow.cs:303
-msgid "Please select a volume record to edit."
-msgstr "Bitte wählen Sie einen Datenträger zum Bearbeiten."
-
-#: src/Gui/MainWindow.cs:338 src/Gui/ItemSearch.cs:88
-msgid "Timeout: another search is probably still in progress."
-msgstr "Zeitüberschreitung: Vermutlich läuft noch ein weiterer Suchvorgang."
-
-#: src/Gui/MainWindow.cs:356 src/Gui/ItemSearch.cs:105
-msgid "Searching..."
-msgstr "Suche..."
-
-#: src/Gui/MainWindow.cs:594
-msgid "_File"
-msgstr "_Datei"
-
-#: src/Gui/MainWindow.cs:597
-msgid "_New Database"
-msgstr "_Neue Datenbank"
-
-#: src/Gui/MainWindow.cs:600
-msgid "_Open Database"
-msgstr "Datenbank öffnen"
-
-#: src/Gui/MainWindow.cs:603
-msgid "_Database Properties"
-msgstr "Datenbank Eigenschaften"
-
-#: src/Gui/MainWindow.cs:606
-msgid "_Quit"
-msgstr "Beenden"
-
-#: src/Gui/MainWindow.cs:610
-msgid "_Edit"
-msgstr "B_earbeiten"
-
-#: src/Gui/MainWindow.cs:613
-msgid "_Preferences"
-msgstr "Einstellungen"
-
-#: src/Gui/MainWindow.cs:617
-msgid "_Help"
-msgstr "_Hilfe"
-
-#: src/Gui/MainWindow.cs:620
-msgid "_Info"
-msgstr "_Info"
-
-#: src/Gui/MainWindow.cs:624
-msgid "_Add Volume"
-msgstr "D_atenträger hinzufügen"
-
-#: src/Gui/MainWindow.cs:627
-msgid "_Remove Volume"
-msgstr "Datenträger entfe_rnen"
-
-#: src/Gui/MainWindow.cs:630
-msgid "_Edit Volume"
-msgstr "Datenträger bearbeiten"
-
-#: src/Gui/MainWindow.cs:633
-msgid "_Search"
-msgstr "_Suchen"
-
-#: src/Gui/MainWindow.cs:708 src/Gui/ItemSearch.cs:208
-msgid "Search:"
-msgstr "Suchen:"
-
-#: src/Gui/Preferences.cs:107
-msgid "None"
-msgstr "Keines"
-
-#: src/Gui/Preferences.cs:225
-msgid "Restart required"
-msgstr "Neustart erforderlich"
-
-#: src/Gui/Preferences.cs:225
-#, csharp-format
-msgid "You must restart {0} for icontheme changes to take effect."
-msgstr ""
-"Sie müssen {0} neustarten, damit die Änderungen des Iconthemas wirksam "
-"werden."
-
-#: src/Gui/Preferences.cs:251
-msgid "Preferences"
-msgstr "Einstellungen"
-
-#: src/Gui/Preferences.cs:273
-msgid "_Load Defaults"
-msgstr "Standardwerte _laden"
-
-#: src/Gui/Preferences.cs:298
-msgid "Icon theme:"
-msgstr "Icon-Thema:"
-
-#: src/Gui/Preferences.cs:304
-msgid "Reopen most recent database on startup"
-msgstr "Zuletzt geöffnete Datenbank beim Start laden"
-
-#: src/Gui/Preferences.cs:307
-msgid "General"
-msgstr "Allgemein"
-
-#: src/Gui/Preferences.cs:315
-msgid "Don't prompt, always scan:"
-msgstr "Scanne immer ohne zu fragen:"
-
-#: src/Gui/Preferences.cs:334
-msgid "Generate Thumbnails"
-msgstr "Thumbnails generieren"
-
-#: src/Gui/Preferences.cs:341
-msgid "Extract metadata"
-msgstr "Metadaten extrahieren"
-
-#: src/Gui/Preferences.cs:345
-msgid "Discard symbolic links"
-msgstr "Symbolische Links verwerfen"
-
-#: src/Gui/Preferences.cs:349
-msgid "Compute hashcodes for files (slow!)"
-msgstr "Hashcodes für Dateien berechnen (langsam!)"
-
-#: src/Gui/Preferences.cs:352
-msgid "Scanner"
-msgstr "Scanner"
-
-#: src/Gui/VolumeProperties.cs:41 src/Gui/VolumeScanner.cs:194
-msgid "Invalid data"
-msgstr "Ungültige Daten"
-
-#: src/Gui/VolumeProperties.cs:41 src/Gui/VolumeScanner.cs:194
-#, csharp-format
-msgid ""
-"\"{0}\" is {1}.\n"
-"\n"
-"Expected format: {2}\n"
-"Please correct or remove the data you entered."
-msgstr ""
-"\"{0}\" ist {1}.\n"
-"\n"
-"Erwartetes Format: {2}\n"
-"Bitte korrigieren oder entfernen Sie Ihre Eingaben."
-
-#: src/Gui/VolumeProperties.cs:81
-msgid "Volume Properties"
-msgstr "Datenträger Eigenschaften"
-
 #: src/Gui/VolumeScanner.cs:98
 #, csharp-format
 msgid "Scanning of drive '{0}' started."
@@ -294,6 +63,23 @@ msgstr "Zeit"
 #: src/Gui/VolumeScanner.cs:124
 msgid "Message"
 msgstr "Meldung"
+
+#: src/Gui/VolumeScanner.cs:194 src/Gui/VolumeProperties.cs:41
+msgid "Invalid data"
+msgstr "Ungültige Daten"
+
+#: src/Gui/VolumeScanner.cs:194 src/Gui/VolumeProperties.cs:41
+#, csharp-format
+msgid ""
+"\"{0}\" is {1}.\n"
+"\n"
+"Expected format: {2}\n"
+"Please correct or remove the data you entered."
+msgstr ""
+"\"{0}\" ist {1}.\n"
+"\n"
+"Erwartetes Format: {2}\n"
+"Bitte korrigieren oder entfernen Sie Ihre Eingaben."
 
 #: src/Gui/VolumeScanner.cs:201
 msgid "yes"
@@ -356,6 +142,19 @@ msgstr "<b>Scanner Log:</b>"
 msgid "Database access"
 msgstr "Datenbankzugriff"
 
+#: src/Gui/About.cs:28
+msgid "A portable volume indexing tool"
+msgstr "Ein portierbares Datenträger-Indizierungswerkzeug"
+
+#: src/Gui/About.cs:29
+#, csharp-format
+msgid "Using VolumeDB v{0}."
+msgstr "Verwende VolumeDB v{0}."
+
+#: src/Gui/About.cs:31
+msgid "Copyright (c) "
+msgstr "Copyright (c) "
+
 #: src/Gui/DBProperties.cs:77
 msgid "Database Properties"
 msgstr "Datenbankeigenschaften"
@@ -372,18 +171,160 @@ msgstr "Beschreibung:"
 msgid "Created:"
 msgstr "Erstellt am:"
 
-#: src/Gui/About.cs:28
-msgid "A portable volume indexing tool"
-msgstr "Ein portierbares Datenträger-Indizierungswerkzeug"
+#: src/Gui/MainWindow.cs:60 src/Gui/MainWindow.cs:216
+#: src/Gui/MainWindow.cs:237 src/Gui/MainWindow.cs:259 src/Main.cs:65
+msgid "Error"
+msgstr "Fehler"
 
-#: src/Gui/About.cs:29
+#: src/Gui/MainWindow.cs:61
 #, csharp-format
-msgid "Using VolumeDB v{0}."
-msgstr "Verwende VolumeDB v{0}."
+msgid "Database '{0}' not found."
+msgstr "Datenbank '{0}' wurde nicht gefunden."
 
-#: src/Gui/About.cs:31
-msgid "Copyright (c) "
-msgstr "Copyright (c) "
+#: src/Gui/MainWindow.cs:83
+msgid "Database not found"
+msgstr "Datenbank wurde nicht gefunden"
+
+#: src/Gui/MainWindow.cs:84
+msgid "Default database not found. Create?"
+msgstr "Die Standard-Datenbank konnte nicht gefunden werden. Erstellen?"
+
+#: src/Gui/MainWindow.cs:113
+msgid "Unsupported database version"
+msgstr "Nicht unterstützte Datenbankversion"
+
+#: src/Gui/MainWindow.cs:114
+msgid "This database version is not supported."
+msgstr "Diese Datenbankversion wird nicht untersützt."
+
+#: src/Gui/MainWindow.cs:133
+#, csharp-format
+msgid "{0} volumes loaded."
+msgstr "{0} Datenträger geladen."
+
+#: src/Gui/MainWindow.cs:182
+msgid "Please enter the name for the new database"
+msgstr "Bitte geben Sie den Namen der neuen Datenbank ein"
+
+#: src/Gui/MainWindow.cs:194
+msgid "Database exists"
+msgstr "Datenbank existiert bereits"
+
+#: src/Gui/MainWindow.cs:195
+msgid "Database already exists. Overwrite?"
+msgstr "Die Datenbank existiert bereits. Überschreiben?"
+
+#: src/Gui/MainWindow.cs:208
+msgid "Please select a database"
+msgstr "Bitte wählen Sie eine Datenbank"
+
+#: src/Gui/MainWindow.cs:217
+msgid "Database not found."
+msgstr "Die Datenbank wurde nicht gefunden."
+
+#: src/Gui/MainWindow.cs:238
+#, csharp-format
+msgid ""
+"An error occured while accessing drive {0}:\n"
+"{1}"
+msgstr ""
+"Ein Fehler trat beim Zugriff auf das Laufwerk {0} auf:\n"
+"{1}"
+
+#: src/Gui/MainWindow.cs:260
+#, csharp-format
+msgid "Drive {0} is not ready."
+msgstr "Das Laufwerk {0} ist nicht bereit."
+
+#: src/Gui/MainWindow.cs:287 src/Gui/MainWindow.cs:313
+msgid "No volume selected"
+msgstr "Kein Datenträger gewählt"
+
+#: src/Gui/MainWindow.cs:288
+msgid "Please select a volume record to remove."
+msgstr "Bitte wählen Sie einen Datenträger zum Entfernen."
+
+#: src/Gui/MainWindow.cs:295
+msgid "Confirmation"
+msgstr "Bestätigung"
+
+#: src/Gui/MainWindow.cs:296
+msgid "Are you sure you really want to remove the selected volume?"
+msgstr ""
+"Sind Sie wirklich sicher, dass sie den gewählten Datenträger entfernen "
+"möchten?"
+
+#: src/Gui/MainWindow.cs:314
+msgid "Please select a volume record to edit."
+msgstr "Bitte wählen Sie einen Datenträger zum Bearbeiten."
+
+#: src/Gui/MainWindow.cs:368 src/Gui/ItemSearch.cs:88
+msgid "Timeout: another search is probably still in progress."
+msgstr "Zeitüberschreitung: Vermutlich läuft noch ein weiterer Suchvorgang."
+
+#: src/Gui/MainWindow.cs:386 src/Gui/ItemSearch.cs:105
+msgid "Searching..."
+msgstr "Suche..."
+
+#: src/Gui/MainWindow.cs:614
+msgid "_File"
+msgstr "_Datei"
+
+#: src/Gui/MainWindow.cs:617
+msgid "_New Database"
+msgstr "_Neue Datenbank"
+
+#: src/Gui/MainWindow.cs:620
+msgid "_Open Database"
+msgstr "Datenbank öffnen"
+
+#: src/Gui/MainWindow.cs:623
+msgid "Open Default Database"
+msgstr "Standard-Datenbank öffnen"
+
+#: src/Gui/MainWindow.cs:626
+msgid "_Database Properties"
+msgstr "Datenbank Eigenschaften"
+
+#: src/Gui/MainWindow.cs:629
+msgid "_Quit"
+msgstr "Beenden"
+
+#: src/Gui/MainWindow.cs:633
+msgid "_Edit"
+msgstr "B_earbeiten"
+
+#: src/Gui/MainWindow.cs:636
+msgid "_Preferences"
+msgstr "Einstellungen"
+
+#: src/Gui/MainWindow.cs:640
+msgid "_Help"
+msgstr "_Hilfe"
+
+#: src/Gui/MainWindow.cs:643
+msgid "_Info"
+msgstr "_Info"
+
+#: src/Gui/MainWindow.cs:647
+msgid "_Add Volume"
+msgstr "D_atenträger hinzufügen"
+
+#: src/Gui/MainWindow.cs:651
+msgid "_Remove Volume"
+msgstr "Datenträger entfe_rnen"
+
+#: src/Gui/MainWindow.cs:654
+msgid "_Edit Volume"
+msgstr "Datenträger bearbeiten"
+
+#: src/Gui/MainWindow.cs:657
+msgid "_Search"
+msgstr "_Suchen"
+
+#: src/Gui/MainWindow.cs:731
+msgid "Filter volumes"
+msgstr "Datenträger filtern"
 
 #: src/Gui/DriveSelection.cs:64
 msgid "Waiting for drives..."
@@ -397,7 +338,7 @@ msgstr "Laufwerk"
 msgid "Label"
 msgstr "Bezeichnung"
 
-#: src/Gui/DriveSelection.cs:149 src/Gui/Widgets/ItemInfo.cs:299
+#: src/Gui/DriveSelection.cs:149 src/Gui/Widgets/ItemInfo.cs:280
 msgid "Size"
 msgstr "Größe"
 
@@ -405,9 +346,68 @@ msgstr "Größe"
 msgid "Filesystem"
 msgstr "Dateisystem"
 
-#: src/Gui/DriveSelection.cs:234
+#: src/Gui/DriveSelection.cs:244
 msgid "Please select a drive to scan"
 msgstr "Bitte wählen Sie ein Lauwerk zum Scannen"
+
+#: src/Gui/Preferences.cs:107
+msgid "None"
+msgstr "Keines"
+
+#: src/Gui/Preferences.cs:225
+msgid "Restart required"
+msgstr "Neustart erforderlich"
+
+#: src/Gui/Preferences.cs:225
+#, csharp-format
+msgid "You must restart {0} for icontheme changes to take effect."
+msgstr ""
+"Sie müssen {0} neustarten, damit die Änderungen des Iconthemas wirksam "
+"werden."
+
+#: src/Gui/Preferences.cs:251
+msgid "Preferences"
+msgstr "Einstellungen"
+
+#: src/Gui/Preferences.cs:273
+msgid "_Load Defaults"
+msgstr "Standardwerte _laden"
+
+#: src/Gui/Preferences.cs:298
+msgid "Icon theme:"
+msgstr "Icon-Thema:"
+
+#: src/Gui/Preferences.cs:304
+msgid "Reopen most recent database on startup"
+msgstr "Zuletzt geöffnete Datenbank beim Start laden"
+
+#: src/Gui/Preferences.cs:307
+msgid "General"
+msgstr "Allgemein"
+
+#: src/Gui/Preferences.cs:315
+msgid "Don't prompt, always scan:"
+msgstr "Scanne immer ohne zu fragen:"
+
+#: src/Gui/Preferences.cs:334
+msgid "Generate Thumbnails"
+msgstr "Thumbnails generieren"
+
+#: src/Gui/Preferences.cs:338
+msgid "Extract metadata"
+msgstr "Metadaten extrahieren"
+
+#: src/Gui/Preferences.cs:342
+msgid "Discard symbolic links"
+msgstr "Symbolische Links verwerfen"
+
+#: src/Gui/Preferences.cs:346
+msgid "Compute hashcodes for files (slow!)"
+msgstr "Hashcodes für Dateien berechnen (langsam!)"
+
+#: src/Gui/Preferences.cs:349
+msgid "Scanner"
+msgstr "Scanner"
 
 #: src/Gui/ItemSearch.cs:77
 #, csharp-format
@@ -422,9 +422,178 @@ msgstr "Zu viele Suchergebnisse. Bitte verfeinern Sie Ihre Suchkriterien."
 msgid "Search Items"
 msgstr "Elemente suchen"
 
+#: src/Gui/ItemSearch.cs:208
+msgid "Search:"
+msgstr "Suchen:"
+
 #: src/Gui/ItemSearch.cs:235
 msgid "No search results."
 msgstr "Keine Suchergebnisse."
+
+#: src/Gui/VolumeProperties.cs:81
+msgid "Volume Properties"
+msgstr "Datenträger Eigenschaften"
+
+#: src/Gui/Widgets/VolumeView.cs:29
+msgid "Unnamed"
+msgstr "Unbenannt"
+
+#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/VolumeEdit.cs:319
+msgid "Category:"
+msgstr "Kategorie:"
+
+#: src/Gui/Widgets/VolumeView.cs:31
+msgid "Size:"
+msgstr "Größe:"
+
+#: src/Gui/Widgets/VolumeView.cs:32
+msgid "files"
+msgstr "Dateien"
+
+#: src/Gui/Widgets/ItemView.cs:29
+msgid "Loading..."
+msgstr "Ladevorgang…"
+
+#: src/Gui/Widgets/ItemView.cs:30
+msgid "(empty)"
+msgstr "(leer)"
+
+#: src/Gui/Widgets/ItemInfo.cs:39
+msgid "by"
+msgstr "von"
+
+#: src/Gui/Widgets/ItemInfo.cs:40
+msgid "from"
+msgstr "aus"
+
+#: src/Gui/Widgets/ItemInfo.cs:194
+msgid "Genre"
+msgstr "Genre"
+
+#: src/Gui/Widgets/ItemInfo.cs:206
+msgid "Year"
+msgstr "Jahr"
+
+#: src/Gui/Widgets/ItemInfo.cs:209
+msgid "Description"
+msgstr "Beschreibung"
+
+#: src/Gui/Widgets/ItemInfo.cs:212
+msgid "Duration"
+msgstr "Länge"
+
+#: src/Gui/Widgets/ItemInfo.cs:216
+msgid "Dimensions"
+msgstr "Abmessungen"
+
+#: src/Gui/Widgets/ItemInfo.cs:219
+msgid "Format"
+msgstr "Format"
+
+#: src/Gui/Widgets/ItemInfo.cs:221
+msgid "Author"
+msgstr "Autor"
+
+#: src/Gui/Widgets/ItemInfo.cs:223
+msgid "Copyright"
+msgstr "Urheberrecht"
+
+#: src/Gui/Widgets/ItemInfo.cs:225
+msgid "Producer"
+msgstr "Hersteller"
+
+#: src/Gui/Widgets/ItemInfo.cs:227
+msgid "Creator"
+msgstr "Erzeuger"
+
+#: src/Gui/Widgets/ItemInfo.cs:229
+msgid "Software"
+msgstr "Software"
+
+#: src/Gui/Widgets/ItemInfo.cs:231
+msgid "Language"
+msgstr "Sprache"
+
+#: src/Gui/Widgets/ItemInfo.cs:233
+msgid "Page count"
+msgstr "Anzahl Seiten"
+
+#: src/Gui/Widgets/ItemInfo.cs:237
+msgid "File count"
+msgstr "Anzahl Dateien"
+
+#: src/Gui/Widgets/ItemInfo.cs:260
+msgid "Location"
+msgstr "Ort"
+
+#: src/Gui/Widgets/ItemInfo.cs:261
+msgid "Last write time"
+msgstr "Geändert"
+
+#: src/Gui/Widgets/ItemInfo.cs:272
+msgid "Symlink target"
+msgstr "SymLink-Ziel"
+
+#: src/Gui/Widgets/ItemInfo.cs:282
+msgid "Hash"
+msgstr "Hash"
+
+#: src/Gui/Widgets/ItemInfo.cs:286
+msgid "Filetype"
+msgstr "Dateityp"
+
+#: src/Gui/Widgets/PageNavigation.cs:27
+msgid "No items."
+msgstr "Keine Elemente."
+
+#: src/Gui/Widgets/PageNavigation.cs:145
+#, csharp-format
+msgid "<b>Page {0}/{1}</b>  ({2} - {3} of {4} items)"
+msgstr "<b>Seite {0}/{1}</b>  ({2} - {3} von {4} Elementen)"
+
+#: src/Gui/Widgets/CategoryView.cs:58
+msgid "Directories"
+msgstr "Verzeichnisse"
+
+#: src/Gui/Widgets/CategoryView.cs:59
+msgid "Text"
+msgstr "Text"
+
+#: src/Gui/Widgets/CategoryView.cs:60 src/Gui/Widgets/VolumeEdit.cs:50
+msgid "Documents"
+msgstr "Dokumente"
+
+#: src/Gui/Widgets/CategoryView.cs:61 src/Gui/Widgets/VolumeEdit.cs:51
+msgid "Music"
+msgstr "Musik"
+
+#: src/Gui/Widgets/CategoryView.cs:62 src/Gui/Widgets/VolumeEdit.cs:52
+msgid "Movies"
+msgstr "Filme"
+
+#: src/Gui/Widgets/CategoryView.cs:63
+msgid "Images"
+msgstr "Bilder"
+
+#: src/Gui/Widgets/CategoryView.cs:64
+msgid "Applications"
+msgstr "Programme"
+
+#: src/Gui/Widgets/CategoryView.cs:65
+msgid "Archives"
+msgstr "Archive"
+
+#: src/Gui/Widgets/CategoryView.cs:66
+msgid "Development"
+msgstr "Entwicklung"
+
+#: src/Gui/Widgets/CategoryView.cs:149
+msgid "Category"
+msgstr "Kategorie"
+
+#: src/Gui/Widgets/CategoryView.cs:181
+msgid "All items"
+msgstr "Alle Elemente"
 
 #: src/Gui/Widgets/FSVolumeEdit.cs:62
 msgid "Files:"
@@ -438,30 +607,9 @@ msgstr "Verzeichnisse:"
 msgid "Total size:"
 msgstr "Gesamtgröße:"
 
-#: src/Gui/Widgets/PageNavigation.cs:27
-msgid "No items."
-msgstr "Keine Elemente."
-
-#: src/Gui/Widgets/PageNavigation.cs:145
-#, csharp-format
-msgid "<b>Page {0}/{1}</b>  ({2} - {3} of {4} items)"
-msgstr "<b>Seite {0}/{1}</b>  ({2} - {3} von {4} Elementen)"
-
 #: src/Gui/Widgets/VolumeEdit.cs:49
 msgid "Backup"
 msgstr "Backup"
-
-#: src/Gui/Widgets/VolumeEdit.cs:50 src/Gui/Widgets/CategoryView.cs:60
-msgid "Documents"
-msgstr "Dokumente"
-
-#: src/Gui/Widgets/VolumeEdit.cs:51 src/Gui/Widgets/CategoryView.cs:61
-msgid "Music"
-msgstr "Musik"
-
-#: src/Gui/Widgets/VolumeEdit.cs:52 src/Gui/Widgets/CategoryView.cs:62
-msgid "Movies"
-msgstr "Filme"
 
 #: src/Gui/Widgets/VolumeEdit.cs:53
 msgid "Pictures"
@@ -499,10 +647,6 @@ msgstr "Hinzugefügt:"
 msgid "Archive No.:"
 msgstr "Archiv-Nr.:"
 
-#: src/Gui/Widgets/VolumeEdit.cs:319
-msgid "Category:"
-msgstr "Kategorie:"
-
 #: src/Gui/Widgets/VolumeEdit.cs:320
 msgid "Title:"
 msgstr "Titel:"
@@ -534,146 +678,15 @@ msgstr ""
 "<span size=\"smaller\"><i>Ort:</i> {1}\n"
 "<i>Datenträger:</i> {2}, <i>Archiv-Nr.:</i> {3}</span>"
 
-#: src/Gui/Widgets/VolumeView.cs:104
-#, csharp-format
-msgid ""
-"<b>{0}</b>\n"
-"<span size=\"medium\"><i>Category:</i> {1}\n"
-"<i>Added:</i> {2}\n"
-"<i>Files:</i> {3}\n"
-"<i>Size:</i> {4}</span>"
-msgstr ""
-"<b>{0}</b>\n"
-"<span size=\"medium\"><i>Kategorie:</i> {1}\n"
-"<i>Hinzugefügt:</i> {2}\n"
-"<i>Dateien:</i> {3}\n"
-"<i>Größe:</i> {4}</span>"
+#: src/FileDialog.cs:53
+msgid "VolumeDatabase files"
+msgstr "VolumeDatabase Dateien"
 
-#: src/Gui/Widgets/ItemInfo.cs:36
-msgid "by"
-msgstr "von"
+#: src/FileDialog.cs:58
+msgid "All files"
+msgstr "Alle Dateien"
 
-#: src/Gui/Widgets/ItemInfo.cs:37
-msgid "from"
-msgstr "aus"
-
-#: src/Gui/Widgets/ItemInfo.cs:213
-msgid "Genre"
-msgstr "Genre"
-
-#: src/Gui/Widgets/ItemInfo.cs:225
-msgid "Year"
-msgstr "Jahr"
-
-#: src/Gui/Widgets/ItemInfo.cs:228
-msgid "Description"
-msgstr "Beschreibung"
-
-#: src/Gui/Widgets/ItemInfo.cs:231
-msgid "Duration"
-msgstr "Länge"
-
-#: src/Gui/Widgets/ItemInfo.cs:235
-msgid "Dimensions"
-msgstr "Abmessungen"
-
-#: src/Gui/Widgets/ItemInfo.cs:238
-msgid "Format"
-msgstr "Format"
-
-#: src/Gui/Widgets/ItemInfo.cs:240
-msgid "Author"
-msgstr "Autor"
-
-#: src/Gui/Widgets/ItemInfo.cs:242
-msgid "Copyright"
-msgstr "Urheberrecht"
-
-#: src/Gui/Widgets/ItemInfo.cs:244
-msgid "Producer"
-msgstr "Hersteller"
-
-#: src/Gui/Widgets/ItemInfo.cs:246
-msgid "Creator"
-msgstr "Erzeuger"
-
-#: src/Gui/Widgets/ItemInfo.cs:248
-msgid "Software"
-msgstr "Software"
-
-#: src/Gui/Widgets/ItemInfo.cs:250
-msgid "Language"
-msgstr "Sprache"
-
-#: src/Gui/Widgets/ItemInfo.cs:252
-msgid "Page count"
-msgstr "Anzahl Seiten"
-
-#: src/Gui/Widgets/ItemInfo.cs:256
-msgid "File count"
-msgstr "Anzahl Dateien"
-
-#: src/Gui/Widgets/ItemInfo.cs:279
-msgid "Location"
-msgstr "Ort"
-
-#: src/Gui/Widgets/ItemInfo.cs:280
-msgid "Last write time"
-msgstr "Geändert"
-
-#: src/Gui/Widgets/ItemInfo.cs:291
-msgid "Symlink target"
-msgstr "SymLink-Ziel"
-
-#: src/Gui/Widgets/ItemInfo.cs:301
-msgid "Hash"
-msgstr "Hash"
-
-#: src/Gui/Widgets/ItemInfo.cs:305
-msgid "Filetype"
-msgstr "Dateityp"
-
-#: src/Gui/Widgets/ItemView.cs:29
-msgid "Loading..."
-msgstr "Ladevorgang…"
-
-#: src/Gui/Widgets/ItemView.cs:30
-msgid "(empty)"
-msgstr "(leer)"
-
-#: src/Gui/Widgets/CategoryView.cs:58
-msgid "Directories"
-msgstr "Verzeichnisse"
-
-#: src/Gui/Widgets/CategoryView.cs:59
-msgid "Text"
-msgstr "Text"
-
-#: src/Gui/Widgets/CategoryView.cs:63
-msgid "Images"
-msgstr "Bilder"
-
-#: src/Gui/Widgets/CategoryView.cs:64
-msgid "Applications"
-msgstr "Programme"
-
-#: src/Gui/Widgets/CategoryView.cs:65
-msgid "Archives"
-msgstr "Archive"
-
-#: src/Gui/Widgets/CategoryView.cs:66
-msgid "Development"
-msgstr "Entwicklung"
-
-#: src/Gui/Widgets/CategoryView.cs:149
-msgid "Category"
-msgstr "Kategorie"
-
-#: src/Gui/Widgets/CategoryView.cs:181
-msgid "All items"
-msgstr "Alle Elemente"
-
-#: src/Main.cs:72
+#: src/Main.cs:65
 #, csharp-format
 msgid "{0} is already running."
 msgstr "{0} läuft bereits."
