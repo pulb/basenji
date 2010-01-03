@@ -28,7 +28,6 @@ namespace Basenji.Gui.Widgets
 	{
 		private static readonly string STR_UNNAMED	= S._("Unnamed");
 		private static readonly string STR_CATEGORY	= S._("Category:");
-		private static readonly string STR_SIZE		= S._("Size:");
 		private static readonly string STR_FILES	= S._("files");
 		
 		private const IconSize ICON_SIZE = IconSize.Dialog;
@@ -135,11 +134,10 @@ namespace Basenji.Gui.Widgets
 						category = v.Category;
 						
 					// only show important info, otherwise its too cluttered, too high!
-					return string.Format("{0}\n<span size=\"medium\"><i>{1}</i> {2}\n<i>{3}</i> {4} / {5} {6}</span>", 
+					return string.Format("{0}\n<span size=\"medium\"><i>{1}</i> {2}\n{3} / {4} {5}</span>", 
 												title,
 				                     			STR_CATEGORY,
 												Util.Escape(category),
-				                     			STR_SIZE,
 												Util.GetSizeStr(fsv.Size),
 				                     			fsv.Files.ToString(),
 				                     			STR_FILES);
