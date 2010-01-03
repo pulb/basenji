@@ -327,7 +327,7 @@ namespace Basenji.Gui.Widgets
 			itemPreview.WidthRequest		= MAX_PREVIEW_WIDTH;
 			// set no_window flag to disable background drawing
 			itemPreview.SetFlag(WidgetFlags.NoWindow);
-
+			
 			propertyBox = new PropertyBox(this);
 	
 			outerBox = new HBox(false, 12);
@@ -338,8 +338,26 @@ namespace Basenji.Gui.Widgets
 			// (Gtk.Frame derives from Gtk.Bin which has no window)
 			Frame frame = new Frame();
 			frame.Add(outerBox);
-			frame.ExposeEvent += OnExposeEvent;
 			
+			// TODO:
+			// setting the no_window flag on current windows GTK seems to be buggy. 
+			// remove no_window flag and use a solid bg color instead of a gradient.
+			// check later if the flag is working.
+			if (Platform.Common.Diagnostics.CurrentPlatform.IsWin32) {
+				Gdk.Color baseColor = Style.Base(StateType.Normal);
+
+				itemPreview.Flags = itemPreview.Flags ^ (int)WidgetFlags.NoWindow;
+				itemPreview.ModifyBg(StateType.Normal, baseColor);
+				
+				EventBox eb = new EventBox();
+				eb.ModifyBg(StateType.Normal, baseColor);
+				eb.Add(frame);
+				
+				this.Add(eb);				
+				return;
+			}
+			
+			frame.ExposeEvent += OnExposeEvent;
 			this.Add(frame);
 		}
 
