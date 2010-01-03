@@ -106,10 +106,12 @@ namespace Basenji.Gui.Widgets
 						Gdk.Color a = Parent.Style.Base(Gtk.StateType.Normal);
 						Gdk.Color b = Parent.Style.Text(Gtk.StateType.Normal);
 						Gdk.Color c = Util.ColorBlend(a, b);
+					
+						double gdk_max = (double)ushort.MaxValue;
 						string col = string.Format("#{0:X2}{1:X2}{2:X2}",
-					                           c.Red / 255,
-					                           c.Green / 255,
-					                           c.Blue / 255);
+					                           (int)(255 * (c.Red / gdk_max)),
+					                           (int)(255 * (c.Green / gdk_max)),
+					                           (int)(255 * (c.Blue / gdk_max)));
 						
 						title = string.Format("<span fgcolor=\"{0}\">{1}</span>", col, STR_UNNAMED);
 					} else {
