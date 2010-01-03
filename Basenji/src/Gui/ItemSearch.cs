@@ -220,7 +220,7 @@ namespace Basenji.Gui
 			// hpaned
 			HPaned hpaned = new HPaned();
 			hpaned.BorderWidth = 6;
-			hpaned.Position = 180;
+			hpaned.Position = 200;
 			
 			// category
 			ScrolledWindow swCategory = CreateScrolledView<CategoryView>(out tvCategory, true);
