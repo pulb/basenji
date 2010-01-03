@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-01-02 20:04+0100\n"
+"POT-Creation-Date: 2010-01-03 16:34+0100\n"
 "PO-Revision-Date: 2008-10-28 07:41+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-03 14:04+0000\n"
+"X-Launchpad-Export-Date: 2010-01-03 16:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/Util.cs:35
@@ -368,35 +368,35 @@ msgstr "טען _ברירות מחדל"
 msgid "Icon theme:"
 msgstr "ערכת הסמלים:"
 
-#: src/Gui/Preferences.cs:304
+#: src/Gui/Preferences.cs:309
 msgid "Reopen most recent database on startup"
 msgstr "פתח מחדש את מסד הנתונים העדכני ביותר עם ההפעלה"
 
-#: src/Gui/Preferences.cs:307
+#: src/Gui/Preferences.cs:312
 msgid "General"
 msgstr "כללי"
 
-#: src/Gui/Preferences.cs:315
+#: src/Gui/Preferences.cs:320
 msgid "Don't prompt, always scan:"
 msgstr "אל תודיע, סרוק תמיד:"
 
-#: src/Gui/Preferences.cs:334
+#: src/Gui/Preferences.cs:339
 msgid "Generate Thumbnails"
 msgstr "ייצר תמונות ממוזערות"
 
-#: src/Gui/Preferences.cs:338
+#: src/Gui/Preferences.cs:343
 msgid "Extract metadata"
 msgstr ""
 
-#: src/Gui/Preferences.cs:342
+#: src/Gui/Preferences.cs:347
 msgid "Discard symbolic links"
 msgstr "התעלם מקישורים סמליים"
 
-#: src/Gui/Preferences.cs:346
+#: src/Gui/Preferences.cs:351
 msgid "Compute hashcodes for files (slow!)"
 msgstr "חשב צפני גיבוב לקבצים (איטי!)"
 
-#: src/Gui/Preferences.cs:349
+#: src/Gui/Preferences.cs:354
 msgid "Scanner"
 msgstr "סורק"
 
@@ -434,10 +434,6 @@ msgid "Category:"
 msgstr "קטגוריה:"
 
 #: src/Gui/Widgets/VolumeView.cs:31
-msgid "Size:"
-msgstr ""
-
-#: src/Gui/Widgets/VolumeView.cs:32
 msgid "files"
 msgstr ""
 

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-01-02 20:04+0100\n"
+"POT-Creation-Date: 2010-01-03 16:34+0100\n"
 "PO-Revision-Date: 2010-01-02 19:04+0000\n"
 "Last-Translator: Patrick Ulbrich <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-03 14:04+0000\n"
+"X-Launchpad-Export-Date: 2010-01-03 16:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/Util.cs:35
@@ -377,35 +377,35 @@ msgstr "Standardwerte _laden"
 msgid "Icon theme:"
 msgstr "Icon-Thema:"
 
-#: src/Gui/Preferences.cs:304
+#: src/Gui/Preferences.cs:309
 msgid "Reopen most recent database on startup"
 msgstr "Zuletzt geöffnete Datenbank beim Start laden"
 
-#: src/Gui/Preferences.cs:307
+#: src/Gui/Preferences.cs:312
 msgid "General"
 msgstr "Allgemein"
 
-#: src/Gui/Preferences.cs:315
+#: src/Gui/Preferences.cs:320
 msgid "Don't prompt, always scan:"
 msgstr "Scanne immer ohne zu fragen:"
 
-#: src/Gui/Preferences.cs:334
+#: src/Gui/Preferences.cs:339
 msgid "Generate Thumbnails"
 msgstr "Thumbnails generieren"
 
-#: src/Gui/Preferences.cs:338
+#: src/Gui/Preferences.cs:343
 msgid "Extract metadata"
 msgstr "Metadaten extrahieren"
 
-#: src/Gui/Preferences.cs:342
+#: src/Gui/Preferences.cs:347
 msgid "Discard symbolic links"
 msgstr "Symbolische Links verwerfen"
 
-#: src/Gui/Preferences.cs:346
+#: src/Gui/Preferences.cs:351
 msgid "Compute hashcodes for files (slow!)"
 msgstr "Hashcodes für Dateien berechnen (langsam!)"
 
-#: src/Gui/Preferences.cs:349
+#: src/Gui/Preferences.cs:354
 msgid "Scanner"
 msgstr "Scanner"
 
@@ -443,10 +443,6 @@ msgid "Category:"
 msgstr "Kategorie:"
 
 #: src/Gui/Widgets/VolumeView.cs:31
-msgid "Size:"
-msgstr "Größe:"
-
-#: src/Gui/Widgets/VolumeView.cs:32
 msgid "files"
 msgstr "Dateien"
 
