@@ -300,6 +300,11 @@ namespace Basenji.Gui
 			cmbIconTheme = ComboBox.NewText();
 			TblAttach(tbl, cmbIconTheme, 1, 0, AttachOptions.Expand | AttachOptions.Fill | AttachOptions.Shrink, AttachOptions.Fill);
 			
+			// prevent non-GNOME users from changing the only custom theme (Tango)
+			// into the incomplete and ugly GTK default theme.
+			if (!Platform.Common.Diagnostics.CurrentPlatform.IsGnome)
+				cmbIconTheme.Sensitive = false;
+			
 			// reopen db checkbox
 			chkReopenDB = new CheckButton(S._("Reopen most recent database on startup"));
 			TblAttach(tbl, chkReopenDB, 0, 1, 2, 1);
