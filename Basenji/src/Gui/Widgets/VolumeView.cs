@@ -115,7 +115,7 @@ namespace Basenji.Gui.Widgets
 						title = string.Format("<span foreground=\"{0}\">{1}</span>", col, STR_UNNAMED);
 					
 					} else if (!string.IsNullOrEmpty(v.LoanedTo)) {
-						title = string.Format("<span foreground=\"red\">{0}</span>", v.Title);
+						title = string.Format("<span foreground=\"red\">{0}</span>", Util.Escape(v.Title));
 					} else {
 						title = Util.Escape(v.Title);
 					}
