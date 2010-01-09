@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-03 16:34+0100\n"
+"POT-Creation-Date: 2010-01-09 19:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -162,7 +162,8 @@ msgid "Created:"
 msgstr ""
 
 #: src/Gui/MainWindow.cs:60 src/Gui/MainWindow.cs:216
-#: src/Gui/MainWindow.cs:237 src/Gui/MainWindow.cs:259 src/Main.cs:65
+#: src/Gui/MainWindow.cs:237 src/Gui/MainWindow.cs:259
+#: src/Gui/MainWindow.cs:272 src/Main.cs:65
 msgid "Error"
 msgstr ""
 
@@ -224,91 +225,96 @@ msgstr ""
 msgid "Drive {0} is not ready."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:287 src/Gui/MainWindow.cs:313
+#: src/Gui/MainWindow.cs:273
+#, csharp-format
+msgid "Drive {0} is not mounted."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:300 src/Gui/MainWindow.cs:326
 msgid "No volume selected"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:288
+#: src/Gui/MainWindow.cs:301
 msgid "Please select a volume record to remove."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:295
+#: src/Gui/MainWindow.cs:308
 msgid "Confirmation"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:296
+#: src/Gui/MainWindow.cs:309
 msgid "Are you sure you really want to remove the selected volume?"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:314
+#: src/Gui/MainWindow.cs:327
 msgid "Please select a volume record to edit."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:368 src/Gui/ItemSearch.cs:88
+#: src/Gui/MainWindow.cs:381 src/Gui/ItemSearch.cs:88
 msgid "Timeout: another search is probably still in progress."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:386 src/Gui/ItemSearch.cs:105
+#: src/Gui/MainWindow.cs:399 src/Gui/ItemSearch.cs:105
 msgid "Searching..."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:614
+#: src/Gui/MainWindow.cs:627
 msgid "_File"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:617
+#: src/Gui/MainWindow.cs:630
 msgid "_New Database"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:620
+#: src/Gui/MainWindow.cs:633
 msgid "_Open Database"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:623
+#: src/Gui/MainWindow.cs:636
 msgid "Open Default Database"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:626
+#: src/Gui/MainWindow.cs:639
 msgid "_Database Properties"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:629
+#: src/Gui/MainWindow.cs:642
 msgid "_Quit"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:633
+#: src/Gui/MainWindow.cs:646
 msgid "_Edit"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:636
+#: src/Gui/MainWindow.cs:649
 msgid "_Preferences"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:640
+#: src/Gui/MainWindow.cs:653
 msgid "_Help"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:643
+#: src/Gui/MainWindow.cs:656
 msgid "_Info"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:647
+#: src/Gui/MainWindow.cs:660
 msgid "_Add Volume"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:651
+#: src/Gui/MainWindow.cs:664
 msgid "_Remove Volume"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:654
+#: src/Gui/MainWindow.cs:667
 msgid "_Edit Volume"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:657
+#: src/Gui/MainWindow.cs:670
 msgid "_Search"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:731
+#: src/Gui/MainWindow.cs:744
 msgid "Filter volumes"
 msgstr ""
 
