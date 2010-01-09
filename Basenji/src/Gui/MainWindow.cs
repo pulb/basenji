@@ -263,6 +263,19 @@ namespace Basenji.Gui
 				return;
 			}
 			
+			// TODO:
+			// remove this check when unmounted media
+			// like audio cds are supported 
+			// (volumeprober implementation).
+			if (!drive.IsMounted) {
+				MsgDialog.ShowError(this,
+				                    S._("Error"),
+				                    S._("Drive {0} is not mounted."),
+				                    drive.Device);
+				
+				return;
+			}
+			
 			VolumeScanner vs = new VolumeScanner(database, drive.Device);
 			vs.NewVolumeAdded += delegate(object o, NewVolumeAddedEventArgs args) {
 				if (lastSuccessfulSearchCriteria != null) {
