@@ -225,10 +225,12 @@ namespace LibExtractor
 				string keyword = pos.keyword;
 				bool allWhite = true;
 				
-				for (int j = 0; j < keyword.Length; j++) {
-					if (!char.IsWhiteSpace(keyword[j])) {
-						allWhite = false;
-						break;
+				if (keyword != null) {
+					for (int j = 0; j < keyword.Length; j++) {
+						if (!char.IsWhiteSpace(keyword[j])) {
+							allWhite = false;
+							break;
+						}
 					}
 				}
 				
