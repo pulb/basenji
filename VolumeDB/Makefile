@@ -213,7 +213,8 @@ FILES = \
 	src/Import/GnomeCatalogImport.cs \
 	src/Import/BasenjiImport.cs \
 	src/Import/AbstractImport.cs \
-	src/Import/Events.cs 
+	src/Import/Events.cs \
+	src/Import/CdCollectImport.cs 
 
 DATA_FILES = 
 
