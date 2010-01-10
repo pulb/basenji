@@ -27,7 +27,7 @@ namespace VolumeDB.Import
 {
 	public abstract class AbstractImport
 	{
-		private List<long>		volumeIDs;
+		private List<string>	volumeDataPaths;
 		private VolumeDatabase	targetDb;
 		private string			dbDataPath;
 		
@@ -38,7 +38,7 @@ namespace VolumeDB.Import
 		private AsyncOperation asyncOperation;
 		
 		internal AbstractImport (VolumeDatabase targetDb, string dbDataPath) {
-			this.volumeIDs = new List<long>();
+			this.volumeDataPaths = new List<string>();
 			this.targetDb = targetDb;
 			this.dbDataPath = dbDataPath;
 			
@@ -103,11 +103,7 @@ namespace VolumeDB.Import
 		}
 		
 		protected virtual void Reset() {
-			volumeIDs.Clear();
-		}
-		
-		protected void AddNewVolumeID(long id) {
-			volumeIDs.Add(id);
+			volumeDataPaths.Clear();
 		}
 		
 		protected abstract void ImportThreadMain(VolumeDatabase targetDb, string dbDataPath);
@@ -133,10 +129,8 @@ namespace VolumeDB.Import
 				try {
 					targetDb.TransactionRollback();  // unlocks VolumeDatabase
 					
-					foreach (long id in volumeIDs) {
-						string volumeDataPath = Path.Combine(dbDataPath, id.ToString());
-						Directory.Delete(volumeDataPath, true);
-					}
+					foreach (string path in volumeDataPaths)
+						Directory.Delete(path, true);
 				} catch (Exception e) {
 					cleanupException = e;
 				}
@@ -167,9 +161,10 @@ namespace VolumeDB.Import
 			}
 		}
 		
-		protected static string CreateThumbsDir(string dbDataPath, long volumeID) {
+		protected string CreateThumbsDir(string dbDataPath, long volumeID) {
 			string volumeDataPath = Path.Combine(dbDataPath, volumeID.ToString());
-					
+			volumeDataPaths.Add(volumeDataPath);
+			
 			// make sure there is no directory with the same name as the volume directory 
 			// that is about to be created
 			// (the volume directory will be deleted in the catch block on failure, 

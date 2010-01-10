@@ -40,11 +40,6 @@ namespace VolumeDB.Import
 			if (!File.Exists(dbPath))
 				throw new FileNotFoundException("GnomeCatalog database not found");
 			
-//			List<long> volumeIDs = new List<long>();
-			
-//			target.TransactionBegin();
-			
-//			try {
 			using (IDbConnection conn = SqliteDB.Open(dbPath, false)) {
 				
 				long totalFiles = CountFiles(conn);
@@ -63,7 +58,6 @@ namespace VolumeDB.Import
 								
 								ImportDisk(readerDisks, volumeID, targetDb);
 								string volDBThumbsPath = CreateThumbsDir(dbDataPath, volumeID);
-								AddNewVolumeID(volumeID);
 								
 								cmdFiles.CommandText = string.Format(sqlFiles, diskID);
 								
@@ -91,19 +85,6 @@ namespace VolumeDB.Import
 					}
 				}
 			}
-				
-//				target.TransactionCommit();
-				
-//			} catch (Exception) {
-//				target.TransactionRollback();
-//				
-//				foreach (long id in volumeIDs) {
-//					string volumeDataPath = Path.Combine(dbDataPath, id.ToString());
-//					Directory.Delete(volumeDataPath, true);
-//				}
-//				
-//				throw;
-//			}
 		}
 		
 		private static long CountFiles(IDbConnection conn) {
@@ -119,7 +100,7 @@ namespace VolumeDB.Import
 		}
 		
 		private static long GetMinFileID(IDbConnection conn, long diskID) {
-			string sql = string.Format("SELECT MIN id FROM files WHERE iddisk = {0}", diskID);
+			string sql = string.Format("SELECT MIN(id) FROM files WHERE iddisk = {0}", diskID);
 			long minID;
 			
 			using (IDbCommand cmd = conn.CreateCommand()) {
@@ -205,35 +186,5 @@ namespace VolumeDB.Import
 			
 			item.InsertIntoDB();
 		}
-		
-		/*private static string CreateThumbsDir(string dbDataPath, long volumeID) {
-			string volumeDataPath = Path.Combine(dbDataPath, volumeID.ToString());
-					
-			// make sure there is no directory with the same name as the volume directory 
-			// that is about to be created
-			// (the volume directory will be deleted in the catch block on failure, 
-			// so make sure that no existing dir will be deleted)
-			if (Directory.Exists(volumeDataPath))
-				throw new ArgumentException("dbDataPath already contains a directory for this volume");
-			
-			// thumbnails will be stored in <dbdataPath>/<volumeID>/thumbs
-			string thumbnailPath = Path.Combine(volumeDataPath, "thumbs");
-			Directory.CreateDirectory(thumbnailPath);
-			
-			return thumbnailPath;
-		}*/
-		
-		/*
-		private static void ImportThumb(long fileID,
-		                                long minFileID,
-		                                string sourceThumbsPath,
-		                                string targetThumbsPath) {
-			
-			string sourceThumb = Path.Combine(sourceThumbsPath, fileID.ToString());
-			string targetThumb = Path.Combine(targetThumbsPath, (2 + fileID - minFileID).ToString());
-			
-			if (File.Exists(sourceThumb))
-				File.Copy(sourceThumb, targetThumb);
-		}*/
 	}
 }
