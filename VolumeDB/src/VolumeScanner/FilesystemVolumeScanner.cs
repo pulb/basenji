@@ -526,11 +526,6 @@ namespace VolumeDB.VolumeScanner
 			return lastWriteTime;
 		}
 		
-		private void CheckForCancellationRequest() {
-			if (CancellationRequested)
-				throw new ScanCancelledException();
-		}
-		
 		// returns the location of a file/dir and fixes DirectorySeperatorChars
 		// NOTE: requires a path _relative_ to rootPath!
 		private string GetLocation(string fullName, string rootPath) {

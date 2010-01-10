@@ -161,10 +161,11 @@ namespace VolumeDB.VolumeScanner
 			get { return volumeInfo; }
 		}
 		
-		protected bool CancellationRequested {
-			get { return cancellationRequested; }
+		protected void CheckForCancellationRequest() {
+			if (cancellationRequested)
+				throw new ScanCancelledException();
 		}
-
+		
 		#region IDisposable Members
 
 		public void Dispose() {
