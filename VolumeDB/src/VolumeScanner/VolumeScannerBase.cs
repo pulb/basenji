@@ -396,7 +396,7 @@ namespace VolumeDB.VolumeScanner
 				} else {
 					//result = ScanningResult.FatalError;
 					
-					/* save the error that caused the scanner the scanner to stop (scanning failure) */
+					/* save the error that caused the scanner to stop (scanning failure) */
 					fatalError = ex;
 					//OnError(new ErrorEventArgs(ex));
 					PostError(ex);

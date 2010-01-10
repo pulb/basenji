@@ -209,7 +209,11 @@ FILES = \
 	src/Searching/FreeTextSearchCriteria.cs \
 	src/Searching/IFreeTextSearchField.cs \
 	src/Searching/VolumeSearchCriteria/FreeTextSearchField.cs \
-	src/MetaDataHelper.cs 
+	src/MetaDataHelper.cs \
+	src/Import/GnomeCatalogImport.cs \
+	src/Import/BasenjiImport.cs \
+	src/Import/AbstractImport.cs \
+	src/Import/Events.cs 
 
 DATA_FILES = 
 

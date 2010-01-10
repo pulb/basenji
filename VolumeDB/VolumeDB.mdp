@@ -82,6 +82,11 @@
     <File subtype="Code" buildaction="Compile" name="src/Searching/IFreeTextSearchField.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Searching/VolumeSearchCriteria/FreeTextSearchField.cs" />
     <File subtype="Code" buildaction="Compile" name="src/MetaDataHelper.cs" />
+    <File subtype="Directory" buildaction="Compile" name="src/Import" />
+    <File subtype="Code" buildaction="Compile" name="src/Import/GnomeCatalogImport.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Import/BasenjiImport.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Import/AbstractImport.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Import/Events.cs" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />

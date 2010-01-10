@@ -36,7 +36,7 @@ namespace VolumeDB.VolumeScanner
 	public sealed class FilesystemVolumeScanner : VolumeScannerBase<FileSystemVolume, FilesystemVolumeInfo>
 	{
 		private const char		PATH_SEPARATOR		= '/';
-		private const string	MIME_TYPE_DIRECTORY = "x-directory/normal";
+		internal const string	MIME_TYPE_DIRECTORY = "x-directory/normal";
 		
 		private bool				disposed;
 		//private MimeInfo			  mimeInfo;
