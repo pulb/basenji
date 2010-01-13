@@ -214,7 +214,8 @@ FILES = \
 	src/Import/BasenjiImport.cs \
 	src/Import/AbstractImport.cs \
 	src/Import/Events.cs \
-	src/Import/CdCollectImport.cs 
+	src/Import/CdCollectImport.cs \
+	src/Import/IImport.cs 
 
 DATA_FILES = 
 

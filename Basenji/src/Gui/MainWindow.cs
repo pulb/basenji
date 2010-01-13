@@ -16,8 +16,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-//#pragma warning disable 649
-
 using System;
 using System.Threading;
 using Gtk;
@@ -143,7 +141,18 @@ namespace Basenji.Gui
 				// delegate that will be called 
 				// when asynchronous volume loading (searching) has been finished.
 				AsyncCallback cb = delegate(IAsyncResult ar) {
-					Volume[] volumes = database.EndSearchVolume(ar);
+					Volume[] volumes;
+					
+					try {
+						volumes = database.EndSearchVolume(ar);
+					} catch (Exception ex) {
+						Application.Invoke(delegate {
+							SetStatus(string.Format(S._("An error occured while loading the volume list: {0}"),
+							                        ex.Message));
+						});
+						return;
+					}
+					
 					Application.Invoke(delegate {
 						updateGui(volumes);
 					});
@@ -163,6 +172,7 @@ namespace Basenji.Gui
 			actEditVolume.Sensitive		= enable;
 			
 			actDBProperties.Sensitive	= enable;
+			actImport.Sensitive			= enable;
 			actSearch.Sensitive			= enable;
 			
 			txtSearchString.Sensitive	= enable;
@@ -456,6 +466,24 @@ namespace Basenji.Gui
 			OpenOrCreateDefaultDB(true);
 		}
 		
+		private void OnActImportActivated(object sender, System.EventArgs args) {
+			Import import = new Import(database);
+			import.NewVolumeAdded += delegate {
+				if (lastSuccessfulSearchCriteria != null) {
+					// the volumes treeview is filtered,
+					// so refill the treeview using the last sucessful searchcriteria.
+					// (the freshly added volume may be matched by that criteria.)
+					SearchVolumeAsync(lastSuccessfulSearchCriteria);
+				} else {
+					// volumes treeview isn't filtered and contains all volumes
+					SearchVolumeAsync(null);
+				}
+				// TODO : sort list?
+			};
+			
+			import.Show();
+		}
+		
 		private void OnActSearchActivated(object sender, System.EventArgs args) {
 			ItemSearch s = new ItemSearch(database);
 			s.Show();
@@ -568,6 +596,7 @@ namespace Basenji.Gui
 		private Action actOpenDB;
 		private Action actOpenDefaultDB;
 		private Action actDBProperties;
+		private Action actImport;
 		private Action actSearch;
 		private Action actQuit;
 		
@@ -639,6 +668,9 @@ namespace Basenji.Gui
 			actDBProperties = CreateAction("dbproperties", S._("_Database Properties"), null, Stock.Properties, OnActDBPropertiesActivated);
 			ag.Add(actDBProperties, "<control>D");
 			
+			actImport = CreateAction("import", AppendDots(S._("_Import")), null, null, OnActImportActivated);
+			ag.Add(actImport, "<control>I");
+			
 			actQuit = CreateAction("quit", S._("_Quit"), null, Stock.Quit, OnActQuitActivated);
 			ag.Add(actQuit, "<control>Q");			  
 			
@@ -654,7 +686,7 @@ namespace Basenji.Gui
 			ag.Add(actHelp, null);
 			
 			actInfo = CreateAction("info", S._("_Info"), null, Stock.About, OnActInfoActivated);
-			ag.Add(actInfo, "<control>I");	
+			ag.Add(actInfo);	
 			
 			// shared actions (used in toolbar buttons / menu items / context menus)
 			actAddVolume = CreateAction("addvolume", S._("_Add Volume"), null, Stock.Add, OnActAddVolumeActivated);
@@ -683,6 +715,7 @@ namespace Basenji.Gui
 						<menuitem action=""opendb""/>
 						<menuitem action=""open_default_db""/>
 						<menuitem action=""dbproperties""/>
+						<menuitem action=""import""/>
 						<menuitem action=""searchitems""/>
 						<separator/>
 						<menuitem action=""quit""/>

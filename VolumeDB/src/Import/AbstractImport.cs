@@ -25,7 +25,7 @@ using Platform.Common.Diagnostics;
 
 namespace VolumeDB.Import
 {
-	public abstract class AbstractImport
+	public abstract class AbstractImport : IImport
 	{
 		private List<string>	volumeDataPaths;
 		private VolumeDatabase	targetDb;
@@ -34,6 +34,8 @@ namespace VolumeDB.Import
 		private volatile bool isRunning;
 		private volatile bool importSucceeded;
 		private volatile bool cancellationRequested;
+		
+		private double lastCompleted;
 		
 		private AsyncOperation asyncOperation;
 		
@@ -103,7 +105,13 @@ namespace VolumeDB.Import
 		}
 		
 		protected virtual void Reset() {
+			lastCompleted = .0;
 			volumeDataPaths.Clear();
+		}
+		
+		protected static void Assert(bool condition, string msg) {
+			if (!condition)
+				throw new Exception("Assertion failed: " + msg);
 		}
 		
 		protected abstract void ImportThreadMain(VolumeDatabase targetDb, string dbDataPath);
@@ -184,20 +192,31 @@ namespace VolumeDB.Import
 		                                  string sourceThumbsPath,
 		                                  string targetThumbsPath) {
 			
-			string sourceThumb = Path.Combine(sourceThumbsPath, sourceID.ToString());
-			string targetThumb = Path.Combine(targetThumbsPath, targetID.ToString());
+			string sourceThumb = Path.Combine(sourceThumbsPath, sourceID.ToString() + ".png");
+			string targetThumb = Path.Combine(targetThumbsPath, targetID.ToString() + ".png");
 			
 			if (File.Exists(sourceThumb))
 				File.Copy(sourceThumb, targetThumb);
 		}
 		
 		protected void PostProgressUpdate(double completed) {
+			// update progress on every full percent point only
+			// to save resources and cpu
+			if (((int)completed - (int)lastCompleted) < 1)
+				return;
+			
+			lastCompleted = completed;
+			
 			SendOrPostCallback cb = delegate(object args) {
 				OnProgressUpdate((ProgressUpdateEventArgs)args);
 			};
 
 			ProgressUpdateEventArgs e = new ProgressUpdateEventArgs(completed);
 			asyncOperation.Post(cb, e);
+		}
+		
+		protected static T ReplaceDBNull<T>(object dbValue, T replaceValue) {
+			return dbValue == DBNull.Value ? replaceValue : (T)dbValue;
 		}
 		
 		/// <summary>

@@ -203,7 +203,8 @@ FILES = \
 	src/Gui/Widgets/PageNavigationEvents.cs \
 	src/Gui/Widgets/IconEntry.cs \
 	src/Gui/Widgets/SearchEntry.cs \
-	src/Gui/Widgets/ItemPreview.cs 
+	src/Gui/Widgets/ItemPreview.cs \
+	src/Gui/Import.cs 
 
 DATA_FILES = 
 
