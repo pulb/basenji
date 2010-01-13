@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-09 19:27+0100\n"
+"POT-Creation-Date: 2010-01-14 00:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,6 +39,55 @@ msgstr ""
 
 #: src/Util.cs:37
 msgid "TB"
+msgstr ""
+
+#: src/Gui/Import.cs:29
+msgid "Import"
+msgstr ""
+
+#: src/Gui/Import.cs:30
+msgid "Abort"
+msgstr ""
+
+#: src/Gui/Import.cs:84
+#, csharp-format
+msgid "{0:0}% completed."
+msgstr ""
+
+#: src/Gui/Import.cs:94
+msgid "Import failed"
+msgstr ""
+
+#: src/Gui/Import.cs:95 src/Gui/MainWindow.cs:227
+msgid "Database not found."
+msgstr ""
+
+#: src/Gui/Import.cs:97
+msgid "Import failed!"
+msgstr ""
+
+#: src/Gui/Import.cs:99
+msgid "Import aborted."
+msgstr ""
+
+#: src/Gui/Import.cs:101
+msgid "Import completed successfully."
+msgstr ""
+
+#: src/Gui/Import.cs:120
+msgid "Import in progress"
+msgstr ""
+
+#: src/Gui/Import.cs:121
+msgid "You must stop the import before closing this window."
+msgstr ""
+
+#: src/Gui/Import.cs:145
+msgid "Import Database"
+msgstr ""
+
+#: src/Gui/Import.cs:167
+msgid "Please select a database to import"
 msgstr ""
 
 #: src/Gui/VolumeScanner.cs:98
@@ -161,160 +210,165 @@ msgstr ""
 msgid "Created:"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:60 src/Gui/MainWindow.cs:216
-#: src/Gui/MainWindow.cs:237 src/Gui/MainWindow.cs:259
-#: src/Gui/MainWindow.cs:272 src/Main.cs:65
+#: src/Gui/MainWindow.cs:58 src/Gui/MainWindow.cs:226
+#: src/Gui/MainWindow.cs:247 src/Gui/MainWindow.cs:269
+#: src/Gui/MainWindow.cs:282 src/Main.cs:65
 msgid "Error"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:61
+#: src/Gui/MainWindow.cs:59
 #, csharp-format
 msgid "Database '{0}' not found."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:83
+#: src/Gui/MainWindow.cs:81
 msgid "Database not found"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:84
+#: src/Gui/MainWindow.cs:82
 msgid "Default database not found. Create?"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:113
+#: src/Gui/MainWindow.cs:111
 msgid "Unsupported database version"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:114
+#: src/Gui/MainWindow.cs:112
 msgid "This database version is not supported."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:133
+#: src/Gui/MainWindow.cs:131
 #, csharp-format
 msgid "{0} volumes loaded."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:182
+#: src/Gui/MainWindow.cs:150
+#, csharp-format
+msgid "An error occured while loading the volume list: {0}"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:192
 msgid "Please enter the name for the new database"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:194
+#: src/Gui/MainWindow.cs:204
 msgid "Database exists"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:195
+#: src/Gui/MainWindow.cs:205
 msgid "Database already exists. Overwrite?"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:208
+#: src/Gui/MainWindow.cs:218
 msgid "Please select a database"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:217
-msgid "Database not found."
-msgstr ""
-
-#: src/Gui/MainWindow.cs:238
+#: src/Gui/MainWindow.cs:248
 #, csharp-format
 msgid ""
 "An error occured while accessing drive {0}:\n"
 "{1}"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:260
+#: src/Gui/MainWindow.cs:270
 #, csharp-format
 msgid "Drive {0} is not ready."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:273
+#: src/Gui/MainWindow.cs:283
 #, csharp-format
 msgid "Drive {0} is not mounted."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:300 src/Gui/MainWindow.cs:326
+#: src/Gui/MainWindow.cs:310 src/Gui/MainWindow.cs:336
 msgid "No volume selected"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:301
+#: src/Gui/MainWindow.cs:311
 msgid "Please select a volume record to remove."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:308
+#: src/Gui/MainWindow.cs:318
 msgid "Confirmation"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:309
+#: src/Gui/MainWindow.cs:319
 msgid "Are you sure you really want to remove the selected volume?"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:327
+#: src/Gui/MainWindow.cs:337
 msgid "Please select a volume record to edit."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:381 src/Gui/ItemSearch.cs:88
+#: src/Gui/MainWindow.cs:391 src/Gui/ItemSearch.cs:88
 msgid "Timeout: another search is probably still in progress."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:399 src/Gui/ItemSearch.cs:105
+#: src/Gui/MainWindow.cs:409 src/Gui/ItemSearch.cs:105
 msgid "Searching..."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:627
+#: src/Gui/MainWindow.cs:656
 msgid "_File"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:630
+#: src/Gui/MainWindow.cs:659
 msgid "_New Database"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:633
+#: src/Gui/MainWindow.cs:662
 msgid "_Open Database"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:636
+#: src/Gui/MainWindow.cs:665
 msgid "Open Default Database"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:639
+#: src/Gui/MainWindow.cs:668
 msgid "_Database Properties"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:642
+#: src/Gui/MainWindow.cs:671
+msgid "_Import"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:674
 msgid "_Quit"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:646
+#: src/Gui/MainWindow.cs:678
 msgid "_Edit"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:649
+#: src/Gui/MainWindow.cs:681
 msgid "_Preferences"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:653
+#: src/Gui/MainWindow.cs:685
 msgid "_Help"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:656
+#: src/Gui/MainWindow.cs:688
 msgid "_Info"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:660
+#: src/Gui/MainWindow.cs:692
 msgid "_Add Volume"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:664
+#: src/Gui/MainWindow.cs:696
 msgid "_Remove Volume"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:667
+#: src/Gui/MainWindow.cs:699
 msgid "_Edit Volume"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:670
+#: src/Gui/MainWindow.cs:702
 msgid "_Search"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:744
+#: src/Gui/MainWindow.cs:777
 msgid "Filter volumes"
 msgstr ""
 
