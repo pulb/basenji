@@ -19,7 +19,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
 using System.Globalization;
 using Platform.Common.DB;
 using LibExtractor;
@@ -43,16 +42,10 @@ namespace VolumeDB.Import
 		                                         string dbDataPath,
 		                                         BufferedVolumeItemWriter writer) {
 			
-//			string homeDir = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-//			string dbPath = Path.Combine(homeDir, "gnomeCatalog.db");
-//			string thumbsPath = Path.Combine(homeDir, "gnomeCatalog.db_thumbs");
 			string thumbsPath = sourceDbPath + "_thumbs";
 			
 			string sqlDisks = "SELECT * FROM disks ORDER BY id";
 			string sqlFiles = "SELECT * FROM files WHERE iddisk = {0} ORDER BY iddisk, id";
-			
-//			if (!File.Exists(dbPath))
-//				throw new FileNotFoundException("GnomeCatalog database not found");
 			
 			using (IDbConnection conn = SqliteDB.Open(sourceDbPath, false)) {
 				
@@ -236,7 +229,6 @@ namespace VolumeDB.Import
 			                         ReplaceDBNull<string>(reader["comment"], null),
 			                         null);
 			
-//			item.InsertIntoDB();
 			writer.Write(item);
 		}
 		

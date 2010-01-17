@@ -82,24 +82,7 @@ namespace Basenji.Gui
 					                          buffSize);
 						break;
 				}
-/*					
-				if (rdGnomeCatalog.Active) {
-					import = new GnomeCatalogImport(sourceDbPath,
-					                                database, 
-					                                dbDataPath,
-					                                buffSize);
-				} else if (rdCdCollect.Active) {
-					import = new CdCollectImport(sourceDbPath,
-					                             database,
-					                             dbDataPath,
-					                             buffSize);
-				} else { // basenji import
-					import = new BasenjiImport(sourceDbPath,
-					                           database,
-					                           dbDataPath,
-					                           buffSize);
-				}
-*/				
+				
 				import.ProgressUpdate	+= OnImportProgressUpdate;
 				import.ImportCompleted	+= OnImportCompleted;
 				
@@ -162,10 +145,6 @@ namespace Basenji.Gui
 	// gui initialization
 	public partial class Import : Base.WindowBase
 	{		
-//		private RadioButton rdGnomeCatalog;
-//		private RadioButton rdCdCollect;
-//		private RadioButton rdBasenji;
-		
 		private FileChooserButton	fcDatabase;
 		private ComboBox			cmbFormat;
 		private ProgressBar			progress;
@@ -177,8 +156,8 @@ namespace Basenji.Gui
 			
 			// general window settings
 			SetDialogStyle();
-			this.DefaultWidth		= 320;
-			this.Title				= S._("Import Database");
+			this.DefaultWidth	= 320;
+			this.Title			= S._("Import Database");
 			
 			// vbOuter			  
 			VBox vbOuter = new VBox();
@@ -194,8 +173,8 @@ namespace Basenji.Gui
 			cmbFormat = ComboBox.NewText();
 			
 			cmbFormat.AppendText("GnomeCatalog");
-			//cmbFormat.AppendText("CDCollect");
-			//cmbFormat.AppendText("Basenji");
+			/*cmbFormat.AppendText("CDCollect");
+			cmbFormat.AppendText("Basenji");*/
 			
 			cmbFormat.Active = 0;
 			
@@ -208,32 +187,7 @@ namespace Basenji.Gui
 			WindowBase.TblAttach(tblDatabase, cmbFormat, 1, 1, xAttachOpts, yAttachOpts);
 			
 			vbOuter.PackStart(tblDatabase, true, true, 0);
-/*			
-			// vbOptions
-			VBox vbOptions = new VBox();
-			vbOptions.BorderWidth = 12;
-			vbOptions.Spacing = 6;
-			
-			rdGnomeCatalog = new RadioButton(null, "GnomeCatalog");
-			vbOptions.PackStart(rdGnomeCatalog, true, true, 0);
-			
-			rdCdCollect = new RadioButton(rdGnomeCatalog, "CDCollect");
-			vbOptions.PackStart(rdCdCollect, true, true, 0);
-			
-			HBox hbBasenji = new HBox();
-			hbBasenji.Spacing = 12;
-			
-			rdBasenji = new RadioButton(rdGnomeCatalog, "Basenji");			
-			fcBasenji = new FileChooserButton(S._("Please select a database to import"),
-			                                                    FileChooserAction.Open);
-			
-			hbBasenji.PackStart(rdBasenji, false, false, 0);
-			hbBasenji.PackStart(fcBasenji, true, true, 0);
-			
-			vbOptions.PackStart(hbBasenji, true, false, 0);
-			
-			vbOuter.PackStart(vbOptions, true, true, 0);
-*/			
+
 			// progressbar and button
 			HBox hbProgress = new HBox();
 			hbProgress.BorderWidth = 12;
@@ -261,11 +215,6 @@ namespace Basenji.Gui
 			vbOuter.PackStart(hbClose, false, false, 0);
 			
 			this.Add(vbOuter);
-			
-			// disable unimplemented options
-//			rdBasenji.Sensitive = false;
-//			fcBasenji.Sensitive = false;
-//			rdCdCollect.Sensitive = false;
 			
 			// event handlers
 			this.DeleteEvent += OnDeleteEvent;
