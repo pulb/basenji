@@ -468,7 +468,7 @@ namespace Basenji.Gui
 		
 		private void OnActImportActivated(object sender, System.EventArgs args) {
 			Import import = new Import(database);
-			import.NewVolumeAdded += delegate {
+			import.VolumesImported += delegate {
 				if (lastSuccessfulSearchCriteria != null) {
 					// the volumes treeview is filtered,
 					// so refill the treeview using the last sucessful searchcriteria.

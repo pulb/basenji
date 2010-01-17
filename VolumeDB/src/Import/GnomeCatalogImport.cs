@@ -32,22 +32,29 @@ namespace VolumeDB.Import
 		private const int TOTAL_DIRS = 1;
 		private const int TOTAL_SIZE = 2;
 		
-		public GnomeCatalogImport(VolumeDatabase targetDb, string dbDataPath)
-		: base(targetDb, dbDataPath) {}
+		public GnomeCatalogImport(string sourceDbPath,
+		                          VolumeDatabase targetDb,
+		                          string dbDataPath,
+		                          int bufferSize)
+		: base(sourceDbPath, targetDb, dbDataPath, bufferSize) {}
 		
-		protected override void ImportThreadMain(VolumeDatabase targetDb, string dbDataPath) {
+		internal override void ImportThreadMain(string sourceDbPath,
+		                                         VolumeDatabase targetDb,
+		                                         string dbDataPath,
+		                                         BufferedVolumeItemWriter writer) {
 			
-			string homeDir = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-			string dbPath = Path.Combine(homeDir, "gnomeCatalog.db");
-			string thumbsPath = Path.Combine(homeDir, "gnomeCatalog.db_thumbs");
+//			string homeDir = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+//			string dbPath = Path.Combine(homeDir, "gnomeCatalog.db");
+//			string thumbsPath = Path.Combine(homeDir, "gnomeCatalog.db_thumbs");
+			string thumbsPath = sourceDbPath + "_thumbs";
 			
 			string sqlDisks = "SELECT * FROM disks ORDER BY id";
 			string sqlFiles = "SELECT * FROM files WHERE iddisk = {0} ORDER BY iddisk, id";
 			
-			if (!File.Exists(dbPath))
-				throw new FileNotFoundException("GnomeCatalog database not found");
+//			if (!File.Exists(dbPath))
+//				throw new FileNotFoundException("GnomeCatalog database not found");
 			
-			using (IDbConnection conn = SqliteDB.Open(dbPath, false)) {
+			using (IDbConnection conn = SqliteDB.Open(sourceDbPath, false)) {
 				
 				long totalFiles = CountFiles(conn);
 				long fileCounter = 0;
@@ -79,6 +86,7 @@ namespace VolumeDB.Import
 										           rootPath,
 										           ConvertMetaData(conn, fileID),
 										           targetDb,
+										           writer,
 										           counters);
 										
 										ImportThumb(fileID,
@@ -152,7 +160,7 @@ namespace VolumeDB.Import
 			                  ReplaceDBNull<string>(reader["name"], null),
 			                  DateTime.Now,
 			                  false,
-			                  diskID.ToString(),
+			                  null,
 			                  driveType,
 			                  ReplaceDBNull<string>(reader["borrow"], null),
 			                  DateTime.MinValue,
@@ -192,6 +200,7 @@ namespace VolumeDB.Import
 		                               string rootPath,
 		                               string metaData,
 		                               VolumeDatabase db,
+		                               BufferedVolumeItemWriter writer,
 		                               long[] counters) {
 			
 			FileSystemVolumeItem item;
@@ -211,7 +220,7 @@ namespace VolumeDB.Import
 			string path = (string)reader["path"];			
 			Assert(path.StartsWith("file:///"), "path starts with 'file://'");
 			
-			string location = path.Substring(rootPath.Length);
+			string location = DecoderUtility.UrlDecode(path.Substring(rootPath.Length));
 			long itemID = 2 + (long)reader["id"] - minFileID; // id 1 is the root item
 			long parentID = Math.Max(1, 2 + (long)reader["idparent"] - minFileID);
 			
@@ -227,7 +236,8 @@ namespace VolumeDB.Import
 			                         ReplaceDBNull<string>(reader["comment"], null),
 			                         null);
 			
-			item.InsertIntoDB();
+//			item.InsertIntoDB();
+			writer.Write(item);
 		}
 		
 		private static string ConvertMetaData(IDbConnection conn, long fileID) {
@@ -287,7 +297,7 @@ namespace VolumeDB.Import
 					
 					keywords.Add(new Keyword() {
 						keywordType = KeywordType.EXTRACTOR_DURATION,
-						keyword = ((long)val).ToString()
+						keyword = FormatDuration(val)
 					});
 				}
 			}
@@ -405,6 +415,21 @@ namespace VolumeDB.Import
 			}
 			
 			return MetaDataHelper.PackExtractorKeywords(keywords.ToArray());
+		}
+		
+		// returns the libextractor duration format
+		private static string FormatDuration (double seconds) {
+			if (seconds < 60.0)
+				return ((int)Math.Round(seconds)).ToString();
+			
+			long totalSecs = (long)seconds;
+			int mins = (int)(totalSecs / 60);
+			int secs = (int)(totalSecs % 60);
+			
+			if (secs > 0)
+				return string.Format("{0}m{1:D2}", mins, secs);
+			else
+				return string.Format("{0}m", mins);
 		}
 	}
 }

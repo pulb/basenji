@@ -22,10 +22,16 @@ namespace VolumeDB.Import
 {
 	public sealed class CdCollectImport : AbstractImport
 	{
-		public CdCollectImport(VolumeDatabase targetDb, string dbDataPath)
-		: base(targetDb, dbDataPath) {}
+		public CdCollectImport(string sourceDbPath,
+		                       VolumeDatabase targetDb,
+		                       string dbDataPath,
+		                       int bufferSize)
+		: base(sourceDbPath, targetDb, dbDataPath, bufferSize) {}
 		
-		protected override void ImportThreadMain(VolumeDatabase targetDb, string dbDataPath) {
+		internal override void ImportThreadMain(string sourceDbPath,
+		                                         VolumeDatabase targetDb,
+		                                         string dbDataPath,
+		                                         BufferedVolumeItemWriter writer) {
 			throw new NotImplementedException();
 		}
 	}

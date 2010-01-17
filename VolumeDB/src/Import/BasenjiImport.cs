@@ -22,15 +22,16 @@ namespace VolumeDB.Import
 {
 	public sealed class BasenjiImport : AbstractImport
 	{
-		private VolumeDatabase sourceDb;
+		public BasenjiImport(string sourceDbPath,
+		                     VolumeDatabase targetDb,
+		                     string dbDataPath,
+		                     int bufferSize)
+		: base(sourceDbPath, targetDb, dbDataPath, bufferSize) {}
 		
-		public BasenjiImport(VolumeDatabase sourceDb, VolumeDatabase targetDb, string dbDataPath)
-		: base(targetDb, dbDataPath) {
-		
-			this.sourceDb = sourceDb;
-		}
-		
-		protected override void ImportThreadMain(VolumeDatabase targetDb, string dbDataPath) {
+		internal override void ImportThreadMain(string sourceDbPath,
+		                                         VolumeDatabase targetDb,
+		                                         string dbDataPath,
+		                                         BufferedVolumeItemWriter writer) {
 			throw new NotImplementedException();
 		}
 	}

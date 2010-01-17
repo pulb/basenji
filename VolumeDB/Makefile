@@ -215,7 +215,8 @@ FILES = \
 	src/Import/AbstractImport.cs \
 	src/Import/Events.cs \
 	src/Import/CdCollectImport.cs \
-	src/Import/IImport.cs 
+	src/Import/IImport.cs \
+	src/DecoderUtility.cs 
 
 DATA_FILES = 
 

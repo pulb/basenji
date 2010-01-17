@@ -28,8 +28,10 @@ namespace VolumeDB.Import
 	public abstract class AbstractImport : IImport
 	{
 		private List<string>	volumeDataPaths;
+		private string			sourceDbPath;
 		private VolumeDatabase	targetDb;
 		private string			dbDataPath;
+		private int				bufferSize;
 		
 		private volatile bool isRunning;
 		private volatile bool importSucceeded;
@@ -39,10 +41,25 @@ namespace VolumeDB.Import
 		
 		private AsyncOperation asyncOperation;
 		
-		internal AbstractImport (VolumeDatabase targetDb, string dbDataPath) {
-			this.volumeDataPaths = new List<string>();
-			this.targetDb = targetDb;
-			this.dbDataPath = dbDataPath;
+		internal AbstractImport (string sourceDbPath,
+		                         VolumeDatabase targetDb,
+		                         string dbDataPath,
+		                         int bufferSize) {
+			
+			if (sourceDbPath == null)
+				throw new ArgumentNullException("sourceDbPath");
+			
+			if (targetDb == null)
+				throw new ArgumentNullException("targetDb");
+			
+			if (dbDataPath == null)
+				throw new ArgumentNullException("dbDataPath");
+			
+			this.volumeDataPaths		= new List<string>();
+			this.sourceDbPath			= sourceDbPath;
+			this.targetDb				= targetDb;
+			this.dbDataPath				= dbDataPath;
+			this.bufferSize				= bufferSize;
 			
 			this.isRunning				= false;
 			this.importSucceeded		= false;
@@ -52,10 +69,7 @@ namespace VolumeDB.Import
 		public WaitHandle RunAsync() {
 			if (isRunning)
 				throw new InvalidOperationException("Import is already running");
-
-//			if (importSucceeded)
-//				throw new InvalidOperationException("Import has been completed successfully. Create a new import");
-
+			
 			try {
 				/* must be set (as soon as possible) in a function that is _not_ called asynchronously 
 				 * (i.e. dont call it in ImportThread()) */
@@ -68,7 +82,7 @@ namespace VolumeDB.Import
 				
 				/* invoke the import function on a new thread and return a waithandle */
 				ImportThreadInvoker iti = new ImportThreadInvoker(ImportThread);
-				IAsyncResult ar = iti.BeginInvoke(targetDb, dbDataPath, null, null);
+				IAsyncResult ar = iti.BeginInvoke(sourceDbPath, targetDb, dbDataPath, bufferSize, null, null);
 				return ar.AsyncWaitHandle;
 			
 			} catch (Exception) {
@@ -114,19 +128,46 @@ namespace VolumeDB.Import
 				throw new Exception("Assertion failed: " + msg);
 		}
 		
-		protected abstract void ImportThreadMain(VolumeDatabase targetDb, string dbDataPath);
+		// TODO : make this member internally protected in case this language feature has become real
+		// see http://lab.msdn.microsoft.com/productfeedback/viewfeedback.aspx?feedbackid=33c53cf6-2709-4cc9-a408-6cafee4313ef
+		//protected
+		internal
+		abstract void ImportThreadMain(string sourceDbPath,
+			                               VolumeDatabase targetDb, 
+			                               string dbDataPath,
+			                               BufferedVolumeItemWriter writer);
 		
-		private delegate void ImportThreadInvoker(VolumeDatabase targetDb, string dbDataPath);
-		private void ImportThread(VolumeDatabase targetDb, string dbDataPath) {
+		private delegate void ImportThreadInvoker(string sourceDbPath,
+		                                          VolumeDatabase targetDb,
+		                                          string dbDataPath,
+		                                          int bufferSize);
+		
+		private void ImportThread(string sourceDbPath,
+		                          VolumeDatabase targetDb,
+		                          string dbDataPath,
+		                          int buferSize) {
 			
 			Exception fatalError = null;
 			bool cancelled = false;
 			
 			try {
-				
+				// must be the first call within the try block
 				targetDb.TransactionBegin(); // locks VolumeDatabase
 				
-				ImportThreadMain(targetDb, dbDataPath);
+				if (!File.Exists(sourceDbPath))
+					throw new FileNotFoundException("Source database not found");
+				
+				// note: 
+				// don't use the writer in a using() block here as dispose() would write
+				// buffered items after an exception has been thrown.
+				BufferedVolumeItemWriter writer = new BufferedVolumeItemWriter(targetDb, true, bufferSize);
+				
+				ImportThreadMain(sourceDbPath,
+				                 targetDb,
+				                 dbDataPath,
+				                 writer);
+				
+				writer.Close();
 				
 				targetDb.TransactionCommit(); // unlocks VolumeDatabase
 				importSucceeded = true;

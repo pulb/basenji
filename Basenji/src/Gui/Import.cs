@@ -37,13 +37,14 @@ namespace Basenji.Gui
 			this.import = null;
 			
 			BuildGui();
+			btnImport.Sensitive = false; // will be enabled on file selection
 		}
 		
-		public event NewVolumeAddedEventHandler NewVolumeAdded;
+		public event EventHandler VolumesImported;
 		
-		protected virtual void OnNewVolumeAdded() {
-			if (NewVolumeAdded != null)
-				NewVolumeAdded(this, new NewVolumeAddedEventArgs(null));
+		protected virtual void OnVolumesImported() {
+			if (VolumesImported != null)
+				VolumesImported(this, new EventArgs());
 		}
 		
 		private void OnBtnImportClicked(object sender, EventArgs e) {
@@ -57,18 +58,48 @@ namespace Basenji.Gui
 				progress.Fraction = .0;				
 				progress.Text = string.Empty;
 				
-				if (rdGnomeCatalog.Active) {
-					import = new GnomeCatalogImport(database, 
-					                                DbData.GetDbDataPath(database));	
-				} else if (rdCdCollect.Active) {
-					import = new CdCollectImport(database,
-					                             DbData.GetDbDataPath(database));
-				} else { // basenji import
-					import = new BasenjiImport(database,
-					                           null,
-					                           DbData.GetDbDataPath(database));
-				}
+				string sourceDbPath = fcDatabase.Filename;
+				string dbDataPath = DbData.GetDbDataPath(database);
+				int buffSize = App.Settings.ScannerBufferSize;
 				
+				switch (cmbFormat.Active) {
+					case 0:
+						import = new GnomeCatalogImport(sourceDbPath,
+					                                database, 
+					                                dbDataPath,
+					                                buffSize);
+						break;
+					case 1:
+						import = new CdCollectImport(sourceDbPath,
+					                             database, 
+					                             dbDataPath,
+					                             buffSize);
+						break;
+					case 2:
+						import = new BasenjiImport(sourceDbPath,
+					                          database, 
+					                          dbDataPath,
+					                          buffSize);
+						break;
+				}
+/*					
+				if (rdGnomeCatalog.Active) {
+					import = new GnomeCatalogImport(sourceDbPath,
+					                                database, 
+					                                dbDataPath,
+					                                buffSize);
+				} else if (rdCdCollect.Active) {
+					import = new CdCollectImport(sourceDbPath,
+					                             database,
+					                             dbDataPath,
+					                             buffSize);
+				} else { // basenji import
+					import = new BasenjiImport(sourceDbPath,
+					                           database,
+					                           dbDataPath,
+					                           buffSize);
+				}
+*/				
 				import.ProgressUpdate	+= OnImportProgressUpdate;
 				import.ImportCompleted	+= OnImportCompleted;
 				
@@ -99,7 +130,7 @@ namespace Basenji.Gui
 						progress.Text = S._("Import aborted.");
 					} else {
 						progress.Text = S._("Import completed successfully.");
-						OnNewVolumeAdded();
+						OnVolumesImported();
 					}				
 				});
 			} finally {
@@ -121,20 +152,25 @@ namespace Basenji.Gui
 				                    S._("You must stop the import before closing this window."));
 				args.RetVal = true;
 			}
-		}		
+		}
+		
+		private void OnFcDatabaseSelectionChanged (object sender, EventArgs e) {
+			btnImport.Sensitive = (fcDatabase.Filename != null);
+		}
 	}
 	
 	// gui initialization
 	public partial class Import : Base.WindowBase
 	{		
-		private RadioButton rdGnomeCatalog;
-		private RadioButton rdCdCollect;
-		private RadioButton rdBasenji;
+//		private RadioButton rdGnomeCatalog;
+//		private RadioButton rdCdCollect;
+//		private RadioButton rdBasenji;
 		
-		private FileChooserButton fcBasenji;
-		private ProgressBar progress;
-		private Button btnImport;
-		private Button btnClose;
+		private FileChooserButton	fcDatabase;
+		private ComboBox			cmbFormat;
+		private ProgressBar			progress;
+		private Button				btnImport;
+		private Button				btnClose;
 			
 		protected override void BuildGui() {
 			base.BuildGui();
@@ -149,6 +185,30 @@ namespace Basenji.Gui
 			vbOuter.BorderWidth = 0;
 			vbOuter.Spacing = 0;
 			
+			// tblDatabase
+			Table tblDatabase = WindowBase.CreateTable(2, 2);
+			tblDatabase.BorderWidth = 12;
+			
+			fcDatabase = new FileChooserButton(S._("Please select a database to import"),
+			                               FileChooserAction.Open);
+			cmbFormat = ComboBox.NewText();
+			
+			cmbFormat.AppendText("GnomeCatalog");
+			//cmbFormat.AppendText("CDCollect");
+			//cmbFormat.AppendText("Basenji");
+			
+			cmbFormat.Active = 0;
+			
+			AttachOptions xAttachOpts = AttachOptions.Expand | AttachOptions.Fill;
+			AttachOptions yAttachOpts = AttachOptions.Fill;
+			
+			WindowBase.TblAttach(tblDatabase, WindowBase.CreateLabel(S._("Database:")), 0, 0);
+			WindowBase.TblAttach(tblDatabase, WindowBase.CreateLabel(S._("Format:")), 0, 1);
+			WindowBase.TblAttach(tblDatabase, fcDatabase, 1, 0, xAttachOpts, yAttachOpts);
+			WindowBase.TblAttach(tblDatabase, cmbFormat, 1, 1, xAttachOpts, yAttachOpts);
+			
+			vbOuter.PackStart(tblDatabase, true, true, 0);
+/*			
 			// vbOptions
 			VBox vbOptions = new VBox();
 			vbOptions.BorderWidth = 12;
@@ -173,7 +233,7 @@ namespace Basenji.Gui
 			vbOptions.PackStart(hbBasenji, true, false, 0);
 			
 			vbOuter.PackStart(vbOptions, true, true, 0);
-			
+*/			
 			// progressbar and button
 			HBox hbProgress = new HBox();
 			hbProgress.BorderWidth = 12;
@@ -198,17 +258,18 @@ namespace Basenji.Gui
 			btnClose = WindowBase.CreateButton(Stock.Close, true, OnBtnCloseClicked);
 			hbClose.PackEnd(btnClose, false, false, 0);
 			
-			vbOuter.PackStart(hbClose, true, true, 0);
+			vbOuter.PackStart(hbClose, false, false, 0);
 			
 			this.Add(vbOuter);
 			
 			// disable unimplemented options
-			rdBasenji.Sensitive = false;
-			fcBasenji.Sensitive = false;
-			rdCdCollect.Sensitive = false;
+//			rdBasenji.Sensitive = false;
+//			fcBasenji.Sensitive = false;
+//			rdCdCollect.Sensitive = false;
 			
 			// event handlers
 			this.DeleteEvent += OnDeleteEvent;
+			fcDatabase.SelectionChanged += OnFcDatabaseSelectionChanged;
 			
 			ShowAll();
 		}
