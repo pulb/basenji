@@ -50,12 +50,24 @@ namespace VolumeDB.VolumeScanner
 		private Extractor			extractor;
 
 		// note:
-		// do not allow to modify the constuctor parameters (i.e. discardSymlinks, generateThumbnails, dbDataPath)
-		// through public properties later, since the scanner may already use them after scanning has been started.
-		public FilesystemVolumeScanner(string device, VolumeDatabase database, int bufferSize, bool computeHashs)
+		// do not allow to modify the constuctor parameters 
+		// (i.e. discardSymlinks, generateThumbnails, dbDataPath)
+		// through public properties later, since the scanner 
+		// may already use them after scanning has been started.
+		public FilesystemVolumeScanner(string device,
+		                               VolumeDatabase database,
+		                               int bufferSize,
+		                               bool computeHashs)
 			: this(device, database, bufferSize, computeHashs, false, false, false, null) {}
 		
-		public FilesystemVolumeScanner(string device, VolumeDatabase database, int bufferSize, bool computeHashs, bool discardSymLinks, bool generateThumbnails, bool extractMetaData, string dbDataPath)
+		public FilesystemVolumeScanner(string device,
+		                               VolumeDatabase database,
+		                               int bufferSize,
+		                               bool computeHashs,
+		                               bool discardSymLinks,
+		                               bool generateThumbnails,
+		                               bool extractMetaData,
+		                               string dbDataPath)
 			: base(device, true, database, bufferSize, computeHashs)
 		{
 		
@@ -82,7 +94,10 @@ namespace VolumeDB.VolumeScanner
 			}
 		}
 		
-		internal override void ScanningThreadMain(Platform.Common.IO.DriveInfo driveInfo, FileSystemVolume volume, BufferedVolumeItemWriter writer, bool computeHashs) {
+		internal override void ScanningThreadMain(Platform.Common.IO.DriveInfo driveInfo,
+		                                          FileSystemVolume volume,
+		                                          BufferedVolumeItemWriter writer,
+		                                          bool computeHashs) {
 			try {
 				if (generateThumbnails) {
 					paths.volumeDataPath = Path.Combine(paths.dbDataPath, volume.VolumeID.ToString());
@@ -154,7 +169,12 @@ namespace VolumeDB.VolumeScanner
 			base.Dispose(disposing);
 		}
 		
-		private void RecursiveDump(string rootPath, DirectoryInfo dir, BufferedVolumeItemWriter writer, bool computeHashs, long parentID) {
+		private void RecursiveDump(string rootPath,
+		                           DirectoryInfo dir,
+		                           BufferedVolumeItemWriter writer,
+		                           bool computeHashs,
+		                           long parentID) {
+			
 			CheckForCancellationRequest();
 			
 		   /* event is called before a _directory_ item is about to be scanned only. 
@@ -327,11 +347,17 @@ namespace VolumeDB.VolumeScanner
 				//OnScannerWarning(args); // may throw ScanCancelledException
 
 				/* may throw ScanCancelledException */
-				SendScannerWarning(string.Format(S._("Unable to dump dir '{0}'. ({1})"), dir.FullName, e.Message), e);
+				SendScannerWarning(string.Format(S._("Unable to dump dir '{0}'. ({1})"),
+				                                 dir.FullName,
+				                                 e.Message),
+				                   e);
 			}
 		}
 		
-		private long InsertDir(string rootPath, DirectoryInfo dir, BufferedVolumeItemWriter writer, long parentID) {
+		private long InsertDir(string rootPath,
+		                       DirectoryInfo dir,
+		                       BufferedVolumeItemWriter writer,
+		                       long parentID) {
 		   /* if scanner has no db associated, just update the counters
 			* and return */
 			if (!this.HasDB) {
@@ -358,7 +384,12 @@ namespace VolumeDB.VolumeScanner
 			
 			DateTime lastWriteTime = GetLastWriteTime(dir);
 
-			DirectoryVolumeItem item = GetNewVolumeItem<DirectoryVolumeItem>(parentID, name, MIME_TYPE_DIRECTORY, null, VolumeItemType.DirectoryVolumeItem);
+			DirectoryVolumeItem item = GetNewVolumeItem<DirectoryVolumeItem>(parentID,
+			                                                                 name,
+			                                                                 MIME_TYPE_DIRECTORY,
+			                                                                 null,
+			                                                                 VolumeItemType.DirectoryVolumeItem);
+			
 			item.SetFileSystemVolumeItemFields(location, lastWriteTime, VolumeDatabase.ID_NONE);
 			//item.Name = name; // set the items name (defined on VolumeItem baseclass)
  
@@ -380,7 +411,13 @@ namespace VolumeDB.VolumeScanner
 		   return item.ItemID;
 		}
 
-		private long InsertFile(string rootPath, FileInfo file, BufferedVolumeItemWriter writer, long parentID, string mimeType, string metaData, string hash) {
+		private long InsertFile(string rootPath,
+		                        FileInfo file,
+		                        BufferedVolumeItemWriter writer,
+		                        long parentID,
+		                        string mimeType,
+		                        string metaData,
+		                        string hash) {
 			/* if scanner has no db associated, just update the counters
 			 * and return 
 			 */
@@ -392,8 +429,16 @@ namespace VolumeDB.VolumeScanner
 			
 			DateTime lastWriteTime = GetLastWriteTime(file);
 			
-			FileVolumeItem item = GetNewVolumeItem<FileVolumeItem>(parentID, file.Name, mimeType, metaData, VolumeItemType.FileVolumeItem);
-			item.SetFileSystemVolumeItemFields(GetLocation(file.FullName, rootPath), lastWriteTime, VolumeDatabase.ID_NONE);
+			FileVolumeItem item = GetNewVolumeItem<FileVolumeItem>(parentID,
+			                                                       file.Name,
+			                                                       mimeType,
+			                                                       metaData,
+			                                                       VolumeItemType.FileVolumeItem);
+			
+			item.SetFileSystemVolumeItemFields(GetLocation(file.FullName, rootPath),
+			                                   lastWriteTime,
+			                                   VolumeDatabase.ID_NONE);
+			
 			item.SetFileVolumeItemFields(file.Length, hash);
 			//item.Name = file.Name; // set the items name (defined on VolumeItem baseclass)
 			
@@ -437,7 +482,11 @@ namespace VolumeDB.VolumeScanner
 			}
 		}
 		
-		private void InsertSymLinkItemsPart(BufferedVolumeItemWriter writer, long volumeID, List<SymLinkItem> symLinkItems, int from, int to) {
+		private void InsertSymLinkItemsPart(BufferedVolumeItemWriter writer,
+		                                    long volumeID,
+		                                    List<SymLinkItem> symLinkItems,
+		                                    int from,
+		                                    int to) {
 			// resolve symlink targets
 			// build a query like e.g. '(VolumeID = 223) AND ((Location="/dir1" AND Name="file1") OR ((Location="/dir2" AND Name="file2") ...)'
 			SearchCriteriaGroup g = new SearchCriteriaGroup(MatchRule.AllMustMatch);
@@ -454,11 +503,17 @@ namespace VolumeDB.VolumeScanner
 				FreeTextSearchCriteria ftsc;
 				
 				if (sli.targetLocation.Length > 0) { // symlinks pointing to the root do not have a location (only a name, see the SymLinkItem class definition)
-					ftsc = new FreeTextSearchCriteria(sli.targetLocation, FreeTextSearchField.Location, TextCompareOperator.IsEqual);
+					ftsc = new FreeTextSearchCriteria(sli.targetLocation,
+					                                  FreeTextSearchField.Location,
+					                                  TextCompareOperator.IsEqual);
+					
 					locationNameGroup.AddSearchCriteria(ftsc);
 				}
 				
-				ftsc = new FreeTextSearchCriteria(sli.targetName, sli.isDir ? FreeTextSearchField.DirectoryName : FreeTextSearchField.FileName, TextCompareOperator.IsEqual);
+				ftsc = new FreeTextSearchCriteria(sli.targetName,
+				                                  sli.isDir ? FreeTextSearchField.DirectoryName : FreeTextSearchField.FileName,
+				                                  TextCompareOperator.IsEqual);
+				
 				locationNameGroup.AddSearchCriteria(ftsc);
 				
 				g2.AddSearchCriteria(locationNameGroup);
@@ -479,26 +534,39 @@ namespace VolumeDB.VolumeScanner
 				
 				if (!targetItems.TryGetValue(sli.targetLocation + sli.targetName, out targetItem)) {
 					/* may throw ScanCancelledException */
-					SendScannerWarning(string.Format(S._("Failed to resolve target item for symlink '{0}'."), sli.fullSourceName));
+					SendScannerWarning(string.Format(S._("Failed to resolve target item for symlink '{0}'."),
+					                                 sli.fullSourceName));
 				} else {
 					
 					FileSystemVolumeItem newItem;
 					
 					if (targetItem is FileVolumeItem) {
 						
-						newItem = GetNewVolumeItem<FileVolumeItem>(sli.parentID, sli.sourceName, targetItem.MimeType, targetItem.MetaData, VolumeItemType.FileVolumeItem);
-						((FileVolumeItem)newItem).SetFileVolumeItemFields( ((FileVolumeItem)targetItem).Size, ((FileVolumeItem)targetItem).Hash);
+						newItem = GetNewVolumeItem<FileVolumeItem>(sli.parentID,
+						                                           sli.sourceName,
+						                                           targetItem.MimeType,
+						                                           targetItem.MetaData,
+						                                           VolumeItemType.FileVolumeItem);
+						
+						((FileVolumeItem)newItem).SetFileVolumeItemFields( ((FileVolumeItem)targetItem).Size,
+						                                                  ((FileVolumeItem)targetItem).Hash);
 						
 						Interlocked.Increment(ref VolumeInfo.files);
 						
 					} else { // DirectoryVolumeItem
 						
-						newItem = GetNewVolumeItem<DirectoryVolumeItem>(sli.parentID, sli.sourceName, targetItem.MimeType, targetItem.MetaData, VolumeItemType.DirectoryVolumeItem);
+						newItem = GetNewVolumeItem<DirectoryVolumeItem>(sli.parentID,
+						                                                sli.sourceName,
+						                                                targetItem.MimeType,
+						                                                targetItem.MetaData,
+						                                                VolumeItemType.DirectoryVolumeItem);
 						
 						Interlocked.Increment(ref VolumeInfo.directories);
 					}
 					
-					newItem.SetFileSystemVolumeItemFields(sli.sourceLocation, targetItem.LastWriteTime, targetItem.ItemID);
+					newItem.SetFileSystemVolumeItemFields(sli.sourceLocation,
+					                                      targetItem.LastWriteTime,
+					                                      targetItem.ItemID);
 					writer.Write(newItem);
 					
 					// TODO : 
@@ -506,7 +574,11 @@ namespace VolumeDB.VolumeScanner
 					// or are symlinks as big as dirs, those aren't respected as well.. 
 					//Interlocked.Add(ref VolumeInfo.size, sli.size);
 					
-					Platform.Common.Diagnostics.Debug.WriteLine("Successfully resolved and saved symlink item: {0}/{1} -> {2}/{3}", (sli.sourceLocation == PATH_SEPARATOR.ToString() ? "" : sli.sourceLocation), sli.sourceName, (targetItem.Location == PATH_SEPARATOR.ToString() ? "" : targetItem.Location), (targetItem.Name == PATH_SEPARATOR.ToString() ? "" : targetItem.Name));
+					Platform.Common.Diagnostics.Debug.WriteLine("Successfully resolved and saved symlink item: {0}/{1} -> {2}/{3}",
+					                                            (sli.sourceLocation == PATH_SEPARATOR.ToString() ? "" : sli.sourceLocation),
+					                                            sli.sourceName,
+					                                            (targetItem.Location == PATH_SEPARATOR.ToString() ? "" : targetItem.Location),
+					                                            (targetItem.Name == PATH_SEPARATOR.ToString() ? "" : targetItem.Name));
 				}
 			}
 		}
@@ -521,7 +593,9 @@ namespace VolumeDB.VolumeScanner
 				lastWriteTime = DateTime.MinValue;
 
 				/* may throw ScanCancelledException */
-				SendScannerWarning(string.Format(S._("Can't read LastWriteTime from item '{0}' ({1})."), f.FullName, e.Message));
+				SendScannerWarning(string.Format(S._("Can't read LastWriteTime from item '{0}' ({1})."),
+				                                 f.FullName,
+				                                 e.Message));
 			}
 			return lastWriteTime;
 		}
@@ -629,7 +703,14 @@ namespace VolumeDB.VolumeScanner
 		
 		private class SymLinkItem
 		{
-			private SymLinkItem(long parentID, bool isDir, string fullSourceName, string sourceName, string sourceLocation, string targetName, string targetLocation) {
+			private SymLinkItem(long parentID,
+			                    bool isDir,
+			                    string fullSourceName,
+			                    string sourceName,
+			                    string sourceLocation,
+			                    string targetName,
+			                    string targetLocation) {
+				
 				this.parentID		= parentID;
 				this.isDir			= isDir;
 				this.fullSourceName = fullSourceName;
@@ -639,7 +720,13 @@ namespace VolumeDB.VolumeScanner
 				this.targetLocation = targetLocation;
 			}
 			
-			public static SymLinkItem CreateInstance(FileSystemInfo source, string target, long parentID, bool isDir, string rootPath, FilesystemVolumeScanner scanner) {
+			public static SymLinkItem CreateInstance(FileSystemInfo source,
+			                                         string target,
+			                                         long parentID,
+			                                         bool isDir,
+			                                         string rootPath,
+			                                         FilesystemVolumeScanner scanner) {
+				
 				string targetLocation, targetName;
 
 				if (target == rootPath) { // if target is rootPath Path.GetFileName(target) won't work
@@ -649,7 +736,13 @@ namespace VolumeDB.VolumeScanner
 					targetLocation	= scanner.GetLocation(target, rootPath);
 					targetName		= Path.GetFileName(target); // Path.GetFileName() also works with directory targets
 				}
-				return new SymLinkItem(parentID, isDir, source.FullName, source.Name, scanner.GetLocation(source.FullName, rootPath), targetName, targetLocation);
+				return new SymLinkItem(parentID,
+				                       isDir,
+				                       source.FullName,
+				                       source.Name,
+				                       scanner.GetLocation(source.FullName, rootPath),
+				                       targetName,
+				                       targetLocation);
 			}
 		
 			public long		parentID;			 

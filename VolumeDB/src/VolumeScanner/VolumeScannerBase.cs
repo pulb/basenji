@@ -51,9 +51,15 @@ namespace VolumeDB.VolumeScanner
 		private bool					disposed;
 		
 		// note:
-		// do not allow to modify the constuctor parameters (i.e. database, bufferSize, computeHashs...)
-		// through public properties later, since the scanner may already use them after scanning has been started.
-		internal VolumeScannerBase(string device, bool requiresMountpoint, VolumeDatabase database, int bufferSize, bool computeHashs) {
+		// do not allow to modify the constuctor parameters 
+		// (i.e. database, bufferSize, computeHashs...)
+		// through public properties later, since the scanner 
+		// may already use them after scanning has been started.
+		internal VolumeScannerBase(string device,
+		                           bool requiresMountpoint,
+		                           VolumeDatabase database,
+		                           int bufferSize,
+		                           bool computeHashs) {
 			
 			if (device == null)
 				throw new ArgumentNullException("device");
@@ -238,7 +244,11 @@ namespace VolumeDB.VolumeScanner
 		/// A new specific VolumeItem derived from base class VolumeItem 
 		/// with all base class properties preassigned.
 		/// </returns>
-		protected TVolumeItem GetNewVolumeItem<TVolumeItem>(long parentID, string name, string mimeType, string metaData, VolumeItemType itemType)
+		protected TVolumeItem GetNewVolumeItem<TVolumeItem>(long parentID,
+		                                                    string name,
+		                                                    string mimeType,
+		                                                    string metaData,
+		                                                    VolumeItemType itemType)
 			where TVolumeItem : VolumeItem
 		{
 			// TODO: check here if TMediaItem applies to TMedia?
@@ -250,7 +260,14 @@ namespace VolumeDB.VolumeScanner
 			// don't initialize via properties. initializing via properties is error-prone
 			// as the compiler won't error if a new field is added to the base class
 			// and forgotten to be initialized here.
-			item.SetVolumeItemFields(volume.VolumeID, itemID, parentID, name, mimeType, metaData, null, null);
+			item.SetVolumeItemFields(volume.VolumeID,
+			                         itemID,
+			                         parentID,
+			                         name,
+			                         mimeType,
+			                         metaData,
+			                         null,
+			                         null);
 
 			itemID++;
 
@@ -261,7 +278,9 @@ namespace VolumeDB.VolumeScanner
 		// Returns a specific Volume object, but preassigns properties of the Volume baseclass only.
 		// Filling properties of the specific, derived object, is job of the specific VolumeScanner implementation.
 		/// </summary>		  
-		private static TVolume CreateVolumeObject(PlatformIO.DriveInfo d, VolumeDatabase database, bool isHashed) {
+		private static TVolume CreateVolumeObject(PlatformIO.DriveInfo d,
+		                                          VolumeDatabase database,
+		                                          bool isHashed) {
 			// TODO : check here whether everything is still filled correctly after media class reorganisation
 
 			//Util.DriveInfo di = new Util.DriveInfo(rootDir);
@@ -351,10 +370,20 @@ namespace VolumeDB.VolumeScanner
 		// see http://lab.msdn.microsoft.com/productfeedback/viewfeedback.aspx?feedbackid=33c53cf6-2709-4cc9-a408-6cafee4313ef
 		//protected
 		internal
-		abstract void ScanningThreadMain(PlatformIO.DriveInfo driveInfo, TVolume volume, BufferedVolumeItemWriter writer, bool computeHashs);
+		abstract void ScanningThreadMain(PlatformIO.DriveInfo driveInfo,
+			                                 TVolume volume,
+			                                 BufferedVolumeItemWriter writer,
+			                                 bool computeHashs);
 
-		private delegate void ScanningThreadInvoker(PlatformIO.DriveInfo driveInfo, TVolume volume, BufferedVolumeItemWriter writer, bool computeHash);
-		private void ScanningThread(PlatformIO.DriveInfo driveInfo, TVolume volume, BufferedVolumeItemWriter writer, bool computeHashs) {
+		private delegate void ScanningThreadInvoker(PlatformIO.DriveInfo driveInfo,
+		                                            TVolume volume,
+		                                            BufferedVolumeItemWriter writer,
+		                                            bool computeHash);
+		
+		private void ScanningThread(PlatformIO.DriveInfo driveInfo,
+		                            TVolume volume,
+		                            BufferedVolumeItemWriter writer,
+		                            bool computeHashs) {
 
 			TVolume		returnVolume = null;
 			Exception	fatalError = null;
@@ -547,7 +576,10 @@ namespace VolumeDB.VolumeScanner
 			for(int i = 0; i < argTypes.Length; i++)
 				argTypes[i] = args[i].GetType();
 				
-			ConstructorInfo ci = typeof(T).GetConstructor(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance, null, argTypes, null);
+			ConstructorInfo ci = typeof(T).GetConstructor(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance,
+			                                              null,
+			                                              argTypes,
+			                                              null);
 			return (T)ci.Invoke(args);
 		}
 		
