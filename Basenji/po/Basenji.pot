@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-14 00:45+0100\n"
+"POT-Creation-Date: 2010-01-18 16:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,72 +49,80 @@ msgstr ""
 msgid "Abort"
 msgstr ""
 
-#: src/Gui/Import.cs:84
+#: src/Gui/Import.cs:98
 #, csharp-format
 msgid "{0:0}% completed."
 msgstr ""
 
-#: src/Gui/Import.cs:94
+#: src/Gui/Import.cs:108
 msgid "Import failed"
 msgstr ""
 
-#: src/Gui/Import.cs:95 src/Gui/MainWindow.cs:227
+#: src/Gui/Import.cs:109 src/Gui/MainWindow.cs:227
 msgid "Database not found."
 msgstr ""
 
-#: src/Gui/Import.cs:97
+#: src/Gui/Import.cs:111
 msgid "Import failed!"
 msgstr ""
 
-#: src/Gui/Import.cs:99
+#: src/Gui/Import.cs:113
 msgid "Import aborted."
 msgstr ""
 
-#: src/Gui/Import.cs:101
+#: src/Gui/Import.cs:115
 msgid "Import completed successfully."
 msgstr ""
 
-#: src/Gui/Import.cs:120
+#: src/Gui/Import.cs:134
 msgid "Import in progress"
 msgstr ""
 
-#: src/Gui/Import.cs:121
+#: src/Gui/Import.cs:135
 msgid "You must stop the import before closing this window."
 msgstr ""
 
-#: src/Gui/Import.cs:145
+#: src/Gui/Import.cs:160
 msgid "Import Database"
 msgstr ""
 
-#: src/Gui/Import.cs:167
+#: src/Gui/Import.cs:171
 msgid "Please select a database to import"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:98
+#: src/Gui/Import.cs:184
+msgid "Database:"
+msgstr ""
+
+#: src/Gui/Import.cs:185
+msgid "Format:"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:103
 #, csharp-format
 msgid "Scanning of drive '{0}' started."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:99
+#: src/Gui/VolumeScanner.cs:104
 #, csharp-format
 msgid ""
 "Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
 "hashing: {3}."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:120
+#: src/Gui/VolumeScanner.cs:125
 msgid "Time"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:124
+#: src/Gui/VolumeScanner.cs:129
 msgid "Message"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:194 src/Gui/VolumeProperties.cs:41
+#: src/Gui/VolumeScanner.cs:199 src/Gui/VolumeProperties.cs:41
 msgid "Invalid data"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:194 src/Gui/VolumeProperties.cs:41
+#: src/Gui/VolumeScanner.cs:199 src/Gui/VolumeProperties.cs:41
 #, csharp-format
 msgid ""
 "\"{0}\" is {1}.\n"
@@ -123,61 +131,61 @@ msgid ""
 "Please correct or remove the data you entered."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:201
+#: src/Gui/VolumeScanner.cs:206
 msgid "yes"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:201
+#: src/Gui/VolumeScanner.cs:206
 msgid "no"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:224
+#: src/Gui/VolumeScanner.cs:229
 msgid "Scan in progress"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:224
+#: src/Gui/VolumeScanner.cs:229
 msgid "You must stop scanning before closing this window."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:234
+#: src/Gui/VolumeScanner.cs:239
 msgid "Stopping Scanner and performing rollback..."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:276
+#: src/Gui/VolumeScanner.cs:281
 #, csharp-format
 msgid "An unhandled exception occured ({0})."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:277
+#: src/Gui/VolumeScanner.cs:282
 msgid "All database changes have been rolled back."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:300
+#: src/Gui/VolumeScanner.cs:305
 #, csharp-format
 msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:302
+#: src/Gui/VolumeScanner.cs:307
 msgid "Scanning aborted."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:304
+#: src/Gui/VolumeScanner.cs:309
 msgid "Scanning completed successfully."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:401
+#: src/Gui/VolumeScanner.cs:406
 msgid "VolumeScanner"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:413
+#: src/Gui/VolumeScanner.cs:418
 msgid "<b>Volume Information:</b>"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:423
+#: src/Gui/VolumeScanner.cs:428
 msgid "<b>Scanner Log:</b>"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:440
+#: src/Gui/VolumeScanner.cs:445
 msgid "Database access"
 msgstr ""
 
