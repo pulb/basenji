@@ -58,7 +58,7 @@ namespace VolumeDB.VolumeScanner
 		                               VolumeDatabase database,
 		                               int bufferSize,
 		                               bool computeHashs)
-			: this(device, database, bufferSize, computeHashs, false, false, false, null) {}
+			: this(device, database, bufferSize, computeHashs, false, false, false, null, null) {}
 		
 		public FilesystemVolumeScanner(string device,
 		                               VolumeDatabase database,
@@ -67,6 +67,7 @@ namespace VolumeDB.VolumeScanner
 		                               bool discardSymLinks,
 		                               bool generateThumbnails,
 		                               bool extractMetaData,
+		                               string[] extractionBlacklist,
 		                               string dbDataPath)
 			: base(device, true, database, bufferSize, computeHashs)
 		{
@@ -88,6 +89,11 @@ namespace VolumeDB.VolumeScanner
 			if (extractMetaData) {
 				try {
 					this.extractor	= Extractor.GetDefault();
+					
+					if (extractionBlacklist != null) {
+						foreach (string ext in extractionBlacklist)
+							this.extractor.RemoveLibrary("libextractor_" + ext);
+					}
 				} catch(DllNotFoundException) {
 					// a warning will be sent in ScanningThreadMain().
 				}

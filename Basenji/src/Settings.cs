@@ -68,6 +68,11 @@ namespace Basenji
 			set { properties["ScannerExtractMetaData"] = value ? "1" : "0"; }
 		}
 		
+		public string ScannerExtractionBlacklist {
+			get { return properties["ScannerExtractionBlacklist"]; }
+			set { properties["ScannerExtractionBlacklist"] = value; }
+		}
+		
 		public bool OpenMostRecentDB {
 			get { return properties["OpenMostRecentDB"] == "1"; }
 			set { properties["OpenMostRecentDB"] = value ? "1" : "0"; }
@@ -133,6 +138,7 @@ namespace Basenji
 			properties.Add("ScannerComputeHashs",			"0");
 			properties.Add("ScannerGenerateThumbnails",		"1");
 			properties.Add("ScannerExtractMetaData",		"1");
+			properties.Add("ScannerExtractionBlacklist",	""); // e.g. "pdf, mp3"
 			properties.Add("OpenMostRecentDB",				"1");
 			properties.Add("MostRecentDBPath",				"");
 			properties.Add("MainWindowWidth",				"800");

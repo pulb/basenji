@@ -53,12 +53,16 @@ namespace Basenji.Gui
 			//InitTreeView();
 
 			// setup scanner
-			int bufferSize			= App.Settings.ScannerBufferSize;
-			bool enableHashing		= App.Settings.ScannerComputeHashs;
-			bool discardSymLinks	= App.Settings.ScannerDiscardSymLinks;
-			bool generateThumbnails	= App.Settings.ScannerGenerateThumbnails;
-			bool extractMetaData	= App.Settings.ScannerExtractMetaData;
-
+			int bufferSize				= App.Settings.ScannerBufferSize;
+			bool enableHashing			= App.Settings.ScannerComputeHashs;
+			bool discardSymLinks		= App.Settings.ScannerDiscardSymLinks;
+			bool generateThumbnails		= App.Settings.ScannerGenerateThumbnails;
+			bool extractMetaData		= App.Settings.ScannerExtractMetaData;
+			
+			string[] blacklist			= App.Settings.ScannerExtractionBlacklist
+				.Split(new string[] { ", ", "," },
+				StringSplitOptions.RemoveEmptyEntries);
+			
 			// TODO : scanner = VolumeProber.GetScanner(device,...)
 			scanner = new FilesystemVolumeScanner(device,
 			                                      database,
@@ -67,6 +71,7 @@ namespace Basenji.Gui
 			                                      discardSymLinks,
 			                                      generateThumbnails,
 			                                      extractMetaData,
+			                                      blacklist,
 			                                      DbData.GetDbDataPath(database));
 			
 			// scanner eventhandlers
