@@ -29,11 +29,7 @@ namespace Basenji.Gui
 	public partial class DriveSelection : DialogBase
 	{
 		// specifies whether the root filesystem "/" should be listed or not
-#if DEBUG		
-		private const bool EXCLUDE_ROOT_FS = false;
-#else
 		private const bool EXCLUDE_ROOT_FS = true;
-#endif
 		
 		private bool		isDestroyed;
 		private DriveInfo	selectedDrive;
