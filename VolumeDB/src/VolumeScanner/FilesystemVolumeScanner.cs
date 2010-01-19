@@ -16,6 +16,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
+/*#define DEBUG_FILE_VERBOSE*/
+
 using System;
 using System.IO;
 using System.Text;
@@ -246,6 +248,9 @@ namespace VolumeDB.VolumeScanner
 //					  bool isRegularFile  = true;
 //					  bool isSymLink	  = false;
 					
+#if DEBUG && DEBUG_FILE_VERBOSE
+					Platform.Common.Diagnostics.Debug.WriteLine(string.Format("Indexing file '{0}'", files[i].FullName));
+#endif
 					// TODO : catch FileNotFounException? when is it thrown? (e.g. at /dev/fd/21)
 					ft = FileHelper.GetFileType(files[i].FullName, false);
 
