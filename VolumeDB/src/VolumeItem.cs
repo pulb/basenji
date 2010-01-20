@@ -146,15 +146,15 @@ namespace VolumeDB
 		}
 		
 		internal override void ReadFromVolumeDBRecord(IRecordData recordData) {
-			volumeID	= (long)				  recordData["VolumeID"];			 
-			itemID		= (long)				  recordData["ItemID"];
+			volumeID	= (long)				  		recordData["VolumeID"];			 
+			itemID		= (long)				  		recordData["ItemID"];
 			//rootID	= (long)				  recordData["RootID"];
-			parentID	= (long)				  recordData["ParentID"];
-			name		= ReplaceDBNull<string>(  recordData["Name"],		null);
-			mimeType	= ReplaceDBNull<string>(  recordData["MimeType"],	null);
-			metaData	= ReplaceDBNull<string>(  recordData["MetaData"],	null);
-			note		= ReplaceDBNull<string>(  recordData["Note"],		null);
-			keywords	= ReplaceDBNull<string>(  recordData["Keywords"],	null);
+			parentID	= (long)				  		recordData["ParentID"];
+			name		= Util.ReplaceDBNull<string>(	recordData["Name"],		null);
+			mimeType	= Util.ReplaceDBNull<string>(	recordData["MimeType"],	null);
+			metaData	= Util.ReplaceDBNull<string>(	recordData["MetaData"],	null);
+			note		= Util.ReplaceDBNull<string>(	recordData["Note"],		null);
+			keywords	= Util.ReplaceDBNull<string>(	recordData["Keywords"],	null);
 		}
 
 		internal override void WriteToVolumeDBRecord(IRecordData recordData) {

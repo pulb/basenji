@@ -150,16 +150,16 @@ namespace VolumeDB.Import
 				driveType = VolumeDriveType.Harddisk;
 			
 			v.SetVolumeFields(volumeID,
-			                  ReplaceDBNull<string>(reader["name"], null),
+			                  Util.ReplaceDBNull<string>(reader["name"], null),
 			                  DateTime.Now,
 			                  false,
 			                  null,
 			                  driveType,
-			                  ReplaceDBNull<string>(reader["borrow"], null),
+			                  Util.ReplaceDBNull<string>(reader["borrow"], null),
 			                  DateTime.MinValue,
 			                  DateTime.MinValue,
 			                  null,
-			                  ReplaceDBNull<string>(reader["comment"], null),
+			                  Util.ReplaceDBNull<string>(reader["comment"], null),
 			                  null);
 			
 			v.SetFileSystemVolumeFields(counters[TOTAL_FILES],
@@ -223,10 +223,10 @@ namespace VolumeDB.Import
 			item.SetVolumeItemFields(volumeID,
 			                         itemID,
 			                         parentID,
-			                         ReplaceDBNull<string>(reader["name"], null),
-			                         ReplaceDBNull<string>(reader["mime"], null),
+			                         Util.ReplaceDBNull<string>(reader["name"], null),
+			                         Util.ReplaceDBNull<string>(reader["mime"], null),
 			                         metaData,
-			                         ReplaceDBNull<string>(reader["comment"], null),
+			                         Util.ReplaceDBNull<string>(reader["comment"], null),
 			                         null);
 			
 			writer.Write(item);

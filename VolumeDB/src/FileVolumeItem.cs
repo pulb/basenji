@@ -75,9 +75,9 @@ namespace VolumeDB
 			base.ReadFromVolumeDBRecord(recordData);
 
 			//filename	=	(string)				recordData["Filename"];
-			//extension =	ReplaceDBNull<string>(	recordData["Extension"],  null);
-			size	  =   (long)				  recordData["Size"];
-			hash	  =   ReplaceDBNull<string>(  recordData["Hash"],		null);
+			//extension =	Util.ReplaceDBNull<string>(	recordData["Extension"],  null);
+			size	  =   (long)				  		recordData["Size"];
+			hash	  =   Util.ReplaceDBNull<string>(	recordData["Hash"],		null);
 		}
 
 		internal override void WriteToVolumeDBRecord(IRecordData recordData) {

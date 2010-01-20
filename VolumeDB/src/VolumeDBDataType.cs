@@ -110,10 +110,6 @@ namespace VolumeDB
 		internal bool IsInserted {
 			get { return !((IVolumeDBRecord)this).IsNew; }
 		}
-
-		protected static T ReplaceDBNull<T>(object dbValue, T replaceValue) {
-			return dbValue == DBNull.Value ? replaceValue : (T)dbValue;
-		}
 		
 		protected static void EnsurePropertyLength(string val, int maxLen) {
 			if (val != null && val.Length > maxLen)

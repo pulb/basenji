@@ -81,10 +81,10 @@ namespace VolumeDB
 		internal override void ReadFromVolumeDBRecord(IRecordData recordData) {
 			base.ReadFromVolumeDBRecord(recordData);
 
-			location		= ReplaceDBNull<string>(	recordData["Location"],		null); /* root item doesnt have a location */
-			//createdDate	= ReplaceDBNull<DateTime>(	recordData["CreatedDate"],	DateTime.MinValue);
-			lastWriteTime	= ReplaceDBNull<DateTime>(	recordData["LastWriteTime"], DateTime.MinValue);
-			symLinkTargetID = (long)					recordData["SymLinkTargetID"];
+			location		= Util.ReplaceDBNull<string>(	recordData["Location"],		null); /* root item doesnt have a location */
+			//createdDate	= Util.ReplaceDBNull<DateTime>(	recordData["CreatedDate"],	DateTime.MinValue);
+			lastWriteTime	= Util.ReplaceDBNull<DateTime>(	recordData["LastWriteTime"], DateTime.MinValue);
+			symLinkTargetID = (long)						recordData["SymLinkTargetID"];
 		}
 
 		internal override void WriteToVolumeDBRecord(IRecordData recordData) {

@@ -136,20 +136,20 @@ namespace VolumeDB
 		}
 		
 		internal override void ReadFromVolumeDBRecord(IRecordData recordData) {
-			volumeID	  = (long)						  recordData["VolumeID"];
-			title		  = ReplaceDBNull<string>(		  recordData["Title"],		  null);
-			added		  = (DateTime)					  recordData["Added"];
-			isHashed	  = (bool)						  recordData["IsHashed"];
+			volumeID	  = (long)						  	recordData["VolumeID"];
+			title		  = Util.ReplaceDBNull<string>(		recordData["Title"], null);
+			added		  = (DateTime)					  	recordData["Added"];
+			isHashed	  = (bool)						  	recordData["IsHashed"];
 
-			archiveNo	  = ReplaceDBNull<string>(		  recordData["ArchiveNr"],	  null);
-			driveType	  = (VolumeDriveType)(int)(long)  recordData["DriveType"];
-			loanedTo	  = ReplaceDBNull<string>(		  recordData["Loaned_To"],	  null);
-			loanedDate	  = ReplaceDBNull<DateTime>(	  recordData["Loaned_Date"],  DateTime.MinValue);
-			returnDate	  = ReplaceDBNull<DateTime>(	  recordData["Return_Date"],  DateTime.MinValue);
-			category	  = ReplaceDBNull<string>(		  recordData["Category"],	  null);
-			description   = ReplaceDBNull<string>(		  recordData["Description"],  null);
-			keywords	  = ReplaceDBNull<string>(		  recordData["Keywords"],	  null);
-			//clientAppData   = ReplaceDBNull<string>(		  recordData["ClientAppData"], null);
+			archiveNo	  = Util.ReplaceDBNull<string>(		recordData["ArchiveNr"], null);
+			driveType	  = (VolumeDriveType)(int)(long)  	recordData["DriveType"];
+			loanedTo	  = Util.ReplaceDBNull<string>(		recordData["Loaned_To"], null);
+			loanedDate	  = Util.ReplaceDBNull<DateTime>(	recordData["Loaned_Date"], DateTime.MinValue);
+			returnDate	  = Util.ReplaceDBNull<DateTime>(	recordData["Return_Date"], DateTime.MinValue);
+			category	  = Util.ReplaceDBNull<string>(		recordData["Category"], null);
+			description   = Util.ReplaceDBNull<string>(		recordData["Description"], null);
+			keywords	  = Util.ReplaceDBNull<string>(		recordData["Keywords"], null);
+			//clientAppData   = Util.ReplaceDBNull<string>(		  recordData["ClientAppData"], null);
 		}
 
 		internal override void WriteToVolumeDBRecord(IRecordData recordData) {

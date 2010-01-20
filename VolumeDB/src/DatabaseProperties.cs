@@ -86,11 +86,11 @@ namespace VolumeDB
 		#endregion
 		
 		internal override void ReadFromVolumeDBRecord(IRecordData recordData) {
-			name		  = ReplaceDBNull<string>(	  recordData["Name"],		  null);
-			description   = ReplaceDBNull<string>(	  recordData["Description"],  null);
-			created		  = ReplaceDBNull<DateTime>(  recordData["Created"],	  DateTime.MinValue);
-			version		  = (int)(long)				  recordData["Version"];
-			guid			= (string)					recordData["GUID"];
+			name			= Util.ReplaceDBNull<string>(	recordData["Name"], null);
+			description		= Util.ReplaceDBNull<string>(	recordData["Description"], null);
+			created			= Util.ReplaceDBNull<DateTime>(	recordData["Created"], DateTime.MinValue);
+			version			= (int)(long)				  	recordData["Version"];
+			guid			= (string)						recordData["GUID"];
 		}
 
 		internal override void WriteToVolumeDBRecord(IRecordData recordData) {

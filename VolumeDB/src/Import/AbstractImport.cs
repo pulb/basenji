@@ -251,10 +251,6 @@ namespace VolumeDB.Import
 			asyncOperation.Post(cb, e);
 		}
 		
-		protected static T ReplaceDBNull<T>(object dbValue, T replaceValue) {
-			return dbValue == DBNull.Value ? replaceValue : (T)dbValue;
-		}
-		
 		/// <summary>
 		/// Called when an unhandled exception occurs.
 		/// </summary>

@@ -52,5 +52,9 @@ namespace VolumeDB
 				}
 				);
 		}
+		
+		public static T ReplaceDBNull<T>(object dbValue, T replaceValue) {
+			return dbValue == DBNull.Value ? replaceValue : (T)dbValue;
+		}
 	}
 }
