@@ -292,7 +292,7 @@ namespace Basenji.Gui
 					// the volumes treeview is filtered,
 					// so refill the treeview using the last sucessful searchcriteria.
 					// (the freshly added volume may be matched by that criteria.)
-					SearchVolumeAsync(lastSuccessfulSearchCriteria);
+					SearchVolumeAsync(lastSuccessfulSearchCriteria, null);
 				} else {
 					// volumes treeview isn't filtered and contains all volumes,
 					// so just append.
@@ -356,16 +356,23 @@ namespace Basenji.Gui
 					criteria = new FreeTextSearchCriteria(txtSearchString.Text,
 					                                      FreeTextSearchField.Title,
 					                                      TextCompareOperator.Contains);
-				} catch(ArgumentException e) {
+				} catch (ArgumentException e) {
 					SetStatus(Util.FormatExceptionMsg(e));
 					return;
 				}
 			}
-
-			SearchVolumeAsync(criteria);
+			
+			Util.Callback oncompleted = () => {
+				Application.Invoke(delegate {
+					// treeview filling has stolen the focus.
+					txtSearchString.GrabFocus();
+				});
+			};
+					
+			SearchVolumeAsync(criteria, oncompleted);
 		}
 		
-		private void SearchVolumeAsync(ISearchCriteria criteria) {			
+		private void SearchVolumeAsync(ISearchCriteria criteria, Util.Callback onsearchcompled) {			
 			// delegate that will be called 
 			// when asynchronous volume searching has been finished.
 			AsyncCallback cb = delegate(IAsyncResult ar) {
@@ -398,10 +405,8 @@ namespace Basenji.Gui
 						throw;
 					}
 				} finally {
-					Application.Invoke(delegate {
-						// treeview filling has stolen the focus.
-						txtSearchString.GrabFocus();
-					});
+					if (onsearchcompled != null)
+						onsearchcompled();
 				}
 			};
 			
@@ -412,7 +417,7 @@ namespace Basenji.Gui
 					database.BeginSearchVolume(criteria, cb, criteria);
 				else
 					database.BeginSearchVolume(cb, null);
-			} catch(Exception) {
+			} catch (Exception) {
 				SetStatus(string.Empty);
 				throw;			  
 			}
@@ -472,11 +477,11 @@ namespace Basenji.Gui
 				if (lastSuccessfulSearchCriteria != null) {
 					// the volumes treeview is filtered,
 					// so refill the treeview using the last sucessful searchcriteria.
-					// (the freshly added volume may be matched by that criteria.)
-					SearchVolumeAsync(lastSuccessfulSearchCriteria);
+					// (the imported volumes may be matched by that criteria.)
+					SearchVolumeAsync(lastSuccessfulSearchCriteria, null);
 				} else {
 					// volumes treeview isn't filtered and contains all volumes
-					SearchVolumeAsync(null);
+					SearchVolumeAsync(null, null);
 				}
 				// TODO : sort list?
 			};
