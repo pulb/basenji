@@ -28,15 +28,11 @@ namespace Basenji.Icons
 	{
 		private readonly Icons.Icon DEFAULT_ICON = Icon.Stock_File;
 		
-		private Widget w;
-		
 		private bool			useMimeIcons;		 
 		private MimeIconCache	mimeIconCache;
 		private IconCache		iconCache;
 		
 		public ItemIcons(Widget w) {
-			this.w = w;
-			
 			iconCache = new IconCache(w);
 			
 			// only use the systems mime icons if no custom theme is set			
