@@ -70,8 +70,9 @@ PROJECT_REFERENCES =  \
 	../Hal/bin/Release/Hal.dll
 BUILD_DIR = bin/Release
 
-HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
-HAL_DLL_MDB=
+HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
+HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
+HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
 PLATFORM_DLL_MDB=
 
 endif

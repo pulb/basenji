@@ -48,8 +48,8 @@ namespace Basenji.Gui.Base
 			this.Show();		
 		}*/
 		
-		internal static Action CreateAction(string name, string label, string tooltip, string stockid, EventHandler activated) {
-			Action a = new Action(name, label, tooltip, stockid);
+		internal static Gtk.Action CreateAction(string name, string label, string tooltip, string stockid, EventHandler activated) {
+			Gtk.Action a = new Gtk.Action(name, label, tooltip, stockid);
 			if (activated != null)			  
 				a.Activated += activated;
 

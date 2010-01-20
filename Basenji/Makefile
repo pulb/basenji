@@ -228,7 +228,8 @@ REFERENCES =  \
 	System \
 	-pkg:gtk-sharp-2.0 \
 	-pkg:glib-sharp-2.0 \
-	-pkg:mono-cairo
+	-pkg:mono-cairo \
+	System.Core
 
 DLL_REFERENCES = 
 

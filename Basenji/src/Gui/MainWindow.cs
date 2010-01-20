@@ -88,7 +88,7 @@ namespace Basenji.Gui
 			}
 		}
 		
-		private void OpenDB(string path, bool createNew, bool loadAsync, Util.Callback onsuccess) {
+		private void OpenDB(string path, bool createNew, bool loadAsync, System.Action onsuccess) {
 			EnableGui(false); // will be re-enabled after opening AND loading has been completed successfully
 			SetWindowTitle(null);				 
 			
@@ -115,7 +115,7 @@ namespace Basenji.Gui
 			
 			// load volumes
 			
-			Util.Callback<Volume[]> updateGui = delegate(Volume[] volumes) {
+			Action<Volume[]> updateGui = delegate(Volume[] volumes) {
 				tvVolumes.Fill(volumes);
 
 				// select first volume
@@ -362,7 +362,7 @@ namespace Basenji.Gui
 				}
 			}
 			
-			Util.Callback oncompleted = () => {
+			System.Action oncompleted = () => {
 				Application.Invoke(delegate {
 					// treeview filling has stolen the focus.
 					txtSearchString.GrabFocus();
@@ -372,7 +372,7 @@ namespace Basenji.Gui
 			SearchVolumeAsync(criteria, oncompleted);
 		}
 		
-		private void SearchVolumeAsync(ISearchCriteria criteria, Util.Callback onsearchcompled) {			
+		private void SearchVolumeAsync(ISearchCriteria criteria, System.Action onsearchcompled) {			
 			// delegate that will be called 
 			// when asynchronous volume searching has been finished.
 			AsyncCallback cb = delegate(IAsyncResult ar) {
@@ -593,24 +593,24 @@ namespace Basenji.Gui
 		// menubar
 		MenuBar menubar;
 			
-		private Action actFile;
-		private Action actEdit;
-		private Action actHelp;
+		private Gtk.Action actFile;
+		private Gtk.Action actEdit;
+		private Gtk.Action actHelp;
 		
-		private Action actNewDB;
-		private Action actOpenDB;
-		private Action actOpenDefaultDB;
-		private Action actDBProperties;
-		private Action actImport;
-		private Action actSearch;
-		private Action actQuit;
+		private Gtk.Action actNewDB;
+		private Gtk.Action actOpenDB;
+		private Gtk.Action actOpenDefaultDB;
+		private Gtk.Action actDBProperties;
+		private Gtk.Action actImport;
+		private Gtk.Action actSearch;
+		private Gtk.Action actQuit;
 		
-		private Action actAddVolume;
-		private Action actRemoveVolume;
-		private Action actEditVolume;
-		private Action actPreferences;
+		private Gtk.Action actAddVolume;
+		private Gtk.Action actRemoveVolume;
+		private Gtk.Action actEditVolume;
+		private Gtk.Action actPreferences;
 		
-		private Action actInfo;
+		private Gtk.Action actInfo;
 		
 		// toolbar
 		private Toolbar toolbar;

@@ -24,12 +24,7 @@ using Platform.Common.Diagnostics;
 namespace Basenji
 {
 	public static class Util
-	{	
-		// delegates for async method calls
-		public delegate void Callback();
-		public delegate void Callback<A>(A arg);
-		public delegate R Callback<R, A>(A arg);
-		
+	{		
 		public static string GetSizeStr(long size) {
 			if (size < 1024)
 				return string.Format(S._("{0} Bytes"), size);
