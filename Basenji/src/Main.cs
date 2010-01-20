@@ -30,7 +30,7 @@ namespace Basenji
 			                              System.Runtime.InteropServices.RuntimeEnvironment.GetRuntimeDirectory()));
 			
 			if (CurrentPlatform.IsUnix)
-				Util.SetProcName(App.Name);
+				Util.SetProcName(App.Name.ToLower());
 				
 			Application.Init();
 
