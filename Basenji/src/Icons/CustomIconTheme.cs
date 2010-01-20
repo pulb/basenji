@@ -16,6 +16,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
+// TODO: faster? more mem usage? longer startup?
+/*#define LOAD_PIXBUFS*/
+
 using System;
 using System.IO;
 using System.Collections.Generic;
@@ -28,8 +31,6 @@ namespace Basenji.Icons
 {	 
 	public static class CustomIconTheme
 	{
-		private const bool LOAD_PIXBUFS = false; // TODO: faster? more mem usage? longer startup?
-		
 		public static void Load(string themePath) {
 			if (themePath == null)
 				throw new ArgumentNullException("themePath");
@@ -75,10 +76,11 @@ namespace Basenji.Icons
 					
 					IconSource source = new IconSource();
 					
-					if (LOAD_PIXBUFS)					 
-						source.Pixbuf = new Gdk.Pixbuf(fullPath);
-					else
-						source.Filename = fullPath;
+#if LOAD_PIXBUFS
+					source.Pixbuf = new Gdk.Pixbuf(fullPath);
+#else
+					source.Filename = fullPath;
+#endif
 					
 					source.Size = size;
 					//source.IconName = name;

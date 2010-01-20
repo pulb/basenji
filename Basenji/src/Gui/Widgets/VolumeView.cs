@@ -144,7 +144,7 @@ namespace Basenji.Gui.Widgets
 												Util.GetSizeStr(fsv.Size),
 				                     			fsv.Files.ToString(),
 				                     			STR_FILES);
-					break;
+					
 				//case VolumeType.Cdda: ...
 				default:
 					throw new NotImplementedException("Description not implemented for this VolumeType");

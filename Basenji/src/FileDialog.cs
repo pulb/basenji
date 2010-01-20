@@ -35,10 +35,8 @@ namespace Basenji
 					break;
 				case FileChooserAction.CreateFolder:
 					throw new NotImplementedException();
-					break;
 				case FileChooserAction.SelectFolder:
 					throw new NotImplementedException();
-					break;
 			}
 
 			fc.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
