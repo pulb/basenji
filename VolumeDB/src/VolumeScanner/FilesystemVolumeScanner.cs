@@ -96,7 +96,7 @@ namespace VolumeDB.VolumeScanner
 						foreach (string ext in extractionBlacklist)
 							this.extractor.RemoveLibrary("libextractor_" + ext);
 					}
-				} catch(DllNotFoundException) {
+				} catch (DllNotFoundException) {
 					// a warning will be sent in ScanningThreadMain().
 				}
 			}
