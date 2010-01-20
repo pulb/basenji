@@ -43,7 +43,7 @@ namespace Basenji.Gui.Widgets
 			get { return state; }
 			set {
 				state = value;
-				image.FromPixbuf = state ? pixbufLedOn : pixbufLedOff;
+				image.Pixbuf = state ? pixbufLedOn : pixbufLedOff;
 			}
 		}
 		
