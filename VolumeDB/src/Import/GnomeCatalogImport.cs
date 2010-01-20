@@ -137,7 +137,6 @@ namespace VolumeDB.Import
 		                               long[] counters) {
 			
 			FileSystemVolume v = new FileSystemVolume(db);
-			long diskID = (long)reader["id"];
 			
 			// try to guess the drivetype
 			VolumeDriveType driveType;
