@@ -115,7 +115,7 @@ namespace Basenji.Gui
 			
 			// load volumes
 			
-			Action<Volume[]> updateGui = delegate(Volume[] volumes) {
+			Action<Volume[]> updateGui = (Volume[] volumes) => {
 				tvVolumes.Fill(volumes);
 
 				// select first volume
@@ -140,7 +140,7 @@ namespace Basenji.Gui
 			if (loadAsync) {
 				// delegate that will be called 
 				// when asynchronous volume loading (searching) has been finished.
-				AsyncCallback cb = delegate(IAsyncResult ar) {
+				AsyncCallback cb = (IAsyncResult ar) => {
 					Volume[] volumes;
 					
 					try {
@@ -287,7 +287,7 @@ namespace Basenji.Gui
 			}
 			
 			VolumeScanner vs = new VolumeScanner(database, drive.Device);
-			vs.NewVolumeAdded += delegate(object o, NewVolumeAddedEventArgs args) {
+			vs.NewVolumeAdded += (object o, NewVolumeAddedEventArgs args) => {
 				if (lastSuccessfulSearchCriteria != null) {
 					// the volumes treeview is filtered,
 					// so refill the treeview using the last sucessful searchcriteria.
@@ -375,7 +375,7 @@ namespace Basenji.Gui
 		private void SearchVolumeAsync(ISearchCriteria criteria, System.Action onsearchcompled) {			
 			// delegate that will be called 
 			// when asynchronous volume searching has been finished.
-			AsyncCallback cb = delegate(IAsyncResult ar) {
+			AsyncCallback cb = (IAsyncResult ar) => {
 				if (windowDeleted)
 					return;
 				
