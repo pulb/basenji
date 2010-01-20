@@ -81,8 +81,8 @@ namespace VolumeDB.Import
 				Reset();
 				
 				/* invoke the import function on a new thread and return a waithandle */
-				ImportThreadInvoker iti = new ImportThreadInvoker(ImportThread);
-				IAsyncResult ar = iti.BeginInvoke(sourceDbPath, targetDb, dbDataPath, bufferSize, null, null);
+				Action<string, VolumeDatabase, string, int> it = ImportThread;
+				IAsyncResult ar = it.BeginInvoke(sourceDbPath, targetDb, dbDataPath, bufferSize, null, null);
 				return ar.AsyncWaitHandle;
 			
 			} catch (Exception) {
@@ -136,11 +136,6 @@ namespace VolumeDB.Import
 			                               VolumeDatabase targetDb, 
 			                               string dbDataPath,
 			                               BufferedVolumeItemWriter writer);
-		
-		private delegate void ImportThreadInvoker(string sourceDbPath,
-		                                          VolumeDatabase targetDb,
-		                                          string dbDataPath,
-		                                          int bufferSize);
 		
 		private void ImportThread(string sourceDbPath,
 		                          VolumeDatabase targetDb,

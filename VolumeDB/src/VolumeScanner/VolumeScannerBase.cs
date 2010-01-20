@@ -118,8 +118,8 @@ namespace VolumeDB.VolumeScanner
 					writer = new BufferedVolumeItemWriter(database, true, bufferSize);
 
 				/* invoke the scanning function on a new thread and return a waithandle */
-				ScanningThreadInvoker sti = new ScanningThreadInvoker(ScanningThread);
-				IAsyncResult ar = sti.BeginInvoke(driveInfo, volume, writer, computeHashs, null, null);
+				Action<PlatformIO.DriveInfo, TVolume, BufferedVolumeItemWriter, bool> st = ScanningThread;
+				IAsyncResult ar = st.BeginInvoke(driveInfo, volume, writer, computeHashs, null, null);
 				return ar.AsyncWaitHandle;
 			} catch(Exception) {
 				isRunning = false;
@@ -375,11 +375,6 @@ namespace VolumeDB.VolumeScanner
 			                                 BufferedVolumeItemWriter writer,
 			                                 bool computeHashs);
 
-		private delegate void ScanningThreadInvoker(PlatformIO.DriveInfo driveInfo,
-		                                            TVolume volume,
-		                                            BufferedVolumeItemWriter writer,
-		                                            bool computeHash);
-		
 		private void ScanningThread(PlatformIO.DriveInfo driveInfo,
 		                            TVolume volume,
 		                            BufferedVolumeItemWriter writer,

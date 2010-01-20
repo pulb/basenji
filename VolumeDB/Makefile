@@ -230,7 +230,8 @@ EXTRAS = \
 
 REFERENCES =  \
 	System \
-	System.Data
+	System.Data \
+	System.Core
 
 DLL_REFERENCES = 
 
