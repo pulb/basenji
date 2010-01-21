@@ -208,6 +208,7 @@ namespace VolumeDB.VolumeScanner
 			try {
 				ft = FileHelper.GetFileType(dir.FullName, false);
 			} catch (FileNotFoundException ex) {
+				/* may throw ScanCancelledException */
 				SendScannerWarning(string.Format(S._("Directory '{0}' not found. (Wrong filename encoding?)"),
 				                                 dir.FullName), ex);
 				return;
@@ -272,6 +273,7 @@ namespace VolumeDB.VolumeScanner
 					try {
 						ft = FileHelper.GetFileType(files[i].FullName, false);
 					} catch (FileNotFoundException ex) {
+						/* may throw ScanCancelledException */
 						SendScannerWarning(string.Format(S._("File '{0}' not found. (Wrong filename encoding?)"), 
 						                                 files[i].FullName), ex);
 						continue;
