@@ -264,7 +264,7 @@ namespace VolumeDB.VolumeScanner
 //					  bool isSymLink	  = false;
 					
 #if DEBUG && DEBUG_FILE_VERBOSE
-					Platform.Common.Diagnostics.Debug.WriteLine(string.Format("Indexing file '{0}'", files[i].FullName));
+					Console.WriteLine(string.Format("Indexing file '{0}'", files[i].FullName));
 #endif
 //					// TODO : catch FileNotFounException? when is it thrown? (e.g. at /dev/fd/21)
 					
