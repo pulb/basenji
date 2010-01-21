@@ -38,7 +38,24 @@ namespace Platform.Common.Diagnostics
 		}
 		
 		private static void WriteLine(Assembly asm, string message, params object[] args) {
-			message = string.Format(message, args);
+			object[] args2;
+			if (args.Length == 0) {
+				message = message.Replace("{", "{{").Replace("}", "}}");
+				args2 = args;
+			} else {
+				args2 = new object[args.Length];
+				args.CopyTo(args2, 0);
+				
+				for (int i = 0; i < args.Length; i++) {
+					string s;
+					if ((s = args[i] as string) != null)
+						args2[i] = s.Replace("{", "{{").Replace("}", "}}");
+					else
+						args2[i] = args[i];
+				}
+			}
+			
+			message = string.Format(message, args2);
 			string appName = asm.GetName().Name;
 			Console.WriteLine("[{0} DBG]: {1}", appName, message);
 			//System.Diagnostics.Debug.WriteLine(message);
