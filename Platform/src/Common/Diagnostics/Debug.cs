@@ -46,12 +46,10 @@ namespace Platform.Common.Diagnostics
 				args2 = new object[args.Length];
 				args.CopyTo(args2, 0);
 				
-				for (int i = 0; i < args.Length; i++) {
+				for (int i = 0; i < args2.Length; i++) {
 					string s;
-					if ((s = args[i] as string) != null)
+					if ((s = args2[i] as string) != null)
 						args2[i] = s.Replace("{", "{{").Replace("}", "}}");
-					else
-						args2[i] = args[i];
 				}
 			}
 			
