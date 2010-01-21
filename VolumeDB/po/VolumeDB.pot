@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-18 16:41+0100\n"
+"POT-Creation-Date: 2010-01-21 21:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,57 +16,67 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:124
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:126
 msgid "libExtractor not found. Metadata extraction disabled."
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:204
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:212
+#, csharp-format
+msgid "Directory '{0}' not found. (Wrong filename encoding?)"
+msgstr ""
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:221
 #, csharp-format
 msgid "Skipped item '{0}' as it doesn't seem to be a real directory."
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:214
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:326
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:231
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:356
 #, csharp-format
 msgid "Skipped symlink item '{0}' as the target does not exist."
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:220
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:318
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:329
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:237
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:348
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:359
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it appears to point to a different drive "
 "('{1}')."
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:295
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:277
+#, csharp-format
+msgid "File '{0}' not found. (Wrong filename encoding?)"
+msgstr ""
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:325
 #, csharp-format
 msgid "Error opening file '{0}', can't retrieve any mime/metadata. ({1})"
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:332
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:362
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:341
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:371
 #, csharp-format
 msgid "Skipped item '{0}' as it appears to be some kind of special file."
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:356
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:386
 #, csharp-format
 msgid "Unable to dump dir '{0}'. ({1})"
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:543
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:573
 #, csharp-format
 msgid "Failed to resolve target item for symlink '{0}'."
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:602
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:632
 #, csharp-format
 msgid "Can't read LastWriteTime from item '{0}' ({1})."
 msgstr ""
