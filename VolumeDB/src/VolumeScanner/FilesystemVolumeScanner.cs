@@ -132,17 +132,22 @@ namespace VolumeDB.VolumeScanner
 	//			  if ((rootPath.Length > 1) && (rootPath[rootPath.Length - 1] == Path.DirectorySeparatorChar))
 	//				  rootPath = rootPath.Substring(0, rootPath.Length - 1);
 				
+				// make sure the root path exists
+				// (media may have been removed after Scanner construction)
+				if (!Directory.Exists(rootPath))
+					throw new DirectoryNotFoundException("Root path does not exist");
+				
 				DirectoryInfo dir = new DirectoryInfo(rootPath);				
 				RecursiveDump(rootPath, dir, writer, computeHashs, VolumeDatabase.ID_NONE);
 				InsertSymLinkItems(writer, volume.VolumeID);
 				
 				volume.SetFileSystemVolumeFields(VolumeInfo.Files, VolumeInfo.Directories, VolumeInfo.Size);
-			} catch(Exception) {
+			} catch (Exception) {
 				// try to cleanup
 				try {
 					if((paths.volumeDataPath != null) && Directory.Exists(paths.volumeDataPath))
 						Directory.Delete(paths.volumeDataPath, true);
-				} catch(Exception) { /* just shut up */ }
+				} catch (Exception) { /* just shut up */ }
 				
 				// rethrow initial exception
 				throw;
@@ -195,9 +200,18 @@ namespace VolumeDB.VolumeScanner
 //			  string symLinkTarget = null;
 			FileType ft;
 			
-			// TODO : catch FileNotFounException? when is it thrown? (e.g. at /dev/fd/21)
-			// is this the case withwith "dead" symlinks (only)?
-			ft = FileHelper.GetFileType(dir.FullName, false);
+//			// TODO : catch FileNotFounException? when is it thrown? (e.g. at /dev/fd/21)
+//			// is this the case withwith "dead" symlinks (only)?
+			
+			// catch possible FileNotFoundExceptions
+			// (e.g. on filesystems with wrong filename encoding or vanishing virtual files in /dev).
+			try {
+				ft = FileHelper.GetFileType(dir.FullName, false);
+			} catch (FileNotFoundException ex) {
+				SendScannerWarning(string.Format(S._("Directory '{0}' not found. (Wrong filename encoding?)"),
+				                                 dir.FullName), ex);
+				return;
+			}
 				
 			bool dirIsSymLink = (ft == FileType.SymbolicLink);
 
@@ -251,9 +265,18 @@ namespace VolumeDB.VolumeScanner
 #if DEBUG && DEBUG_FILE_VERBOSE
 					Platform.Common.Diagnostics.Debug.WriteLine(string.Format("Indexing file '{0}'", files[i].FullName));
 #endif
-					// TODO : catch FileNotFounException? when is it thrown? (e.g. at /dev/fd/21)
-					ft = FileHelper.GetFileType(files[i].FullName, false);
-
+//					// TODO : catch FileNotFounException? when is it thrown? (e.g. at /dev/fd/21)
+					
+					// catch possible FileNotFoundExceptions
+					// (e.g. on filesystems with wrong filename encoding or vanishing virtual files in /dev).
+					try {
+						ft = FileHelper.GetFileType(files[i].FullName, false);
+					} catch (FileNotFoundException ex) {
+						SendScannerWarning(string.Format(S._("File '{0}' not found. (Wrong filename encoding?)"), 
+						                                 files[i].FullName), ex);
+						continue;
+					}
+					
 					/* special files (fifos, blockdevices, chardevices) are skipped */
 					bool isRegularFile	 = (ft == FileType.RegularFile);
 					bool isSymLink		 = (ft == FileType.SymbolicLink);
