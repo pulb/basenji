@@ -200,9 +200,6 @@ namespace VolumeDB.VolumeScanner
 //			  string symLinkTarget = null;
 			FileType ft;
 			
-//			// TODO : catch FileNotFounException? when is it thrown? (e.g. at /dev/fd/21)
-//			// is this the case withwith "dead" symlinks (only)?
-			
 			// catch possible FileNotFoundExceptions
 			// (e.g. on filesystems with wrong filename encoding or vanishing virtual files in /dev).
 			try {
@@ -266,8 +263,6 @@ namespace VolumeDB.VolumeScanner
 #if DEBUG && DEBUG_FILE_VERBOSE
 					Platform.Common.Diagnostics.Debug.WriteLine(string.Format("Indexing file '{0}'", files[i].FullName));
 #endif
-//					// TODO : catch FileNotFounException? when is it thrown? (e.g. at /dev/fd/21)
-					
 					// catch possible FileNotFoundExceptions
 					// (e.g. on filesystems with wrong filename encoding or vanishing virtual files in /dev).
 					try {
