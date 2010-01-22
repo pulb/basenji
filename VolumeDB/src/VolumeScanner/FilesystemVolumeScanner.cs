@@ -221,7 +221,7 @@ namespace VolumeDB.VolumeScanner
 			
 			if (dirIsSymLink) {
 				if (!discardSymLinks) {
-					string symLinkTarget = GetFullSymLinkTargetPath(FileHelper.GetSymLinkTarget(dir.FullName), Path.GetDirectoryName(dir.FullName)); // TODO : may this throw an exception when accessing dead symlinks? (same question appears a couple of lines below). Edit: apparently not.
+					string symLinkTarget = GetFullSymLinkTargetPath(FileHelper.GetSymLinkTarget(dir.FullName), Path.GetDirectoryName(dir.FullName));
 
 					if (!Directory.Exists(symLinkTarget)) {
 						/* may throw ScanCancelledException */
@@ -333,7 +333,7 @@ namespace VolumeDB.VolumeScanner
 					} else if (isSymLink) {
 						
 						if (!discardSymLinks) {
-							string symLinkTarget = GetFullSymLinkTargetPath(FileHelper.GetSymLinkTarget(files[i].FullName), dir.FullName);	// TODO : may this throw an exception when accessing dead symlinks?
+							string symLinkTarget = GetFullSymLinkTargetPath(FileHelper.GetSymLinkTarget(files[i].FullName), dir.FullName);
 							
 							// TODO : remove this fix when the bug has been fixed in the next ubuntu mono package							 
 							// see https://bugzilla.novell.com/show_bug.cgi?id=385765
@@ -342,7 +342,7 @@ namespace VolumeDB.VolumeScanner
 									/* may throw ScanCancelledException */
 									SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as it appears to point to a different drive ('{1}')."), files[i].FullName, symLinkTarget));
 								} else {
-										symLinkItems.Add(SymLinkItem.CreateInstance(files[i], symLinkTarget, parentID, true, rootPath, this));
+									symLinkItems.Add(SymLinkItem.CreateInstance(files[i], symLinkTarget, parentID, true, rootPath, this));
 								}
 							} else { /* END fix to bug #385765 */							 
 								
