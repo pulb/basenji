@@ -365,8 +365,10 @@ namespace VolumeDB.VolumeScanner
 						/* may throw ScanCancelledException */
 						SendScannerWarning(string.Format(S._("Skipped item '{0}' as it appears to be some kind of special file."), files[i].FullName));
 					}
+					
 					// TODO : check m_cancel here (?)
-				}
+					
+				}  // end for
 				
 				/* recursively dump subdirs */
 				DirectoryInfo[] childDirs = dir.GetDirectories(); /* throws access exceptions (cant access _DIRECTORY_) */
