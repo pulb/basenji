@@ -221,7 +221,10 @@ namespace VolumeDB.VolumeScanner
 			
 			if (dirIsSymLink) {
 				if (!discardSymLinks) {
-					string symLinkTarget = GetFullSymLinkTargetPath(FileHelper.GetSymLinkTarget(dir.FullName), Path.GetDirectoryName(dir.FullName));
+					string symLinkTarget =
+						GetFullSymLinkTargetPath(FileHelper
+						                         .GetSymLinkTarget(dir.FullName),
+						                         Path.GetDirectoryName(dir.FullName));
 
 					if (!Directory.Exists(symLinkTarget)) {
 						/* may throw ScanCancelledException */
@@ -333,7 +336,10 @@ namespace VolumeDB.VolumeScanner
 					} else if (isSymLink) {
 						
 						if (!discardSymLinks) {
-							string symLinkTarget = GetFullSymLinkTargetPath(FileHelper.GetSymLinkTarget(files[i].FullName), dir.FullName);
+							string symLinkTarget =
+								GetFullSymLinkTargetPath(FileHelper
+								                         .GetSymLinkTarget(files[i].FullName),
+								                         dir.FullName);
 							
 							if (!File.Exists(symLinkTarget)) {
 								/* may throw ScanCancelledException */
