@@ -335,30 +335,18 @@ namespace VolumeDB.VolumeScanner
 						if (!discardSymLinks) {
 							string symLinkTarget = GetFullSymLinkTargetPath(FileHelper.GetSymLinkTarget(files[i].FullName), dir.FullName);
 							
-							// TODO : remove this fix when the bug has been fixed in the next ubuntu mono package							 
-							// see https://bugzilla.novell.com/show_bug.cgi?id=385765
-							if (Directory.Exists(symLinkTarget)) { /* START fix to bug #385765 */
-								if (!symLinkTarget.StartsWith(rootPath)) {	// skip symlinks outside of rootPath (in addition, GetLocation()/FixPath() need paths relative to rootPath)
-									/* may throw ScanCancelledException */
-									SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as it appears to point to a different drive ('{1}')."), files[i].FullName, symLinkTarget));
-								} else {
-									symLinkItems.Add(SymLinkItem.CreateInstance(files[i], symLinkTarget, parentID, true, rootPath, this));
-								}
-							} else { /* END fix to bug #385765 */							 
-								
-								if (!File.Exists(symLinkTarget)) {
-									/* may throw ScanCancelledException */
-									SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as the target does not exist."), files[i].FullName));
-								} else if (!symLinkTarget.StartsWith(rootPath)) { // skip symlinks outside of rootPath (in addition, GetLocation()/FixPath() need paths relative to rootPath)
-									/* may throw ScanCancelledException */
-									SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as it appears to point to a different drive ('{1}')."), files[i].FullName, symLinkTarget));
-								} else if (FileHelper.GetFileType(symLinkTarget, false) != FileType.RegularFile) { // also skipps symlinks pointing to symlinks (hard to implement)
-									/* may throw ScanCancelledException */
-									SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."), files[i].FullName, symLinkTarget));
-								} else {
-									//symLinkItems.add(new SymLinkItem(parentID, files[i].fullName, files[i].Name, GetLocation(files[i].FullName, rootPath), FixPath(symLinkTarget, rootPath), false));
-									symLinkItems.Add(SymLinkItem.CreateInstance(files[i], symLinkTarget, parentID, false, rootPath, this));
-								}
+							if (!File.Exists(symLinkTarget)) {
+								/* may throw ScanCancelledException */
+								SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as the target does not exist."), files[i].FullName));
+							} else if (!symLinkTarget.StartsWith(rootPath)) { // skip symlinks outside of rootPath (in addition, GetLocation()/FixPath() need paths relative to rootPath)
+								/* may throw ScanCancelledException */
+								SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as it appears to point to a different drive ('{1}')."), files[i].FullName, symLinkTarget));
+							} else if (FileHelper.GetFileType(symLinkTarget, false) != FileType.RegularFile) { // also skipps symlinks pointing to symlinks (hard to implement)
+								/* may throw ScanCancelledException */
+								SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."), files[i].FullName, symLinkTarget));
+							} else {
+								//symLinkItems.add(new SymLinkItem(parentID, files[i].fullName, files[i].Name, GetLocation(files[i].FullName, rootPath), FixPath(symLinkTarget, rootPath), false));
+								symLinkItems.Add(SymLinkItem.CreateInstance(files[i], symLinkTarget, parentID, false, rootPath, this));
 							}
 						}
 					} else {
