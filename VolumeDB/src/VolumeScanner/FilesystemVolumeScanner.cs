@@ -27,6 +27,7 @@ using System.Collections.Generic;
 using Platform.Common;
 using Platform.Common.IO;
 using Platform.Common.Mime;
+using Platform.Common.Diagnostics;
 using VolumeDB.Searching;
 using VolumeDB.Searching.ItemSearchCriteria;
 using LibExtractor;
@@ -271,7 +272,7 @@ namespace VolumeDB.VolumeScanner
 //					  bool isSymLink	  = false;
 					
 #if DEBUG && DEBUG_FILE_VERBOSE
-					Platform.Common.Diagnostics.Debug.WriteLine(string.Format("Indexing file '{0}'", files[i].FullName));
+					Debug.WriteLine(string.Format("Indexing file '{0}'", files[i].FullName));
 #endif
 					// catch possible FileNotFoundExceptions
 					// (e.g. on filesystems with wrong filename encoding or vanishing virtual files in /dev).
@@ -632,11 +633,11 @@ namespace VolumeDB.VolumeScanner
 					// or are symlinks as big as dirs, those aren't respected as well.. 
 					//Interlocked.Add(ref VolumeInfo.size, sli.size);
 					
-					Platform.Common.Diagnostics.Debug.WriteLine("Successfully resolved and saved symlink item: {0}/{1} -> {2}/{3}",
-					                                            (sli.sourceLocation == PATH_SEPARATOR.ToString() ? "" : sli.sourceLocation),
-					                                            sli.sourceName,
-					                                            (targetItem.Location == PATH_SEPARATOR.ToString() ? "" : targetItem.Location),
-					                                            (targetItem.Name == PATH_SEPARATOR.ToString() ? "" : targetItem.Name));
+					Debug.WriteLine("Successfully resolved and saved symlink item: {0}/{1} -> {2}/{3}",
+					                (sli.sourceLocation == PATH_SEPARATOR.ToString() ? "" : sli.sourceLocation),
+					                sli.sourceName,
+					                (targetItem.Location == PATH_SEPARATOR.ToString() ? "" : targetItem.Location),
+					                (targetItem.Name == PATH_SEPARATOR.ToString() ? "" : targetItem.Name));
 				}
 			}
 		}
