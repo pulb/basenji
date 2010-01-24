@@ -75,7 +75,8 @@ namespace VolumeDB.VolumeScanner
 		{
 		
 			if (generateThumbnails && string.IsNullOrEmpty(dbDataPath))
-				throw new ArgumentException("dbDataPath", "Thumbnail generation requires dbDataPath to be set");
+				throw new ArgumentException("dbDataPath",
+				                            "Thumbnail generation requires dbDataPath to be set");
 			
 			disposed				= false;
 			//this.mimeInfo			  = new MimeInfo(false);
@@ -215,7 +216,8 @@ namespace VolumeDB.VolumeScanner
 
 			if ((ft != FileType.Directory) && !dirIsSymLink) {
 				/* may throw ScanCancelledException */
-				SendScannerWarning(string.Format(S._("Skipped item '{0}' as it doesn't seem to be a real directory."), dir.FullName));
+				SendScannerWarning(string.Format(S._("Skipped item '{0}' as it doesn't seem to be a real directory."),
+				                                 dir.FullName));
 				return;    
 			}
 			
@@ -228,13 +230,18 @@ namespace VolumeDB.VolumeScanner
 
 					if (!Directory.Exists(symLinkTarget)) {
 						/* may throw ScanCancelledException */
-						SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as the target does not exist."), dir.FullName));
+						SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as the target does not exist."),
+						                                 dir.FullName));
 						return;
 					}
 					
-					if (!symLinkTarget.StartsWith(rootPath)) {	// skip symlinks outside of rootPath (in addition, GetLocation()/FixPath() need paths relative to rootPath)
+					// skip symlinks outside of rootPath 
+					// (in addition, GetLocation()/FixPath() need paths relative to rootPath)
+					if (!symLinkTarget.StartsWith(rootPath)) {
 						/* may throw ScanCancelledException */
-						SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as it appears to point to a different drive ('{1}')."), dir.FullName, symLinkTarget));
+						SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as it appears to point to a different drive ('{1}')."),
+						                                 dir.FullName,
+						                                 symLinkTarget));
 						return;
 					}
 					
@@ -320,7 +327,10 @@ namespace VolumeDB.VolumeScanner
 							// and the thumbnail may not have been generated!
 							if (e is UnauthorizedAccessException || e is IOException) {
 								/* may throw ScanCancelledException */
-								SendScannerWarning(string.Format(S._("Error opening file '{0}', can't retrieve any mime/metadata. ({1})"), files[i].FullName, e.Message), e);
+								SendScannerWarning(string.Format(S._("Error opening file '{0}', can't retrieve any mime/metadata. ({1})"),
+								                                 files[i].FullName,
+								                                 e.Message),
+								                   e);
 							} else {
 								throw;								  
 							}
@@ -343,21 +353,37 @@ namespace VolumeDB.VolumeScanner
 							
 							if (!File.Exists(symLinkTarget)) {
 								/* may throw ScanCancelledException */
-								SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as the target does not exist."), files[i].FullName));
-							} else if (!symLinkTarget.StartsWith(rootPath)) { // skip symlinks outside of rootPath (in addition, GetLocation()/FixPath() need paths relative to rootPath)
+								SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as the target does not exist."),
+								                                 files[i].FullName));
+							
+							// skip symlinks outside of rootPath
+							// (in addition, GetLocation()/FixPath() need paths relative to rootPath)
+							} else if (!symLinkTarget.StartsWith(rootPath)) {
 								/* may throw ScanCancelledException */
-								SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as it appears to point to a different drive ('{1}')."), files[i].FullName, symLinkTarget));
-							} else if (FileHelper.GetFileType(symLinkTarget, false) != FileType.RegularFile) { // also skipps symlinks pointing to symlinks (hard to implement)
+								SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as it appears to point to a different drive ('{1}')."),
+								                                 files[i].FullName,
+								                                 symLinkTarget));
+							
+							// also skipps symlinks pointing to symlinks (hard to implement)
+							} else if (FileHelper.GetFileType(symLinkTarget, false) != FileType.RegularFile) {
 								/* may throw ScanCancelledException */
-								SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."), files[i].FullName, symLinkTarget));
+								SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."),
+								                                 files[i].FullName,
+								                                 symLinkTarget));
 							} else {
 								//symLinkItems.add(new SymLinkItem(parentID, files[i].fullName, files[i].Name, GetLocation(files[i].FullName, rootPath), FixPath(symLinkTarget, rootPath), false));
-								symLinkItems.Add(SymLinkItem.CreateInstance(files[i], symLinkTarget, parentID, false, rootPath, this));
+								symLinkItems.Add(SymLinkItem.CreateInstance(files[i],
+								                                            symLinkTarget,
+								                                            parentID,
+								                                            false,
+								                                            rootPath,
+								                                            this));
 							}
 						}
 					} else {
 						/* may throw ScanCancelledException */
-						SendScannerWarning(string.Format(S._("Skipped item '{0}' as it appears to be some kind of special file."), files[i].FullName));
+						SendScannerWarning(string.Format(S._("Skipped item '{0}' as it appears to be some kind of special file."),
+						                                 files[i].FullName));
 					}
 					
 					// TODO : check m_cancel here (?)
@@ -515,7 +541,8 @@ namespace VolumeDB.VolumeScanner
 		                                    int from,
 		                                    int to) {
 			// resolve symlink targets
-			// build a query like e.g. '(VolumeID = 223) AND ((Location="/dir1" AND Name="file1") OR ((Location="/dir2" AND Name="file2") ...)'
+			// build a query like e.g. 
+			// '(VolumeID = 223) AND ((Location="/dir1" AND Name="file1") OR ((Location="/dir2" AND Name="file2") ...)'
 			SearchCriteriaGroup g = new SearchCriteriaGroup(MatchRule.AllMustMatch);
 			g.AddSearchCriteria(new IDSearchCriteria(volumeID, IDSearchField.VolumeID, CompareOperator.Equal));
 			
@@ -529,7 +556,9 @@ namespace VolumeDB.VolumeScanner
 				SearchCriteriaGroup locationNameGroup = new SearchCriteriaGroup(MatchRule.AllMustMatch);
 				FreeTextSearchCriteria ftsc;
 				
-				if (sli.targetLocation.Length > 0) { // symlinks pointing to the root do not have a location (only a name, see the SymLinkItem class definition)
+				// symlinks pointing to the root do not have a location 
+				// (only a name, see the SymLinkItem class definition)
+				if (sli.targetLocation.Length > 0) {
 					ftsc = new FreeTextSearchCriteria(sli.targetLocation,
 					                                  FreeTextSearchField.Location,
 					                                  TextCompareOperator.IsEqual);
@@ -546,8 +575,10 @@ namespace VolumeDB.VolumeScanner
 				g2.AddSearchCriteria(locationNameGroup);
 			}
 			
-			// query target items
-			VolumeItem[] queriedItems = Database.SearchItem(g); // async BeginItemSearch() won't work here (active transaction prevents other threads from accessing the database)
+			// query target items.
+			// async BeginItemSearch() won't work here
+			// (active transaction prevents other threads from accessing the database)
+			VolumeItem[] queriedItems = Database.SearchItem(g);
 
 			// store queried target items in a dictionary for faster access
 			Dictionary<string, FileSystemVolumeItem> targetItems = new Dictionary<string, FileSystemVolumeItem>();
@@ -715,11 +746,13 @@ namespace VolumeDB.VolumeScanner
 		
 		private static string GetFullSymLinkTargetPath(string symLinkTarget, string currentDir) {
 			string fullTargetPath;
-			if (Path.IsPathRooted(symLinkTarget))
+			if (Path.IsPathRooted(symLinkTarget)) {
 				fullTargetPath = symLinkTarget;
-			else
-				fullTargetPath = Path.GetFullPath(Path.Combine(currentDir, symLinkTarget));  //GetFullPath() removes relative dots, eg "/dir1/dir2/../file1" becomes "/dir1/file1"
-		   
+			} else {
+				//GetFullPath() removes relative dots, eg "/dir1/dir2/../file1" becomes "/dir1/file1"
+				fullTargetPath = Path.GetFullPath(Path.Combine(currentDir, symLinkTarget));
+			}
+			
 			// remove possible ending slash from directory targets
 			fullTargetPath = RemoveEndingSlash(fullTargetPath);
 //			 if ((fullTargetPath[fullTargetPath.Length - 1] == Path.DirectorySeparatorChar) && (fullTargetPath.Length > 1))
@@ -756,7 +789,8 @@ namespace VolumeDB.VolumeScanner
 				
 				string targetLocation, targetName;
 
-				if (target == rootPath) { // if target is rootPath Path.GetFileName(target) won't work
+				// if target is rootPath Path.GetFileName(target) won't work
+				if (target == rootPath) {
 					targetLocation	= string.Empty;
 					targetName		= PATH_SEPARATOR.ToString();
 				} else {
