@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using Platform.Common.DB;
+using Platform.Common.Diagnostics;
 using LibExtractor;
 
 namespace VolumeDB.Import
@@ -210,7 +211,7 @@ namespace VolumeDB.Import
 			}
 			
 			string path = (string)reader["path"];			
-			Assert(path.StartsWith("file:///"), "path starts with 'file://'");
+			Debug.Assert(path.StartsWith("file:///"), "path starts with 'file://'");
 			
 			string location = DecoderUtility.UrlDecode(path.Substring(rootPath.Length));
 			long itemID = 2 + (long)reader["id"] - minFileID; // id 1 is the root item

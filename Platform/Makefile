@@ -110,7 +110,8 @@ FILES = \
 	src/Common/Globalization/Catalog.cs \
 	src/Common/Globalization/TranslatedStringTable.cs \
 	src/Win32/ThumbnailCreator.cs \
-	src/Win32/ThumbnailGenerator.cs 
+	src/Win32/ThumbnailGenerator.cs \
+	src/Common/Diagnostics/AssertionFailedException.cs 
 
 DATA_FILES = 
 

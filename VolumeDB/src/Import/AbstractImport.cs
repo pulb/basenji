@@ -123,11 +123,6 @@ namespace VolumeDB.Import
 			volumeDataPaths.Clear();
 		}
 		
-		protected static void Assert(bool condition, string msg) {
-			if (!condition)
-				throw new Exception("Assertion failed: " + msg);
-		}
-		
 		// TODO : make this member internally protected in case this language feature has become real
 		// see http://lab.msdn.microsoft.com/productfeedback/viewfeedback.aspx?feedbackid=33c53cf6-2709-4cc9-a408-6cafee4313ef
 		//protected

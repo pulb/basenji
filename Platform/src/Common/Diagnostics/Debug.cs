@@ -1,6 +1,6 @@
 // Debug.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008 - 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -23,6 +23,11 @@ namespace Platform.Common.Diagnostics
 {	
 	public static class Debug
 	{
+		public static void Assert(bool condition, string msg) {
+			if (!condition)
+				throw new AssertionFailedException("Assertion failed: " + msg);
+		}
+		
 		public static void WriteLine(string message) {
 #if DEBUG
 			Assembly asm = Assembly.GetCallingAssembly();
