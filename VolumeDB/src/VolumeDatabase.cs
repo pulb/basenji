@@ -217,7 +217,9 @@ namespace VolumeDB
 				}
 			}
 			
+#if DEBUG
 			Debug.WriteLine(string.Format("_SearchVolume() executes query: '{0}'", sqlQuery));
+#endif
 			return QueryVolumes(sqlQuery);
 		}
 		
@@ -345,8 +347,9 @@ namespace VolumeDB
 				//sqlQuery = string.Format("SELECT * FROM Items WHERE {0} ORDER BY {1};", condition, ORDER_FIELD);
 				sqlQuery = string.Format("SELECT * FROM Items WHERE {0};", condition);
 			}
-			
+#if DEBUG			
 			Debug.WriteLine(string.Format("_SearchItem() executes query: '{0}'", sqlQuery));
+#endif
 			return QueryItems<VolumeItem>(sqlQuery, searchItemResultsLimit);
 		}
 		

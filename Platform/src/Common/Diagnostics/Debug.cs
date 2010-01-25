@@ -29,17 +29,13 @@ namespace Platform.Common.Diagnostics
 		}
 		
 		public static void WriteLine(string message) {
-#if DEBUG
 			Assembly asm = Assembly.GetCallingAssembly();
 			WriteLine(asm, message, new object[] {});
-#endif
 		}
 		
 		public static void WriteLine(string message, params object[] args) {
-#if DEBUG
 			Assembly asm = Assembly.GetCallingAssembly();
 			WriteLine(asm, message, args);
-#endif
 		}
 		
 		private static void WriteLine(Assembly asm, string message, params object[] args) {

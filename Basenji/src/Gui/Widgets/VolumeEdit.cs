@@ -119,10 +119,14 @@ namespace Basenji.Gui.Widgets
 				throw new InvalidOperationException("No volume object loaded");
 
 			if (!dataChanged) {
+#if DEBUG
 				Debug.WriteLine("not saving, nothing changed.");
+#endif
 				return;
 			} else {
+#if DEBUG
 				Debug.WriteLine("saving form.");
+#endif
 			}
 			
 			ValidateForm(); // may throw a ValidationException

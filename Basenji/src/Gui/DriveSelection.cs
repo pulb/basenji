@@ -197,7 +197,9 @@ namespace Basenji.Gui
 					btnOk.Sensitive = true;
 				
 				selectedDrive = (DriveInfo)model.GetValue(iter, 4);
+#if DEBUG				
 				Debug.WriteLine("selected drive '{0}'", selectedDrive.Device);
+#endif
 			}	 
 		}
 		

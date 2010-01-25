@@ -632,12 +632,13 @@ namespace VolumeDB.VolumeScanner
 					// increase totalsize by size of symlinks too? (not size of target!)
 					// or are symlinks as big as dirs, those aren't respected as well.. 
 					//Interlocked.Add(ref VolumeInfo.size, sli.size);
-					
+#if DEBUG					
 					Debug.WriteLine("Successfully resolved and saved symlink item: {0}/{1} -> {2}/{3}",
 					                (sli.sourceLocation == PATH_SEPARATOR.ToString() ? "" : sli.sourceLocation),
 					                sli.sourceName,
 					                (targetItem.Location == PATH_SEPARATOR.ToString() ? "" : targetItem.Location),
 					                (targetItem.Name == PATH_SEPARATOR.ToString() ? "" : targetItem.Name));
+#endif
 				}
 			}
 		}
