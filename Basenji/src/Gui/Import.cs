@@ -59,7 +59,7 @@ namespace Basenji.Gui
 				progress.Text = string.Empty;
 				
 				string sourceDbPath = fcDatabase.Filename;
-				string dbDataPath = DbData.GetDbDataPath(database);
+				string dbDataPath = PathUtil.GetDbDataPath(database);
 				int buffSize = App.Settings.ScannerBufferSize;
 				
 				switch (cmbFormat.Active) {

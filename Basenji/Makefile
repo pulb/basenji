@@ -190,7 +190,7 @@ FILES = \
 	src/Icons/NameInCustomIconNameAttribute.cs \
 	src/App.cs \
 	src/AssemblyInfo.cs \
-	src/DbData.cs \
+	src/PathUtil.cs \
 	src/FileDialog.cs \
 	src/Main.cs \
 	src/MsgDialog.cs \

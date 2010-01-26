@@ -59,8 +59,11 @@ namespace Basenji.Gui.Widgets
 				this.pb = null;
 			}
 			
+			string dbDataPath = PathUtil.GetDbDataPath(db);
+			string volumeDataPath = DbData.GetVolumeDataPath(dbDataPath, item.VolumeID);
+			string thumbsPath = DbData.GetVolumeDataThumbsPath(volumeDataPath);
 			string thumbName = System.IO.Path.Combine(
-				DbData.GetVolumeDataThumbsPath(db, item.VolumeID), 
+				thumbsPath, 
 				string.Format("{0}.png", item.ItemID));
 			
 			if (File.Exists(thumbName)) {

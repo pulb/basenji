@@ -1,6 +1,6 @@
 // MainWindow.cs
 // 
-// Copyright (C) 2008, 2009 Patrick Ulbrich
+// Copyright (C) 2008 - 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -323,7 +323,8 @@ namespace Basenji.Gui
 				database.RemoveVolume(volume.VolumeID);
 				
 				// remove external db data
-				string volumeDataPath = DbData.GetVolumeDataPath(database, volume.VolumeID);
+				string dbDataPath = PathUtil.GetDbDataPath(database);
+				string volumeDataPath = DbData.GetVolumeDataPath(dbDataPath, volume.VolumeID);
 				if (Directory.Exists(volumeDataPath))
 					Directory.Delete(volumeDataPath, true);
 				

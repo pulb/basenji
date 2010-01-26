@@ -72,7 +72,7 @@ namespace Basenji.Gui
 			                                      generateThumbnails,
 			                                      extractMetaData,
 			                                      blacklist,
-			                                      DbData.GetDbDataPath(database));
+			                                      PathUtil.GetDbDataPath(database));
 			
 			// scanner eventhandlers
 			scanner.BeforeScanItem	  += scanner_BeforeScanItem;
@@ -174,7 +174,14 @@ namespace Basenji.Gui
 		}
 		
 		private void SaveLog(long volumeID) {
-			string logfile = IO.Path.Combine(DbData.GetVolumeDataPath(database, volumeID), "scanner.log");
+			string dbDataPath = PathUtil.GetDbDataPath(database);
+			string volumeDataPath = DbData.GetVolumeDataPath(dbDataPath, volumeID);
+			
+			if (IO.Directory.Exists(volumeDataPath))
+				IO.Directory.CreateDirectory(volumeDataPath);
+			
+			string logfile = IO.Path.Combine(volumeDataPath, "scanner.log");
+			
 			using (IO.StreamWriter w = new IO.StreamWriter(IO.File.OpenWrite(logfile))) {
 				w.WriteLine(string.Format("{0} scanner log ({0} version: {1}, VolumeDB version: {2}) saved on {3}", 
 										  App.Name, 

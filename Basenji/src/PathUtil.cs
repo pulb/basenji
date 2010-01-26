@@ -1,6 +1,6 @@
-// DbData.cs
+// PathUtil.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,8 +22,8 @@ using VolumeDB;
 
 namespace Basenji
 {
-	// paths to external db data like logs, thumbnails
-	public static class DbData
+//	// paths to external db data like logs, thumbnails
+	public static class PathUtil
 	{
 		public static string GetDbDataPath(VolumeDatabase db) {
 			string settingsPath = App.Settings.GetSettingsDirectory().FullName;			   
@@ -35,7 +35,7 @@ namespace Basenji
 				
 			return dataPath;
 		}
-		
+/*
 		public static string GetVolumeDataPath(VolumeDatabase db, long volumeID) {
 			string volDataPath = Path.Combine(GetDbDataPath(db), volumeID.ToString());
 			
@@ -52,6 +52,6 @@ namespace Basenji
 //				Directory.CreateDirectory(thumbsPath);
 			
 			return thumbsPath;
-		}
+}*/
 	}
 }

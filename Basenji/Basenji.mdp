@@ -56,7 +56,7 @@
     <File subtype="Code" buildaction="Compile" name="src/Icons/NameInCustomIconNameAttribute.cs" />
     <File subtype="Code" buildaction="Compile" name="src/App.cs" />
     <File subtype="Code" buildaction="Compile" name="src/AssemblyInfo.cs" />
-    <File subtype="Code" buildaction="Compile" name="src/DbData.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/PathUtil.cs" />
     <File subtype="Code" buildaction="Compile" name="src/FileDialog.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Main.cs" />
     <File subtype="Code" buildaction="Compile" name="src/MsgDialog.cs" />
