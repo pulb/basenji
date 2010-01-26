@@ -321,8 +321,11 @@ namespace Basenji.Gui
 			if (result == ResponseType.Yes) {
 				Volume volume = tvVolumes.GetVolume(iter);
 				database.RemoveVolume(volume.VolumeID);
+				
 				// remove external db data
-				Directory.Delete(DbData.GetVolumeDataPath(database, volume.VolumeID), true);
+				string volumeDataPath = DbData.GetVolumeDataPath(database, volume.VolumeID);
+				if (Directory.Exists(volumeDataPath))
+					Directory.Delete(volumeDataPath, true);
 				
 				tvVolumes.RemoveVolume(iter);
 			}

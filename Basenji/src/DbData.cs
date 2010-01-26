@@ -39,8 +39,8 @@ namespace Basenji
 		public static string GetVolumeDataPath(VolumeDatabase db, long volumeID) {
 			string volDataPath = Path.Combine(GetDbDataPath(db), volumeID.ToString());
 			
-			if (!Directory.Exists(volDataPath))
-				Directory.CreateDirectory(volDataPath);
+//			if (!Directory.Exists(volDataPath))
+//				Directory.CreateDirectory(volDataPath);
 			
 			return volDataPath;
 		}
@@ -48,8 +48,8 @@ namespace Basenji
 		public static string GetVolumeDataThumbsPath(VolumeDatabase db, long volumeID) {
 			string thumbsPath = Path.Combine(GetVolumeDataPath(db, volumeID), "thumbs");
 			
-			if (!Directory.Exists(thumbsPath))
-				Directory.CreateDirectory(thumbsPath);
+//			if (!Directory.Exists(thumbsPath))
+//				Directory.CreateDirectory(thumbsPath);
 			
 			return thumbsPath;
 		}
