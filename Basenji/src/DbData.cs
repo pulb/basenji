@@ -53,15 +53,5 @@ namespace Basenji
 			
 			return thumbsPath;
 		}
-		
-//		  private static string GetLogPath(VolumeDatabase db) {
-//			  string dataPath = GetDbDataPath(db);
-//			  string logPath = IO.Path.Combine(dataPath, "logs");
-//			  
-//			  if (!IO.Directory.Exists(logPath))
-//				  IO.Directory.CreateDirectory(logPath);
-//			  
-//			  return logPath;
-//		  }
 	}
 }
