@@ -177,7 +177,7 @@ namespace Basenji.Gui
 			string dbDataPath = PathUtil.GetDbDataPath(database);
 			string volumeDataPath = DbData.GetVolumeDataPath(dbDataPath, volumeID);
 			
-			if (IO.Directory.Exists(volumeDataPath))
+			if (!IO.Directory.Exists(volumeDataPath))
 				IO.Directory.CreateDirectory(volumeDataPath);
 			
 			string logfile = IO.Path.Combine(volumeDataPath, "scanner.log");
