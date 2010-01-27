@@ -201,7 +201,7 @@ namespace VolumeDB.Import
 		}
 		
 		protected string CreateThumbsDir(string dbDataPath, long volumeID) {
-			string volumeDataPath = Path.Combine(dbDataPath, volumeID.ToString());
+/*			string volumeDataPath = Path.Combine(dbDataPath, volumeID.ToString());
 			volumeDataPaths.Add(volumeDataPath);
 			
 			// make sure there is no directory with the same name as the volume directory 
@@ -216,6 +216,10 @@ namespace VolumeDB.Import
 			Directory.CreateDirectory(thumbnailPath);
 			
 			return thumbnailPath;
+*/
+			string volumeDataPath = DbData.CreateVolumeDataPath(dbDataPath, volumeID);
+			volumeDataPaths.Add(volumeDataPath);
+			return DbData.CreateVolumeDataThumbsPath(volumeDataPath);
 		}
 		
 		protected static void ImportThumb(long sourceID,

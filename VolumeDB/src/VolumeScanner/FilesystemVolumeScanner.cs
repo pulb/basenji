@@ -110,7 +110,7 @@ namespace VolumeDB.VolumeScanner
 		                                          bool computeHashs) {
 			try {
 				if (generateThumbnails) {
-					paths.volumeDataPath = Path.Combine(paths.dbDataPath, volume.VolumeID.ToString());
+/*					paths.volumeDataPath = Path.Combine(paths.dbDataPath, volume.VolumeID.ToString());
 					
 					// make sure there is no directory with the same name as the volume directory 
 					// that is about to be created
@@ -121,7 +121,10 @@ namespace VolumeDB.VolumeScanner
 					
 					// thumbnails will be stored in <dbdataPath>/<volumeID>/thumbs
 					paths.thumbnailPath = Path.Combine(paths.volumeDataPath, "thumbs");
-					Directory.CreateDirectory(paths.thumbnailPath);
+					Directory.CreateDirectory(paths.thumbnailPath);*/
+					
+					paths.volumeDataPath = DbData.CreateVolumeDataPath(paths.dbDataPath, volume.VolumeID);
+					paths.thumbnailPath = DbData.CreateVolumeDataThumbsPath(paths.volumeDataPath);
 				}
 
 				if (extractMetaData && (extractor == null)) {
