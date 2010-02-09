@@ -110,19 +110,6 @@ namespace VolumeDB.VolumeScanner
 		                                          bool computeHashs) {
 			try {
 				if (generateThumbnails) {
-/*					paths.volumeDataPath = Path.Combine(paths.dbDataPath, volume.VolumeID.ToString());
-					
-					// make sure there is no directory with the same name as the volume directory 
-					// that is about to be created
-					// (the volume directory will be deleted in the catch block on failure, 
-					// so make sure that no existing dir will be deleted)
-					if (Directory.Exists(paths.volumeDataPath))
-						throw new ArgumentException("dbDataPath already contains a directory for this volume");
-					
-					// thumbnails will be stored in <dbdataPath>/<volumeID>/thumbs
-					paths.thumbnailPath = Path.Combine(paths.volumeDataPath, "thumbs");
-					Directory.CreateDirectory(paths.thumbnailPath);*/
-					
 					paths.volumeDataPath = DbData.CreateVolumeDataPath(paths.dbDataPath, volume.VolumeID);
 					paths.thumbnailPath = DbData.CreateVolumeDataThumbsPath(paths.volumeDataPath);
 				}

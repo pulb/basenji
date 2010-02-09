@@ -201,22 +201,6 @@ namespace VolumeDB.Import
 		}
 		
 		protected string CreateThumbsDir(string dbDataPath, long volumeID) {
-/*			string volumeDataPath = Path.Combine(dbDataPath, volumeID.ToString());
-			volumeDataPaths.Add(volumeDataPath);
-			
-			// make sure there is no directory with the same name as the volume directory 
-			// that is about to be created
-			// (the volume directory will be deleted in the catch block on failure, 
-			// so make sure that no existing dir will be deleted)
-			if (Directory.Exists(volumeDataPath))
-				throw new ArgumentException("dbDataPath already contains a directory for this volume");
-			
-			// thumbnails will be stored in <dbdataPath>/<volumeID>/thumbs
-			string thumbnailPath = Path.Combine(volumeDataPath, "thumbs");
-			Directory.CreateDirectory(thumbnailPath);
-			
-			return thumbnailPath;
-*/
 			string volumeDataPath = DbData.CreateVolumeDataPath(dbDataPath, volumeID);
 			volumeDataPaths.Add(volumeDataPath);
 			return DbData.CreateVolumeDataThumbsPath(volumeDataPath);
