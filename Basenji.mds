@@ -2,7 +2,7 @@
   <Policies>
     <StandardHeader inheritsSet="LGPLv2License" />
     <DotNetNamingPolicy DirectoryNamespaceAssociation="None" ResourceNamePolicy="FileFormatDefault" />
-    <TextStylePolicy FileWidth="120" TabWidth="4" TabsToSpaces="False" NoTabsAfterNonTabs="False" RemoveTrailingWhitespace="True" EolMarker="Unix" />
+    <TextStylePolicy FileWidth="120" TabWidth="4" RemoveTrailingWhitespace="True" EolMarker="Unix" inheritsSet="Mono" inheritsScope="text/plain" />
   </Policies>
   <Configurations active="Gnome_Debug">
     <Configuration name="Debug" ctype="CombineConfiguration">
@@ -10,7 +10,6 @@
       <Entry build="True" name="VolumeDB" configuration="Debug" />
       <Entry build="True" name="Platform" configuration="Debug" />
       <Entry build="True" name="Platform.Common.DB" configuration="Debug" />
-      <Entry build="True" name="Hal" configuration="Debug" />
       <Entry build="True" name="LibExtractor" configuration="Debug" />
     </Configuration>
     <Configuration name="Release" ctype="CombineConfiguration">
@@ -18,7 +17,6 @@
       <Entry build="True" name="VolumeDB" configuration="Release" />
       <Entry build="True" name="Platform" configuration="Release" />
       <Entry build="True" name="Platform.Common.DB" configuration="Release" />
-      <Entry build="True" name="Hal" configuration="Release" />
       <Entry build="True" name="LibExtractor" configuration="Release" />
     </Configuration>
     <Configuration name="Gnome_Debug" ctype="CombineConfiguration">
@@ -26,7 +24,6 @@
       <Entry build="True" name="VolumeDB" configuration="Debug" />
       <Entry build="True" name="Platform" configuration="Gnome_Debug" />
       <Entry build="True" name="Platform.Common.DB" configuration="Debug" />
-      <Entry build="True" name="Hal" configuration="Debug" />
       <Entry build="True" name="LibExtractor" configuration="Debug" />
     </Configuration>
     <Configuration name="Gnome_Release" ctype="CombineConfiguration">
@@ -34,7 +31,6 @@
       <Entry build="True" name="VolumeDB" configuration="Release" />
       <Entry build="True" name="Platform" configuration="Gnome_Release" />
       <Entry build="True" name="Platform.Common.DB" configuration="Release" />
-      <Entry build="True" name="Hal" configuration="Release" />
       <Entry build="True" name="LibExtractor" configuration="Release" />
     </Configuration>
   </Configurations>
@@ -43,7 +39,6 @@
     <Execute type="None" entry="VolumeDB" />
     <Execute type="None" entry="Platform" />
     <Execute type="None" entry="Platform.Common.DB" />
-    <Execute type="None" entry="Hal" />
     <Execute type="None" entry="LibExtractor" />
   </StartMode>
   <Entries>
@@ -51,7 +46,6 @@
     <Entry filename="VolumeDB/VolumeDB.mdp" />
     <Entry filename="Platform/Platform.mdp" />
     <Entry filename="Platform.Common.DB/Platform.Common.DB.mdp" />
-    <Entry filename="Hal/Hal.mdp" />
     <Entry filename="LibExtractor/LibExtractor.mdp" />
   </Entries>
 </Combine>

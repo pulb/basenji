@@ -1,6 +1,6 @@
 // DriveInfo.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,6 +19,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Platform.Common.Diagnostics;
 
 namespace Platform.Common.IO
 {
@@ -27,13 +28,13 @@ namespace Platform.Common.IO
 	 *	 
 	 *	The purpose of this class is to provide similar drive information on all platforms.
 	 *	It should behave similar to System.IO.DriveInfo on Windows.
-	 *	E.g. on Gnome, is should return all drives that are listed in Nautilus:Computer.
+	 *	E.g. on GNOME, is should return all drives that are listed in Nautilus:Computer.
 	 *
-	 *	On linux it requires Hal to return proper information for propterties 
+	 *	On linux it requires Devicekit.Disks to return proper information for propterties 
 	 *	like Device, DriveType and VolumeLabel.
 	 *	Alternatively, the implementation could be based on Gnome.Vfs.VolumeMonitor, 
-	 *	but this would make it gnome-dependent 
-	 *	(BAD -> class is used in platform-independed MediaDB assembly).
+	 *	but this would make it GNOME-dependent 
+	 *	(BAD -> class is used in platform-independed VolumeDB assembly).
 	 */
 	public class DriveInfo
 	{
@@ -49,7 +50,7 @@ namespace Platform.Common.IO
 #if !WIN32		
 		static DriveInfo() {
 			// required by gtk apps to prevent multithreading issues
-			Hal.Manager.InitBusG();
+			DkDisk.InitBusG();
 		}
 #endif
 		
@@ -73,7 +74,8 @@ namespace Platform.Common.IO
 			if (!rootPath.EndsWith("\\")) // e.g. "D:" -> "D:\"
 				rootPath += "\\";
 
-			System.IO.DriveInfo di = new System.IO.DriveInfo(rootPath); // throws ArgumentException if drive cant me found
+			// throws ArgumentException if drive can't be found
+			System.IO.DriveInfo di = new System.IO.DriveInfo(rootPath);
 			FillDriveInfo(this, di);
 #else
 
@@ -81,83 +83,44 @@ namespace Platform.Common.IO
 			if ((rootPath.Length > 1) && (rootPath[rootPath.Length - 1] == System.IO.Path.DirectorySeparatorChar))
 				rootPath = rootPath.Substring(0, rootPath.Length - 1);
 			
-//			Hal.Context ctx = new Hal.Context();
-//			Hal.Device[] volumes = Hal.Device.FindByStringMatch(ctx, "volume.mount_point", rootPath);
-			Hal.Manager mgr = new Hal.Manager();
-			Hal.Device[] volumes = mgr.FindDeviceByStringMatchAsDevice("volume.mount_point", rootPath);
+			DkDisk volume = null;
+			DkDisk[] disks = DkDisk.EnumerateDisks();			
+			foreach (DkDisk d in disks) {
+				if (d.IsMounted && d.MountPoint == rootPath) {
+					volume = d;
+					break;
+				}
+			}
 			
-			if (volumes.Length == 0)
+			if (volume == null)
 				throw new ArgumentException("Can't find drive for specified path", "rootPath");
 	
-			FillDriveInfo(this, volumes[0]);
+			FillDriveInfo(this, volume);
 #endif
 		}
 	
-		// TODO : Test
 		public static DriveInfo FromDevice(string device) {
 			if (device == null)
 				throw new ArgumentNullException("device");
+			
 #if WIN32
 			string rootPath = device; // ctor adds an ending slash ("d:\")
 			return new DriveInfo(rootPath); // throws ArgumentException if drive cant be found
 #else
-
-			//Hal.Context ctx = new Hal.Context();
-			//Hal.Device[] devs = Hal.Device.FindByStringMatch(ctx, "block.device", device); // can return blockdevices (storage, volume) only
-			Hal.Manager mgr = new Hal.Manager();
-			Hal.Device[] devs = mgr.FindDeviceByStringMatchAsDevice("block.device", device); // can return blockdevices (storage, volume) only
+			// dev can be a drive (e.g. cdrom with/without media), a partitiontable or a partition
+			DkDisk dev = DkDisk.FindByDevice(device);
 			
-			DriveInfo d = new DriveInfo();
+			if (dev == null)
+				throw new ArgumentException("Can't find drive for specified device", "device");
 			
-			switch(devs.Length) {
-				case 0:
-					throw new ArgumentException("Can't find drive for specified device", "device");
-					
-				case 1:
-					// device is a storage OR a volume device
-					if (devs[0].GetPropertyBoolean("block.is_volume")) {
-						Hal.Device volume = devs[0];
-						FillDriveInfo(d, volume);
-					} else { // storage device
-						Hal.Device storage = devs[0];
-						
-						if (IsPartitionableStorage(storage)) {
-							/* Do not return *harddisk*-like partitionable storage devices as they may have more than one volume (i.e. partitions).
-							 * HD storage-block.device and volume-block.device differ (e.g. hda -> hda1), 
-							 * so we do not get both, storage and volume for the specified device argument (as in case 2).
-							 * We just get the HD storage device here instead of the volume/one of the volumes.
-							 * DriveInfo.IsReady would misleadingly return false, even if the drive has a volume.
-							 *
-							 * (In case of a media storage device (e.g. a cdrom or a floppy), this one can not contain a volume, otherwise case 2 would have been matched...)
-							 */
-							throw new ArgumentException("Device is a harddisk drive and may have one ore more volumes (partitions) with different devices names. Please specify the devicename of one of its volumes instead", "device");
-						}
-						
-						FillDriveInfo(d, storage);
-					}
-					break;
-					
-				case 2:
-					// we have a storage AND a volume with the same block.device (media drive, e.g. cdrom, floppy, zip, ...) -> choose volume
-					Hal.Device volume = devs[0].GetPropertyBoolean("block.is_volume") ? devs[0] : devs[1];
-					FillDriveInfo(d, volume);					  
-					break;
-					
-				default:
-					// we should never get here
-					System.Text.StringBuilder sb = new System.Text.StringBuilder();
-
-					sb.AppendLine("Unexpected error: got more than 2 devices for specified device");
-					for (int i = 0; i < devs.Length; i++)
-						sb.AppendFormat("device {0}: product={1}, category={2}\n", i, devs[0].GetPropertyString("info.product"), devs[0].GetPropertyString("info.category"));
-					sb.AppendLine("Please fill a bugreport!");
-				
-					throw new Exception(sb.ToString());
-			}
+			if (dev.IsPartitionTable)
+				throw new ArgumentException("Device is a harddisk drive and may have one ore more volumes (partitions) with different devices names. Please specify the devicename of one of its volumes instead", "device");
+			
+			DriveInfo d = new DriveInfo();			
+			FillDriveInfo(d, dev);
 			
 			return d;
-			
-#endif				  
+#endif
 		}
 		
 		public static DriveInfo[] GetDrives() { return GetDrives(false); }
@@ -176,55 +139,28 @@ namespace Platform.Common.IO
 				}
 			}
 #else
-
-			//Hal.Context ctx = new Hal.Context();
-			Hal.Manager mgr = new Hal.Manager();
-			Hashtable usedStorageDevices = null;
+			// dev can be a drive (e.g. cdrom with/without media), a partitiontable or a partition
+			DkDisk[] devs = DkDisk.EnumerateDisks();
 			
-			if (!readyDrivesOnly)
-				usedStorageDevices = new Hashtable();
-			
-			/*
-			 * query all VOLUMES 
-			 */
-			//Hal.Device[] volumes = Hal.Device.FindByCapability(ctx, "volume");
-			Hal.Device[] volumes = mgr.FindDeviceByCapabilityAsDevice("volume");
-			foreach(Hal.Device volume in volumes) {
-				// skip igored and fixed hd volumes that aren't mounted
-				if (!IsIgnoredOrUnmountedFixedVolume(volume) && !IsBootOrHomePartition(volume)) {
-					DriveInfo d = new DriveInfo();
-					FillDriveInfo(d, volume);
-						
-					string key = volume.GetPropertyString("block.storage_device");
-					if (usedStorageDevices != null && !usedStorageDevices.ContainsKey(key))
-						usedStorageDevices.Add(key, null);
-						
-					drives.Add(d);
-				}
+			foreach (DkDisk dev in devs) {
+				if (readyDrivesOnly && !dev.IsMounted)
+					continue;
+				
+				// skip partitiontables
+				if (dev.IsPartitionTable)
+					continue;
+				
+				// skip unmounted partitions (e.g. swap) and 
+				// boot/home partition.
+				if (dev.IsPartition && 
+				    (!dev.IsMounted || (dev.MountPoint == "/boot") || (dev.MountPoint == "/home")))
+					continue;
+				
+				DriveInfo d = new DriveInfo();
+				FillDriveInfo(d, dev);
+				
+				drives.Add(d);
 			}
-			
-			/*
-			 * query all *removable* *floppy/cd-like* media STORAGE devices that *do not have a volume present*
-			 * (cdroms, floppies, zip-drives etc..)
-			 *
-			 * exclude removable harddisk-like/memorystick storage devices that are partitionable.
-			 * If those appear here and thus don't have a volume, they are probably not partitioned, 
-			 * the volume was unmounted or something else is wrong..
-			 * (it's generally a bad idea to include them (even if they contain volume(s)), 
-			 * since their devicename differs from that of their volume(s).)
-			 */
-			if (!readyDrivesOnly) {
-				//Hal.Device[] storages = Hal.Device.FindByCapability(ctx, "storage");
-				Hal.Device[] storages = mgr.FindDeviceByCapabilityAsDevice("storage");
-				foreach(Hal.Device storage in storages) {
-					if (storage.GetPropertyBoolean("storage.removable") && !IsPartitionableStorage(storage) && !usedStorageDevices.ContainsKey(storage.GetPropertyString("block.storage_device"))) {
-						DriveInfo d = new DriveInfo();
-						FillDriveInfo(d, storage);
-						drives.Add(d);
-					}
-				}	
-			}
-
 #endif
 			return drives.ToArray();
 		}
@@ -323,84 +259,52 @@ namespace Platform.Common.IO
 			}
 		}
 #else
-		
-		private static void FillDriveInfo(DriveInfo d, Hal.Device dev) {
-			if (dev.GetPropertyBoolean("block.is_volume")) {
-				Hal.Device volume = dev;
-				
-				d.volumeLabel = volume.GetPropertyString("volume.label");
-				d.totalSize = (long)volume.GetPropertyUInt64("volume.size");
-				d.device = volume.GetPropertyString("block.device");
-				d.rootPath = volume.GetPropertyString("volume.mount_point");
-				d.filesystem = volume.GetPropertyString("volume.fstype");
-				d.isMounted = volume.GetPropertyBoolean("volume.is_mounted");
+		private static void FillDriveInfo(DriveInfo d, DkDisk dev) {
+			if (dev.IsMounted) {
+				d.volumeLabel = dev.Label;
+				d.totalSize = (long)dev.Size;
+				d.rootPath = dev.MountPoint;
+				d.filesystem = dev.IdType;
+				d.isMounted = true;
 				d.isReady = true;
-				
-				Hal.Device storage = volume.Parent;
-				if (storage != null)
-					d.driveType = GetDriveType(storage);
-
-			} else { // fill from storage device
-				Hal.Device storage = dev;
-				
-				d.isMounted = d.isReady = false;
-				d.driveType = GetDriveType(storage);
-				d.device = storage.GetPropertyString("block.device");
 			}
+			
+			if (dev.IsPartition) {
+				string obj_path = dev.PartitionSlave;
+				DkDisk parent = new DkDisk(obj_path);
+				d.driveType = GetDriveType(parent);
+			} else {
+				d.driveType = GetDriveType(dev);
+			}
+			
+			d.device = dev.DeviceFile;
 		}
 		
-		private static DriveType GetDriveType(Hal.Device storage) {
-			// TODO : add support for ram and network volumes
-			DriveType dt = DriveType.Unknown;
+		private static DriveType GetDriveType(DkDisk drive) {
+			Debug.Assert(drive.IsDrive, "DkDisk is not a drive");
 			
-			if (storage.GetPropertyString("storage.drive_type") == "cdrom")
+			// TODO : add support for ram and network volumes
+			DriveType dt = DriveType.Unknown;			
+			string[] compat = drive.MediaCompatibility;
+			
+			bool isOptical = false;
+			foreach (string c in compat) {
+				if (c.StartsWith("optical")) {
+					isOptical = true;
+					break;
+				}
+			}
+			
+			if (isOptical) 
 				dt = DriveType.CDRom;
+			else if (drive.IsRemovable)
+				dt = DriveType.Removable;
 			else
-				dt = storage.GetPropertyBoolean("storage.removable") ? DriveType.Removable : DriveType.Fixed;
-				
+				dt = DriveType.Fixed;
+			
 			return dt;
 		}
-		
-		private static bool IsIgnoredOrUnmountedFixedVolume(Hal.Device volume) {
-			// volumes marked as "ignore" except the root filesystem
-			if ((volume.PropertyExists("volume.ignore") && volume.GetPropertyBoolean("volume.ignore")) && volume.GetPropertyString("volume.mount_point") != "/")
-				return true;
-
-			// unmounted fixed harddisk volumes
-			Hal.Device storage = volume.Parent;
-			if (storage != null) {
-				if (!volume.GetPropertyBoolean("volume.is_mounted") && !storage.GetPropertyBoolean("storage.removable"))
-					return true;
-			}
-			
-			return false;
-		}
-		
-		private static bool IsBootOrHomePartition(Hal.Device volume) {
-			// TODO : is there a smarter way than checking the mountpoint?
-			string mountpoint = volume.GetPropertyString("volume.mount_point");				
-			
-			// boot partition
-			// volume.partition.flags = { 'boot' } can't be used to identify the boot bartition
-			// as usb keys have this flag set too.
-			if (mountpoint == "/boot")
-				return true;
-			
-			// home partition
-			if (mountpoint == "/home")
-				return true;
-			
-			return false;		 
-		}
-		
-		private static bool IsPartitionableStorage(Hal.Device storage) {
-			 // is there a smarter way to test for partitiobale storage drives?
-			 // "storage.no_partition_hint" would return true on unpartitioned harddisks (?)
-			return storage.GetPropertyString("storage.drive_type") == "disk";
-		}
-
 #endif
 
 	}
-
 }

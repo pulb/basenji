@@ -14,13 +14,9 @@ ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize- -debug -d
 ASSEMBLY = bin/Debug/Platform.dll
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
 COMPILE_TARGET = library
-PROJECT_REFERENCES =  \
-	../Hal/bin/Debug/Hal.dll
+PROJECT_REFERENCES = 
 BUILD_DIR = bin/Debug
 
-HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
-HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
-HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
 PLATFORM_DLL_MDB_SOURCE=bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
 
@@ -32,12 +28,9 @@ ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize+ "-define:
 ASSEMBLY = bin/Release/Platform.dll
 ASSEMBLY_MDB = 
 COMPILE_TARGET = library
-PROJECT_REFERENCES =  \
-	../Hal/bin/Release/Hal.dll
+PROJECT_REFERENCES = 
 BUILD_DIR = bin/Release
 
-HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
-HAL_DLL_MDB=
 PLATFORM_DLL_MDB=
 
 endif
@@ -48,13 +41,9 @@ ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize- -debug -d
 ASSEMBLY = bin/Debug/Platform.dll
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
 COMPILE_TARGET = library
-PROJECT_REFERENCES =  \
-	../Hal/bin/Debug/Hal.dll
+PROJECT_REFERENCES = 
 BUILD_DIR = bin/Debug
 
-HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
-HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
-HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
 PLATFORM_DLL_MDB_SOURCE=bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
 
@@ -66,13 +55,9 @@ ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize+ -pkg:gnom
 ASSEMBLY = bin/Release/Platform.dll
 ASSEMBLY_MDB = 
 COMPILE_TARGET = library
-PROJECT_REFERENCES =  \
-	../Hal/bin/Release/Hal.dll
+PROJECT_REFERENCES = 
 BUILD_DIR = bin/Release
 
-HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
-HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
-HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
 PLATFORM_DLL_MDB=
 
 endif
@@ -81,14 +66,11 @@ AL=al2
 SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 
 PROGRAMFILES = \
-	$(HAL_DLL) \
-	$(HAL_DLL_MDB) \
 	$(PLATFORM_DLL_MDB)  
 
 
 RESGEN=resgen2
 
-HAL_DLL = $(BUILD_DIR)/Hal.dll
 
 FILES = \
 	src/Common/Diagnostics/CurrentPlatform.cs \
@@ -111,7 +93,8 @@ FILES = \
 	src/Common/Globalization/TranslatedStringTable.cs \
 	src/Win32/ThumbnailCreator.cs \
 	src/Win32/ThumbnailGenerator.cs \
-	src/Common/Diagnostics/AssertionFailedException.cs 
+	src/Common/Diagnostics/AssertionFailedException.cs \
+	src/Common/IO/DkDisk.cs 
 
 DATA_FILES = 
 
@@ -121,7 +104,9 @@ EXTRAS =
 
 REFERENCES =  \
 	System \
-	Mono.Posix
+	Mono.Posix \
+	-pkg:ndesk-dbus-1.0 \
+	-pkg:ndesk-dbus-glib-1.0
 
 DLL_REFERENCES = 
 
@@ -135,8 +120,6 @@ include $(top_srcdir)/Makefile.include
 
 
 
-$(eval $(call emit-deploy-target,HAL_DLL))
-$(eval $(call emit-deploy-target,HAL_DLL_MDB))
 
 
 $(eval $(call emit_resgen_targets))
@@ -159,8 +142,6 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	mkdir -p '$(DESTDIR)$(libdir)/$(PACKAGE)'
 	$(call cp,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(HAL_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(HAL_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	make post-install-local-hook prefix=$(prefix)
 
@@ -169,8 +150,6 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	make uninstall-satellite-assemblies prefix=$(prefix)
 	$(call rm,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(HAL_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(HAL_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	make post-uninstall-local-hook prefix=$(prefix)
 

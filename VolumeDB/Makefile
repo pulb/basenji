@@ -24,9 +24,6 @@ PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB
 PLATFORM_COMMON_DB_DLL_MDB_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll.mdb
 PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
 PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
-HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
-HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
-HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
 LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll
@@ -53,8 +50,6 @@ BUILD_DIR = bin/Release
 PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
 PLATFORM_COMMON_DB_DLL_MDB=
 PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
-HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
-HAL_DLL_MDB=
 PLATFORM_DLL_MDB=
 LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Release/LibExtractor.dll
 LIBEXTRACTOR_DLL_CONFIG_SOURCE=../LibExtractor/LibExtractor.dll.config
@@ -79,9 +74,6 @@ PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB
 PLATFORM_COMMON_DB_DLL_MDB_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll.mdb
 PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
 PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
-HAL_DLL_SOURCE=../Hal/bin/Debug/Hal.dll
-HAL_DLL_MDB_SOURCE=../Hal/bin/Debug/Hal.dll.mdb
-HAL_DLL_MDB=$(BUILD_DIR)/Hal.dll.mdb
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
 LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll
@@ -108,8 +100,6 @@ BUILD_DIR = bin/Release
 PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
 PLATFORM_COMMON_DB_DLL_MDB=
 PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
-HAL_DLL_SOURCE=../Hal/bin/Release/Hal.dll
-HAL_DLL_MDB=
 PLATFORM_DLL_MDB=
 LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Release/LibExtractor.dll
 LIBEXTRACTOR_DLL_CONFIG_SOURCE=../LibExtractor/LibExtractor.dll.config
@@ -125,8 +115,6 @@ PROGRAMFILES = \
 	$(PLATFORM_COMMON_DB_DLL) \
 	$(PLATFORM_COMMON_DB_DLL_MDB) \
 	$(PLATFORM_DLL) \
-	$(HAL_DLL) \
-	$(HAL_DLL_MDB) \
 	$(PLATFORM_DLL_MDB) \
 	$(LIBEXTRACTOR_DLL) \
 	$(LIBEXTRACTOR_DLL_CONFIG) \
@@ -141,7 +129,6 @@ RESGEN=resgen2
 
 PLATFORM_COMMON_DB_DLL = $(BUILD_DIR)/Platform.Common.DB.dll
 PLATFORM_DLL = $(BUILD_DIR)/Platform.dll
-HAL_DLL = $(BUILD_DIR)/Hal.dll
 LIBEXTRACTOR_DLL = $(BUILD_DIR)/LibExtractor.dll
 LIBEXTRACTOR_DLL_CONFIG = $(BUILD_DIR)/LibExtractor.dll.config
 VOLUMEDB_PC = $(BUILD_DIR)/volumedb.pc
@@ -249,8 +236,6 @@ include $(top_srcdir)/Makefile.include
 $(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL))
 $(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL_MDB))
 $(eval $(call emit-deploy-target,PLATFORM_DLL))
-$(eval $(call emit-deploy-target,HAL_DLL))
-$(eval $(call emit-deploy-target,HAL_DLL_MDB))
 $(eval $(call emit-deploy-target,PLATFORM_DLL_MDB))
 $(eval $(call emit-deploy-target,LIBEXTRACTOR_DLL))
 $(eval $(call emit-deploy-target,LIBEXTRACTOR_DLL_CONFIG))
@@ -281,8 +266,6 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call cp,$(PLATFORM_COMMON_DB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_COMMON_DB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(HAL_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(HAL_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(LIBEXTRACTOR_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(LIBEXTRACTOR_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
@@ -300,8 +283,6 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call rm,$(PLATFORM_COMMON_DB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_COMMON_DB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(HAL_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(HAL_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(LIBEXTRACTOR_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(LIBEXTRACTOR_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
