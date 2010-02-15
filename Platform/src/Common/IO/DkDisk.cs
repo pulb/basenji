@@ -45,7 +45,7 @@ namespace Platform.Common.IO
 			BusG.Init();
 		}
 		
-		public static DkDisk[] EnumerateDisks ()
+		public static DkDisk[] EnumerateDevices ()
 		{			
 			if (disks == null)
                 return null;
@@ -55,10 +55,7 @@ namespace Platform.Common.IO
 			
 			foreach (string path in disk_paths) {
 				DkDisk d = new DkDisk(path);
-				
-				if (d != null) {
-					lst.Add(d);
-				}
+				lst.Add(d);
 			}
 			
 			return lst.ToArray();
@@ -116,6 +113,12 @@ namespace Platform.Common.IO
             get {
                 var ary = (string[])props.Get ("org.freedesktop.DeviceKit.Disks.Device", "DeviceMountPaths");
                 return ary != null && ary.Length > 0 ? ary[0] : null;
+            }
+        }
+		
+		public bool IsMediaAvailable {
+            get {
+                return (bool) props.Get ("org.freedesktop.DeviceKit.Disks.Device", "DeviceIsMediaAvailable");
             }
         }
 		

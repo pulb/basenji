@@ -17,7 +17,6 @@
 //
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Platform.Common.Diagnostics;
 
@@ -84,10 +83,10 @@ namespace Platform.Common.IO
 				rootPath = rootPath.Substring(0, rootPath.Length - 1);
 			
 			DkDisk volume = null;
-			DkDisk[] disks = DkDisk.EnumerateDisks();			
-			foreach (DkDisk d in disks) {
-				if (d.IsMounted && d.MountPoint == rootPath) {
-					volume = d;
+			DkDisk[] devs = DkDisk.EnumerateDevices();
+			foreach (DkDisk dev in devs) {
+				if (dev.IsMounted && dev.MountPoint == rootPath) {
+					volume = dev;
 					break;
 				}
 			}
@@ -107,7 +106,8 @@ namespace Platform.Common.IO
 			string rootPath = device; // ctor adds an ending slash ("d:\")
 			return new DriveInfo(rootPath); // throws ArgumentException if drive cant be found
 #else
-			// dev can be a drive (e.g. cdrom with/without media), a partitiontable or a partition
+			// dev can be a drive (e.g. cdrom with/without media), 
+			// a partitiontable or a partition.
 			DkDisk dev = DkDisk.FindByDevice(device);
 			
 			if (dev == null)
@@ -139,19 +139,23 @@ namespace Platform.Common.IO
 				}
 			}
 #else
-			// dev can be a drive (e.g. cdrom with/without media), a partitiontable or a partition
-			DkDisk[] devs = DkDisk.EnumerateDisks();
+			// dev can be a drive (e.g. cdrom with/without media), 
+			// a partitiontable or a partition.
+			DkDisk[] devs = DkDisk.EnumerateDevices();
 			
 			foreach (DkDisk dev in devs) {
-				if (readyDrivesOnly && !dev.IsMounted)
+				// skip empty drives when readyDrivesOnly is set to true.
+				// (ready means media present but not necessarily mounted, e.g. audio cds)
+				if (readyDrivesOnly && !dev.IsMediaAvailable)
 					continue;
 				
-				// skip partitiontables
+				// skip partitiontables, e.g. sda, sdb (usb-stick).
+				// (partitiontables are drives)
 				if (dev.IsPartitionTable)
 					continue;
 				
 				// skip unmounted partitions (e.g. swap) and 
-				// boot/home partition.
+				// boot and home partitions.
 				if (dev.IsPartition && 
 				    (!dev.IsMounted || (dev.MountPoint == "/boot") || (dev.MountPoint == "/home")))
 					continue;
@@ -260,14 +264,25 @@ namespace Platform.Common.IO
 		}
 #else
 		private static void FillDriveInfo(DriveInfo d, DkDisk dev) {
+			Debug.Assert(!dev.IsPartitionTable, 
+			             "dev must not be a partitiontable");
+			
 			if (dev.IsMounted) {
 				d.volumeLabel = dev.Label;
 				d.totalSize = (long)dev.Size;
 				d.rootPath = dev.MountPoint;
 				d.filesystem = dev.IdType;
+				
 				d.isMounted = true;
 				d.isReady = true;
-			}
+			} else if (dev.IsMediaAvailable) {
+				// unmounted media or partition
+				d.volumeLabel = dev.Label;
+				d.totalSize = (long)dev.Size;
+				d.filesystem = dev.IdType;				
+				
+				d.isReady = true;
+			} // else: empty drive
 			
 			if (dev.IsPartition) {
 				string obj_path = dev.PartitionSlave;
