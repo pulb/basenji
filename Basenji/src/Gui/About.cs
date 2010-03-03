@@ -31,13 +31,12 @@ namespace Basenji.Gui
 		private static readonly string		copyright			= string.Format("{0}{1}", S._("Copyright (c) "), App.Copyright);
 		private static readonly string[]	authors				= new string[] { "Patrick Ulbrich <zulu99@gmx.net>" };
 		private static readonly string		translatorCredits	= 
-@"Spanish:
-  DiegoJ (https://launchpad.net/~diegojromerolopez)
-  Emiliano (https://launchpad.net/~emilianohfernandez)
-  Feder Sáiz (https://launchpad.net/~federsaiz)
-  monkey (https://launchpad.net/~monkey-libre)  
-  Nicolás M. Zahlut (https://launchpad.net/~nzahlut)
-  Paco Molinero (https://launchpad.net/~franciscomol)
+@"Danish:
+  nanker (https://launchpad.net/~nanker)
+
+French:
+  Stephane Ricci (https://launchpad.net/~stephane-ricci)
+  Anthony Guéchoum (https://launchpad.net/~athael)
 
 German:
   Patrick Ulbrich (https://launchpad.net/~pulb)
@@ -45,8 +44,13 @@ German:
 Hebrew:
   Yaron (https://launchpad.net/~sh-yaron)
 
-Danish:
-  nanker (https://launchpad.net/~nanker)";
+Spanish:
+  DiegoJ (https://launchpad.net/~diegojromerolopez)
+  Emiliano (https://launchpad.net/~emilianohfernandez)
+  Feder Sáiz (https://launchpad.net/~federsaiz)
+  monkey (https://launchpad.net/~monkey-libre)  
+  Nicolás M. Zahlut (https://launchpad.net/~nzahlut)
+  Paco Molinero (https://launchpad.net/~franciscomol)";
 		
 		public About() {
 			// general window settings
