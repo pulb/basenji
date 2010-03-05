@@ -91,6 +91,7 @@
     <File subtype="Code" buildaction="Compile" name="src/Import/IImport.cs" />
     <File subtype="Code" buildaction="Compile" name="src/DecoderUtility.cs" />
     <File subtype="Code" buildaction="Compile" name="src/DbData.cs" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="po/fr.resources" resource_id="VolumeDB.po.fr.resources" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />

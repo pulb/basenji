@@ -7,34 +7,39 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-01-03 16:34+0100\n"
+"POT-Creation-Date: 2010-01-21 21:39+0100\n"
 "PO-Revision-Date: 2008-11-21 23:07+0000\n"
 "Last-Translator: nanker <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-03 16:00+0000\n"
+"X-Launchpad-Export-Date: 2010-03-05 14:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:103
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:126
 msgid "libExtractor not found. Metadata extraction disabled."
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:178
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:212
+#, csharp-format
+msgid "Directory '{0}' not found. (Wrong filename encoding?)"
+msgstr ""
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:221
 #, csharp-format
 msgid "Skipped item '{0}' as it doesn't seem to be a real directory."
 msgstr "Opgav emne '{0}' da det ikke synes at være et katalog."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:188
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:300
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:231
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:356
 #, csharp-format
 msgid "Skipped symlink item '{0}' as the target does not exist."
 msgstr "Opgav symlink emne '{0}' da den ikke eksisterer."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:194
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:292
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:303
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:237
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:348
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:359
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it appears to point to a different drive "
@@ -43,35 +48,40 @@ msgstr ""
 "Opgav symlink emne '{0}' da det tilsyneladende peger på et andet drev "
 "('{1}')."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:269
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:277
+#, csharp-format
+msgid "File '{0}' not found. (Wrong filename encoding?)"
+msgstr ""
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:325
 #, csharp-format
 msgid "Error opening file '{0}', can't retrieve any mime/metadata. ({1})"
 msgstr ""
 "Fejl ved åbning af fil '{0}', kan ikke finde nogle mime/metadata. ({1})"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:306
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:362
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."
 msgstr ""
 "Opgav symlink emne '{0}' da det ikke peger på en regulær fil ('{1}')."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:315
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:371
 #, csharp-format
 msgid "Skipped item '{0}' as it appears to be some kind of special file."
 msgstr "Opgav emne '{0}' da det ser ud til at være en speciel fil."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:330
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:386
 #, csharp-format
 msgid "Unable to dump dir '{0}'. ({1})"
 msgstr "Kunne ikke slette dir '{0}'. ({1})"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:482
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:573
 #, csharp-format
 msgid "Failed to resolve target item for symlink '{0}'."
 msgstr "Mislykkedes at finde emne for symlink '{0}'."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:524
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:632
 #, csharp-format
 msgid "Can't read LastWriteTime from item '{0}' ({1})."
 msgstr "Kan ikke læse LastWriteTime fra emne '{0}' ({1})."

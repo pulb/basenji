@@ -7,47 +7,106 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-01-03 16:34+0100\n"
-"PO-Revision-Date: 2010-01-02 19:04+0000\n"
+"POT-Creation-Date: 2010-01-21 21:39+0100\n"
+"PO-Revision-Date: 2010-01-18 15:58+0000\n"
 "Last-Translator: Patrick Ulbrich <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-03 16:00+0000\n"
+"X-Launchpad-Export-Date: 2010-03-05 14:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: src/Util.cs:35
+#: src/Util.cs:30
 #, csharp-format
 msgid "{0} Bytes"
 msgstr "{0} Bytes"
 
-#: src/Util.cs:37
+#: src/Util.cs:32
 msgid "Bytes"
 msgstr "Bytes"
 
-#: src/Util.cs:37
+#: src/Util.cs:32
 msgid "KB"
 msgstr "KB"
 
-#: src/Util.cs:37
+#: src/Util.cs:32
 msgid "MB"
 msgstr "MB"
 
-#: src/Util.cs:37
+#: src/Util.cs:32
 msgid "GB"
 msgstr "GB"
 
-#: src/Util.cs:37
+#: src/Util.cs:32
 msgid "TB"
 msgstr "TB"
 
-#: src/Gui/VolumeScanner.cs:98
+#: src/Gui/Import.cs:29
+msgid "Import"
+msgstr "Importieren"
+
+#: src/Gui/Import.cs:30
+msgid "Abort"
+msgstr "Abbrechen"
+
+#: src/Gui/Import.cs:98
+#, csharp-format
+msgid "{0:0}% completed."
+msgstr "{0:0}% abgeschlossen."
+
+#: src/Gui/Import.cs:108
+msgid "Import failed"
+msgstr "Importieren fehlgeschlagen"
+
+#: src/Gui/Import.cs:109 src/Gui/MainWindow.cs:227
+msgid "Database not found."
+msgstr "Die Datenbank wurde nicht gefunden."
+
+#: src/Gui/Import.cs:111
+msgid "Import failed!"
+msgstr "Importieren fehlgeschlagen!"
+
+#: src/Gui/Import.cs:113
+msgid "Import aborted."
+msgstr "Importieren abgebrochen."
+
+#: src/Gui/Import.cs:115
+msgid "Import completed successfully."
+msgstr "Importieren erfolgreich abgeschlossen."
+
+#: src/Gui/Import.cs:134
+msgid "Import in progress"
+msgstr "Importvorgang läuft"
+
+#: src/Gui/Import.cs:135
+msgid "You must stop the import before closing this window."
+msgstr ""
+"Sie müssen den Importier-Vorgang abbrechen, bevor Sie dieses Fenster "
+"schließen können."
+
+#: src/Gui/Import.cs:160
+msgid "Import Database"
+msgstr "Datenbank importieren"
+
+#: src/Gui/Import.cs:171
+msgid "Please select a database to import"
+msgstr "Bitte wählen Sie eine Datenbank zum Importieren aus"
+
+#: src/Gui/Import.cs:184
+msgid "Database:"
+msgstr "Datenbank:"
+
+#: src/Gui/Import.cs:185
+msgid "Format:"
+msgstr "Format:"
+
+#: src/Gui/VolumeScanner.cs:103
 #, csharp-format
 msgid "Scanning of drive '{0}' started."
 msgstr "Scanvorgang für Laufwerk '{0}' gestartet."
 
-#: src/Gui/VolumeScanner.cs:99
+#: src/Gui/VolumeScanner.cs:104
 #, csharp-format
 msgid ""
 "Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
@@ -56,19 +115,19 @@ msgstr ""
 "Optionen: Thumbnails generieren: {0}, Metadaten extrahieren: {1}, "
 "symbolische Links verwerfen: {2}, Hashcodes berechnen: {3}."
 
-#: src/Gui/VolumeScanner.cs:120
+#: src/Gui/VolumeScanner.cs:125
 msgid "Time"
 msgstr "Zeit"
 
-#: src/Gui/VolumeScanner.cs:124
+#: src/Gui/VolumeScanner.cs:129
 msgid "Message"
 msgstr "Meldung"
 
-#: src/Gui/VolumeScanner.cs:194 src/Gui/VolumeProperties.cs:41
+#: src/Gui/VolumeScanner.cs:199 src/Gui/VolumeProperties.cs:41
 msgid "Invalid data"
 msgstr "Ungültige Daten"
 
-#: src/Gui/VolumeScanner.cs:194 src/Gui/VolumeProperties.cs:41
+#: src/Gui/VolumeScanner.cs:199 src/Gui/VolumeProperties.cs:41
 #, csharp-format
 msgid ""
 "\"{0}\" is {1}.\n"
@@ -81,64 +140,64 @@ msgstr ""
 "Erwartetes Format: {2}\n"
 "Bitte korrigieren oder entfernen Sie Ihre Eingaben."
 
-#: src/Gui/VolumeScanner.cs:201
+#: src/Gui/VolumeScanner.cs:206
 msgid "yes"
 msgstr "ja"
 
-#: src/Gui/VolumeScanner.cs:201
+#: src/Gui/VolumeScanner.cs:206
 msgid "no"
 msgstr "nein"
 
-#: src/Gui/VolumeScanner.cs:224
+#: src/Gui/VolumeScanner.cs:229
 msgid "Scan in progress"
 msgstr "Aktiver Scanvorgang"
 
-#: src/Gui/VolumeScanner.cs:224
+#: src/Gui/VolumeScanner.cs:229
 msgid "You must stop scanning before closing this window."
 msgstr ""
 "Sie müssen den Scanvorgang abbrechen bevor Sie dieses Fenster schließen."
 
-#: src/Gui/VolumeScanner.cs:234
+#: src/Gui/VolumeScanner.cs:239
 msgid "Stopping Scanner and performing rollback..."
 msgstr "Stoppe Scanner und führe Rollback durch..."
 
-#: src/Gui/VolumeScanner.cs:276
+#: src/Gui/VolumeScanner.cs:281
 #, csharp-format
 msgid "An unhandled exception occured ({0})."
 msgstr "Ein unbehandelter Fehler ist aufgetreten ({0})."
 
-#: src/Gui/VolumeScanner.cs:277
+#: src/Gui/VolumeScanner.cs:282
 msgid "All database changes have been rolled back."
 msgstr "Alle Datenbankänderungen wurden zurückgerollt."
 
-#: src/Gui/VolumeScanner.cs:300
+#: src/Gui/VolumeScanner.cs:305
 #, csharp-format
 msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
 msgstr ""
 "Scanvorgang fehlgeschlagen. Ursache: Ein unbehandelter Fehler ist "
 "aufgetreten ({0})."
 
-#: src/Gui/VolumeScanner.cs:302
+#: src/Gui/VolumeScanner.cs:307
 msgid "Scanning aborted."
 msgstr "Scanvorgang abgebrochen."
 
-#: src/Gui/VolumeScanner.cs:304
+#: src/Gui/VolumeScanner.cs:309
 msgid "Scanning completed successfully."
 msgstr "Scanvorgang erfolgreich beendet."
 
-#: src/Gui/VolumeScanner.cs:401
+#: src/Gui/VolumeScanner.cs:406
 msgid "VolumeScanner"
 msgstr "VolumeScanner"
 
-#: src/Gui/VolumeScanner.cs:413
+#: src/Gui/VolumeScanner.cs:418
 msgid "<b>Volume Information:</b>"
 msgstr "<b>Datenträger Informationen:</b>"
 
-#: src/Gui/VolumeScanner.cs:423
+#: src/Gui/VolumeScanner.cs:428
 msgid "<b>Scanner Log:</b>"
 msgstr "<b>Scanner Log:</b>"
 
-#: src/Gui/VolumeScanner.cs:440
+#: src/Gui/VolumeScanner.cs:445
 msgid "Database access"
 msgstr "Datenbankzugriff"
 
@@ -163,7 +222,7 @@ msgstr "Datenbankeigenschaften"
 msgid "Name:"
 msgstr "Name:"
 
-#: src/Gui/DBProperties.cs:90 src/Gui/Widgets/VolumeEdit.cs:321
+#: src/Gui/DBProperties.cs:90 src/Gui/Widgets/VolumeEdit.cs:320
 msgid "Description:"
 msgstr "Beschreibung:"
 
@@ -171,58 +230,61 @@ msgstr "Beschreibung:"
 msgid "Created:"
 msgstr "Erstellt am:"
 
-#: src/Gui/MainWindow.cs:60 src/Gui/MainWindow.cs:216
-#: src/Gui/MainWindow.cs:237 src/Gui/MainWindow.cs:259 src/Main.cs:65
+#: src/Gui/MainWindow.cs:58 src/Gui/MainWindow.cs:226
+#: src/Gui/MainWindow.cs:247 src/Gui/MainWindow.cs:269
+#: src/Gui/MainWindow.cs:282 src/Main.cs:65
 msgid "Error"
 msgstr "Fehler"
 
-#: src/Gui/MainWindow.cs:61
+#: src/Gui/MainWindow.cs:59
 #, csharp-format
 msgid "Database '{0}' not found."
 msgstr "Datenbank '{0}' wurde nicht gefunden."
 
-#: src/Gui/MainWindow.cs:83
+#: src/Gui/MainWindow.cs:81
 msgid "Database not found"
 msgstr "Datenbank wurde nicht gefunden"
 
-#: src/Gui/MainWindow.cs:84
+#: src/Gui/MainWindow.cs:82
 msgid "Default database not found. Create?"
 msgstr "Die Standard-Datenbank konnte nicht gefunden werden. Erstellen?"
 
-#: src/Gui/MainWindow.cs:113
+#: src/Gui/MainWindow.cs:111
 msgid "Unsupported database version"
 msgstr "Nicht unterstützte Datenbankversion"
 
-#: src/Gui/MainWindow.cs:114
+#: src/Gui/MainWindow.cs:112
 msgid "This database version is not supported."
 msgstr "Diese Datenbankversion wird nicht untersützt."
 
-#: src/Gui/MainWindow.cs:133
+#: src/Gui/MainWindow.cs:131
 #, csharp-format
 msgid "{0} volumes loaded."
 msgstr "{0} Datenträger geladen."
 
-#: src/Gui/MainWindow.cs:182
+#: src/Gui/MainWindow.cs:150
+#, csharp-format
+msgid "An error occured while loading the volume list: {0}"
+msgstr ""
+"Ein Fehler ist während des Ladens der Datenträger-Liste aufgetreten: {0}"
+
+#: src/Gui/MainWindow.cs:192
 msgid "Please enter the name for the new database"
 msgstr "Bitte geben Sie den Namen der neuen Datenbank ein"
 
-#: src/Gui/MainWindow.cs:194
+#: src/Gui/MainWindow.cs:204
 msgid "Database exists"
 msgstr "Datenbank existiert bereits"
 
-#: src/Gui/MainWindow.cs:195
+#: src/Gui/MainWindow.cs:205
 msgid "Database already exists. Overwrite?"
 msgstr "Die Datenbank existiert bereits. Überschreiben?"
 
-#: src/Gui/MainWindow.cs:208
+#: src/Gui/MainWindow.cs:218
 msgid "Please select a database"
 msgstr "Bitte wählen Sie eine Datenbank"
 
-#: src/Gui/MainWindow.cs:217
-msgid "Database not found."
-msgstr "Die Datenbank wurde nicht gefunden."
-
-#: src/Gui/MainWindow.cs:238
+#: src/Gui/MainWindow.cs:248
 #, csharp-format
 msgid ""
 "An error occured while accessing drive {0}:\n"
@@ -231,122 +293,131 @@ msgstr ""
 "Ein Fehler trat beim Zugriff auf das Laufwerk {0} auf:\n"
 "{1}"
 
-#: src/Gui/MainWindow.cs:260
+#: src/Gui/MainWindow.cs:270
 #, csharp-format
 msgid "Drive {0} is not ready."
 msgstr "Das Laufwerk {0} ist nicht bereit."
 
-#: src/Gui/MainWindow.cs:287 src/Gui/MainWindow.cs:313
+#: src/Gui/MainWindow.cs:283
+#, csharp-format
+msgid "Drive {0} is not mounted."
+msgstr "Laufwerk {0} ist nicht eingehängt."
+
+#: src/Gui/MainWindow.cs:310 src/Gui/MainWindow.cs:336
 msgid "No volume selected"
 msgstr "Kein Datenträger gewählt"
 
-#: src/Gui/MainWindow.cs:288
+#: src/Gui/MainWindow.cs:311
 msgid "Please select a volume record to remove."
 msgstr "Bitte wählen Sie einen Datenträger zum Entfernen."
 
-#: src/Gui/MainWindow.cs:295
+#: src/Gui/MainWindow.cs:318
 msgid "Confirmation"
 msgstr "Bestätigung"
 
-#: src/Gui/MainWindow.cs:296
+#: src/Gui/MainWindow.cs:319
 msgid "Are you sure you really want to remove the selected volume?"
 msgstr ""
 "Sind Sie wirklich sicher, dass sie den gewählten Datenträger entfernen "
 "möchten?"
 
-#: src/Gui/MainWindow.cs:314
+#: src/Gui/MainWindow.cs:337
 msgid "Please select a volume record to edit."
 msgstr "Bitte wählen Sie einen Datenträger zum Bearbeiten."
 
-#: src/Gui/MainWindow.cs:368 src/Gui/ItemSearch.cs:88
+#: src/Gui/MainWindow.cs:398 src/Gui/ItemSearch.cs:88
 msgid "Timeout: another search is probably still in progress."
 msgstr "Zeitüberschreitung: Vermutlich läuft noch ein weiterer Suchvorgang."
 
-#: src/Gui/MainWindow.cs:386 src/Gui/ItemSearch.cs:105
+#: src/Gui/MainWindow.cs:414 src/Gui/ItemSearch.cs:105
 msgid "Searching..."
 msgstr "Suche..."
 
-#: src/Gui/MainWindow.cs:614
+#: src/Gui/MainWindow.cs:661
 msgid "_File"
 msgstr "_Datei"
 
-#: src/Gui/MainWindow.cs:617
+#: src/Gui/MainWindow.cs:664
 msgid "_New Database"
 msgstr "_Neue Datenbank"
 
-#: src/Gui/MainWindow.cs:620
+#: src/Gui/MainWindow.cs:667
 msgid "_Open Database"
 msgstr "Datenbank öffnen"
 
-#: src/Gui/MainWindow.cs:623
+#: src/Gui/MainWindow.cs:670
 msgid "Open Default Database"
 msgstr "Standard-Datenbank öffnen"
 
-#: src/Gui/MainWindow.cs:626
+#: src/Gui/MainWindow.cs:673
 msgid "_Database Properties"
 msgstr "Datenbank Eigenschaften"
 
-#: src/Gui/MainWindow.cs:629
+#: src/Gui/MainWindow.cs:676
+msgid "_Import"
+msgstr "_Importieren"
+
+#: src/Gui/MainWindow.cs:679
 msgid "_Quit"
 msgstr "Beenden"
 
-#: src/Gui/MainWindow.cs:633
+#: src/Gui/MainWindow.cs:683
 msgid "_Edit"
 msgstr "B_earbeiten"
 
-#: src/Gui/MainWindow.cs:636
+#: src/Gui/MainWindow.cs:686
 msgid "_Preferences"
 msgstr "Einstellungen"
 
-#: src/Gui/MainWindow.cs:640
+#: src/Gui/MainWindow.cs:690
 msgid "_Help"
 msgstr "_Hilfe"
 
-#: src/Gui/MainWindow.cs:643
+#: src/Gui/MainWindow.cs:693
 msgid "_Info"
 msgstr "_Info"
 
-#: src/Gui/MainWindow.cs:647
+#: src/Gui/MainWindow.cs:697
 msgid "_Add Volume"
 msgstr "D_atenträger hinzufügen"
 
-#: src/Gui/MainWindow.cs:651
+#: src/Gui/MainWindow.cs:701
 msgid "_Remove Volume"
 msgstr "Datenträger entfe_rnen"
 
-#: src/Gui/MainWindow.cs:654
+#: src/Gui/MainWindow.cs:704
 msgid "_Edit Volume"
 msgstr "Datenträger bearbeiten"
 
-#: src/Gui/MainWindow.cs:657
+#: src/Gui/MainWindow.cs:707
 msgid "_Search"
 msgstr "_Suchen"
 
-#: src/Gui/MainWindow.cs:731
+#: src/Gui/MainWindow.cs:782
 msgid "Filter volumes"
 msgstr "Datenträger filtern"
 
-#: src/Gui/DriveSelection.cs:64
+#: src/Gui/DriveSelection.cs:60
 msgid "Waiting for drives..."
 msgstr "Warte auf Laufwerke..."
 
-#: src/Gui/DriveSelection.cs:135
+#: src/Gui/DriveSelection.cs:131
 msgid "Drive"
 msgstr "Laufwerk"
 
-#: src/Gui/DriveSelection.cs:140
+#: src/Gui/DriveSelection.cs:136
 msgid "Label"
 msgstr "Bezeichnung"
 
-#: src/Gui/DriveSelection.cs:149 src/Gui/Widgets/ItemInfo.cs:280
+#: src/Gui/DriveSelection.cs:145 src/Gui/Widgets/ItemInfo.cs:280
 msgid "Size"
 msgstr "Größe"
 
-#: src/Gui/DriveSelection.cs:173
+#: src/Gui/DriveSelection.cs:169
 msgid "Filesystem"
 msgstr "Dateisystem"
 
-#: src/Gui/DriveSelection.cs:244
+#: src/Gui/DriveSelection.cs:240
 msgid "Please select a drive to scan"
 msgstr "Bitte wählen Sie ein Lauwerk zum Scannen"
 
@@ -438,7 +509,7 @@ msgstr "Datenträger Eigenschaften"
 msgid "Unnamed"
 msgstr "Unbenannt"
 
-#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/VolumeEdit.cs:319
+#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/VolumeEdit.cs:318
 msgid "Category:"
 msgstr "Kategorie:"
 
@@ -619,47 +690,47 @@ msgstr "Verschiedenes"
 msgid "Other"
 msgstr "Sonstiges"
 
-#: src/Gui/Widgets/VolumeEdit.cs:236
+#: src/Gui/Widgets/VolumeEdit.cs:235
 msgid "Yes"
 msgstr "Ja"
 
-#: src/Gui/Widgets/VolumeEdit.cs:236
+#: src/Gui/Widgets/VolumeEdit.cs:235
 msgid "No"
 msgstr "Nein"
 
-#: src/Gui/Widgets/VolumeEdit.cs:246
+#: src/Gui/Widgets/VolumeEdit.cs:245
 msgid "Volume type:"
 msgstr "Datenträgertyp:"
 
-#: src/Gui/Widgets/VolumeEdit.cs:247
+#: src/Gui/Widgets/VolumeEdit.cs:246
 msgid "Hashed:"
 msgstr "Gehasht:"
 
-#: src/Gui/Widgets/VolumeEdit.cs:248
+#: src/Gui/Widgets/VolumeEdit.cs:247
 msgid "Added:"
 msgstr "Hinzugefügt:"
 
-#: src/Gui/Widgets/VolumeEdit.cs:318
+#: src/Gui/Widgets/VolumeEdit.cs:317
 msgid "Archive No.:"
 msgstr "Archiv-Nr.:"
 
-#: src/Gui/Widgets/VolumeEdit.cs:320
+#: src/Gui/Widgets/VolumeEdit.cs:319
 msgid "Title:"
 msgstr "Titel:"
 
-#: src/Gui/Widgets/VolumeEdit.cs:322
+#: src/Gui/Widgets/VolumeEdit.cs:321
 msgid "Keywords:"
 msgstr "Stichwörter:"
 
-#: src/Gui/Widgets/VolumeEdit.cs:323
+#: src/Gui/Widgets/VolumeEdit.cs:322
 msgid "Loaned to:"
 msgstr "Verliehen an:"
 
-#: src/Gui/Widgets/VolumeEdit.cs:324
+#: src/Gui/Widgets/VolumeEdit.cs:323
 msgid "Loaned date:"
 msgstr "Verleihdatum:"
 
-#: src/Gui/Widgets/VolumeEdit.cs:325
+#: src/Gui/Widgets/VolumeEdit.cs:324
 msgid "Return date:"
 msgstr "Rückgabedatum:"
 
@@ -674,11 +745,11 @@ msgstr ""
 "<span size=\"smaller\"><i>Ort:</i> {1}\n"
 "<i>Datenträger:</i> {2}, <i>Archiv-Nr.:</i> {3}</span>"
 
-#: src/FileDialog.cs:53
+#: src/FileDialog.cs:51
 msgid "VolumeDatabase files"
 msgstr "VolumeDatabase Dateien"
 
-#: src/FileDialog.cs:58
+#: src/FileDialog.cs:56
 msgid "All files"
 msgstr "Alle Dateien"
 

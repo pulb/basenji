@@ -1,16 +1,16 @@
-# Hebrew translation for basenji
-# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# French translation for basenji
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
 # This file is distributed under the same license as the basenji package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-01-21 21:39+0100\n"
-"PO-Revision-Date: 2008-10-28 07:41+0000\n"
-"Last-Translator: Yaron <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <he@li.org>\n"
+"PO-Revision-Date: 2010-03-04 05:43+0000\n"
+"Last-Translator: Stephane Ricci <Unknown>\n"
+"Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,89 +20,90 @@ msgstr ""
 #: src/Util.cs:30
 #, csharp-format
 msgid "{0} Bytes"
-msgstr "{0} בתים"
+msgstr "{0} Octets"
 
 #: src/Util.cs:32
 msgid "Bytes"
-msgstr "בתים"
+msgstr "Octets"
 
 #: src/Util.cs:32
 msgid "KB"
-msgstr "ק\"ב"
+msgstr "Ko"
 
 #: src/Util.cs:32
 msgid "MB"
-msgstr "מ\"ב"
+msgstr "Mo"
 
 #: src/Util.cs:32
 msgid "GB"
-msgstr "ג\"ב"
+msgstr "Go"
 
 #: src/Util.cs:32
 msgid "TB"
-msgstr "ט\"ב"
+msgstr "To"
 
 #: src/Gui/Import.cs:29
 msgid "Import"
-msgstr ""
+msgstr "Importer"
 
 #: src/Gui/Import.cs:30
 msgid "Abort"
-msgstr ""
+msgstr "Abandonner"
 
 #: src/Gui/Import.cs:98
 #, csharp-format
 msgid "{0:0}% completed."
-msgstr ""
+msgstr "{0:0}% réalisé"
 
 #: src/Gui/Import.cs:108
 msgid "Import failed"
-msgstr ""
+msgstr "L'importation a échoué"
 
 #: src/Gui/Import.cs:109 src/Gui/MainWindow.cs:227
 msgid "Database not found."
-msgstr "מסד הנתונים לא נמצא."
+msgstr "Base de données introuvable."
 
 #: src/Gui/Import.cs:111
 msgid "Import failed!"
-msgstr ""
+msgstr "Erreur d'importation !"
 
 #: src/Gui/Import.cs:113
 msgid "Import aborted."
-msgstr ""
+msgstr "Importation abandonnée."
 
 #: src/Gui/Import.cs:115
 msgid "Import completed successfully."
-msgstr ""
+msgstr "Import terminé avec succès."
 
 #: src/Gui/Import.cs:134
 msgid "Import in progress"
-msgstr ""
+msgstr "Importation en cours"
 
 #: src/Gui/Import.cs:135
 msgid "You must stop the import before closing this window."
 msgstr ""
+"Vous devez arrêter l'importation en cours avant de fermer cette fenêtre."
 
 #: src/Gui/Import.cs:160
 msgid "Import Database"
-msgstr ""
+msgstr "Import de la bases de données"
 
 #: src/Gui/Import.cs:171
 msgid "Please select a database to import"
-msgstr ""
+msgstr "Sélectionnez une base de données à importer"
 
 #: src/Gui/Import.cs:184
 msgid "Database:"
-msgstr ""
+msgstr "Base de données :"
 
 #: src/Gui/Import.cs:185
 msgid "Format:"
-msgstr ""
+msgstr "Format :"
 
 #: src/Gui/VolumeScanner.cs:103
 #, csharp-format
 msgid "Scanning of drive '{0}' started."
-msgstr ""
+msgstr "Démarrage de l'analyse du lecteur '{0}'."
 
 #: src/Gui/VolumeScanner.cs:104
 #, csharp-format
@@ -110,18 +111,20 @@ msgid ""
 "Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
 "hashing: {3}."
 msgstr ""
+"Options : Génération miniatures : {0}, extraction 'metadata' : {1}, lien "
+"symboliques ignorés : {2}, 'hashing' : {3}."
 
 #: src/Gui/VolumeScanner.cs:125
 msgid "Time"
-msgstr "זמן"
+msgstr "Heure"
 
 #: src/Gui/VolumeScanner.cs:129
 msgid "Message"
-msgstr "הודעה"
+msgstr "Message"
 
 #: src/Gui/VolumeScanner.cs:199 src/Gui/VolumeProperties.cs:41
 msgid "Invalid data"
-msgstr "נתונים שגויים"
+msgstr "Donnée invalide"
 
 #: src/Gui/VolumeScanner.cs:199 src/Gui/VolumeProperties.cs:41
 #, csharp-format
@@ -131,150 +134,151 @@ msgid ""
 "Expected format: {2}\n"
 "Please correct or remove the data you entered."
 msgstr ""
-"\"{0}\" הינו {1}.\n"
+"\"{0}\" est {1}.\n"
 "\n"
-"המבנה הצפוי: {2}\n"
-"נא תקן או הסר את הנתונים שהזנת."
+"Format attendu : {2}\n"
+"Vous devez corriger ou supprimer les données entrées."
 
 #: src/Gui/VolumeScanner.cs:206
 msgid "yes"
-msgstr "כן"
+msgstr "oui"
 
 #: src/Gui/VolumeScanner.cs:206
 msgid "no"
-msgstr "לא"
+msgstr "non"
 
 #: src/Gui/VolumeScanner.cs:229
 msgid "Scan in progress"
-msgstr "הסריקה בתהליכים"
+msgstr "Analyse en cours"
 
 #: src/Gui/VolumeScanner.cs:229
 msgid "You must stop scanning before closing this window."
-msgstr "עליך לעצור את הסריקה בטרם סגירת החלון."
+msgstr "Vous devez arrêter l'analyse en cours avant de fermer cette fenêtre."
 
 #: src/Gui/VolumeScanner.cs:239
 msgid "Stopping Scanner and performing rollback..."
-msgstr "מבטל את פעולת הסורק ומבצע שיחזור של הנתונים..."
+msgstr ""
 
 #: src/Gui/VolumeScanner.cs:281
 #, csharp-format
 msgid "An unhandled exception occured ({0})."
-msgstr "ארעה חריגה בלתי מטופלת ({0})."
+msgstr "Une erreur non gérée est survenue ({0})."
 
 #: src/Gui/VolumeScanner.cs:282
 msgid "All database changes have been rolled back."
-msgstr "כל השינויים במסד הנתונים שוחזרו לנתונים המקוריים."
+msgstr ""
 
 #: src/Gui/VolumeScanner.cs:305
 #, csharp-format
 msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
-msgstr "הסריקה נכשלה. סיבה: ארעה חריגה בלתי מטופלת ({0})."
+msgstr "Analyse échouée. Raison : une erreur non gérée est survenue ({0})."
 
 #: src/Gui/VolumeScanner.cs:307
 msgid "Scanning aborted."
-msgstr "הסריקה בוטלה."
+msgstr "Analyse intérrompue."
 
 #: src/Gui/VolumeScanner.cs:309
 msgid "Scanning completed successfully."
-msgstr "הסריקה הושלמה בהצלחה."
+msgstr "analyse terminée avec succès."
 
 #: src/Gui/VolumeScanner.cs:406
 msgid "VolumeScanner"
-msgstr "סורק־הכרכים"
+msgstr "VolumeScanner"
 
 #: src/Gui/VolumeScanner.cs:418
 msgid "<b>Volume Information:</b>"
-msgstr "<b>נתוני הכרך:</b>"
+msgstr "<b>Information sur le volume :</b>"
 
 #: src/Gui/VolumeScanner.cs:428
 msgid "<b>Scanner Log:</b>"
-msgstr "<b>רישום הסורק:</b>"
+msgstr "<b>Résultat de l'analyse :</b>"
 
 #: src/Gui/VolumeScanner.cs:445
 msgid "Database access"
-msgstr "גישה למסד הנתונים"
+msgstr "Accès à la base de données"
 
 #: src/Gui/About.cs:28
 msgid "A portable volume indexing tool"
-msgstr ""
+msgstr "Outil portable d'indexation de médias"
 
 #: src/Gui/About.cs:29
 #, csharp-format
 msgid "Using VolumeDB v{0}."
-msgstr "משתמש ב־VolumeDB גירסה {0}."
+msgstr "Vous utilisez VolumeDB v{0}."
 
 #: src/Gui/About.cs:31
 msgid "Copyright (c) "
-msgstr "כל הזכויות שמורות (c) "
+msgstr "Copyright (c) "
 
 #: src/Gui/DBProperties.cs:77
 msgid "Database Properties"
-msgstr "מאפייני מסד הנתונים"
+msgstr "Propriétés de la base de données"
 
 #: src/Gui/DBProperties.cs:89
 msgid "Name:"
-msgstr "שם:"
+msgstr "Nom :"
 
 #: src/Gui/DBProperties.cs:90 src/Gui/Widgets/VolumeEdit.cs:320
 msgid "Description:"
-msgstr "תיאור:"
+msgstr "Description :"
 
 #: src/Gui/DBProperties.cs:91
 msgid "Created:"
-msgstr "נוצר:"
+msgstr "Créé :"
 
 #: src/Gui/MainWindow.cs:58 src/Gui/MainWindow.cs:226
 #: src/Gui/MainWindow.cs:247 src/Gui/MainWindow.cs:269
 #: src/Gui/MainWindow.cs:282 src/Main.cs:65
 msgid "Error"
-msgstr "שגיאה"
+msgstr "Erreur"
 
 #: src/Gui/MainWindow.cs:59
 #, csharp-format
 msgid "Database '{0}' not found."
-msgstr "מסד הנתונים '{0}' לא נמצא."
+msgstr "Base de données '{0}' introuvable."
 
 #: src/Gui/MainWindow.cs:81
 msgid "Database not found"
-msgstr ""
+msgstr "Base de données non trouvée"
 
 #: src/Gui/MainWindow.cs:82
 msgid "Default database not found. Create?"
-msgstr ""
+msgstr "Base de donnée par défaut non trouvée. Créer une nouvelle ?"
 
 #: src/Gui/MainWindow.cs:111
 msgid "Unsupported database version"
-msgstr "גירסת מסד הנתונים לא נתמכת"
+msgstr "Version de base de données non supportée"
 
 #: src/Gui/MainWindow.cs:112
 msgid "This database version is not supported."
-msgstr "גירסת מסד נתונים זו אינה נתמכת."
+msgstr "Cette version de base de données n'est pas supportée."
 
 #: src/Gui/MainWindow.cs:131
 #, csharp-format
 msgid "{0} volumes loaded."
-msgstr "נטענו {0} כרכים."
+msgstr "{0} médias chargés."
 
 #: src/Gui/MainWindow.cs:150
 #, csharp-format
 msgid "An error occured while loading the volume list: {0}"
 msgstr ""
+"Une erreur est survenue lors du chargement des données du volume : {0}"
 
 #: src/Gui/MainWindow.cs:192
 msgid "Please enter the name for the new database"
-msgstr "נא הזן את שם מסד הנתונים החדש"
+msgstr "Veuillez entrer le nom de la nouvelle base de données"
 
 #: src/Gui/MainWindow.cs:204
 msgid "Database exists"
-msgstr "מסד הנתונים קיים"
+msgstr "La base de donnée existe déjà"
 
 #: src/Gui/MainWindow.cs:205
 msgid "Database already exists. Overwrite?"
-msgstr "מסד הנתונים כבר קיים. לשכתב?"
+msgstr "Cette base de données existe déjà. La remplacer ?"
 
 #: src/Gui/MainWindow.cs:218
 msgid "Please select a database"
-msgstr "אנא בחר מסד נתונים"
+msgstr "Veuillez sélectionner une base de données"
 
 #: src/Gui/MainWindow.cs:248
 #, csharp-format
@@ -282,98 +286,99 @@ msgid ""
 "An error occured while accessing drive {0}:\n"
 "{1}"
 msgstr ""
-"ארעה שגיאה בעת הגישה לכונן {0}:\n"
+"Une erreur est survenue lors de l'accès au disque {0} :\n"
 "{1}"
 
 #: src/Gui/MainWindow.cs:270
 #, csharp-format
 msgid "Drive {0} is not ready."
-msgstr "הכונן {0} אינו מוכן."
+msgstr "Le disque {0} n'est pas prêt."
 
 #: src/Gui/MainWindow.cs:283
 #, csharp-format
 msgid "Drive {0} is not mounted."
-msgstr ""
+msgstr "Le disque {0} n'est pas monté."
 
 #: src/Gui/MainWindow.cs:310 src/Gui/MainWindow.cs:336
 msgid "No volume selected"
-msgstr "לא נבחר כרך"
+msgstr "Aucun volume n'est sélectionné"
 
 #: src/Gui/MainWindow.cs:311
 msgid "Please select a volume record to remove."
-msgstr "נא בחר רשומת כרך להסרה."
+msgstr "Sélectionnez le volume à supprimer."
 
 #: src/Gui/MainWindow.cs:318
 msgid "Confirmation"
-msgstr "אישור"
+msgstr "Confirmation"
 
 #: src/Gui/MainWindow.cs:319
 msgid "Are you sure you really want to remove the selected volume?"
-msgstr "האם אתה בטוח שברצונך להסיר את הכרך הנבחר?"
+msgstr "Voulez-vous vraiment supprimé le volume sélectionné ?"
 
 #: src/Gui/MainWindow.cs:337
 msgid "Please select a volume record to edit."
-msgstr ""
+msgstr "Sélectionnez le volume à éditer."
 
 #: src/Gui/MainWindow.cs:398 src/Gui/ItemSearch.cs:88
 msgid "Timeout: another search is probably still in progress."
-msgstr "תום הזמן: כנראה ומתבצע חיפוש נוסף כרגע."
+msgstr ""
+"Dépassement de temps : une autre recherche est probablement déjà en cours."
 
 #: src/Gui/MainWindow.cs:414 src/Gui/ItemSearch.cs:105
 msgid "Searching..."
-msgstr "מחפש..."
+msgstr "Recherche en cours..."
 
 #: src/Gui/MainWindow.cs:661
 msgid "_File"
-msgstr "_קובץ"
+msgstr "_Fichier"
 
 #: src/Gui/MainWindow.cs:664
 msgid "_New Database"
-msgstr "מסד נתונים _חדש"
+msgstr "_Nouvelle BDD"
 
 #: src/Gui/MainWindow.cs:667
 msgid "_Open Database"
-msgstr "_פתח מסד נתונים"
+msgstr "_Ouvrir BDD"
 
 #: src/Gui/MainWindow.cs:670
 msgid "Open Default Database"
-msgstr ""
+msgstr "Ouvrir la BDD par défaut"
 
 #: src/Gui/MainWindow.cs:673
 msgid "_Database Properties"
-msgstr "_מאפייני מסד הנתונים"
+msgstr "_Propriétés BDD"
 
 #: src/Gui/MainWindow.cs:676
 msgid "_Import"
-msgstr ""
+msgstr "_Importer"
 
 #: src/Gui/MainWindow.cs:679
 msgid "_Quit"
-msgstr "י_ציאה"
+msgstr "_Quitter"
 
 #: src/Gui/MainWindow.cs:683
 msgid "_Edit"
-msgstr "ע_ריכה"
+msgstr "_Édition"
 
 #: src/Gui/MainWindow.cs:686
 msgid "_Preferences"
-msgstr "הע_דפות"
+msgstr "_Préférences"
 
 #: src/Gui/MainWindow.cs:690
 msgid "_Help"
-msgstr "ע_זרה"
+msgstr "_Aide"
 
 #: src/Gui/MainWindow.cs:693
 msgid "_Info"
-msgstr "_מידע"
+msgstr "_Info"
 
 #: src/Gui/MainWindow.cs:697
 msgid "_Add Volume"
-msgstr "ה_וסף כרך"
+msgstr "_Ajouter Volume"
 
 #: src/Gui/MainWindow.cs:701
 msgid "_Remove Volume"
-msgstr "ה_סר כרך"
+msgstr "_Supprimer Volume"
 
 #: src/Gui/MainWindow.cs:704
 msgid "_Edit Volume"
@@ -381,213 +386,214 @@ msgstr ""
 
 #: src/Gui/MainWindow.cs:707
 msgid "_Search"
-msgstr "_חיפוש:"
+msgstr "_Recherche"
 
 #: src/Gui/MainWindow.cs:782
 msgid "Filter volumes"
-msgstr ""
+msgstr "Filtrer les volumes"
 
 #: src/Gui/DriveSelection.cs:60
 msgid "Waiting for drives..."
-msgstr "ממתין לכוננים..."
+msgstr "Attente des lecteurs..."
 
 #: src/Gui/DriveSelection.cs:131
 msgid "Drive"
-msgstr "כונן"
+msgstr "Lecteur"
 
 #: src/Gui/DriveSelection.cs:136
 msgid "Label"
-msgstr "תווית"
+msgstr "Étiquette"
 
 #: src/Gui/DriveSelection.cs:145 src/Gui/Widgets/ItemInfo.cs:280
 msgid "Size"
-msgstr "נפח"
+msgstr "Taille"
 
 #: src/Gui/DriveSelection.cs:169
 msgid "Filesystem"
-msgstr "מערכת קבצים"
+msgstr "Système de fichiers"
 
 #: src/Gui/DriveSelection.cs:240
 msgid "Please select a drive to scan"
-msgstr "אנא בחר כונן לסריקה"
+msgstr "Sélectionnez le disque à analyser"
 
 #: src/Gui/Preferences.cs:107
 msgid "None"
-msgstr "ללא"
+msgstr "Aucun"
 
 #: src/Gui/Preferences.cs:225
 msgid "Restart required"
-msgstr "נדרשת הפעלה מחדש"
+msgstr "Redémarrage nécessaire"
 
 #: src/Gui/Preferences.cs:225
 #, csharp-format
 msgid "You must restart {0} for icontheme changes to take effect."
-msgstr "עליך לאתחל את {0} כדי שערכת הסמלים תכנס לתוקף"
+msgstr "Vous devez redémarrer {0} pour appliquer le changement du thème."
 
 #: src/Gui/Preferences.cs:251
 msgid "Preferences"
-msgstr "העדפות"
+msgstr "Préférences"
 
 #: src/Gui/Preferences.cs:273
 msgid "_Load Defaults"
-msgstr "טען _ברירות מחדל"
+msgstr "_Charger défauts"
 
 #: src/Gui/Preferences.cs:298
 msgid "Icon theme:"
-msgstr "ערכת הסמלים:"
+msgstr "Thème d'icônes :"
 
 #: src/Gui/Preferences.cs:309
 msgid "Reopen most recent database on startup"
-msgstr "פתח מחדש את מסד הנתונים העדכני ביותר עם ההפעלה"
+msgstr "Réouvrir la dernière base de données au démarrage de l'application"
 
 #: src/Gui/Preferences.cs:312
 msgid "General"
-msgstr "כללי"
+msgstr "Général"
 
 #: src/Gui/Preferences.cs:320
 msgid "Don't prompt, always scan:"
-msgstr "אל תודיע, סרוק תמיד:"
+msgstr "Toujours analyser sans confirmation :"
 
 #: src/Gui/Preferences.cs:339
 msgid "Generate Thumbnails"
-msgstr "ייצר תמונות ממוזערות"
+msgstr "Génération des miniatures"
 
 #: src/Gui/Preferences.cs:343
 msgid "Extract metadata"
-msgstr ""
+msgstr "Extraction des métadonnées"
 
 #: src/Gui/Preferences.cs:347
 msgid "Discard symbolic links"
-msgstr "התעלם מקישורים סמליים"
+msgstr "Ignorer les liens symboliques"
 
 #: src/Gui/Preferences.cs:351
 msgid "Compute hashcodes for files (slow!)"
-msgstr "חשב צפני גיבוב לקבצים (איטי!)"
+msgstr "Calcule la somme de contrôle pour chaque fichier (plus lent !)"
 
 #: src/Gui/Preferences.cs:354
 msgid "Scanner"
-msgstr "סורק"
+msgstr "Scanner"
 
 #: src/Gui/ItemSearch.cs:77
 #, csharp-format
 msgid "Found {0} items in {1:F3} seconds."
-msgstr "נמצאו {0} תוך {1:F3} שניות."
+msgstr "Trouvé {0} objets en {1:F3} secondes."
 
 #: src/Gui/ItemSearch.cs:90
 msgid "Too many search results. Please refine your search criteria."
 msgstr ""
+"Trop de résultats pour votre recherche. Affinez vos critères de recherche."
 
 #: src/Gui/ItemSearch.cs:193
 msgid "Search Items"
-msgstr "חיפוש פריטים"
+msgstr "Objets recherchés"
 
 #: src/Gui/ItemSearch.cs:208
 msgid "Search:"
-msgstr ""
+msgstr "Chercher :"
 
 #: src/Gui/ItemSearch.cs:235
 msgid "No search results."
-msgstr ""
+msgstr "Aucun résultat de recherche."
 
 #: src/Gui/VolumeProperties.cs:81
 msgid "Volume Properties"
-msgstr "מאפייני הכרך"
+msgstr "Propriétés du Volume"
 
 #: src/Gui/Widgets/VolumeView.cs:29
 msgid "Unnamed"
-msgstr ""
+msgstr "Sans nom"
 
 #: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/VolumeEdit.cs:318
 msgid "Category:"
-msgstr "קטגוריה:"
+msgstr "Catégorie :"
 
 #: src/Gui/Widgets/VolumeView.cs:31
 msgid "files"
-msgstr ""
+msgstr "fichiers"
 
 #: src/Gui/Widgets/ItemView.cs:29
 msgid "Loading..."
-msgstr "טוען..."
+msgstr "Chargement…"
 
 #: src/Gui/Widgets/ItemView.cs:30
 msgid "(empty)"
-msgstr "(ריק)"
+msgstr "(vide)"
 
 #: src/Gui/Widgets/ItemInfo.cs:39
 msgid "by"
-msgstr ""
+msgstr "par"
 
 #: src/Gui/Widgets/ItemInfo.cs:40
 msgid "from"
-msgstr ""
+msgstr "de"
 
 #: src/Gui/Widgets/ItemInfo.cs:194
 msgid "Genre"
-msgstr ""
+msgstr "Genre"
 
 #: src/Gui/Widgets/ItemInfo.cs:206
 msgid "Year"
-msgstr ""
+msgstr "Année"
 
 #: src/Gui/Widgets/ItemInfo.cs:209
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: src/Gui/Widgets/ItemInfo.cs:212
 msgid "Duration"
-msgstr ""
+msgstr "Durée"
 
 #: src/Gui/Widgets/ItemInfo.cs:216
 msgid "Dimensions"
-msgstr ""
+msgstr "Dimensions"
 
 #: src/Gui/Widgets/ItemInfo.cs:219
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 #: src/Gui/Widgets/ItemInfo.cs:221
 msgid "Author"
-msgstr ""
+msgstr "Auteur"
 
 #: src/Gui/Widgets/ItemInfo.cs:223
 msgid "Copyright"
-msgstr ""
+msgstr "Copyright"
 
 #: src/Gui/Widgets/ItemInfo.cs:225
 msgid "Producer"
-msgstr ""
+msgstr "Producteur"
 
 #: src/Gui/Widgets/ItemInfo.cs:227
 msgid "Creator"
-msgstr ""
+msgstr "Créateur"
 
 #: src/Gui/Widgets/ItemInfo.cs:229
 msgid "Software"
-msgstr ""
+msgstr "Logiciel"
 
 #: src/Gui/Widgets/ItemInfo.cs:231
 msgid "Language"
-msgstr ""
+msgstr "Langage"
 
 #: src/Gui/Widgets/ItemInfo.cs:233
 msgid "Page count"
-msgstr ""
+msgstr "Nombre de pages"
 
 #: src/Gui/Widgets/ItemInfo.cs:237
 msgid "File count"
-msgstr ""
+msgstr "Nombre de fichiers"
 
 #: src/Gui/Widgets/ItemInfo.cs:260
 msgid "Location"
-msgstr ""
+msgstr "Emplacement"
 
 #: src/Gui/Widgets/ItemInfo.cs:261
 msgid "Last write time"
-msgstr ""
+msgstr "Dernier enregistrement"
 
 #: src/Gui/Widgets/ItemInfo.cs:272
 msgid "Symlink target"
-msgstr ""
+msgstr "destination du lien"
 
 #: src/Gui/Widgets/ItemInfo.cs:282
 msgid "Hash"
@@ -595,132 +601,132 @@ msgstr ""
 
 #: src/Gui/Widgets/ItemInfo.cs:286
 msgid "Filetype"
-msgstr ""
+msgstr "Type"
 
 #: src/Gui/Widgets/PageNavigation.cs:27
 msgid "No items."
-msgstr ""
+msgstr "Aucun objet."
 
 #: src/Gui/Widgets/PageNavigation.cs:145
 #, csharp-format
 msgid "<b>Page {0}/{1}</b>  ({2} - {3} of {4} items)"
-msgstr ""
+msgstr "<b>Page {0}/{1}</b>  ({2} - {3} sur {4} objets)"
 
 #: src/Gui/Widgets/CategoryView.cs:58
 msgid "Directories"
-msgstr ""
+msgstr "Dossiers"
 
 #: src/Gui/Widgets/CategoryView.cs:59
 msgid "Text"
-msgstr ""
+msgstr "Texte"
 
 #: src/Gui/Widgets/CategoryView.cs:60 src/Gui/Widgets/VolumeEdit.cs:50
 msgid "Documents"
-msgstr "מסמכים"
+msgstr "Documents"
 
 #: src/Gui/Widgets/CategoryView.cs:61 src/Gui/Widgets/VolumeEdit.cs:51
 msgid "Music"
-msgstr "מוסיקה"
+msgstr "Musique"
 
 #: src/Gui/Widgets/CategoryView.cs:62 src/Gui/Widgets/VolumeEdit.cs:52
 msgid "Movies"
-msgstr "סרטים"
+msgstr "Films"
 
 #: src/Gui/Widgets/CategoryView.cs:63
 msgid "Images"
-msgstr ""
+msgstr "Images"
 
 #: src/Gui/Widgets/CategoryView.cs:64
 msgid "Applications"
-msgstr ""
+msgstr "Programmes"
 
 #: src/Gui/Widgets/CategoryView.cs:65
 msgid "Archives"
-msgstr ""
+msgstr "Archives"
 
 #: src/Gui/Widgets/CategoryView.cs:66
 msgid "Development"
-msgstr ""
+msgstr "Développement"
 
 #: src/Gui/Widgets/CategoryView.cs:149
 msgid "Category"
-msgstr ""
+msgstr "Catégorie"
 
 #: src/Gui/Widgets/CategoryView.cs:181
 msgid "All items"
-msgstr ""
+msgstr "Tous les objets"
 
 #: src/Gui/Widgets/FSVolumeEdit.cs:62
 msgid "Files:"
-msgstr "קבצים:"
+msgstr "Fichiers :"
 
 #: src/Gui/Widgets/FSVolumeEdit.cs:63
 msgid "Directories:"
-msgstr "תיקיות:"
+msgstr "Dossiers :"
 
 #: src/Gui/Widgets/FSVolumeEdit.cs:64
 msgid "Total size:"
-msgstr "הגודל הכללי:"
+msgstr "Taille totale :"
 
 #: src/Gui/Widgets/VolumeEdit.cs:49
 msgid "Backup"
-msgstr "גיבוי"
+msgstr "Sauvegarde"
 
 #: src/Gui/Widgets/VolumeEdit.cs:53
 msgid "Pictures"
-msgstr "תמונות"
+msgstr "Images"
 
 #: src/Gui/Widgets/VolumeEdit.cs:54
 msgid "Misc"
-msgstr "שונות"
+msgstr "Divers"
 
 #: src/Gui/Widgets/VolumeEdit.cs:55
 msgid "Other"
-msgstr "אחר"
+msgstr "Autre"
 
 #: src/Gui/Widgets/VolumeEdit.cs:235
 msgid "Yes"
-msgstr "כן"
+msgstr "Oui"
 
 #: src/Gui/Widgets/VolumeEdit.cs:235
 msgid "No"
-msgstr "לא"
+msgstr "Non"
 
 #: src/Gui/Widgets/VolumeEdit.cs:245
 msgid "Volume type:"
-msgstr "סוג הכרך:"
+msgstr "Type de média :"
 
 #: src/Gui/Widgets/VolumeEdit.cs:246
 msgid "Hashed:"
-msgstr "התבצע גיבוב:"
+msgstr "Empreinte :"
 
 #: src/Gui/Widgets/VolumeEdit.cs:247
 msgid "Added:"
-msgstr "נוסף:"
+msgstr "Ajouté:"
 
 #: src/Gui/Widgets/VolumeEdit.cs:317
 msgid "Archive No.:"
-msgstr ""
+msgstr "No. d'archive :"
 
 #: src/Gui/Widgets/VolumeEdit.cs:319
 msgid "Title:"
-msgstr "כותרת:"
+msgstr "Titre :"
 
 #: src/Gui/Widgets/VolumeEdit.cs:321
 msgid "Keywords:"
-msgstr "מילות מפתח:"
+msgstr "Mots-clés :"
 
 #: src/Gui/Widgets/VolumeEdit.cs:322
 msgid "Loaned to:"
-msgstr "הושאל ל־:"
+msgstr "Prêtés à :"
 
 #: src/Gui/Widgets/VolumeEdit.cs:323
 msgid "Loaned date:"
-msgstr "תאריך ההשאלה:"
+msgstr "Date de prêt :"
 
 #: src/Gui/Widgets/VolumeEdit.cs:324
 msgid "Return date:"
-msgstr "תאריך ההחזרה:"
+msgstr "Date de retour :"
 
 #: src/Gui/Widgets/SearchResultView.cs:83
 #, csharp-format
@@ -729,16 +735,19 @@ msgid ""
 "<span size=\"smaller\"><i>Location:</i> {1}\n"
 "<i>Volume:</i> {2}, <i>Archive No.:</i> {3}</span>"
 msgstr ""
+"<b>{0}</b>\n"
+"<span size=\"smaller\"><i>Emplacement :</i> {1}\n"
+"<i>Média :</i> {2}, <i>No. Archive :</i> {3}</span>"
 
 #: src/FileDialog.cs:51
 msgid "VolumeDatabase files"
-msgstr "קבצי VolumeDatabase"
+msgstr ""
 
 #: src/FileDialog.cs:56
 msgid "All files"
-msgstr "כל הקבצים"
+msgstr "Tous les fichiers"
 
 #: src/Main.cs:65
 #, csharp-format
 msgid "{0} is already running."
-msgstr "{0} כבר פעיל."
+msgstr "{0} est en cours de traitement."
