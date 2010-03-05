@@ -5,7 +5,7 @@ Maintainer: Patrick Ulbrich <zulu99@gmx.net>
 Build-Depends: debhelper (>= 7),
                autotools-dev,
                pkg-config,
-               mono-2.0-devel (>= 2.4.2)
+               mono-2.0-devel (>= 2.4.2),
                cli-common-dev,
                libglib2.0-cil,
                libgtk2.0-cil,
