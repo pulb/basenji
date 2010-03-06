@@ -27,6 +27,8 @@ namespace Basenji.Gui.Widgets
 {
 	public class SearchResultView : ViewBase
 	{	
+		private static readonly string STR_UNNAMED = S._("Unnamed");
+		
 		private const IconSize ICON_SIZE = IconSize.Dialog;
 		
 		private ItemIcons itemIcons;
@@ -83,7 +85,7 @@ namespace Basenji.Gui.Widgets
 						string description = string.Format(S._("<b>{0}</b>\n<span size=\"smaller\"><i>Location:</i> {1}\n<i>Volume:</i> {2}, <i>Archive No.:</i> {3}</span>"),
 																Util.Escape(fsvi.Name),
 																Util.Escape(fsvi.Location),
-																Util.Escape(vol.Title), 
+																Util.Escape(vol.Title.Length > 0 ? vol.Title : STR_UNNAMED), 
 																Util.Escape(vol.ArchiveNo));
 																
 						store.AppendValues(	itemIcons.GetIconForItem(fsvi, ICON_SIZE),
