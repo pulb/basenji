@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-21 21:39+0100\n"
+"POT-Creation-Date: 2010-03-07 12:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,11 +118,11 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:199 src/Gui/VolumeProperties.cs:41
+#: src/Gui/VolumeScanner.cs:206 src/Gui/VolumeProperties.cs:41
 msgid "Invalid data"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:199 src/Gui/VolumeProperties.cs:41
+#: src/Gui/VolumeScanner.cs:206 src/Gui/VolumeProperties.cs:41
 #, csharp-format
 msgid ""
 "\"{0}\" is {1}.\n"
@@ -131,61 +131,61 @@ msgid ""
 "Please correct or remove the data you entered."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:206
+#: src/Gui/VolumeScanner.cs:213
 msgid "yes"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:206
+#: src/Gui/VolumeScanner.cs:213
 msgid "no"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:229
+#: src/Gui/VolumeScanner.cs:236
 msgid "Scan in progress"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:229
+#: src/Gui/VolumeScanner.cs:236
 msgid "You must stop scanning before closing this window."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:239
+#: src/Gui/VolumeScanner.cs:246
 msgid "Stopping Scanner and performing rollback..."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:281
+#: src/Gui/VolumeScanner.cs:288
 #, csharp-format
 msgid "An unhandled exception occured ({0})."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:282
+#: src/Gui/VolumeScanner.cs:289
 msgid "All database changes have been rolled back."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:305
+#: src/Gui/VolumeScanner.cs:312
 #, csharp-format
 msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:307
+#: src/Gui/VolumeScanner.cs:314
 msgid "Scanning aborted."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:309
+#: src/Gui/VolumeScanner.cs:316
 msgid "Scanning completed successfully."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:406
+#: src/Gui/VolumeScanner.cs:413
 msgid "VolumeScanner"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:418
+#: src/Gui/VolumeScanner.cs:425
 msgid "<b>Volume Information:</b>"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:428
+#: src/Gui/VolumeScanner.cs:435
 msgid "<b>Scanner Log:</b>"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:445
+#: src/Gui/VolumeScanner.cs:452
 msgid "Database access"
 msgstr ""
 
@@ -210,7 +210,7 @@ msgstr ""
 msgid "Name:"
 msgstr ""
 
-#: src/Gui/DBProperties.cs:90 src/Gui/Widgets/VolumeEdit.cs:320
+#: src/Gui/DBProperties.cs:90 src/Gui/Widgets/VolumeEdit.cs:324
 msgid "Description:"
 msgstr ""
 
@@ -288,7 +288,7 @@ msgstr ""
 msgid "Drive {0} is not mounted."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:310 src/Gui/MainWindow.cs:336
+#: src/Gui/MainWindow.cs:310 src/Gui/MainWindow.cs:340
 msgid "No volume selected"
 msgstr ""
 
@@ -304,79 +304,79 @@ msgstr ""
 msgid "Are you sure you really want to remove the selected volume?"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:337
+#: src/Gui/MainWindow.cs:341
 msgid "Please select a volume record to edit."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:398 src/Gui/ItemSearch.cs:88
+#: src/Gui/MainWindow.cs:402 src/Gui/ItemSearch.cs:88
 msgid "Timeout: another search is probably still in progress."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:414 src/Gui/ItemSearch.cs:105
+#: src/Gui/MainWindow.cs:418 src/Gui/ItemSearch.cs:105
 msgid "Searching..."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:661
+#: src/Gui/MainWindow.cs:665
 msgid "_File"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:664
+#: src/Gui/MainWindow.cs:668
 msgid "_New Database"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:667
+#: src/Gui/MainWindow.cs:671
 msgid "_Open Database"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:670
+#: src/Gui/MainWindow.cs:674
 msgid "Open Default Database"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:673
+#: src/Gui/MainWindow.cs:677
 msgid "_Database Properties"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:676
+#: src/Gui/MainWindow.cs:680
 msgid "_Import"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:679
+#: src/Gui/MainWindow.cs:683
 msgid "_Quit"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:683
+#: src/Gui/MainWindow.cs:687
 msgid "_Edit"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:686
+#: src/Gui/MainWindow.cs:690
 msgid "_Preferences"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:690
+#: src/Gui/MainWindow.cs:694
 msgid "_Help"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:693
+#: src/Gui/MainWindow.cs:697
 msgid "_Info"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:697
+#: src/Gui/MainWindow.cs:701
 msgid "_Add Volume"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:701
+#: src/Gui/MainWindow.cs:705
 msgid "_Remove Volume"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:704
+#: src/Gui/MainWindow.cs:708
 msgid "_Edit Volume"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:707
+#: src/Gui/MainWindow.cs:711
 msgid "_Search"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:782
+#: src/Gui/MainWindow.cs:786
 msgid "Filter volumes"
 msgstr ""
 
@@ -400,7 +400,7 @@ msgstr ""
 msgid "Filesystem"
 msgstr ""
 
-#: src/Gui/DriveSelection.cs:240
+#: src/Gui/DriveSelection.cs:242
 msgid "Please select a drive to scan"
 msgstr ""
 
@@ -486,11 +486,11 @@ msgstr ""
 msgid "Volume Properties"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeView.cs:29
+#: src/Gui/Widgets/VolumeView.cs:29 src/Gui/Widgets/SearchResultView.cs:30
 msgid "Unnamed"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/VolumeEdit.cs:318
+#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/VolumeEdit.cs:322
 msgid "Category:"
 msgstr ""
 
@@ -671,51 +671,51 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:235
+#: src/Gui/Widgets/VolumeEdit.cs:239
 msgid "Yes"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:235
+#: src/Gui/Widgets/VolumeEdit.cs:239
 msgid "No"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:245
+#: src/Gui/Widgets/VolumeEdit.cs:249
 msgid "Volume type:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:246
+#: src/Gui/Widgets/VolumeEdit.cs:250
 msgid "Hashed:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:247
+#: src/Gui/Widgets/VolumeEdit.cs:251
 msgid "Added:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:317
+#: src/Gui/Widgets/VolumeEdit.cs:321
 msgid "Archive No.:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:319
+#: src/Gui/Widgets/VolumeEdit.cs:323
 msgid "Title:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:321
+#: src/Gui/Widgets/VolumeEdit.cs:325
 msgid "Keywords:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:322
+#: src/Gui/Widgets/VolumeEdit.cs:326
 msgid "Loaned to:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:323
+#: src/Gui/Widgets/VolumeEdit.cs:327
 msgid "Loaned date:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:324
+#: src/Gui/Widgets/VolumeEdit.cs:328
 msgid "Return date:"
 msgstr ""
 
-#: src/Gui/Widgets/SearchResultView.cs:83
+#: src/Gui/Widgets/SearchResultView.cs:85
 #, csharp-format
 msgid ""
 "<b>{0}</b>\n"
