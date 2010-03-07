@@ -86,7 +86,7 @@ namespace Basenji.Gui.Widgets
 																Util.Escape(fsvi.Name),
 																Util.Escape(fsvi.Location),
 																Util.Escape(vol.Title.Length > 0 ? vol.Title : STR_UNNAMED), 
-																Util.Escape(vol.ArchiveNo));
+																Util.Escape(vol.ArchiveNo.Length > 0 ? vol.ArchiveNo : "-"));
 																
 						store.AppendValues(	itemIcons.GetIconForItem(fsvi, ICON_SIZE),
 											description,
