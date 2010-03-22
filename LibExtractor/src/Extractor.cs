@@ -140,10 +140,12 @@ namespace LibExtractor
 		private List<Keyword> GetKeywordsInternal(IntPtr pKeywords) {
 			try {
 				List<Keyword> list = new List<Keyword>();
-				while(pKeywords != IntPtr.Zero) {
-					Keyword k = (Keyword)Marshal.PtrToStructure(pKeywords, typeof(Keyword));
+				IntPtr p = pKeywords;
+				
+				while (p != IntPtr.Zero) {
+					Keyword k = (Keyword)Marshal.PtrToStructure(p, typeof(Keyword));
 					list.Add(k);
-					pKeywords = k.next;
+					p = k.next;
 				}
 				return list;
 			} finally {
