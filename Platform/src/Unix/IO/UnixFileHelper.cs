@@ -1,6 +1,6 @@
 // UnixFileHelper.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -104,6 +104,24 @@ namespace Platform.Unix.IO
 		
 		public static DateTime GetLastWriteTime(Stat stat) {
 			return NativeConvert.ToDateTime(stat.st_mtime);
+		}
+		
+		public static string ReadLink(string symLinkPath, 
+		                              /* see man readlink */
+		                              bool canonicalize_existing) {
+			
+			if (!canonicalize_existing)
+				return ReadLink(symLinkPath);
+			
+			// throws FileNotFoundException if a path component does not exsist,
+			// including the last one.
+			string path = UnixPath.GetCompleteRealPath(symLinkPath);
+			string tmp;
+			
+			while (path != (tmp = UnixPath.GetCompleteRealPath(path)))
+				path = tmp;
+			
+			return path;
 		}
 		
 		public static string ReadLink(string symLinkPath) {

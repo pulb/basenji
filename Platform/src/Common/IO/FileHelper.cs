@@ -1,6 +1,6 @@
 // FileHelper.cs
 // 
-// Copyright (C) 2008, 2009 Patrick Ulbrich
+// Copyright (C) 2008 - 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -79,11 +79,11 @@ namespace Platform.Common.IO
 #endif		
 		}
 		
-		public static string GetSymLinkTarget(string symLinkPath) {
+		public static string GetCanonicalSymLinkTarget(string symLinkPath) {
 #if WIN32
 			throw new NotImplementedException();
 #else
-			return UnixFileHelper.ReadLink(symLinkPath);
+			return UnixFileHelper.ReadLink(symLinkPath, true);
 #endif		
 		}
 	}

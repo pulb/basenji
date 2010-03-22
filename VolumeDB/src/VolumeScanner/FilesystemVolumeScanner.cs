@@ -44,11 +44,11 @@ namespace VolumeDB.VolumeScanner
 		private bool				disposed;
 		//private MimeInfo			  mimeInfo;
 		private StringBuilder		sbPathFixer;
-		private List<SymLinkItem>	symLinkItems;
 		private bool				discardSymLinks;
 		private bool				generateThumbnails;
 		private bool				extractMetaData;
 		private Paths				paths;
+		private SymLinkHelper		symLinkHelper;
 		private ThumbnailGenerator	thumbGen;
 		private Extractor			extractor;
 
@@ -82,11 +82,11 @@ namespace VolumeDB.VolumeScanner
 			disposed				= false;
 			//this.mimeInfo			  = new MimeInfo(false);
 			this.sbPathFixer		= new StringBuilder(1024);
-			this.symLinkItems		= new List<SymLinkItem>();
 			this.discardSymLinks	= discardSymLinks;			
 			this.generateThumbnails	= generateThumbnails;
 			this.extractMetaData	= extractMetaData;
 			this.paths				= new Paths(dbDataPath, null, null);
+			this.symLinkHelper		= new SymLinkHelper(this);
 			this.thumbGen			= new ThumbnailGenerator();
 
 			this.extractor			= null;
@@ -131,7 +131,7 @@ namespace VolumeDB.VolumeScanner
 				
 				DirectoryInfo dir = new DirectoryInfo(rootPath);				
 				RecursiveDump(rootPath, dir, writer, computeHashs, VolumeDatabase.ID_NONE);
-				InsertSymLinkItems(writer, volume.VolumeID);
+				symLinkHelper.InsertSymLinkItems(writer, volume.VolumeID);
 				
 				volume.SetFileSystemVolumeFields(VolumeInfo.Files, VolumeInfo.Directories, VolumeInfo.Size);
 			} catch (Exception) {
@@ -149,7 +149,7 @@ namespace VolumeDB.VolumeScanner
 		protected override void Reset() {
 			//m_rootID = 0;
 			//Media.SetFilesystemMediaFields(0, -1, 0); // -1 : subtract root dir
-			symLinkItems.Clear();
+			symLinkHelper.Clear();
 			
 			base.Reset();
 		}
@@ -166,8 +166,8 @@ namespace VolumeDB.VolumeScanner
 				thumbGen		= null;
 				extractor		= null;
 				sbPathFixer		= null;
-				symLinkItems	= null;
 				paths			= null;
+				symLinkHelper	= null;
 			}
 			disposed = true;
 			
@@ -214,12 +214,19 @@ namespace VolumeDB.VolumeScanner
 			
 			if (dirIsSymLink) {
 				if (!discardSymLinks) {
-					string symLinkTarget =
-						GetFullSymLinkTargetPath(FileHelper
-						                         .GetSymLinkTarget(dir.FullName),
-						                         Path.GetDirectoryName(dir.FullName));
-
-					if (!Directory.Exists(symLinkTarget)) {
+					
+					string symLinkTarget = null;
+					
+					try {
+						// get real path with all symlinks resolved
+						symLinkTarget = FileHelper
+							.GetCanonicalSymLinkTarget(dir.FullName);
+					} catch (FileNotFoundException) {}
+					
+					// Note:
+					// this check seems to be useless since a broken link 
+					// to a directory is identified as a broken link to a _file_ (a few lines below).
+					if (symLinkTarget == null) {
 						/* may throw ScanCancelledException */
 						SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as the target does not exist."),
 						                                 dir.FullName));
@@ -236,8 +243,7 @@ namespace VolumeDB.VolumeScanner
 						return;
 					}
 					
-					//symLinkItems.add(new SymLinkItem(parentID, dir.FullName, dir.Name, GetLocation(dir.FullName, rootPath), FixPath(symLinkTarget, rootPath), true));
-					symLinkItems.Add(SymLinkItem.CreateInstance(dir, symLinkTarget, parentID, true, rootPath, this));
+					symLinkHelper.AddSymLink(dir, symLinkTarget, rootPath, parentID, true);
 				}
 				/* do not dump symlinks to directories */
 				return;
@@ -337,12 +343,16 @@ namespace VolumeDB.VolumeScanner
 					} else if (isSymLink) {
 						
 						if (!discardSymLinks) {
-							string symLinkTarget =
-								GetFullSymLinkTargetPath(FileHelper
-								                         .GetSymLinkTarget(files[i].FullName),
-								                         dir.FullName);
 							
-							if (!File.Exists(symLinkTarget)) {
+							string symLinkTarget = null;
+							
+							try {
+								// get real path with all symlinks resolved
+								symLinkTarget = FileHelper
+									.GetCanonicalSymLinkTarget(files[i].FullName);
+							} catch (FileNotFoundException) {}
+							
+							if (symLinkTarget == null) {
 								/* may throw ScanCancelledException */
 								SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as the target does not exist."),
 								                                 files[i].FullName));
@@ -355,20 +365,14 @@ namespace VolumeDB.VolumeScanner
 								                                 files[i].FullName,
 								                                 symLinkTarget));
 							
-							// also skipps symlinks pointing to symlinks (hard to implement)
+							// skip symlinks pointing to special files (only regular files are indexed)
 							} else if (FileHelper.GetFileType(symLinkTarget, false) != FileType.RegularFile) {
 								/* may throw ScanCancelledException */
 								SendScannerWarning(string.Format(S._("Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."),
 								                                 files[i].FullName,
 								                                 symLinkTarget));
 							} else {
-								//symLinkItems.add(new SymLinkItem(parentID, files[i].fullName, files[i].Name, GetLocation(files[i].FullName, rootPath), FixPath(symLinkTarget, rootPath), false));
-								symLinkItems.Add(SymLinkItem.CreateInstance(files[i],
-								                                            symLinkTarget,
-								                                            parentID,
-								                                            false,
-								                                            rootPath,
-								                                            this));
+								symLinkHelper.AddSymLink(files[i], symLinkTarget, rootPath, parentID, false);
 							}
 						}
 					} else {
@@ -452,6 +456,9 @@ namespace VolumeDB.VolumeScanner
 			// nautilus refers to selected symlinks to dirs as dirs too.
 		   Interlocked.Increment(ref VolumeInfo.directories);
 		   
+			if (!discardSymLinks)
+				symLinkHelper.AddFile(dir.FullName, item.ItemID);
+			
 		   return item.ItemID;
 		}
 
@@ -491,148 +498,12 @@ namespace VolumeDB.VolumeScanner
 			Interlocked.Increment(ref VolumeInfo.files);
 			Interlocked.Add(ref VolumeInfo.size, file.Length);
 			
+			if (!discardSymLinks)
+				symLinkHelper.AddFile(file.FullName, item.ItemID);
+			
 			return item.ItemID;
 		}
-		
-		private void InsertSymLinkItems(BufferedVolumeItemWriter writer, long volumeID) {
-			if (symLinkItems.Count == 0)
-				return;
-			
-			/* if scanner has no db associated, just update the counters
-			 * and return */
-			if (!this.HasDB) {
-				foreach(SymLinkItem sli in symLinkItems) {
-					if (sli.isDir)
-						Interlocked.Increment(ref VolumeInfo.directories);
-					else
-						Interlocked.Increment(ref VolumeInfo.files);
-					
-					// TODO : 
-					// increase totalsize by size of symlinks too? (not size of target!)
-					// or are symlinks as big as dirs, those aren't respected as well.. 
-					//Interlocked.Add(ref VolumeInfo.size, sli.size);
-				}
-				return;
-			}
-			
-			// make sure all files/dirs have been written to the database 
-			// before searching for symlink targets
-			writer.Flush();
-			
-			const int partSize = 20;
-			for (int from = 0, to = (partSize - 1); from < symLinkItems.Count; from += partSize, to += partSize) {
-				InsertSymLinkItemsPart(writer, volumeID, symLinkItems, from, to);				 
-				CheckForCancellationRequest();			  
-			}
-		}
-		
-		private void InsertSymLinkItemsPart(BufferedVolumeItemWriter writer,
-		                                    long volumeID,
-		                                    List<SymLinkItem> symLinkItems,
-		                                    int from,
-		                                    int to) {
-			// resolve symlink targets
-			// build a query like e.g. 
-			// '(VolumeID = 223) AND ((Location="/dir1" AND Name="file1") OR ((Location="/dir2" AND Name="file2") ...)'
-			SearchCriteriaGroup g = new SearchCriteriaGroup(MatchRule.AllMustMatch);
-			g.AddSearchCriteria(new IDSearchCriteria(volumeID, IDSearchField.VolumeID, CompareOperator.Equal));
-			
-			SearchCriteriaGroup g2 = new SearchCriteriaGroup(MatchRule.AnyMustMatch);
-			g.AddSearchCriteria(g2);
-			
-			//foreach(SymLinkItem sli in symLinkItems) {
-			for(int i = from; (i <= to) && (i < symLinkItems.Count); i++) {
-				SymLinkItem sli = symLinkItems[i];
 
-				SearchCriteriaGroup locationNameGroup = new SearchCriteriaGroup(MatchRule.AllMustMatch);
-				FreeTextSearchCriteria ftsc;
-				
-				// symlinks pointing to the root do not have a location 
-				// (only a name, see the SymLinkItem class definition)
-				if (sli.targetLocation.Length > 0) {
-					ftsc = new FreeTextSearchCriteria(sli.targetLocation,
-					                                  FreeTextSearchField.Location,
-					                                  TextCompareOperator.IsEqual);
-					
-					locationNameGroup.AddSearchCriteria(ftsc);
-				}
-				
-				ftsc = new FreeTextSearchCriteria(sli.targetName,
-				                                  sli.isDir ? FreeTextSearchField.DirectoryName : FreeTextSearchField.FileName,
-				                                  TextCompareOperator.IsEqual);
-				
-				locationNameGroup.AddSearchCriteria(ftsc);
-				
-				g2.AddSearchCriteria(locationNameGroup);
-			}
-			
-			// query target items.
-			// async BeginItemSearch() won't work here
-			// (active transaction prevents other threads from accessing the database)
-			VolumeItem[] queriedItems = Database.SearchItem(g);
-
-			// store queried target items in a dictionary for faster access
-			Dictionary<string, FileSystemVolumeItem> targetItems = new Dictionary<string, FileSystemVolumeItem>();
-			foreach(FileSystemVolumeItem item in queriedItems)
-				targetItems.Add(item.Location + item.Name, item);
-
-			//foreach(SymLinkItem sli in symLinkItems) {
-			for(int i = from; (i <= to) && (i < symLinkItems.Count); i++) {
-				SymLinkItem sli = symLinkItems[i];
-				FileSystemVolumeItem targetItem;
-				
-				if (!targetItems.TryGetValue(sli.targetLocation + sli.targetName, out targetItem)) {
-					/* may throw ScanCancelledException */
-					SendScannerWarning(string.Format(S._("Failed to resolve target item for symlink '{0}'."),
-					                                 sli.fullSourceName));
-				} else {
-					
-					FileSystemVolumeItem newItem;
-					
-					if (targetItem is FileVolumeItem) {
-						
-						newItem = GetNewVolumeItem<FileVolumeItem>(sli.parentID,
-						                                           sli.sourceName,
-						                                           targetItem.MimeType,
-						                                           targetItem.MetaData,
-						                                           VolumeItemType.FileVolumeItem);
-						
-						((FileVolumeItem)newItem).SetFileVolumeItemFields( ((FileVolumeItem)targetItem).Size,
-						                                                  ((FileVolumeItem)targetItem).Hash);
-						
-						Interlocked.Increment(ref VolumeInfo.files);
-						
-					} else { // DirectoryVolumeItem
-						
-						newItem = GetNewVolumeItem<DirectoryVolumeItem>(sli.parentID,
-						                                                sli.sourceName,
-						                                                targetItem.MimeType,
-						                                                targetItem.MetaData,
-						                                                VolumeItemType.DirectoryVolumeItem);
-						
-						Interlocked.Increment(ref VolumeInfo.directories);
-					}
-					
-					newItem.SetFileSystemVolumeItemFields(sli.sourceLocation,
-					                                      targetItem.LastWriteTime,
-					                                      targetItem.ItemID);
-					writer.Write(newItem);
-					
-					// TODO : 
-					// increase totalsize by size of symlinks too? (not size of target!)
-					// or are symlinks as big as dirs, those aren't respected as well.. 
-					//Interlocked.Add(ref VolumeInfo.size, sli.size);
-#if DEBUG					
-					Debug.WriteLine("Successfully resolved and saved symlink item: {0}/{1} -> {2}/{3}",
-					                (sli.sourceLocation == PATH_SEPARATOR.ToString() ? "" : sli.sourceLocation),
-					                sli.sourceName,
-					                (targetItem.Location == PATH_SEPARATOR.ToString() ? "" : targetItem.Location),
-					                (targetItem.Name == PATH_SEPARATOR.ToString() ? "" : targetItem.Name));
-#endif
-				}
-			}
-		}
-		
 		private DateTime GetLastWriteTime(FileSystemInfo f) {
 			DateTime lastWriteTime;
 			// TODO : LastWriteTime fails on folders burned on CD (both, .net and mono).
@@ -736,76 +607,146 @@ namespace VolumeDB.VolumeScanner
 			return sb.ToString();
 		}
 		
-		private static string GetFullSymLinkTargetPath(string symLinkTarget, string currentDir) {
-			string fullTargetPath;
-			if (Path.IsPathRooted(symLinkTarget)) {
-				fullTargetPath = symLinkTarget;
-			} else {
-				//GetFullPath() removes relative dots, eg "/dir1/dir2/../file1" becomes "/dir1/file1"
-				fullTargetPath = Path.GetFullPath(Path.Combine(currentDir, symLinkTarget));
-			}
-			
-			// remove possible ending slash from directory targets
-			fullTargetPath = RemoveEndingSlash(fullTargetPath);
-//			 if ((fullTargetPath[fullTargetPath.Length - 1] == Path.DirectorySeparatorChar) && (fullTargetPath.Length > 1))
-//				  fullTargetPath = fullTargetPath.Substring(0, fullTargetPath.Length - 1);
-		   
-		   return fullTargetPath;
-		}
-		
-		private class SymLinkItem
+#region SymLinkHelper class
+		private class SymLinkHelper
 		{
-			private SymLinkItem(long parentID,
-			                    bool isDir,
-			                    string fullSourceName,
-			                    string sourceName,
-			                    string sourceLocation,
-			                    string targetName,
-			                    string targetLocation) {
-				
-				this.parentID		= parentID;
-				this.isDir			= isDir;
-				this.fullSourceName = fullSourceName;
-				this.sourceName		= sourceName;
-				this.sourceLocation = sourceLocation;
-				this.targetName		= targetName;
-				this.targetLocation = targetLocation;
+			private FilesystemVolumeScanner scanner;
+			private Dictionary<string, long> files;
+			private List<SymLinkItem> symLinkItems;
+			
+			public SymLinkHelper(FilesystemVolumeScanner scanner) {
+				this.scanner		= scanner;
+				this.files			= new Dictionary<string, long>();
+				this.symLinkItems	= new List<SymLinkItem>();
 			}
 			
-			public static SymLinkItem CreateInstance(FileSystemInfo source,
-			                                         string target,
-			                                         long parentID,
-			                                         bool isDir,
-			                                         string rootPath,
-			                                         FilesystemVolumeScanner scanner) {
-				
-				string targetLocation, targetName;
-
-				// if target is rootPath Path.GetFileName(target) won't work
-				if (target == rootPath) {
-					targetLocation	= string.Empty;
-					targetName		= PATH_SEPARATOR.ToString();
-				} else {
-					targetLocation	= scanner.GetLocation(target, rootPath);
-					targetName		= Path.GetFileName(target); // Path.GetFileName() also works with directory targets
-				}
-				return new SymLinkItem(parentID,
-				                       isDir,
-				                       source.FullName,
-				                       source.Name,
-				                       scanner.GetLocation(source.FullName, rootPath),
-				                       targetName,
-				                       targetLocation);
+			public void AddFile(string path, long id) {
+				files.Add(path, id);
 			}
-		
-			public long		parentID;			 
-			public bool		isDir;
-			public string	fullSourceName;
-			public string	sourceName;
-			public string	sourceLocation;			   
-			public string	targetName;
-			public string	targetLocation;
+			
+			public void AddSymLink(FileSystemInfo symLink,
+			                       string fullTargetPath,
+			                       string rootPath,
+			                       long parentID,
+			                       bool isDir) {
+				
+				SymLinkItem s = new SymLinkItem();
+				s.parentID			= parentID;
+				s.name				= symLink.Name;
+				s.location			= scanner.GetLocation(symLink.FullName, rootPath);
+				s.fullPath			= symLink.FullName;
+				s.fullTargetPath	= fullTargetPath;
+				s.isDir				= isDir;
+				
+				symLinkItems.Add(s);
+			}
+			
+			public void Clear() {
+				files.Clear();
+				symLinkItems.Clear();
+			}
+			
+			public void InsertSymLinkItems(BufferedVolumeItemWriter writer, long volumeID) {
+				if (symLinkItems.Count == 0)
+					return;
+				
+				/* if scanner has no db associated, just update the counters
+				 * and return */
+				if (!scanner.HasDB) {
+					foreach(SymLinkItem sli in symLinkItems) {
+						if (sli.isDir)
+							Interlocked.Increment(ref scanner.VolumeInfo.directories);
+						else
+							Interlocked.Increment(ref scanner.VolumeInfo.files);
+						
+						// TODO : 
+						// increase totalsize by size of symlinks too? (not size of target!)
+						// or are symlinks as big as dirs, those aren't respected as well.. 
+						//Interlocked.Add(ref VolumeInfo.size, sli.size);
+					}
+					return;
+				}
+				
+				// make sure all files/dirs have been written to the database 
+				// before searching for symlink targets.
+				writer.Flush();
+				
+				foreach (SymLinkItem sli in symLinkItems) {
+					
+					scanner.CheckForCancellationRequest();
+				
+					long itemID;
+					if (!files.TryGetValue(sli.fullTargetPath, out itemID)) {
+						/* may throw ScanCancelledException */
+						scanner.SendScannerWarning(string.Format(S._("Failed to resolve target item for symlink '{0}'."),
+						                                 sli.fullPath));
+					} else {						
+						SearchCriteriaGroup g = new SearchCriteriaGroup(MatchRule.AllMustMatch);
+						g.AddSearchCriteria(new IDSearchCriteria(volumeID, IDSearchField.VolumeID, CompareOperator.Equal));
+						g.AddSearchCriteria(new IDSearchCriteria(itemID, IDSearchField.ItemID, CompareOperator.Equal));
+						
+						// query target item.
+						// async BeginItemSearch() won't work here
+						// (active transaction prevents other threads from accessing the database)
+						VolumeItem[] queriedItems = scanner.Database.SearchItem(g);
+						
+						FileSystemVolumeItem targetItem = (FileSystemVolumeItem)queriedItems[0];
+						FileSystemVolumeItem newItem;
+						
+						if (targetItem is FileVolumeItem) {
+							newItem = scanner.GetNewVolumeItem<FileVolumeItem>(sli.parentID,
+							                                                   sli.name,
+							                                                   targetItem.MimeType,
+							                                                   targetItem.MetaData,
+							                                                   VolumeItemType.FileVolumeItem);
+							
+							((FileVolumeItem)newItem).SetFileVolumeItemFields( ((FileVolumeItem)targetItem).Size,
+							                                                  ((FileVolumeItem)targetItem).Hash);
+							
+							Interlocked.Increment(ref scanner.VolumeInfo.files);
+							
+						} else { // DirectoryVolumeItem
+							newItem = scanner.GetNewVolumeItem<DirectoryVolumeItem>(sli.parentID,
+							                                                        sli.name,
+						                                                            targetItem.MimeType,
+						                                                            targetItem.MetaData,
+						                                                            VolumeItemType.DirectoryVolumeItem);
+							
+							Interlocked.Increment(ref scanner.VolumeInfo.directories);
+						}
+						
+						newItem.SetFileSystemVolumeItemFields(sli.location,
+						                                      targetItem.LastWriteTime,
+						                                      targetItem.ItemID);
+					
+						writer.Write(newItem);
+						
+						// TODO : 
+						// increase totalsize by size of symlinks too? (not size of target!)
+						// or are symlinks as big as dirs, those aren't respected as well.. 
+						//Interlocked.Add(ref VolumeInfo.size, sli.size);
+#if DEBUG
+						Debug.WriteLine("Successfully resolved and saved symlink item: {0}/{1} -> {2}/{3}",
+						                (sli.location == PATH_SEPARATOR.ToString() ? "" : sli.location),
+						                sli.name,
+						                (targetItem.Location == PATH_SEPARATOR.ToString() ? "" : targetItem.Location),
+						                (targetItem.Name == PATH_SEPARATOR.ToString() ? "" : targetItem.Name));
+#endif
+					} // end if
+				} // end foreach
+			}
+			
+			private class SymLinkItem
+			{
+				public long parentID;
+				public string name;
+				public string location;
+				public string fullPath;
+				public string fullTargetPath;
+				public bool isDir;
+			}
 		}
+#endregion
 		
 		private class Paths
 		{
