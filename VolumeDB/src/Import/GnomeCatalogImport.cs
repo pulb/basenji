@@ -62,7 +62,7 @@ namespace VolumeDB.Import
 							while (readerDisks.Read()) {
 								long diskID = (long)readerDisks["id"];
 								long minFileID = GetMinFileID(conn, diskID);
-								string rootPath = "file:///" + (string)readerDisks["root"];
+								string rootPath = "file://" + (string)readerDisks["root"];
 								long volumeID = targetDb.GetNextVolumeID();
 								long[] counters = { 0L, 0L, 0L };
 								
@@ -213,7 +213,15 @@ namespace VolumeDB.Import
 			string path = (string)reader["path"];			
 			Debug.Assert(path.StartsWith("file:///"), "path starts with 'file://'");
 			
-			string location = DecoderUtility.UrlDecode(path.Substring(rootPath.Length));
+			string name = (string)reader["name"];
+			
+			string location = DecoderUtility.UrlDecode(path);
+			location = location.Substring(rootPath.Length);
+			location = location.Substring(0, location.Length - name.Length - 1);
+			
+			if (location.Length == 0)
+				location = "/";
+			
 			long itemID = 2 + (long)reader["id"] - minFileID; // id 1 is the root item
 			long parentID = Math.Max(1, 2 + (long)reader["idparent"] - minFileID);
 			
@@ -223,7 +231,7 @@ namespace VolumeDB.Import
 			item.SetVolumeItemFields(volumeID,
 			                         itemID,
 			                         parentID,
-			                         Util.ReplaceDBNull<string>(reader["name"], null),
+			                         name,
 			                         Util.ReplaceDBNull<string>(reader["mime"], null),
 			                         metaData,
 			                         Util.ReplaceDBNull<string>(reader["comment"], null),
