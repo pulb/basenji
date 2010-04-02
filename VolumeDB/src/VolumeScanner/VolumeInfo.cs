@@ -21,10 +21,10 @@ using System;
 namespace VolumeDB.VolumeScanner
 {	
 	/* 
-	 * Class for the VolumeInfo property of the VolumeScannerBase class.
+	 * Class for the VolumeInfo property of the AbstractVolumeScanner class.
 	 * It provides basic readonly info about the volume being scanned.
 	 * There is no need to make properties threadsafe since they are written to 
-	 * on VolumeScanner construction time only.
+	 * on AbstractVolumeScanner construction time only.
 	 * (this does not apply to derived classes which are populated during scanning! 
 	 * (client may read while scanner writes))
 	 */

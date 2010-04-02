@@ -1,6 +1,6 @@
 // VolumeProber.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -33,13 +33,6 @@ namespace VolumeDB.VolumeScanner
 	
 	public static class VolumeProber
 	{
-		// TODO : find good default value
-		// TODO : use comment in summary of Scan(bufferSize), too ;
-		// WARNING:
-		// the higher the value, the longer it will take 
-		// the cancellation process (triggered by CancelAsync()) to complete.
-		private const int DEFAULT_BUFFER_SIZE = 10;
-		
 		public static VolumeProbeResult ProbeVolume(string device) {
 			if (device == null)
 				throw new ArgumentNullException("device");
@@ -63,42 +56,16 @@ namespace VolumeDB.VolumeScanner
 		/// Probes a volume, creates the appropriate VolumeScanner and returns a general interface to it.
 		/// </summary>
 		/// <param name="device">Devicefile of the volume to be scanned</param>
-		/// <returns>Interface to the proper VolumeScanner</returns>
-		public static IVolumeScanner GetScanner(string device)											{ return GetScanner(device, null, DEFAULT_BUFFER_SIZE, false);		}
-		
-		/// <summary>
-		/// Probes a volume, creates the appropriate VolumeScanner and returns a general interface to it.
-		/// </summary>
-		/// <param name="device">Devicefile of the volume to be scanned</param>
 		/// <param name="database">VolumeDatabase that will be filled with scanning results</param>
 		/// <returns>Interface to the proper VolumeScanner</returns>
-		public static IVolumeScanner GetScanner(string device, VolumeDatabase database)					{ return GetScanner(device, database, DEFAULT_BUFFER_SIZE, false);	}
-		
-		/// <summary>
-		/// Probes a volume creates the appropriate VolumeScanner and returns a general interface to it.
-		/// </summary>
-		/// <param name="device">Devicefile of the volume to be scanned</param>
-		/// <param name="database">VolumeDatabase that will be filled with scanning results</param>
-		/// <param name="bufferSize">Limit of the number of items the VolumeScanner should buffer before flushing to the VolumeDatabase</param>
-		/// <returns>Interface to the proper VolumeScanner</returns>
-		public static IVolumeScanner GetScanner(string device, VolumeDatabase database, int bufferSize) { return GetScanner(device, database, bufferSize, false);			}
-		
-		/// <summary>
-		/// Probes a volume, creates the appropriate VolumeScanner and returns a general interface to it.
-		/// </summary>
-		/// <param name="device">Devicefile of the volume to be scanned</param>
-		/// <param name="database">VolumeDatabase that will be filled with scanning results</param>
-		/// <param name="bufferSize">Limit of the number of items the VolumeScanner should buffer before flushing to the VolumeDatabase</param>
-		/// <param name="computeHashs">Indicates whether the scanner should generate MD5 hashs for volume items </param>
-		/// <returns>Interface to the proper VolumeScanner</returns>
-		public static IVolumeScanner GetScanner(string device, VolumeDatabase database, int bufferSize, bool computeHashs) {
+		public static IVolumeScanner GetScanner(string device, VolumeDatabase database) {
 			VolumeProbeResult	result	= ProbeVolume(device);
 			IVolumeScanner		scanner = null;
 			
 			// create specific volumescanner
 			switch(result) {
 				case VolumeProbeResult.FilesystemVolume:
-					scanner =  new FilesystemVolumeScanner(device, database, bufferSize, computeHashs);
+					scanner =  new FilesystemVolumeScanner(device, database, new FilesystemScannerOptions());
 					break;
 				// case VolumeProbeResult.CDDAVolume ..
 				case VolumeProbeResult.Unknown:

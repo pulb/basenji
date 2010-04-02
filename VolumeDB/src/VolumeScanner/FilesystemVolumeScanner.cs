@@ -36,7 +36,8 @@ namespace VolumeDB.VolumeScanner
 {
 	// TODO : EnsureOpen() in public members?
 	// TODO : override Dispose(bool) to e.g dispose/set null m_sbPathfixer?
-	public sealed class FilesystemVolumeScanner : VolumeScannerBase<FileSystemVolume, FilesystemVolumeInfo>
+	public sealed class FilesystemVolumeScanner
+		: AbstractVolumeScanner<FileSystemVolume, FilesystemVolumeInfo, FilesystemScannerOptions>
 	{
 		private const char		PATH_SEPARATOR		= '/';
 		internal const string	MIME_TYPE_DIRECTORY = "x-directory/normal";
@@ -44,9 +45,6 @@ namespace VolumeDB.VolumeScanner
 		private bool				disposed;
 		//private MimeInfo			  mimeInfo;
 		private StringBuilder		sbPathFixer;
-		private bool				discardSymLinks;
-		private bool				generateThumbnails;
-		private bool				extractMetaData;
 		private Paths				paths;
 		private SymLinkHelper		symLinkHelper;
 		private ThumbnailGenerator	thumbGen;
@@ -54,48 +52,35 @@ namespace VolumeDB.VolumeScanner
 
 		// note:
 		// do not allow to modify the constuctor parameters 
-		// (i.e. discardSymlinks, generateThumbnails, dbDataPath)
+		// (i.e. database, options)
 		// through public properties later, since the scanner 
-		// may already use them after scanning has been started.
+		// may already use them after scanning has been started,
+		// and some stuff has been initialized depending on the 
+		// options in the ctor already.
 		public FilesystemVolumeScanner(string device,
 		                               VolumeDatabase database,
-		                               int bufferSize,
-		                               bool computeHashs)
-			: this(device, database, bufferSize, computeHashs, false, false, false, null, null) {}
-		
-		public FilesystemVolumeScanner(string device,
-		                               VolumeDatabase database,
-		                               int bufferSize,
-		                               bool computeHashs,
-		                               bool discardSymLinks,
-		                               bool generateThumbnails,
-		                               bool extractMetaData,
-		                               string[] extractionBlacklist,
-		                               string dbDataPath)
-			: base(device, true, database, bufferSize, computeHashs)
+		                               FilesystemScannerOptions options)
+			: base(device, true, database, options)
 		{
 		
-			if (generateThumbnails && string.IsNullOrEmpty(dbDataPath))
-				throw new ArgumentException("dbDataPath",
-				                            "Thumbnail generation requires dbDataPath to be set");
+			if (Options.GenerateThumbnails && string.IsNullOrEmpty(Options.DbDataPath))
+				throw new ArgumentException("DbDataPath",
+				                            "Thumbnail generation requires the DbDataPath option to be set");
 			
 			disposed				= false;
 			//this.mimeInfo			  = new MimeInfo(false);
 			this.sbPathFixer		= new StringBuilder(1024);
-			this.discardSymLinks	= discardSymLinks;			
-			this.generateThumbnails	= generateThumbnails;
-			this.extractMetaData	= extractMetaData;
-			this.paths				= new Paths(dbDataPath, null, null);
+			this.paths				= new Paths(Options.DbDataPath, null, null);
 			this.symLinkHelper		= new SymLinkHelper(this);
 			this.thumbGen			= new ThumbnailGenerator();
 
 			this.extractor			= null;
-			if (extractMetaData) {
+			if (Options.ExtractMetaData) {
 				try {
 					this.extractor	= Extractor.GetDefault();
 					
-					if (extractionBlacklist != null) {
-						foreach (string ext in extractionBlacklist)
+					if (Options.ExtractionBlacklist != null) {
+						foreach (string ext in Options.ExtractionBlacklist)
 							this.extractor.RemoveLibrary("libextractor_" + ext);
 					}
 				} catch (DllNotFoundException) {
@@ -109,12 +94,12 @@ namespace VolumeDB.VolumeScanner
 		                                          BufferedVolumeItemWriter writer,
 		                                          bool computeHashs) {
 			try {
-				if (generateThumbnails) {
+				if (Options.GenerateThumbnails) {
 					paths.volumeDataPath = DbData.CreateVolumeDataPath(paths.dbDataPath, volume.VolumeID);
 					paths.thumbnailPath = DbData.CreateVolumeDataThumbsPath(paths.volumeDataPath);
 				}
 
-				if (extractMetaData && (extractor == null)) {
+				if (Options.ExtractMetaData && (extractor == null)) {
 					SendScannerWarning(S._("libExtractor not found. Metadata extraction disabled."));
 				}
 				
@@ -213,7 +198,7 @@ namespace VolumeDB.VolumeScanner
 			}
 			
 			if (dirIsSymLink) {
-				if (!discardSymLinks) {
+				if (!Options.DiscardSymLinks) {
 					
 					string symLinkTarget = null;
 					
@@ -300,7 +285,7 @@ namespace VolumeDB.VolumeScanner
 							
 							mimeType = MimeType.GetMimeTypeForFile(files[i].FullName);
 							
-							if (extractMetaData && (extractor != null)) {
+							if (Options.ExtractMetaData && (extractor != null)) {
 								Keyword[] keywords = extractor.GetKeywords(files[i].FullName);
 								// removes duplicates like the same year in idv2 and idv3 tags,
 								// does not remove keywords of the same type with different data (e.g. filename)
@@ -315,7 +300,7 @@ namespace VolumeDB.VolumeScanner
 								// TODO : check m_cancel here? hashing can be a lengthy operation on big files.
 							}
 							
-							if (generateThumbnails) {
+							if (Options.GenerateThumbnails) {
 								thumbGenerated = thumbGen.GenerateThumbnail(files[i], mimeType);
 							}
 								
@@ -342,7 +327,7 @@ namespace VolumeDB.VolumeScanner
 						
 					} else if (isSymLink) {
 						
-						if (!discardSymLinks) {
+						if (!Options.DiscardSymLinks) {
 							
 							string symLinkTarget = null;
 							
@@ -456,7 +441,7 @@ namespace VolumeDB.VolumeScanner
 			// nautilus refers to selected symlinks to dirs as dirs too.
 		   Interlocked.Increment(ref VolumeInfo.directories);
 		   
-			if (!discardSymLinks)
+			if (!Options.DiscardSymLinks)
 				symLinkHelper.AddFile(dir.FullName, item.ItemID);
 			
 		   return item.ItemID;
@@ -498,7 +483,7 @@ namespace VolumeDB.VolumeScanner
 			Interlocked.Increment(ref VolumeInfo.files);
 			Interlocked.Add(ref VolumeInfo.size, file.Length);
 			
-			if (!discardSymLinks)
+			if (!Options.DiscardSymLinks)
 				symLinkHelper.AddFile(file.FullName, item.ItemID);
 			
 			return item.ItemID;

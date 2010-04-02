@@ -144,8 +144,7 @@ FILES = \
 	src/VolumeScanner/FilesystemVolumeScanner.cs \
 	src/VolumeScanner/IVolumeScanner.cs \
 	src/VolumeScanner/VolumeInfo.cs \
-	src/VolumeScanner/VolumeProber.cs \
-	src/VolumeScanner/VolumeScannerBase.cs \
+	src/VolumeScanner/AbstractVolumeScanner.cs \
 	src/AssemblyInfo.cs \
 	src/BufferedVolumeItemWriter.cs \
 	src/DatabaseProperties.cs \
@@ -204,7 +203,10 @@ FILES = \
 	src/Import/CdCollectImport.cs \
 	src/Import/IImport.cs \
 	src/DecoderUtility.cs \
-	src/DbData.cs 
+	src/DbData.cs \
+	src/VolumeScanner/ScannerOptions.cs \
+	src/VolumeScanner/FilesystemScannerOptions.cs \
+	src/VolumeScanner/VolumeProber.cs 
 
 DATA_FILES = 
 

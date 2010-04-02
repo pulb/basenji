@@ -1,4 +1,4 @@
-// VolumeScannerBase.cs
+// AbstractVolumeScanner.cs
 // 
 // Copyright (C) 2008 - 2010 Patrick Ulbrich
 //
@@ -25,22 +25,21 @@ using PlatformIO = Platform.Common.IO;
 
 namespace VolumeDB.VolumeScanner
 {	 
-	public abstract class VolumeScannerBase<TVolume, TVolumeInfo> : IVolumeScanner
+	public abstract class AbstractVolumeScanner<TVolume, TVolumeInfo, TOpts> : IVolumeScanner
 		where TVolume		: Volume
 		where TVolumeInfo	: VolumeInfo
+		where TOpts			: ScannerOptions, new()
 	{
  
 		private PlatformIO.DriveInfo	driveInfo;
 		private VolumeDatabase			database;
-		private int						bufferSize;
-		private bool					computeHashs;
 		
 		private long					itemID; // item id counter
 		//private VolumeDatabase.IdCounter	  itemIdCounter;
 		
 		private TVolume					volume; // TODO : media is defined on memberlevel now (not passed from outside anymore).. dispose() anything?
-
 		private TVolumeInfo				volumeInfo; // basic readonly info about the volume being scanned
+		private TOpts					options;
 		
 		private volatile bool			isRunning;
 		private volatile bool			cancellationRequested;
@@ -52,14 +51,15 @@ namespace VolumeDB.VolumeScanner
 		
 		// note:
 		// do not allow to modify the constuctor parameters 
-		// (i.e. database, bufferSize, computeHashs...)
+		// (i.e. database, options)
 		// through public properties later, since the scanner 
-		// may already use them after scanning has been started.
-		internal VolumeScannerBase(string device,
-		                           bool requiresMountpoint,
-		                           VolumeDatabase database,
-		                           int bufferSize,
-		                           bool computeHashs) {
+		// may already use them after scanning has been started,
+		// and some stuff has been initialized depending on the 
+		// options in the ctor already.
+		internal AbstractVolumeScanner(string device,
+		                       bool requiresMountpoint,
+		                       VolumeDatabase database,
+		                       TOpts options) {
 			
 			if (device == null)
 				throw new ArgumentNullException("device");
@@ -67,10 +67,13 @@ namespace VolumeDB.VolumeScanner
 			if (device.Length == 0)
 				throw new ArgumentException("Invalid devicename");
 			
+			if (options == null)
+				throw new ArgumentNullException("options");
+			
 			/* don't test database for null -- database is optional */
 
-			if ((bufferSize < 1) && (database != null))
-				throw new ArgumentOutOfRangeException("bufferSize");
+			if ((options.BufferSize < 1) && (database != null))
+				throw new ArgumentOutOfRangeException("BufferSize");
 			
 			
 			this.isRunning		= false;
@@ -87,11 +90,14 @@ namespace VolumeDB.VolumeScanner
 				throw new ArgumentException("Drive is not mounted", "device");
 			
 			this.database		= database;
-			this.bufferSize		= bufferSize;
-			this.computeHashs	= computeHashs;
+			
+			// copy options reference so that they can't be modified 
+			// while the scanner is running already.
+			this.options		= new TOpts();
+			options.CopyTo(this.options);
 			
 			this.itemID = VolumeDatabase.ID_NONE;
-			this.volume			= CreateVolumeObject(driveInfo, database, computeHashs);
+			this.volume			= CreateVolumeObject(driveInfo, database, options.ComputeHashs);
 			this.volumeInfo		= CreateInstance<TVolumeInfo>(volume); 
 		}
 		
@@ -115,13 +121,13 @@ namespace VolumeDB.VolumeScanner
 
 				BufferedVolumeItemWriter writer = null;
 				if (this.HasDB)
-					writer = new BufferedVolumeItemWriter(database, true, bufferSize);
+					writer = new BufferedVolumeItemWriter(database, true, Options.BufferSize);
 
 				/* invoke the scanning function on a new thread and return a waithandle */
 				Action<PlatformIO.DriveInfo, TVolume, BufferedVolumeItemWriter, bool> st = ScanningThread;
-				IAsyncResult ar = st.BeginInvoke(driveInfo, volume, writer, computeHashs, null, null);
+				IAsyncResult ar = st.BeginInvoke(driveInfo, volume, writer, Options.ComputeHashs, null, null);
 				return ar.AsyncWaitHandle;
-			} catch(Exception) {
+			} catch (Exception) {
 				isRunning = false;
 
 				if (asyncOperation != null)
@@ -149,7 +155,7 @@ namespace VolumeDB.VolumeScanner
 		//}
 
 		/*
-		 * implemented explicitely since VolumeScannerBase
+		 * implemented explicitely since AbstractVolumeScanner
 		 * also implements a scanner specific VolumeInfo property.
 		 */ 
 		VolumeInfo IVolumeScanner.VolumeInfo {
@@ -197,6 +203,7 @@ namespace VolumeDB.VolumeScanner
 				database		= null;
 				volume			= null;
 				volumeInfo		= null;
+				options			= null;
 				asyncOperation	= null;
 
 				disposed  = true;
@@ -227,6 +234,10 @@ namespace VolumeDB.VolumeScanner
 					throw new InvalidOperationException("No database associated");
 				return database;
 			}
+		}
+		
+		protected TOpts Options {
+			get { return options; }
 		}
 		
 		// TODO : remove parameter itemType if generic constraints allow internal and parameterized constructors.

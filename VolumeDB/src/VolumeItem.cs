@@ -82,7 +82,7 @@ namespace VolumeDB
 		}
 		
 		/// <summary>
-		/// <para>Required by internal factory methods like VolumeScannerBase.GetNewVolumeItem<TVolumeItem>()</para>
+		/// <para>Required by internal factory methods like AbstractVolumeScanner.GetNewVolumeItem<TVolumeItem>()</para>
 		/// <para>Purpose :</para>
 		/// <para>
 		/// - guarantee that _all_ fields of this type are initialized by the caller 

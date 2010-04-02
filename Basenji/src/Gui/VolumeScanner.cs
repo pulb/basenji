@@ -52,27 +52,23 @@ namespace Basenji.Gui
 			//volInfo.Sensitive = false; // will be enabled when scanning has been finished
 			//InitTreeView();
 
-			// setup scanner
-			int bufferSize				= App.Settings.ScannerBufferSize;
-			bool enableHashing			= App.Settings.ScannerComputeHashs;
-			bool discardSymLinks		= App.Settings.ScannerDiscardSymLinks;
-			bool generateThumbnails		= App.Settings.ScannerGenerateThumbnails;
-			bool extractMetaData		= App.Settings.ScannerExtractMetaData;
-			
-			string[] blacklist			= App.Settings.ScannerExtractionBlacklist
+			string[] blacklist = App.Settings.ScannerExtractionBlacklist
 				.Split(new string[] { ", ", "," },
 				StringSplitOptions.RemoveEmptyEntries);
 			
+			// setup scanner options
+			FilesystemScannerOptions opts = new FilesystemScannerOptions() {
+				BufferSize			= App.Settings.ScannerBufferSize,
+				ComputeHashs		= App.Settings.ScannerComputeHashs,
+				DiscardSymLinks		= App.Settings.ScannerDiscardSymLinks,
+				GenerateThumbnails	= App.Settings.ScannerGenerateThumbnails,
+				ExtractMetaData		= App.Settings.ScannerExtractMetaData,
+				ExtractionBlacklist	= blacklist,
+				DbDataPath			= PathUtil.GetDbDataPath(database)
+			};
+			
 			// TODO : scanner = VolumeProber.GetScanner(device,...)
-			scanner = new FilesystemVolumeScanner(device,
-			                                      database,
-			                                      bufferSize,
-			                                      enableHashing,
-			                                      discardSymLinks,
-			                                      generateThumbnails,
-			                                      extractMetaData,
-			                                      blacklist,
-			                                      PathUtil.GetDbDataPath(database));
+			scanner = new FilesystemVolumeScanner(device, database, opts);
 			
 			// scanner eventhandlers
 			scanner.BeforeScanItem	  += scanner_BeforeScanItem;
@@ -102,10 +98,10 @@ namespace Basenji.Gui
 				////m_scanner.BeginScanning(driveName, false);
 				UpdateLog(LogIcon.Info, string.Format(S._("Scanning of drive '{0}' started."), device));
 				UpdateLog(LogIcon.Info, string.Format(S._("Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, hashing: {3}."),
-				                                      BoolToStr(generateThumbnails),
-				                                      BoolToStr(extractMetaData),
-				                                      BoolToStr(discardSymLinks),
-				                                      BoolToStr(enableHashing)));
+				                                      BoolToStr(opts.GenerateThumbnails),
+				                                      BoolToStr(opts.ExtractMetaData),
+				                                      BoolToStr(opts.DiscardSymLinks),
+				                                      BoolToStr(opts.ComputeHashs)));
 				
 				scanner.RunAsync(); // starts scanning on a new thread and returns
 			} catch {

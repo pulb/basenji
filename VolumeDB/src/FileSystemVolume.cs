@@ -35,14 +35,14 @@ namespace VolumeDB
 		}
 		
 		/// <summary>
-		/// <para>Required by internal factory methods like VolumeScannerBase.CreateVolumeObject()</para>
+		/// <para>Required by internal factory methods like AbstractVolumeScanner.CreateVolumeObject()</para>
 		/// <para>Purpose :</para>
 		/// <para>
 		/// - guarantee that _all_ fields of this type are initialized by the caller 
 		///  (in contrast to property initialization, which easily makes you miss a property [in particular if a new one was added..])
 		/// </para>
 		/// <para>
-		/// - seperate fields of a type from fields of its base type (e.g. VolumeScannerBase.CreateVolumeObject() initializes all fields of a the Volume base type. 
+		/// - seperate fields of a type from fields of its base type (e.g. AbstractVolumeScanner.CreateVolumeObject() initializes all fields of a the Volume base type. 
 		/// Caller code only needs to initialize fields of the derived Volume type)
 		/// </para>
 		/// </summary>
