@@ -57,7 +57,6 @@ namespace VolumeDB.VolumeScanner
 		// and some stuff has been initialized depending on the 
 		// options in the ctor already.
 		internal AbstractVolumeScanner(PlatformIO.DriveInfo drive,
-		                       bool requiresMountpoint,
 		                       VolumeDatabase database,
 		                       TOpts options) {
 			
@@ -75,18 +74,13 @@ namespace VolumeDB.VolumeScanner
 			if ((options.BufferSize < 1) && (database != null))
 				throw new ArgumentOutOfRangeException("BufferSize");
 			
-			
 			this.isRunning		= false;
 			//m_cancellationRequested = false;
 
 			this.scanSucceeded	= false;
 			this.disposed		= false;
 
-			this.drive = drive;
-			
-			if (requiresMountpoint && !drive.IsMounted)
-				throw new ArgumentException("Drive is not mounted", "drive");
-			
+			this.drive			= drive;
 			this.database		= database;
 			
 			// copy options reference so that they can't be modified 

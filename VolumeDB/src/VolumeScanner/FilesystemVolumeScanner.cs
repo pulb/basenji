@@ -60,9 +60,12 @@ namespace VolumeDB.VolumeScanner
 		public FilesystemVolumeScanner(Platform.Common.IO.DriveInfo drive,
 		                               VolumeDatabase database,
 		                               FilesystemScannerOptions options)
-			: base(drive, true, database, options)
+			: base(drive, database, options)
 		{
 		
+			if (!drive.IsMounted)
+				throw new ArgumentException("Drive is not mounted", "drive");
+			
 			if (Options.GenerateThumbnails && string.IsNullOrEmpty(Options.DbDataPath))
 				throw new ArgumentException("DbDataPath",
 				                            "Thumbnail generation requires the DbDataPath option to be set");
