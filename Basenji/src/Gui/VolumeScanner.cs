@@ -21,7 +21,7 @@ using System.Text;
 using IO = System.IO;
 using Gtk;
 using Gdk;
-//using Platform;
+using Platform.Common.IO;
 using VolumeDB;
 using VolumeDB.VolumeScanner;
 
@@ -41,7 +41,7 @@ namespace Basenji.Gui
 		private StringBuilder		scannerLog;
 		private StatusUpdateTimer	timer;
 
-		public VolumeScanner(VolumeDatabase db, string device) {
+		public VolumeScanner(VolumeDatabase db, DriveInfo drive) {
 			this.database = db;
 			
 			infoIcon	= RenderIcon(Icons.Icon.Stock_DialogInfo,	   ICON_SIZE);
@@ -68,7 +68,7 @@ namespace Basenji.Gui
 			};
 			
 			// TODO : scanner = VolumeProber.GetScanner(device,...)
-			scanner = new FilesystemVolumeScanner(device, database, opts);
+			scanner = new FilesystemVolumeScanner(drive, database, opts);
 			
 			// scanner eventhandlers
 			scanner.BeforeScanItem	  += scanner_BeforeScanItem;
@@ -96,7 +96,15 @@ namespace Basenji.Gui
 
 				//Log(new LogItem(LogIcon.Info, string.Format("Scanning of drive '{0}' started. [buffersize: {1}, hashing: {2}]", driveName, bufferSize, enableHashing ? "on" : "off")));
 				////m_scanner.BeginScanning(driveName, false);
-				UpdateLog(LogIcon.Info, string.Format(S._("Scanning of drive '{0}' started."), device));
+				
+				string tmp;
+				// e.g. GIO network 'drives' do not have a devicefile
+				if (string.IsNullOrEmpty(drive.Device))
+					tmp = S._("Scanning started.");
+				else
+					tmp = string.Format(S._("Scanning of drive '{0}' started."), drive.Device);
+				
+				UpdateLog(LogIcon.Info, tmp);
 				UpdateLog(LogIcon.Info, string.Format(S._("Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, hashing: {3}."),
 				                                      BoolToStr(opts.GenerateThumbnails),
 				                                      BoolToStr(opts.ExtractMetaData),

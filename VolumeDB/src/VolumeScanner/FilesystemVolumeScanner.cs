@@ -57,10 +57,10 @@ namespace VolumeDB.VolumeScanner
 		// may already use them after scanning has been started,
 		// and some stuff has been initialized depending on the 
 		// options in the ctor already.
-		public FilesystemVolumeScanner(string device,
+		public FilesystemVolumeScanner(Platform.Common.IO.DriveInfo drive,
 		                               VolumeDatabase database,
 		                               FilesystemScannerOptions options)
-			: base(device, true, database, options)
+			: base(drive, true, database, options)
 		{
 		
 			if (Options.GenerateThumbnails && string.IsNullOrEmpty(Options.DbDataPath))
@@ -89,7 +89,7 @@ namespace VolumeDB.VolumeScanner
 			}
 		}
 		
-		internal override void ScanningThreadMain(Platform.Common.IO.DriveInfo driveInfo,
+		internal override void ScanningThreadMain(Platform.Common.IO.DriveInfo drive,
 		                                          FileSystemVolume volume,
 		                                          BufferedVolumeItemWriter writer,
 		                                          bool computeHashs) {
@@ -103,14 +103,14 @@ namespace VolumeDB.VolumeScanner
 					SendScannerWarning(S._("libExtractor not found. Metadata extraction disabled."));
 				}
 				
-				string rootPath = driveInfo.RootPath;
+				string rootPath = drive.RootPath;
 				// remove possible ending path seperator except for _system_ root paths
 				rootPath = RemoveEndingSlash(rootPath);
 	//			  if ((rootPath.Length > 1) && (rootPath[rootPath.Length - 1] == Path.DirectorySeparatorChar))
 	//				  rootPath = rootPath.Substring(0, rootPath.Length - 1);
 				
 				// make sure the root path exists
-				// (media may have been removed after Scanner construction)
+				// (media may have been removed after scanner construction)
 				if (!Directory.Exists(rootPath))
 					throw new DirectoryNotFoundException("Root path does not exist");
 				

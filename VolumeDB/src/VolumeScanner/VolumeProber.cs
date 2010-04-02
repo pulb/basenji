@@ -19,6 +19,7 @@
 // TODO :
 // use inline docs for GetScanner() in MediaScannerBase ctor and GenericMediaScanner as well
 using System;
+using Platform.Common.IO;
 
 namespace VolumeDB.VolumeScanner
 {
@@ -33,13 +34,10 @@ namespace VolumeDB.VolumeScanner
 	
 	public static class VolumeProber
 	{
-		public static VolumeProbeResult ProbeVolume(string device) {
-			if (device == null)
-				throw new ArgumentNullException("device");
+		public static VolumeProbeResult ProbeVolume(DriveInfo drive) {
+			if (drive == null)
+				throw new ArgumentNullException("drive");
 			
-			if (device.Length == 0)
-				throw new ArgumentException("Invalid devicename");
-				
 			// TODO : implement me!
 			// use Platform.Common.IO.DriveInfo.FromDevice(device);
 			const bool IS_FS_MEDIA = true, IS_CDDA_MEDIA = false;
@@ -58,14 +56,14 @@ namespace VolumeDB.VolumeScanner
 		/// <param name="device">Devicefile of the volume to be scanned</param>
 		/// <param name="database">VolumeDatabase that will be filled with scanning results</param>
 		/// <returns>Interface to the proper VolumeScanner</returns>
-		public static IVolumeScanner GetScanner(string device, VolumeDatabase database) {
-			VolumeProbeResult	result	= ProbeVolume(device);
+		public static IVolumeScanner GetScanner(DriveInfo drive, VolumeDatabase database) {
+			VolumeProbeResult	result	= ProbeVolume(drive);
 			IVolumeScanner		scanner = null;
 			
 			// create specific volumescanner
 			switch(result) {
 				case VolumeProbeResult.FilesystemVolume:
-					scanner =  new FilesystemVolumeScanner(device, database, new FilesystemScannerOptions());
+					scanner =  new FilesystemVolumeScanner(drive, database, new FilesystemScannerOptions());
 					break;
 				// case VolumeProbeResult.CDDAVolume ..
 				case VolumeProbeResult.Unknown:

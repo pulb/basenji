@@ -286,7 +286,7 @@ namespace Basenji.Gui
 				return;
 			}
 			
-			VolumeScanner vs = new VolumeScanner(database, drive.Device);
+			VolumeScanner vs = new VolumeScanner(database, drive);
 			vs.NewVolumeAdded += (object o, NewVolumeAddedEventArgs args) => {
 				if (lastSuccessfulSearchCriteria != null) {
 					// the volumes treeview is filtered,

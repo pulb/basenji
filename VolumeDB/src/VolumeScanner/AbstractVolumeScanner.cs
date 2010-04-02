@@ -31,7 +31,7 @@ namespace VolumeDB.VolumeScanner
 		where TOpts			: ScannerOptions, new()
 	{
  
-		private PlatformIO.DriveInfo	driveInfo;
+		private PlatformIO.DriveInfo	drive;
 		private VolumeDatabase			database;
 		
 		private long					itemID; // item id counter
@@ -56,16 +56,16 @@ namespace VolumeDB.VolumeScanner
 		// may already use them after scanning has been started,
 		// and some stuff has been initialized depending on the 
 		// options in the ctor already.
-		internal AbstractVolumeScanner(string device,
+		internal AbstractVolumeScanner(PlatformIO.DriveInfo drive,
 		                       bool requiresMountpoint,
 		                       VolumeDatabase database,
 		                       TOpts options) {
 			
-			if (device == null)
-				throw new ArgumentNullException("device");
+			if (drive == null)
+				throw new ArgumentNullException("drive");
 			
-			if (device.Length == 0)
-				throw new ArgumentException("Invalid devicename");
+			if (!drive.IsReady)
+				throw new ArgumentException("Drive is not ready", "drive");
 			
 			if (options == null)
 				throw new ArgumentNullException("options");
@@ -82,12 +82,10 @@ namespace VolumeDB.VolumeScanner
 			this.scanSucceeded	= false;
 			this.disposed		= false;
 
-			this.driveInfo		= PlatformIO.DriveInfo.FromDevice(device);
-			if (!driveInfo.IsReady)
-				throw new ArgumentException("Drive is not ready", "device");
+			this.drive = drive;
 			
-			if (requiresMountpoint && !driveInfo.IsMounted)
-				throw new ArgumentException("Drive is not mounted", "device");
+			if (requiresMountpoint && !drive.IsMounted)
+				throw new ArgumentException("Drive is not mounted", "drive");
 			
 			this.database		= database;
 			
@@ -97,7 +95,7 @@ namespace VolumeDB.VolumeScanner
 			options.CopyTo(this.options);
 			
 			this.itemID = VolumeDatabase.ID_NONE;
-			this.volume			= CreateVolumeObject(driveInfo, database, options.ComputeHashs);
+			this.volume			= CreateVolumeObject(drive, database, options.ComputeHashs);
 			this.volumeInfo		= CreateInstance<TVolumeInfo>(volume); 
 		}
 		
@@ -125,7 +123,7 @@ namespace VolumeDB.VolumeScanner
 
 				/* invoke the scanning function on a new thread and return a waithandle */
 				Action<PlatformIO.DriveInfo, TVolume, BufferedVolumeItemWriter, bool> st = ScanningThread;
-				IAsyncResult ar = st.BeginInvoke(driveInfo, volume, writer, Options.ComputeHashs, null, null);
+				IAsyncResult ar = st.BeginInvoke(drive, volume, writer, Options.ComputeHashs, null, null);
 				return ar.AsyncWaitHandle;
 			} catch (Exception) {
 				isRunning = false;
@@ -199,7 +197,7 @@ namespace VolumeDB.VolumeScanner
 					*/
 				}
 				
-				driveInfo		= null;
+				drive			= null;
 				database		= null;
 				volume			= null;
 				volumeInfo		= null;
@@ -361,7 +359,7 @@ namespace VolumeDB.VolumeScanner
 		/// for non-fatal errors it should call SendScannerWarning()
 		/// Note: ScanningThreadMain() is running on a new thread.
 		/// </summary>
-		/// <param name="driveInfo">
+		/// <param name="drive">
 		/// driveInfo object of the volume to be scanned.
 		/// </param>
 		/// <param name="volume">
@@ -381,12 +379,12 @@ namespace VolumeDB.VolumeScanner
 		// see http://lab.msdn.microsoft.com/productfeedback/viewfeedback.aspx?feedbackid=33c53cf6-2709-4cc9-a408-6cafee4313ef
 		//protected
 		internal
-		abstract void ScanningThreadMain(PlatformIO.DriveInfo driveInfo,
+		abstract void ScanningThreadMain(PlatformIO.DriveInfo drive,
 			                                 TVolume volume,
 			                                 BufferedVolumeItemWriter writer,
 			                                 bool computeHashs);
 
-		private void ScanningThread(PlatformIO.DriveInfo driveInfo,
+		private void ScanningThread(PlatformIO.DriveInfo drive,
 		                            TVolume volume,
 		                            BufferedVolumeItemWriter writer,
 		                            bool computeHashs) {
@@ -400,7 +398,7 @@ namespace VolumeDB.VolumeScanner
 				if (this.HasDB)
 					Database.TransactionBegin();  // locks VolumeDatabase
 
-				ScanningThreadMain(driveInfo, volume, writer, computeHashs);
+				ScanningThreadMain(drive, volume, writer, computeHashs);
 				if (this.HasDB) {
 					writer.Close();
 					if (!volume.IsInserted)
