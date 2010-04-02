@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-07 12:58+0100\n"
+"POT-Creation-Date: 2010-04-02 18:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,30 +99,34 @@ msgid "Format:"
 msgstr ""
 
 #: src/Gui/VolumeScanner.cs:103
+msgid "Scanning started."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:105
 #, csharp-format
 msgid "Scanning of drive '{0}' started."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:104
+#: src/Gui/VolumeScanner.cs:108
 #, csharp-format
 msgid ""
 "Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
 "hashing: {3}."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:125
+#: src/Gui/VolumeScanner.cs:129
 msgid "Time"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:129
+#: src/Gui/VolumeScanner.cs:133
 msgid "Message"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:206 src/Gui/VolumeProperties.cs:41
+#: src/Gui/VolumeScanner.cs:210 src/Gui/VolumeProperties.cs:41
 msgid "Invalid data"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:206 src/Gui/VolumeProperties.cs:41
+#: src/Gui/VolumeScanner.cs:210 src/Gui/VolumeProperties.cs:41
 #, csharp-format
 msgid ""
 "\"{0}\" is {1}.\n"
@@ -131,61 +135,61 @@ msgid ""
 "Please correct or remove the data you entered."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:213
+#: src/Gui/VolumeScanner.cs:217
 msgid "yes"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:213
+#: src/Gui/VolumeScanner.cs:217
 msgid "no"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:236
+#: src/Gui/VolumeScanner.cs:240
 msgid "Scan in progress"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:236
+#: src/Gui/VolumeScanner.cs:240
 msgid "You must stop scanning before closing this window."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:246
+#: src/Gui/VolumeScanner.cs:250
 msgid "Stopping Scanner and performing rollback..."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:288
+#: src/Gui/VolumeScanner.cs:292
 #, csharp-format
 msgid "An unhandled exception occured ({0})."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:289
+#: src/Gui/VolumeScanner.cs:293
 msgid "All database changes have been rolled back."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:312
+#: src/Gui/VolumeScanner.cs:316
 #, csharp-format
 msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:314
+#: src/Gui/VolumeScanner.cs:318
 msgid "Scanning aborted."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:316
+#: src/Gui/VolumeScanner.cs:320
 msgid "Scanning completed successfully."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:413
+#: src/Gui/VolumeScanner.cs:417
 msgid "VolumeScanner"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:425
+#: src/Gui/VolumeScanner.cs:429
 msgid "<b>Volume Information:</b>"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:435
+#: src/Gui/VolumeScanner.cs:439
 msgid "<b>Scanner Log:</b>"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:452
+#: src/Gui/VolumeScanner.cs:456
 msgid "Database access"
 msgstr ""
 
