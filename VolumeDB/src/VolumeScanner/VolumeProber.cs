@@ -19,60 +19,94 @@
 // TODO :
 // use inline docs for GetScanner() in MediaScannerBase ctor and GenericMediaScanner as well
 using System;
-using Platform.Common.IO;
+using PlatformIO = Platform.Common.IO;
 
 namespace VolumeDB.VolumeScanner
 {
-	/// <summary>
-	/// Values returned by VolumeProber.ProbeVolume()
-	/// </summary>
-	public enum VolumeProbeResult {
-		Unknown = 0,
-		FilesystemVolume = 1
-		//CDDAVolume...
-	}
-	
 	public static class VolumeProber
 	{
-		public static VolumeProbeResult ProbeVolume(DriveInfo drive) {
+		/// <summary>
+		/// Values returned by VolumeProber.ProbeVolume()
+		/// </summary>
+		public enum VolumeProbeResult {
+			Unknown = 0,
+			Filesystem = 1
+			//AudioCd = 2
+			// ...
+		}
+		
+		public static VolumeProbeResult ProbeVolume(PlatformIO.DriveInfo drive) {
 			if (drive == null)
 				throw new ArgumentNullException("drive");
 			
-			// TODO : implement me!
-			// use Platform.Common.IO.DriveInfo.FromDevice(device);
-			const bool IS_FS_MEDIA = true, IS_CDDA_MEDIA = false;
-			if (IS_FS_MEDIA) {
-				return VolumeProbeResult.FilesystemVolume;
-			} else if (IS_CDDA_MEDIA) {
-				// ...
-			}
+			if (!drive.IsReady)
+				throw new ArgumentException("Drive is not ready", "drive");
+				
+			// TODO (under win Ismounted is always true?)
+			
+			/*
+			if (drive.HasAudioCd) {
+				return VolumeProbeResult.FileSystem
+			} else if (drive.IsMounted) {
+				return VolumeProbeResult.AudioCd
+			} else {
+				throw new NotSupportedException("Volume is of an unknown type");
+			}*/
 			
 			return VolumeProbeResult.Unknown;
 		}
-		
-		/// <summary>
+				
+		// <summary>
 		/// Probes a volume, creates the appropriate VolumeScanner and returns a general interface to it.
 		/// </summary>
-		/// <param name="device">Devicefile of the volume to be scanned</param>
-		/// <param name="database">VolumeDatabase that will be filled with scanning results</param>
+		/// <param name="drive">Drive to be scanned</param>
+		/// <param name="database">VolumeDatabase object</param>
+		/// <param name="options">ScannerOptions for all possible scanners</param>
 		/// <returns>Interface to the proper VolumeScanner</returns>
-		public static IVolumeScanner GetScanner(DriveInfo drive, VolumeDatabase database) {
-			VolumeProbeResult	result	= ProbeVolume(drive);
-			IVolumeScanner		scanner = null;
+		public static IVolumeScanner GetScannerForVolume(PlatformIO.DriveInfo drive,
+		                                                 VolumeDatabase database,
+		                                                 ScannerOptions[] options) {
+			if (drive == null)
+				throw new ArgumentNullException("drive");
 			
-			// create specific volumescanner
-			switch(result) {
-				case VolumeProbeResult.FilesystemVolume:
-					scanner =  new FilesystemVolumeScanner(drive, database, new FilesystemScannerOptions());
+			if (!drive.IsReady)
+				throw new ArgumentException("Drive is not ready", "drive");
+			
+			if (options == null)
+				throw new ArgumentNullException("options");
+			
+			IVolumeScanner scanner = null;
+			VolumeProbeResult result = ProbeVolume(drive);
+			
+			switch (result) {
+				case VolumeProbeResult.Filesystem:
+					scanner = new FilesystemVolumeScanner(drive,
+				                                      database,
+				                                      GetOptions<FilesystemScannerOptions>(options));
 					break;
-				// case VolumeProbeResult.CDDAVolume ..
+				/* case VolumeProbeResult.AudioCd:				
+				 	scanner = new AudioCdScanner(drive,
+				                             database,
+				                             GetOptions<AudioCdScannerOptions>(options));
+					break;*/
 				case VolumeProbeResult.Unknown:
-					throw new NotSupportedException("Volume is of an unknown type");
-				  default:
+					throw new ArgumentException("Volume is of an unknown type");
+				default:
 					throw new NotImplementedException(string.Format("VolumeProbeResult {0} is not implemented", result.ToString()));
 			}
 			
 			return scanner;
+		}
+		
+		private static TOpts GetOptions<TOpts>(ScannerOptions[] options) 
+			where TOpts : ScannerOptions {
+			
+			foreach (ScannerOptions opt in options) {
+				if (opt is TOpts)
+					return (TOpts)opt;
+			}
+			
+			throw new ArgumentException(string.Format("Missing options for type {0}", typeof(TOpts)));
 		}
 	}
 }
