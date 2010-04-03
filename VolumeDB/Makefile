@@ -206,7 +206,12 @@ FILES = \
 	src/DbData.cs \
 	src/VolumeScanner/ScannerOptions.cs \
 	src/VolumeScanner/FilesystemScannerOptions.cs \
-	src/VolumeScanner/VolumeProber.cs 
+	src/VolumeScanner/VolumeProber.cs \
+	src/VolumeScanner/AudioCdVolumeScanner.cs \
+	src/VolumeScanner/AudioCdVolumeInfo.cs \
+	src/VolumeScanner/AudioCdScannerOptions.cs \
+	src/AudioTrackVolumeItem.cs \
+	src/AudioCdVolume.cs 
 
 DATA_FILES = 
 

@@ -30,8 +30,8 @@ namespace VolumeDB.VolumeScanner
 		/// </summary>
 		public enum VolumeProbeResult {
 			Unknown = 0,
-			Filesystem = 1
-			//AudioCd = 2
+			Filesystem = 1,
+			AudioCd = 2
 			// ...
 		}
 		
@@ -43,15 +43,14 @@ namespace VolumeDB.VolumeScanner
 			
 			if (!drive.IsReady)
 				throw new ArgumentException("Drive is not ready", "drive");
-				
-			/*
+			
 			// check for audio cd first - 
 			// win32 also mounts audio cds as filesystems
 			if (drive.VolumeIsAudioCd) {
 				return VolumeProbeResult.AudioCd;
 			} else if (drive.IsMounted) {
-				return VolumeProbeResult.FileSystem;
-			}*/
+				return VolumeProbeResult.Filesystem;
+			}
 			
 			return result;
 		}
@@ -84,11 +83,11 @@ namespace VolumeDB.VolumeScanner
 				                                      database,
 				                                      GetOptions<FilesystemScannerOptions>(options));
 					break;
-				/* case VolumeProbeResult.AudioCd:				
-				 	scanner = new AudioCdScanner(drive,
-				                             database,
-				                             GetOptions<AudioCdScannerOptions>(options));
-					break;*/
+				case VolumeProbeResult.AudioCd:				
+				 	scanner = new AudioCdVolumeScanner(drive,
+				                                   database,
+				                                   GetOptions<AudioCdScannerOptions>(options));
+					break;
 				case VolumeProbeResult.Unknown:
 					throw new ArgumentException("Volume is of an unknown type");
 				default:

@@ -1,6 +1,6 @@
 // VolumeType.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@ namespace VolumeDB
 {
 	public enum VolumeType
 	{
-		FileSystemVolume = 0
+		FileSystemVolume = 0,
+		AudioCdVolume = 1
 	}
 }

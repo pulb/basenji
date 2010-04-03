@@ -1,6 +1,6 @@
-// VolumeItemType.cs
-// 
-// Copyright (C) 2008, 2010 Patrick Ulbrich
+// AudioCdScannerOptions.cs
+//
+// Copyright (C) 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -15,15 +15,28 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
-
 using System;
 
-namespace VolumeDB
+namespace VolumeDB.VolumeScanner
 {
-	public enum VolumeItemType
+	public class AudioCdScannerOptions : ScannerOptions
 	{
-		DirectoryVolumeItem = 0,
-		FileVolumeItem		= 1,
-		AudioTrackVolumeItem = 2
+		public AudioCdScannerOptions () : base() {
+			EnableMusicBrainz = false;
+		}
+		
+		public bool EnableMusicBrainz {
+			get; set;
+		}
+		
+		protected override void CopyOptions(ScannerOptions opts) {
+			
+			if (!(opts is AudioCdScannerOptions))
+				return;
+			
+			AudioCdScannerOptions tmp = opts as AudioCdScannerOptions;
+			
+			tmp.EnableMusicBrainz = this.EnableMusicBrainz;
+		}
 	}
 }
