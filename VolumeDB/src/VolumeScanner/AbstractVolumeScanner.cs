@@ -116,8 +116,8 @@ namespace VolumeDB.VolumeScanner
 					writer = new BufferedVolumeItemWriter(database, true, Options.BufferSize);
 
 				/* invoke the scanning function on a new thread and return a waithandle */
-				Action<PlatformIO.DriveInfo, TVolume, BufferedVolumeItemWriter, bool> st = ScanningThread;
-				IAsyncResult ar = st.BeginInvoke(drive, volume, writer, Options.ComputeHashs, null, null);
+				Action<PlatformIO.DriveInfo, TVolume, BufferedVolumeItemWriter> st = ScanningThread;
+				IAsyncResult ar = st.BeginInvoke(drive, volume, writer, null, null);
 				return ar.AsyncWaitHandle;
 			} catch (Exception) {
 				isRunning = false;
@@ -365,9 +365,6 @@ namespace VolumeDB.VolumeScanner
 		/// BufferedVolumeItemWriter that receives VolumeItem objects populated with the information acquired.
 		/// This parameter is null if the VolumeScanner is not connected to a VolumeDatabase object.
 		/// </param>
-		/// <param name="computeHashs">
-		/// Specifies whether the scanner should hash the items being scanned.
-		/// </param>
 
 		// TODO : make this member internally protected in case this language feature has become real
 		// see http://lab.msdn.microsoft.com/productfeedback/viewfeedback.aspx?feedbackid=33c53cf6-2709-4cc9-a408-6cafee4313ef
@@ -375,13 +372,11 @@ namespace VolumeDB.VolumeScanner
 		internal
 		abstract void ScanningThreadMain(PlatformIO.DriveInfo drive,
 			                                 TVolume volume,
-			                                 BufferedVolumeItemWriter writer,
-			                                 bool computeHashs);
+			                                 BufferedVolumeItemWriter writer);
 
 		private void ScanningThread(PlatformIO.DriveInfo drive,
 		                            TVolume volume,
-		                            BufferedVolumeItemWriter writer,
-		                            bool computeHashs) {
+		                            BufferedVolumeItemWriter writer) {
 
 			TVolume		returnVolume = null;
 			Exception	fatalError = null;
@@ -392,7 +387,7 @@ namespace VolumeDB.VolumeScanner
 				if (this.HasDB)
 					Database.TransactionBegin();  // locks VolumeDatabase
 
-				ScanningThreadMain(drive, volume, writer, computeHashs);
+				ScanningThreadMain(drive, volume, writer);
 				if (this.HasDB) {
 					writer.Close();
 					if (!volume.IsInserted)

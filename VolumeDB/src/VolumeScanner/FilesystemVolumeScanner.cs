@@ -94,8 +94,7 @@ namespace VolumeDB.VolumeScanner
 		
 		internal override void ScanningThreadMain(Platform.Common.IO.DriveInfo drive,
 		                                          FileSystemVolume volume,
-		                                          BufferedVolumeItemWriter writer,
-		                                          bool computeHashs) {
+		                                          BufferedVolumeItemWriter writer) {
 			try {
 				if (Options.GenerateThumbnails) {
 					paths.volumeDataPath = DbData.CreateVolumeDataPath(paths.dbDataPath, volume.VolumeID);
@@ -118,7 +117,7 @@ namespace VolumeDB.VolumeScanner
 					throw new DirectoryNotFoundException("Root path does not exist");
 				
 				DirectoryInfo dir = new DirectoryInfo(rootPath);				
-				RecursiveDump(rootPath, dir, writer, computeHashs, VolumeDatabase.ID_NONE);
+				RecursiveDump(rootPath, dir, writer, VolumeDatabase.ID_NONE);
 				symLinkHelper.InsertSymLinkItems(writer, volume.VolumeID);
 				
 				volume.SetFileSystemVolumeFields(VolumeInfo.Files, VolumeInfo.Directories, VolumeInfo.Size);
@@ -165,7 +164,6 @@ namespace VolumeDB.VolumeScanner
 		private void RecursiveDump(string rootPath,
 		                           DirectoryInfo dir,
 		                           BufferedVolumeItemWriter writer,
-		                           bool computeHashs,
 		                           long parentID) {
 			
 			CheckForCancellationRequest();
@@ -298,7 +296,7 @@ namespace VolumeDB.VolumeScanner
 								metaData = MetaDataHelper.PackExtractorKeywords(keywords);
 							}
 							
-							if (computeHashs) {
+							if (Options.ComputeHashs) {
 								hash = ComputeHash(fs);
 								// TODO : check m_cancel here? hashing can be a lengthy operation on big files.
 							}
@@ -376,7 +374,7 @@ namespace VolumeDB.VolumeScanner
 				/* recursively dump subdirs */
 				DirectoryInfo[] childDirs = dir.GetDirectories(); /* throws access exceptions (cant access _DIRECTORY_) */
 				for (int i = 0; i < childDirs.Length; i++)
-					RecursiveDump(rootPath, childDirs[i], writer, computeHashs, parentID);
+					RecursiveDump(rootPath, childDirs[i], writer, parentID);
 
 			} catch (UnauthorizedAccessException e) {
 				//ScannerWarningEventArgs args = new ScannerWarningEventArgs("Unable to dump dir '" + dir.FullName + "'. (" + e.Message + ")", e);
