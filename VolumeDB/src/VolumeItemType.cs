@@ -24,6 +24,7 @@ namespace VolumeDB
 	{
 		DirectoryVolumeItem = 0,
 		FileVolumeItem		= 1,
-		AudioTrackVolumeItem = 2
+		AudioCdRootVolumeItem = 2,
+		AudioTrackVolumeItem = 3
 	}
 }
