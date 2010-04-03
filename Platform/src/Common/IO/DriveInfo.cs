@@ -266,6 +266,7 @@ namespace Platform.Common.IO
 					break;
 				case System.IO.DriveType.NoRootDirectory:
 					d.driveType = DriveType.Unknown;
+					d.IsMounted = false;
 					break;
 				case System.IO.DriveType.Unknown:
 					d.driveType = DriveType.Unknown;
