@@ -51,6 +51,17 @@ namespace VolumeDB
 				duration = value;
 			}
 		}
+		
+		// expose artist metadata trough a dedicated property
+		private string artist = null;
+		public string Artist {
+			get {
+				if (artist == null)
+					artist = ParseMetaData()["artist"];
+				
+				return artist;
+			}
+		}
 		#endregion
 	}
 }
