@@ -36,6 +36,8 @@ namespace VolumeDB.VolumeScanner
 		}
 		
 		public static VolumeProbeResult ProbeVolume(PlatformIO.DriveInfo drive) {
+			VolumeProbeResult result = VolumeProbeResult.Unknown;
+			
 			if (drive == null)
 				throw new ArgumentNullException("drive");
 			
@@ -45,15 +47,15 @@ namespace VolumeDB.VolumeScanner
 			// TODO (under win Ismounted is always true?)
 			
 			/*
+			// check for audio cd first - 
+			// win32 also mounts audio cds as filesystems
 			if (drive.HasAudioCd) {
-				return VolumeProbeResult.FileSystem
+				return VolumeProbeResult.AudioCd;
 			} else if (drive.IsMounted) {
-				return VolumeProbeResult.AudioCd
-			} else {
-				throw new NotSupportedException("Volume is of an unknown type");
+				return VolumeProbeResult.FileSystem;
 			}*/
 			
-			return VolumeProbeResult.Unknown;
+			return result;
 		}
 				
 		// <summary>
