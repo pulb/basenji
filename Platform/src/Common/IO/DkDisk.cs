@@ -181,6 +181,12 @@ namespace Platform.Common.IO
                 return (string[]) props.Get ("org.freedesktop.DeviceKit.Disks.Device", "DriveMediaCompatibility");
             }
         }
+		
+		public uint NumAudioTracks {
+			get {
+				return (uint) props.Get ("org.freedesktop.DeviceKit.Disks.Device", "OpticalDiscNumAudioTracks");
+			}
+		}
 
         public void Eject ()
         {

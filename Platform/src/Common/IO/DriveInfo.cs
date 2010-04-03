@@ -45,6 +45,7 @@ namespace Platform.Common.IO
 		private string filesystem;
 		private bool isMounted;
 		private bool isReady;
+		private bool volumeIsAudioCd;
  
 #if !WIN32		
 		static DriveInfo() {
@@ -62,6 +63,7 @@ namespace Platform.Common.IO
 			this.filesystem = string.Empty;
 			this.isMounted = false;
 			this.isReady = false;
+			this.volumeIsAudioCd = false;
 		}
 		
 		public DriveInfo(string rootPath) : this() {
@@ -221,6 +223,10 @@ namespace Platform.Common.IO
 		public bool IsReady {
 			get { return isReady; }
 		}
+		
+		public bool VolumeIsAudioCd {
+			get { return volumeIsAudioCd; }
+		}
 	
 
 #if WIN32
@@ -241,6 +247,10 @@ namespace Platform.Common.IO
 			switch(di.DriveType) {
 				case System.IO.DriveType.CDRom:
 					d.driveType = DriveType.CDRom;
+					try {
+						if (d.isReady)
+							d.VolumeIsAudioCd = (AudioCdWin32.GetNumAudioTracks(d.device) > 0);
+					} catch (System.IO.IOException) {}
 					break;
 				case System.IO.DriveType.Fixed:
 					d.driveType = DriveType.Fixed;
@@ -293,6 +303,7 @@ namespace Platform.Common.IO
 			}
 			
 			d.device = dev.DeviceFile;
+			d.volumeIsAudioCd = (dev.NumAudioTracks > 0);
 		}
 		
 		private static DriveType GetDriveType(DkDisk drive) {

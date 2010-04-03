@@ -94,7 +94,8 @@ FILES = \
 	src/Win32/ThumbnailCreator.cs \
 	src/Win32/ThumbnailGenerator.cs \
 	src/Common/Diagnostics/AssertionFailedException.cs \
-	src/Common/IO/DkDisk.cs 
+	src/Common/IO/DkDisk.cs \
+	src/Common/IO/AudioCdWin32.cs 
 
 DATA_FILES = 
 

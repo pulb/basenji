@@ -50,6 +50,7 @@
     <File subtype="Code" buildaction="Compile" name="src/Win32/ThumbnailGenerator.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Common/Diagnostics/AssertionFailedException.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Common/IO/DkDisk.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Common/IO/AudioCdWin32.cs" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
