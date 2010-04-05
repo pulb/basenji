@@ -297,7 +297,7 @@ namespace VolumeDB.Import
 					
 					keywords.Add(new Keyword() {
 						keywordType = KeywordType.EXTRACTOR_DURATION,
-						keyword = FormatDuration(val)
+						keyword = MetaDataHelper.FormatExtractorDuration(val)
 					});
 				}
 			}
@@ -415,21 +415,6 @@ namespace VolumeDB.Import
 			}
 			
 			return MetaDataHelper.PackExtractorKeywords(keywords.ToArray());
-		}
-		
-		// returns the libextractor duration format
-		private static string FormatDuration (double seconds) {
-			if (seconds < 60.0)
-				return ((int)Math.Round(seconds)).ToString();
-			
-			long totalSecs = (long)seconds;
-			int mins = (int)(totalSecs / 60);
-			int secs = (int)(totalSecs % 60);
-			
-			if (secs > 0)
-				return string.Format("{0}m{1:D2}", mins, secs);
-			else
-				return string.Format("{0}m", mins);
 		}
 	}
 }

@@ -79,5 +79,20 @@ namespace VolumeDB
 
 			return keywords;
 		}
+		
+		// returns the libextractor duration format
+		public static string FormatExtractorDuration (double seconds) {
+			if (seconds < 60.0)
+				return ((int)Math.Round(seconds)).ToString();
+			
+			long totalSecs = (long)seconds;
+			int mins = (int)(totalSecs / 60);
+			int secs = (int)(totalSecs % 60);
+			
+			if (secs > 0)
+				return string.Format("{0}m{1:D2}", mins, secs);
+			else
+				return string.Format("{0}m", mins);
+		}
 	}
 }
