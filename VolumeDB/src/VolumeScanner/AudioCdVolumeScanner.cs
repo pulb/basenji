@@ -145,13 +145,5 @@ namespace VolumeDB.VolumeScanner
 			
 			return MetaDataHelper.PackExtractorKeywords(keywords.ToArray());
 		}
-		
-//		protected override void Reset() {
-//			base.Reset();
-//		}
-		
-//		protected override void Dispose (bool disposing) {
-//			base.Dispose(disposing);
-//		}
 	}
 }
