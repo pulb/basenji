@@ -17,6 +17,7 @@
 //
 
 using System;
+using System.Collections.Generic;
 
 namespace VolumeDB
 {
@@ -72,9 +73,13 @@ namespace VolumeDB
 		private string artist = null;
 		public string Artist {
 			get {
-				if (artist == null)
-					artist = ParseMetaData()["artist"];
-				
+				if (artist == null) {
+					Dictionary<string, string> metaData = ParseMetaData();
+					// artist metadate is only available if the cd has been
+					// scanned with metadata extraction enabled
+					if (!metaData.TryGetValue("artist", out artist))
+						artist = string.Empty;
+				}
 				return artist;
 			}
 		}
