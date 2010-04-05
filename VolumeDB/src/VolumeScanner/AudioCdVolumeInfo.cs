@@ -28,22 +28,48 @@ namespace VolumeDB.VolumeScanner
 	 */
 	public class AudioCdVolumeInfo : VolumeInfo
 	{
-		// AudioCdVolumeScanner does write to these properties directly 
-		// (e.g. via Interlocked.Increment())
-		internal volatile int tracks;
-		internal volatile int duration; // in seconds
+		private volatile int tracks;
+		private TimeSpan duration;
+		
+		private object duration_lock;
 		
 		internal AudioCdVolumeInfo(AudioCdVolume v) : base(v) {
+			this.duration_lock = new Object();
+			
 			this.tracks		= v.Tracks;
 			this.duration	= v.Duration;
 		}
 		
 		internal override void Reset () {
 			Interlocked.Exchange(ref tracks, 0);
-			Interlocked.Exchange(ref duration, 0);
+			
+			lock (duration_lock) {
+				duration = new TimeSpan(0, 0, 0);
+			}
 		}
 		
-		public int Tracks	{ get { return tracks; } }
-		public int Duration	{ get { return duration; } }
+		public int Tracks {
+			get {
+				return tracks;
+			}
+			
+			internal set {
+				tracks = value;
+			}
+		}
+		
+		public TimeSpan Duration {
+			get {
+				lock (duration_lock) {
+					return duration;
+				}
+			}
+			
+			internal set {
+				lock (duration_lock) {
+					duration = value;
+				}
+			}
+		}
 	}
 }

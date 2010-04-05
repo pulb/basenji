@@ -30,6 +30,9 @@ PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
 LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll
 LIBEXTRACTOR_DLL_MDB_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll.mdb
 LIBEXTRACTOR_DLL_MDB=$(BUILD_DIR)/LibExtractor.dll.mdb
+MUSICBRAINZ_DLL_SOURCE=../MusicBrainz/bin/Debug/MusicBrainz.dll
+MUSICBRAINZ_DLL_MDB_SOURCE=../MusicBrainz/bin/Debug/MusicBrainz.dll.mdb
+MUSICBRAINZ_DLL_MDB=$(BUILD_DIR)/MusicBrainz.dll.mdb
 VOLUMEDB_DLL_MDB_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll.mdb
 VOLUMEDB_DLL_MDB=$(BUILD_DIR)/VolumeDB.dll.mdb
 BASENJI_EXE_MDB_SOURCE=bin/Debug/Basenji.exe.mdb
@@ -56,6 +59,8 @@ PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.
 PLATFORM_COMMON_DB_DLL_MDB=
 LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Release/LibExtractor.dll
 LIBEXTRACTOR_DLL_MDB=
+MUSICBRAINZ_DLL_SOURCE=../MusicBrainz/bin/Release/MusicBrainz.dll
+MUSICBRAINZ_DLL_MDB=
 VOLUMEDB_DLL_MDB=
 BASENJI_EXE_MDB=
 
@@ -83,6 +88,9 @@ PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
 LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll
 LIBEXTRACTOR_DLL_MDB_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll.mdb
 LIBEXTRACTOR_DLL_MDB=$(BUILD_DIR)/LibExtractor.dll.mdb
+MUSICBRAINZ_DLL_SOURCE=../MusicBrainz/bin/Debug/MusicBrainz.dll
+MUSICBRAINZ_DLL_MDB_SOURCE=../MusicBrainz/bin/Debug/MusicBrainz.dll.mdb
+MUSICBRAINZ_DLL_MDB=$(BUILD_DIR)/MusicBrainz.dll.mdb
 VOLUMEDB_DLL_MDB_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll.mdb
 VOLUMEDB_DLL_MDB=$(BUILD_DIR)/VolumeDB.dll.mdb
 BASENJI_EXE_MDB_SOURCE=bin/Debug/Basenji.exe.mdb
@@ -109,6 +117,8 @@ PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.
 PLATFORM_COMMON_DB_DLL_MDB=
 LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Release/LibExtractor.dll
 LIBEXTRACTOR_DLL_MDB=
+MUSICBRAINZ_DLL_SOURCE=../MusicBrainz/bin/Release/MusicBrainz.dll
+MUSICBRAINZ_DLL_MDB=
 VOLUMEDB_DLL_MDB=
 BASENJI_EXE_MDB=
 
@@ -132,6 +142,8 @@ PROGRAMFILES = \
 	$(PLATFORM_COMMON_DB_DLL_MDB) \
 	$(LIBEXTRACTOR_DLL) \
 	$(LIBEXTRACTOR_DLL_MDB) \
+	$(MUSICBRAINZ_DLL) \
+	$(MUSICBRAINZ_DLL_MDB) \
 	$(VOLUMEDB_DLL_MDB) \
 	$(BASENJI_EXE_MDB)  
 
@@ -145,6 +157,7 @@ PLATFORM_DLL = $(BUILD_DIR)/Platform.dll
 VOLUMEDB_DLL = $(BUILD_DIR)/VolumeDB.dll
 PLATFORM_COMMON_DB_DLL = $(BUILD_DIR)/Platform.Common.DB.dll
 LIBEXTRACTOR_DLL = $(BUILD_DIR)/LibExtractor.dll
+MUSICBRAINZ_DLL = $(BUILD_DIR)/MusicBrainz.dll
 
 FILES = \
 	src/Gui/About.cs \
@@ -241,6 +254,8 @@ $(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL))
 $(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL_MDB))
 $(eval $(call emit-deploy-target,LIBEXTRACTOR_DLL))
 $(eval $(call emit-deploy-target,LIBEXTRACTOR_DLL_MDB))
+$(eval $(call emit-deploy-target,MUSICBRAINZ_DLL))
+$(eval $(call emit-deploy-target,MUSICBRAINZ_DLL_MDB))
 $(eval $(call emit-deploy-target,VOLUMEDB_DLL_MDB))
 
 
@@ -301,6 +316,8 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call cp,$(PLATFORM_COMMON_DB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(LIBEXTRACTOR_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(LIBEXTRACTOR_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(MUSICBRAINZ_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(MUSICBRAINZ_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(VOLUMEDB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(BASENJI_EXE_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	make post-install-local-hook prefix=$(prefix)
@@ -320,6 +337,8 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call rm,$(PLATFORM_COMMON_DB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(LIBEXTRACTOR_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(LIBEXTRACTOR_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(MUSICBRAINZ_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(MUSICBRAINZ_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(VOLUMEDB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(BASENJI_EXE_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	make post-uninstall-local-hook prefix=$(prefix)

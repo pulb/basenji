@@ -22,13 +22,13 @@ namespace VolumeDB
 	public sealed class AudioCdVolume : Volume
 	{
 		private int tracks;
-		private int duration;
+		private TimeSpan duration;
 		
 		internal AudioCdVolume(VolumeDatabase database)
 			: base(database, VolumeType.FileSystemVolume)
 		{
 			this.tracks = 0;
-			this.duration = 0;
+			this.duration = new TimeSpan(0, 0, 0);
 		}
 		
 		/// <summary>
@@ -43,7 +43,7 @@ namespace VolumeDB
 		/// Caller code only needs to initialize fields of the derived Volume type)
 		/// </para>
 		/// </summary>
-		internal void SetAudioCdVolumeFields(int tracks, int duration) {
+		internal void SetAudioCdVolumeFields(int tracks, TimeSpan duration) {
 			this.tracks		= tracks;
 			this.duration	= duration;
 		}
@@ -52,14 +52,15 @@ namespace VolumeDB
 			base.ReadFromVolumeDBRecord(recordData);
 
 			tracks = (int)(long)recordData["Files"];
-			duration = (int)(long)recordData["Size"];
+			long tmp = (long)recordData["Size"];
+			duration = TimeSpan.FromSeconds(tmp);
 		}
 
 		internal override void WriteToVolumeDBRecord(IRecordData recordData) {
 			base.WriteToVolumeDBRecord(recordData);
 
 			recordData.AddField("Files", tracks);
-			recordData.AddField("Size",  duration);
+			recordData.AddField("Size",  (long)duration.TotalSeconds);
 		}
 		
 		#region read-only properties
@@ -69,7 +70,7 @@ namespace VolumeDB
 			internal set { tracks = value; }
 		}
 
-		public int Duration {
+		public TimeSpan Duration {
 			get { return duration; }
 			internal set { duration = value; }
 		}

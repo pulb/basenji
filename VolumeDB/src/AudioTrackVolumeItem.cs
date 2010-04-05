@@ -23,12 +23,12 @@ namespace VolumeDB
 {
 	public sealed class AudioTrackVolumeItem : VolumeItem
 	{
-		private int duration;
+		private TimeSpan duration;
 		
 		internal AudioTrackVolumeItem(VolumeDatabase database)
 			: base(database, VolumeItemType.AudioTrackVolumeItem)
 		{
-			duration = 0;
+			duration = new TimeSpan(0, 0, 0);
 		}
 		
 		/// <summary>
@@ -43,24 +43,25 @@ namespace VolumeDB
 		/// Caller code only needs to initialize fields of the derived <TVolumeItem> type)
 		/// </para>
 		/// </summary>
-		internal void SetAudioTrackVolumeItemFields(int duration) {
+		internal void SetAudioTrackVolumeItemFields(TimeSpan duration) {
 			this.duration = duration;
 		}
 		
 		internal override void ReadFromVolumeDBRecord(IRecordData recordData) {
 			base.ReadFromVolumeDBRecord(recordData);
 			
-			duration = (int)(long)recordData["Size"];
+			long tmp = (long)recordData["Size"];
+			duration = TimeSpan.FromSeconds(tmp);
 		}
 		
 		internal override void WriteToVolumeDBRecord(IRecordData recordData) {
 			base.WriteToVolumeDBRecord(recordData);
 			
-			recordData.AddField("Size", duration);
+			recordData.AddField("Size", (long)duration.TotalSeconds);
 		}
 		
 		#region read-only properties
-		public int Duration {
+		public TimeSpan Duration {
 			get {
 				return duration;
 			}

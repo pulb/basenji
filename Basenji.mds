@@ -11,6 +11,7 @@
       <Entry build="True" name="Platform" configuration="Debug" />
       <Entry build="True" name="Platform.Common.DB" configuration="Debug" />
       <Entry build="True" name="LibExtractor" configuration="Debug" />
+      <Entry build="True" name="MusicBrainz" configuration="Debug" />
     </Configuration>
     <Configuration name="Release" ctype="CombineConfiguration">
       <Entry build="True" name="Basenji" configuration="Release" />
@@ -18,6 +19,7 @@
       <Entry build="True" name="Platform" configuration="Release" />
       <Entry build="True" name="Platform.Common.DB" configuration="Release" />
       <Entry build="True" name="LibExtractor" configuration="Release" />
+      <Entry build="True" name="MusicBrainz" configuration="Release" />
     </Configuration>
     <Configuration name="Gnome_Debug" ctype="CombineConfiguration">
       <Entry build="True" name="Basenji" configuration="Debug" />
@@ -25,6 +27,7 @@
       <Entry build="True" name="Platform" configuration="Gnome_Debug" />
       <Entry build="True" name="Platform.Common.DB" configuration="Debug" />
       <Entry build="True" name="LibExtractor" configuration="Debug" />
+      <Entry build="True" name="MusicBrainz" configuration="Debug" />
     </Configuration>
     <Configuration name="Gnome_Release" ctype="CombineConfiguration">
       <Entry build="True" name="Basenji" configuration="Release" />
@@ -32,6 +35,7 @@
       <Entry build="True" name="Platform" configuration="Gnome_Release" />
       <Entry build="True" name="Platform.Common.DB" configuration="Release" />
       <Entry build="True" name="LibExtractor" configuration="Release" />
+      <Entry build="True" name="MusicBrainz" configuration="Debug" />
     </Configuration>
   </Configurations>
   <StartMode startupentry="Basenji" single="True">
@@ -40,6 +44,7 @@
     <Execute type="None" entry="Platform" />
     <Execute type="None" entry="Platform.Common.DB" />
     <Execute type="None" entry="LibExtractor" />
+    <Execute type="None" entry="MusicBrainz" />
   </StartMode>
   <Entries>
     <Entry filename="Basenji/Basenji.mdp" />
@@ -47,5 +52,6 @@
     <Entry filename="Platform/Platform.mdp" />
     <Entry filename="Platform.Common.DB/Platform.Common.DB.mdp" />
     <Entry filename="LibExtractor/LibExtractor.mdp" />
+    <Entry filename="MusicBrainz/MusicBrainz.mdp" />
   </Entries>
 </Combine>
