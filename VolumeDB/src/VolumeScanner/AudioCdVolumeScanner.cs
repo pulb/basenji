@@ -121,27 +121,27 @@ namespace VolumeDB.VolumeScanner
 		}
 
 		private static string GetMetaData(Track track, string albumTitle, TimeSpan duration) {
-			List<Keyword> keywords = new List<Keyword>();
-			
-			keywords.Add(new Keyword() {
-				keywordType = KeywordType.EXTRACTOR_ALBUM,
-				keyword = albumTitle
-			});
-			
-			keywords.Add(new Keyword() {
-				keywordType = KeywordType.EXTRACTOR_ARTIST,
-				keyword = track.GetArtist().GetName()
-			});
-
-			keywords.Add(new Keyword() {
-				keywordType = KeywordType.EXTRACTOR_TITLE,
-				keyword = track.GetTitle()
-			});
-			
-			keywords.Add(new Keyword() {
-				keywordType = KeywordType.EXTRACTOR_DURATION,
-				keyword = MetaDataHelper.FormatExtractorDuration(duration.TotalSeconds)
-			});
+			List<Keyword> keywords = new List<Keyword>() {
+				new Keyword {
+					keywordType = KeywordType.EXTRACTOR_ALBUM,
+					keyword = albumTitle
+				},
+				
+				new Keyword {
+					keywordType = KeywordType.EXTRACTOR_ARTIST,
+					keyword = track.GetArtist().GetName()
+				},
+				
+				new Keyword {
+					keywordType = KeywordType.EXTRACTOR_TITLE,
+					keyword = track.GetTitle()
+				},
+				
+				new Keyword {
+					keywordType = KeywordType.EXTRACTOR_DURATION,
+					keyword = MetaDataHelper.FormatExtractorDuration(duration.TotalSeconds)
+				}
+			};
 			
 			return MetaDataHelper.PackExtractorKeywords(keywords.ToArray());
 		}
