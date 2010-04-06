@@ -113,20 +113,22 @@ namespace Basenji.Gui
 				
 				UpdateLog(LogIcon.Info, tmp);
 				
-				if (scanner is FilesystemVolumeScanner) {
-					FilesystemScannerOptions fsopts = (FilesystemScannerOptions)opts[0];
-					
-					UpdateLog(LogIcon.Info, string.Format(S._("Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, hashing: {3}."),
-					                                      BoolToStr(fsopts.GenerateThumbnails),
-				                                          BoolToStr(fsopts.ExtractMetaData),
-				                                          BoolToStr(fsopts.DiscardSymLinks),
-				                                          BoolToStr(fsopts.ComputeHashs)));
-				
-				} else if (scanner is AudioCdVolumeScanner) {
-					AudioCdScannerOptions aopts = (AudioCdScannerOptions)opts[1];					
-					UpdateLog(LogIcon.Info, string.Format(S._("Options: MusicBrainz enabled: {0}"), aopts.EnableMusicBrainz));
-				} else {
-					throw new NotImplementedException(string.Format("Missing options output for scannertyp {0}", scanner.GetType()));
+				switch (scanner.VolumeInfo.GetVolumeType()) {
+					case VolumeType.FileSystemVolume:
+						FilesystemScannerOptions fsopts = (FilesystemScannerOptions)opts[0];
+						
+						UpdateLog(LogIcon.Info, string.Format(S._("Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, hashing: {3}."),
+						                                      BoolToStr(fsopts.GenerateThumbnails),
+					                                          BoolToStr(fsopts.ExtractMetaData),
+					                                          BoolToStr(fsopts.DiscardSymLinks),
+					                                          BoolToStr(fsopts.ComputeHashs)));
+						break;
+					case VolumeType.AudioCdVolume:
+						AudioCdScannerOptions aopts = (AudioCdScannerOptions)opts[1];					
+						UpdateLog(LogIcon.Info, string.Format(S._("Options: MusicBrainz enabled: {0}"), aopts.EnableMusicBrainz));
+						break;
+					default:
+						throw new NotImplementedException(string.Format("Missing options output for scannertyp {0}", scanner.GetType()));
 				}
 				
 				scanner.RunAsync(); // starts scanning on a new thread and returns

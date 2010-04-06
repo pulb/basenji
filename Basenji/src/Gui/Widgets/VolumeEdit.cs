@@ -75,10 +75,11 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		public static VolumeEdit CreateInstance(VolumeType volType) {
-			switch(volType) {
+			switch (volType) {
 				case VolumeType.FileSystemVolume:
 					return new FSVolumeEdit();					  
-				//case VolumeType.CDDAVolume:
+				case VolumeType.AudioCdVolume:
+					return new AudioCdVolumeEdit();
 				default:
 					throw new NotImplementedException(string.Format("VolumeEdit widget for VolumeType {0} is not implemented", volType.ToString()));
 			}
