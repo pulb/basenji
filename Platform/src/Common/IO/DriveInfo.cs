@@ -247,10 +247,8 @@ namespace Platform.Common.IO
 			switch(di.DriveType) {
 				case System.IO.DriveType.CDRom:
 					d.driveType = DriveType.CDRom;
-					try {
-						if (d.isReady)
-							d.VolumeIsAudioCd = (AudioCdWin32.GetNumAudioTracks(d.device) > 0);
-					} catch (System.IO.IOException) {}
+					if (d.isReady)
+						d.VolumeIsAudioCd = AudioCdWin32.IsAudioCd(d.device);
 					break;
 				case System.IO.DriveType.Fixed:
 					d.driveType = DriveType.Fixed;

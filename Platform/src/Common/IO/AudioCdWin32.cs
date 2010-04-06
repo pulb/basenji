@@ -1,113 +1,103 @@
-// AudioCdWin32.cs
-//
-// Copyright (c) 2008 Scott Peterson <lunchtimemama@gmail.com>
-// Copyright (c) 2010 Patrick Ulbrich <zulu99@gmx.net>
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
+//  AudioCdWin32
+//  
+//  Copyright (C) 2010 Patrick Ulbrich
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
 
 # if WIN32
 using System;
-using System.IO;
-using System.Text;
-using System.Threading;
 using System.Runtime.InteropServices;
+using Microsoft.Win32.SafeHandles;
+using System.IO;
 
 namespace Platform.Common.IO
 {
-	// based on code of musicbrainz-sharp's DiscWin32
 	internal static class AudioCdWin32
 	{
-		private delegate void MciCall(string result);
+		private const uint GENERIC_READ = 0x80000000;
+        private const uint FILE_SHARE_READ = 0x00000001;
+        private const uint FILE_SHARE_WRITE = 0x00000002;
+		private const uint OPEN_EXISTING = 3;
 		
-		public static int GetNumAudioTracks(string device) {
-			
-			int track_count = 0;
-			
-			if (device == null)
-				throw new ArgumentNullException("device");
-			
-			if (device.Length == 0)
-				throw new ArgumentException("Empty devicename");
-			
-			string device_string = string.Format("{0} type cdaudio", device);
-
-            string alias = string.Format("platformio_cdio_{0}_{1}",
-                Environment.TickCount, Thread.CurrentThread.ManagedThreadId);
-			
-//			MciClosure (
-//                "sysinfo cdaudio quantity wait",
-//                "Could not get the list of CD audio devices",
-//                delegate(string result) {
-//                    if (int.Parse(result.ToString ()) <= 0)
-//                        throw new IOException ("No CD audio devices present.");
-//            });
-			
-			MciClosure(
-                string.Format("open {0} shareable alias {1} wait", device_string, alias),
-                string.Format("Could not open device {0}", device),
-                null);
-
-            MciClosure(
-                string.Format("status {0} number of tracks wait", alias),
-                "Could not read number of tracks",
-                delegate(string result) {
-                    track_count = int.Parse(result);
-                });
-			
-			MciClosure(
-                string.Format("close {0} wait", alias),
-                string.Format("Could not close device {0}", device),
-                null);
-			
-			return track_count;
+		private const uint CDROM_DISK_AUDIO_TRACK = 0x00001; 
+		private const uint CDROM_DISK_DATA_TRACK = 0x00002;
+		
+		private const uint IOCTL_CDROM_DISK_TYPE = 0x20040;
+		
+		// GCHandle requires a reference type
+		[StructLayout(LayoutKind.Sequential)]
+        private class CDROM_DISK_DATA
+		{
+			public ulong DiskData;
 		}
 		
-		private static StringBuilder mci_result = new StringBuilder(128);
-        private static StringBuilder mci_error = new StringBuilder(256);
-        private static void MciClosure(string command, string failure_message, MciCall code) {
-            int ret = mciSendString(command, mci_result, mci_result.Capacity, IntPtr.Zero);
-            if (ret != 0) {
-                mciGetErrorString(ret, mci_error, mci_error.Capacity);
-                throw new IOException(string.Format("{0} : {1}", failure_message, mci_error.ToString()));
-            } else if (code != null) {
-				code(mci_result.ToString());
+		public static bool IsAudioCd(string device) {
+			
+			int colon_idx = device.IndexOf(':');
+            if (colon_idx == -1) {
+                throw new ArgumentException("Invalid device name", "device");
 			}
-        }
+            
+			string filename = string.Concat(@"\\.\", device.Substring(0, colon_idx + 1));
+			
+			using (SafeFileHandle file = CreateFile(filename,
+			                                        GENERIC_READ,
+			                                        FILE_SHARE_READ | FILE_SHARE_WRITE,
+			                                        IntPtr.Zero,
+			                                        OPEN_EXISTING,
+			                                        0,
+			                                        IntPtr.Zero)) {
+				
+				if (file.IsInvalid)
+                    throw new IOException("Opening the CD device failed.");
+				
+				uint ret;
+				CDROM_DISK_DATA cdd = new CDROM_DISK_DATA();
+				GCHandle handle = GCHandle.Alloc(cdd, GCHandleType.Pinned);
+				
+				try {
+					
+					if (!DeviceIoControl(file,
+					                     IOCTL_CDROM_DISK_TYPE,
+					                     IntPtr.Zero,
+					                     0,
+					                     handle.AddrOfPinnedObject(),
+					                     (uint)Marshal.SizeOf(cdd),
+					                     out ret,
+					                     IntPtr.Zero))
+						throw new IOException("Error reading disk type");
+				
+				} finally {
+					handle.Free();					
+				}
+				
+				return ((cdd.DiskData & 0x03) == CDROM_DISK_AUDIO_TRACK);
+			}
+		}
 		
-		[DllImport ("winmm")]
-        private static extern Int32 mciSendString(
-		                                   [MarshalAs(UnmanagedType.LPTStr)]
-		                                   String command,
-		                                   [MarshalAs(UnmanagedType.LPTStr)]
-		                                   StringBuilder buffer,
-		                                   Int32 bufferSize,
-		                                   IntPtr hwndCallback
-		                                   );
-		
-        [DllImport ("winmm")]
-        private static extern Int32 mciGetErrorString(
-		                                       Int32 errorCode,
-		                                       [MarshalAs(UnmanagedType.LPTStr)]
-		                                       StringBuilder errorText,
-		                                       Int32 errorTextSize
-		                                       );
-        
+		[DllImport ("kernel32.dll")]
+        private static extern bool DeviceIoControl(SafeFileHandle hDevice, uint dwIoControlCode,
+		                                   IntPtr lpInBuffer, uint nInBufferSize,
+                                           IntPtr lpOutBuffer, uint nOutBufferSize,
+                                           out uint lpBytesReturned, IntPtr lpOverlapped);
+
+        [DllImport ("kernel32.dll")]
+        private static extern SafeFileHandle CreateFile(string lpFileName, uint dwDesiredAccess,
+                                                uint dwShareMode, IntPtr SecurityAttributes,
+                                                uint dwCreationDisposition, uint dwFlagsAndAttributes,
+                                                IntPtr hTemplateFile);
 	}
 }
 #endif
