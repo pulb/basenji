@@ -1,4 +1,4 @@
-//  AudioCdWin32
+//  AudioCdWin32.cs
 //  
 //  Copyright (C) 2010 Patrick Ulbrich
 // 
