@@ -1,6 +1,6 @@
 // VolumeScanner.cs
 // 
-// Copyright (C) 2008, 2009 Patrick Ulbrich
+// Copyright (C) 2008 - 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -57,7 +57,9 @@ namespace Basenji.Gui
 				StringSplitOptions.RemoveEmptyEntries);
 			
 			// setup scanner options
-			FilesystemScannerOptions opts = new FilesystemScannerOptions() {
+			ScannerOptions[] opts = new ScannerOptions[2];
+			
+			opts[0] = new FilesystemScannerOptions() {
 				BufferSize			= App.Settings.ScannerBufferSize,
 				ComputeHashs		= App.Settings.ScannerComputeHashs,
 				DiscardSymLinks		= App.Settings.ScannerDiscardSymLinks,
@@ -67,8 +69,13 @@ namespace Basenji.Gui
 				DbDataPath			= PathUtil.GetDbDataPath(database)
 			};
 			
-			// TODO : scanner = VolumeProber.GetScanner(device,...)
-			scanner = new FilesystemVolumeScanner(drive, database, opts);
+			opts[1] = new AudioCdScannerOptions() {
+				EnableMusicBrainz = true
+			};
+			
+			scanner = VolumeProber.GetScannerForVolume(drive, database, opts);
+//			// TODO : scanner = VolumeProber.GetScanner(device,...)
+//			scanner = new FilesystemVolumeScanner(drive, database, opts);
 			
 			// scanner eventhandlers
 			scanner.BeforeScanItem	  += scanner_BeforeScanItem;
@@ -105,11 +112,22 @@ namespace Basenji.Gui
 					tmp = string.Format(S._("Scanning of drive '{0}' started."), drive.Device);
 				
 				UpdateLog(LogIcon.Info, tmp);
-				UpdateLog(LogIcon.Info, string.Format(S._("Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, hashing: {3}."),
-				                                      BoolToStr(opts.GenerateThumbnails),
-				                                      BoolToStr(opts.ExtractMetaData),
-				                                      BoolToStr(opts.DiscardSymLinks),
-				                                      BoolToStr(opts.ComputeHashs)));
+				
+				if (scanner is FilesystemVolumeScanner) {
+					FilesystemScannerOptions fsopts = (FilesystemScannerOptions)opts[0];
+					
+					UpdateLog(LogIcon.Info, string.Format(S._("Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, hashing: {3}."),
+					                                      BoolToStr(fsopts.GenerateThumbnails),
+				                                          BoolToStr(fsopts.ExtractMetaData),
+				                                          BoolToStr(fsopts.DiscardSymLinks),
+				                                          BoolToStr(fsopts.ComputeHashs)));
+				
+				} else if (scanner is AudioCdVolumeScanner) {
+					AudioCdScannerOptions aopts = (AudioCdScannerOptions)opts[1];					
+					UpdateLog(LogIcon.Info, string.Format(S._("Options: MusicBrainz enabled: {0}"), aopts.EnableMusicBrainz));
+				} else {
+					throw new NotImplementedException(string.Format("Missing options output for scannertyp {0}", scanner.GetType()));
+				}
 				
 				scanner.RunAsync(); // starts scanning on a new thread and returns
 			} catch {
@@ -163,7 +181,7 @@ namespace Basenji.Gui
 					messageType = "[ ERROR ]";
 					break;
 				default:
-					throw new Exception("Invalid LogIcon.");
+					throw new Exception("Invalid LogIcon");
 			}
 
 			//Pixbuf pb = this.RenderIcon(stockIcon, IconSize.Menu, string.Empty);
