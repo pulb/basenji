@@ -110,14 +110,16 @@ namespace VolumeDB.VolumeScanner
 				}
 			}
 			
-			// write items
-			writer.Write(root);
-			
-			foreach (AudioTrackVolumeItem item in items) {
-				writer.Write(item);
-			}
-			
 			volume.SetAudioCdVolumeFields(VolumeInfo.Tracks, VolumeInfo.Duration);
+			
+			// write items
+			if (this.HasDB) {
+				writer.Write(root);
+				
+				foreach (AudioTrackVolumeItem item in items) {
+					writer.Write(item);
+				}
+			}			
 		}
 
 		private static string GetMetaData(Track track, string albumTitle, TimeSpan duration) {
