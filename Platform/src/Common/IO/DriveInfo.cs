@@ -45,7 +45,7 @@ namespace Platform.Common.IO
 		private string filesystem;
 		private bool isMounted;
 		private bool isReady;
-		private bool volumeIsAudioCd;
+		private bool hasAudioCdVolume;
  
 #if !WIN32		
 		static DriveInfo() {
@@ -63,7 +63,7 @@ namespace Platform.Common.IO
 			this.filesystem = string.Empty;
 			this.isMounted = false;
 			this.isReady = false;
-			this.volumeIsAudioCd = false;
+			this.hasAudioCdVolume = false;
 		}
 		
 		public DriveInfo(string rootPath) : this() {
@@ -224,8 +224,8 @@ namespace Platform.Common.IO
 			get { return isReady; }
 		}
 		
-		public bool VolumeIsAudioCd {
-			get { return volumeIsAudioCd; }
+		public bool HasAudioCdVolume {
+			get { return hasAudioCdVolume; }
 		}
 	
 
@@ -302,7 +302,7 @@ namespace Platform.Common.IO
 			}
 			
 			d.device = dev.DeviceFile;
-			d.volumeIsAudioCd = (dev.NumAudioTracks > 0);
+			d.hasAudioCdVolume = (dev.NumAudioTracks > 0);
 		}
 		
 		private static DriveType GetDriveType(DkDisk drive) {

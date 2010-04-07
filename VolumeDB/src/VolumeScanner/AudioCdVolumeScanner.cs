@@ -41,7 +41,7 @@ namespace VolumeDB.VolumeScanner
 		                            AudioCdScannerOptions options)
 			: base(drive, database, options)
 		{
-			if (!drive.VolumeIsAudioCd)
+			if (!drive.HasAudioCdVolume)
 				throw new ArgumentException("No audio cd present in drive");
 			
 		}

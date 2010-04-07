@@ -46,7 +46,7 @@ namespace VolumeDB.VolumeScanner
 			
 			// check for audio cd first - 
 			// win32 also mounts audio cds as filesystems
-			if (drive.VolumeIsAudioCd) {
+			if (drive.HasAudioCdVolume) {
 				return VolumeProbeResult.AudioCd;
 			} else if (drive.IsMounted) {
 				return VolumeProbeResult.Filesystem;
