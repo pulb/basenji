@@ -204,7 +204,8 @@ FILES = \
 	src/Gui/Widgets/IconEntry.cs \
 	src/Gui/Widgets/SearchEntry.cs \
 	src/Gui/Widgets/ItemPreview.cs \
-	src/Gui/Import.cs 
+	src/Gui/Import.cs \
+	src/Gui/Widgets/AudioCdVolumeEdit.cs 
 
 DATA_FILES = 
 

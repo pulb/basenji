@@ -1,6 +1,6 @@
 // VolumeEdit.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@
 
 using System;
 using System.Collections.Generic;
-//using System.Collections.Specialized;
 using Gtk;
 using Basenji;
 using Basenji.Gui.Base;
@@ -77,9 +76,11 @@ namespace Basenji.Gui.Widgets
 		public static VolumeEdit CreateInstance(VolumeType volType) {
 			switch (volType) {
 				case VolumeType.FileSystemVolume:
-					return new FSVolumeEdit();					  
+					return new FSVolumeEdit();
+					break;
 				case VolumeType.AudioCdVolume:
 					return new AudioCdVolumeEdit();
+					break;
 				default:
 					throw new NotImplementedException(string.Format("VolumeEdit widget for VolumeType {0} is not implemented", volType.ToString()));
 			}
