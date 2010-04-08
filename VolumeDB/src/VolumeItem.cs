@@ -193,6 +193,12 @@ namespace VolumeDB
 				case VolumeItemType.FileVolumeItem:
 					item = new FileVolumeItem(database);
 					break;
+				case VolumeItemType.AudioCdRootVolumeItem: 
+					item = new AudioCdRootVolumeItem(database);
+					break;
+				case VolumeItemType.AudioTrackVolumeItem:
+					item = new AudioTrackVolumeItem(database);
+					break;
 				default:
 					throw new NotImplementedException(string.Format("Instanciation of type {0} is not implemented", type.ToString()));
 			}
