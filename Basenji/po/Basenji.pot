@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-05 18:27+0200\n"
+"POT-Creation-Date: 2010-04-08 14:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,35 +98,40 @@ msgstr ""
 msgid "Format:"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:103
+#: src/Gui/VolumeScanner.cs:110
 msgid "Scanning started."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:105
+#: src/Gui/VolumeScanner.cs:112
 #, csharp-format
 msgid "Scanning of drive '{0}' started."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:108
+#: src/Gui/VolumeScanner.cs:120
 #, csharp-format
 msgid ""
 "Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
 "hashing: {3}."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:129
+#: src/Gui/VolumeScanner.cs:128
+#, csharp-format
+msgid "Options: MusicBrainz enabled: {0}"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:149
 msgid "Time"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:133
+#: src/Gui/VolumeScanner.cs:153
 msgid "Message"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:210 src/Gui/VolumeProperties.cs:41
+#: src/Gui/VolumeScanner.cs:230 src/Gui/VolumeProperties.cs:41
 msgid "Invalid data"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:210 src/Gui/VolumeProperties.cs:41
+#: src/Gui/VolumeScanner.cs:230 src/Gui/VolumeProperties.cs:41
 #, csharp-format
 msgid ""
 "\"{0}\" is {1}.\n"
@@ -135,61 +140,61 @@ msgid ""
 "Please correct or remove the data you entered."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:217
+#: src/Gui/VolumeScanner.cs:237
 msgid "yes"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:217
+#: src/Gui/VolumeScanner.cs:237
 msgid "no"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:240
+#: src/Gui/VolumeScanner.cs:260
 msgid "Scan in progress"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:240
+#: src/Gui/VolumeScanner.cs:260
 msgid "You must stop scanning before closing this window."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:250
+#: src/Gui/VolumeScanner.cs:270
 msgid "Stopping Scanner and performing rollback..."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:292
+#: src/Gui/VolumeScanner.cs:312
 #, csharp-format
 msgid "An unhandled exception occured ({0})."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:293
+#: src/Gui/VolumeScanner.cs:313
 msgid "All database changes have been rolled back."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:316
+#: src/Gui/VolumeScanner.cs:336
 #, csharp-format
 msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:318
+#: src/Gui/VolumeScanner.cs:338
 msgid "Scanning aborted."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:320
+#: src/Gui/VolumeScanner.cs:340
 msgid "Scanning completed successfully."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:417
+#: src/Gui/VolumeScanner.cs:437
 msgid "VolumeScanner"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:429
+#: src/Gui/VolumeScanner.cs:449
 msgid "<b>Volume Information:</b>"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:439
+#: src/Gui/VolumeScanner.cs:459
 msgid "<b>Scanner Log:</b>"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:456
+#: src/Gui/VolumeScanner.cs:476
 msgid "Database access"
 msgstr ""
 
@@ -214,7 +219,7 @@ msgstr ""
 msgid "Name:"
 msgstr ""
 
-#: src/Gui/DBProperties.cs:90 src/Gui/Widgets/VolumeEdit.cs:324
+#: src/Gui/DBProperties.cs:90 src/Gui/Widgets/VolumeEdit.cs:326
 msgid "Description:"
 msgstr ""
 
@@ -494,12 +499,20 @@ msgstr ""
 msgid "Unnamed"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/VolumeEdit.cs:322
+#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/VolumeEdit.cs:324
 msgid "Category:"
 msgstr ""
 
 #: src/Gui/Widgets/VolumeView.cs:31
 msgid "files"
+msgstr ""
+
+#: src/Gui/Widgets/AudioCdVolumeEdit.cs:60
+msgid "Tracks:"
+msgstr ""
+
+#: src/Gui/Widgets/AudioCdVolumeEdit.cs:61
+msgid "Duration:"
 msgstr ""
 
 #: src/Gui/Widgets/ItemView.cs:29
@@ -611,15 +624,15 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: src/Gui/Widgets/CategoryView.cs:60 src/Gui/Widgets/VolumeEdit.cs:50
+#: src/Gui/Widgets/CategoryView.cs:60 src/Gui/Widgets/VolumeEdit.cs:49
 msgid "Documents"
 msgstr ""
 
-#: src/Gui/Widgets/CategoryView.cs:61 src/Gui/Widgets/VolumeEdit.cs:51
+#: src/Gui/Widgets/CategoryView.cs:61 src/Gui/Widgets/VolumeEdit.cs:50
 msgid "Music"
 msgstr ""
 
-#: src/Gui/Widgets/CategoryView.cs:62 src/Gui/Widgets/VolumeEdit.cs:52
+#: src/Gui/Widgets/CategoryView.cs:62 src/Gui/Widgets/VolumeEdit.cs:51
 msgid "Movies"
 msgstr ""
 
@@ -659,63 +672,63 @@ msgstr ""
 msgid "Total size:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:49
+#: src/Gui/Widgets/VolumeEdit.cs:48
 msgid "Backup"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:53
+#: src/Gui/Widgets/VolumeEdit.cs:52
 msgid "Pictures"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:54
+#: src/Gui/Widgets/VolumeEdit.cs:53
 msgid "Misc"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:55
+#: src/Gui/Widgets/VolumeEdit.cs:54
 msgid "Other"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:239
+#: src/Gui/Widgets/VolumeEdit.cs:241
 msgid "Yes"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:239
+#: src/Gui/Widgets/VolumeEdit.cs:241
 msgid "No"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:249
+#: src/Gui/Widgets/VolumeEdit.cs:251
 msgid "Volume type:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:250
+#: src/Gui/Widgets/VolumeEdit.cs:252
 msgid "Hashed:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:251
+#: src/Gui/Widgets/VolumeEdit.cs:253
 msgid "Added:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:321
+#: src/Gui/Widgets/VolumeEdit.cs:323
 msgid "Archive No.:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:323
+#: src/Gui/Widgets/VolumeEdit.cs:325
 msgid "Title:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:325
+#: src/Gui/Widgets/VolumeEdit.cs:327
 msgid "Keywords:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:326
+#: src/Gui/Widgets/VolumeEdit.cs:328
 msgid "Loaned to:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:327
+#: src/Gui/Widgets/VolumeEdit.cs:329
 msgid "Loaned date:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:328
+#: src/Gui/Widgets/VolumeEdit.cs:330
 msgid "Return date:"
 msgstr ""
 
