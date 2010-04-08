@@ -186,6 +186,7 @@ namespace VolumeDB
 					break;
 				case VolumeType.AudioCdVolume:
 					volume = new AudioCdVolume(database);
+					break;
 				default:
 					throw new NotImplementedException(string.Format("Instanciation of type {0} is not implemented", type.ToString()));
 			}
