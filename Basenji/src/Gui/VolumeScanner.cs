@@ -125,7 +125,8 @@ namespace Basenji.Gui
 						break;
 					case VolumeType.AudioCdVolume:
 						AudioCdScannerOptions aopts = (AudioCdScannerOptions)opts[1];					
-						UpdateLog(LogIcon.Info, string.Format(S._("Options: MusicBrainz enabled: {0}"), aopts.EnableMusicBrainz));
+						UpdateLog(LogIcon.Info, string.Format(S._("Options: MusicBrainz enabled: {0}"),
+					                                      BoolToStr(aopts.EnableMusicBrainz)));
 						break;
 					default:
 						throw new NotImplementedException(string.Format("Missing options output for scannertyp {0}", scanner.GetType()));
