@@ -273,14 +273,10 @@ namespace Basenji.Gui
 				return;
 			}
 			
-			// TODO:
-			// remove this check when unmounted media
-			// like audio cds are supported 
-			// (volumeprober implementation).
-			if (!drive.IsMounted) {
+			if (!drive.IsMounted && !drive.HasAudioCdVolume) {
 				MsgDialog.ShowError(this,
 				                    S._("Error"),
-				                    S._("Drive {0} is not mounted."),
+				                    S._("Drive {0} is neither mounted nor does it contain an audio cd."),
 				                    drive.Device);
 				
 				return;
