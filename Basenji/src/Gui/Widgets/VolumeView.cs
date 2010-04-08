@@ -29,6 +29,7 @@ namespace Basenji.Gui.Widgets
 		private static readonly string STR_UNNAMED	= S._("Unnamed");
 		private static readonly string STR_CATEGORY	= S._("Category:");
 		private static readonly string STR_FILES	= S._("files");
+		private static readonly string STR_TRACKS	= S._("tracks");
 		
 		private const IconSize ICON_SIZE = IconSize.Dialog;
 		private IconCache iconCache;
@@ -94,61 +95,75 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		private string GetVolumeDescription(Volume v) {
+			// generic volume info
+			string title;
+			string category;
+			
+		 	if (string.IsNullOrEmpty(v.Title)) {
+				Gdk.Color a = Parent.Style.Base(Gtk.StateType.Normal);
+				Gdk.Color b = Parent.Style.Text(Gtk.StateType.Normal);
+				Gdk.Color c = Util.ColorBlend(a, b);
+			
+				double gdk_max = (double)ushort.MaxValue;
+				string col = string.Format("#{0:X2}{1:X2}{2:X2}",
+			                           (int)(255 * (c.Red / gdk_max)),
+			                           (int)(255 * (c.Green / gdk_max)),
+			                           (int)(255 * (c.Blue / gdk_max)));
+				
+				title = string.Format("<span foreground=\"{0}\">{1}</span>", col, STR_UNNAMED);
+			
+			} else if (!string.IsNullOrEmpty(v.LoanedTo)) {
+				title = string.Format("<span foreground=\"red\">{0}</span>", Util.Escape(v.Title));
+			} else {
+				title = Util.Escape(v.Title);
+			}
+		
+			if (string.IsNullOrEmpty(v.ArchiveNo)) {
+				title = string.Format("<b>{0}</b>", title);
+			} else {
+				title = string.Format("<b>{0}</b> <small>({1})</small>",
+			                      title,
+			                      Util.Escape(v.ArchiveNo));
+			}
+		
+			if (string.IsNullOrEmpty(v.Category))
+				category = "-";
+			else if (!VolumeEdit.categories.TryGetTranslatedString(v.Category, out category))
+				category = v.Category;
+			
+			// specific volume info			
+			// only show important info, otherwise its too cluttered, too high!
+			string strFormat = "{0}\n<span size=\"medium\"><i>{1}</i> {2}\n{3} / {4} {5}</span>";
+			string desc;
+			
 			switch (v.GetVolumeType()) {
 				case VolumeType.FileSystemVolume:
 					FileSystemVolume fsv = (FileSystemVolume)v;
 					
-					string title;
-					string category;
-					
-				 	if (string.IsNullOrEmpty(v.Title)) {
-						Gdk.Color a = Parent.Style.Base(Gtk.StateType.Normal);
-						Gdk.Color b = Parent.Style.Text(Gtk.StateType.Normal);
-						Gdk.Color c = Util.ColorBlend(a, b);
-					
-						double gdk_max = (double)ushort.MaxValue;
-						string col = string.Format("#{0:X2}{1:X2}{2:X2}",
-					                           (int)(255 * (c.Red / gdk_max)),
-					                           (int)(255 * (c.Green / gdk_max)),
-					                           (int)(255 * (c.Blue / gdk_max)));
-						
-						title = string.Format("<span foreground=\"{0}\">{1}</span>", col, STR_UNNAMED);
-					
-					} else if (!string.IsNullOrEmpty(v.LoanedTo)) {
-						title = string.Format("<span foreground=\"red\">{0}</span>", Util.Escape(v.Title));
-					} else {
-						title = Util.Escape(v.Title);
-					}
+					desc = string.Format(strFormat,
+				                     title,
+				                     STR_CATEGORY,
+									 Util.Escape(category),
+									 Util.GetSizeStr(fsv.Size),
+				                     fsv.Files.ToString(),
+				                     STR_FILES);
+					break;					
+			case VolumeType.AudioCdVolume:
+					AudioCdVolume avol = (AudioCdVolume)v;
 				
-					if (string.IsNullOrEmpty(v.ArchiveNo)) {
-						title = string.Format("<b>{0}</b>", title);
-					} else {
-						title = string.Format("<b>{0}</b> <small>({1})</small>",
-					                      title,
-					                      Util.Escape(v.ArchiveNo));
-					}
-				
-					//if (!string.IsNullOrEmpty(v.LoanedTo))
-					//	title = string.Format("<span foreground=\"red\">{0}</span>", title);
-					
-					if (string.IsNullOrEmpty(v.Category))
-						category = "-";
-					else if (!VolumeEdit.categories.TryGetTranslatedString(v.Category, out category))
-						category = v.Category;
-						
-					// only show important info, otherwise its too cluttered, too high!
-					return string.Format("{0}\n<span size=\"medium\"><i>{1}</i> {2}\n{3} / {4} {5}</span>", 
-												title,
-				                     			STR_CATEGORY,
-												Util.Escape(category),
-												Util.GetSizeStr(fsv.Size),
-				                     			fsv.Files.ToString(),
-				                     			STR_FILES);
-					
-				//case VolumeType.Cdda: ...
+					desc = string.Format(strFormat,
+				                     title,
+				                     STR_CATEGORY,
+									 Util.Escape(category),
+									 avol.Duration,
+				                     avol.Tracks.ToString(),
+				                     STR_TRACKS);
+					break;
 				default:
 					throw new NotImplementedException("Description not implemented for this VolumeType");
 			}
+			
+			return desc;
 		}
 		
 		private Gdk.Pixbuf GetVolumeIcon(Volume v) {
