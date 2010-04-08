@@ -25,7 +25,7 @@ namespace VolumeDB
 		private TimeSpan duration;
 		
 		internal AudioCdVolume(VolumeDatabase database)
-			: base(database, VolumeType.FileSystemVolume)
+			: base(database, VolumeType.AudioCdVolume)
 		{
 			this.tracks = 0;
 			this.duration = new TimeSpan(0, 0, 0);
