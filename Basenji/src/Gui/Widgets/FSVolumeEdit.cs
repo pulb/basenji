@@ -31,7 +31,7 @@ namespace Basenji.Gui.Widgets
 		private Label lblDirectories;
 		private Label lblTotalSize;
 		
-		public FSVolumeEdit() : base("Filesystem") {}
+		public FSVolumeEdit() : base(S._("Filesystem")) {}
 		
 		public override void UpdateInfo(VolumeInfo vi) { 
 			if (!(vi is FilesystemVolumeInfo))

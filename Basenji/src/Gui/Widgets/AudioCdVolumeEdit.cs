@@ -30,7 +30,7 @@ namespace Basenji.Gui.Widgets
 		private Label lblTracks;
 		private Label lblDuration;
 		
-		public AudioCdVolumeEdit() : base("Audio CD") {}
+		public AudioCdVolumeEdit() : base(S._("Audio CD")) {}
 		
 		public override void UpdateInfo(VolumeInfo vi) {
 			if (!(vi is AudioCdVolumeInfo))

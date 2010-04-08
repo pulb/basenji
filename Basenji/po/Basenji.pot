@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-08 14:54+0200\n"
+"POT-Creation-Date: 2010-04-08 22:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -405,7 +405,7 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
-#: src/Gui/DriveSelection.cs:169
+#: src/Gui/DriveSelection.cs:169 src/Gui/Widgets/FSVolumeEdit.cs:34
 msgid "Filesystem"
 msgstr ""
 
@@ -505,6 +505,10 @@ msgstr ""
 
 #: src/Gui/Widgets/VolumeView.cs:31
 msgid "files"
+msgstr ""
+
+#: src/Gui/Widgets/AudioCdVolumeEdit.cs:33
+msgid "Audio CD"
 msgstr ""
 
 #: src/Gui/Widgets/AudioCdVolumeEdit.cs:60
