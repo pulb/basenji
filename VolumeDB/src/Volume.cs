@@ -184,7 +184,8 @@ namespace VolumeDB
 				case VolumeType.FileSystemVolume:
 					volume = new FileSystemVolume(database);
 					break;
-				// case VolumeType.CddaVolume ...
+				case VolumeType.AudioCdVolume:
+					volume = new AudioCdVolume(database);
 				default:
 					throw new NotImplementedException(string.Format("Instanciation of type {0} is not implemented", type.ToString()));
 			}
