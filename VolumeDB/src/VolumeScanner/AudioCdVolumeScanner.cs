@@ -28,6 +28,7 @@ namespace VolumeDB.VolumeScanner
 		: AbstractVolumeScanner<AudioCdVolume, AudioCdVolumeInfo, AudioCdScannerOptions>
 	{
 		private const string MIME_TYPE_AUDIO_TRACK = "audio/x-wav";
+		private const string PRESELECTED_CATEGORY = "Music";
 		
 		// note:
 		// do not allow to modify the constuctor parameters 
@@ -49,6 +50,9 @@ namespace VolumeDB.VolumeScanner
 		internal override void ScanningThreadMain(PlatformIO.DriveInfo drive,
 		                                          AudioCdVolume volume,
 		                                          BufferedVolumeItemWriter writer) {
+			
+			// preset category
+			volume.Category = PRESELECTED_CATEGORY;
 			
 			if (Options.ComputeHashs) {
 				SendScannerWarning(S._("Hashcode generation not implemented for audio cds yet."));
