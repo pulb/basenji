@@ -89,7 +89,8 @@ namespace Basenji.Gui.Widgets
 							store.AppendValues(GetIcon(track),
 						                   track.Name,
 						                   (track.Artist.Length == 0 ? S._("Unknown") : track.Artist),
-						                   string.Format("{0:D2}:{1:D2}", track.Duration.Minutes, track.Duration.Seconds));
+						                   string.Format("{0:D2}:{1:D2}", track.Duration.Minutes, track.Duration.Seconds),
+						                   track);
 						}
 					}
 					
