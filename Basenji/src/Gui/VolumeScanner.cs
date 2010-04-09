@@ -57,20 +57,21 @@ namespace Basenji.Gui
 				StringSplitOptions.RemoveEmptyEntries);
 			
 			// setup scanner options
-			ScannerOptions[] opts = new ScannerOptions[2];
+			ScannerOptions[] opts = new ScannerOptions[2] {
 			
-			opts[0] = new FilesystemScannerOptions() {
-				BufferSize			= App.Settings.ScannerBufferSize,
-				ComputeHashs		= App.Settings.ScannerComputeHashs,
-				DiscardSymLinks		= App.Settings.ScannerDiscardSymLinks,
-				GenerateThumbnails	= App.Settings.ScannerGenerateThumbnails,
-				ExtractMetaData		= App.Settings.ScannerExtractMetaData,
-				ExtractionBlacklist	= blacklist,
-				DbDataPath			= PathUtil.GetDbDataPath(database)
-			};
+				new FilesystemScannerOptions() {
+					BufferSize			= App.Settings.ScannerBufferSize,
+					ComputeHashs		= App.Settings.ScannerComputeHashs,
+					DiscardSymLinks		= App.Settings.ScannerDiscardSymLinks,
+					GenerateThumbnails	= App.Settings.ScannerGenerateThumbnails,
+					ExtractMetaData		= App.Settings.ScannerExtractMetaData,
+					ExtractionBlacklist	= blacklist,
+					DbDataPath			= PathUtil.GetDbDataPath(database)
+				},
 			
-			opts[1] = new AudioCdScannerOptions() {
-				EnableMusicBrainz = true
+				new AudioCdScannerOptions() {
+					EnableMusicBrainz = true
+				}
 			};
 			
 			scanner = VolumeProber.GetScannerForVolume(drive, database, opts);
