@@ -88,25 +88,30 @@ namespace VolumeDB.VolumeScanner
 			// depending on the EnableMusicBrainz flag)
 			if (Options.EnableMusicBrainz) {
 				
-				Release release = Release.Query(localdisc).PerfectMatch();
+				try {
+					// may throw MusicBrainzNotFoundException
+					Release release = Release.Query(localdisc).PerfectMatch();
 
-				if (release == null) {
-					SendScannerWarning(S._("Error retrieving metadata from MusicBrainz."));
-				} else {
-					var tracks = release.GetTracks();
-					
-					if (tracks.Count != items.Count) {
-						SendScannerWarning(S._("Retrieved MusicBrainz trackcount does not match trackcount of local disc. Skipped."));
+					if (release == null) {
+						SendScannerWarning(S._("Error retrieving metadata from MusicBrainz."));
 					} else {
-						string albumTitle = release.GetTitle();
+						var tracks = release.GetTracks();
 						
-						for(int i = 0; i < tracks.Count; i++) {							
-							items[i].Name = tracks[i].GetTitle();
-							items[i].MetaData = GetMetaData(tracks[i], albumTitle, items[i].Duration);
+						if (tracks.Count != items.Count) {
+							SendScannerWarning(S._("Retrieved MusicBrainz trackcount does not match trackcount of local disc. Skipped."));
+						} else {
+							string albumTitle = release.GetTitle();
+							
+							for(int i = 0; i < tracks.Count; i++) {							
+								items[i].Name = tracks[i].GetTitle();
+								items[i].MetaData = GetMetaData(tracks[i], albumTitle, items[i].Duration);
+							}
+							
+							volume.Title = albumTitle;
 						}
-						
-						volume.Title = albumTitle;
 					}
+				} catch (MusicBrainzNotFoundException) {
+					SendScannerWarning(S._("Error connecting to MusicBrainz server."));
 				}
 			}
 			
