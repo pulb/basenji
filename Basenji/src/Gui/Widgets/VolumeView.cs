@@ -95,7 +95,7 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		private string GetVolumeDescription(Volume v) {
-			// generic volume info
+			// common volume info
 			string title;
 			string category;
 			
