@@ -1,6 +1,6 @@
 // ItemView.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -35,10 +35,15 @@ namespace Basenji.Gui.Widgets
 		private Gdk.Pixbuf loadingIcon;
 		
 		private VolumeType currentVolumeType;
+		private int item_col;
 		
 		public ItemView() {
 			itemIcons = new ItemIcons(this);
 			loadingIcon = this.RenderIcon(Icons.Icon.Stock_Find, ICON_SIZE);
+			
+			HeadersClickable = true;
+			
+			item_col = -1;
 			
 			// event handlers
 			RowExpanded			+= OnRowExpanded;
@@ -48,26 +53,49 @@ namespace Basenji.Gui.Widgets
 		public void FillRoot(Volume volume) {
 			if (volume == null)
 				throw new ArgumentNullException("volume");
-				
-			TreeStore store;			
+			
+			TreeModel model;
+			VolumeType volType = volume.GetVolumeType();
 			ResetView();
 			
-			switch (volume.GetVolumeType()) {
+			switch (volType) {
 				case VolumeType.FileSystemVolume:
-					InitFileSystemView(out store);
+					InitView(volType, out model);
 					
 					// load volume root
 					FileSystemVolume fsv = (FileSystemVolume)volume;
 					DirectoryVolumeItem item = fsv.GetRoot();
 					
-					AppendDirRows(store, TreeIter.Zero, item);
+					AppendDirRows((TreeStore)model, TreeIter.Zero, item);
 
-					Model = store;
+					Model = model;
 					/*ColumnsAutosize();*/
 					break;
-				//case VolumeType.CDDAVolume
-				//	  ...
-				//	  break;
+				
+				case VolumeType.AudioCdVolume:
+					InitView(volType, out model);
+				
+					// load volume root
+					AudioCdVolume avol = (AudioCdVolume)volume;
+					AudioCdRootVolumeItem root = avol.GetRoot();
+					
+					AudioTrackVolumeItem[] tracks = root.GetTracks();
+					
+					ListStore store = (ListStore)model;
+					if (tracks.Length == 0) {
+						store.AppendValues(null, STR_EMPTY, STR_EMPTY, STR_EMPTY);
+					} else {
+						foreach (AudioTrackVolumeItem track in tracks) {
+							store.AppendValues(GetIcon(track),
+						                   track.Name,
+						                   (track.Artist.Length == 0 ? S._("Unknown") : track.Artist),
+						                   string.Format("{0:D2}:{1:D2}", track.Duration.Minutes, track.Duration.Seconds));
+						}
+					}
+					
+					Model = model;
+					/*ColumnsAutosize();*/
+					break;
 				default:
 					throw new NotImplementedException("Items view has not been implemented for this volumetype");
 			}
@@ -75,8 +103,10 @@ namespace Basenji.Gui.Widgets
 		
 		public void Clear() {
 			if (Model != null) {
-				TreeStore store = (TreeStore)Model;
-				store.Clear();
+				if (Model is TreeStore)
+					((TreeStore)Model).Clear();
+				else
+					((ListStore)Model).Clear();
 			}
 		}
 		
@@ -85,25 +115,75 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		public VolumeItem GetItem(TreeIter iter) {
-			VolumeItem item = (VolumeItem)Model.GetValue(iter, 2);
+			if (item_col < 0)
+				return null;
+			
+			VolumeItem item = (VolumeItem)Model.GetValue(iter, item_col);
 			return item;
 		}
 		
-		private void InitFileSystemView(out TreeStore store) {
-			currentVolumeType = VolumeType.FileSystemVolume;
+		private void InitView(VolumeType volType, out TreeModel model) {
+			currentVolumeType = volType;
 			TreeViewColumn col;
+			
+			switch (volType) {
+				case VolumeType.FileSystemVolume:
+					HeadersVisible = false;
 				
-			CellRendererPixbuf pix = new CellRendererPixbuf();
-			CellRendererText txt = new CellRendererText();
-			col = new TreeViewColumn();
-			col.PackStart(pix, false);
-			col.PackStart(txt, false);
-			col.SetAttributes(pix, "pixbuf", 0);
-			col.SetAttributes(txt, "text", 1);
-			AppendColumn(col);
-		
-			// set up store
-			store = new TreeStore(typeof(Gdk.Pixbuf), typeof(string),  /* VolumeItem - not visible */ typeof(FileSystemVolumeItem));
+					CellRendererPixbuf pix = new CellRendererPixbuf();
+					CellRendererText txt = new CellRendererText();
+					
+					col = new TreeViewColumn();
+					col.PackStart(pix, false);
+					col.PackStart(txt, false);
+					col.SetAttributes(pix, "pixbuf", 0);
+					col.SetAttributes(txt, "text", 1);
+					AppendColumn(col);
+				
+					// set up store
+					model = new TreeStore(typeof(Gdk.Pixbuf),
+				                      typeof(string),
+				                      /* VolumeItem - not visible */
+				                      typeof(FileSystemVolumeItem));
+				
+					item_col = 2;
+					break;
+				case VolumeType.AudioCdVolume:
+					HeadersVisible = true;
+				
+					col = new TreeViewColumn(string.Empty, new CellRendererPixbuf(), "pixbuf", 0);
+					col.Resizable = false;
+					col.Expand = false;
+					AppendColumn(col);
+				
+					col = new TreeViewColumn(S._("Name"), new CellRendererText(), "text", 1);
+					col.Resizable = true;
+					col.Expand = true;
+					AppendColumn(col);
+				
+					col = new TreeViewColumn(S._("Artist"), new CellRendererText(), "text", 2);
+					col.Resizable = true;
+					col.Expand = true;
+					AppendColumn(col);
+				
+					col = new TreeViewColumn(S._("Duration"), new CellRendererText(), "text", 3);
+					col.Resizable = true;
+					col.Expand = false;
+					AppendColumn(col);
+				
+					// set up store
+					model = new ListStore(typeof(Gdk.Pixbuf),
+				                      typeof(string),
+				                      typeof(string),
+				                      typeof(string),
+				                      /* VolumeItem - not visible */
+				                      typeof(AudioTrackVolumeItem));
+				
+					item_col = 4;
+					break;
+				default:
+					throw new NotImplementedException("View initialization has not been implemented for this volumetype");
+			}
 		}
 		
 		private void AppendDirRows(TreeStore store, TreeIter parent, DirectoryVolumeItem item) {
@@ -115,12 +195,12 @@ namespace Basenji.Gui.Widgets
 			if (dirs.Length == 0 && files.Length == 0) {
 				AppendDirValues(store, parent, parentIsRoot, null, STR_EMPTY, null);
 			} else {
-				foreach(DirectoryVolumeItem dir in dirs) {
+				foreach (DirectoryVolumeItem dir in dirs) {
 					TreeIter iter = AppendDirValues(store, parent, parentIsRoot, GetIcon(dir), dir.Name, dir);
 					AppendDirValues(store, iter, false, loadingIcon, STR_LOADING, null);
 				}
 				
-				foreach(FileVolumeItem file in files) {
+				foreach (FileVolumeItem file in files) {
 					AppendDirValues(store, parent, parentIsRoot, GetIcon(file), file.Name, file);
 				}
 			}			 
@@ -138,7 +218,7 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		private void OnRowExpanded(object o, RowExpandedArgs args) {
-			switch(CurrentVolumeType) {			   
+			switch (CurrentVolumeType) {			   
 				case VolumeType.FileSystemVolume:
 					TreeStore store = (TreeStore)Model;
 					
