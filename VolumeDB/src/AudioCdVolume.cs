@@ -48,6 +48,11 @@ namespace VolumeDB
 			this.duration	= duration;
 		}
 		
+		// AudioCdVolume specific implementation of Volume.GetRoot()
+		public new AudioCdRootVolumeItem GetRoot() {
+			return (AudioCdRootVolumeItem)base.GetRoot();
+		}
+		
 		internal override void ReadFromVolumeDBRecord(IRecordData recordData) {
 			base.ReadFromVolumeDBRecord(recordData);
 
