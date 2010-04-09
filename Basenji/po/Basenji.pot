@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-08 22:34+0200\n"
+"POT-Creation-Date: 2010-04-09 14:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,40 +98,40 @@ msgstr ""
 msgid "Format:"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:110
+#: src/Gui/VolumeScanner.cs:111
 msgid "Scanning started."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:112
+#: src/Gui/VolumeScanner.cs:113
 #, csharp-format
 msgid "Scanning of drive '{0}' started."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:120
+#: src/Gui/VolumeScanner.cs:121
 #, csharp-format
 msgid ""
 "Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
 "hashing: {3}."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:128
+#: src/Gui/VolumeScanner.cs:129
 #, csharp-format
 msgid "Options: MusicBrainz enabled: {0}"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:149
+#: src/Gui/VolumeScanner.cs:151
 msgid "Time"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:153
+#: src/Gui/VolumeScanner.cs:155
 msgid "Message"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:230 src/Gui/VolumeProperties.cs:41
+#: src/Gui/VolumeScanner.cs:232 src/Gui/VolumeProperties.cs:41
 msgid "Invalid data"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:230 src/Gui/VolumeProperties.cs:41
+#: src/Gui/VolumeScanner.cs:232 src/Gui/VolumeProperties.cs:41
 #, csharp-format
 msgid ""
 "\"{0}\" is {1}.\n"
@@ -140,61 +140,61 @@ msgid ""
 "Please correct or remove the data you entered."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:237
+#: src/Gui/VolumeScanner.cs:239
 msgid "yes"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:237
+#: src/Gui/VolumeScanner.cs:239
 msgid "no"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:260
+#: src/Gui/VolumeScanner.cs:262
 msgid "Scan in progress"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:260
+#: src/Gui/VolumeScanner.cs:262
 msgid "You must stop scanning before closing this window."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:270
+#: src/Gui/VolumeScanner.cs:272
 msgid "Stopping Scanner and performing rollback..."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:312
+#: src/Gui/VolumeScanner.cs:314
 #, csharp-format
 msgid "An unhandled exception occured ({0})."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:313
+#: src/Gui/VolumeScanner.cs:315
 msgid "All database changes have been rolled back."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:336
+#: src/Gui/VolumeScanner.cs:338
 #, csharp-format
 msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:338
+#: src/Gui/VolumeScanner.cs:340
 msgid "Scanning aborted."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:340
+#: src/Gui/VolumeScanner.cs:342
 msgid "Scanning completed successfully."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:437
+#: src/Gui/VolumeScanner.cs:439
 msgid "VolumeScanner"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:449
+#: src/Gui/VolumeScanner.cs:451
 msgid "<b>Volume Information:</b>"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:459
+#: src/Gui/VolumeScanner.cs:461
 msgid "<b>Scanner Log:</b>"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:476
+#: src/Gui/VolumeScanner.cs:478
 msgid "Database access"
 msgstr ""
 
@@ -505,6 +505,10 @@ msgstr ""
 
 #: src/Gui/Widgets/VolumeView.cs:31
 msgid "files"
+msgstr ""
+
+#: src/Gui/Widgets/VolumeView.cs:32
+msgid "tracks"
 msgstr ""
 
 #: src/Gui/Widgets/AudioCdVolumeEdit.cs:33
