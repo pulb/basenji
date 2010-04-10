@@ -102,7 +102,7 @@ namespace VolumeDB.VolumeScanner
 						var tracks = release.GetTracks();
 						
 						if (tracks.Count != items.Count) {
-							SendScannerWarning(S._("Retrieved MusicBrainz trackcount does not match trackcount of local disc. Skipped."));
+							SendScannerWarning(S._("The trackcount retrieved from MusicBrainz does not match the trackcount of the local disc. Skipped."));
 						} else {
 							string albumTitle = release.GetTitle();
 							
