@@ -83,7 +83,7 @@ namespace VolumeDB
 		// returns the libextractor duration format
 		public static string FormatExtractorDuration (double seconds) {
 			if (seconds < 60.0)
-				return ((int)Math.Round(seconds)).ToString();
+				return ((int)Math.Round(seconds)).ToString() + "s";
 			
 			long totalSecs = (long)seconds;
 			int mins = (int)(totalSecs / 60);
