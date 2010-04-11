@@ -297,7 +297,7 @@ namespace VolumeDB.Import
 					
 					keywords.Add(new Keyword() {
 						keywordType = KeywordType.EXTRACTOR_DURATION,
-						keyword = MetaDataHelper.FormatExtractorDuration(val)
+						keyword = MetaDataHelper.SecsToExtractorDuration(val)
 					});
 				}
 			}

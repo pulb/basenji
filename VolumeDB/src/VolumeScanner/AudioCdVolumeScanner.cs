@@ -150,7 +150,7 @@ namespace VolumeDB.VolumeScanner
 				
 				new Keyword {
 					keywordType = KeywordType.EXTRACTOR_DURATION,
-					keyword = MetaDataHelper.FormatExtractorDuration(duration.TotalSeconds)
+					keyword = MetaDataHelper.SecsToExtractorDuration(duration.TotalSeconds)
 				}
 			};
 			
