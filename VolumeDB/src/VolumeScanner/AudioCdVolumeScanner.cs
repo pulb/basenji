@@ -51,9 +51,6 @@ namespace VolumeDB.VolumeScanner
 		                                          AudioCdVolume volume,
 		                                          BufferedVolumeItemWriter writer) {
 			
-			// preset category
-			volume.Category = PRESELECTED_CATEGORY;
-			
 			if (Options.ComputeHashs) {
 				SendScannerWarning(S._("Hashcode generation not implemented for audio cds yet."));
 			
@@ -112,6 +109,15 @@ namespace VolumeDB.VolumeScanner
 							}
 							
 							volume.Title = albumTitle;
+							
+							// preset category
+							ReleaseType rtype = release.GetReleaseType();
+							if (rtype == ReleaseType.Album || 
+							    rtype == ReleaseType.EP ||
+							    rtype == ReleaseType.Compilation ||
+							    rtype == ReleaseType.Remix) {
+								volume.Category = PRESELECTED_CATEGORY;
+							}
 						}
 					}
 				} catch (MusicBrainzNotFoundException) {
