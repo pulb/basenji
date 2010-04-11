@@ -102,10 +102,11 @@ namespace VolumeDB.VolumeScanner
 							SendScannerWarning(S._("The trackcount retrieved from MusicBrainz does not match the trackcount of the local disc. Skipped."));
 						} else {
 							string albumTitle = release.GetTitle();
+							int releaseYear = GetReleaseYear(release);
 							
 							for(int i = 0; i < tracks.Count; i++) {							
 								items[i].Name = tracks[i].GetTitle();
-								items[i].MetaData = GetMetaData(tracks[i], albumTitle, items[i].Duration);
+								items[i].MetaData = GetMetaData(tracks[i], items[i].Duration, albumTitle, releaseYear);
 							}
 							
 							volume.Title = albumTitle;
@@ -134,33 +135,67 @@ namespace VolumeDB.VolumeScanner
 				foreach (AudioTrackVolumeItem item in items) {
 					writer.Write(item);
 				}
-			}			
+			}
 		}
 
-		private static string GetMetaData(Track track, string albumTitle, TimeSpan duration) {
-			List<Keyword> keywords = new List<Keyword>() {
-				new Keyword {
+		private static string GetMetaData(Track track,
+		                                  TimeSpan duration,
+		                                  string albumTitle,
+		                                  int releaseYear) {
+			
+			List<Keyword> keywords = new List<Keyword>();
+			
+			keywords.Add(new Keyword {
+				keywordType = KeywordType.EXTRACTOR_DURATION,
+				keyword = MetaDataHelper.SecsToExtractorDuration(duration.TotalSeconds)
+			});
+			
+			if (!string.IsNullOrEmpty(albumTitle)) {
+				keywords.Add(new Keyword {
 					keywordType = KeywordType.EXTRACTOR_ALBUM,
 					keyword = albumTitle
-				},
-				
-				new Keyword {
+				});
+			}
+			
+			string artistName = track.GetArtist().GetName();
+			if (!string.IsNullOrEmpty(artistName)) {
+				keywords.Add(new Keyword {
 					keywordType = KeywordType.EXTRACTOR_ARTIST,
-					keyword = track.GetArtist().GetName()
-				},
-				
-				new Keyword {
+					keyword = artistName
+				});
+			}
+			
+			string title = track.GetTitle();
+			if (!string.IsNullOrEmpty(title)) {
+				keywords.Add(new Keyword {
 					keywordType = KeywordType.EXTRACTOR_TITLE,
-					keyword = track.GetTitle()
-				},
-				
-				new Keyword {
-					keywordType = KeywordType.EXTRACTOR_DURATION,
-					keyword = MetaDataHelper.SecsToExtractorDuration(duration.TotalSeconds)
-				}
-			};
+					keyword = title
+				});
+			}
+			
+			if (releaseYear > 0) {
+				keywords.Add(new Keyword {
+					keywordType = KeywordType.EXTRACTOR_YEAR,
+					keyword = releaseYear.ToString()
+				});
+			}
 			
 			return MetaDataHelper.PackExtractorKeywords(keywords.ToArray());
+		}
+		
+		private static int GetReleaseYear(Release release) {
+			int releaseYear = int.MaxValue;
+			
+			foreach (Event e in release.GetEvents()) {
+				string date = e.Date;
+				if (date != null) {
+					int y = int.Parse(date.Substring(0, 4));
+					if (y < releaseYear)
+						releaseYear = y;
+				}
+			}
+			
+			return (releaseYear == int.MaxValue) ? 0 : releaseYear;
 		}
 	}
 }
