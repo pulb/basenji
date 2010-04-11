@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-09 14:22+0200\n"
+"POT-Creation-Date: 2010-04-12 01:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -401,7 +401,7 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: src/Gui/DriveSelection.cs:145 src/Gui/Widgets/ItemInfo.cs:280
+#: src/Gui/DriveSelection.cs:145 src/Gui/Widgets/ItemInfo.cs:202
 msgid "Size"
 msgstr ""
 
@@ -531,6 +531,23 @@ msgstr ""
 msgid "(empty)"
 msgstr ""
 
+#: src/Gui/Widgets/ItemView.cs:91
+msgid "Unknown"
+msgstr ""
+
+#: src/Gui/Widgets/ItemView.cs:160
+msgid "Name"
+msgstr ""
+
+#: src/Gui/Widgets/ItemView.cs:165
+msgid "Artist"
+msgstr ""
+
+#: src/Gui/Widgets/ItemView.cs:170 src/Gui/Widgets/ItemInfo.cs:223
+#: src/Gui/Widgets/ItemInfo.cs:275
+msgid "Duration"
+msgstr ""
+
 #: src/Gui/Widgets/ItemInfo.cs:39
 msgid "by"
 msgstr ""
@@ -539,80 +556,84 @@ msgstr ""
 msgid "from"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:194
-msgid "Genre"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:206
-msgid "Year"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:209
-msgid "Description"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:212
-msgid "Duration"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:216
-msgid "Dimensions"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:219
-msgid "Format"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:221
-msgid "Author"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:223
-msgid "Copyright"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:225
-msgid "Producer"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:227
-msgid "Creator"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:229
-msgid "Software"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:231
-msgid "Language"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:233
-msgid "Page count"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:237
-msgid "File count"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:260
+#: src/Gui/Widgets/ItemInfo.cs:182
 msgid "Location"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:261
+#: src/Gui/Widgets/ItemInfo.cs:183
 msgid "Last write time"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:272
+#: src/Gui/Widgets/ItemInfo.cs:194
 msgid "Symlink target"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:282
+#: src/Gui/Widgets/ItemInfo.cs:204
 msgid "Hash"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:286
+#: src/Gui/Widgets/ItemInfo.cs:208
 msgid "Filetype"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:225
+msgid "Track No."
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:228
+msgid "Type"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:257
+msgid "Genre"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:269
+msgid "Year"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:272
+msgid "Description"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:279
+msgid "Dimensions"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:282
+msgid "Format"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:284
+msgid "Author"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:286
+msgid "Copyright"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:288
+msgid "Producer"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:290
+msgid "Creator"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:292
+msgid "Software"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:294
+msgid "Language"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:296
+msgid "Page count"
+msgstr ""
+
+#: src/Gui/Widgets/ItemInfo.cs:300
+msgid "File count"
 msgstr ""
 
 #: src/Gui/Widgets/PageNavigation.cs:27

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-09 14:22+0200\n"
+"POT-Creation-Date: 2010-04-12 01:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,21 +16,21 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/VolumeScanner/AudioCdVolumeScanner.cs:54
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:55
 msgid "Hashcode generation not implemented for audio cds yet."
 msgstr ""
 
-#: src/VolumeScanner/AudioCdVolumeScanner.cs:96
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:97
 msgid "Error retrieving metadata from MusicBrainz."
 msgstr ""
 
-#: src/VolumeScanner/AudioCdVolumeScanner.cs:101
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:102
 msgid ""
-"Retrieved MusicBrainz trackcount does not match trackcount of local disc. "
-"Skipped."
+"The trackcount retrieved from MusicBrainz does not match the trackcount of "
+"the local disc. Skipped."
 msgstr ""
 
-#: src/VolumeScanner/AudioCdVolumeScanner.cs:114
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:125
 msgid "Error connecting to MusicBrainz server."
 msgstr ""
 
