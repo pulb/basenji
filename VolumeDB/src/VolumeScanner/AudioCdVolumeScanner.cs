@@ -189,9 +189,11 @@ namespace VolumeDB.VolumeScanner
 			foreach (Event e in release.GetEvents()) {
 				string date = e.Date;
 				if (date != null) {
-					int y = int.Parse(date.Substring(0, 4));
-					if (y < releaseYear)
-						releaseYear = y;
+					try {
+						int y = int.Parse(date.Substring(0, 4));
+						if (y < releaseYear)
+							releaseYear = y;
+					} catch {}
 				}
 			}
 			
