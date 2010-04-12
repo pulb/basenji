@@ -218,11 +218,7 @@ namespace Basenji.Gui.Widgets
 				List<ItemProperty> tmp;
 				GetCommonItemProperties(item, out tmp, out nameProperty);
 				
-				// if no duration metadata is available, add it manually
-				// (audio cds that have been scanned without musicbrainz)
-				if (tmp.FindIndex(p => p.priority == 106) == -1)
-					tmp.Add(new ItemProperty(S._("Duration"), item.Duration.ToString(), 202));
-				
+				tmp.Add(new ItemProperty(S._("Duration"), item.Duration.ToString(), 202));
 				tmp.Add(new ItemProperty(S._("Track No."), (item.ItemID - 1).ToString(), 203));
 				
 				if (!string.IsNullOrEmpty(item.MimeType))

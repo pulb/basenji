@@ -106,7 +106,7 @@ namespace VolumeDB.VolumeScanner
 							
 							for(int i = 0; i < tracks.Count; i++) {							
 								items[i].Name = tracks[i].GetTitle();
-								items[i].MetaData = GetMetaData(tracks[i], items[i].Duration, albumTitle, releaseYear);
+								items[i].MetaData = GetMetaData(tracks[i], albumTitle, releaseYear);
 							}
 							
 							volume.Title = albumTitle;
@@ -139,16 +139,10 @@ namespace VolumeDB.VolumeScanner
 		}
 
 		private static string GetMetaData(Track track,
-		                                  TimeSpan duration,
 		                                  string albumTitle,
 		                                  int releaseYear) {
 			
 			List<Keyword> keywords = new List<Keyword>();
-			
-			keywords.Add(new Keyword {
-				keywordType = KeywordType.EXTRACTOR_DURATION,
-				keyword = MetaDataHelper.SecsToExtractorDuration(duration.TotalSeconds)
-			});
 			
 			if (!string.IsNullOrEmpty(albumTitle)) {
 				keywords.Add(new Keyword {
