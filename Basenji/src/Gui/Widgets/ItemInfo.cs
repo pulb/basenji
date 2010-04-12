@@ -321,36 +321,6 @@ namespace Basenji.Gui.Widgets
 					nameProperty.Add("name", item.Name);
 				}
 				
-//				tmp.Add(new ItemProperty(S._("Location"), item.Location, 202));
-//				tmp.Add(new ItemProperty(S._("Last write time"), item.LastWriteTime.ToString(), 205));
-//				
-//				if (item.IsSymLink) {
-//					FileSystemVolumeItem targetItem = item.GetSymLinkTargetItem();
-//					string symlinkTargetPath = null;
-//					
-//					if (targetItem.Location != "/" && targetItem.Name != "/")
-//						symlinkTargetPath = string.Format("{0}/{1}", targetItem.Location, targetItem.Name);
-//					else
-//						symlinkTargetPath = targetItem.Location + targetItem.Name;
-//				
-//					tmp.Add(new ItemProperty(S._("Symlink target"), symlinkTargetPath, 203));
-//				}
-//				
-//				if (item is FileVolumeItem) {
-//					FileVolumeItem fvi = (FileVolumeItem)item;
-//					string sizeStr = Util.GetSizeStr(fvi.Size);
-//					string hash = fvi.Hash;
-//	
-//					tmp.Add(new ItemProperty(S._("Size"), sizeStr, 204));
-//					if (!string.IsNullOrEmpty(hash))
-//						tmp.Add(new ItemProperty(S._("Hash"), hash, 207));
-//				}
-//
-//				if (!string.IsNullOrEmpty(item.MimeType))
-//					tmp.Add(new ItemProperty(S._("Filetype"), item.MimeType, 206));
-
-//				tmp.Sort(); // sort by priority
-//				properties = tmp.ToArray();
 				properties = tmp;
 			}
 
