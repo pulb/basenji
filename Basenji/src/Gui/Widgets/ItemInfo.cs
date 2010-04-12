@@ -99,51 +99,56 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		private void FillPropertyBox(VolumeItem item) {
-			switch(item.GetVolumeItemType()) {
+			ItemProperty[] properties;
+			Dictionary<string, string> nameProperty;
+			
+			switch (item.GetVolumeItemType()) {
 				case VolumeItemType.FileVolumeItem:
 				case VolumeItemType.DirectoryVolumeItem:
-					ItemProperty[] properties;
-					Dictionary<string, string> nameProperty;
-					
-					ItemProperty.GetFSItemProperties(
-				                                 (FileSystemVolumeItem)item, 
+				
+					ItemProperty.GetFSItemProperties((FileSystemVolumeItem)item, 
 				                                 out properties, 
 				                                 out nameProperty);
+					break;
+				case VolumeItemType.AudioTrackVolumeItem:
 					
-					propertyBox.SetProperties(properties);
-
-					string tmp;
-					if (nameProperty.TryGetValue("title", out tmp)) {
-						// title found (e.g. html or doc file)
-						// may be followed optionally by artist and/or album (audio file)
-						StringBuilder sbName = new StringBuilder();
-						StringBuilder sbTooltip = new StringBuilder();
-				
-						sbName.AppendFormat("<b>{0}</b>", Util.Escape(tmp));
-						sbTooltip.Append(tmp);
-
-						if (nameProperty.TryGetValue("artist", out tmp)) {								
-							sbName.AppendFormat(" <i>{0}</i> {1}", STR_BY, Util.Escape(tmp));
-							sbTooltip.AppendFormat(" {0} {1}", STR_BY, tmp);
-						}
-
-						if (nameProperty.TryGetValue("album", out tmp)) {
-							sbName.AppendFormat(" <i>{0}</i> {1}", STR_FROM, Util.Escape(tmp));
-							sbTooltip.AppendFormat(" {0} {1}", STR_FROM, tmp);
-						}
-							
-						propertyBox.SetNameProperty(sbName.ToString(), sbTooltip.ToString());
-					} else {
-						// name expected
-						if (!nameProperty.TryGetValue("name", out tmp))
-							throw new ArgumentException("Name expected");
-					
-						propertyBox.SetNameProperty(string.Format("<b>{0}</b>", Util.Escape(tmp)), tmp);
-					}
-					
+					ItemProperty.GetAudioCdItemProperties((AudioTrackVolumeItem)item,
+				                                      out properties,
+				                                      out nameProperty);
 					break;
 				default:
 					throw new NotImplementedException("Iteminfo has not been implemented for this itemtype yet");
+			}			
+			
+			propertyBox.SetProperties(properties);
+
+			string tmp;
+			if (nameProperty.TryGetValue("title", out tmp)) {
+				// title found (e.g. html or doc file)
+				// may be followed optionally by artist and/or album (audio file)
+				StringBuilder sbName = new StringBuilder();
+				StringBuilder sbTooltip = new StringBuilder();
+		
+				sbName.AppendFormat("<b>{0}</b>", Util.Escape(tmp));
+				sbTooltip.Append(tmp);
+
+				if (nameProperty.TryGetValue("artist", out tmp)) {								
+					sbName.AppendFormat(" <i>{0}</i> {1}", STR_BY, Util.Escape(tmp));
+					sbTooltip.AppendFormat(" {0} {1}", STR_BY, tmp);
+				}
+
+				if (nameProperty.TryGetValue("album", out tmp)) {
+					sbName.AppendFormat(" <i>{0}</i> {1}", STR_FROM, Util.Escape(tmp));
+					sbTooltip.AppendFormat(" {0} {1}", STR_FROM, tmp);
+				}
+					
+				propertyBox.SetNameProperty(sbName.ToString(), sbTooltip.ToString());
+			} else {
+				// name expected
+				if (!nameProperty.TryGetValue("name", out tmp))
+					throw new ArgumentException("Name expected");
+			
+				propertyBox.SetNameProperty(string.Format("<b>{0}</b>", Util.Escape(tmp)), tmp);
 			}
 		}
 
@@ -167,10 +172,69 @@ namespace Basenji.Gui.Widgets
 				return (this.priority - p.priority);
 			}
 			
-			public static void GetFSItemProperties(
-			                                       FileSystemVolumeItem item, 
+			public static void GetFSItemProperties(FileSystemVolumeItem item, 
 			                                       out ItemProperty[] properties, 
 			                                       out Dictionary<string, string> nameProperty) {
+				
+				List<ItemProperty> tmp;
+				GetCommonItemProperties(item, out tmp, out nameProperty);
+				
+				tmp.Add(new ItemProperty(S._("Location"), item.Location, 202));
+				tmp.Add(new ItemProperty(S._("Last write time"), item.LastWriteTime.ToString(), 205));
+				
+				if (item.IsSymLink) {
+					FileSystemVolumeItem targetItem = item.GetSymLinkTargetItem();
+					string symlinkTargetPath = null;
+					
+					if (targetItem.Location != "/" && targetItem.Name != "/")
+						symlinkTargetPath = string.Format("{0}/{1}", targetItem.Location, targetItem.Name);
+					else
+						symlinkTargetPath = targetItem.Location + targetItem.Name;
+				
+					tmp.Add(new ItemProperty(S._("Symlink target"), symlinkTargetPath, 203));
+				}
+				
+				if (item is FileVolumeItem) {
+					FileVolumeItem fvi = (FileVolumeItem)item;
+					string sizeStr = Util.GetSizeStr(fvi.Size);
+					string hash = fvi.Hash;
+	
+					tmp.Add(new ItemProperty(S._("Size"), sizeStr, 204));
+					if (!string.IsNullOrEmpty(hash))
+						tmp.Add(new ItemProperty(S._("Hash"), hash, 207));
+				}
+
+				if (!string.IsNullOrEmpty(item.MimeType))
+					tmp.Add(new ItemProperty(S._("Filetype"), item.MimeType, 206));
+				
+				tmp.Sort(); // sort by priority
+				properties = tmp.ToArray();
+			}
+			
+			public static void GetAudioCdItemProperties(AudioTrackVolumeItem item, 
+			                                       out ItemProperty[] properties, 
+			                                       out Dictionary<string, string> nameProperty) {
+				
+				List<ItemProperty> tmp;
+				GetCommonItemProperties(item, out tmp, out nameProperty);
+				
+				// if no duration metadata is available, add it manually
+				// (audio cds that have been scanned without musicbrainz)
+				if (tmp.FindIndex(p => p.priority == 106) == -1)
+					tmp.Add(new ItemProperty(S._("Duration"), item.Duration.ToString(), 202));
+				
+				tmp.Add(new ItemProperty(S._("Track No."), (item.ItemID - 1).ToString(), 203));
+				
+				if (!string.IsNullOrEmpty(item.MimeType))
+					tmp.Add(new ItemProperty(S._("Type"), item.MimeType, 204));
+				
+				tmp.Sort(); // sort by priority
+				properties = tmp.ToArray();
+			}
+			
+			private static void GetCommonItemProperties(VolumeItem item,
+			                                            out List<ItemProperty> properties,
+				                                        out Dictionary<string, string> nameProperty) {
 				
 				List<ItemProperty> tmp = new List<ItemProperty>();
 				nameProperty = new Dictionary<string, string>();
@@ -209,7 +273,7 @@ namespace Basenji.Gui.Widgets
 								tmp.Add(new ItemProperty(S._("Description"), RemoveSimilarIDTags(pair.Value), 110));
 							/* audio / picture / video properties */
 							} else if (pair.Key == "duration") {
-								tmp.Add(new ItemProperty(S._("Duration"), pair.Value, 106));
+								tmp.Add(new ItemProperty(S._("Duration"), ParseExtractorDuration(pair.Value).ToString(), 106));
 							} else if (pair.Key == "size") {
 								// NOTE: size keyword is used in e.g. deb packages as well (unpacked size in kb)
 								if(item.MimeType.StartsWith("image") || item.MimeType.StartsWith("video"))
@@ -257,36 +321,37 @@ namespace Basenji.Gui.Widgets
 					nameProperty.Add("name", item.Name);
 				}
 				
-				tmp.Add(new ItemProperty(S._("Location"), item.Location, 202));
-				tmp.Add(new ItemProperty(S._("Last write time"), item.LastWriteTime.ToString(), 205));
-				
-				if (item.IsSymLink) {
-					FileSystemVolumeItem targetItem = item.GetSymLinkTargetItem();
-					string symlinkTargetPath = null;
-					
-					if (targetItem.Location != "/" && targetItem.Name != "/")
-						symlinkTargetPath = string.Format("{0}/{1}", targetItem.Location, targetItem.Name);
-					else
-						symlinkTargetPath = targetItem.Location + targetItem.Name;
-				
-					tmp.Add(new ItemProperty(S._("Symlink target"), symlinkTargetPath, 203));
-				}
-				
-				if (item is FileVolumeItem) {
-					FileVolumeItem fvi = (FileVolumeItem)item;
-					string sizeStr = Util.GetSizeStr(fvi.Size);
-					string hash = fvi.Hash;
-	
-					tmp.Add(new ItemProperty(S._("Size"), sizeStr, 204));
-					if (!string.IsNullOrEmpty(hash))
-						tmp.Add(new ItemProperty(S._("Hash"), hash, 207));
-				}
+//				tmp.Add(new ItemProperty(S._("Location"), item.Location, 202));
+//				tmp.Add(new ItemProperty(S._("Last write time"), item.LastWriteTime.ToString(), 205));
+//				
+//				if (item.IsSymLink) {
+//					FileSystemVolumeItem targetItem = item.GetSymLinkTargetItem();
+//					string symlinkTargetPath = null;
+//					
+//					if (targetItem.Location != "/" && targetItem.Name != "/")
+//						symlinkTargetPath = string.Format("{0}/{1}", targetItem.Location, targetItem.Name);
+//					else
+//						symlinkTargetPath = targetItem.Location + targetItem.Name;
+//				
+//					tmp.Add(new ItemProperty(S._("Symlink target"), symlinkTargetPath, 203));
+//				}
+//				
+//				if (item is FileVolumeItem) {
+//					FileVolumeItem fvi = (FileVolumeItem)item;
+//					string sizeStr = Util.GetSizeStr(fvi.Size);
+//					string hash = fvi.Hash;
+//	
+//					tmp.Add(new ItemProperty(S._("Size"), sizeStr, 204));
+//					if (!string.IsNullOrEmpty(hash))
+//						tmp.Add(new ItemProperty(S._("Hash"), hash, 207));
+//				}
+//
+//				if (!string.IsNullOrEmpty(item.MimeType))
+//					tmp.Add(new ItemProperty(S._("Filetype"), item.MimeType, 206));
 
-				if (!string.IsNullOrEmpty(item.MimeType))
-					tmp.Add(new ItemProperty(S._("Filetype"), item.MimeType, 206));
-
-				tmp.Sort(); // sort by priority
-				properties = tmp.ToArray();
+//				tmp.Sort(); // sort by priority
+//				properties = tmp.ToArray();
+				properties = tmp;
 			}
 
 			private static string RemoveSimilarIDTags(string separatedTags) {
@@ -307,6 +372,30 @@ namespace Basenji.Gui.Widgets
 					}
 				}
 				return separatedTags;
+			}
+			
+			public static TimeSpan ParseExtractorDuration(string duration) {
+				float mins, secs;
+				string[] numbers = duration.Split(new string[] { "m", "s" }, StringSplitOptions.RemoveEmptyEntries);
+				
+				if (numbers.Length == 2) {
+					// minutes AND seconds expected (e.g. "12m51")
+					// (also "12m51s", although I've yet to see this occur)
+					mins = float.Parse(numbers[0]);
+					secs = float.Parse(numbers[1]);
+				} else {
+					// minutes OR seconds expected (e.g. "12m", "51,43s", "51,43 s")
+					// (also "51", although I've yet to see this occur)
+					if (duration[duration.Length - 1] == 'm') {
+						mins = float.Parse(numbers[0]) + .5f;
+						secs = 0;
+					} else {
+						mins = 0;
+						secs = float.Parse(numbers[0]) + .5f;
+					}
+				}
+				
+				return new TimeSpan(0, (int)mins, (int)secs);
 			}
 		}
 #endregion
