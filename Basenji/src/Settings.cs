@@ -1,6 +1,6 @@
 // Settings.cs
 // 
-// Copyright (C) 2008, 2009 Patrick Ulbrich
+// Copyright (C) 2008 - 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -73,6 +73,11 @@ namespace Basenji
 			set { properties["ScannerExtractionBlacklist"] = value; }
 		}
 		
+		public bool ScannerEnableMusicBrainz {
+			get { return properties["ScannerEnableMusicBrainz"] == "1"; }
+			set { properties["ScannerEnableMusicBrainz"] = value ? "1" : "0"; }
+		}
+		
 		public bool OpenMostRecentDB {
 			get { return properties["OpenMostRecentDB"] == "1"; }
 			set { properties["OpenMostRecentDB"] = value ? "1" : "0"; }
@@ -139,6 +144,7 @@ namespace Basenji
 			properties.Add("ScannerGenerateThumbnails",		"1");
 			properties.Add("ScannerExtractMetaData",		"1");
 			properties.Add("ScannerExtractionBlacklist",	""); // e.g. "pdf, mp3"
+			properties.Add("ScannerEnableMusicBrainz",		"1");
 			properties.Add("OpenMostRecentDB",				"1");
 			properties.Add("MostRecentDBPath",				"");
 			properties.Add("MainWindowWidth",				"800");

@@ -1,6 +1,6 @@
 // Preferences.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -192,6 +192,7 @@ namespace Basenji.Gui
 			chkExtractMetaData.Active		= s.ScannerExtractMetaData;
 			chkDiscardSymLinks.Active		= s.ScannerDiscardSymLinks;
 			chkComputeHashs.Active			= s.ScannerComputeHashs;
+			chkMusicBrainz.Active			= s.ScannerEnableMusicBrainz;
 		}
 		
 		private void Save() {
@@ -218,6 +219,7 @@ namespace Basenji.Gui
 			App.Settings.ScannerExtractMetaData		= chkExtractMetaData.Active;
 			App.Settings.ScannerDiscardSymLinks 	= chkDiscardSymLinks.Active;
 			App.Settings.ScannerComputeHashs		= chkComputeHashs.Active;
+			App.Settings.ScannerEnableMusicBrainz	= chkMusicBrainz.Active;
 			
 			App.Settings.Save();
 			
@@ -238,6 +240,7 @@ namespace Basenji.Gui
 		private CheckButton chkExtractMetaData;
 		private CheckButton chkDiscardSymLinks;
 		private CheckButton chkComputeHashs;
+		private CheckButton chkMusicBrainz;
 		private Button		btnReset;
 		private Button		btnClose;
 		
@@ -313,7 +316,7 @@ namespace Basenji.Gui
 		}
 		
 		private void AppendScannerPage(Notebook nb) {
-			Table tbl = CreateTable(5, 2);
+			Table tbl = CreateTable(6, 2);
 			tbl.BorderWidth = 12;
 			
 			// labels
@@ -349,7 +352,11 @@ namespace Basenji.Gui
 			
 			// checkbox computeHashs
 			chkComputeHashs = new CheckButton(S._("Compute hashcodes for files (slow!)"));
-			TblAttach(tbl, chkComputeHashs, 0, 4, 2, 1, AttachOptions.Fill, AttachOptions.Fill);			
+			TblAttach(tbl, chkComputeHashs, 0, 4, 2, 1, AttachOptions.Fill, AttachOptions.Fill);
+			
+			// checkbox musicbrainz
+			chkMusicBrainz = new CheckButton(S._("Fetch audio cd metadata from MusicBrainz.org"));
+			TblAttach(tbl, chkMusicBrainz, 0, 5, 2, 1, AttachOptions.Fill, AttachOptions.Fill);			
 			
 			nb.AppendPage(tbl, new Label(S._("Scanner")));		 
 		}

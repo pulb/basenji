@@ -70,7 +70,7 @@ namespace Basenji.Gui
 				},
 			
 				new AudioCdScannerOptions() {
-					EnableMusicBrainz = true
+					EnableMusicBrainz = App.Settings.ScannerEnableMusicBrainz
 				}
 			};
 			
