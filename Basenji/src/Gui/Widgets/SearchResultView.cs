@@ -1,6 +1,6 @@
 // SearchResultView.cs
 // 
-// Copyright (C) 2008, 2009 Patrick Ulbrich
+// Copyright (C) 2008 - 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -28,6 +28,10 @@ namespace Basenji.Gui.Widgets
 	public class SearchResultView : ViewBase
 	{	
 		private static readonly string STR_UNNAMED = S._("Unnamed");
+		private static readonly string STR_LOCATION = S._("Location");
+		private static readonly string STR_VOLUME = S._("Volume");
+		private static readonly string STR_ARCHIVENO = S._("Archive No.");
+		private static readonly string STR_AUDIOTRACK = S._("Audio CD track");
 		
 		private const IconSize ICON_SIZE = IconSize.Dialog;
 		
@@ -69,7 +73,7 @@ namespace Basenji.Gui.Widgets
 													typeof(string),
 													typeof(VolumeItem)); /* VolumeItem - not visible */
 			
-			foreach(VolumeItem item in items) {
+			foreach (VolumeItem item in items) {
 				Volume vol;
 						
 				if (!volumeCache.TryGetValue(item.VolumeID, out vol)) {
@@ -77,28 +81,39 @@ namespace Basenji.Gui.Widgets
 					volumeCache.Add(vol.VolumeID, vol);						   
 				}
 				
+				string description;
+				string itemName = Util.Escape(item.Name);
+				string volTitle = Util.Escape(vol.Title.Length > 0 ? vol.Title : STR_UNNAMED);
+				string archiveNo = Util.Escape(vol.ArchiveNo.Length > 0 ? vol.ArchiveNo : "-");
+				
 				switch (item.GetVolumeItemType()) {
 					case VolumeItemType.FileVolumeItem:					   
 					case VolumeItemType.DirectoryVolumeItem:
-						
-						FileSystemVolumeItem fsvi = (FileSystemVolumeItem)item;
-						string description = string.Format(S._("<b>{0}</b>\n<span size=\"smaller\"><i>Location:</i> {1}\n<i>Volume:</i> {2}, <i>Archive No.:</i> {3}</span>"),
-																Util.Escape(fsvi.Name),
-																Util.Escape(fsvi.Location),
-																Util.Escape(vol.Title.Length > 0 ? vol.Title : STR_UNNAMED), 
-																Util.Escape(vol.ArchiveNo.Length > 0 ? vol.ArchiveNo : "-"));
-																
-						store.AppendValues(	itemIcons.GetIconForItem(fsvi, ICON_SIZE),
-											description,
-											fsvi);
-						
+						description = string.Format("<b>{0}</b>\n<span size=\"smaller\"><i>{1}:</i> {2}\n<i>{3}:</i> {4}, <i>{5}:</i> {6}</span>",
+					                            itemName,
+					                            STR_LOCATION,
+					                            Util.Escape(((FileSystemVolumeItem)item).Location),
+					                            STR_VOLUME,
+					                            volTitle,
+					                            STR_ARCHIVENO,
+					                            archiveNo);
 						break;
-					//case VolumeItemType.CDDAVolumeItem
-					//	  ...
-					//	  break;
+					case VolumeItemType.AudioTrackVolumeItem:
+						description = string.Format("<b>{0}</b>\n<span size=\"smaller\"><i>{1}</i>\n<i>{2}:</i> {3}, <i>{4}:</i> {5}</span>",
+					                            itemName,
+					                            STR_AUDIOTRACK,
+					                            STR_VOLUME,
+					                            volTitle,
+					                            STR_ARCHIVENO,
+					                            archiveNo);
+						break;
 					default:
 						throw new NotImplementedException("Search result view has not been implemented for this volumetype");
 				}
+				
+				store.AppendValues(itemIcons.GetIconForItem(item, ICON_SIZE),
+				                   description,
+				                   item);
 			}
 			
 			this.Model = store;
