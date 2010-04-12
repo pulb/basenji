@@ -215,14 +215,17 @@ namespace Basenji.Gui.Widgets
 			                                       out ItemProperty[] properties, 
 			                                       out Dictionary<string, string> nameProperty) {
 				
+				const int PCM_FACTOR = (44100 * 16 * 2) / 8;
+				
 				List<ItemProperty> tmp;
 				GetCommonItemProperties(item, out tmp, out nameProperty);
 				
-				tmp.Add(new ItemProperty(S._("Duration"), item.Duration.ToString(), 202));
-				tmp.Add(new ItemProperty(S._("Track No."), (item.ItemID - 1).ToString(), 203));
+				tmp.Add(new ItemProperty(S._("Duration"), item.Duration.ToString(), 202));				
+				tmp.Add(new ItemProperty(S._("Size"), Util.GetSizeStr((long)(item.Duration.TotalSeconds * PCM_FACTOR)), 203));
+				tmp.Add(new ItemProperty(S._("Track No."), (item.ItemID - 1).ToString(), 204));
 				
 				if (!string.IsNullOrEmpty(item.MimeType))
-					tmp.Add(new ItemProperty(S._("Type"), item.MimeType, 204));
+					tmp.Add(new ItemProperty(S._("Type"), item.MimeType, 205));
 				
 				tmp.Sort(); // sort by priority
 				properties = tmp.ToArray();
