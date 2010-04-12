@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-12 16:32+0200\n"
+"POT-Creation-Date: 2010-04-12 17:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -418,56 +418,60 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: src/Gui/Preferences.cs:225
+#: src/Gui/Preferences.cs:227
 msgid "Restart required"
 msgstr ""
 
-#: src/Gui/Preferences.cs:225
+#: src/Gui/Preferences.cs:227
 #, csharp-format
 msgid "You must restart {0} for icontheme changes to take effect."
 msgstr ""
 
-#: src/Gui/Preferences.cs:251
+#: src/Gui/Preferences.cs:254
 msgid "Preferences"
 msgstr ""
 
-#: src/Gui/Preferences.cs:273
+#: src/Gui/Preferences.cs:276
 msgid "_Load Defaults"
 msgstr ""
 
-#: src/Gui/Preferences.cs:298
+#: src/Gui/Preferences.cs:301
 msgid "Icon theme:"
 msgstr ""
 
-#: src/Gui/Preferences.cs:309
+#: src/Gui/Preferences.cs:312
 msgid "Reopen most recent database on startup"
 msgstr ""
 
-#: src/Gui/Preferences.cs:312
+#: src/Gui/Preferences.cs:315
 msgid "General"
 msgstr ""
 
-#: src/Gui/Preferences.cs:320
+#: src/Gui/Preferences.cs:323
 msgid "Don't prompt, always scan:"
 msgstr ""
 
-#: src/Gui/Preferences.cs:339
+#: src/Gui/Preferences.cs:342
 msgid "Generate Thumbnails"
 msgstr ""
 
-#: src/Gui/Preferences.cs:343
+#: src/Gui/Preferences.cs:346
 msgid "Extract metadata"
 msgstr ""
 
-#: src/Gui/Preferences.cs:347
+#: src/Gui/Preferences.cs:350
 msgid "Discard symbolic links"
 msgstr ""
 
-#: src/Gui/Preferences.cs:351
+#: src/Gui/Preferences.cs:354
 msgid "Compute hashcodes for files (slow!)"
 msgstr ""
 
-#: src/Gui/Preferences.cs:354
+#: src/Gui/Preferences.cs:358
+msgid "Fetch audio cd metadata from MusicBrainz.org"
+msgstr ""
+
+#: src/Gui/Preferences.cs:361
 msgid "Scanner"
 msgstr ""
 
