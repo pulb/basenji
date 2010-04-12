@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-12 01:11+0200\n"
+"POT-Creation-Date: 2010-04-12 16:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -402,6 +402,7 @@ msgid "Label"
 msgstr ""
 
 #: src/Gui/DriveSelection.cs:145 src/Gui/Widgets/ItemInfo.cs:202
+#: src/Gui/Widgets/ItemInfo.cs:224
 msgid "Size"
 msgstr ""
 
@@ -556,7 +557,7 @@ msgstr ""
 msgid "from"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:182
+#: src/Gui/Widgets/ItemInfo.cs:182 src/Gui/Widgets/SearchResultView.cs:31
 msgid "Location"
 msgstr ""
 
@@ -761,12 +762,16 @@ msgstr ""
 msgid "Return date:"
 msgstr ""
 
-#: src/Gui/Widgets/SearchResultView.cs:85
-#, csharp-format
-msgid ""
-"<b>{0}</b>\n"
-"<span size=\"smaller\"><i>Location:</i> {1}\n"
-"<i>Volume:</i> {2}, <i>Archive No.:</i> {3}</span>"
+#: src/Gui/Widgets/SearchResultView.cs:32
+msgid "Volume"
+msgstr ""
+
+#: src/Gui/Widgets/SearchResultView.cs:33
+msgid "Archive No."
+msgstr ""
+
+#: src/Gui/Widgets/SearchResultView.cs:34
+msgid "Audio CD track"
 msgstr ""
 
 #: src/FileDialog.cs:51
