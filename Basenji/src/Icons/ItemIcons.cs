@@ -1,6 +1,6 @@
 // ItemIcons.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -62,12 +62,15 @@ namespace Basenji.Icons
 					pb = mimeIconCache.GetIcon(mimeType, iconSize);
 			} else {
 				Icons.Icon icon;
-				switch(item.GetVolumeItemType()) {
+				switch (item.GetVolumeItemType()) {
 					case VolumeItemType.DirectoryVolumeItem:
 						icon = Icon.Stock_Directory;
 						break;
 					case VolumeItemType.FileVolumeItem:
 						icon = Icon.Stock_File;
+						break;
+					case VolumeItemType.AudioTrackVolumeItem:
+						icon = Icon.Category_Music;
 						break;
 					default:
 						throw new NotImplementedException(string.Format("GetIconForItem() is not implemented for VolumeItemType {0}", item.GetVolumeItemType()));
