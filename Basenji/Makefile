@@ -218,7 +218,8 @@ RESOURCES = \
 	po/da.resources,Basenji.po.da.resources \
 	images/search.png,Basenji.images.search.png \
 	po/es.resources,Basenji.po.es.resources \
-	po/fr.resources,Basenji.po.fr.resources 
+	po/fr.resources,Basenji.po.fr.resources \
+	po/ru.resources,Basenji.po.ru.resources 
 
 EXTRAS = \
 	app.desktop \

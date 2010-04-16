@@ -7,39 +7,56 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-01-21 21:39+0100\n"
-"PO-Revision-Date: 2008-10-26 22:51+0000\n"
+"POT-Creation-Date: 2010-04-12 17:49+0200\n"
+"PO-Revision-Date: 2010-03-27 15:36+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-05 14:56+0000\n"
+"X-Launchpad-Export-Date: 2010-04-16 15:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:126
-msgid "libExtractor not found. Metadata extraction disabled."
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:55
+msgid "Hashcode generation not implemented for audio cds yet."
 msgstr ""
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:212
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:97
+msgid "Error retrieving metadata from MusicBrainz."
+msgstr ""
+
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:102
+msgid ""
+"The trackcount retrieved from MusicBrainz does not match the trackcount of "
+"the local disc. Skipped."
+msgstr ""
+
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:125
+msgid "Error connecting to MusicBrainz server."
+msgstr ""
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:105
+msgid "libExtractor not found. Metadata extraction disabled."
+msgstr "libExtractor לא נמצאה. חילוץ נתוני המטא בוטל."
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:187
 #, csharp-format
 msgid "Directory '{0}' not found. (Wrong filename encoding?)"
-msgstr ""
+msgstr "התיקייה '{0}' לא נמצאה. (קידוד שם הקובץ שגוי?)"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:221
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:196
 #, csharp-format
 msgid "Skipped item '{0}' as it doesn't seem to be a real directory."
 msgstr "הפריט '{0}' נפסח כיוון שלא נראה כי הוא תיקייה אמיתית."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:231
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:356
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:217
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:343
 #, csharp-format
 msgid "Skipped symlink item '{0}' as the target does not exist."
 msgstr "הקישור הסמלי '{0}' נפסח כיוון שהמטרה לא קיימת."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:237
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:348
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:359
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:226
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:350
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it appears to point to a different drive "
@@ -47,75 +64,75 @@ msgid ""
 msgstr ""
 "פריט הקישור הסמלי '{0}' נפסח כיוון שנראה כי הוא מקשר לכונן אחר ('{1}')."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:277
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:265
 #, csharp-format
 msgid "File '{0}' not found. (Wrong filename encoding?)"
-msgstr ""
+msgstr "הקובץ '{0}' לא נמצא. (קידוד שם הקובץ שגוי?)"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:325
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:313
 #, csharp-format
 msgid "Error opening file '{0}', can't retrieve any mime/metadata. ({1})"
 msgstr "שגיאה בפתיחת הקובץ '{0}', לא ניתן לאחזר mime/נתוני־מטא. ({1})"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:362
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:357
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."
 msgstr "פריט הקישור הסמלי '{0}' נפסח כיוון שאינו מפנה לקובץ רגיל ('{1}')."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:371
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:366
 #, csharp-format
 msgid "Skipped item '{0}' as it appears to be some kind of special file."
 msgstr "הפריט '{0}' נפסח כיוון שנראה כי הוא סוג של קובץ מיוחד."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:386
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:384
 #, csharp-format
 msgid "Unable to dump dir '{0}'. ({1})"
 msgstr "לא ניתן לבצע אגירה של התיקייה '{0}'. ({1})"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:573
-#, csharp-format
-msgid "Failed to resolve target item for symlink '{0}'."
-msgstr "כשל באיחזור פריט היעד עבור הקישור הסמלי '{0}'."
-
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:632
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:503
 #, csharp-format
 msgid "Can't read LastWriteTime from item '{0}' ({1})."
 msgstr "לא ניתן לקרוא את LastWriteTime מהפריט '{0}' ({1})."
 
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:667
+#, csharp-format
+msgid "Failed to resolve target item for symlink '{0}'."
+msgstr "כשל באיחזור פריט היעד עבור הקישור הסמלי '{0}'."
+
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:91
 msgid ""
 "Operand for keyword 'filesize' must be a number with an optional multiplier"
-msgstr ""
+msgstr "האופרנד עבור מילת המפתח 'filesize' חייב להיות מספר עם אפשרות למכפיל"
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:115
 msgid "Invalid compare operator for keyword 'filesize'"
-msgstr ""
+msgstr "אופרטור ההשוואה עבור מילת המפתח 'filesize' פגום"
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:125
 msgid "Operand for keyword 'type' must be a string"
-msgstr ""
+msgstr "האופרנד עבור מילת המפתח 'type' חייב להיות מחרוזת"
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:134
 #, csharp-format
 msgid "Unknown type '{0}'"
-msgstr ""
+msgstr "הסוג  '{0}' אינו ידוע"
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:140
 msgid "Keyword 'type' only supports '=' and ':' operators"
-msgstr ""
+msgstr "מילת המפתח 'type' תומכת אך ורק באופרטורים '=' ו־':'"
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:162
 #, csharp-format
 msgid "Unknown keyword '{0}'"
-msgstr ""
+msgstr "מילת המפתח '{0}' אינה מוכרת"
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:177
 msgid "Invalid compare operator for a keyword that maps to textual content"
-msgstr ""
+msgstr "אופרטור ההשוואה שגוי עבור מילות מפתח שממפות לתוכן טקסטואלי"
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:230
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:234
 #, csharp-format
 msgid "Parsing error: search statement is malformed at position {0}"
-msgstr ""
+msgstr "שגיאת ניתוח: הביטוי לחיפוש שגוי במיקום {0}"

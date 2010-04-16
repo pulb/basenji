@@ -44,6 +44,11 @@ German:
 Hebrew:
   Yaron (https://launchpad.net/~sh-yaron)
 
+Russian:
+  Nikolai Romanik (https://launchpad.net/~arhey)
+  Sciko (https://launchpad.net/~tempsciko-gmail)
+  Sergey Sedov (https://launchpad.net/~serg-sedov)
+
 Spanish:
   DiegoJ (https://launchpad.net/~diegojromerolopez)
   Emiliano (https://launchpad.net/~emilianohfernandez)

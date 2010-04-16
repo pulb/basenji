@@ -7,40 +7,58 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-03-07 12:58+0100\n"
+"POT-Creation-Date: 2010-04-12 17:49+0200\n"
 "PO-Revision-Date: 2010-03-13 05:53+0000\n"
 "Last-Translator: Stephane Ricci <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-14 01:52+0000\n"
+"X-Launchpad-Export-Date: 2010-04-16 15:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:118
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:55
+msgid "Hashcode generation not implemented for audio cds yet."
+msgstr ""
+
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:97
+msgid "Error retrieving metadata from MusicBrainz."
+msgstr ""
+
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:102
+msgid ""
+"The trackcount retrieved from MusicBrainz does not match the trackcount of "
+"the local disc. Skipped."
+msgstr ""
+
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:125
+msgid "Error connecting to MusicBrainz server."
+msgstr ""
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:105
 msgid "libExtractor not found. Metadata extraction disabled."
 msgstr ""
 "Librairie 'libExtractor' non trouvé. L'extraction des métadonnées est "
 "désactivée."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:201
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:187
 #, csharp-format
 msgid "Directory '{0}' not found. (Wrong filename encoding?)"
 msgstr "Dossier '{0}' non trouvé. (Mauvais encodage de fichier ?)"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:210
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:196
 #, csharp-format
 msgid "Skipped item '{0}' as it doesn't seem to be a real directory."
 msgstr "Objet ignoré '{0}' car il ne semble pas être un dossier réel."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:224
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:347
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:217
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:343
 #, csharp-format
 msgid "Skipped symlink item '{0}' as the target does not exist."
 msgstr "lien symbolique ignoré '{0}' la destination n'existe pas."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:233
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:354
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:226
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:350
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it appears to point to a different drive "
@@ -48,19 +66,19 @@ msgid ""
 msgstr ""
 "lien symbolique ignoré '{0}' car il pointe sur un lecteur différent ('{1}')."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:273
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:265
 #, csharp-format
 msgid "File '{0}' not found. (Wrong filename encoding?)"
 msgstr "Fichier '{0}' non trouvé. (Mauvais encodage de fichier ?)"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:321
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:313
 #, csharp-format
 msgid "Error opening file '{0}', can't retrieve any mime/metadata. ({1})"
 msgstr ""
 "Erreur d'ouverture du fichier '{0}', impossible de récupérer les méta-"
 "données. ({1})"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:361
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:357
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."
@@ -68,27 +86,27 @@ msgstr ""
 "Lien symbolique ignoré '{0}' car il ne pointe pas vers un fichier standard "
 "('{1}')."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:376
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:366
 #, csharp-format
 msgid "Skipped item '{0}' as it appears to be some kind of special file."
 msgstr "Objet ignoré '{0}' car il semble être une sorte de fichier spécial."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:394
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:384
 #, csharp-format
 msgid "Unable to dump dir '{0}'. ({1})"
 msgstr "Impossible de supprimer le dossier '{0}'. ({1})"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:586
-#, csharp-format
-msgid "Failed to resolve target item for symlink '{0}'."
-msgstr "Impossible de résoudre l'objet cible de lien symbolique '{0}'."
-
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:646
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:503
 #, csharp-format
 msgid "Can't read LastWriteTime from item '{0}' ({1})."
 msgstr ""
 "Impossible de lire l'heure de dernier enregistrement pour cet objet '{0}' "
 "({1})."
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:667
+#, csharp-format
+msgid "Failed to resolve target item for symlink '{0}'."
+msgstr "Impossible de résoudre l'objet cible de lien symbolique '{0}'."
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:91
 msgid ""
