@@ -122,6 +122,7 @@ namespace Basenji.Gui.Widgets
 				{ "application/x-gzip",									CATEGORIES[7] },
 				{ "application/x-deb",									CATEGORIES[7] },
 				{ "application/x-rpm",									CATEGORIES[7] },
+				{ "application/x-java-archive",							CATEGORIES[7] },
 				/* development */				
 				{ "text/x-csrc",										CATEGORIES[8] },
 				{ "text/x-c++src",										CATEGORIES[8] },
