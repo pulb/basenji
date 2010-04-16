@@ -80,6 +80,7 @@ namespace Basenji.Gui.Widgets
 				{ "application/msword",									CATEGORIES[2] },
 				{ "application/vnd.ms-excel",							CATEGORIES[2] },
 				{ "application/pdf",									CATEGORIES[2] },
+				{ "application/xml",									CATEGORIES[2] },
 				{ "text/html",											CATEGORIES[2] },
 				/* music */				
 				{ "audio/mpeg",											CATEGORIES[3] },

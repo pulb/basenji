@@ -42,6 +42,7 @@ namespace Basenji.Icons
 			{ "application/msword",									Icon.Category_Documents },
 			{ "application/vnd.ms-excel",							Icon.Category_Documents },
 			{ "application/pdf",									Icon.Category_Documents },
+			{ "application/xml",									Icon.Category_Documents },
 			{ "text/html",											Icon.Category_Documents },
 			/* music */				
 			{ "audio/mpeg",											Icon.Category_Music },
