@@ -1,6 +1,6 @@
 // MimeIconCache.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,20 +21,41 @@ using System.Collections.Generic;
 using Platform.Common.Mime;
 using Platform.Common.Diagnostics;
 using Gdk;
+using Gtk;
 
 namespace Basenji.Icons
 {
 	public class MimeIconCache
 	{
-		private MimeIconLookup mimeIconLookup;
-		private Dictionary<string, Gdk.Pixbuf> mimeIconCache;
+		private bool useCustomMimeIcons;
 		
-		public MimeIconCache() {
-			mimeIconLookup = new MimeIconLookup();	 
+		private MimeIconLookup mimeIconLookup;
+		private CustomIconThemeMimeMapping customMimeMapping;
+		
+		private Dictionary<string, Gdk.Pixbuf> mimeIconCache;
+		private Widget widget;
+		
+		public MimeIconCache(Widget w, bool useCustomMimeIcons, Icon defaultIcon) {
+			this.widget = w;
+			this.useCustomMimeIcons = useCustomMimeIcons;
+			
+			if (useCustomMimeIcons) {
+				customMimeMapping = new CustomIconThemeMimeMapping() {
+					DefaultIcon = defaultIcon
+				};
+			} else {
+				mimeIconLookup = new MimeIconLookup() {
+					DefaultIcon = defaultIcon.Name
+				};
+			}
+			
 			mimeIconCache = new Dictionary<string, Gdk.Pixbuf>();
 		}
 		
-		public MimeIconLookup MimeIconLookup { get { return mimeIconLookup; } }
+		public void AddLookupFallbackIcon(string mimeType, Icon icon) {
+			if (mimeIconLookup != null)
+				mimeIconLookup.AddFallbackIcon(mimeType, icon.Name);
+		}
 		
 		public void Clear() {
 			mimeIconCache.Clear();
@@ -53,17 +74,32 @@ namespace Basenji.Icons
 			if (mimeIconCache.TryGetValue(iconKey, out pb))
 				return pb;
 			
-			string iconName = mimeIconLookup.GetIconNameForMimeType(mimeType);
-
-			try {
-				pb = Gtk.IconTheme.Default.LoadIcon(iconName, Icons.IconUtils.GetIconSizeVal(size), 0);					   
+			if (useCustomMimeIcons) {
+				// render icons which are available in the custom theme
+				pb = customMimeMapping
+					.GetIconForMimeType(mimeType)
+						.Render(widget, size);
+				
+				if (pb == null)
+					return null;
+				
 				mimeIconCache.Add(iconKey, pb);
-				return pb;
-			} catch (Exception) {
-				Debug.WriteLine(string.Format("MimeIconCache: IconTheme.Default.LoadIcon() failed to render icon \"{0}\"", iconName));	  
+				
+				return pb;				
+			} else {
+				// render system mime icons dynamically
+				string iconName = mimeIconLookup.GetIconNameForMimeType(mimeType);
+				
+				try {
+					pb = Gtk.IconTheme.Default.LoadIcon(iconName, IconUtils.GetIconSizeVal(size), 0);
+					mimeIconCache.Add(iconKey, pb);
+					return pb;
+				} catch (Exception) {
+					Debug.WriteLine(string.Format("MimeIconCache: IconTheme.Default.LoadIcon() failed to render icon \"{0}\"", iconName));	  
+				}
+				
+				return null;
 			}
-			
-			return null;				
 		}
 	}
 }

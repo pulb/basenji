@@ -187,7 +187,7 @@ FILES = \
 	src/Icons/IconUtils.cs \
 	src/Icons/ItemIcons.cs \
 	src/Icons/MimeIconCache.cs \
-	src/Icons/NameInCustomIconNameAttribute.cs \
+	src/Icons/NameInCustomIconThemeAttribute.cs \
 	src/App.cs \
 	src/AssemblyInfo.cs \
 	src/PathUtil.cs \
@@ -205,7 +205,8 @@ FILES = \
 	src/Gui/Widgets/SearchEntry.cs \
 	src/Gui/Widgets/ItemPreview.cs \
 	src/Gui/Import.cs \
-	src/Gui/Widgets/AudioCdVolumeEdit.cs 
+	src/Gui/Widgets/AudioCdVolumeEdit.cs \
+	src/Icons/CustomIconThemeMimeMapping.cs 
 
 DATA_FILES = 
 

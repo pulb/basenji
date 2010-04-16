@@ -1,6 +1,6 @@
 // Icon.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -91,7 +91,7 @@ namespace Basenji.Icons
 		[NameInCustomIconTheme("go_next.png")]
 		public static Icon Stock_GoForward			{ get { return new Icon(Stock.GoForward); 			} }
 		
-		// icons used by the cateroyview widget:
+		// icons used by the cateroyview widget (and the CustomIconThemeMimeMapping class):
 		[NameInCustomIconTheme("text.png")]
 		public static Icon Category_Texts			{ get { return new Icon("text-x-generic");			} }
 		[NameInCustomIconTheme("document.png")]

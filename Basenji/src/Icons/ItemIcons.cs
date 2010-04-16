@@ -28,23 +28,20 @@ namespace Basenji.Icons
 	{
 		private readonly Icons.Icon DEFAULT_ICON = Icon.Stock_File;
 		
-		private bool			useMimeIcons;		 
 		private MimeIconCache	mimeIconCache;
 		private IconCache		iconCache;
 		
 		public ItemIcons(Widget w) {
 			iconCache = new IconCache(w);
 			
-			// only use the systems mime icons if no custom theme is set			
-			useMimeIcons = string.IsNullOrEmpty(App.Settings.CustomThemeName);
-			if (useMimeIcons) {		
-				mimeIconCache = new MimeIconCache();
+			bool useCustomMimeIcons = !string.IsNullOrEmpty(App.Settings.CustomThemeName);
+			mimeIconCache = new MimeIconCache(w, useCustomMimeIcons, DEFAULT_ICON);
 				
-				// default icons for platforms where mime icons are not implemented
-				mimeIconCache.MimeIconLookup.DefaultIcon = DEFAULT_ICON.Name;
-				mimeIconCache.MimeIconLookup.AddFallbackIcon("x-directory/normal", Icon.Stock_Directory.Name);
-			}
-			
+			// add default icons to the lookup
+			// (for platforms where mime icons are not implemented)
+			mimeIconCache.AddLookupFallbackIcon("x-directory/normal", Icon.Stock_Directory);
+			/* the default file icon has already been added in the contructor
+			mimeIconCache.DefaultIcon = DEFAULT_ICON; */
 		}
 		
 		public Gdk.Pixbuf GetIconForItem(VolumeItem item, Gtk.IconSize iconSize) {
@@ -54,29 +51,11 @@ namespace Basenji.Icons
 				return iconCache.GetIcon(Icon.SymLink, iconSize);
 			}
 			
-			if (useMimeIcons) {
-				string mimeType = item.MimeType;
-				if (string.IsNullOrEmpty(mimeType))
-					pb = iconCache.GetIcon(DEFAULT_ICON, iconSize);
-				else				
-					pb = mimeIconCache.GetIcon(mimeType, iconSize);
-			} else {
-				Icons.Icon icon;
-				switch (item.GetVolumeItemType()) {
-					case VolumeItemType.DirectoryVolumeItem:
-						icon = Icon.Stock_Directory;
-						break;
-					case VolumeItemType.FileVolumeItem:
-						icon = Icon.Stock_File;
-						break;
-					case VolumeItemType.AudioTrackVolumeItem:
-						icon = Icon.Category_Music;
-						break;
-					default:
-						throw new NotImplementedException(string.Format("GetIconForItem() is not implemented for VolumeItemType {0}", item.GetVolumeItemType()));
-				}				 
-				pb = iconCache.GetIcon(icon, iconSize);
-			}
+			string mimeType = item.MimeType;
+			if (string.IsNullOrEmpty(mimeType))
+				pb = iconCache.GetIcon(DEFAULT_ICON, iconSize);
+			else				
+				pb = mimeIconCache.GetIcon(mimeType, iconSize);
 			
 			return pb;
 		}

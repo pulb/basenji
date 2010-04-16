@@ -53,7 +53,7 @@
     <File subtype="Code" buildaction="Compile" name="src/Icons/IconUtils.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Icons/ItemIcons.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Icons/MimeIconCache.cs" />
-    <File subtype="Code" buildaction="Compile" name="src/Icons/NameInCustomIconNameAttribute.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Icons/NameInCustomIconThemeAttribute.cs" />
     <File subtype="Code" buildaction="Compile" name="src/App.cs" />
     <File subtype="Code" buildaction="Compile" name="src/AssemblyInfo.cs" />
     <File subtype="Code" buildaction="Compile" name="src/PathUtil.cs" />
@@ -80,6 +80,7 @@
     <File subtype="Code" buildaction="Compile" name="src/Gui/Import.cs" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/fr.resources" resource_id="Basenji.po.fr.resources" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/AudioCdVolumeEdit.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Icons/CustomIconThemeMimeMapping.cs" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
