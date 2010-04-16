@@ -84,6 +84,7 @@ namespace Basenji.Gui.Widgets
 				{ "text/html",											CATEGORIES[2] },
 				/* music */				
 				{ "audio/mpeg",											CATEGORIES[3] },
+				{ "audio/mp4",											CATEGORIES[3] },
 				{ "audio/x-flac",										CATEGORIES[3] },
 				{ "application/ogg",									CATEGORIES[3] },
 				{ "audio/ogg",											CATEGORIES[3] },

@@ -46,6 +46,7 @@ namespace Basenji.Icons
 			{ "text/html",											Icon.Category_Documents },
 			/* music */				
 			{ "audio/mpeg",											Icon.Category_Music },
+			{ "audio/mp4",											Icon.Category_Music },
 			{ "audio/x-flac",										Icon.Category_Music },
 			{ "application/ogg",									Icon.Category_Music },
 			{ "audio/ogg",											Icon.Category_Music },
