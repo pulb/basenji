@@ -93,6 +93,7 @@ namespace Basenji.Gui.Widgets
 				{ "video/quicktime",									CATEGORIES[4] },
 				{ "video/mp4",											CATEGORIES[4] },
 				{ "video/ogg",											CATEGORIES[4] },
+				{ "video/x-flv",										CATEGORIES[4] },
 				/* images */
 				{ "image/jpeg",											CATEGORIES[5] },
 				{ "image/png",											CATEGORIES[5] },
