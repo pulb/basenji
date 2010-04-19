@@ -1,6 +1,6 @@
 // CategoryView.cs
 // 
-// Copyright (C) 2009 Patrick Ulbrich
+// Copyright (C) 2009, 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -67,73 +67,18 @@ namespace Basenji.Gui.Widgets
 			};
 		
 			// mimetype -> category mapping
-			MIME_MAPPING = new Dictionary<string, CategoryInfo>() {
-				/* directories */
-				{ "x-directory/normal",									CATEGORIES[0] },
-				/* text */
-				{ "text/plain",											CATEGORIES[1] },
-				/* documents */
-				{ "application/vnd.oasis.opendocument.text",			CATEGORIES[2] },
-				{ "application/vnd.oasis.opendocument.spreadsheet",		CATEGORIES[2] },
-				{ "application/vnd.oasis.opendocument.presentation",	CATEGORIES[2] },
-				{ "application/rtf",									CATEGORIES[2] },
-				{ "application/msword",									CATEGORIES[2] },
-				{ "application/vnd.ms-excel",							CATEGORIES[2] },
-				{ "application/pdf",									CATEGORIES[2] },
-				{ "application/xml",									CATEGORIES[2] },
-				{ "text/html",											CATEGORIES[2] },
-				/* music */				
-				{ "audio/mpeg",											CATEGORIES[3] },
-				{ "audio/mp4",											CATEGORIES[3] },
-				{ "audio/x-flac",										CATEGORIES[3] },
-				{ "application/ogg",									CATEGORIES[3] },
-				{ "audio/ogg",											CATEGORIES[3] },
-				{ "audio/x-wav",										CATEGORIES[3] },
-				{ "audio/x-speex",										CATEGORIES[3] },
-				/* movies */
-				{ "video/x-msvideo",									CATEGORIES[4] },
-				{ "video/quicktime",									CATEGORIES[4] },
-				{ "video/mp4",											CATEGORIES[4] },
-				{ "video/ogg",											CATEGORIES[4] },
-				{ "video/x-flv",										CATEGORIES[4] },
-				/* images */
-				{ "image/jpeg",											CATEGORIES[5] },
-				{ "image/png",											CATEGORIES[5] },
-				{ "image/bmp",											CATEGORIES[5] },
-				{ "image/x-xpixmap",									CATEGORIES[5] },
-				{ "image/gif",											CATEGORIES[5] },
-				{ "image/tiff",											CATEGORIES[5] },
-				{ "image/x-pcx",										CATEGORIES[5] },
-				{ "image/x-xcf",										CATEGORIES[5] },
-				{ "image/x-psd",										CATEGORIES[5] },
-				{ "image/x-portable-bitmap",							CATEGORIES[5] },
-				{ "image/x-portable-anymap",							CATEGORIES[5] },
-				{ "image/svg+xml",										CATEGORIES[5] },
-				{ "image/x-ico",										CATEGORIES[5] },
-				{ "image/x-icns",										CATEGORIES[5] },
-				{ "image/x-panasonic-raw",								CATEGORIES[5] },
-				/* applications */
-				{ "application/x-executable",							CATEGORIES[6] },
-				{ "application/x-shellscript",							CATEGORIES[6] },
-				{ "application/x-ms-dos-executable",					CATEGORIES[6] },
-				/* archives */
-				{ "application/x-tar",									CATEGORIES[7] },
-				{ "application/zip",									CATEGORIES[7] },
-				{ "application/x-rar",									CATEGORIES[7] },
-				{ "application/x-bzip-compressed-tar",					CATEGORIES[7] },
-				{ "application/x-compressed-tar",						CATEGORIES[7] },
-				{ "application/x-gzip",									CATEGORIES[7] },
-				{ "application/x-deb",									CATEGORIES[7] },
-				{ "application/x-rpm",									CATEGORIES[7] },
-				{ "application/x-java-archive",							CATEGORIES[7] },
-				/* development */				
-				{ "text/x-csrc",										CATEGORIES[8] },
-				{ "text/x-c++src",										CATEGORIES[8] },
-				{ "text/x-python",										CATEGORIES[8] },
-				{ "text/x-csharp",										CATEGORIES[8] },
-				{ "text/x-java",										CATEGORIES[8] },
-				{ "text/x-sql",											CATEGORIES[8] },
-			};
+			MIME_MAPPING = MimeCategoryMapping
+				.GetMapping<CategoryInfo>(new MimeCategoryData<CategoryInfo>() {
+					DirectoryCategory	= CATEGORIES[0],
+					TextCategory		= CATEGORIES[1],
+					DocumentCategory	= CATEGORIES[2],
+					MusicCategory		= CATEGORIES[3],
+					MovieCategory		= CATEGORIES[4],
+					ImageCategory		= CATEGORIES[5],
+					ApplicationCategory	= CATEGORIES[6],
+					ArchiveCategory		= CATEGORIES[7],
+					DevelopmentCategory	= CATEGORIES[8]
+				});
 			
 			allItems = new VolumeItem[0];
 			

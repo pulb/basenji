@@ -206,7 +206,8 @@ FILES = \
 	src/Gui/Widgets/ItemPreview.cs \
 	src/Gui/Import.cs \
 	src/Gui/Widgets/AudioCdVolumeEdit.cs \
-	src/Icons/CustomIconThemeMimeMapping.cs 
+	src/Icons/CustomIconThemeMimeMapping.cs \
+	src/MimeCategoryMapping.cs 
 
 DATA_FILES = 
 
