@@ -24,7 +24,8 @@ Depends: ${shlibs:Depends},
          ${cli:Depends},
          libextractor1c2a (>= 0.5.21),
          libextractor-plugins (>= 0.5.21),
-         librsvg2-common (>= 2.26.0)
+         librsvg2-common (>= 2.26.0),
+         devicekit-disks
 Description: A portable volume indexing tool
  Basenji is a volume indexing tool designed for easy and fast indexing 
  of volume collections. It currently supports indexing of removable media 
