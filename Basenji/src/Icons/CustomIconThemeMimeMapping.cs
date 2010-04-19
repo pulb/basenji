@@ -28,17 +28,15 @@ namespace Basenji.Icons
 		// mimetype -> custom mime icon mapping
 		// (maps mimetypes to icons that are actually available in the custom icon theme)
 		private readonly Dictionary<string, Icon> MIME_MAPPING = MimeCategoryMapping
-			.GetMapping<Icon>(new MimeCategoryData<Icon>() {
-				DirectoryCategory	= Icon.Stock_Directory,
-				TextCategory		= Icon.Category_Texts,
-				DocumentCategory	= Icon.Category_Documents,
-				MusicCategory		= Icon.Category_Music,
-				MovieCategory		= Icon.Category_Movies ,
-				ImageCategory		= Icon.Category_Images,
-				ApplicationCategory	= Icon.Category_Applications,
-				ArchiveCategory		= Icon.Category_Archives,
-				DevelopmentCategory	= Icon.Category_Texts
-			});
+			.GetMapping<Icon>(/*directoryCategoryData:*/	Icon.Stock_Directory,
+			                  /*textCategoryData:*/			Icon.Category_Texts,
+			                  /*documentCategoryData:*/		Icon.Category_Documents,
+			                  /*musicCategoryData:*/		Icon.Category_Music,
+			                  /*movieCategoryData:*/		Icon.Category_Movies,
+			                  /*imageCategoryData:*/		Icon.Category_Images,
+			                  /*applicationCategoryData:*/	Icon.Category_Applications,
+			                  /*archiveCategoryData:*/		Icon.Category_Archives,
+			                  /*textCategoryData:*/			Icon.Category_Texts);
 		
 //		// mimetype -> custom mime icon mapping
 //		// (maps mimetypes to icons that are actually available in the custom icon theme)

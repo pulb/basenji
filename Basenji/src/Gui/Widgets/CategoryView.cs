@@ -68,17 +68,15 @@ namespace Basenji.Gui.Widgets
 		
 			// mimetype -> category mapping
 			MIME_MAPPING = MimeCategoryMapping
-				.GetMapping<CategoryInfo>(new MimeCategoryData<CategoryInfo>() {
-					DirectoryCategory	= CATEGORIES[0],
-					TextCategory		= CATEGORIES[1],
-					DocumentCategory	= CATEGORIES[2],
-					MusicCategory		= CATEGORIES[3],
-					MovieCategory		= CATEGORIES[4],
-					ImageCategory		= CATEGORIES[5],
-					ApplicationCategory	= CATEGORIES[6],
-					ArchiveCategory		= CATEGORIES[7],
-					DevelopmentCategory	= CATEGORIES[8]
-				});
+				.GetMapping<CategoryInfo>(/*directoryCategoryData:*/	CATEGORIES[0],
+				                          /*textCategoryData:*/			CATEGORIES[1],
+				                          /*documentCategoryData:*/		CATEGORIES[2],
+				                          /*musicCategoryData:*/		CATEGORIES[3],
+				                          /*movieCategoryData:*/		CATEGORIES[4],
+				                          /*imageCategoryData:*/		CATEGORIES[5],
+				                          /*applicationCategoryData:*/	CATEGORIES[6],
+				                          /*archiveCategoryData:*/		CATEGORIES[7],
+				                          /*textCategoryData:*/			CATEGORIES[8]);
 			
 			allItems = new VolumeItem[0];
 			

@@ -21,94 +21,85 @@ using System.Collections.Generic;
 
 namespace Basenji
 {
-	public class MimeCategoryData<T>
-	{
-		public T DirectoryCategory		{ get; set; }
-		public T TextCategory			{ get; set; }
-		public T DocumentCategory		{ get; set; }
-		public T MusicCategory			{ get; set; }
-		public T MovieCategory			{ get; set; }
-		public T ImageCategory			{ get; set; }
-		public T ApplicationCategory	{ get; set; }
-		public T ArchiveCategory		{ get; set; }
-		public T DevelopmentCategory	{ get; set; }
-	}
-	
 	// class that maps data items to mime cateogories (e.g. pictures)
 	public static class MimeCategoryMapping
 	{
-		public static Dictionary<string, T> GetMapping<T>(MimeCategoryData<T> categoryData) {
-
-			if (categoryData == null)
-				throw new ArgumentNullException("categoryData");
-			
+		public static Dictionary<string, T> GetMapping<T>(T directoryCategoryData,
+		                                                  T textCategoryData,
+		                                                  T documentCategoryData,
+		                                                  T musicCategoryData,
+		                                                  T movieCategoryData,
+		                                                  T imageCategoryData,
+		                                                  T applicationCategoryData,
+		                                                  T archiveCategoryData,
+		                                                  T developmentCategoryData) {
 			// mimetype -> category data mapping
 			Dictionary<string, T> mapping = new Dictionary<string, T>() {
 				/* directories */
-				{ "x-directory/normal",									categoryData.DirectoryCategory },
+				{ "x-directory/normal",									directoryCategoryData },
 				/* text */
-				{ "text/plain",											categoryData.TextCategory },
+				{ "text/plain",											textCategoryData },
 				/* documents */
-				{ "application/vnd.oasis.opendocument.text",			categoryData.DocumentCategory },
-				{ "application/vnd.oasis.opendocument.spreadsheet",		categoryData.DocumentCategory },
-				{ "application/vnd.oasis.opendocument.presentation",	categoryData.DocumentCategory },
-				{ "application/rtf",									categoryData.DocumentCategory },
-				{ "application/msword",									categoryData.DocumentCategory },
-				{ "application/vnd.ms-excel",							categoryData.DocumentCategory },
-				{ "application/pdf",									categoryData.DocumentCategory },
-				{ "application/xml",									categoryData.DocumentCategory },
-				{ "text/html",											categoryData.DocumentCategory },
+				{ "application/vnd.oasis.opendocument.text",			documentCategoryData },
+				{ "application/vnd.oasis.opendocument.spreadsheet",		documentCategoryData },
+				{ "application/vnd.oasis.opendocument.presentation",	documentCategoryData },
+				{ "application/rtf",									documentCategoryData },
+				{ "application/msword",									documentCategoryData },
+				{ "application/vnd.ms-excel",							documentCategoryData },
+				{ "application/pdf",									documentCategoryData },
+				{ "application/xml",									documentCategoryData },
+				{ "text/html",											documentCategoryData },
 				/* music */				
-				{ "audio/mpeg",											categoryData.MusicCategory },
-				{ "audio/mp4",											categoryData.MusicCategory },
-				{ "audio/x-flac",										categoryData.MusicCategory },
-				{ "application/ogg",									categoryData.MusicCategory },
-				{ "audio/ogg",											categoryData.MusicCategory },
-				{ "audio/x-wav",										categoryData.MusicCategory },
-				{ "audio/x-speex",										categoryData.MusicCategory },
+				{ "audio/mpeg",											musicCategoryData },
+				{ "audio/mp4",											musicCategoryData },
+				{ "audio/x-flac",										musicCategoryData },
+				{ "application/ogg",									musicCategoryData },
+				{ "audio/ogg",											musicCategoryData },
+				{ "audio/x-wav",										musicCategoryData },
+				{ "audio/x-speex",										musicCategoryData },
 				/* movies */
-				{ "video/x-msvideo",									categoryData.MovieCategory },
-				{ "video/quicktime",									categoryData.MovieCategory },
-				{ "video/mp4",											categoryData.MovieCategory },
-				{ "video/ogg",											categoryData.MovieCategory },
-				{ "video/x-flv",										categoryData.MovieCategory },
+				{ "video/x-msvideo",									movieCategoryData },
+				{ "video/quicktime",									movieCategoryData },
+				{ "video/mp4",											movieCategoryData },
+				{ "video/ogg",											movieCategoryData },
+				{ "video/x-flv",										movieCategoryData },
 				/* images */
-				{ "image/jpeg",											categoryData.ImageCategory },
-				{ "image/png",											categoryData.ImageCategory },
-				{ "image/bmp",											categoryData.ImageCategory },
-				{ "image/x-xpixmap",									categoryData.ImageCategory },
-				{ "image/gif",											categoryData.ImageCategory },
-				{ "image/tiff",											categoryData.ImageCategory },
-				{ "image/x-pcx",										categoryData.ImageCategory },
-				{ "image/x-xcf",										categoryData.ImageCategory },
-				{ "image/x-psd",										categoryData.ImageCategory },
-				{ "image/x-portable-bitmap",							categoryData.ImageCategory },
-				{ "image/x-portable-anymap",							categoryData.ImageCategory },
-				{ "image/svg+xml",										categoryData.ImageCategory },
-				{ "image/x-ico",										categoryData.ImageCategory },
-				{ "image/x-icns",										categoryData.ImageCategory },
-				{ "image/x-panasonic-raw",								categoryData.ImageCategory },
+				{ "image/jpeg",											imageCategoryData },
+				{ "image/png",											imageCategoryData },
+				{ "image/bmp",											imageCategoryData },
+				{ "image/x-xpixmap",									imageCategoryData },
+				{ "image/gif",											imageCategoryData },
+				{ "image/tiff",											imageCategoryData },
+				{ "image/x-pcx",										imageCategoryData },
+				{ "image/x-xcf",										imageCategoryData },
+				{ "image/x-psd",										imageCategoryData },
+				{ "image/x-portable-bitmap",							imageCategoryData },
+				{ "image/x-portable-anymap",							imageCategoryData },
+				{ "image/svg+xml",										imageCategoryData },
+				{ "image/x-ico",										imageCategoryData },
+				{ "image/x-icns",										imageCategoryData },
+				{ "image/x-panasonic-raw",								imageCategoryData },
 				/* applications */
-				{ "application/x-executable",							categoryData.ApplicationCategory },
-				{ "application/x-shellscript",							categoryData.ApplicationCategory },
-				{ "application/x-ms-dos-executable",					categoryData.ApplicationCategory },
+				{ "application/x-executable",							applicationCategoryData },
+				{ "application/x-shellscript",							applicationCategoryData },
+				{ "application/x-ms-dos-executable",					applicationCategoryData },
 				/* archives */
-				{ "application/x-tar",									categoryData.ArchiveCategory },
-				{ "application/zip",									categoryData.ArchiveCategory },
-				{ "application/x-rar",									categoryData.ArchiveCategory },
-				{ "application/x-bzip-compressed-tar",					categoryData.ArchiveCategory },
-				{ "application/x-compressed-tar",						categoryData.ArchiveCategory },
-				{ "application/x-gzip",									categoryData.ArchiveCategory },
-				{ "application/x-deb",									categoryData.ArchiveCategory },
-				{ "application/x-rpm",									categoryData.ArchiveCategory },
-				{ "application/x-java-archive",							categoryData.ArchiveCategory },
+				{ "application/x-tar",									archiveCategoryData },
+				{ "application/zip",									archiveCategoryData },
+				{ "application/x-rar",									archiveCategoryData },
+				{ "application/x-bzip-compressed-tar",					archiveCategoryData },
+				{ "application/x-compressed-tar",						archiveCategoryData },
+				{ "application/x-gzip",									archiveCategoryData },
+				{ "application/x-deb",									archiveCategoryData },
+				{ "application/x-rpm",									archiveCategoryData },
+				{ "application/x-java-archive",							archiveCategoryData },
 				/* development */				
-				{ "text/x-csrc",										categoryData.DevelopmentCategory },
-				{ "text/x-c++src",										categoryData.DevelopmentCategory },
-				{ "text/x-python",										categoryData.DevelopmentCategory },
-				{ "text/x-csharp",										categoryData.DevelopmentCategory },
-				{ "text/x-java",										categoryData.DevelopmentCategory },
-				{ "text/x-sql",											categoryData.DevelopmentCategory },
+				{ "text/x-csrc",										developmentCategoryData },
+				{ "text/x-c++src",										developmentCategoryData },
+				{ "text/x-python",										developmentCategoryData },
+				{ "text/x-csharp",										developmentCategoryData },
+				{ "text/x-java",										developmentCategoryData },
+				{ "text/x-sql",											developmentCategoryData },
 			};
 			
 			return mapping;
