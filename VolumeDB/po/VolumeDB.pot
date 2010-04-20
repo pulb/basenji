@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-12 17:49+0200\n"
+"POT-Creation-Date: 2010-04-20 13:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgid "Hashcode generation not implemented for audio cds yet."
 msgstr ""
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:97
-msgid "Error retrieving metadata from MusicBrainz."
+msgid "No MusicBrainz metadata available for this disk."
 msgstr ""
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:102
