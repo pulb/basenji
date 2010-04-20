@@ -84,6 +84,7 @@ namespace Basenji
 				{ "application/x-executable",							applicationCategoryData },
 				{ "application/x-shellscript",							applicationCategoryData },
 				{ "application/x-ms-dos-executable",					applicationCategoryData },
+				{ "application/x-msdownload",							applicationCategoryData },
 				/* archives */
 				{ "application/x-tar",									archiveCategoryData },
 				{ "application/zip",									archiveCategoryData },
