@@ -17,6 +17,7 @@ Requirements:
 	mono-cairo (2.4.2.3 or later)
 	libextractor1c2a (0.5.21 or later)
     libextractor-plugins (0.5.21 or later)
+    devicekit-disks (udev)
     
 Compile:
 
