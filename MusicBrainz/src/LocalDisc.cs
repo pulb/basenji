@@ -132,8 +132,8 @@ namespace MusicBrainz
                 switch (Environment.OSVersion.Platform){
                 case PlatformID.Unix:
                     return new DiscLinux (device);
-                //case PlatformID.Win32NT:
-                    //return new DiscWin32NT (device);
+                case PlatformID.Win32NT:
+                    return new DiscWin32NT (device);
                 default:
                     return new DiscWin32 (device);
                 }
