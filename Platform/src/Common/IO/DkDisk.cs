@@ -90,101 +90,101 @@ namespace Platform.Common.IO
 
         public DkDisk (string obj_path)
         {
-            disk = Bus.System.GetObject<IDkDisk>("org.freedesktop.DeviceKit.Disks",
+            disk = Bus.System.GetObject<IDkDisk>("org.freedesktop.UDisks",
                 new ObjectPath(obj_path));
 
-            props = Bus.System.GetObject<org.freedesktop.DBus.Properties>("org.freedesktop.DeviceKit.Disks",
+            props = Bus.System.GetObject<org.freedesktop.DBus.Properties>("org.freedesktop.UDisks",
                 new ObjectPath(obj_path));
         }
 
         public bool IsMounted {
             get {
-                return (bool) props.Get ("org.freedesktop.DeviceKit.Disks.Device", "DeviceIsMounted");
+                return (bool) props.Get ("org.freedesktop.UDisks.Device", "DeviceIsMounted");
             }
         }
 
         public bool IsReadOnly {
             get {
-                return (bool) props.Get ("org.freedesktop.DeviceKit.Disks.Device", "DeviceIsReadOnly");
+                return (bool) props.Get ("org.freedesktop.UDisks.Device", "DeviceIsReadOnly");
             }
         }
 
         public string MountPoint {
             get {
-                var ary = (string[])props.Get ("org.freedesktop.DeviceKit.Disks.Device", "DeviceMountPaths");
+                var ary = (string[])props.Get ("org.freedesktop.UDisks.Device", "DeviceMountPaths");
                 return ary != null && ary.Length > 0 ? ary[0] : null;
             }
         }
 		
 		public bool IsMediaAvailable {
             get {
-                return (bool) props.Get ("org.freedesktop.DeviceKit.Disks.Device", "DeviceIsMediaAvailable");
+                return (bool) props.Get ("org.freedesktop.UDisks.Device", "DeviceIsMediaAvailable");
             }
         }
 		
 		public string Label {
             get {
-                return (string) props.Get ("org.freedesktop.DeviceKit.Disks.Device", "IdLabel");
+                return (string) props.Get ("org.freedesktop.UDisks.Device", "IdLabel");
             }
         }
 		
 		public string IdType {
             get {
-                return (string) props.Get ("org.freedesktop.DeviceKit.Disks.Device", "IdType");
+                return (string) props.Get ("org.freedesktop.UDisks.Device", "IdType");
             }
         }
 		
 		public bool IsPartitionTable {
             get {
-                return (bool) props.Get ("org.freedesktop.DeviceKit.Disks.Device", "DeviceIsPartitionTable");
+                return (bool) props.Get ("org.freedesktop.UDisks.Device", "DeviceIsPartitionTable");
             }
         }
 		
 		public bool IsPartition {
             get {
-                return (bool) props.Get ("org.freedesktop.DeviceKit.Disks.Device", "DeviceIsPartition");
+                return (bool) props.Get ("org.freedesktop.UDisks.Device", "DeviceIsPartition");
             }
         }
 		
 		public string PartitionSlave {
             get {
-                return ((ObjectPath) props.Get ("org.freedesktop.DeviceKit.Disks.Device", "PartitionSlave")).ToString();
+                return ((ObjectPath) props.Get ("org.freedesktop.UDisks.Device", "PartitionSlave")).ToString();
             }
         }
 		
 		public ulong Size {
             get {
-                return (ulong) props.Get ("org.freedesktop.DeviceKit.Disks.Device", "DeviceSize");
+                return (ulong) props.Get ("org.freedesktop.UDisks.Device", "DeviceSize");
             }
         }
 		
 		public string DeviceFile {
             get {
-                return (string) props.Get ("org.freedesktop.DeviceKit.Disks.Device", "DeviceFile");
+                return (string) props.Get ("org.freedesktop.UDisks.Device", "DeviceFile");
             }
         }
 		
 		public bool IsDrive {
             get {
-                return (bool) props.Get ("org.freedesktop.DeviceKit.Disks.Device", "DeviceIsDrive");
+                return (bool) props.Get ("org.freedesktop.UDisks.Device", "DeviceIsDrive");
             }
         }
 		
 		public bool IsRemovable {
             get {
-                return (bool) props.Get ("org.freedesktop.DeviceKit.Disks.Device", "DeviceIsRemovable");
+                return (bool) props.Get ("org.freedesktop.UDisks.Device", "DeviceIsRemovable");
             }
         }
 		
 		public string[] MediaCompatibility {
             get {
-                return (string[]) props.Get ("org.freedesktop.DeviceKit.Disks.Device", "DriveMediaCompatibility");
+                return (string[]) props.Get ("org.freedesktop.UDisks.Device", "DriveMediaCompatibility");
             }
         }
 		
 		public uint NumAudioTracks {
 			get {
-				return (uint) props.Get ("org.freedesktop.DeviceKit.Disks.Device", "OpticalDiscNumAudioTracks");
+				return (uint) props.Get ("org.freedesktop.UDisks.Device", "OpticalDiscNumAudioTracks");
 			}
 		}
 
@@ -203,12 +203,12 @@ namespace Platform.Common.IO
         static DkDisk ()
         {
             try {
-                disks = Bus.System.GetObject<IDkDisks>("org.freedesktop.DeviceKit.Disks",
-                    new ObjectPath("/org/freedesktop/DeviceKit/Disks"));
+                disks = Bus.System.GetObject<IDkDisks>("org.freedesktop.UDisks",
+                    new ObjectPath("/org/freedesktop/UDisks"));
             } catch {}
         }
 
-        [Interface("org.freedesktop.DeviceKit.Disks")]
+        [Interface("org.freedesktop.UDisks")]
         internal interface IDkDisks
         {
             string FindDeviceByDeviceFile (string deviceFile);
@@ -217,7 +217,7 @@ namespace Platform.Common.IO
 
     }
 
-    [Interface("org.freedesktop.DeviceKit.Disks.Device")]
+    [Interface("org.freedesktop.UDisks.Device")]
     public interface IDkDisk
     {
         bool DeviceIsMounted { get; }
