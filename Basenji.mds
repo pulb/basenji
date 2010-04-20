@@ -35,7 +35,7 @@
       <Entry build="True" name="Platform" configuration="Gnome_Release" />
       <Entry build="True" name="Platform.Common.DB" configuration="Release" />
       <Entry build="True" name="LibExtractor" configuration="Release" />
-      <Entry build="True" name="MusicBrainz" configuration="Debug" />
+      <Entry build="True" name="MusicBrainz" configuration="Release" />
     </Configuration>
   </Configurations>
   <StartMode startupentry="Basenji" single="True">
