@@ -60,6 +60,7 @@ namespace Basenji
 				/* movies */
 				{ "video/x-msvideo",									movieCategoryData },
 				{ "video/quicktime",									movieCategoryData },
+				{ "video/avi",											movieCategoryData },
 				{ "video/mp4",											movieCategoryData },
 				{ "video/ogg",											movieCategoryData },
 				{ "video/x-flv",										movieCategoryData },
