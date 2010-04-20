@@ -248,7 +248,7 @@ namespace Platform.Common.IO
 				case System.IO.DriveType.CDRom:
 					d.driveType = DriveType.CDRom;
 					if (d.isReady)
-						d.VolumeIsAudioCd = AudioCdWin32.IsAudioCd(d.device);
+						d.hasAudioCdVolume = AudioCdWin32.IsAudioCd(d.device);
 					break;
 				case System.IO.DriveType.Fixed:
 					d.driveType = DriveType.Fixed;
@@ -264,7 +264,7 @@ namespace Platform.Common.IO
 					break;
 				case System.IO.DriveType.NoRootDirectory:
 					d.driveType = DriveType.Unknown;
-					d.IsMounted = false;
+					d.isMounted = false;
 					break;
 				case System.IO.DriveType.Unknown:
 					d.driveType = DriveType.Unknown;
