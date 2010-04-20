@@ -24,7 +24,7 @@ endif
 
 ifeq ($(CONFIG),RELEASE)
 ASSEMBLY_COMPILER_COMMAND = gmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -unsafe -warn:4 -optimize-
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -unsafe -warn:4 -optimize+
 ASSEMBLY = bin/Release/MusicBrainz.dll
 ASSEMBLY_MDB = 
 COMPILE_TARGET = library
@@ -51,15 +51,14 @@ endif
 
 ifeq ($(CONFIG),GNOME_RELEASE)
 ASSEMBLY_COMPILER_COMMAND = gmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -unsafe -warn:4 -optimize- -debug "-define:DEBUG"
-ASSEMBLY = bin/Debug/MusicBrainz.dll
-ASSEMBLY_MDB = $(ASSEMBLY).mdb
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -unsafe -warn:4 -optimize+
+ASSEMBLY = bin/Release/MusicBrainz.dll
+ASSEMBLY_MDB = 
 COMPILE_TARGET = library
 PROJECT_REFERENCES = 
-BUILD_DIR = bin/Debug
+BUILD_DIR = bin/Release
 
-MUSICBRAINZ_DLL_MDB_SOURCE=bin/Debug/MusicBrainz.dll.mdb
-MUSICBRAINZ_DLL_MDB=$(BUILD_DIR)/MusicBrainz.dll.mdb
+MUSICBRAINZ_DLL_MDB=
 
 endif
 
@@ -69,13 +68,9 @@ SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 PROGRAMFILES = \
 	$(MUSICBRAINZ_DLL_MDB)  
 
-LINUX_PKGCONFIG = \
-	$(MUSICBRAINZ_PC)  
-
 
 RESGEN=resgen2
 
-MUSICBRAINZ_PC = $(BUILD_DIR)/musicbrainz.pc
 
 FILES = \
 	src/Artist.cs \
@@ -103,8 +98,7 @@ DATA_FILES =
 
 RESOURCES = 
 
-EXTRAS = \
-	musicbrainz.pc.in 
+EXTRAS = 
 
 REFERENCES =  \
 	System \
@@ -112,17 +106,16 @@ REFERENCES =  \
 
 DLL_REFERENCES = 
 
-CLEANFILES = $(PROGRAMFILES) $(LINUX_PKGCONFIG) 
+CLEANFILES = $(PROGRAMFILES) 
 
 #Targets
-all: $(ASSEMBLY) $(PROGRAMFILES) $(LINUX_PKGCONFIG)  $(top_srcdir)/config.make
+all: $(ASSEMBLY) $(PROGRAMFILES)  $(top_srcdir)/config.make
 
 include $(top_srcdir)/Makefile.include
 #include $(srcdir)/custom-hooks.make
 
 
 
-$(eval $(call emit-deploy-wrapper,MUSICBRAINZ_PC,musicbrainz.pc))
 
 
 $(eval $(call emit_resgen_targets))
@@ -146,8 +139,6 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call cp,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(MUSICBRAINZ_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	mkdir -p '$(DESTDIR)$(libdir)/pkgconfig'
-	$(call cp,$(MUSICBRAINZ_PC),$(DESTDIR)$(libdir)/pkgconfig)
 	make post-install-local-hook prefix=$(prefix)
 
 uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
@@ -156,7 +147,6 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call rm,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(MUSICBRAINZ_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(MUSICBRAINZ_PC),$(DESTDIR)$(libdir)/pkgconfig)
 	make post-uninstall-local-hook prefix=$(prefix)
 
 install: install-local

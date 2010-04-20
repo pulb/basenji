@@ -106,7 +106,7 @@ PROJECT_REFERENCES =  \
 	../Platform.Common.DB/bin/Release/Platform.Common.DB.dll \
 	../Platform/bin/Release/Platform.dll \
 	../LibExtractor/bin/Release/LibExtractor.dll \
-	../MusicBrainz/bin/Debug/MusicBrainz.dll
+	../MusicBrainz/bin/Release/MusicBrainz.dll
 BUILD_DIR = bin/Release
 
 PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
