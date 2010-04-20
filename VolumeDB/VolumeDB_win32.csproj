@@ -45,6 +45,10 @@
       <Project>{8246984A-9DCD-40FE-8306-023141AA418E}</Project>
       <Name>LibExtractor_win32</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MusicBrainz\MusicBrainz_win32.csproj">
+      <Project>{E0C813A2-FCEF-472F-9FE5-DC0CECF8E8B2}</Project>
+      <Name>MusicBrainz_win32</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Platform.Common.DB\Platform.Common.DB_win32.csproj">
       <Project>{6F73D36A-FBE3-410A-8976-00FC87A085CF}</Project>
       <Name>Platform.Common.DB_win32</Name>
@@ -56,18 +60,27 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="po\da.resources" />
     <EmbeddedResource Include="po\de.resources" />
     <EmbeddedResource Include="po\es.resources" />
+    <EmbeddedResource Include="po\fr.resources" />
     <EmbeddedResource Include="po\he.resources" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\AssemblyInfo.cs" />
+    <Compile Include="src\AudioCdRootVolumeItem.cs" />
+    <Compile Include="src\AudioCdVolume.cs" />
+    <Compile Include="src\AudioTrackVolumeItem.cs" />
     <Compile Include="src\BufferedVolumeItemWriter.cs" />
     <Compile Include="src\DatabaseProperties.cs" />
+    <Compile Include="src\DbData.cs" />
+    <Compile Include="src\DecoderUtility.cs" />
     <Compile Include="src\DirectoryVolumeItem.cs" />
     <Compile Include="src\FieldnameValuePair.cs" />
     <Compile Include="src\FileSystemVolume.cs" />
@@ -76,6 +89,12 @@
     <Compile Include="src\IChildItem.cs" />
     <Compile Include="src\IContainerItem.cs" />
     <Compile Include="src\IHashable.cs" />
+    <Compile Include="src\Import\AbstractImport.cs" />
+    <Compile Include="src\Import\BasenjiImport.cs" />
+    <Compile Include="src\Import\CdCollectImport.cs" />
+    <Compile Include="src\Import\Events.cs" />
+    <Compile Include="src\Import\GnomeCatalogImport.cs" />
+    <Compile Include="src\Import\IImport.cs" />
     <Compile Include="src\IRecordData.cs" />
     <Compile Include="src\IVolumeDBRecord.cs" />
     <Compile Include="src\MetaDataHelper.cs" />
@@ -120,13 +139,18 @@
     <Compile Include="src\VolumeDriveType.cs" />
     <Compile Include="src\VolumeItem.cs" />
     <Compile Include="src\VolumeItemType.cs" />
+    <Compile Include="src\VolumeScanner\AbstractVolumeScanner.cs" />
+    <Compile Include="src\VolumeScanner\AudioCdScannerOptions.cs" />
+    <Compile Include="src\VolumeScanner\AudioCdVolumeInfo.cs" />
+    <Compile Include="src\VolumeScanner\AudioCdVolumeScanner.cs" />
     <Compile Include="src\VolumeScanner\Events.cs" />
+    <Compile Include="src\VolumeScanner\FilesystemScannerOptions.cs" />
     <Compile Include="src\VolumeScanner\FilesystemVolumeInfo.cs" />
     <Compile Include="src\VolumeScanner\FilesystemVolumeScanner.cs" />
     <Compile Include="src\VolumeScanner\IVolumeScanner.cs" />
+    <Compile Include="src\VolumeScanner\ScannerOptions.cs" />
     <Compile Include="src\VolumeScanner\VolumeInfo.cs" />
     <Compile Include="src\VolumeScanner\VolumeProber.cs" />
-    <Compile Include="src\VolumeScanner\VolumeScannerBase.cs" />
     <Compile Include="src\VolumeType.cs" />
   </ItemGroup>
 </Project>

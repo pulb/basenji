@@ -46,11 +46,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\AssemblyInfo.cs" />
+    <Compile Include="src\Common\Diagnostics\AssertionFailedException.cs" />
     <Compile Include="src\Common\Diagnostics\CurrentPlatform.cs" />
     <Compile Include="src\Common\Diagnostics\CurrentRuntime.cs" />
     <Compile Include="src\Common\Diagnostics\Debug.cs" />
     <Compile Include="src\Common\Globalization\Catalog.cs" />
     <Compile Include="src\Common\Globalization\TranslatedStringTable.cs" />
+    <Compile Include="src\Common\IO\AudioCdWin32.cs" />
+    <Compile Include="src\Common\IO\DkDisk.cs" />
     <Compile Include="src\Common\IO\DriveInfo.cs" />
     <Compile Include="src\Common\IO\DriveNotMountedException.cs" />
     <Compile Include="src\Common\IO\DriveNotReadyException.cs" />

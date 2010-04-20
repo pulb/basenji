@@ -52,7 +52,9 @@
     <EmbeddedResource Include="po\da.resources" />
     <EmbeddedResource Include="po\de.resources" />
     <EmbeddedResource Include="po\es.resources" />
+    <EmbeddedResource Include="po\fr.resources" />
     <EmbeddedResource Include="po\he.resources" />
+    <EmbeddedResource Include="po\ru.resources" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
@@ -62,6 +64,9 @@
     <Reference Include="Mono.Cairo, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL" />
     <Reference Include="pango-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Platform\Platform_win32.csproj">
@@ -76,7 +81,6 @@
   <ItemGroup>
     <Compile Include="src\App.cs" />
     <Compile Include="src\AssemblyInfo.cs" />
-    <Compile Include="src\DbData.cs" />
     <Compile Include="src\FileDialog.cs" />
     <Compile Include="src\Gui\About.cs" />
     <Compile Include="src\Gui\Base\BinBase.cs" />
@@ -86,11 +90,13 @@
     <Compile Include="src\Gui\DBProperties.cs" />
     <Compile Include="src\Gui\DriveSelection.cs" />
     <Compile Include="src\Gui\Events.cs" />
+    <Compile Include="src\Gui\Import.cs" />
     <Compile Include="src\Gui\ItemSearch.cs" />
     <Compile Include="src\Gui\MainWindow.cs" />
     <Compile Include="src\Gui\Preferences.cs" />
     <Compile Include="src\Gui\VolumeProperties.cs" />
     <Compile Include="src\Gui\VolumeScanner.cs" />
+    <Compile Include="src\Gui\Widgets\AudioCdVolumeEdit.cs" />
     <Compile Include="src\Gui\Widgets\CategoryView.cs" />
     <Compile Include="src\Gui\Widgets\DateChooser.cs" />
     <Compile Include="src\Gui\Widgets\FSVolumeEdit.cs" />
@@ -107,14 +113,17 @@
     <Compile Include="src\Gui\Widgets\VolumeEditEvents.cs" />
     <Compile Include="src\Gui\Widgets\VolumeView.cs" />
     <Compile Include="src\Icons\CustomIconTheme.cs" />
+    <Compile Include="src\Icons\CustomIconThemeMimeMapping.cs" />
     <Compile Include="src\Icons\Icon.cs" />
     <Compile Include="src\Icons\IconCache.cs" />
     <Compile Include="src\Icons\IconUtils.cs" />
     <Compile Include="src\Icons\ItemIcons.cs" />
     <Compile Include="src\Icons\MimeIconCache.cs" />
-    <Compile Include="src\Icons\NameInCustomIconNameAttribute.cs" />
+    <Compile Include="src\Icons\NameInCustomIconThemeAttribute.cs" />
     <Compile Include="src\Main.cs" />
+    <Compile Include="src\MimeCategoryMapping.cs" />
     <Compile Include="src\MsgDialog.cs" />
+    <Compile Include="src\PathUtil.cs" />
     <Compile Include="src\S.cs" />
     <Compile Include="src\Settings.cs" />
     <Compile Include="src\Util.cs" />
