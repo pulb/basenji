@@ -94,7 +94,7 @@ namespace VolumeDB.VolumeScanner
 					Release release = Release.Query(localdisc).PerfectMatch();
 
 					if (release == null) {
-						SendScannerWarning(S._("No MusicBrainz metadata available for this disk."));
+						SendScannerWarning(S._("No MusicBrainz metadata available for this disc."));
 					} else {
 						var tracks = release.GetTracks();
 						
