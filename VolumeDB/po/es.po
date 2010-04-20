@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-04-12 17:49+0200\n"
+"POT-Creation-Date: 2010-04-20 13:13+0200\n"
 "PO-Revision-Date: 2010-04-09 11:40+0000\n"
 "Last-Translator: Jonay <jonay.santana@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-16 15:12+0000\n"
+"X-Launchpad-Export-Date: 2010-04-20 12:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:55
@@ -22,8 +22,8 @@ msgid "Hashcode generation not implemented for audio cds yet."
 msgstr "Generación de código Hash aún no implementada para CDs de audio."
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:97
-msgid "Error retrieving metadata from MusicBrainz."
-msgstr "Error al recuperar metadatos de MusicBrainz."
+msgid "No MusicBrainz metadata available for this disc."
+msgstr ""
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:102
 msgid ""

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-04-12 17:49+0200\n"
+"POT-Creation-Date: 2010-04-20 13:13+0200\n"
 "PO-Revision-Date: 2008-10-28 07:41+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-16 15:12+0000\n"
+"X-Launchpad-Export-Date: 2010-04-20 12:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/Util.cs:30
@@ -693,11 +693,11 @@ msgstr ""
 msgid "Development"
 msgstr ""
 
-#: src/Gui/Widgets/CategoryView.cs:149
+#: src/Gui/Widgets/CategoryView.cs:96
 msgid "Category"
 msgstr ""
 
-#: src/Gui/Widgets/CategoryView.cs:181
+#: src/Gui/Widgets/CategoryView.cs:128
 msgid "All items"
 msgstr ""
 
