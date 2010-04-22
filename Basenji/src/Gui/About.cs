@@ -29,7 +29,16 @@ namespace Basenji.Gui
 		private static readonly string		dbVersion			= string.Format(S._("Using VolumeDB v{0}."), Util.GetVolumeDBVersion());
 		private static readonly string		comments			= string.Format("{0}\n{1}", subTitle, dbVersion);
 		private static readonly string		copyright			= string.Format("{0}{1}", S._("Copyright (c) "), App.Copyright);
-		private static readonly string[]	authors				= new string[] { "Patrick Ulbrich <zulu99@gmx.net>" };
+		
+		private static readonly string[]	authors				= new string[] {
+@"Maintainer:
+Patrick Ulbrich <zulu99@gmx.net>
+
+Contributors:
+Francesco Marella (https://launchpad.net/~francesco-marella)
+Mauro Solcia (https://launchpad.net/~maurosolcia)
+" };
+		
 		private static readonly string		translatorCredits	= 
 @"Danish:
   nanker (https://launchpad.net/~nanker)
