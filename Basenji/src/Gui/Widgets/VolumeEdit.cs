@@ -182,7 +182,7 @@ namespace Basenji.Gui.Widgets
 			}
 			
 			// unselect category
-			cmbCategory.SetActiveIter(TreeIter.Zero);
+			cmbCategory.Active = -1;
 			if (volume.Category.Length > 0) {
 				TreeModel model = cmbCategory.Model;
 				TreeIter iter;
