@@ -383,9 +383,9 @@ namespace Basenji.Gui
 				if (!remove)
 					return;
 
-				remove				= false;
-				vscanner.led.State	= false;
-				ledState			= false;
+				remove					= false;
+				vscanner.led.LedState	= false;
+				ledState				= false;
 
 				GLib.Timeout.Add(TIMEOUT_INTERVAL, delegate {
 					bool persist = !remove;
@@ -395,8 +395,8 @@ namespace Basenji.Gui
 						vscanner.volEdit.UpdateInfo(vscanner.scanner.VolumeInfo);
 
 					/* LED (database access indicator) */
-					if (ledState != vscanner.led.State)
-						vscanner.led.State = ledState; /* toggle LED state */
+					if (ledState != vscanner.led.LedState)
+						vscanner.led.LedState = ledState; /* toggle LED state */
 
 					return persist;
 				});

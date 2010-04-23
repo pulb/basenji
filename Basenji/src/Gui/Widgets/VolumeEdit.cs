@@ -77,16 +77,14 @@ namespace Basenji.Gui.Widgets
 			switch (volType) {
 				case VolumeType.FileSystemVolume:
 					return new FSVolumeEdit();
-					break;
 				case VolumeType.AudioCdVolume:
 					return new AudioCdVolumeEdit();
-					break;
 				default:
 					throw new NotImplementedException(string.Format("VolumeEdit widget for VolumeType {0} is not implemented", volType.ToString()));
 			}
 		}
 		
-		public bool Sensitive {
+		public new bool Sensitive {
 			get { 
 				// just test the first widget				 
 				return tblWidgets[txtArchiveNo].Child.Sensitive;
