@@ -92,7 +92,7 @@ namespace Basenji.Gui.Widgets
 				return tblWidgets[txtArchiveNo].Child.Sensitive;
 			}
 			set {
-				tblWidgets.Foreach(delegate(Widget w) {
+				tblWidgets.Foreach(w => {
 					if (!(w is Label))
 						w.Sensitive = value;
 				});
