@@ -59,15 +59,9 @@ namespace Basenji.Gui.Widgets
 				this.pb = null;
 			}
 			
-			string dbDataPath = PathUtil.GetDbDataPath(db);
-			string volumeDataPath = DbData.GetVolumeDataPath(dbDataPath, item.VolumeID);
-			string thumbsPath = DbData.GetVolumeDataThumbsPath(volumeDataPath);
-			string thumbName = System.IO.Path.Combine(
-				thumbsPath, 
-				string.Format("{0}.png", item.ItemID));
-			
-			if (File.Exists(thumbName)) {
-				this.pb = new Gdk.Pixbuf(thumbName);
+			Pixbuf tmp = PathUtil.GetThumb(item, db, 0);
+			if (tmp != null) {
+				this.pb = tmp;
 				this.isIcon = false;
 			} else {
 				if (EnableGenericIcons)

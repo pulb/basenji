@@ -552,7 +552,7 @@ namespace Basenji.Gui
 			
 			// load volume content in the item tree
 			Volume volume = tvVolumes.GetVolume(iter);
-			tvItems.FillRoot(volume);
+			tvItems.FillRoot(volume, database);
 		}
 		
 		private void OnTvItemsSelectionChanged(object o, EventArgs args) {

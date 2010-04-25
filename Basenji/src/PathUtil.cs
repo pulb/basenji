@@ -35,5 +35,23 @@ namespace Basenji
 				
 			return dataPath;
 		}
+		
+		public static Gdk.Pixbuf GetThumb(VolumeItem item, VolumeDatabase db, int size) {
+			string dbDataPath = PathUtil.GetDbDataPath(db);
+			string volumeDataPath = DbData.GetVolumeDataPath(dbDataPath, item.VolumeID);
+			string thumbsPath = DbData.GetVolumeDataThumbsPath(volumeDataPath);
+			string thumbName = System.IO.Path.Combine(
+				thumbsPath, 
+				string.Format("{0}.png", item.ItemID));
+
+			if (File.Exists(thumbName)) {
+				if (size > 0)
+					return new Gdk.Pixbuf(thumbName, size, size, false);
+				else
+					return new Gdk.Pixbuf(thumbName);
+			} else {
+				return null;
+			}
+		}
 	}
 }

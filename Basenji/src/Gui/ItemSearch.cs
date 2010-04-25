@@ -138,14 +138,14 @@ namespace Basenji.Gui
 			VolumeItem[] categoryItems = tvCategory.GetCategoryItems(c);
 			
 			navi.SetItems(categoryItems);
-			tvSearchResult.Fill(navi.PageItems, false);
+			tvSearchResult.Fill(navi.PageItems, database, false);
 			
 			itemInfo.Clear();
 			itemInfo.Hide();
 		}
 		
 		private void OnNaviNavigate(object o, NavigateEventArgs args) {
-			tvSearchResult.Fill(navi.PageItems, false);
+			tvSearchResult.Fill(navi.PageItems, database, false);
 			
 			itemInfo.Clear();
 			itemInfo.Hide();

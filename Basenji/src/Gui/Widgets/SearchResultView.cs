@@ -59,16 +59,19 @@ namespace Basenji.Gui.Widgets
 			AppendColumn(col);
 		}
 		
-		public void Fill(VolumeItem[] items, bool clearVolumeCache) {
+		public void Fill(VolumeItem[] items, VolumeDatabase db, bool clearVolumeCache) {
 			if (clearVolumeCache)
 				volumeCache.Clear();
-			Fill(items);
+			Fill(items, db);
 		}
 		
-		public void Fill(VolumeItem[] items) {
+		public void Fill(VolumeItem[] items, VolumeDatabase db) {
 			if (items == null)
 				throw new ArgumentNullException("items");
-				
+			
+			if (db == null)
+				throw new ArgumentNullException("db");
+			
 			ListStore store = new Gtk.ListStore(	typeof(Gdk.Pixbuf),
 													typeof(string),
 													typeof(VolumeItem)); /* VolumeItem - not visible */
@@ -110,8 +113,8 @@ namespace Basenji.Gui.Widgets
 					default:
 						throw new NotImplementedException("Search result view has not been implemented for this volumetype");
 				}
-				
-				store.AppendValues(itemIcons.GetIconForItem(item, ICON_SIZE),
+								
+				store.AppendValues(GetImage(item, db),
 				                   description,
 				                   item);
 			}
@@ -130,6 +133,20 @@ namespace Basenji.Gui.Widgets
 		public VolumeItem GetItem(TreeIter iter) {
 			VolumeItem item = (VolumeItem)Model.GetValue(iter, 2);
 			return item;
+		}
+				
+		private Gdk.Pixbuf GetImage(VolumeItem item, VolumeDatabase db) {
+			Gdk.Pixbuf img = null;
+			
+			if (App.Settings.ShowThumbsInItemLists) {
+				int sz = IconUtils.GetIconSizeVal(ICON_SIZE);
+				img = PathUtil.GetThumb(item, db, sz);
+			}
+			
+			if (img == null)
+				img = itemIcons.GetIconForItem(item, ICON_SIZE);
+			
+			return img;
 		}
 	}
 }

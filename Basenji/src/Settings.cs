@@ -88,6 +88,11 @@ namespace Basenji
 			set { properties["MostRecentDBPath"] = value; }
 		}
 		
+		public bool ShowThumbsInItemLists {
+			get { return properties["ShowThumbsInItemLists"] == "1"; }
+			set { properties["ShowThumbsInItemLists"] = value ? "1" : "0"; }
+		}
+		
 		public int MainWindowWidth {
 			get { return int.Parse(properties["MainWindowWidth"]); }
 			set { properties["MainWindowWidth"] = value.ToString(); }
@@ -147,6 +152,7 @@ namespace Basenji
 			properties.Add("ScannerEnableMusicBrainz",		"1");
 			properties.Add("OpenMostRecentDB",				"1");
 			properties.Add("MostRecentDBPath",				"");
+			properties.Add("ShowThumbsInItemLists",			"0");
 			properties.Add("MainWindowWidth",				"800");
 			properties.Add("MainWindowHeight",				"480");
 			properties.Add("MainWindowIsMaximized",			"0");

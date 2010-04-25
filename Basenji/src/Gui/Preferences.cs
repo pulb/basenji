@@ -106,7 +106,7 @@ namespace Basenji.Gui
 			icon = RenderIcon(Icons.Icon.Stock_Cancel, IconSize.Button);
 			store.AppendValues(icon, S._("None"));
 			
-			foreach(PlatformIO.DriveInfo d in drives) {
+			foreach (PlatformIO.DriveInfo d in drives) {
 				// list removable drives only (auto scanning of fixed drives does not make sense)
 				if (d.DriveType == PlatformIO.DriveType.CDRom || d.DriveType == PlatformIO.DriveType.Removable) {
 					//stockID = Util.GetDriveStockIconID(d);
@@ -165,6 +165,7 @@ namespace Basenji.Gui
 			}
 			
 			chkReopenDB.Active = s.OpenMostRecentDB;
+			chkShowThumbs.Active = s.ShowThumbsInItemLists;
 			
 			/*
 			 * scanner settings
@@ -201,6 +202,7 @@ namespace Basenji.Gui
 			 */
 			App.Settings.CustomThemeName = (cmbIconTheme.ActiveText == SYSTEM_ICON_THEME_NAME) ? string.Empty : cmbIconTheme.ActiveText;
 			App.Settings.OpenMostRecentDB = chkReopenDB.Active;
+			App.Settings.ShowThumbsInItemLists = chkShowThumbs.Active;
 			
 			/*
 			 * scanner settings
@@ -232,6 +234,7 @@ namespace Basenji.Gui
 	public partial class Preferences : Base.WindowBase
 	{
 		private CheckButton chkReopenDB;
+		private CheckButton chkShowThumbs;
 		private ComboBox	cmbIconTheme;
 		
 		private ComboBox	cmbScannerDevice;
@@ -294,7 +297,7 @@ namespace Basenji.Gui
 		}
 		
 		private void AppendGeneralPage(Notebook nb) {
-			Table tbl = CreateTable(2, 2);
+			Table tbl = CreateTable(3, 2);
 			tbl.BorderWidth = 12;			 
 			
 			// label
@@ -311,6 +314,10 @@ namespace Basenji.Gui
 			// reopen db checkbox
 			chkReopenDB = new CheckButton(S._("Reopen most recent database on startup"));
 			TblAttach(tbl, chkReopenDB, 0, 1, 2, 1);
+			
+			// show thumbs checkbox
+			chkShowThumbs = new CheckButton(S._("Show thumbnails in the filebrowser"));
+			TblAttach(tbl, chkShowThumbs, 0, 2, 2, 1);
 			
 			nb.AppendPage(tbl, new Label(S._("General")));		 
 		}

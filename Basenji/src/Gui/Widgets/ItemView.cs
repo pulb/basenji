@@ -34,6 +34,7 @@ namespace Basenji.Gui.Widgets
 		private ItemIcons itemIcons;
 		private Gdk.Pixbuf loadingIcon;
 		
+		private VolumeDatabase database;
 		private VolumeType currentVolumeType;
 		private int item_col;
 		
@@ -43,6 +44,8 @@ namespace Basenji.Gui.Widgets
 			
 			HeadersClickable = true;
 			
+			database = null;
+			currentVolumeType = (VolumeType)(-1);
 			item_col = -1;
 			
 			// event handlers
@@ -50,9 +53,14 @@ namespace Basenji.Gui.Widgets
 			ButtonPressEvent	+= OnButtonPressEvent;
 		}
 		
-		public void FillRoot(Volume volume) {
+		public void FillRoot(Volume volume, VolumeDatabase db) {
 			if (volume == null)
 				throw new ArgumentNullException("volume");
+			
+			if (db == null)
+				throw new ArgumentNullException("db");
+
+			this.database = db;
 			
 			TreeModel model;
 			VolumeType volType = volume.GetVolumeType();
@@ -86,7 +94,7 @@ namespace Basenji.Gui.Widgets
 						store.AppendValues(null, STR_EMPTY, STR_EMPTY, STR_EMPTY);
 					} else {
 						foreach (AudioTrackVolumeItem track in tracks) {
-							store.AppendValues(GetIcon(track),
+							store.AppendValues(GetImage(track),
 						                   track.Name,
 						                   (track.Artist.Length == 0 ? S._("Unknown") : track.Artist),
 						                   string.Format("{0:D2}:{1:D2}", track.Duration.Minutes, track.Duration.Seconds),
@@ -197,12 +205,12 @@ namespace Basenji.Gui.Widgets
 				AppendDirValues(store, parent, parentIsRoot, null, STR_EMPTY, null);
 			} else {
 				foreach (DirectoryVolumeItem dir in dirs) {
-					TreeIter iter = AppendDirValues(store, parent, parentIsRoot, GetIcon(dir), dir.Name, dir);
+					TreeIter iter = AppendDirValues(store, parent, parentIsRoot, GetImage(dir), dir.Name, dir);
 					AppendDirValues(store, iter, false, loadingIcon, STR_LOADING, null);
 				}
 				
 				foreach (FileVolumeItem file in files) {
-					AppendDirValues(store, parent, parentIsRoot, GetIcon(file), file.Name, file);
+					AppendDirValues(store, parent, parentIsRoot, GetImage(file), file.Name, file);
 				}
 			}			 
 		}
@@ -214,8 +222,18 @@ namespace Basenji.Gui.Widgets
 				return store.AppendValues(parent, icon, name, item);
 		}
 		
-		private Gdk.Pixbuf GetIcon(VolumeItem item) {
-			return itemIcons.GetIconForItem(item, ICON_SIZE);	
+		private Gdk.Pixbuf GetImage(VolumeItem item) {
+			Gdk.Pixbuf img = null;
+			
+			if (App.Settings.ShowThumbsInItemLists) {
+				int sz = IconUtils.GetIconSizeVal(ICON_SIZE);
+				img = PathUtil.GetThumb(item, database, sz);
+			}
+			
+			if (img == null)
+				img = itemIcons.GetIconForItem(item, ICON_SIZE);
+			
+			return img;
 		}
 		
 		private void OnRowExpanded(object o, RowExpandedArgs args) {
