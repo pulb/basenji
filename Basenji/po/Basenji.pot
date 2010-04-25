@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-20 13:13+0200\n"
+"POT-Creation-Date: 2010-04-26 00:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -219,7 +219,7 @@ msgstr ""
 msgid "Name:"
 msgstr ""
 
-#: src/Gui/DBProperties.cs:90 src/Gui/Widgets/VolumeEdit.cs:326
+#: src/Gui/DBProperties.cs:90 src/Gui/Widgets/VolumeEdit.cs:324
 msgid "Description:"
 msgstr ""
 
@@ -418,60 +418,64 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: src/Gui/Preferences.cs:227
+#: src/Gui/Preferences.cs:229
 msgid "Restart required"
 msgstr ""
 
-#: src/Gui/Preferences.cs:227
+#: src/Gui/Preferences.cs:229
 #, csharp-format
 msgid "You must restart {0} for icontheme changes to take effect."
 msgstr ""
 
-#: src/Gui/Preferences.cs:254
+#: src/Gui/Preferences.cs:257
 msgid "Preferences"
 msgstr ""
 
-#: src/Gui/Preferences.cs:276
+#: src/Gui/Preferences.cs:279
 msgid "_Load Defaults"
 msgstr ""
 
-#: src/Gui/Preferences.cs:301
+#: src/Gui/Preferences.cs:304
 msgid "Icon theme:"
 msgstr ""
 
-#: src/Gui/Preferences.cs:312
+#: src/Gui/Preferences.cs:315
 msgid "Reopen most recent database on startup"
 msgstr ""
 
-#: src/Gui/Preferences.cs:315
+#: src/Gui/Preferences.cs:319
+msgid "Show thumbnails in the filebrowser"
+msgstr ""
+
+#: src/Gui/Preferences.cs:322
 msgid "General"
 msgstr ""
 
-#: src/Gui/Preferences.cs:323
+#: src/Gui/Preferences.cs:330
 msgid "Don't prompt, always scan:"
 msgstr ""
 
-#: src/Gui/Preferences.cs:342
+#: src/Gui/Preferences.cs:349
 msgid "Generate Thumbnails"
 msgstr ""
 
-#: src/Gui/Preferences.cs:346
+#: src/Gui/Preferences.cs:353
 msgid "Extract metadata"
 msgstr ""
 
-#: src/Gui/Preferences.cs:350
+#: src/Gui/Preferences.cs:357
 msgid "Discard symbolic links"
 msgstr ""
 
-#: src/Gui/Preferences.cs:354
+#: src/Gui/Preferences.cs:361
 msgid "Compute hashcodes for files (slow!)"
 msgstr ""
 
-#: src/Gui/Preferences.cs:358
+#: src/Gui/Preferences.cs:365
 msgid "Fetch audio cd metadata from MusicBrainz.org"
 msgstr ""
 
-#: src/Gui/Preferences.cs:361
+#: src/Gui/Preferences.cs:368
 msgid "Scanner"
 msgstr ""
 
@@ -504,7 +508,7 @@ msgstr ""
 msgid "Unnamed"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/VolumeEdit.cs:324
+#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/VolumeEdit.cs:322
 msgid "Category:"
 msgstr ""
 
@@ -536,19 +540,19 @@ msgstr ""
 msgid "(empty)"
 msgstr ""
 
-#: src/Gui/Widgets/ItemView.cs:91
+#: src/Gui/Widgets/ItemView.cs:99
 msgid "Unknown"
 msgstr ""
 
-#: src/Gui/Widgets/ItemView.cs:160
+#: src/Gui/Widgets/ItemView.cs:168
 msgid "Name"
 msgstr ""
 
-#: src/Gui/Widgets/ItemView.cs:165
+#: src/Gui/Widgets/ItemView.cs:173
 msgid "Artist"
 msgstr ""
 
-#: src/Gui/Widgets/ItemView.cs:170 src/Gui/Widgets/ItemInfo.cs:223
+#: src/Gui/Widgets/ItemView.cs:178 src/Gui/Widgets/ItemInfo.cs:223
 #: src/Gui/Widgets/ItemInfo.cs:275
 msgid "Duration"
 msgstr ""
@@ -722,47 +726,47 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:241
+#: src/Gui/Widgets/VolumeEdit.cs:239
 msgid "Yes"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:241
+#: src/Gui/Widgets/VolumeEdit.cs:239
 msgid "No"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:251
+#: src/Gui/Widgets/VolumeEdit.cs:249
 msgid "Volume type:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:252
+#: src/Gui/Widgets/VolumeEdit.cs:250
 msgid "Hashed:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:253
+#: src/Gui/Widgets/VolumeEdit.cs:251
 msgid "Added:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:323
+#: src/Gui/Widgets/VolumeEdit.cs:321
 msgid "Archive No.:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:325
+#: src/Gui/Widgets/VolumeEdit.cs:323
 msgid "Title:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:327
+#: src/Gui/Widgets/VolumeEdit.cs:325
 msgid "Keywords:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:328
+#: src/Gui/Widgets/VolumeEdit.cs:326
 msgid "Loaned to:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:329
+#: src/Gui/Widgets/VolumeEdit.cs:327
 msgid "Loaned date:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeEdit.cs:330
+#: src/Gui/Widgets/VolumeEdit.cs:328
 msgid "Return date:"
 msgstr ""
 
