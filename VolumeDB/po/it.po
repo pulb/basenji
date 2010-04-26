@@ -1,16 +1,16 @@
-# German translation for basenji
-# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# Italian translation for basenji
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
 # This file is distributed under the same license as the basenji package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-04-26 00:54+0200\n"
-"PO-Revision-Date: 2010-04-20 12:53+0000\n"
-"Last-Translator: Patrick Ulbrich <Unknown>\n"
-"Language-Team: German <de@li.org>\n"
+"PO-Revision-Date: 2009-04-04 12:24+0000\n"
+"Last-Translator: MeltingShell <Unknown>\n"
+"Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,46 +19,41 @@ msgstr ""
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:55
 msgid "Hashcode generation not implemented for audio cds yet."
-msgstr "Hashcode-Berechnung ist noch nicht für Audio-CDs implementiert."
+msgstr ""
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:97
 msgid "No MusicBrainz metadata available for this disc."
-msgstr "Für diese CD sind keine MusicBrainz-Metadaten verfügbar."
+msgstr ""
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:102
 msgid ""
 "The trackcount retrieved from MusicBrainz does not match the trackcount of "
 "the local disc. Skipped."
 msgstr ""
-"Die Trackanzahl von MusicBrainz stimmt nicht mit der Trackanzahl der CD "
-"überein. Ausgelassen."
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:125
 msgid "Error connecting to MusicBrainz server."
-msgstr "Die Verbindung zum MusicBrainz-Server ist fehlgeschlagen."
+msgstr ""
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:105
 msgid "libExtractor not found. Metadata extraction disabled."
 msgstr ""
-"libExtractor nicht gefunden. Extrahieren der Metadaten wurde deaktiviert."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:187
 #, csharp-format
 msgid "Directory '{0}' not found. (Wrong filename encoding?)"
-msgstr "Verzeichnis '{0}' nicht gefunden. (Falsche Dateinamen-Kodierung?)"
+msgstr ""
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:196
 #, csharp-format
 msgid "Skipped item '{0}' as it doesn't seem to be a real directory."
-msgstr ""
-"Element '{0}' ausgelassen, da es kein echtes Verzeichnis zu sein scheint."
+msgstr "Elemento '{0}' saltato in quanto non sembra una directory reale."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:217
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:343
 #, csharp-format
 msgid "Skipped symlink item '{0}' as the target does not exist."
-msgstr ""
-"Symbolischer Link '{0}' wurde ausgelassen, da das Ziel nicht existiert."
+msgstr "Link simbolico '{0}' saltato in quanto la destinazione non esiste."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:226
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:350
@@ -67,91 +62,79 @@ msgid ""
 "Skipped symlink item '{0}' as it appears to point to a different drive "
 "('{1}')."
 msgstr ""
-"Symbolischer Link '{0}' wurde ausgelassen, da er auf ein anderes Laufwerk "
-"zeigt ('{1}')."
+"Link simbolico '{0}' saltato in quanto punta ad un'unità differente ('{1}')."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:265
 #, csharp-format
 msgid "File '{0}' not found. (Wrong filename encoding?)"
-msgstr "Datei '{0}' nicht gefunden. (Falsche Dateinamen-Kodierung?)"
+msgstr ""
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:313
 #, csharp-format
 msgid "Error opening file '{0}', can't retrieve any mime/metadata. ({1})"
 msgstr ""
-"Fehler beim Öffnen der Datei '{0}', Mime/Metadaten konnten nicht ermittelt "
-"werden. ({1})"
+"Errore apertura file '{0}', impossibile ottenere un mime/metadata. ({1})"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:357
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."
 msgstr ""
-"Symbolischer Link '{0}' wurde ausgelassen, da er auf keine reguläre Datei "
-"zeigt ('{1}')."
+"Link simbolico '{0}' saltato in quanto non punta ad un file regolare ('{1}')."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:366
 #, csharp-format
 msgid "Skipped item '{0}' as it appears to be some kind of special file."
-msgstr ""
-"Symbolischer Link '{0}' wurde ausgelassen, da er eine Spezialdatei zu sein "
-"scheint."
+msgstr "Elemento '{0}' saltato in quanto sembra un tipo di file speciale."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:384
 #, csharp-format
 msgid "Unable to dump dir '{0}'. ({1})"
-msgstr "Verzeichnis '{0}' konnte nicht durchsucht werden. ({1})"
+msgstr "Impossibile leggere la cartella '{0}'. ({1})"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:503
 #, csharp-format
 msgid "Can't read LastWriteTime from item '{0}' ({1})."
-msgstr "Kann das Änderungsdatum nicht von Element '{0}' lesen ({1})."
+msgstr "Impossibile leggere la data di modifica dell'elemento '{0}' ({1})."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:667
 #, csharp-format
 msgid "Failed to resolve target item for symlink '{0}'."
-msgstr ""
-"Das Auflösen des Zielelements für den symbolischen Link '{0}' ist "
-"fehlgeschlagen."
+msgstr "Impossibile risolvere il file puntato dal link simbolico '{0}'."
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:91
 msgid ""
 "Operand for keyword 'filesize' must be a number with an optional multiplier"
 msgstr ""
-"Der Operand für das Schlüßelwort 'filesize' muss eine Nummer mit einem "
-"optionalen Multiplikator sein"
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:115
 msgid "Invalid compare operator for keyword 'filesize'"
-msgstr "Unzulässiger Vergleichsoperator für das Schlüßelwort 'filesize'"
+msgstr ""
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:125
 msgid "Operand for keyword 'type' must be a string"
-msgstr "Der Operand für das Schlüßelwort 'type' muss ein String sein"
+msgstr ""
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:134
 #, csharp-format
 msgid "Unknown type '{0}'"
-msgstr "Unbekannter type '{0}'"
+msgstr ""
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:140
 msgid "Keyword 'type' only supports '=' and ':' operators"
-msgstr "Das Schlüsselwort 'type' erlaubt nur die Operatoren '=' und ':'"
+msgstr ""
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:162
 #, csharp-format
 msgid "Unknown keyword '{0}'"
-msgstr "Unbekanntes Schlüsselwort '{0}'"
+msgstr ""
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:177
 msgid "Invalid compare operator for a keyword that maps to textual content"
 msgstr ""
-"Unzulässiger  Vergleichsoperator für ein Schlüsselwort das auf textuellen "
-"Inhalt abgebildet wird"
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:230
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:234
 #, csharp-format
 msgid "Parsing error: search statement is malformed at position {0}"
 msgstr ""
-"Parsing Fehler: Der Suchausdruck ist an der Position {0} missgebildet"

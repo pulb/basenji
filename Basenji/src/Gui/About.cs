@@ -40,7 +40,10 @@ Mauro Solcia (https://launchpad.net/~maurosolcia)
 " };
 		
 		private static readonly string		translatorCredits	= 
-@"Danish:
+@"Bulgarian:
+  svilborg (https://launchpad.net/~svilborg)
+
+Danish:
   nanker (https://launchpad.net/~nanker)
 
 French:
@@ -52,6 +55,11 @@ German:
 
 Hebrew:
   Yaron (https://launchpad.net/~sh-yaron)
+
+Italian:
+  Francesco Marella (https://launchpad.net/~francesco-marella)
+  Giuseppe Caliendo (https://launchpad.net/~giuseppe-caliendo)
+  meltingshell (https://launchpad.net/~meltingshell)
 
 Russian:
   Nikolai Romanik (https://launchpad.net/~arhey)

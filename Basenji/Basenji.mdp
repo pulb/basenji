@@ -83,6 +83,8 @@
     <File subtype="Code" buildaction="Compile" name="src/Icons/CustomIconThemeMimeMapping.cs" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/ru.resources" resource_id="Basenji.po.ru.resources" />
     <File subtype="Code" buildaction="Compile" name="src/MimeCategoryMapping.cs" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="po/bg.resources" resource_id="Basenji.po.bg.resources" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="po/it.resources" resource_id="Basenji.po.it.resources" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
