@@ -719,6 +719,7 @@ namespace Basenji.Gui
 						<menuitem action=""newdb""/>
 						<menuitem action=""opendb""/>
 						<menuitem action=""open_default_db""/>
+						<separator/>
 						<menuitem action=""dbproperties""/>
 						<menuitem action=""import""/>
 						<menuitem action=""searchitems""/>
