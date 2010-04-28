@@ -320,6 +320,12 @@ namespace Basenji.Gui.Widgets
 					nameProperty.Add("name", item.Name);
 				}
 				
+				if (item.Note.Length > 0)
+					tmp.Add(new ItemProperty(S._("Note"), item.Note, 301));
+						
+				if (item.Keywords.Length > 0)
+					tmp.Add(new ItemProperty(S._("Keywords"), item.Note, 302));
+				
 				properties = tmp;
 			}
 
