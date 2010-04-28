@@ -324,7 +324,7 @@ namespace Basenji.Gui.Widgets
 					tmp.Add(new ItemProperty(S._("Note"), item.Note, 301));
 						
 				if (item.Keywords.Length > 0)
-					tmp.Add(new ItemProperty(S._("Keywords"), item.Note, 302));
+					tmp.Add(new ItemProperty(S._("Keywords"), item.Keywords, 302));
 				
 				properties = tmp;
 			}
