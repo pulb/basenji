@@ -82,8 +82,8 @@ namespace Basenji.Gui.Widgets.Editors
 			lblName = WindowBase.CreateLabel();
 			
 			infoLabels.AddRange( new InfoLabel[] {
-				new InfoLabel(S._("Item type:"), lblItemType),
-				new InfoLabel(S._("Name:"), lblName),
+				new InfoLabel(S._("Item type") + ":", lblItemType),
+				new InfoLabel(S._("Name") + ":", lblName),
 			} );
 		}
 	}
@@ -98,8 +98,8 @@ namespace Basenji.Gui.Widgets.Editors
 			tbl = WindowBase.CreateTable(2, 2);
 
 			// labels
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Note:"), false, 0F, 0F),	0, 0);
-			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Keywords:")),				0, 1);
+			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Note") + ":", false, 0F, 0F),	0, 0);
+			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Keywords") + ":"),			0, 1);
 			
 			// widgets
 			ScrolledWindow swNote = WindowBase.CreateScrolledTextView(out tvNote, VolumeItem.MAX_NOTE_LENGTH);
