@@ -94,20 +94,20 @@ namespace Basenji.Gui.Widgets
 					case VolumeItemType.DirectoryVolumeItem:
 						description = string.Format("<b>{0}</b>\n<span size=\"smaller\"><i>{1}:</i> {2}\n<i>{3}:</i> {4}, <i>{5}:</i> {6}</span>",
 					                            itemName,
-					                            STR_LOCATION,
+					                            Util.Escape(STR_LOCATION),
 					                            Util.Escape(((FileSystemVolumeItem)item).Location),
-					                            STR_VOLUME,
+					                            Util.Escape(STR_VOLUME),
 					                            volTitle,
-					                            STR_ARCHIVENO,
+					                            Util.Escape(STR_ARCHIVENO),
 					                            archiveNo);
 						break;
 					case VolumeItemType.AudioTrackVolumeItem:
 						description = string.Format("<b>{0}</b>\n<span size=\"smaller\"><i>{1}</i>\n<i>{2}:</i> {3}, <i>{4}:</i> {5}</span>",
 					                            itemName,
-					                            STR_AUDIOTRACK,
-					                            STR_VOLUME,
+					                            Util.Escape(STR_AUDIOTRACK),
+					                            Util.Escape(STR_VOLUME),
 					                            volTitle,
-					                            STR_ARCHIVENO,
+					                            Util.Escape(STR_ARCHIVENO),
 					                            archiveNo);
 						break;
 					default:

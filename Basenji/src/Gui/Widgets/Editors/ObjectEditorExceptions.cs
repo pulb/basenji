@@ -1,4 +1,4 @@
-// VolumeProperties.cs
+// ObjectEditorExceptions.cs
 // 
 // Copyright (C) 2008, 2010 Patrick Ulbrich
 //
@@ -17,17 +17,24 @@
 //
 
 using System;
-using Basenji.Gui.Widgets.Editors;
-using VolumeDB;
 
-namespace Basenji.Gui
-{	
-	public class VolumeProperties: ObjectProperties<Volume>
+namespace Basenji.Gui.Widgets.Editors
+{
+	public class ValidationException : Exception
 	{
-		public VolumeProperties(Volume volume)
-			: base(volume,
-			      S._("Volume Properties"),
-			      VolumeEditor.CreateInstance(volume.GetVolumeType()),
-			      580, 400) {}
+		public ValidationException(string msg, string widgetName, string expectedFormat) : base(msg) {
+			this.WidgetName = widgetName;
+			this.ExpectedFormat = expectedFormat;
+		}
+		
+		public string WidgetName {
+			get;
+			private set;
+		}
+		
+		public string ExpectedFormat {
+			get;
+			private set;
+		}
 	}
 }

@@ -1,6 +1,6 @@
-// Events.cs
+// ItemProperties.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,20 +17,17 @@
 //
 
 using System;
+using Basenji.Gui.Widgets.Editors;
 using VolumeDB;
 
-namespace Basenji.Gui.Widgets
+namespace Basenji.Gui
 {	
-	public delegate void SavedEventHandler(object o, SavedEventArgs args);
-	
-	public class SavedEventArgs : EventArgs
-	{	
-		private Volume volume;
-		
-		public SavedEventArgs(Volume volume) : base() {
-			this.volume = volume;
-		}
-		
-		public Volume Volume { get {return volume; } }
+	public class ItemProperties: ObjectProperties<VolumeItem>
+	{
+		public ItemProperties(VolumeItem item)
+			: base(item,
+			      S._("Item Properties"),
+			      ItemEditor.CreateInstance(item.GetVolumeItemType()),
+			      640, 350) {}
 	}
 }

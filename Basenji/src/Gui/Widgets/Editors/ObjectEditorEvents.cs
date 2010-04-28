@@ -1,4 +1,4 @@
-// VolumeProperties.cs
+// Events.cs
 // 
 // Copyright (C) 2008, 2010 Patrick Ulbrich
 //
@@ -17,17 +17,19 @@
 //
 
 using System;
-using Basenji.Gui.Widgets.Editors;
 using VolumeDB;
 
-namespace Basenji.Gui
+namespace Basenji.Gui.Widgets.Editors
 {	
-	public class VolumeProperties: ObjectProperties<Volume>
-	{
-		public VolumeProperties(Volume volume)
-			: base(volume,
-			      S._("Volume Properties"),
-			      VolumeEditor.CreateInstance(volume.GetVolumeType()),
-			      580, 400) {}
+	public class SavedEventArgs<T> : EventArgs
+	{	
+		public SavedEventArgs(T savedObject) : base() {
+			SavedObject = savedObject;
+		}
+		
+		public T SavedObject {
+			get;
+			private set;
+		}
 	}
 }

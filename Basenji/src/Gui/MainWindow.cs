@@ -334,7 +334,7 @@ namespace Basenji.Gui
 			if (!tvVolumes.GetSelectedIter(out iter)) {
 				MsgDialog.ShowError(this,
 				                    S._("No volume selected"),
-				                    S._("Please select a volume record to edit."));
+				                    S._("Please select a volume to edit."));
 				return;
 			}
 			
@@ -344,6 +344,29 @@ namespace Basenji.Gui
 			vp.Saved += delegate {
 				tvVolumes.UpdateVolume(iter, volume);
 			};
+		}
+		
+		private void EditItem() {
+			TreeIter iter;
+			
+			if (!tvItems.GetSelectedIter(out iter)) {
+				MsgDialog.ShowError(this,
+				                    S._("No item selected"),
+				                    S._("Please select an item to edit."));
+				return;
+			}
+			
+			// load item properties
+			VolumeItem item = tvItems.GetItem(iter);
+			
+			// null -> not an item row (e.g. the "loading" row)
+			if (item == null)
+				return;
+			
+			new ItemProperties(item);
+//			ip.Saved += delegate {
+//				tvItems.UpdateItem(iter, item);
+//			};
 		}
 		
 		private void BeginVolumeSearch() {
@@ -510,6 +533,10 @@ namespace Basenji.Gui
 			EditVolume();
 		}
 		
+		private void OnActEditItemActivated(object sender, System.EventArgs args) {
+			EditItem();
+		}
+		
 		private void OnActPreferencesActivated(object sender, System.EventArgs args) {
 			Preferences p = new Preferences();
 			p.Show();
@@ -553,6 +580,28 @@ namespace Basenji.Gui
 			// load volume content in the item tree
 			Volume volume = tvVolumes.GetVolume(iter);
 			tvItems.FillRoot(volume, database);
+		}
+		
+		[GLib.ConnectBefore()]
+		private void OnTvItemsButtonPressEvent(object o, ButtonPressEventArgs args) {
+			TreePath path;
+			tvItems.GetPathAtPos((int)args.Event.X, (int)args.Event.Y, out path);
+			if (path == null)
+				return;
+				
+			if ((args.Event.Button == 1) && (args.Event.Type == Gdk.EventType.TwoButtonPress)) {
+				EditItem();
+			} else if ((args.Event.Button == 3) && (args.Event.Type == Gdk.EventType.ButtonPress)) {
+				uint btn = args.Event.Button;
+				uint time = args.Event.Time;
+				itemContextMenu.Popup(null, null, null, btn, time);
+			}
+		}
+		
+		[GLib.ConnectBefore()]
+		private void OnTvItemsKeyPressEvent(object o, Gtk.KeyPressEventArgs args) {
+			if (args.Event.Key == Gdk.Key.Return)
+				EditItem();
 		}
 		
 		private void OnTvItemsSelectionChanged(object o, EventArgs args) {
@@ -612,11 +661,14 @@ namespace Basenji.Gui
 		
 		private Gtk.Action actInfo;
 		
+		private Gtk.Action actEditItem;
+		
 		// toolbar
 		private Toolbar toolbar;
 		
-		// volume context menu
+		// context menus
 		private Menu volumeContextMenu;
+		private Menu itemContextMenu;
 		
 		// search entry
 		private Widgets.SearchEntry txtSearchString;
@@ -707,6 +759,10 @@ namespace Basenji.Gui
 			actSearch = CreateAction("searchitems", S._("_Search"), null, Stock.Find, OnActSearchActivated);
 			ag.Add(actSearch, "<control>S");
 			
+			// context menus
+			actEditItem = CreateAction("edititem", S._("Edit Item"), null, Stock.Edit, OnActEditItemActivated);
+			ag.Add(actEditItem, null);
+			
 			// ui manager
 			UIManager manager = new UIManager();
 			manager.InsertActionGroup(ag, 0);
@@ -746,6 +802,9 @@ namespace Basenji.Gui
 					<menuitem action=""editvolume""/>
 					<menuitem action=""removevolume""/>
 				</popup>
+				<popup name=""item_contextmenu"">
+					<menuitem action=""edititem""/>
+				</popup>
 			</ui>
 			";
 			
@@ -754,6 +813,7 @@ namespace Basenji.Gui
 			menubar				= (MenuBar)manager.GetWidget("/menubar");
 			toolbar				= (Toolbar)manager.GetWidget("/toolbar");
 			volumeContextMenu	= (Menu)manager.GetWidget("/volume_contextmenu");
+			itemContextMenu		= (Menu)manager.GetWidget("/item_contextmenu");
 			
 			// gtk will use SmallToolbar on windows by default 
 			// (no custom icons available for this size)
@@ -817,6 +877,8 @@ namespace Basenji.Gui
 			tvVolumes.ButtonPressEvent		+= OnTvVolumesButtonPressEvent;
 			tvVolumes.KeyPressEvent			+= OnTvVolumesKeyPressEvent;
 			
+			tvItems.ButtonPressEvent		+= OnTvItemsButtonPressEvent;
+			tvItems.KeyPressEvent			+= OnTvItemsKeyPressEvent;
 			tvItems.Selection.Changed		+= OnTvItemsSelectionChanged;
 			
 			this.DeleteEvent				+= OnDeleteEvent;

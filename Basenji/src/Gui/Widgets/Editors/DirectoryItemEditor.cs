@@ -1,6 +1,6 @@
-// VolumeProperties.cs
+// DirectoryItemEditor.cs
 // 
-// Copyright (C) 2008, 2010 Patrick Ulbrich
+// Copyright (C) 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -15,19 +15,16 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
-
 using System;
-using Basenji.Gui.Widgets.Editors;
+using System.Collections.Generic;
+using Gtk;
+using Basenji.Gui.Base;
 using VolumeDB;
 
-namespace Basenji.Gui
-{	
-	public class VolumeProperties: ObjectProperties<Volume>
+namespace Basenji.Gui.Widgets.Editors
+{
+	public class DirectoryItemEditor : FileSystemItemEditor
 	{
-		public VolumeProperties(Volume volume)
-			: base(volume,
-			      S._("Volume Properties"),
-			      VolumeEditor.CreateInstance(volume.GetVolumeType()),
-			      580, 400) {}
+		public DirectoryItemEditor() : base(S._("Directory")) {}
 	}
 }

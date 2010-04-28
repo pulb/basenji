@@ -174,12 +174,10 @@ FILES = \
 	src/Gui/Base/ViewBase.cs \
 	src/Gui/Base/WindowBase.cs \
 	src/Gui/Widgets/DateChooser.cs \
-	src/Gui/Widgets/FSVolumeEdit.cs \
 	src/Gui/Widgets/ItemInfo.cs \
 	src/Gui/Widgets/ItemView.cs \
 	src/Gui/Widgets/Led.cs \
 	src/Gui/Widgets/SearchResultView.cs \
-	src/Gui/Widgets/VolumeEdit.cs \
 	src/Gui/Widgets/VolumeView.cs \
 	src/Icons/CustomIconTheme.cs \
 	src/Icons/Icon.cs \
@@ -199,15 +197,26 @@ FILES = \
 	src/S.cs \
 	src/Gui/Widgets/CategoryView.cs \
 	src/Gui/Widgets/PageNavigation.cs \
-	src/Gui/Widgets/VolumeEditEvents.cs \
 	src/Gui/Widgets/PageNavigationEvents.cs \
 	src/Gui/Widgets/IconEntry.cs \
 	src/Gui/Widgets/SearchEntry.cs \
 	src/Gui/Widgets/ItemPreview.cs \
 	src/Gui/Import.cs \
-	src/Gui/Widgets/AudioCdVolumeEdit.cs \
 	src/Icons/CustomIconThemeMimeMapping.cs \
-	src/MimeCategoryMapping.cs 
+	src/MimeCategoryMapping.cs \
+	src/Gui/ItemProperties.cs \
+	src/Gui/ObjectProperties.cs \
+	src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs \
+	src/Gui/Widgets/Editors/AudioTrackItemEditor.cs \
+	src/Gui/Widgets/Editors/FileSystemItemEditor.cs \
+	src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs \
+	src/Gui/Widgets/Editors/ItemEditor.cs \
+	src/Gui/Widgets/Editors/ObjectEditor.cs \
+	src/Gui/Widgets/Editors/ObjectEditorEvents.cs \
+	src/Gui/Widgets/Editors/ObjectEditorExceptions.cs \
+	src/Gui/Widgets/Editors/VolumeEditor.cs \
+	src/Gui/Widgets/Editors/FileItemEditor.cs \
+	src/Gui/Widgets/Editors/DirectoryItemEditor.cs 
 
 DATA_FILES = 
 

@@ -21,6 +21,8 @@ using System.Text;
 using IO = System.IO;
 using Gtk;
 using Gdk;
+using Basenji.Gui.Widgets;
+using Basenji.Gui.Widgets.Editors;
 using Platform.Common.IO;
 using VolumeDB;
 using VolumeDB.VolumeScanner;
@@ -75,8 +77,6 @@ namespace Basenji.Gui
 			};
 			
 			scanner = VolumeProber.GetScannerForVolume(drive, database, opts);
-//			// TODO : scanner = VolumeProber.GetScanner(device,...)
-//			scanner = new FilesystemVolumeScanner(drive, database, opts);
 			
 			// scanner eventhandlers
 			scanner.BeforeScanItem	  += scanner_BeforeScanItem;
@@ -89,7 +89,7 @@ namespace Basenji.Gui
 			database.EndWriteAccess		+= database_EndWriteAccess;
 			
 			BuildGui();					// must be called _after_ scanner instanciation (requires scanner.VolumeInfo.GetVolumeType())
-			volEdit.Sensitive = false;	// will be enabled when scanning has been finished
+			volEditor.Sensitive = false;	// will be enabled when scanning has been finished
 			InitTreeView();
 			
 			scannerLog = new StringBuilder();
@@ -222,13 +222,13 @@ namespace Basenji.Gui
 		private bool SaveAndClose() {
 			try {
 				if (scanner.ScanSucceeded) {
-					volEdit.Save(); // may throw ValidationException
-					SaveLog(volEdit.Volume.VolumeID);
-					OnNewVolumeAdded(volEdit.Volume);				 
+					volEditor.Save(); // may throw ValidationException
+					SaveLog(volEditor.Volume.VolumeID);
+					OnNewVolumeAdded(volEditor.Volume);				 
 				}
 
 				this.Destroy();
-			} catch (Widgets.VolumeEdit.ValidationException e) {
+			} catch (ValidationException e) {
 				MsgDialog.ShowError(this, S._("Invalid data"), string.Format(S._("\"{0}\" is {1}.\n\nExpected format: {2}\nPlease correct or remove the data you entered.") , e.WidgetName, e.Message, e.ExpectedFormat));
 				return false;			 
 			}
@@ -340,8 +340,8 @@ namespace Basenji.Gui
 					UpdateLog(LogIcon.Error, S._("Scanning aborted."));
 				} else {
 					UpdateLog(LogIcon.Info, S._("Scanning completed successfully."));
-					volEdit.Load(e.Volume);					   
-					volEdit.Sensitive = true;
+					volEditor.Load(e.Volume);					   
+					volEditor.Sensitive = true;
 					//mainWindow.RefreshVolumeList(); // TODO : slow on dbs containing many volumes?
 				}
 
@@ -392,7 +392,7 @@ namespace Basenji.Gui
 
 					/* update counter labels */
 					if (vscanner.scanner != null)
-						vscanner.volEdit.UpdateInfo(vscanner.scanner.VolumeInfo);
+						vscanner.volEditor.UpdateInfo(vscanner.scanner.VolumeInfo);
 
 					/* LED (database access indicator) */
 					if (ledState != vscanner.led.LedState)
@@ -423,11 +423,11 @@ namespace Basenji.Gui
 	// gui initialization
 	public partial class VolumeScanner : Base.WindowBase
 	{
-		private TreeView			tvLog;
-		private Button				btnAbort;
-		private Statusbar			statusbar;
-		private Widgets.Led			led;
-		private Widgets.VolumeEdit	volEdit;
+		private TreeView				tvLog;
+		private Button					btnAbort;
+		private Statusbar				statusbar;
+		private Led						led;
+		private VolumeEditor			volEditor;
 		
 		protected override void BuildGui () {
 			base.BuildGui();
@@ -442,16 +442,16 @@ namespace Basenji.Gui
 			VBox vbOuter = new VBox();
 			vbOuter.Spacing = 0;
 			
-			// vbVolEdit
-			VBox vbVolEdit = new VBox();
-			vbVolEdit.Spacing = 6;
-			vbVolEdit.BorderWidth = 12;
+			// vbVolEditor
+			VBox vbVolEditor = new VBox();
+			vbVolEditor.Spacing = 6;
+			vbVolEditor.BorderWidth = 12;
 			
-			volEdit = Widgets.VolumeEdit.CreateInstance(scanner.VolumeInfo.GetVolumeType());
-			vbVolEdit.PackStart(CreateLabel(S._("<b>Volume Information:</b>"), true, 0, 0), false, false, 0);
-			vbVolEdit.PackStart(LeftAlign(volEdit), true, true, 0);
+			volEditor = VolumeEditor.CreateInstance(scanner.VolumeInfo.GetVolumeType());
+			vbVolEditor.PackStart(CreateLabel(S._("<b>Volume Information:</b>"), true, 0, 0), false, false, 0);
+			vbVolEditor.PackStart(LeftAlign(volEditor), true, true, 0);
 			
-			vbOuter.PackStart(vbVolEdit, false, false, 0);
+			vbOuter.PackStart(vbVolEditor, false, false, 0);
 			
 			// vbScannerLog
 			VBox vbScannerLog = new VBox();
@@ -473,7 +473,7 @@ namespace Basenji.Gui
 			HBox hbLed = new HBox();
 			hbLed.Spacing = 6;
 			
-			led = new Widgets.Led(false);			 
+			led = new Led(false);			 
 			hbLed.PackStart(led, false, false, 0);
 			hbLed.PackStart(CreateLabel(S._("Database access")));
 

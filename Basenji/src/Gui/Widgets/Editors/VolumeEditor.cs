@@ -1,4 +1,4 @@
-// VolumeEdit.cs
+// VolumeEditor.cs
 // 
 // Copyright (C) 2008, 2010 Patrick Ulbrich
 //
@@ -21,28 +21,25 @@ using System.Collections.Generic;
 using Gtk;
 using Basenji;
 using Basenji.Gui.Base;
-using Platform.Common.Diagnostics;
-using Platform.Common.Globalization;
 using VolumeDB;
 using VolumeDB.VolumeScanner;
+using Platform.Common.Globalization;
 
-namespace Basenji.Gui.Widgets
+namespace Basenji.Gui.Widgets.Editors
 {
-	public abstract partial class VolumeEdit : BinBase
+	public abstract partial class VolumeEditor : ObjectEditor<Volume>
 	{
 		private string	volumeType;
-		private List<InfoLabel> infoLabels;
 		
 		private Label	lblVolumeType;
 		private Label	lblHashed;
 		private Label	lblAdded;
 		
-		private Volume	volume;
-		private bool	dataChanged;
 		private TreeIter customCategory;
 		
 		// TODO : 
-		// - place "new" button next to the category combobox, which will open a dialog to add/edit categories (e.g. add "Roms" category)
+		// - place "new" button next to the category combobox, 
+		//   which will open a dialog to add/edit categories (e.g. add "Roms" category)
 		// - suggest category depending on cd content
 		public static readonly TranslatedStringTable categories = new TranslatedStringTable() {
 			{ "Backup",		S._("Backup")		},
@@ -53,99 +50,44 @@ namespace Basenji.Gui.Widgets
 			{ "Misc",		S._("Misc")			},
 			{ "Other",		S._("Other")		}
 		};
-//		private string[] categories = {
-//			S._("Backup"),
-//			S._("Documents"),			
-//			S._("Music"),
-//			S._("Movies"),
-//			S._("Pictures"),
-//			S._("Misc"),
-//			S._("Other")
-//		};
 		
-		protected VolumeEdit(string volumeType) {
-			dataChanged = false;
+		protected VolumeEditor(string volumeType) : base() {
 			customCategory = TreeIter.Zero;
 			this.volumeType = volumeType;			 
-			infoLabels = new List<InfoLabel>(); 
-			AddInfoLabels(infoLabels);
-
-			BuildGui();
 		}
 		
-		public static VolumeEdit CreateInstance(VolumeType volType) {
+		public static VolumeEditor CreateInstance(VolumeType volType) {
 			switch (volType) {
 				case VolumeType.FileSystemVolume:
-					return new FSVolumeEdit();
+					return new FileSystemVolumeEditor();
 				case VolumeType.AudioCdVolume:
-					return new AudioCdVolumeEdit();
+					return new AudioCdVolumeEditor();
 				default:
-					throw new NotImplementedException(string.Format("VolumeEdit widget for VolumeType {0} is not implemented", volType.ToString()));
+					throw new NotImplementedException(string.Format("VolumeEditor widget for VolumeType {0} is not implemented", volType.ToString()));
 			}
 		}
 		
-		public new bool Sensitive {
-			get { 
-				// just test the first widget				 
-				return tblWidgets[txtArchiveNo].Child.Sensitive;
-			}
-			set {
-				tblWidgets.Foreach(w => {
-					if (!(w is Label))
-						w.Sensitive = value;
-				});
-			}
-		}
-		
-		public bool Changed { get { return dataChanged; } }		   
-		
-		public Volume Volume { get { return volume; } }
+		public Volume Volume { get { return Object; } }
 		
 		// used by the VolumeScanner window to update the info labels periodically
 		public virtual void UpdateInfo(VolumeInfo vi) {			
 			UpdateInfoLabels(vi.IsHashed, vi.Added);
 		}
 
-		public void Load(VolumeDB.Volume volume) {
-			LoadFromVolume(volume); // may throw a ArgumentException
-			this.volume = volume;
-			// changed flag was set to true since the input fields were loaded
-			// but we will keep track of changes made by the user only.
-			dataChanged = false;
-		}
-		
-		public void Save() {
-			if (volume == null)
-				throw new InvalidOperationException("No volume object loaded");
-
-			if (!dataChanged) {
-#if DEBUG
-				Debug.WriteLine("not saving, nothing changed.");
-#endif
-				return;
-			} else {
-#if DEBUG
-				Debug.WriteLine("saving form.");
-#endif
-			}
-			
-			ValidateForm(); // may throw a ValidationException
-			SaveToVolume(volume);
-			
-			volume.UpdateChanges();
-			OnSaved();
-		}
-		
-		protected virtual void ValidateForm() {
+		protected override void ValidateForm() {
 			// TODO : add further validation			
 			if (!dcLoanedDate.IsEmpty && !dcLoanedDate.IsValid)
-				throw new ValidationException("not a valid date", "Loaned date", dcLoanedDate.DatePattern);
+				throw new ValidationException("not a valid date",
+				                              "Loaned date",
+				                              dcLoanedDate.DatePattern);
 			
 			if (!dcReturnDate.IsEmpty && !dcReturnDate.IsValid)
-				throw new ValidationException("not a valid date", "Return date", dcReturnDate.DatePattern);
+				throw new ValidationException("not a valid date",
+				                              "Return date",
+				                              dcReturnDate.DatePattern);
 		}
 		
-		protected virtual void SaveToVolume(VolumeDB.Volume volume) {
+		protected override void SaveToObject(VolumeDB.Volume volume) {
 			// save form
 			volume.ArchiveNo = txtArchiveNo.Text.Trim();
 			
@@ -166,9 +108,11 @@ namespace Basenji.Gui.Widgets
 			volume.LoanedTo		= txtLoanedTo.Text.Trim();
 			volume.LoanedDate	= dcLoanedDate.IsEmpty ? DateTime.MinValue : dcLoanedDate.Date;
 			volume.ReturnDate	= dcReturnDate.IsEmpty ? DateTime.MinValue : dcReturnDate.Date;
+		
+			volume.UpdateChanges();
 		}
 		
-		protected virtual void LoadFromVolume(VolumeDB.Volume volume) {
+		protected override void LoadFromObject(VolumeDB.Volume volume) {
 			//
 			// form
 			//
@@ -203,14 +147,6 @@ namespace Basenji.Gui.Widgets
 					model.IterNthChild(out customCategory, categories.Count);
 					cmbCategory.SetActiveIter(customCategory);
 				}
-				
-//				for (int i = 0; i < model.IterNChildren(); i++) {				 
-//					model.IterNthChild(out iter, i);
-//					if ((string)model.GetValue(iter, 0) == volume.Category) {
-//						cmbCategory.SetActiveIter(iter);
-//						break;
-//					}					 
-//				}
 			}
 			
 			txtTitle.Text				= volume.Title;
@@ -240,7 +176,7 @@ namespace Basenji.Gui.Widgets
 			lblAdded.LabelProp		= added.ToShortDateString();		
 		}
 		
-		protected virtual void AddInfoLabels(List<InfoLabel> infoLabels) {
+		protected override void AddInfoLabels(List<InfoLabel> infoLabels) {
 			lblVolumeType = WindowBase.CreateLabel();
 			lblHashed = WindowBase.CreateLabel();
 			lblAdded = WindowBase.CreateLabel();
@@ -251,47 +187,11 @@ namespace Basenji.Gui.Widgets
 				new InfoLabel(S._("Added:"), lblAdded)
 			} );
 		}
-		
-		private void OnChanged(object sender, EventArgs args) {
-			dataChanged = true;
-		}
-		
-		public event SavedEventHandler Saved;
-		
-		protected virtual void OnSaved() {
-			if (Saved != null)
-				Saved(this, new SavedEventArgs(volume));
-		}
-		
-		protected class InfoLabel
-		{
-			public string caption;
-			public Label label;
-			public InfoLabel(string caption, Label label) {
-				this.caption = caption;
-				this.label = label;
-			}
-		}
-			
-		public class ValidationException : Exception
-		{
-			private string widgetName;
-			private string expectedFormat;
-			
-			public ValidationException(string msg, string widgetName, string expectedFormat) : base(msg) {
-				this.widgetName = widgetName;
-				this.expectedFormat = expectedFormat;
-			}
-			
-			public string WidgetName		{ get { return widgetName; } }
-			public string ExpectedFormat	{ get { return expectedFormat; } }
-		}
 	}
 	
 	// gui initialization
-	public abstract partial class VolumeEdit : BinBase
+	public abstract partial class VolumeEditor : ObjectEditor<Volume>
 	{
-		private Table		tblWidgets;
 		private Entry		txtArchiveNo;
 		private ComboBox	cmbCategory;
 		private Entry		txtTitle;
@@ -301,21 +201,8 @@ namespace Basenji.Gui.Widgets
 		private Widgets.DateChooser dcLoanedDate;
 		private Widgets.DateChooser dcReturnDate;
 		
-		protected override void BuildGui() {
-			// hbox			   
-			HBox hbox = new HBox();
-			hbox.Spacing = 18;
-			
-			tblWidgets = CreateWidgetTbl();
-			hbox.PackStart(tblWidgets, true, true, 0);
-			hbox.PackStart(new VSeparator(), false, false, 0);
-			hbox.PackStart(CreateInfoTbl(), false, false, 0);
-			
-			this.Add(hbox);
-		}
-		
-		private Table CreateWidgetTbl() {
-			Table tbl = WindowBase.CreateTable(8, 2);
+		protected override void CreateWidgetTbl(out Table tbl) {
+			tbl = WindowBase.CreateTable(8, 2);
 
 			// labels
 			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Archive No.:")),			0, 0);
@@ -350,37 +237,18 @@ namespace Basenji.Gui.Widgets
 			WindowBase.TblAttach(tbl, dcReturnDate,		1, 7, xAttachOpts, yAttachOpts);
 			
 			// fill combobox
-			foreach(string translated in categories.TranslatedStrings)
+			foreach (string translated in categories.TranslatedStrings)
 				cmbCategory.AppendText(translated);
-			//for (int i = 0; i < categories.Length; i++)
-			//	cmbCategory.AppendText(categories[i]);
 
 			// events 
-			txtArchiveNo.Changed			+= OnChanged;
-			cmbCategory.Changed				+= OnChanged;
-			txtTitle.Changed				+= OnChanged;
-			tvDescription.Buffer.Changed	+= OnChanged;
-			txtKeywords.Changed				+= OnChanged;
-			txtLoanedTo.Changed				+= OnChanged;
-			dcLoanedDate.Changed			+= OnChanged;
-			dcReturnDate.Changed			+= OnChanged;
-					
-			return tbl;
+			txtArchiveNo.Changed			+= ChangedEventHandler;
+			cmbCategory.Changed				+= ChangedEventHandler;
+			txtTitle.Changed				+= ChangedEventHandler;
+			tvDescription.Buffer.Changed	+= ChangedEventHandler;
+			txtKeywords.Changed				+= ChangedEventHandler;
+			txtLoanedTo.Changed				+= ChangedEventHandler;
+			dcLoanedDate.Changed			+= ChangedEventHandler;
+			dcReturnDate.Changed			+= ChangedEventHandler;
 		}
-		
-		private Table CreateInfoTbl() {
-			Table tbl = WindowBase.CreateTable(infoLabels.Count, 2);
-			
-			for (int i = 0; i < infoLabels.Count; i++) {
-				string caption = string.Format("<i>{0}</i>", infoLabels[i].caption);
-				
-				WindowBase.TblAttach(tbl, WindowBase.CreateLabel(caption, true), 0, i);								   
-				WindowBase.TblAttach(tbl, infoLabels[i].label, 1, i);
-				infoLabels[i].label.LabelProp = "-";
-			}
-
-			return tbl;
-		}
-		
 	}
 }

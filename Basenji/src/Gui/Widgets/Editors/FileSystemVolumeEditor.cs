@@ -1,6 +1,6 @@
-// FSVolumeEdit.cs
+// FileSystemVolumeEditor.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -23,30 +23,33 @@ using Basenji.Gui.Base;
 using VolumeDB;
 using VolumeDB.VolumeScanner;
 
-namespace Basenji.Gui.Widgets
+namespace Basenji.Gui.Widgets.Editors
 {	
-	public class FSVolumeEdit : VolumeEdit
+	public class FileSystemVolumeEditor : VolumeEditor
 	{
 		private Label lblFiles;
 		private Label lblDirectories;
 		private Label lblTotalSize;
 		
-		public FSVolumeEdit() : base(S._("Filesystem")) {}
+		public FileSystemVolumeEditor() : base(S._("Filesystem")) {}
 		
 		public override void UpdateInfo(VolumeInfo vi) { 
 			if (!(vi is FilesystemVolumeInfo))
-				throw new ArgumentException(string.Format("must be of type {0}", typeof(FilesystemVolumeInfo)), "vi");
+				throw new ArgumentException(string.Format("must be of type {0}",
+				                                          typeof(FilesystemVolumeInfo)), "vi");
 			
 			base.UpdateInfo(vi);
 			FilesystemVolumeInfo fsvi = (FilesystemVolumeInfo)vi;
 			UpdateInfoLabels(fsvi.Files, fsvi.Directories, fsvi.Size);
 		}
 		
-		protected override void LoadFromVolume(VolumeDB.Volume volume) {
+		protected override void LoadFromObject(VolumeDB.Volume volume) {
 			if (!(volume is FileSystemVolume))
-				throw new ArgumentException(string.Format("must be of type {0}", typeof(FileSystemVolume)), "volume");
+				throw new ArgumentException(string.Format("must be of type {0}",
+				                                          typeof(FileSystemVolume)), "volume");
 
-			base.LoadFromVolume(volume);
+			base.LoadFromObject(volume);
+			
 			FileSystemVolume fsvol = (FileSystemVolume)volume;
 			UpdateInfoLabels(fsvol.Files, fsvol.Directories, fsvol.Size);
 		}

@@ -40,12 +40,10 @@
     <File subtype="Code" buildaction="Compile" name="src/Gui/Base/ViewBase.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Base/WindowBase.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/DateChooser.cs" />
-    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/FSVolumeEdit.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/ItemInfo.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/ItemView.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/Led.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/SearchResultView.cs" />
-    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/VolumeEdit.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/VolumeView.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Icons/CustomIconTheme.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Icons/Icon.cs" />
@@ -70,7 +68,6 @@
     <File subtype="Code" buildaction="EmbedAsResource" name="images/search.png" resource_id="Basenji.images.search.png" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/CategoryView.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/PageNavigation.cs" />
-    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/VolumeEditEvents.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/PageNavigationEvents.cs" />
     <File subtype="Code" name="LibExtractor.dll.config" buildaction="FileCopy" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/IconEntry.cs" />
@@ -79,12 +76,25 @@
     <File subtype="Code" buildaction="EmbedAsResource" name="po/es.resources" resource_id="Basenji.po.es.resources" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Import.cs" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/fr.resources" resource_id="Basenji.po.fr.resources" />
-    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/AudioCdVolumeEdit.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Icons/CustomIconThemeMimeMapping.cs" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/ru.resources" resource_id="Basenji.po.ru.resources" />
     <File subtype="Code" buildaction="Compile" name="src/MimeCategoryMapping.cs" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/bg.resources" resource_id="Basenji.po.bg.resources" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/it.resources" resource_id="Basenji.po.it.resources" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/ItemProperties.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/ObjectProperties.cs" />
+    <File subtype="Directory" buildaction="Compile" name="src/Gui/Widgets/Editors" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/Editors/AudioTrackItemEditor.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/Editors/FileSystemItemEditor.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/Editors/ItemEditor.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/Editors/ObjectEditor.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/Editors/ObjectEditorEvents.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/Editors/ObjectEditorExceptions.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/Editors/VolumeEditor.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/Editors/FileItemEditor.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/Editors/DirectoryItemEditor.cs" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />

@@ -1,4 +1,4 @@
-// AudioCdVolumeEdit.cs
+// AudioCdVolumeEditor.cs
 // 
 // Copyright (C) 2010 Patrick Ulbrich
 //
@@ -23,29 +23,32 @@ using Basenji.Gui.Base;
 using VolumeDB;
 using VolumeDB.VolumeScanner;
 
-namespace Basenji.Gui.Widgets
+namespace Basenji.Gui.Widgets.Editors
 {
-	public class AudioCdVolumeEdit : VolumeEdit
+	public class AudioCdVolumeEditor : VolumeEditor
 	{
 		private Label lblTracks;
 		private Label lblDuration;
 		
-		public AudioCdVolumeEdit() : base(S._("Audio CD")) {}
+		public AudioCdVolumeEditor() : base(S._("Audio CD")) {}
 		
 		public override void UpdateInfo(VolumeInfo vi) {
 			if (!(vi is AudioCdVolumeInfo))
-				throw new ArgumentException(string.Format("must be of type {0}", typeof(AudioCdVolumeInfo)), "vi");
+				throw new ArgumentException(string.Format("must be of type {0}",
+				                                          typeof(AudioCdVolumeInfo)), "vi");
 			
 			base.UpdateInfo(vi);
 			AudioCdVolumeInfo avi = (AudioCdVolumeInfo)vi;
 			UpdateInfoLabels(avi.Tracks, avi.Duration);
 		}
 		
-		protected override void LoadFromVolume(VolumeDB.Volume volume) {
+		protected override void LoadFromObject(VolumeDB.Volume volume) {
 			if (!(volume is AudioCdVolume))
-				throw new ArgumentException(string.Format("must be of type {0}", typeof(AudioCdVolume)), "volume");
+				throw new ArgumentException(string.Format("must be of type {0}",
+				                                          typeof(AudioCdVolume)), "volume");
 
-			base.LoadFromVolume(volume);
+			base.LoadFromObject(volume);
+			
 			AudioCdVolume avol = (AudioCdVolume)volume;
 			UpdateInfoLabels(avol.Tracks, avol.Duration);
 		}

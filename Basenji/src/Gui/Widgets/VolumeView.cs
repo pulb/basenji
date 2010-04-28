@@ -19,6 +19,7 @@
 using System;
 using Gtk;
 using Basenji.Gui.Base;
+using Basenji.Gui.Widgets.Editors;
 using Basenji.Icons;
 using VolumeDB;
 
@@ -110,7 +111,7 @@ namespace Basenji.Gui.Widgets
 			                           (int)(255 * (c.Green / gdk_max)),
 			                           (int)(255 * (c.Blue / gdk_max)));
 				
-				title = string.Format("<span foreground=\"{0}\">{1}</span>", col, STR_UNNAMED);
+				title = string.Format("<span foreground=\"{0}\">{1}</span>", col, Util.Escape(STR_UNNAMED));
 			
 			} else if (!string.IsNullOrEmpty(v.LoanedTo)) {
 				title = string.Format("<span foreground=\"red\">{0}</span>", Util.Escape(v.Title));
@@ -128,7 +129,7 @@ namespace Basenji.Gui.Widgets
 		
 			if (string.IsNullOrEmpty(v.Category))
 				category = "-";
-			else if (!VolumeEdit.categories.TryGetTranslatedString(v.Category, out category))
+			else if (!VolumeEditor.categories.TryGetTranslatedString(v.Category, out category))
 				category = v.Category;
 			
 			// specific volume info			
@@ -142,22 +143,22 @@ namespace Basenji.Gui.Widgets
 					
 					desc = string.Format(strFormat,
 				                     title,
-				                     STR_CATEGORY,
+				                     Util.Escape(STR_CATEGORY),
 									 Util.Escape(category),
 									 Util.GetSizeStr(fsv.Size),
 				                     fsv.Files.ToString(),
-				                     STR_FILES);
+				                     Util.Escape(STR_FILES));
 					break;					
 			case VolumeType.AudioCdVolume:
 					AudioCdVolume avol = (AudioCdVolume)v;
 				
 					desc = string.Format(strFormat,
 				                     title,
-				                     STR_CATEGORY,
+				                     Util.Escape(STR_CATEGORY),
 									 Util.Escape(category),
 									 avol.Duration,
 				                     avol.Tracks.ToString(),
-				                     STR_TRACKS);
+				                     Util.Escape(STR_TRACKS));
 					break;
 				default:
 					throw new NotImplementedException("Description not implemented for this VolumeType");
