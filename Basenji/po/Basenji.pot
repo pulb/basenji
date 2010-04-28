@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-29 00:05+0200\n"
+"POT-Creation-Date: 2010-04-29 00:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -215,7 +215,7 @@ msgstr ""
 msgid "Database Properties"
 msgstr ""
 
-#: src/Gui/DBProperties.cs:89 src/Gui/Widgets/Editors/ItemEditor.cs:86
+#: src/Gui/DBProperties.cs:89
 msgid "Name:"
 msgstr ""
 
@@ -598,7 +598,6 @@ msgid "Title:"
 msgstr ""
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:212
-#: src/Gui/Widgets/Editors/ItemEditor.cs:102
 msgid "Keywords:"
 msgstr ""
 
@@ -668,11 +667,19 @@ msgid "Hash"
 msgstr ""
 
 #: src/Gui/Widgets/Editors/ItemEditor.cs:85
-msgid "Item type:"
+msgid "Item type"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/ItemEditor.cs:101
-msgid "Note:"
+#: src/Gui/Widgets/Editors/ItemEditor.cs:86 src/Gui/Widgets/ItemView.cs:168
+msgid "Name"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:101 src/Gui/Widgets/ItemInfo.cs:324
+msgid "Note"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:102 src/Gui/Widgets/ItemInfo.cs:327
+msgid "Keywords"
 msgstr ""
 
 #: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:58
@@ -700,10 +707,6 @@ msgstr ""
 
 #: src/Gui/Widgets/ItemView.cs:99
 msgid "Unknown"
-msgstr ""
-
-#: src/Gui/Widgets/ItemView.cs:168
-msgid "Name"
 msgstr ""
 
 #: src/Gui/Widgets/ItemView.cs:173
@@ -776,14 +779,6 @@ msgstr ""
 
 #: src/Gui/Widgets/ItemInfo.cs:300
 msgid "File count"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:324
-msgid "Note"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:327
-msgid "Keywords"
 msgstr ""
 
 #: src/Gui/Widgets/PageNavigation.cs:27
