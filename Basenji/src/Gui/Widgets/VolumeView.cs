@@ -39,17 +39,14 @@ namespace Basenji.Gui.Widgets
 			iconCache = new IconCache(this);
 			
 			// init columns
-			const int MIN_COL_WIDTH = 80;
-			
 			TreeViewColumn col;
 			
 			col = new TreeViewColumn(string.Empty, new CellRendererPixbuf(), "pixbuf", 0);			
-			col.MinWidth = 48; // TODO : adjust to icon size
+			col.Expand = false;
 			AppendColumn(col);
  
 			col = new TreeViewColumn(string.Empty, new CellRendererText(), "markup", 1);
-			//col.SortColumnId = (int)Columns.Id;
-			col.MinWidth = MIN_COL_WIDTH;
+			col.Expand = true;
 			AppendColumn(col);
 		}
 
