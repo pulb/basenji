@@ -1,6 +1,6 @@
 // DriveSelection.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -116,6 +116,7 @@ namespace Basenji.Gui
 			TreeViewColumn col;
 			CellRendererText leftAlignedTR = new CellRendererText();
 			leftAlignedTR.Xalign = 0.0f;
+			leftAlignedTR.Ellipsize = Pango.EllipsizeMode.End;
 			
 			if (waiting) {
 				col = new TreeViewColumn(string.Empty, leftAlignedTR, "text", 0);
@@ -125,32 +126,30 @@ namespace Basenji.Gui
 				
 			} else {
 				col = new TreeViewColumn(string.Empty, new CellRendererPixbuf(), "pixbuf", 0);
-				col.MinWidth = 22;
+				col.Resizable = false;
+				col.Expand = false;
 				tv.AppendColumn(col);
 
 				col = new TreeViewColumn(S._("Drive"), leftAlignedTR, "text", 1);
 				col.Resizable = true;
+				col.Expand = true;
 				col.Alignment = 0.0f;
 				tv.AppendColumn(col);
 				
 				col = new TreeViewColumn(S._("Label"), leftAlignedTR, "text", 2);
 				col.Resizable = true;
+				col.Expand = true;
 				col.Alignment = 0.0f;
 				tv.AppendColumn(col);
-
 
 				CellRendererText rightAlignedTR = new CellRendererText();
 				rightAlignedTR.Xalign = 1.0f;
 				
 				col = new TreeViewColumn(S._("Size"), rightAlignedTR, "text", 3);
 				col.Resizable = true;
+				col.Expand = false;
 				col.Alignment = 1.0f;
 				tv.AppendColumn(col);
-
-//				  col = new TreeViewColumn(string.Empty, rightAlignedTR, "text", 4);
-//				  col.Resizable = true;
-//				  col.Alignment = 1.0f;
-//				  tv.AppendColumn(col);
 			 }
 		}
 		
@@ -180,7 +179,6 @@ namespace Basenji.Gui
 //		}
 		
 		private void OnObjectDestroyed(object o, EventArgs e) {
-			//Util.DebugWrite("ds destroyed");
 			isDestroyed = true;
 		}
 		
@@ -240,11 +238,15 @@ namespace Basenji.Gui
 			//general window settings
 			this.BorderWidth		= 0 /* = 2 */; // TODO : somehow the dialog already has a 2 px border.. vbox? bug in gtk#?
 			this.Title				= S._("Please select a drive to scan");
-			this.DefaultWidth		= 320;
+			//this.DefaultWidth		= 320;
 			this.DefaultHeight		= 340;
 
 			// drives treeview
 			ScrolledWindow sw = WindowBase.CreateScrolledView<TreeView>(out tvDrives, false);
+			
+			// set min width of the scrolled window widget
+			sw.WidthRequest = 320;
+			
 			tvDrives.KeyPressEvent		+= OnTvDrivesKeyPressEvent;
 			tvDrives.ButtonPressEvent	+= OnTvDrivesButtonPressEvent;
 			tvDrives.Selection.Changed	+= OnTvDrivesSelectionChanged;
