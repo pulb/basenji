@@ -74,12 +74,12 @@ namespace Basenji.Gui.Widgets.Editors
 			//
 			lblItemType.LabelProp = itemType;
 			lblName.LabelProp = item.Name;
-			lblName.Ellipsize = Pango.EllipsizeMode.End;
 		}
 		
 		protected override void AddInfoLabels(List<InfoLabel> infoLabels) {
-			lblItemType = WindowBase.CreateLabel();
-			lblName = WindowBase.CreateLabel();
+			lblItemType				= WindowBase.CreateLabel();			
+			lblName					= WindowBase.CreateLabel();
+			lblName.Ellipsize		= Pango.EllipsizeMode.End;
 			
 			infoLabels.AddRange( new InfoLabel[] {
 				new InfoLabel(S._("Item type") + ":", lblItemType),

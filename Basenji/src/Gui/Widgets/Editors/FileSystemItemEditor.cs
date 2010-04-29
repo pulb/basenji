@@ -41,8 +41,6 @@ namespace Basenji.Gui.Widgets.Editors
 			FileSystemVolumeItem fsvi = (FileSystemVolumeItem)item;
 			
 			lblLocation.LabelProp 		= fsvi.Location;
-			lblLocation.Ellipsize		= Pango.EllipsizeMode.End;
-				
 			lblLastWriteTime.LabelProp	= fsvi.LastWriteTime.ToString();
 			lblMimeType.LabelProp		= string.IsNullOrEmpty(fsvi.MimeType) ? "-" : fsvi.MimeType;
 		}
@@ -50,9 +48,12 @@ namespace Basenji.Gui.Widgets.Editors
 		protected override void AddInfoLabels(List<InfoLabel> infoLabels) {
 			base.AddInfoLabels(infoLabels);
 			
-			lblLocation			= WindowBase.CreateLabel();
-			lblLastWriteTime	= WindowBase.CreateLabel();
-			lblMimeType			= WindowBase.CreateLabel();
+			lblLocation				= WindowBase.CreateLabel();
+			lblLocation.Ellipsize	= Pango.EllipsizeMode.End;
+			
+			lblLastWriteTime		= WindowBase.CreateLabel();
+			lblMimeType				= WindowBase.CreateLabel();
+			lblMimeType.Ellipsize	= Pango.EllipsizeMode.End;
 			
 			infoLabels.AddRange( new InfoLabel[] { 
 				new InfoLabel(S._("Location") + ":",		lblLocation),
