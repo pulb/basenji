@@ -144,22 +144,21 @@ namespace Basenji.Gui
 		private void InitTreeView() {
 			TreeViewColumn col;
 
-			col = new TreeViewColumn(string.Empty, new CellRendererPixbuf(), "pixbuf", 0);			
-			col.MinWidth = 30;
+			col = new TreeViewColumn(string.Empty, new CellRendererPixbuf() { Xpad = 2 }, "pixbuf", 0);
+			col.Expand = false;
 			tvLog.AppendColumn(col);
 
 			col = new TreeViewColumn(S._("Time"), new CellRendererText(), "text", 1);
-			col.MinWidth = 40;
+			col.Expand = false;
 			tvLog.AppendColumn(col);
 
 			col = new TreeViewColumn(S._("Message"), new CellRendererText(), "text", 2);
-			col.Sizing = TreeViewColumnSizing.Fixed; // TODO : is there smarter way?
+			col.Expand = true;
 			tvLog.AppendColumn(col);
 			
 			logStore = new ListStore(typeof(Gdk.Pixbuf), typeof(string), typeof(string));
 			
 			tvLog.Model = logStore;
-			/*ColumnsAutosize();*/
 		}
 		
 		private void UpdateLog(LogIcon icon, string message) {
