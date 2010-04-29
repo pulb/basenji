@@ -1,6 +1,6 @@
 // ItemSearch.cs
 // 
-// Copyright (C) 2008, 2009 Patrick Ulbrich
+// Copyright (C) 2008 - 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -18,6 +18,7 @@
 
 using System;
 using Gtk;
+using Basenji.Gui.Base;
 using Basenji.Gui.Widgets;
 using VolumeDB;
 using VolumeDB.Searching;
@@ -25,7 +26,7 @@ using VolumeDB.Searching.ItemSearchCriteria;
 
 namespace Basenji.Gui
 {
-	public partial class ItemSearch : Base.WindowBase
+	public partial class ItemSearch : WindowBase
 	{
 		private VolumeDatabase database;
 		private volatile bool windowDeleted;
@@ -110,6 +111,21 @@ namespace Basenji.Gui
 			}
 		}
 		
+		private void EditItem() {
+			TreeIter iter = TreeIter.Zero;
+			
+			if (!tvSearchResult.GetSelectedIter(out iter))
+				return;
+			
+			// load item properties
+			VolumeItem item = tvSearchResult.GetItem(iter);
+			
+			if (item == null)
+				return;
+			
+			new ItemProperties(item);
+		}
+		
 		private void OnBtnSearchClicked(object o, System.EventArgs args) {
 			BeginSearch();
 		}
@@ -151,6 +167,28 @@ namespace Basenji.Gui
 			itemInfo.Hide();
 		}
 		
+		[GLib.ConnectBefore()]
+		private void OnTvSearchResultButtonPressEvent(object o, ButtonPressEventArgs args) {
+			TreePath path;
+			tvSearchResult.GetPathAtPos((int)args.Event.X, (int)args.Event.Y, out path);
+			if (path == null)
+				return;
+				
+			if ((args.Event.Button == 1) && (args.Event.Type == Gdk.EventType.TwoButtonPress)) {
+				EditItem();
+			} else if ((args.Event.Button == 3) && (args.Event.Type == Gdk.EventType.ButtonPress)) {
+				uint btn = args.Event.Button;
+				uint time = args.Event.Time;
+				itemContextMenu.Popup(null, null, null, btn, time);
+			}
+		}
+		
+		[GLib.ConnectBefore()]
+		private void OnTvSearchResultKeyPressEvent(object o, Gtk.KeyPressEventArgs args) {
+			if (args.Event.Key == Gdk.Key.Return)
+				EditItem();
+		}
+		
 		private void OnTvSearchResultSelectionChanged(object o, EventArgs args) {
 			TreeIter iter;
 			if (!tvSearchResult.GetSelectedIter(out iter))
@@ -170,16 +208,17 @@ namespace Basenji.Gui
 	}
 	
 	// gui initialization
-	public partial class ItemSearch : Base.WindowBase {
+	public partial class ItemSearch : WindowBase {
 		
 		private Entry						txtSearchString;
 		private Button						btnSearch;
 		private CategoryView				tvCategory;
 		private PageNavigation<VolumeItem>	navi; 
-		private SearchResultView			tvSearchResult;
+		private SearchResultView			tvSearchResult;		
 		private ItemInfo					itemInfo;
 		//private Button			  btnClose;
 		private Statusbar					statusbar;
+		private Menu						itemContextMenu;
 		
 		protected override void BuildGui() {
 			base.BuildGui();
@@ -267,16 +306,44 @@ namespace Basenji.Gui
 			
 			this.Add(vbOuter);
 			
+			// context menus
+			itemContextMenu = CreateContextMenu();
+			
 			// event handlers
 			txtSearchString.KeyPressEvent		+= OnTxtSearchStringKeyPressEvent;
 			txtSearchString.Changed				+= OnTxtSearchStringChanged;
 			tvCategory.Selection.Changed		+= OnTvCategorySelectionChanged;
 			navi.Navigate						+= OnNaviNavigate;
+			tvSearchResult.ButtonPressEvent		+= OnTvSearchResultButtonPressEvent;
+			tvSearchResult.KeyPressEvent		+= OnTvSearchResultKeyPressEvent;
 			tvSearchResult.Selection.Changed	+= OnTvSearchResultSelectionChanged;
 			this.DeleteEvent					+= OnDeleteEvent;
 				
 			ShowAll();
 			itemInfo.Minimized = itemInfoMinimized; // must be called _after_ ShowAll()
+		}
+		
+		private Menu CreateContextMenu() {
+			ActionGroup ag = new ActionGroup("default");
+			ag.Add(WindowBase.CreateAction("edititem",
+			                               S._("Edit Item"),
+			                               null,
+			                               Stock.Edit,
+			                               (o, args) => EditItem()),
+			                               null);
+			
+			UIManager manager = new UIManager();
+			manager.InsertActionGroup(ag, 0);
+			//this.AddAccelGroup(manager.AccelGroup);
+			
+			string ui = @"
+				<popup name=""item_contextmenu"">
+					<menuitem action=""edititem""/>
+				</popup>";
+			
+			manager.AddUiFromString(ui);
+			
+			return (Menu)manager.GetWidget("/item_contextmenu");
 		}
 	}
 }
