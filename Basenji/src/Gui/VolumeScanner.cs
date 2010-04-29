@@ -434,7 +434,7 @@ namespace Basenji.Gui
 			
 			// general window settings
 			SetDialogStyle();
-			this.DefaultWidth		= 580;
+			//this.DefaultWidth		= 580;
 			this.DefaultHeight		= 600;
 			this.Title				= S._("VolumeScanner");
 			
@@ -460,6 +460,9 @@ namespace Basenji.Gui
 			
 			vbScannerLog.PackStart(CreateLabel(S._("<b>Scanner Log:</b>"), true, 0, 0), false, false, 0);
 			vbScannerLog.PackStart(LeftAlign(CreateScrolledView<TreeView>(out tvLog, false)), true, true, 0);			 
+			
+			// set min width of the textview widget
+			tvLog.WidthRequest = 520;
 			
 			vbOuter.PackStart(vbScannerLog, true, true, 0);
 			
