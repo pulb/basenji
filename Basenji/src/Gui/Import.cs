@@ -156,7 +156,7 @@ namespace Basenji.Gui
 			
 			// general window settings
 			SetDialogStyle();
-			this.DefaultWidth	= 320;
+			//this.DefaultWidth	= 320;
 			this.Title			= S._("Import Database");
 			
 			// vbOuter			  
@@ -170,6 +170,11 @@ namespace Basenji.Gui
 			
 			fcDatabase = new FileChooserButton(S._("Please select a database to import"),
 			                               FileChooserAction.Open);
+			
+			// set min width of the filechooser widget
+			// (translated labels may make it smaller otherwise)
+			fcDatabase.WidthRequest = 220;
+			
 			cmbFormat = ComboBox.NewText();
 			
 			cmbFormat.AppendText("GnomeCatalog");
