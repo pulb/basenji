@@ -1,6 +1,6 @@
 // DBProperties.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -15,8 +15,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
-
-// #pragma warning disable 649
 
 using System;
 using VolumeDB;
@@ -37,13 +35,13 @@ namespace Basenji.Gui
 			props	= db.GetDBProperties();
 			
 			entName.Text				= props.Name;
-			txtDescription.Buffer.Text	= props.Description;
+			tvDescription.Buffer.Text	= props.Description;
 			entCreated.Text				= props.Created.ToString();
 		}
 		
 		private void Save() {
 			props.Name = entName.Text;
-			props.Description = txtDescription.Buffer.Text;
+			props.Description = tvDescription.Buffer.Text;
 
 			db.UpdateDBProperties(props);
 		}
@@ -63,7 +61,7 @@ namespace Basenji.Gui
 	public partial class DBProperties : WindowBase
 	{
 		private Entry		entName;
-		private TextView	txtDescription;
+		private TextView	tvDescription;
 		private Entry		entCreated;
 		private Button		btnClose;
 		
@@ -72,7 +70,7 @@ namespace Basenji.Gui
 			
 			//general window settings
 			SetDialogStyle();
-			this.DefaultWidth		= 400;
+//			this.DefaultWidth		= 400;
 			this.DefaultHeight		= 240;
 			this.Title				= S._("Database Properties");
 			this.Icon = this.RenderIcon(Basenji.Icons.Icon.Stock_Properties, IconSize.Menu);
@@ -95,7 +93,11 @@ namespace Basenji.Gui
 			TblAttach(tbl, entName, 1, 0);
 			
 			// description textview
-			ScrolledWindow sw = WindowBase.CreateScrolledTextView(out txtDescription, DatabaseProperties.MAX_DESCRIPTION_LENGTH);
+			ScrolledWindow sw = WindowBase.CreateScrolledTextView(out tvDescription, DatabaseProperties.MAX_DESCRIPTION_LENGTH);
+			// set min width of the description widget
+			// (translated labels may make it smaller otherwise)
+			tvDescription.WidthRequest = 280;
+			
 			TblAttach(tbl, sw, 1, 1, AttachOptions.Expand | AttachOptions.Fill, AttachOptions.Expand | AttachOptions.Fill);
 			
 			// created entry
