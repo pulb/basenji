@@ -96,13 +96,16 @@ namespace Basenji.Gui.Widgets.Editors
 		
 		protected override void CreateWidgetTbl(out Table tbl) {
 			tbl = WindowBase.CreateTable(2, 2);
-
+			
 			// labels
 			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Note") + ":", false, 0F, 0F),	0, 0);
 			WindowBase.TblAttach(tbl, WindowBase.CreateLabel(S._("Keywords") + ":"),			0, 1);
 			
 			// widgets
 			ScrolledWindow swNote = WindowBase.CreateScrolledTextView(out tvNote, VolumeItem.MAX_NOTE_LENGTH);
+			// set min width of the note widget
+			// (translated labels may make it smaller otherwise)
+			tvNote.WidthRequest = 280;
 			txtKeywords = new Entry(VolumeItem.MAX_KEYWORDS_LENGTH);
 			
 			AttachOptions xAttachOpts = AttachOptions.Expand | AttachOptions.Fill | AttachOptions.Shrink;

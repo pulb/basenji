@@ -28,6 +28,6 @@ namespace Basenji.Gui
 			: base(volume,
 			      S._("Volume Properties"),
 			      VolumeEditor.CreateInstance(volume.GetVolumeType()),
-			      580, 400) {}
+			      0, 400) {}
 	}
 }

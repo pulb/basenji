@@ -36,8 +36,11 @@ namespace Basenji.Gui
 		                           int height) {
 			this.title = title;
 			this.objEditor = editor;
-			this.width = width;
-			this.height = height;
+			
+			if (width > 0)
+				this.width = width;
+			if (height > 0)
+				this.height = height;
 			
 			BuildGui();
 			objEditor.Load(obj);
