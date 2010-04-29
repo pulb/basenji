@@ -103,9 +103,9 @@ namespace Basenji.Gui.Widgets.Editors
 			
 			// widgets
 			ScrolledWindow swNote = WindowBase.CreateScrolledTextView(out tvNote, VolumeItem.MAX_NOTE_LENGTH);
-			// set min width of the note widget
+			// set min width of the scrolled window widget
 			// (translated labels may make it smaller otherwise)
-			tvNote.WidthRequest = 280;
+			swNote.WidthRequest = 280;
 			txtKeywords = new Entry(VolumeItem.MAX_KEYWORDS_LENGTH);
 			
 			AttachOptions xAttachOpts = AttachOptions.Expand | AttachOptions.Fill | AttachOptions.Shrink;

@@ -459,11 +459,12 @@ namespace Basenji.Gui
 			vbScannerLog.BorderWidth = 12;
 			
 			vbScannerLog.PackStart(CreateLabel(S._("<b>Scanner Log:</b>"), true, 0, 0), false, false, 0);
-			vbScannerLog.PackStart(LeftAlign(CreateScrolledView<TreeView>(out tvLog, false)), true, true, 0);			 
 			
-			// set min width of the textview widget
-			tvLog.WidthRequest = 520;
+			ScrolledWindow sw = CreateScrolledView<TreeView>(out tvLog, false);
+			// set min width of the scrolled window widget
+			sw.WidthRequest = 520;
 			
+			vbScannerLog.PackStart(LeftAlign(sw), true, true, 0);
 			vbOuter.PackStart(vbScannerLog, true, true, 0);
 			
 			// hbbox

@@ -219,9 +219,9 @@ namespace Basenji.Gui.Widgets.Editors
 			cmbCategory		= ComboBox.NewText();			 
 			txtTitle		= new Entry(Volume.MAX_TITLE_LENGTH);
 			ScrolledWindow swDescription = WindowBase.CreateScrolledTextView(out tvDescription, Volume.MAX_DESCRIPTION_LENGTH);
-			// set min width of the description widget
+			// set min width of the srolled window widget
 			// (translated labels may make it smaller otherwise)
-			tvDescription.WidthRequest = 240;
+			swDescription.WidthRequest = 240;
 			
 			txtKeywords		= new Entry(Volume.MAX_KEYWORDS_LENGTH);
 			txtLoanedTo		= new Entry(Volume.MAX_LOANED_TO_LENGTH);

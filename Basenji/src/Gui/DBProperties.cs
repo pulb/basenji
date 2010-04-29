@@ -94,9 +94,9 @@ namespace Basenji.Gui
 			
 			// description textview
 			ScrolledWindow sw = WindowBase.CreateScrolledTextView(out tvDescription, DatabaseProperties.MAX_DESCRIPTION_LENGTH);
-			// set min width of the description widget
+			// set min width of the scrolled windows widget
 			// (translated labels may make it smaller otherwise)
-			tvDescription.WidthRequest = 280;
+			sw.WidthRequest = 280;
 			
 			TblAttach(tbl, sw, 1, 1, AttachOptions.Expand | AttachOptions.Fill, AttachOptions.Expand | AttachOptions.Fill);
 			
