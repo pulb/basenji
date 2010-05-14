@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-04-26 00:54+0200\n"
-"PO-Revision-Date: 2010-04-24 21:23+0000\n"
+"POT-Creation-Date: 2010-04-29 00:47+0200\n"
+"PO-Revision-Date: 2010-05-01 09:53+0000\n"
 "Last-Translator: Francesco Marella <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-25 23:48+0000\n"
+"X-Launchpad-Export-Date: 2010-05-14 13:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/Util.cs:30
@@ -130,11 +130,11 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:232 src/Gui/VolumeProperties.cs:41
+#: src/Gui/VolumeScanner.cs:232 src/Gui/ObjectProperties.cs:51
 msgid "Invalid data"
 msgstr "Dati non validi"
 
-#: src/Gui/VolumeScanner.cs:232 src/Gui/VolumeProperties.cs:41
+#: src/Gui/VolumeScanner.cs:232 src/Gui/ObjectProperties.cs:51
 #, csharp-format
 msgid ""
 "\"{0}\" is {1}.\n"
@@ -192,7 +192,7 @@ msgstr "Scansione completata con successo."
 
 #: src/Gui/VolumeScanner.cs:439
 msgid "VolumeScanner"
-msgstr ""
+msgstr "VolumeScanner"
 
 #: src/Gui/VolumeScanner.cs:451
 msgid "<b>Volume Information:</b>"
@@ -227,13 +227,17 @@ msgstr "Proprietà del database"
 msgid "Name:"
 msgstr "Nome:"
 
-#: src/Gui/DBProperties.cs:90 src/Gui/Widgets/VolumeEdit.cs:324
+#: src/Gui/DBProperties.cs:90 src/Gui/Widgets/Editors/VolumeEditor.cs:211
 msgid "Description:"
 msgstr "Descrizione:"
 
 #: src/Gui/DBProperties.cs:91
 msgid "Created:"
 msgstr "Creato:"
+
+#: src/Gui/ItemProperties.cs:29
+msgid "Item Properties"
+msgstr "Proprietà dell'elemento"
 
 #: src/Gui/MainWindow.cs:58 src/Gui/MainWindow.cs:226
 #: src/Gui/MainWindow.cs:247 src/Gui/MainWindow.cs:269
@@ -325,78 +329,90 @@ msgid "Are you sure you really want to remove the selected volume?"
 msgstr "Confermare la cancellazione del volume selezionato?"
 
 #: src/Gui/MainWindow.cs:337
-msgid "Please select a volume record to edit."
+msgid "Please select a volume to edit."
 msgstr "Selezionare un volume da modificare."
 
-#: src/Gui/MainWindow.cs:398 src/Gui/ItemSearch.cs:88
-msgid "Timeout: another search is probably still in progress."
-msgstr ""
+#: src/Gui/MainWindow.cs:354
+msgid "No item selected"
+msgstr "Nessun elemento selezionato"
 
-#: src/Gui/MainWindow.cs:414 src/Gui/ItemSearch.cs:105
+#: src/Gui/MainWindow.cs:355
+msgid "Please select an item to edit."
+msgstr "Selezionare un elemento da modificare."
+
+#: src/Gui/MainWindow.cs:421 src/Gui/ItemSearch.cs:88
+msgid "Timeout: another search is probably still in progress."
+msgstr "Timeout: un'altra ricerca potrebbe essere in corso."
+
+#: src/Gui/MainWindow.cs:437 src/Gui/ItemSearch.cs:105
 msgid "Searching..."
 msgstr "Ricerca in corso..."
 
-#: src/Gui/MainWindow.cs:661
+#: src/Gui/MainWindow.cs:713
 msgid "_File"
 msgstr "_File"
 
-#: src/Gui/MainWindow.cs:664
+#: src/Gui/MainWindow.cs:716
 msgid "_New Database"
 msgstr "_Nuovo database"
 
-#: src/Gui/MainWindow.cs:667
+#: src/Gui/MainWindow.cs:719
 msgid "_Open Database"
 msgstr "_Apri database"
 
-#: src/Gui/MainWindow.cs:670
+#: src/Gui/MainWindow.cs:722
 msgid "Open Default Database"
 msgstr "Apri database predefinito"
 
-#: src/Gui/MainWindow.cs:673
+#: src/Gui/MainWindow.cs:725
 msgid "_Database Properties"
 msgstr "_Proprietà database"
 
-#: src/Gui/MainWindow.cs:676
+#: src/Gui/MainWindow.cs:728
 msgid "_Import"
 msgstr "_Importa"
 
-#: src/Gui/MainWindow.cs:679
+#: src/Gui/MainWindow.cs:731
 msgid "_Quit"
 msgstr "_Esci"
 
-#: src/Gui/MainWindow.cs:683
+#: src/Gui/MainWindow.cs:735
 msgid "_Edit"
 msgstr "_Modifica"
 
-#: src/Gui/MainWindow.cs:686
+#: src/Gui/MainWindow.cs:738
 msgid "_Preferences"
 msgstr "_Preferenze"
 
-#: src/Gui/MainWindow.cs:690
+#: src/Gui/MainWindow.cs:742
 msgid "_Help"
 msgstr "_Aiuto"
 
-#: src/Gui/MainWindow.cs:693
+#: src/Gui/MainWindow.cs:745
 msgid "_Info"
 msgstr "_Informazioni"
 
-#: src/Gui/MainWindow.cs:697
+#: src/Gui/MainWindow.cs:749
 msgid "_Add Volume"
 msgstr "_Aggiungi volume"
 
-#: src/Gui/MainWindow.cs:701
+#: src/Gui/MainWindow.cs:753
 msgid "_Remove Volume"
 msgstr "_Rimuovi volume"
 
-#: src/Gui/MainWindow.cs:704
+#: src/Gui/MainWindow.cs:756
 msgid "_Edit Volume"
 msgstr "_Modifica volume"
 
-#: src/Gui/MainWindow.cs:707
+#: src/Gui/MainWindow.cs:759
 msgid "_Search"
 msgstr "_Cerca"
 
-#: src/Gui/MainWindow.cs:782
+#: src/Gui/MainWindow.cs:763
+msgid "Edit Item"
+msgstr "Modifica elemento"
+
+#: src/Gui/MainWindow.cs:843
 msgid "Filter volumes"
 msgstr "Filtra volumi"
 
@@ -412,12 +428,13 @@ msgstr "Dispositivo"
 msgid "Label"
 msgstr "Etichetta"
 
-#: src/Gui/DriveSelection.cs:145 src/Gui/Widgets/ItemInfo.cs:202
-#: src/Gui/Widgets/ItemInfo.cs:224
+#: src/Gui/DriveSelection.cs:145 src/Gui/Widgets/Editors/FileItemEditor.cs:52
+#: src/Gui/Widgets/ItemInfo.cs:202 src/Gui/Widgets/ItemInfo.cs:224
 msgid "Size"
 msgstr "Dimensioni"
 
-#: src/Gui/DriveSelection.cs:169 src/Gui/Widgets/FSVolumeEdit.cs:34
+#: src/Gui/DriveSelection.cs:169
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:34
 msgid "Filesystem"
 msgstr "File system"
 
@@ -511,37 +528,185 @@ msgstr "Cerca:"
 msgid "No search results."
 msgstr "Nessun risultato."
 
-#: src/Gui/VolumeProperties.cs:81
+#: src/Gui/VolumeProperties.cs:29
 msgid "Volume Properties"
 msgstr "Proprietà del volume"
 
-#: src/Gui/Widgets/VolumeView.cs:29 src/Gui/Widgets/SearchResultView.cs:30
+#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/SearchResultView.cs:30
 msgid "Unnamed"
 msgstr "Senza nome"
 
-#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/VolumeEdit.cs:322
+#: src/Gui/Widgets/VolumeView.cs:31
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:209
 msgid "Category:"
 msgstr "Categoria:"
 
-#: src/Gui/Widgets/VolumeView.cs:31
+#: src/Gui/Widgets/VolumeView.cs:32
 msgid "files"
 msgstr "file"
 
-#: src/Gui/Widgets/VolumeView.cs:32
+#: src/Gui/Widgets/VolumeView.cs:33
 msgid "tracks"
 msgstr "tracce"
 
-#: src/Gui/Widgets/AudioCdVolumeEdit.cs:33
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:45
+msgid "Backup"
+msgstr "Backup"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:46
+#: src/Gui/Widgets/CategoryView.cs:60
+msgid "Documents"
+msgstr "Documenti"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:47
+#: src/Gui/Widgets/CategoryView.cs:61
+msgid "Music"
+msgstr "Musica"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:48
+#: src/Gui/Widgets/CategoryView.cs:62
+msgid "Movies"
+msgstr "Filmati"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:49
+msgid "Pictures"
+msgstr "Immagini"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:50
+msgid "Misc"
+msgstr "Varie"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:51
+msgid "Other"
+msgstr "Altro"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:175
+msgid "Yes"
+msgstr "Sì"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:175
+msgid "No"
+msgstr "No"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:185
+msgid "Volume type:"
+msgstr "Tipo di volume:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:186
+msgid "Hashed:"
+msgstr "Hash:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:187
+msgid "Added:"
+msgstr "Aggiunto:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:208
+msgid "Archive No.:"
+msgstr "Archive:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:210
+msgid "Title:"
+msgstr "Titolo:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:212
+msgid "Keywords:"
+msgstr "Parole chiave:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:213
+msgid "Loaned to:"
+msgstr "Prestato a:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:214
+msgid "Loaned date:"
+msgstr "Data prestito:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:215
+msgid "Return date:"
+msgstr "Data di ritorno:"
+
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:33
 msgid "Audio CD"
 msgstr "CD audio"
 
-#: src/Gui/Widgets/AudioCdVolumeEdit.cs:60
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:63
 msgid "Tracks:"
 msgstr "Brani:"
 
-#: src/Gui/Widgets/AudioCdVolumeEdit.cs:61
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:64
 msgid "Duration:"
 msgstr "Durata:"
+
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:31
+#: src/Gui/Widgets/SearchResultView.cs:34
+msgid "Audio CD track"
+msgstr "Traccia CD audio"
+
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:53
+#: src/Gui/Widgets/ItemView.cs:178 src/Gui/Widgets/ItemInfo.cs:223
+#: src/Gui/Widgets/ItemInfo.cs:275
+msgid "Duration"
+msgstr "Durata"
+
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:54
+#: src/Gui/Widgets/ItemInfo.cs:228
+msgid "Type"
+msgstr "Tipo"
+
+#: src/Gui/Widgets/Editors/DirectoryItemEditor.cs:28
+msgid "Directory"
+msgstr "Cartella"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:65
+msgid "Files:"
+msgstr "File:"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:66
+msgid "Directories:"
+msgstr "Cartelle:"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:67
+msgid "Total size:"
+msgstr "Dimensione totale:"
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:31
+msgid "File"
+msgstr "File"
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:53
+#: src/Gui/Widgets/ItemInfo.cs:204
+msgid "Hash"
+msgstr "Hash"
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:85
+msgid "Item type"
+msgstr "Tipo elemento"
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:86 src/Gui/Widgets/ItemView.cs:168
+msgid "Name"
+msgstr "Nome"
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:101 src/Gui/Widgets/ItemInfo.cs:324
+msgid "Note"
+msgstr "Annotazioni"
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:102 src/Gui/Widgets/ItemInfo.cs:327
+msgid "Keywords"
+msgstr "Parole chiave"
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:58
+#: src/Gui/Widgets/ItemInfo.cs:182 src/Gui/Widgets/SearchResultView.cs:31
+msgid "Location"
+msgstr "Posizione"
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:59
+#: src/Gui/Widgets/ItemInfo.cs:183
+msgid "Last write time"
+msgstr "Ultima scrittura"
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:60
+#: src/Gui/Widgets/ItemInfo.cs:208
+msgid "Filetype"
+msgstr "Tipo di file"
 
 #: src/Gui/Widgets/ItemView.cs:29
 msgid "Loading..."
@@ -555,18 +720,9 @@ msgstr "(vuoto)"
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#: src/Gui/Widgets/ItemView.cs:168
-msgid "Name"
-msgstr "Nome"
-
 #: src/Gui/Widgets/ItemView.cs:173
 msgid "Artist"
 msgstr "Artista"
-
-#: src/Gui/Widgets/ItemView.cs:178 src/Gui/Widgets/ItemInfo.cs:223
-#: src/Gui/Widgets/ItemInfo.cs:275
-msgid "Duration"
-msgstr "Durata"
 
 #: src/Gui/Widgets/ItemInfo.cs:39
 msgid "by"
@@ -576,33 +732,13 @@ msgstr "di"
 msgid "from"
 msgstr "da"
 
-#: src/Gui/Widgets/ItemInfo.cs:182 src/Gui/Widgets/SearchResultView.cs:31
-msgid "Location"
-msgstr "Posizione"
-
-#: src/Gui/Widgets/ItemInfo.cs:183
-msgid "Last write time"
-msgstr "Ultima scrittura"
-
 #: src/Gui/Widgets/ItemInfo.cs:194
 msgid "Symlink target"
 msgstr "Destinazione del collegamento"
 
-#: src/Gui/Widgets/ItemInfo.cs:204
-msgid "Hash"
-msgstr "Hash"
-
-#: src/Gui/Widgets/ItemInfo.cs:208
-msgid "Filetype"
-msgstr "Tipo di file"
-
 #: src/Gui/Widgets/ItemInfo.cs:225
 msgid "Track No."
 msgstr "Traccia Num."
-
-#: src/Gui/Widgets/ItemInfo.cs:228
-msgid "Type"
-msgstr "Tipo"
 
 #: src/Gui/Widgets/ItemInfo.cs:257
 msgid "Genre"
@@ -642,7 +778,7 @@ msgstr "Autore"
 
 #: src/Gui/Widgets/ItemInfo.cs:292
 msgid "Software"
-msgstr ""
+msgstr "Software"
 
 #: src/Gui/Widgets/ItemInfo.cs:294
 msgid "Language"
@@ -673,18 +809,6 @@ msgstr "Cartelle"
 msgid "Text"
 msgstr "Testo"
 
-#: src/Gui/Widgets/CategoryView.cs:60 src/Gui/Widgets/VolumeEdit.cs:49
-msgid "Documents"
-msgstr "Documenti"
-
-#: src/Gui/Widgets/CategoryView.cs:61 src/Gui/Widgets/VolumeEdit.cs:50
-msgid "Music"
-msgstr "Musica"
-
-#: src/Gui/Widgets/CategoryView.cs:62 src/Gui/Widgets/VolumeEdit.cs:51
-msgid "Movies"
-msgstr "Filmati"
-
 #: src/Gui/Widgets/CategoryView.cs:63
 msgid "Images"
 msgstr "Immagini"
@@ -709,78 +833,6 @@ msgstr "Categoria"
 msgid "All items"
 msgstr "Tutti gli elementi"
 
-#: src/Gui/Widgets/FSVolumeEdit.cs:62
-msgid "Files:"
-msgstr "File:"
-
-#: src/Gui/Widgets/FSVolumeEdit.cs:63
-msgid "Directories:"
-msgstr "Cartelle:"
-
-#: src/Gui/Widgets/FSVolumeEdit.cs:64
-msgid "Total size:"
-msgstr "Dimensione totale:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:48
-msgid "Backup"
-msgstr "Backup"
-
-#: src/Gui/Widgets/VolumeEdit.cs:52
-msgid "Pictures"
-msgstr "Immagini"
-
-#: src/Gui/Widgets/VolumeEdit.cs:53
-msgid "Misc"
-msgstr "Varie"
-
-#: src/Gui/Widgets/VolumeEdit.cs:54
-msgid "Other"
-msgstr "Altro"
-
-#: src/Gui/Widgets/VolumeEdit.cs:239
-msgid "Yes"
-msgstr "Sì"
-
-#: src/Gui/Widgets/VolumeEdit.cs:239
-msgid "No"
-msgstr "No"
-
-#: src/Gui/Widgets/VolumeEdit.cs:249
-msgid "Volume type:"
-msgstr "Tipo di volume:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:250
-msgid "Hashed:"
-msgstr "Hash:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:251
-msgid "Added:"
-msgstr "Aggiunto:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:321
-msgid "Archive No.:"
-msgstr "Archive:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:323
-msgid "Title:"
-msgstr "Titolo:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:325
-msgid "Keywords:"
-msgstr "Parole chiave:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:326
-msgid "Loaned to:"
-msgstr "Prestato a:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:327
-msgid "Loaned date:"
-msgstr "Data prestito:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:328
-msgid "Return date:"
-msgstr "Data di ritorno:"
-
 #: src/Gui/Widgets/SearchResultView.cs:32
 msgid "Volume"
 msgstr "Volume"
@@ -788,10 +840,6 @@ msgstr "Volume"
 #: src/Gui/Widgets/SearchResultView.cs:33
 msgid "Archive No."
 msgstr "Archivio"
-
-#: src/Gui/Widgets/SearchResultView.cs:34
-msgid "Audio CD track"
-msgstr "Traccia CD audio"
 
 #: src/FileDialog.cs:51
 msgid "VolumeDatabase files"

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-04-20 13:13+0200\n"
+"POT-Creation-Date: 2010-04-29 00:47+0200\n"
 "PO-Revision-Date: 2008-10-28 07:41+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-20 12:56+0000\n"
+"X-Launchpad-Export-Date: 2010-05-14 13:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/Util.cs:30
@@ -128,11 +128,11 @@ msgstr "זמן"
 msgid "Message"
 msgstr "הודעה"
 
-#: src/Gui/VolumeScanner.cs:232 src/Gui/VolumeProperties.cs:41
+#: src/Gui/VolumeScanner.cs:232 src/Gui/ObjectProperties.cs:51
 msgid "Invalid data"
 msgstr "נתונים שגויים"
 
-#: src/Gui/VolumeScanner.cs:232 src/Gui/VolumeProperties.cs:41
+#: src/Gui/VolumeScanner.cs:232 src/Gui/ObjectProperties.cs:51
 #, csharp-format
 msgid ""
 "\"{0}\" is {1}.\n"
@@ -224,13 +224,17 @@ msgstr "מאפייני מסד הנתונים"
 msgid "Name:"
 msgstr "שם:"
 
-#: src/Gui/DBProperties.cs:90 src/Gui/Widgets/VolumeEdit.cs:326
+#: src/Gui/DBProperties.cs:90 src/Gui/Widgets/Editors/VolumeEditor.cs:211
 msgid "Description:"
 msgstr "תיאור:"
 
 #: src/Gui/DBProperties.cs:91
 msgid "Created:"
 msgstr "נוצר:"
+
+#: src/Gui/ItemProperties.cs:29
+msgid "Item Properties"
+msgstr ""
 
 #: src/Gui/MainWindow.cs:58 src/Gui/MainWindow.cs:226
 #: src/Gui/MainWindow.cs:247 src/Gui/MainWindow.cs:269
@@ -321,78 +325,90 @@ msgid "Are you sure you really want to remove the selected volume?"
 msgstr "האם אתה בטוח שברצונך להסיר את הכרך הנבחר?"
 
 #: src/Gui/MainWindow.cs:337
-msgid "Please select a volume record to edit."
+msgid "Please select a volume to edit."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:398 src/Gui/ItemSearch.cs:88
+#: src/Gui/MainWindow.cs:354
+msgid "No item selected"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:355
+msgid "Please select an item to edit."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:421 src/Gui/ItemSearch.cs:88
 msgid "Timeout: another search is probably still in progress."
 msgstr "תום הזמן: כנראה ומתבצע חיפוש נוסף כרגע."
 
-#: src/Gui/MainWindow.cs:414 src/Gui/ItemSearch.cs:105
+#: src/Gui/MainWindow.cs:437 src/Gui/ItemSearch.cs:105
 msgid "Searching..."
 msgstr "מחפש..."
 
-#: src/Gui/MainWindow.cs:661
+#: src/Gui/MainWindow.cs:713
 msgid "_File"
 msgstr "_קובץ"
 
-#: src/Gui/MainWindow.cs:664
+#: src/Gui/MainWindow.cs:716
 msgid "_New Database"
 msgstr "מסד נתונים _חדש"
 
-#: src/Gui/MainWindow.cs:667
+#: src/Gui/MainWindow.cs:719
 msgid "_Open Database"
 msgstr "_פתח מסד נתונים"
 
-#: src/Gui/MainWindow.cs:670
+#: src/Gui/MainWindow.cs:722
 msgid "Open Default Database"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:673
+#: src/Gui/MainWindow.cs:725
 msgid "_Database Properties"
 msgstr "_מאפייני מסד הנתונים"
 
-#: src/Gui/MainWindow.cs:676
+#: src/Gui/MainWindow.cs:728
 msgid "_Import"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:679
+#: src/Gui/MainWindow.cs:731
 msgid "_Quit"
 msgstr "י_ציאה"
 
-#: src/Gui/MainWindow.cs:683
+#: src/Gui/MainWindow.cs:735
 msgid "_Edit"
 msgstr "ע_ריכה"
 
-#: src/Gui/MainWindow.cs:686
+#: src/Gui/MainWindow.cs:738
 msgid "_Preferences"
 msgstr "הע_דפות"
 
-#: src/Gui/MainWindow.cs:690
+#: src/Gui/MainWindow.cs:742
 msgid "_Help"
 msgstr "ע_זרה"
 
-#: src/Gui/MainWindow.cs:693
+#: src/Gui/MainWindow.cs:745
 msgid "_Info"
 msgstr "_מידע"
 
-#: src/Gui/MainWindow.cs:697
+#: src/Gui/MainWindow.cs:749
 msgid "_Add Volume"
 msgstr "ה_וסף כרך"
 
-#: src/Gui/MainWindow.cs:701
+#: src/Gui/MainWindow.cs:753
 msgid "_Remove Volume"
 msgstr "ה_סר כרך"
 
-#: src/Gui/MainWindow.cs:704
+#: src/Gui/MainWindow.cs:756
 msgid "_Edit Volume"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:707
+#: src/Gui/MainWindow.cs:759
 msgid "_Search"
 msgstr "_חיפוש:"
 
-#: src/Gui/MainWindow.cs:782
+#: src/Gui/MainWindow.cs:763
+msgid "Edit Item"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:843
 msgid "Filter volumes"
 msgstr ""
 
@@ -408,12 +424,13 @@ msgstr "כונן"
 msgid "Label"
 msgstr "תווית"
 
-#: src/Gui/DriveSelection.cs:145 src/Gui/Widgets/ItemInfo.cs:202
-#: src/Gui/Widgets/ItemInfo.cs:224
+#: src/Gui/DriveSelection.cs:145 src/Gui/Widgets/Editors/FileItemEditor.cs:52
+#: src/Gui/Widgets/ItemInfo.cs:202 src/Gui/Widgets/ItemInfo.cs:224
 msgid "Size"
 msgstr "נפח"
 
-#: src/Gui/DriveSelection.cs:169 src/Gui/Widgets/FSVolumeEdit.cs:34
+#: src/Gui/DriveSelection.cs:169
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:34
 msgid "Filesystem"
 msgstr "מערכת קבצים"
 
@@ -425,60 +442,64 @@ msgstr "אנא בחר כונן לסריקה"
 msgid "None"
 msgstr "ללא"
 
-#: src/Gui/Preferences.cs:227
+#: src/Gui/Preferences.cs:229
 msgid "Restart required"
 msgstr "נדרשת הפעלה מחדש"
 
-#: src/Gui/Preferences.cs:227
+#: src/Gui/Preferences.cs:229
 #, csharp-format
 msgid "You must restart {0} for icontheme changes to take effect."
 msgstr "עליך לאתחל את {0} כדי שערכת הסמלים תכנס לתוקף"
 
-#: src/Gui/Preferences.cs:254
+#: src/Gui/Preferences.cs:257
 msgid "Preferences"
 msgstr "העדפות"
 
-#: src/Gui/Preferences.cs:276
+#: src/Gui/Preferences.cs:279
 msgid "_Load Defaults"
 msgstr "טען _ברירות מחדל"
 
-#: src/Gui/Preferences.cs:301
+#: src/Gui/Preferences.cs:304
 msgid "Icon theme:"
 msgstr "ערכת הסמלים:"
 
-#: src/Gui/Preferences.cs:312
+#: src/Gui/Preferences.cs:315
 msgid "Reopen most recent database on startup"
 msgstr "פתח מחדש את מסד הנתונים העדכני ביותר עם ההפעלה"
 
-#: src/Gui/Preferences.cs:315
+#: src/Gui/Preferences.cs:319
+msgid "Show thumbnails in the filebrowser"
+msgstr ""
+
+#: src/Gui/Preferences.cs:322
 msgid "General"
 msgstr "כללי"
 
-#: src/Gui/Preferences.cs:323
+#: src/Gui/Preferences.cs:330
 msgid "Don't prompt, always scan:"
 msgstr "אל תודיע, סרוק תמיד:"
 
-#: src/Gui/Preferences.cs:342
+#: src/Gui/Preferences.cs:349
 msgid "Generate Thumbnails"
 msgstr "ייצר תמונות ממוזערות"
 
-#: src/Gui/Preferences.cs:346
+#: src/Gui/Preferences.cs:353
 msgid "Extract metadata"
 msgstr ""
 
-#: src/Gui/Preferences.cs:350
+#: src/Gui/Preferences.cs:357
 msgid "Discard symbolic links"
 msgstr "התעלם מקישורים סמליים"
 
-#: src/Gui/Preferences.cs:354
+#: src/Gui/Preferences.cs:361
 msgid "Compute hashcodes for files (slow!)"
 msgstr "חשב צפני גיבוב לקבצים (איטי!)"
 
-#: src/Gui/Preferences.cs:358
+#: src/Gui/Preferences.cs:365
 msgid "Fetch audio cd metadata from MusicBrainz.org"
 msgstr ""
 
-#: src/Gui/Preferences.cs:361
+#: src/Gui/Preferences.cs:368
 msgid "Scanner"
 msgstr "סורק"
 
@@ -503,36 +524,184 @@ msgstr ""
 msgid "No search results."
 msgstr ""
 
-#: src/Gui/VolumeProperties.cs:81
+#: src/Gui/VolumeProperties.cs:29
 msgid "Volume Properties"
 msgstr "מאפייני הכרך"
 
-#: src/Gui/Widgets/VolumeView.cs:29 src/Gui/Widgets/SearchResultView.cs:30
+#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/SearchResultView.cs:30
 msgid "Unnamed"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/VolumeEdit.cs:324
+#: src/Gui/Widgets/VolumeView.cs:31
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:209
 msgid "Category:"
 msgstr "קטגוריה:"
 
-#: src/Gui/Widgets/VolumeView.cs:31
+#: src/Gui/Widgets/VolumeView.cs:32
 msgid "files"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeView.cs:32
+#: src/Gui/Widgets/VolumeView.cs:33
 msgid "tracks"
 msgstr ""
 
-#: src/Gui/Widgets/AudioCdVolumeEdit.cs:33
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:45
+msgid "Backup"
+msgstr "גיבוי"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:46
+#: src/Gui/Widgets/CategoryView.cs:60
+msgid "Documents"
+msgstr "מסמכים"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:47
+#: src/Gui/Widgets/CategoryView.cs:61
+msgid "Music"
+msgstr "מוסיקה"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:48
+#: src/Gui/Widgets/CategoryView.cs:62
+msgid "Movies"
+msgstr "סרטים"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:49
+msgid "Pictures"
+msgstr "תמונות"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:50
+msgid "Misc"
+msgstr "שונות"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:51
+msgid "Other"
+msgstr "אחר"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:175
+msgid "Yes"
+msgstr "כן"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:175
+msgid "No"
+msgstr "לא"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:185
+msgid "Volume type:"
+msgstr "סוג הכרך:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:186
+msgid "Hashed:"
+msgstr "התבצע גיבוב:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:187
+msgid "Added:"
+msgstr "נוסף:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:208
+msgid "Archive No.:"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:210
+msgid "Title:"
+msgstr "כותרת:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:212
+msgid "Keywords:"
+msgstr "מילות מפתח:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:213
+msgid "Loaned to:"
+msgstr "הושאל ל־:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:214
+msgid "Loaned date:"
+msgstr "תאריך ההשאלה:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:215
+msgid "Return date:"
+msgstr "תאריך ההחזרה:"
+
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:33
 msgid "Audio CD"
 msgstr ""
 
-#: src/Gui/Widgets/AudioCdVolumeEdit.cs:60
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:63
 msgid "Tracks:"
 msgstr ""
 
-#: src/Gui/Widgets/AudioCdVolumeEdit.cs:61
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:64
 msgid "Duration:"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:31
+#: src/Gui/Widgets/SearchResultView.cs:34
+msgid "Audio CD track"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:53
+#: src/Gui/Widgets/ItemView.cs:178 src/Gui/Widgets/ItemInfo.cs:223
+#: src/Gui/Widgets/ItemInfo.cs:275
+msgid "Duration"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:54
+#: src/Gui/Widgets/ItemInfo.cs:228
+msgid "Type"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/DirectoryItemEditor.cs:28
+msgid "Directory"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:65
+msgid "Files:"
+msgstr "קבצים:"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:66
+msgid "Directories:"
+msgstr "תיקיות:"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:67
+msgid "Total size:"
+msgstr "הגודל הכללי:"
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:31
+msgid "File"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:53
+#: src/Gui/Widgets/ItemInfo.cs:204
+msgid "Hash"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:85
+msgid "Item type"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:86 src/Gui/Widgets/ItemView.cs:168
+msgid "Name"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:101 src/Gui/Widgets/ItemInfo.cs:324
+msgid "Note"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:102 src/Gui/Widgets/ItemInfo.cs:327
+msgid "Keywords"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:58
+#: src/Gui/Widgets/ItemInfo.cs:182 src/Gui/Widgets/SearchResultView.cs:31
+msgid "Location"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:59
+#: src/Gui/Widgets/ItemInfo.cs:183
+msgid "Last write time"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:60
+#: src/Gui/Widgets/ItemInfo.cs:208
+msgid "Filetype"
 msgstr ""
 
 #: src/Gui/Widgets/ItemView.cs:29
@@ -543,21 +712,12 @@ msgstr "טוען..."
 msgid "(empty)"
 msgstr "(ריק)"
 
-#: src/Gui/Widgets/ItemView.cs:91
+#: src/Gui/Widgets/ItemView.cs:99
 msgid "Unknown"
 msgstr ""
 
-#: src/Gui/Widgets/ItemView.cs:160
-msgid "Name"
-msgstr ""
-
-#: src/Gui/Widgets/ItemView.cs:165
+#: src/Gui/Widgets/ItemView.cs:173
 msgid "Artist"
-msgstr ""
-
-#: src/Gui/Widgets/ItemView.cs:170 src/Gui/Widgets/ItemInfo.cs:223
-#: src/Gui/Widgets/ItemInfo.cs:275
-msgid "Duration"
 msgstr ""
 
 #: src/Gui/Widgets/ItemInfo.cs:39
@@ -568,32 +728,12 @@ msgstr ""
 msgid "from"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:182 src/Gui/Widgets/SearchResultView.cs:31
-msgid "Location"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:183
-msgid "Last write time"
-msgstr ""
-
 #: src/Gui/Widgets/ItemInfo.cs:194
 msgid "Symlink target"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:204
-msgid "Hash"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:208
-msgid "Filetype"
-msgstr ""
-
 #: src/Gui/Widgets/ItemInfo.cs:225
 msgid "Track No."
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:228
-msgid "Type"
 msgstr ""
 
 #: src/Gui/Widgets/ItemInfo.cs:257
@@ -665,18 +805,6 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: src/Gui/Widgets/CategoryView.cs:60 src/Gui/Widgets/VolumeEdit.cs:49
-msgid "Documents"
-msgstr "מסמכים"
-
-#: src/Gui/Widgets/CategoryView.cs:61 src/Gui/Widgets/VolumeEdit.cs:50
-msgid "Music"
-msgstr "מוסיקה"
-
-#: src/Gui/Widgets/CategoryView.cs:62 src/Gui/Widgets/VolumeEdit.cs:51
-msgid "Movies"
-msgstr "סרטים"
-
 #: src/Gui/Widgets/CategoryView.cs:63
 msgid "Images"
 msgstr ""
@@ -701,88 +829,12 @@ msgstr ""
 msgid "All items"
 msgstr ""
 
-#: src/Gui/Widgets/FSVolumeEdit.cs:62
-msgid "Files:"
-msgstr "קבצים:"
-
-#: src/Gui/Widgets/FSVolumeEdit.cs:63
-msgid "Directories:"
-msgstr "תיקיות:"
-
-#: src/Gui/Widgets/FSVolumeEdit.cs:64
-msgid "Total size:"
-msgstr "הגודל הכללי:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:48
-msgid "Backup"
-msgstr "גיבוי"
-
-#: src/Gui/Widgets/VolumeEdit.cs:52
-msgid "Pictures"
-msgstr "תמונות"
-
-#: src/Gui/Widgets/VolumeEdit.cs:53
-msgid "Misc"
-msgstr "שונות"
-
-#: src/Gui/Widgets/VolumeEdit.cs:54
-msgid "Other"
-msgstr "אחר"
-
-#: src/Gui/Widgets/VolumeEdit.cs:241
-msgid "Yes"
-msgstr "כן"
-
-#: src/Gui/Widgets/VolumeEdit.cs:241
-msgid "No"
-msgstr "לא"
-
-#: src/Gui/Widgets/VolumeEdit.cs:251
-msgid "Volume type:"
-msgstr "סוג הכרך:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:252
-msgid "Hashed:"
-msgstr "התבצע גיבוב:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:253
-msgid "Added:"
-msgstr "נוסף:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:323
-msgid "Archive No.:"
-msgstr ""
-
-#: src/Gui/Widgets/VolumeEdit.cs:325
-msgid "Title:"
-msgstr "כותרת:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:327
-msgid "Keywords:"
-msgstr "מילות מפתח:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:328
-msgid "Loaned to:"
-msgstr "הושאל ל־:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:329
-msgid "Loaned date:"
-msgstr "תאריך ההשאלה:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:330
-msgid "Return date:"
-msgstr "תאריך ההחזרה:"
-
 #: src/Gui/Widgets/SearchResultView.cs:32
 msgid "Volume"
 msgstr ""
 
 #: src/Gui/Widgets/SearchResultView.cs:33
 msgid "Archive No."
-msgstr ""
-
-#: src/Gui/Widgets/SearchResultView.cs:34
-msgid "Audio CD track"
 msgstr ""
 
 #: src/FileDialog.cs:51
