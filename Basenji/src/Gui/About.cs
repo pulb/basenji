@@ -70,6 +70,8 @@ Spanish:
   DiegoJ (https://launchpad.net/~diegojromerolopez)
   Emiliano (https://launchpad.net/~emilianohfernandez)
   Feder Sáiz (https://launchpad.net/~federsaiz)
+  Jonay Santana (https://launchpad.net/~jonay-santana)
+  Jorge Dardón (https://launchpad.net/~jdardon)
   monkey (https://launchpad.net/~monkey-libre)  
   Nicolás M. Zahlut (https://launchpad.net/~nzahlut)
   Paco Molinero (https://launchpad.net/~franciscomol)";
