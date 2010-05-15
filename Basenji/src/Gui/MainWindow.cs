@@ -776,6 +776,7 @@ namespace Basenji.Gui
 			
 			actRecentlyUsed = new RecentAction("recent_files", S._("Recent Databases"), null, null, recentManager);
 			actRecentlyUsed.ShowNumbers = true;
+			actRecentlyUsed.SortType = RecentSortType.Mru;
 			actRecentlyUsed.AddFilter(filter);
 			actRecentlyUsed.ItemActivated += OnActRecentlyUsedActivated;
 			ag.Add(actRecentlyUsed, null);
