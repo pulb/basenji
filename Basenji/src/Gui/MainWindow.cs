@@ -32,8 +32,17 @@ namespace Basenji.Gui
 		private VolumeDatabase	database = null;
 		private volatile bool	windowDeleted;
 		private ISearchCriteria	lastSuccessfulSearchCriteria;
+		private RecentManager	recentManager;
 		
+		private readonly RecentData recentData = new RecentData() {
+			AppName = App.Name,
+			AppExec = App.Name.ToLower() + " %u",
+			MimeType = "application/x-sqlite3",
+		};
+					
 		public MainWindow () {
+			recentManager = RecentManager.Default;
+			
 			BuildGui();
 			
 			windowDeleted = false;
@@ -129,6 +138,8 @@ namespace Basenji.Gui
 				EnableGui(true);
 				SetWindowTitle(path);
 				SetTempStatus(string.Format(S._("{0} volumes loaded."), volumes.Length));
+				
+				recentManager.AddFull("file://" + path, recentData);
 				
 				App.Settings.MostRecentDBPath = path;
 				App.Settings.Save();
@@ -494,6 +505,19 @@ namespace Basenji.Gui
 			OpenOrCreateDefaultDB(true);
 		}
 		
+		private void OnActRecentlyUsedActivated(object sender, System.EventArgs args) {
+			RecentAction act = (RecentAction)sender;
+			string path = act.CurrentUri.Replace("file://", string.Empty);
+			
+			if (!File.Exists(path)) {
+				MsgDialog.ShowError(this, S._("Error"), S._("Database not found."));
+				return;
+			}
+			
+			// volumes list will be refreshed asynchronously
+			OpenDB(path, false, true, null); 
+		}
+		
 		private void OnActImportActivated(object sender, System.EventArgs args) {
 			Import import = new Import(database);
 			import.VolumesImported += delegate {
@@ -653,6 +677,7 @@ namespace Basenji.Gui
 		private Gtk.Action actImport;
 		private Gtk.Action actSearch;
 		private Gtk.Action actQuit;
+		private Gtk.RecentAction actRecentlyUsed;
 		
 		private Gtk.Action actAddVolume;
 		private Gtk.Action actRemoveVolume;
@@ -731,6 +756,15 @@ namespace Basenji.Gui
 			actQuit = CreateAction("quit", S._("_Quit"), null, Stock.Quit, OnActQuitActivated);
 			ag.Add(actQuit, "<control>Q");			  
 			
+			RecentFilter filter = new RecentFilter();
+			filter.AddApplication(App.Name);
+			
+			actRecentlyUsed = new RecentAction("recent_files", S._("Recent Databases"), null, null, recentManager);
+			actRecentlyUsed.ShowNumbers = true;
+			actRecentlyUsed.AddFilter(filter);
+			actRecentlyUsed.ItemActivated += OnActRecentlyUsedActivated;
+			ag.Add(actRecentlyUsed, null);
+			
 			// edit menu
 			actEdit = CreateAction("edit", S._("_Edit"), null, null, null);
 			ag.Add(actEdit, null);
@@ -775,6 +809,7 @@ namespace Basenji.Gui
 						<menuitem action=""newdb""/>
 						<menuitem action=""opendb""/>
 						<menuitem action=""open_default_db""/>
+						<menuitem action=""recent_files""/>
 						<separator/>
 						<menuitem action=""dbproperties""/>
 						<menuitem action=""import""/>
