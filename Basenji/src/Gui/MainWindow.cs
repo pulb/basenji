@@ -40,7 +40,7 @@ namespace Basenji.Gui
 			MimeType = "application/x-sqlite3",
 		};
 					
-		public MainWindow () {
+		public MainWindow (string dbPath) {
 			recentManager = RecentManager.Default;
 			
 			BuildGui();
@@ -59,20 +59,35 @@ namespace Basenji.Gui
 				return;		  
 			}
 			
-			// reopen recent database
-			string dbpath = App.Settings.MostRecentDBPath;
-			if (App.Settings.OpenMostRecentDB && dbpath.Length > 0) {
-				if (!File.Exists(dbpath)) {
+			if (dbPath != null) {
+				if (!File.Exists(dbPath)) {
 					MsgDialog.ShowError(this,
 					                    S._("Error"),
 					                    S._("Database '{0}' not found."),
-					                    dbpath);
+					                    dbPath);
+				} else {
+					// volumes list will be refreshed asynchronously
+					OpenDB(dbPath, false, true, null);
+				}
+				
+				return;
+			}
+			
+			// reopen recent database
+			dbPath = App.Settings.MostRecentDBPath;
+			if (App.Settings.OpenMostRecentDB && dbPath.Length > 0) {
+				if (!File.Exists(dbPath)) {
+					MsgDialog.ShowError(this,
+					                    S._("Error"),
+					                    S._("Database '{0}' not found."),
+					                    dbPath);
 					
 					// clear path so the error won't occur again on next startup					
 					App.Settings.MostRecentDBPath = string.Empty;
 					App.Settings.Save();
 				} else {
-					OpenDB(dbpath, false, true, null); // volumes list will be refreshed asynchronously
+					// volumes list will be refreshed asynchronously
+					OpenDB(dbPath, false, true, null);
 				}
 			}			 
 		}
@@ -510,7 +525,7 @@ namespace Basenji.Gui
 			string path = act.CurrentUri.Replace("file://", string.Empty);
 			
 			if (!File.Exists(path)) {
-				MsgDialog.ShowError(this, S._("Error"), S._("Database '{0}' not found.", path));
+				MsgDialog.ShowError(this, S._("Error"), S._("Database '{0}' not found."), path);
 				return;
 			}
 			

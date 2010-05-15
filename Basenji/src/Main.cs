@@ -48,7 +48,7 @@ namespace Basenji
 					Icons.CustomIconTheme.Load(fullPath);
 				}
 				
-				Gui.MainWindow win = new Gui.MainWindow ();
+				Gui.MainWindow win = new Gui.MainWindow (args.Length > 0 ? args[0] : null);
 				win.Show ();
 				Application.Run();
 			}
