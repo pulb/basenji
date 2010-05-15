@@ -510,7 +510,7 @@ namespace Basenji.Gui
 			string path = act.CurrentUri.Replace("file://", string.Empty);
 			
 			if (!File.Exists(path)) {
-				MsgDialog.ShowError(this, S._("Error"), S._("Database not found."));
+				MsgDialog.ShowError(this, S._("Error"), S._("Database '{0}' not found.", path));
 				return;
 			}
 			
