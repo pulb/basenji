@@ -98,10 +98,10 @@ namespace Basenji.Gui.Widgets
 			}
 		}
 		
-		[DllImport("libgtk-x11-2.0.so")]
+		[DllImport("libgtk-x11-2.0")]
 		private static extern void gtk_entry_set_icon_from_stock(IntPtr gtk_entry, EntryIconPosition icon_pos, string icon_name);
 		
-		[DllImport("libgtk-x11-2.0.so")]
+		[DllImport("libgtk-x11-2.0")]
 		private static extern void gtk_entry_set_icon_activatable(IntPtr gtk_entry, EntryIconPosition icon_pos, bool activatable);
 	}
 	
