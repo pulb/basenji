@@ -25,12 +25,12 @@ namespace Basenji.Gui
 {
 	public partial class About : AboutDialog
 	{
-		private static readonly string		subTitle			= S._("A portable volume indexing tool");
-		private static readonly string		dbVersion			= string.Format(S._("Using VolumeDB v{0}."), Util.GetVolumeDBVersion());
-		private static readonly string		comments			= string.Format("{0}\n{1}", subTitle, dbVersion);
-		private static readonly string		copyright			= string.Format("{0}{1}", S._("Copyright (c) "), App.Copyright);
+		private static readonly string		subTitle	= S._("A portable volume indexing tool");
+		private static readonly string		dbVersion	= string.Format(S._("Using VolumeDB v{0}."), Util.GetVolumeDBVersion());
+		private static readonly string		comments	= string.Format("{0}\n{1}", subTitle, dbVersion);
+		private static readonly string		copyright	= string.Format("{0}{1}", S._("Copyright (c) "), App.Copyright);
 		
-		private static readonly string[]	authors				= new string[] {
+		private static readonly string[]	authors		= new string[] {
 @"Maintainer:
 Patrick Ulbrich <zulu99@gmx.net>
 
