@@ -61,6 +61,9 @@ Italian:
   Giuseppe Caliendo (https://launchpad.net/~giuseppe-caliendo)
   meltingshell (https://launchpad.net/~meltingshell)
 
+Occitan (post 1500):
+  Cédric Valmary (https://launchpad.net/~cvalmary)
+
 Russian:
   Nikolai Romanik (https://launchpad.net/~arhey)
   Sciko (https://launchpad.net/~tempsciko-gmail)
