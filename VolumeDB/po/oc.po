@@ -1,0 +1,141 @@
+# Occitan (post 1500) translation for basenji
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the basenji package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: basenji\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2010-05-15 16:31+0200\n"
+"PO-Revision-Date: 2010-05-22 09:50+0000\n"
+"Last-Translator: Cédric VALMARY (Tot en òc) <cvalmary@yahoo.fr>\n"
+"Language-Team: Occitan (post 1500) <oc@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-05-23 13:56+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:91
+msgid ""
+"Operand for keyword 'filesize' must be a number with an optional multiplier"
+msgstr ""
+"Lo mot clau per la talha de fichièr deu èsser un nombre amb en opcion un "
+"multiplicador"
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:115
+msgid "Invalid compare operator for keyword 'filesize'"
+msgstr "Operador de comparason invalid pel camp 'talha de fichièr'"
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:125
+msgid "Operand for keyword 'type' must be a string"
+msgstr "Lo mot clau pel tipe deu èsser una cadena"
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:134
+#, csharp-format
+msgid "Unknown type '{0}'"
+msgstr "Tipe desconegut '{0}'"
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:140
+msgid "Keyword 'type' only supports '=' and ':' operators"
+msgstr "Lo camp 'tipe' supòrta pas que los operadors '=' e \":\""
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:162
+#, csharp-format
+msgid "Unknown keyword '{0}'"
+msgstr "Mot clau desconegut '{0}'"
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:177
+msgid "Invalid compare operator for a keyword that maps to textual content"
+msgstr ""
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:230
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:234
+#, csharp-format
+msgid "Parsing error: search statement is malformed at position {0}"
+msgstr ""
+
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:55
+msgid "Hashcode generation not implemented for audio cds yet."
+msgstr ""
+
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:97
+msgid "No MusicBrainz metadata available for this disc."
+msgstr ""
+
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:102
+msgid ""
+"The trackcount retrieved from MusicBrainz does not match the trackcount of "
+"the local disc. Skipped."
+msgstr ""
+
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:125
+msgid "Error connecting to MusicBrainz server."
+msgstr "Error al moment de la connexion al servidor MusicBrainz..."
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:105
+msgid "libExtractor not found. Metadata extraction disabled."
+msgstr ""
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:187
+#, csharp-format
+msgid "Directory '{0}' not found. (Wrong filename encoding?)"
+msgstr "Dorsièr '{0}' pas trobat. (Marrit encodatge de fichièr ?)"
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:196
+#, csharp-format
+msgid "Skipped item '{0}' as it doesn't seem to be a real directory."
+msgstr ""
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:217
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:343
+#, csharp-format
+msgid "Skipped symlink item '{0}' as the target does not exist."
+msgstr ""
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:226
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:350
+#, csharp-format
+msgid ""
+"Skipped symlink item '{0}' as it appears to point to a different drive "
+"('{1}')."
+msgstr ""
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:265
+#, csharp-format
+msgid "File '{0}' not found. (Wrong filename encoding?)"
+msgstr "Fichièr '{0}' pas trobat. (Marrit encodatge de fichièr ?)"
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:313
+#, csharp-format
+msgid "Error opening file '{0}', can't retrieve any mime/metadata. ({1})"
+msgstr ""
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:357
+#, csharp-format
+msgid ""
+"Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."
+msgstr ""
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:366
+#, csharp-format
+msgid "Skipped item '{0}' as it appears to be some kind of special file."
+msgstr ""
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:384
+#, csharp-format
+msgid "Unable to dump dir '{0}'. ({1})"
+msgstr "Impossible de suprimir lo dorsièr '{0}'. ({1})"
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:503
+#, csharp-format
+msgid "Can't read LastWriteTime from item '{0}' ({1})."
+msgstr ""
+"Impossible de legir l'ora del darrièr enregistrament per aqueste objècte "
+"'{0}' ({1})."
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:667
+#, csharp-format
+msgid "Failed to resolve target item for symlink '{0}'."
+msgstr "Impossible de resòlvre l'objècte cibla de ligam simbolic '{0}'."

@@ -103,6 +103,7 @@
     <File subtype="Code" buildaction="EmbedAsResource" name="po/es.resources" resource_id="VolumeDB.po.es.resources" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/it.resources" resource_id="VolumeDB.po.it.resources" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/bg.resources" resource_id="VolumeDB.po.bg.resources" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="po/oc.resources" resource_id="VolumeDB.po.oc.resources" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />

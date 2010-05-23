@@ -1,0 +1,850 @@
+# Occitan (post 1500) translation for basenji
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the basenji package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: basenji\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2010-05-15 16:31+0200\n"
+"PO-Revision-Date: 2010-05-22 15:55+0000\n"
+"Last-Translator: Cédric VALMARY (Tot en òc) <cvalmary@yahoo.fr>\n"
+"Language-Team: Occitan (post 1500) <oc@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-05-23 13:56+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: src/Util.cs:30
+#, csharp-format
+msgid "{0} Bytes"
+msgstr "{0} Octets"
+
+#: src/Util.cs:32
+msgid "Bytes"
+msgstr "Octets"
+
+#: src/Util.cs:32
+msgid "KB"
+msgstr "Kio"
+
+#: src/Util.cs:32
+msgid "MB"
+msgstr "Mio"
+
+#: src/Util.cs:32
+msgid "GB"
+msgstr "Gio"
+
+#: src/Util.cs:32
+msgid "TB"
+msgstr "Tio"
+
+#: src/FileDialog.cs:51
+msgid "VolumeDatabase files"
+msgstr "Fichièrs VolumeDatabase"
+
+#: src/FileDialog.cs:56
+msgid "All files"
+msgstr "Totes los fichièrs"
+
+#: src/Main.cs:65 src/Gui/MainWindow.cs:67 src/Gui/MainWindow.cs:237
+#: src/Gui/MainWindow.cs:258 src/Gui/MainWindow.cs:280
+#: src/Gui/MainWindow.cs:289 src/Gui/MainWindow.cs:513
+msgid "Error"
+msgstr "Error"
+
+#: src/Main.cs:65
+#, csharp-format
+msgid "{0} is already running."
+msgstr "{0} es en cors de tractament."
+
+#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/SearchResultView.cs:30
+msgid "Unnamed"
+msgstr "Sens nom"
+
+#: src/Gui/Widgets/VolumeView.cs:31
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:209
+msgid "Category:"
+msgstr "Categoria :"
+
+#: src/Gui/Widgets/VolumeView.cs:32
+msgid "files"
+msgstr "fichièrs"
+
+#: src/Gui/Widgets/VolumeView.cs:33
+msgid "tracks"
+msgstr "pistas"
+
+#: src/Gui/Widgets/ItemView.cs:29
+msgid "Loading..."
+msgstr "Cargament en cors..."
+
+#: src/Gui/Widgets/ItemView.cs:30
+msgid "(empty)"
+msgstr "(void)"
+
+#: src/Gui/Widgets/ItemView.cs:99
+msgid "Unknown"
+msgstr "Desconegut"
+
+#: src/Gui/Widgets/ItemView.cs:168 src/Gui/Widgets/Editors/ItemEditor.cs:86
+msgid "Name"
+msgstr "Nom"
+
+#: src/Gui/Widgets/ItemView.cs:173
+msgid "Artist"
+msgstr "Artista"
+
+#: src/Gui/Widgets/ItemView.cs:178
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:53
+#: src/Gui/Widgets/ItemInfo.cs:223 src/Gui/Widgets/ItemInfo.cs:275
+msgid "Duration"
+msgstr "Durada"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:34
+#: src/Gui/DriveSelection.cs:168
+msgid "Filesystem"
+msgstr "Sistèma de fichièrs"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:65
+msgid "Files:"
+msgstr "Fichièrs :"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:66
+msgid "Directories:"
+msgstr "Dorsièrs :"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:67
+msgid "Total size:"
+msgstr "Talha totala :"
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:85
+msgid "Item type"
+msgstr "Tipe d'element"
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:101 src/Gui/Widgets/ItemInfo.cs:324
+msgid "Note"
+msgstr "Nòta"
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:102 src/Gui/Widgets/ItemInfo.cs:327
+msgid "Keywords"
+msgstr "Mots claus"
+
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:31
+#: src/Gui/Widgets/SearchResultView.cs:34
+msgid "Audio CD track"
+msgstr "Pista CD Àudio"
+
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:54
+#: src/Gui/Widgets/ItemInfo.cs:228
+msgid "Type"
+msgstr "Tipe"
+
+#: src/Gui/Widgets/Editors/DirectoryItemEditor.cs:28
+msgid "Directory"
+msgstr "Dorsièr"
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:59
+#: src/Gui/Widgets/SearchResultView.cs:31 src/Gui/Widgets/ItemInfo.cs:182
+msgid "Location"
+msgstr "Emplaçament"
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:60
+#: src/Gui/Widgets/ItemInfo.cs:183
+msgid "Last write time"
+msgstr "Darrièr enregistrament"
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:61
+#: src/Gui/Widgets/ItemInfo.cs:208
+msgid "Filetype"
+msgstr "Tipe de fichièr"
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:31
+msgid "File"
+msgstr "Fichièr"
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:52
+#: src/Gui/Widgets/ItemInfo.cs:202 src/Gui/Widgets/ItemInfo.cs:224
+#: src/Gui/DriveSelection.cs:148
+msgid "Size"
+msgstr "Talha"
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:53
+#: src/Gui/Widgets/ItemInfo.cs:204
+msgid "Hash"
+msgstr "Emprencha"
+
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:33
+msgid "Audio CD"
+msgstr "CD àudio"
+
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:63
+msgid "Tracks:"
+msgstr "Pistas :"
+
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:64
+msgid "Duration:"
+msgstr "Durada :"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:45
+msgid "Backup"
+msgstr "Salvament"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:46
+#: src/Gui/Widgets/CategoryView.cs:60
+msgid "Documents"
+msgstr "Documents"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:47
+#: src/Gui/Widgets/CategoryView.cs:61
+msgid "Music"
+msgstr "Musica"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:48
+#: src/Gui/Widgets/CategoryView.cs:62
+msgid "Movies"
+msgstr "Filmes"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:49
+msgid "Pictures"
+msgstr "Imatges"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:50
+msgid "Misc"
+msgstr "Divèrs"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:51
+msgid "Other"
+msgstr "Autre"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:175
+msgid "Yes"
+msgstr "Òc"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:175
+msgid "No"
+msgstr "Non"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:185
+msgid "Volume type:"
+msgstr "Tipe de mèdia :"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:186
+msgid "Hashed:"
+msgstr "Emprencha :"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:187
+msgid "Added:"
+msgstr "Apondut :"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:208
+msgid "Archive No.:"
+msgstr "N° d'archiu :"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:210
+msgid "Title:"
+msgstr "Títol :"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:211 src/Gui/DBProperties.cs:88
+msgid "Description:"
+msgstr "Descripcion :"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:212
+msgid "Keywords:"
+msgstr "Mots claus :"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:213
+msgid "Loaned to:"
+msgstr "Prestats a :"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:214
+msgid "Loaned date:"
+msgstr "Data de prèst :"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:215
+msgid "Return date:"
+msgstr "Data de retorn :"
+
+#: src/Gui/Widgets/CategoryView.cs:58
+msgid "Directories"
+msgstr "Dorsièrs"
+
+#: src/Gui/Widgets/CategoryView.cs:59
+msgid "Text"
+msgstr "Tèxte"
+
+#: src/Gui/Widgets/CategoryView.cs:63
+msgid "Images"
+msgstr "Imatges"
+
+#: src/Gui/Widgets/CategoryView.cs:64
+msgid "Applications"
+msgstr "Aplicacions"
+
+#: src/Gui/Widgets/CategoryView.cs:65
+msgid "Archives"
+msgstr "Archius"
+
+#: src/Gui/Widgets/CategoryView.cs:66
+msgid "Development"
+msgstr "Desvolopament"
+
+#: src/Gui/Widgets/CategoryView.cs:96
+msgid "Category"
+msgstr "Categoria"
+
+#: src/Gui/Widgets/CategoryView.cs:128
+msgid "All items"
+msgstr "Totes los objèctes"
+
+#: src/Gui/Widgets/SearchResultView.cs:32
+msgid "Volume"
+msgstr "Volum"
+
+#: src/Gui/Widgets/SearchResultView.cs:33
+msgid "Archive No."
+msgstr "N° d'Archiu"
+
+#: src/Gui/Widgets/ItemInfo.cs:39
+msgid "by"
+msgstr "per"
+
+#: src/Gui/Widgets/ItemInfo.cs:40
+msgid "from"
+msgstr "de"
+
+#: src/Gui/Widgets/ItemInfo.cs:194
+msgid "Symlink target"
+msgstr "destinacion del ligam"
+
+#: src/Gui/Widgets/ItemInfo.cs:225
+msgid "Track No."
+msgstr "N° de Pista"
+
+#: src/Gui/Widgets/ItemInfo.cs:257
+msgid "Genre"
+msgstr "Genre"
+
+#: src/Gui/Widgets/ItemInfo.cs:269
+msgid "Year"
+msgstr "Annada"
+
+#: src/Gui/Widgets/ItemInfo.cs:272
+msgid "Description"
+msgstr "Descripcion"
+
+#: src/Gui/Widgets/ItemInfo.cs:279
+msgid "Dimensions"
+msgstr "Dimensions"
+
+#: src/Gui/Widgets/ItemInfo.cs:282
+msgid "Format"
+msgstr "Format"
+
+#: src/Gui/Widgets/ItemInfo.cs:284
+msgid "Author"
+msgstr "Autor"
+
+#: src/Gui/Widgets/ItemInfo.cs:286
+msgid "Copyright"
+msgstr "Dreches d'autor"
+
+#: src/Gui/Widgets/ItemInfo.cs:288
+msgid "Producer"
+msgstr "Productor"
+
+#: src/Gui/Widgets/ItemInfo.cs:290
+msgid "Creator"
+msgstr "Creator"
+
+#: src/Gui/Widgets/ItemInfo.cs:292
+msgid "Software"
+msgstr "Logicial"
+
+#: src/Gui/Widgets/ItemInfo.cs:294
+msgid "Language"
+msgstr "Lenga"
+
+#: src/Gui/Widgets/ItemInfo.cs:296
+msgid "Page count"
+msgstr "Nombre de paginas"
+
+#: src/Gui/Widgets/ItemInfo.cs:300
+msgid "File count"
+msgstr "Nombre de fichièrs"
+
+#: src/Gui/Widgets/PageNavigation.cs:27
+msgid "No items."
+msgstr "Pas cap d'objècte."
+
+#: src/Gui/Widgets/PageNavigation.cs:145
+#, csharp-format
+msgid "<b>Page {0}/{1}</b>  ({2} - {3} of {4} items)"
+msgstr "<b>Pagina {0}/{1}</b>  ({2} - {3} sus {4} objèctes)"
+
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:231
+msgid "Invalid data"
+msgstr "Donada invalida"
+
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:231
+#, csharp-format
+msgid ""
+"\"{0}\" is {1}.\n"
+"\n"
+"Expected format: {2}\n"
+"Please correct or remove the data you entered."
+msgstr ""
+
+#: src/Gui/DBProperties.cs:75
+msgid "Database Properties"
+msgstr "Proprietats de la banca de donadas"
+
+#: src/Gui/DBProperties.cs:87
+msgid "Name:"
+msgstr "Nom :"
+
+#: src/Gui/DBProperties.cs:89
+msgid "Created:"
+msgstr "Creat lo :"
+
+#: src/Gui/VolumeProperties.cs:29
+msgid "Volume Properties"
+msgstr "Proprietats del Mèdia"
+
+#: src/Gui/DriveSelection.cs:60
+msgid "Waiting for drives..."
+msgstr "Espèra dels lectors..."
+
+#: src/Gui/DriveSelection.cs:133
+msgid "Drive"
+msgstr "Lector"
+
+#: src/Gui/DriveSelection.cs:139
+msgid "Label"
+msgstr "Etiqueta"
+
+#: src/Gui/DriveSelection.cs:240
+msgid "Please select a drive to scan"
+msgstr "Seleccionatz lo lector d'analisar"
+
+#: src/Gui/About.cs:28
+msgid "A portable volume indexing tool"
+msgstr "Esplech portable d'indexacion de mèdias"
+
+#: src/Gui/About.cs:29
+#, csharp-format
+msgid "Using VolumeDB v{0}."
+msgstr "Utilizatz VolumeDB v{0}."
+
+#: src/Gui/About.cs:31
+msgid "Copyright (c) "
+msgstr "Copyright (c) "
+
+#: src/Gui/ItemSearch.cs:78
+#, csharp-format
+msgid "Found {0} items in {1:F3} seconds."
+msgstr "Trobat {0} objèctes en {1:F3} segondas."
+
+#: src/Gui/ItemSearch.cs:89 src/Gui/MainWindow.cs:432
+msgid "Timeout: another search is probably still in progress."
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:91
+msgid "Too many search results. Please refine your search criteria."
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:106 src/Gui/MainWindow.cs:448
+msgid "Searching..."
+msgstr "Recèrca en cors..."
+
+#: src/Gui/ItemSearch.cs:232
+msgid "Search Items"
+msgstr "Objèctes recercats"
+
+#: src/Gui/ItemSearch.cs:247
+msgid "Search:"
+msgstr "Recercar :"
+
+#: src/Gui/ItemSearch.cs:274
+msgid "No search results."
+msgstr "Pas cap de resultat de recèrca."
+
+#: src/Gui/ItemSearch.cs:329 src/Gui/MainWindow.cs:797
+msgid "Edit Item"
+msgstr "Modificar un element"
+
+#: src/Gui/MainWindow.cs:68
+#, csharp-format
+msgid "Database '{0}' not found."
+msgstr "Banca de donadas '{0}' introbabla."
+
+#: src/Gui/MainWindow.cs:90
+msgid "Database not found"
+msgstr "Banca de donadas pas trobada"
+
+#: src/Gui/MainWindow.cs:91
+msgid "Default database not found. Create?"
+msgstr "Banca de donadas per defaut pas trobada. Crear una novèla ?"
+
+#: src/Gui/MainWindow.cs:120
+msgid "Unsupported database version"
+msgstr "Version de banca de donadas pas suportada"
+
+#: src/Gui/MainWindow.cs:121
+msgid "This database version is not supported."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:140
+#, csharp-format
+msgid "{0} volumes loaded."
+msgstr "{0} mèdias cargats."
+
+#: src/Gui/MainWindow.cs:161
+#, csharp-format
+msgid "An error occured while loading the volume list: {0}"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:203
+msgid "Please enter the name for the new database"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:215
+msgid "Database exists"
+msgstr "La banca de donadas existís ja"
+
+#: src/Gui/MainWindow.cs:216
+msgid "Database already exists. Overwrite?"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:229
+msgid "Please select a database"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:238 src/Gui/MainWindow.cs:513 src/Gui/Import.cs:109
+msgid "Database not found."
+msgstr "Banca de donadas introbabla."
+
+#: src/Gui/MainWindow.cs:259
+#, csharp-format
+msgid ""
+"An error occured while accessing drive {0}:\n"
+"{1}"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:281
+#, csharp-format
+msgid "Drive {0} is not ready."
+msgstr "Lo lector {0} es pas prèst."
+
+#: src/Gui/MainWindow.cs:290
+#, csharp-format
+msgid "Drive {0} is neither mounted nor does it contain an audio cd."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:317 src/Gui/MainWindow.cs:347
+msgid "No volume selected"
+msgstr "Cap de mèdia es pas seleccionat"
+
+#: src/Gui/MainWindow.cs:318
+msgid "Please select a volume record to remove."
+msgstr "Seleccionatz lo mèdia de suprimir."
+
+#: src/Gui/MainWindow.cs:325
+msgid "Confirmation"
+msgstr "Confirmacion"
+
+#: src/Gui/MainWindow.cs:326
+msgid "Are you sure you really want to remove the selected volume?"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:348
+msgid "Please select a volume to edit."
+msgstr "Seleccionatz un mèdia d'editar."
+
+#: src/Gui/MainWindow.cs:365
+msgid "No item selected"
+msgstr "Cap d'element es pas seleccionat"
+
+#: src/Gui/MainWindow.cs:366
+msgid "Please select an item to edit."
+msgstr "Seleccionatz un element d'editar."
+
+#: src/Gui/MainWindow.cs:738
+msgid "_File"
+msgstr "_Fichièr"
+
+#: src/Gui/MainWindow.cs:741
+msgid "_New Database"
+msgstr "BDD _novèla"
+
+#: src/Gui/MainWindow.cs:744
+msgid "_Open Database"
+msgstr "D_obrir BDD"
+
+#: src/Gui/MainWindow.cs:747
+msgid "Open Default Database"
+msgstr "Dobrir la BDD per defaut"
+
+#: src/Gui/MainWindow.cs:750
+msgid "_Database Properties"
+msgstr "_Proprietats BDD"
+
+#: src/Gui/MainWindow.cs:753
+msgid "_Import"
+msgstr "_Importar"
+
+#: src/Gui/MainWindow.cs:756
+msgid "_Quit"
+msgstr "_Quitar"
+
+#: src/Gui/MainWindow.cs:762
+msgid "Recent Databases"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:769
+msgid "_Edit"
+msgstr "_Edicion"
+
+#: src/Gui/MainWindow.cs:772
+msgid "_Preferences"
+msgstr "_Preferéncias"
+
+#: src/Gui/MainWindow.cs:776
+msgid "_Help"
+msgstr "_Ajuda"
+
+#: src/Gui/MainWindow.cs:779
+msgid "_Info"
+msgstr "_Info"
+
+#: src/Gui/MainWindow.cs:783
+msgid "_Add Volume"
+msgstr "_Apondre un Mèdia"
+
+#: src/Gui/MainWindow.cs:787
+msgid "_Remove Volume"
+msgstr "_Suprimir un Mèdia"
+
+#: src/Gui/MainWindow.cs:790
+msgid "_Edit Volume"
+msgstr "_Editar un Mèdia"
+
+#: src/Gui/MainWindow.cs:793
+msgid "_Search"
+msgstr "_Recercar"
+
+#: src/Gui/MainWindow.cs:878
+msgid "Filter volumes"
+msgstr "Filtrar los mèdias"
+
+#: src/Gui/Import.cs:29
+msgid "Import"
+msgstr "Importar"
+
+#: src/Gui/Import.cs:30
+msgid "Abort"
+msgstr "Abandonar"
+
+#: src/Gui/Import.cs:98
+#, csharp-format
+msgid "{0:0}% completed."
+msgstr "{0:0}% realizat."
+
+#: src/Gui/Import.cs:108
+msgid "Import failed"
+msgstr "L'importacion a pas capitat"
+
+#: src/Gui/Import.cs:111
+msgid "Import failed!"
+msgstr "Error d'importacion !"
+
+#: src/Gui/Import.cs:113
+msgid "Import aborted."
+msgstr "Importacion abandonada."
+
+#: src/Gui/Import.cs:115
+msgid "Import completed successfully."
+msgstr "Impòrt acabat amb succès."
+
+#: src/Gui/Import.cs:134
+msgid "Import in progress"
+msgstr "Importacion en cors"
+
+#: src/Gui/Import.cs:135
+msgid "You must stop the import before closing this window."
+msgstr ""
+
+#: src/Gui/Import.cs:160
+msgid "Import Database"
+msgstr "Impòrt de la banca de donadas"
+
+#: src/Gui/Import.cs:171
+msgid "Please select a database to import"
+msgstr "Seleccionatz una banca de donadas d'importar"
+
+#: src/Gui/Import.cs:189
+msgid "Database:"
+msgstr "Banca de donadas :"
+
+#: src/Gui/Import.cs:190
+msgid "Format:"
+msgstr "Format :"
+
+#: src/Gui/ItemProperties.cs:29
+msgid "Item Properties"
+msgstr "Propietats de l'element"
+
+#: src/Gui/VolumeScanner.cs:111
+msgid "Scanning started."
+msgstr "Analisi aviada."
+
+#: src/Gui/VolumeScanner.cs:113
+#, csharp-format
+msgid "Scanning of drive '{0}' started."
+msgstr "Aviada de l'analisi del lector '{0}'."
+
+#: src/Gui/VolumeScanner.cs:121
+#, csharp-format
+msgid ""
+"Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
+"hashing: {3}."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:129
+#, csharp-format
+msgid "Options: MusicBrainz enabled: {0}"
+msgstr "Opcions : MusicBrainz activada : {0}"
+
+#: src/Gui/VolumeScanner.cs:151
+msgid "Time"
+msgstr "Ora"
+
+#: src/Gui/VolumeScanner.cs:155
+msgid "Message"
+msgstr "Messatge"
+
+#: src/Gui/VolumeScanner.cs:238
+msgid "yes"
+msgstr "òc"
+
+#: src/Gui/VolumeScanner.cs:238
+msgid "no"
+msgstr "non"
+
+#: src/Gui/VolumeScanner.cs:261
+msgid "Scan in progress"
+msgstr "Analisi en cors"
+
+#: src/Gui/VolumeScanner.cs:261
+msgid "You must stop scanning before closing this window."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:271
+msgid "Stopping Scanner and performing rollback..."
+msgstr "Arrèst de l'analisi e anullacion dels cambiaments..."
+
+#: src/Gui/VolumeScanner.cs:313
+#, csharp-format
+msgid "An unhandled exception occured ({0})."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:314
+msgid "All database changes have been rolled back."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:337
+#, csharp-format
+msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:339
+msgid "Scanning aborted."
+msgstr "Analisi interrompuda."
+
+#: src/Gui/VolumeScanner.cs:341
+msgid "Scanning completed successfully."
+msgstr "Analisi acabada amb succès."
+
+#: src/Gui/VolumeScanner.cs:438
+msgid "VolumeScanner"
+msgstr "VolumeScanner"
+
+#: src/Gui/VolumeScanner.cs:450
+msgid "<b>Volume Information:</b>"
+msgstr "<b>Information sul mèdia :</b>"
+
+#: src/Gui/VolumeScanner.cs:460
+msgid "<b>Scanner Log:</b>"
+msgstr "<b>Resultat de l'analisi :</b>"
+
+#: src/Gui/VolumeScanner.cs:481
+msgid "Database access"
+msgstr "Accès a la banca de donadas"
+
+#: src/Gui/Preferences.cs:107
+msgid "None"
+msgstr "Pas cap"
+
+#: src/Gui/Preferences.cs:229
+msgid "Restart required"
+msgstr "Vos cal tornar amodar l'ordenador"
+
+#: src/Gui/Preferences.cs:229
+#, csharp-format
+msgid "You must restart {0} for icontheme changes to take effect."
+msgstr "Vos cal reamodar {0} per aplicar lo cambiament del tèma."
+
+#: src/Gui/Preferences.cs:257
+msgid "Preferences"
+msgstr "Preferéncias"
+
+#: src/Gui/Preferences.cs:279
+msgid "_Load Defaults"
+msgstr "_Cargar defauts"
+
+#: src/Gui/Preferences.cs:304
+msgid "Icon theme:"
+msgstr "Tèma d'icònas :"
+
+#: src/Gui/Preferences.cs:315
+msgid "Reopen most recent database on startup"
+msgstr ""
+
+#: src/Gui/Preferences.cs:319
+msgid "Show thumbnails in the filebrowser"
+msgstr ""
+
+#: src/Gui/Preferences.cs:322
+msgid "General"
+msgstr "General"
+
+#: src/Gui/Preferences.cs:330
+msgid "Don't prompt, always scan:"
+msgstr ""
+
+#: src/Gui/Preferences.cs:349
+msgid "Generate Thumbnails"
+msgstr "Generacion de las miniaturas"
+
+#: src/Gui/Preferences.cs:353
+msgid "Extract metadata"
+msgstr "Extraccion de las metadonadas"
+
+#: src/Gui/Preferences.cs:357
+msgid "Discard symbolic links"
+msgstr "Ignorar los ligams simbolics"
+
+#: src/Gui/Preferences.cs:361
+msgid "Compute hashcodes for files (slow!)"
+msgstr ""
+
+#: src/Gui/Preferences.cs:365
+msgid "Fetch audio cd metadata from MusicBrainz.org"
+msgstr ""
+
+#: src/Gui/Preferences.cs:368
+msgid "Scanner"
+msgstr "Scanner"

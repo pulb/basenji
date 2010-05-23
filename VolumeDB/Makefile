@@ -240,7 +240,8 @@ RESOURCES = \
 	po/fr.resources,VolumeDB.po.fr.resources \
 	po/es.resources,VolumeDB.po.es.resources \
 	po/it.resources,VolumeDB.po.it.resources \
-	po/bg.resources,VolumeDB.po.bg.resources 
+	po/bg.resources,VolumeDB.po.bg.resources \
+	po/oc.resources,VolumeDB.po.oc.resources 
 
 EXTRAS = \
 	volumedb.pc.in 
