@@ -1,6 +1,6 @@
 // EUSLSearchCriteria.cs
 // 
-// Copyright (C) 2009, 2010 Patrick Ulbrich
+// Copyright (C) 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,42 +19,42 @@
 using System;
 using VolumeDB.Searching.EUSL.Parsing;
 
-namespace VolumeDB.Searching.ItemSearchCriteria
+namespace VolumeDB.Searching.VolumeSearchCriteria
 {
 	public sealed class EUSLSearchCriteria : AbstractEUSLSearchCriteria
 	{	
 		public EUSLSearchCriteria(string euslQuery)	: base(euslQuery) {}
 		
 		// TODO :
-		// word, number and phrase terms are currently only compared against database field 'Name'.
+		// word, number and phrase terms are currently only compared against database field 'Title'.
 		// they should probably compared to other common database fields as well.
 		// but this would slow down searching a lot.. 
 		// maybe some smarter table indexers settings would help.
 		internal override void OnTermParsed(TermParsedEventArgs e, out ISearchCriteria criteria) {
-					
+							
 			criteria = null;
 			
 			switch (e.TermType) {
 				case TermType.Number:
 					criteria = new FreeTextSearchCriteria(e.Number.ToString(),
-				                                      FreeTextSearchField.AnyName,
+				                                      FreeTextSearchField.Title,
 				                                      TextCompareOperator.Contains);
 					break;
 				case TermType.Phrase:
 					criteria = new FreeTextSearchCriteria(e.Phrase,
-				                                      FreeTextSearchField.AnyName,
+				                                      FreeTextSearchField.Title,
 				                                      TextCompareOperator.Contains);
 					break;
 				case TermType.Word:
 					criteria = new FreeTextSearchCriteria(e.Word,
-				                                      FreeTextSearchField.AnyName,
+				                                      FreeTextSearchField.Title,
 				                                      TextCompareOperator.Contains);
 					break;
 				case TermType.Select:
 				
 					string keyword = e.Keyword.ToUpper();
 					
-					if (keyword == "FILESIZE") {
+					if (keyword == "SIZE") {
 						
 						long byteSize = e.Number;
 						if (byteSize == -1L) {
@@ -68,7 +68,7 @@ namespace VolumeDB.Searching.ItemSearchCriteria
 						}
 						
 						CompareOperator cOp = CompareOperator.Equal;
-						switch(e.Relation) {
+						switch (e.Relation) {
 							case Relation.Equal:
 								cOp = CompareOperator.Equal;
 								break;
@@ -90,56 +90,23 @@ namespace VolumeDB.Searching.ItemSearchCriteria
 										"euslQuery");
 						}
 						
-						criteria = new FileSizeSearchCriteria(byteSize, cOp);
-					
-					} else if (keyword == "TYPE") {
-					
-						if (string.IsNullOrEmpty(e.Word))
-							throw new ArgumentException(
-								string.Format(S._("Operand for keyword '{0}' must be a string"), e.Keyword),
-								"euslQuery");
-								
-						// try to map the word of the type selector to an MediaType
-						MediaType type = MediaType.None;							
-						try {
-							type = MediaType.FromString(e.Word);
-						} catch (ArgumentException) {
-							throw new ArgumentException(
-										string.Format(S._("Unknown type '{0}'"), e.Word),
-										"euslQuery");
-						}
-						
-						if (e.Relation != Relation.Contains && e.Relation != Relation.Equal) {
-							throw new ArgumentException(
-										string.Format(S._("Keyword '{0}' only supports '=' and ':' operators"), e.Keyword),
-										"euslQuery");
-						}
-						
-						criteria = new MediaTypeSearchCriteria(type);
+						criteria = new QuantitySearchCriteria(QuantityField.Size, byteSize, cOp);
 					
 					} else {
 						// try to map the keyword to freetextsearch fields
 						
 						IFreeTextSearchField sf;
 						
-						// try to map the keyword to a VOLUME freetextsearchfield.
-						// note: keywords mapping to foreign table fields 
-						//       should be prefixed with the respective table name.
-						if (keyword == "VOLUME-TITLE") {
-							sf = VolumeSearchCriteria.FreeTextSearchField.Title;
-						} else {
-							// try to map the keyword to an ITEM freetextsearchfield
-							try {
-								sf = FreeTextSearchField.FromString(e.Keyword);
-							} catch (ArgumentException) {
-								throw new ArgumentException(
-											string.Format(S._("Unknown keyword '{0}'"), e.Keyword),
-											"euslQuery");
-							}
+						try {
+							sf = FreeTextSearchField.FromString(e.Keyword);
+						} catch (ArgumentException) {
+							throw new ArgumentException(
+										string.Format(S._("Unknown keyword '{0}'"), e.Keyword),
+										"euslQuery");
 						}
 						
 						TextCompareOperator tcOp = TextCompareOperator.Contains;							
-						switch (e.Relation) {
+						switch(e.Relation) {
 							case Relation.Contains:
 								tcOp = TextCompareOperator.Contains;
 								break;

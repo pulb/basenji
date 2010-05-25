@@ -104,6 +104,8 @@
     <File subtype="Code" buildaction="EmbedAsResource" name="po/it.resources" resource_id="VolumeDB.po.it.resources" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/bg.resources" resource_id="VolumeDB.po.bg.resources" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/oc.resources" resource_id="VolumeDB.po.oc.resources" />
+    <File subtype="Code" buildaction="Compile" name="src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Searching/AbstractEUSLSearchCriteria.cs" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />

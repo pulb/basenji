@@ -229,7 +229,9 @@ FILES = \
 	src/VolumeScanner/AudioCdScannerOptions.cs \
 	src/AudioTrackVolumeItem.cs \
 	src/AudioCdVolume.cs \
-	src/AudioCdRootVolumeItem.cs 
+	src/AudioCdRootVolumeItem.cs \
+	src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs \
+	src/Searching/AbstractEUSLSearchCriteria.cs 
 
 DATA_FILES = 
 
