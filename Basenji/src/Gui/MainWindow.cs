@@ -402,7 +402,7 @@ namespace Basenji.Gui
 				try {
 					criteria = new EUSLSearchCriteria(txtSearchString.Text);
 				} catch (ArgumentException e) {
-					SetStatus(Util.FormatExceptionMsg(e));
+					SetTempStatus(Util.FormatExceptionMsg(e));
 					return;
 				}
 			}
