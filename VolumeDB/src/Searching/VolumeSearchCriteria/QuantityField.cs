@@ -107,7 +107,7 @@ namespace VolumeDB.Searching.VolumeSearchCriteria
 				SearchUtils.Append(sql, compareOperator.GetSqlCompareString("Volumes.Dirs", strQuantity), fieldMatchRule);
 			
 			if (this.ContainsField(Size))
-				SearchUtils.Append(sql, compareOperator.GetSqlCompareString("Size.Size", strQuantity), fieldMatchRule);
+				SearchUtils.Append(sql, compareOperator.GetSqlCompareString("Volumes.Size", strQuantity), fieldMatchRule);
 			
 			return sql.ToString();
 		}
