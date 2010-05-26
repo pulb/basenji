@@ -115,7 +115,7 @@ namespace VolumeDB.Searching.VolumeSearchCriteria
 						}
 						
 						TextCompareOperator tcOp = TextCompareOperator.Contains;							
-						switch(e.Relation) {
+						switch (e.Relation) {
 							case Relation.Contains:
 								tcOp = TextCompareOperator.Contains;
 								break;

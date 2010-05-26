@@ -68,7 +68,7 @@ namespace VolumeDB.Searching.ItemSearchCriteria
 						}
 						
 						CompareOperator cOp = CompareOperator.Equal;
-						switch(e.Relation) {
+						switch (e.Relation) {
 							case Relation.Equal:
 								cOp = CompareOperator.Equal;
 								break;
