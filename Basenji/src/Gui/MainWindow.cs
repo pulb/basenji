@@ -475,7 +475,7 @@ namespace Basenji.Gui
 		
 		private void SetTempStatus(string message) {
 			SetStatus(message);
-			GLib.Timeout.Add(2000, delegate {
+			GLib.Timeout.Add(3000, delegate {
 				statusbar.Pop(1);
 				return false;
 			});
