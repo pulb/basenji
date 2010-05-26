@@ -400,11 +400,7 @@ namespace Basenji.Gui
 			
 			if (txtSearchString.Text.Length > 0) {
 				try {
-					// TODO : use EUSL searchcriteria for volumes
-					// analog to the item search window.
-					criteria = new FreeTextSearchCriteria(txtSearchString.Text,
-					                                      FreeTextSearchField.Title,
-					                                      TextCompareOperator.Contains);
+					criteria = new EUSLSearchCriteria(txtSearchString.Text);
 				} catch (ArgumentException e) {
 					SetStatus(Util.FormatExceptionMsg(e));
 					return;
