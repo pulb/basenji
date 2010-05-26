@@ -17,12 +17,20 @@
 //
 
 using System;
+using System.Collections.Generic;
 using VolumeDB.Searching.EUSL.Parsing;
 
 namespace VolumeDB.Searching.VolumeSearchCriteria
 {
 	public sealed class EUSLSearchCriteria : AbstractEUSLSearchCriteria
 	{	
+		
+		private readonly Dictionary<string, QuantityField> quantityFields = new Dictionary<string, QuantityField>() {
+			{ "SIZE", QuantityField.Size },
+			{ "DIRS", QuantityField.Dirs },
+			{ "FILES", QuantityField.Files }
+		};
+		
 		public EUSLSearchCriteria(string euslQuery)	: base(euslQuery) {}
 		
 		// TODO :
@@ -54,7 +62,8 @@ namespace VolumeDB.Searching.VolumeSearchCriteria
 				
 					string keyword = e.Keyword.ToUpper();
 					
-					if (keyword == "SIZE") {
+					// try to map the keyword to a volumes quantity field
+					if (quantityFields.ContainsKey(keyword)) {
 						
 						long byteSize = e.Number;
 						if (byteSize == -1L) {
@@ -90,7 +99,7 @@ namespace VolumeDB.Searching.VolumeSearchCriteria
 										"euslQuery");
 						}
 						
-						criteria = new QuantitySearchCriteria(QuantityField.Size, byteSize, cOp);
+						criteria = new QuantitySearchCriteria(quantityFields[keyword], byteSize, cOp);
 					
 					} else {
 						// try to map the keyword to freetextsearch fields
