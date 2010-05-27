@@ -1,6 +1,6 @@
 // AssemblyInfo.cs
 // 
-// Copyright (C) 2008, 2009 Patrick Ulbrich, zulu99@gmx.net
+// Copyright (C) 2008, 2009 Patrick Ulbrich <zulu99@gmx.net>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ using System.Runtime.CompilerServices;
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // If the build and revision are set to '*' they will be updated automatically.
 
-[assembly: AssemblyVersion("0.5.23.3")]
+[assembly: AssemblyVersion("0.5.23.4")]
 
 // The following attributes are used to specify the signing key for the assembly, 
 // if desired. See the Mono documentation for more information about signing.

@@ -1,6 +1,6 @@
 // Extractor.cs
 // 
-// Copyright (C) 2008, 2009 Patrick Ulbrich, zulu99@gmx.net
+// Copyright (C) 2008 - 2010 Patrick Ulbrich <zulu99@gmx.net>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -144,6 +144,9 @@ namespace LibExtractor
 				
 				while (p != IntPtr.Zero) {
 					Keyword k = (Keyword)Marshal.PtrToStructure(p, typeof(Keyword));
+					
+					k.keyword = RemoveBOM(k.keyword);
+					
 					list.Add(k);
 					p = k.next;
 				}
@@ -318,6 +321,17 @@ namespace LibExtractor
 			}
 			
 			return copy;
+		}
+		
+		// remove unicode byte ordering mark
+		private static string RemoveBOM(string s) {
+			const char BOM_UTF16_BE = (char)0xFEFF;
+			const char BOM_UTF16_LE = (char)0xFFFE;
+			
+			if ((s != null) && (s[0] == BOM_UTF16_BE || s[0] == BOM_UTF16_LE))
+				return s.Substring(1, s.Length -1);
+			else
+				return s;
 		}
 		
 		/// 
