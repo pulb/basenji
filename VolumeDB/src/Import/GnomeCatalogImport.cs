@@ -211,7 +211,7 @@ namespace VolumeDB.Import
 			}
 			
 			string path = (string)reader["path"];			
-			Debug.Assert(path.StartsWith("file:///"), "path starts with 'file://'");
+			Debug.Assert(path.StartsWith("file://"), "path starts with 'file://'");
 			
 			string name = (string)reader["name"];
 			
