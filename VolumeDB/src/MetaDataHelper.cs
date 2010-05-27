@@ -31,14 +31,9 @@ namespace VolumeDB
 			StringBuilder sbData	= new StringBuilder();
 
 			sbHeader.Append('[');
-			foreach(Keyword kw in keywords) {
-				// skip data that is already available in other
-				// database fields or unreliable.
-				if (	(kw.keywordType == KeywordType.EXTRACTOR_MIMETYPE) ||
-				    	(kw.keywordType == KeywordType.EXTRACTOR_THUMBNAILS) ||
-				    	(kw.keywordType == KeywordType.EXTRACTOR_THUMBNAIL_DATA)
-				    )
-						continue;
+			foreach (Keyword kw in keywords) {
+				if (IsBadKeyword(kw))
+				    continue;
 				
 				if (sbHeader.Length > 1)
 					sbHeader.Append(':');
@@ -93,6 +88,23 @@ namespace VolumeDB
 				return string.Format("{0}m{1:D2}", mins, secs);
 			else
 				return string.Format("{0}m", mins);
+		}
+		
+		private static bool IsBadKeyword(Keyword kw) {
+			// skip data that is already available in other
+			// database fields or unreliable.
+			if (	(kw.keywordType == KeywordType.EXTRACTOR_MIMETYPE) ||
+			    	(kw.keywordType == KeywordType.EXTRACTOR_THUMBNAILS) ||
+			    	(kw.keywordType == KeywordType.EXTRACTOR_THUMBNAIL_DATA) ||
+			    	(kw.keywordType == KeywordType.EXTRACTOR_CONTENT_TYPE)
+			    )
+				return true;
+			
+			// skip 0-length durations.
+			if ((kw.keywordType == KeywordType.EXTRACTOR_DURATION) && (kw.keyword == "0"))
+				return true;
+			
+			return false;
 		}
 	}
 }
