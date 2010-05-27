@@ -220,7 +220,7 @@ namespace Basenji.Gui.Widgets
 				List<ItemProperty> tmp;
 				GetCommonItemProperties(item, out tmp, out nameProperty);
 				
-				tmp.Add(new ItemProperty(S._("Duration"), item.Duration.ToString(), 202));				
+				tmp.Add(new ItemProperty(S._("Duration"), FormatDuration(item.Duration), 202));				
 				tmp.Add(new ItemProperty(S._("Size"), Util.GetSizeStr((long)(item.Duration.TotalSeconds * PCM_FACTOR)), 203));
 				tmp.Add(new ItemProperty(S._("Track No."), (item.ItemID - 1).ToString(), 204));
 				
@@ -272,7 +272,7 @@ namespace Basenji.Gui.Widgets
 								tmp.Add(new ItemProperty(S._("Description"), RemoveSimilarIDTags(pair.Value), 110));
 							/* audio / picture / video properties */
 							} else if (pair.Key == "duration") {
-								tmp.Add(new ItemProperty(S._("Duration"), ParseExtractorDuration(pair.Value).ToString(), 106));
+								tmp.Add(new ItemProperty(S._("Duration"), FormatDuration(ParseExtractorDuration(pair.Value)), 106));
 							} else if (pair.Key == "size") {
 								// NOTE: size keyword is used in e.g. deb packages as well (unpacked size in kb)
 								if(item.MimeType.StartsWith("image") || item.MimeType.StartsWith("video"))
@@ -350,27 +350,33 @@ namespace Basenji.Gui.Widgets
 			}
 			
 			public static TimeSpan ParseExtractorDuration(string duration) {
-				float mins, secs;
+				TimeSpan t;
 				string[] numbers = duration.Split(new string[] { "m", "s" }, StringSplitOptions.RemoveEmptyEntries);
 				
 				if (numbers.Length == 2) {
 					// minutes AND seconds expected (e.g. "12m51")
 					// (also "12m51s", although I've yet to see this occur)
-					mins = float.Parse(numbers[0]);
-					secs = float.Parse(numbers[1]);
+					t = new TimeSpan(0, int.Parse(numbers[0]), int.Parse(numbers[1]));
 				} else {
-					// minutes OR seconds expected (e.g. "12m", "51,43s", "51,43 s")
-					// (also "51", although I've yet to see this occur)
-					if (duration[duration.Length - 1] == 'm') {
-						mins = float.Parse(numbers[0]) + .5f;
-						secs = 0;
-					} else {
-						mins = 0;
-						secs = float.Parse(numbers[0]) + .5f;
-					}
+					// minutes OR seconds OR milliseconds expected 
+					// (e.g. "12m", "51,43s", "51,43 s", "209711")
+					if (duration[duration.Length - 1] == 'm')
+						t = TimeSpan.FromMinutes(double.Parse(numbers[0]));
+					else if (duration[duration.Length - 1] == 's')
+						t = TimeSpan.FromSeconds(double.Parse(numbers[0]));
+					else // ms expcepted
+						t = TimeSpan.FromMilliseconds(double.Parse(numbers[0]));
 				}
 				
-				return new TimeSpan(0, (int)mins, (int)secs);
+				return t;
+			}
+			
+			private static string FormatDuration(TimeSpan duration) {
+				// duration.ToString() also returns ms.
+				return string.Format("{0:D2}:{1:D2}:{2:D2}",
+				                     duration.Hours,
+				                     duration.Minutes,
+				                     duration.Seconds);
 			}
 		}
 #endregion
