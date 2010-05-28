@@ -147,6 +147,7 @@ namespace Basenji.Gui.Widgets
 					col.PackStart(txt, false);
 					col.SetAttributes(pix, "pixbuf", 0);
 					col.SetAttributes(txt, "text", 1);
+					col.SetCellDataFunc(txt, CellDataFunc);
 					AppendColumn(col);
 				
 					// set up store
@@ -165,9 +166,11 @@ namespace Basenji.Gui.Widgets
 					col.Expand = false;
 					AppendColumn(col);
 				
-					col = new TreeViewColumn(S._("Name"), new CellRendererText(), "text", 1);
+					var tmp = new CellRendererText();
+					col = new TreeViewColumn(S._("Name"), tmp, "text", 1);
 					col.Resizable = true;
 					col.Expand = true;
+					col.SetCellDataFunc(tmp, CellDataFunc);
 					AppendColumn(col);
 				
 					col = new TreeViewColumn(S._("Artist"), new CellRendererText(), "text", 2);
@@ -234,6 +237,20 @@ namespace Basenji.Gui.Widgets
 				img = itemIcons.GetIconForItem(item, ICON_SIZE);
 			
 			return img;
+		}
+		
+		private void CellDataFunc(TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
+			VolumeItem item = GetItem(iter);
+			Gtk.CellRendererText txt = cell as Gtk.CellRendererText;
+			
+			if ((item != null) && ((item.Note.Length > 0) || (item.Keywords.Length > 0))) {
+				txt.Style = Pango.Style.Italic;
+				//txt.Foreground = "darkgreen";
+				txt.Text = txt.Text + " *";
+			} else {
+				txt.Style = Pango.Style.Normal;
+				//txt.Foreground = null;
+			}
 		}
 		
 		private void OnRowExpanded(object o, RowExpandedArgs args) {
