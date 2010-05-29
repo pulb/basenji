@@ -109,7 +109,7 @@ namespace Platform.Common.IO
 			return new DriveInfo(rootPath); // throws ArgumentException if drive cant be found
 #else
 			// dev can be a drive (e.g. cdrom with/without media), 
-			// a partitiontable or a partition.
+			// a partitiontable, a partition or a luks-holder representing an encrypted partition.
 			DkDisk dev = DkDisk.FindByDevice(device);
 			
 			if (dev == null)
@@ -142,7 +142,7 @@ namespace Platform.Common.IO
 			}
 #else
 			// dev can be a drive (e.g. cdrom with/without media), 
-			// a partitiontable or a partition.
+			// a partitiontable, a partition or a luks-holder representing an encrypted partition.
 			DkDisk[] devs = DkDisk.EnumerateDevices();
 			
 			foreach (DkDisk dev in devs) {
@@ -158,7 +158,7 @@ namespace Platform.Common.IO
 				
 				// skip unmounted partitions (e.g. swap) and 
 				// boot and home partitions.
-				if (dev.IsPartition && 
+				if ((dev.IsPartition || dev.DeviceIsLuksClearText) && 
 				    (!dev.IsMounted || (dev.MountPoint == "/boot") || (dev.MountPoint == "/home")))
 					continue;
 				
@@ -285,7 +285,7 @@ namespace Platform.Common.IO
 				d.isMounted = true;
 				d.isReady = true;
 			} else if (dev.IsMediaAvailable) {
-				// unmounted media or partition
+				// unmounted media, partition or luks-holder
 				d.volumeLabel = dev.Label;
 				d.totalSize = (long)dev.Size;
 				d.filesystem = dev.IdType;				
@@ -297,8 +297,15 @@ namespace Platform.Common.IO
 				string obj_path = dev.PartitionSlave;
 				DkDisk parent = new DkDisk(obj_path);
 				d.driveType = GetDriveType(parent);
-			} else {
+			} else if (dev.DeviceIsLuksClearText) {
+				// dev is a luks-holder representing an encrypted partition
+				DkDisk encryptedPartition = new DkDisk(dev.LuksCleartextSlave);
+				DkDisk drive = new DkDisk(encryptedPartition.PartitionSlave);
+				d.driveType = GetDriveType(drive);
+			} else if (dev.IsDrive) {
 				d.driveType = GetDriveType(dev);
+			} else {
+				throw new ArgumentException("DkDisk is of an unknown type");
 			}
 			
 			d.device = dev.DeviceFile;

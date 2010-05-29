@@ -152,6 +152,18 @@ namespace Platform.Common.IO
             }
         }
 		
+		public bool DeviceIsLuksClearText {
+            get {
+                return (bool) props.Get ("org.freedesktop.UDisks.Device", "DeviceIsLuksCleartext");
+            }
+        }
+		
+		public string LuksCleartextSlave {
+            get {
+                return ((ObjectPath)props.Get ("org.freedesktop.UDisks.Device", "LuksCleartextSlave")).ToString();
+            }
+        }
+		
 		public ulong Size {
             get {
                 return (ulong) props.Get ("org.freedesktop.UDisks.Device", "DeviceSize");
