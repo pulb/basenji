@@ -77,7 +77,8 @@ Spanish:
   Jorge Dardón (https://launchpad.net/~jdardon)
   monkey (https://launchpad.net/~monkey-libre)  
   Nicolás M. Zahlut (https://launchpad.net/~nzahlut)
-  Paco Molinero (https://launchpad.net/~franciscomol)";
+  Paco Molinero (https://launchpad.net/~franciscomol)
+  Rommel Anatoli Quintanilla Cruz (https://launchpad.net/~romeluko1100)";
 		
 		public About() {
 			// general window settings
