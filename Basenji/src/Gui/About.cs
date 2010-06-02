@@ -40,7 +40,10 @@ Mauro Solcia (https://launchpad.net/~maurosolcia)
 " };
 		
 		private static readonly string		translatorCredits	= 
-@"Bulgarian:
+@"Brazilian Portuguese
+  Gustavo Guidorizzi (https://launchpad.net/~gguido)
+
+Bulgarian:
   svilborg (https://launchpad.net/~svilborg)
 
 Danish:
