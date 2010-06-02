@@ -238,7 +238,8 @@ RESOURCES = \
 	po/ru.resources,Basenji.po.ru.resources \
 	po/bg.resources,Basenji.po.bg.resources \
 	po/it.resources,Basenji.po.it.resources \
-	po/oc.resources,Basenji.po.oc.resources 
+	po/oc.resources,Basenji.po.oc.resources \
+	po/pt_BR.resources,Basenji.po.pt_BR.resources 
 
 EXTRAS = \
 	app.desktop \
