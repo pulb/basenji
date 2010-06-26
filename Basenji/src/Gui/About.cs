@@ -73,6 +73,7 @@ Russian:
   Nikolai Romanik (https://launchpad.net/~arhey)
   Sciko (https://launchpad.net/~tempsciko-gmail)
   Sergey Sedov (https://launchpad.net/~serg-sedov)
+  Vladimir (https://launchpad.net/~bonza-land)
 
 Spanish:
   DiegoJ (https://launchpad.net/~diegojromerolopez)
@@ -83,7 +84,8 @@ Spanish:
   monkey (https://launchpad.net/~monkey-libre)  
   Nicolás M. Zahlut (https://launchpad.net/~nzahlut)
   Paco Molinero (https://launchpad.net/~franciscomol)
-  Rommel Anatoli Quintanilla Cruz (https://launchpad.net/~romeluko1100)";
+  Rommel Anatoli Quintanilla Cruz (https://launchpad.net/~romeluko1100)
+  victor tejada yau (https://launchpad.net/~victormtyau)";
 		
 		public About() {
 			// general window settings
