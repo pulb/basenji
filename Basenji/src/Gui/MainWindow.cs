@@ -329,7 +329,7 @@ namespace Basenji.Gui
 					// so just append.
 					tvVolumes.AddVolume(args.Volume);
 				}
-				// TODO : sort list?
+				
 			};
 		}
 		
@@ -572,7 +572,7 @@ namespace Basenji.Gui
 					// volumes treeview isn't filtered and contains all volumes
 					SearchVolumeAsync(null, null);
 				}
-				// TODO : sort list?
+				
 			};
 			
 			import.Show();
