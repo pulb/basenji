@@ -25,6 +25,18 @@ using VolumeDB;
 
 namespace Basenji.Gui.Widgets
 {
+	public enum VolumeSortProperty
+	{
+		VolumeID = 1,
+		ArchiveNo = 2,
+		Added = 3,
+		Title = 4,
+		DriveType = 5,
+		Category = 6,
+		/* Description = 7,
+		Keywords = 8 */
+	}
+	
 	public class VolumeView : ViewBase
 	{
 		private static readonly string STR_UNNAMED	= S._("Unnamed");
@@ -35,10 +47,17 @@ namespace Basenji.Gui.Widgets
 		private const IconSize ICON_SIZE = IconSize.Dialog;
 		private IconCache iconCache;
 		
+		private VolumeSortProperty sortProperty;
+		private bool toggleColumn;
+		
 		public VolumeView() {
 			iconCache = new IconCache(this);
+			sortProperty = VolumeSortProperty.VolumeID;
+			toggleColumn = false;
 			
+			//
 			// init columns
+			//
 			TreeViewColumn col;
 			
 			col = new TreeViewColumn(string.Empty, new CellRendererPixbuf(), "pixbuf", 0);			
@@ -48,19 +67,73 @@ namespace Basenji.Gui.Widgets
 			col = new TreeViewColumn(string.Empty, new CellRendererText(), "markup", 1);
 			col.Expand = true;
 			AppendColumn(col);
+			
+			//
+			// setup store
+			//
+			ListStore store = new Gtk.ListStore(typeof(Gdk.Pixbuf),
+			                                    typeof(string),
+			                                    /* Volume - not visible */
+			                                    typeof(Volume));
+			
+			// must be assignet before 
+			// assinging the sort func
+			this.Model = store;			
+			
+			Gtk.TreeIterCompareFunc sortfunc = delegate(TreeModel m, TreeIter a, TreeIter b) {
+				Volume vol_a = GetVolume(a);
+				Volume vol_b = GetVolume(b);
+			
+				if (vol_a == null || vol_b == null)
+					return 0;
+				
+				switch (sortProperty) {
+					case VolumeSortProperty.Added:
+						return Math.Sign(vol_a.Added.Subtract(vol_b.Added).Ticks);
+					case VolumeSortProperty.ArchiveNo:
+						return string.Compare(vol_a.ArchiveNo, vol_b.ArchiveNo);
+					case VolumeSortProperty.Category:
+						return string.Compare(vol_a.Category, vol_b.Category);
+					case VolumeSortProperty.DriveType:
+						return Math.Sign(vol_a.DriveType - vol_b.DriveType);
+					case VolumeSortProperty.Title:
+						return string.Compare(vol_a.Title, vol_b.Title);
+					case VolumeSortProperty.VolumeID:
+						return Math.Sign(vol_a.VolumeID - vol_b.VolumeID);
+					default: 
+						throw new ArgumentException("Invalid VolumeSortProperty");
+				}
+				
+				return 0;
+			};
+			
+			store.SetSortFunc(0, sortfunc);
+			store.SetSortFunc(1, sortfunc);
+			
+			// set initial sorting
+			/* Sort(sortProperty, true); */
 		}
 
 		public void Fill(Volume[] volumes) {
 			if (volumes == null)
 				throw new ArgumentNullException("volumes");
 
-			ListStore store = new Gtk.ListStore(typeof(Gdk.Pixbuf), typeof(string), /* Volume - not visible */ typeof(Volume));
+			Clear();
 			
-			foreach(Volume v in volumes)
+			ListStore store = (ListStore)Model;
+			
+			foreach (Volume v in volumes)
 				AddVolume(store, v);
 
-			Model = store;
+			// cluumns may still have the old width after clear()
+			// so reset it
 			ColumnsAutosize();
+		}
+		
+		public void SetSortProperty(VolumeSortProperty sortProperty, bool descending) {
+			this.sortProperty = sortProperty;
+			toggleColumn = !toggleColumn;
+			((ListStore)Model).SetSortColumnId(toggleColumn ? 0 : 1, descending ? SortType.Descending : SortType.Ascending);
 		}
 		
 		public void Clear() {
@@ -71,7 +144,7 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		public Volume GetVolume(TreeIter iter) {
-			Volume v = (Volume)Model.GetValue(iter, 2);
+			Volume v = (Model.GetValue(iter, 2) as Volume);
 			return v;
 		}
 		

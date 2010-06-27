@@ -138,6 +138,11 @@ namespace Basenji
 			set { properties["SearchResultPageSize"] = value.ToString(); }
 		}
 		
+		public int VolumeSortProperty {
+			get { return int.Parse(properties["VolumeSortProperty"]); }
+			set { properties["VolumeSortProperty"] = value.ToString(); }
+		}
+		
 		// restore default settings
 		public void Reset() {
 			properties = new Dictionary<string, string>();
@@ -162,6 +167,7 @@ namespace Basenji
 			properties.Add("CustomThemeLocation",			Path.Combine("data", "themes"));
 			properties.Add("CustomThemeName",				CurrentPlatform.IsGnome ? "" : NON_GNOME_CUSTOM_THEME);
 			properties.Add("SearchResultPageSize",			"10");
+			properties.Add("VolumeSortProperty",			((int)Gui.Widgets.VolumeSortProperty.Added).ToString());
 		}
 		
 		// returns a Settings instance with defaults loaded

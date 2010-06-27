@@ -32,7 +32,7 @@ namespace Basenji.Gui
 		private VolumeDatabase	database = null;
 		private volatile bool	windowDeleted;
 		private ISearchCriteria	lastSuccessfulSearchCriteria;
-		private RecentManager	recentManager;
+		private RecentManager	recentManager;		
 		
 		private readonly RecentData recentData = new RecentData() {
 			AppName = App.Name,
@@ -43,6 +43,11 @@ namespace Basenji.Gui
 		public MainWindow (string dbPath) {
 			recentManager = RecentManager.Default;
 			
+			// retrieve the sort property from settings
+			Widgets.VolumeSortProperty sp;
+			bool desc;
+			GetVolumeSortProperty(out sp, out desc);
+			
 			BuildGui();
 			
 			windowDeleted = false;
@@ -50,6 +55,10 @@ namespace Basenji.Gui
 			
 			SetWindowTitle(null);
 			EnableGui(false);
+			
+			// set the volumeview's sort property
+			// (before filling it with volumes) 
+			tvVolumes.SetSortProperty(sp, desc);
 			
 			// create default db on first startup
 			if (!App.Settings.SettingsFileExists()) {
@@ -504,6 +513,28 @@ namespace Basenji.Gui
 			return string.Format("{0} ...", s);
 		}
 		
+		private static void GetVolumeSortProperty(out Widgets.VolumeSortProperty sortProperty, out bool descending) {
+			int sp = App.Settings.VolumeSortProperty;
+			bool desc = false;
+			
+			if (sp < 0) {
+				sp *= (-1);
+				desc = true;
+			}
+			
+			sortProperty = (Widgets.VolumeSortProperty)sp;
+			descending = desc;
+		}
+		
+		private static void SaveVolumeSortProperty(Widgets.VolumeSortProperty sortProperty, bool descending) {
+			int sp = (int)sortProperty;
+			if (descending)
+				sp *= (-1);
+			
+			App.Settings.VolumeSortProperty = sp;
+			App.Settings.Save();
+		}
+		
 		private void OnActNewDBActivated(object sender, System.EventArgs args) {
 			SelectNewDB();
 		}
@@ -568,6 +599,31 @@ namespace Basenji.Gui
 			EditVolume();
 		}
 		
+		private void OnSortActionActivated(object sender, System.EventArgs args) {
+			// do not sort / save settings 
+			// if an action is activated in buildGui()
+			if (!buildGuiCompleted)
+				return;
+			
+			Widgets.VolumeSortProperty sp = Widgets.VolumeSortProperty.Added;
+			bool desc = actVolumesSortDescending.Active;
+			
+			if (sender == actVolumesSortDescending) {
+				foreach (var a in volumeSortActions) {
+					if (a.Active) {
+						sp = (Widgets.VolumeSortProperty)a.Value;
+						break;
+					}
+				}
+			} else { // sortfield action
+				RadioAction act = (RadioAction)sender;
+				sp = (Widgets.VolumeSortProperty)act.Value;
+			}
+			
+			tvVolumes.SetSortProperty(sp, desc);
+			SaveVolumeSortProperty(sp, desc); 
+		}
+		
 		private void OnActEditItemActivated(object sender, System.EventArgs args) {
 			EditItem();
 		}
@@ -585,15 +641,19 @@ namespace Basenji.Gui
 		private void OnTvVolumesButtonPressEvent(object o, ButtonPressEventArgs args) {
 			TreePath path;
 			tvVolumes.GetPathAtPos((int)args.Event.X, (int)args.Event.Y, out path);
-			if (path == null)
-				return;
+			//if (path == null)
+			//	return;
 				
 			if ((args.Event.Button == 1) && (args.Event.Type == Gdk.EventType.TwoButtonPress)) {
-				EditVolume();
+				if (path != null)
+					EditVolume();
 			} else if ((args.Event.Button == 3) && (args.Event.Type == Gdk.EventType.ButtonPress)) {
 				uint btn = args.Event.Button;
 				uint time = args.Event.Time;
-				volumeContextMenu.Popup(null, null, null, btn, time);
+				if (path != null)
+					volumeContextMenu.Popup(null, null, null, btn, time);
+				else
+					volumeSortContextMenu.Popup(null, null, null, btn, time);
 			}
 		}
 		
@@ -699,11 +759,16 @@ namespace Basenji.Gui
 		
 		private Gtk.Action actEditItem;
 		
+		private Gtk.Action actVolumesSortBy;
+		private Gtk.ToggleAction actVolumesSortDescending;
+		private Gtk.RadioAction[] volumeSortActions;
+		
 		// toolbar
 		private Toolbar toolbar;
 		
 		// context menus
 		private Menu volumeContextMenu;
+		private Menu volumeSortContextMenu;
 		private Menu itemContextMenu;
 		
 		// search entry
@@ -721,6 +786,8 @@ namespace Basenji.Gui
 		
 		// statusbar
 		private Statusbar statusbar;
+		
+		private bool buildGuiCompleted = false;
 		
 		protected override void BuildGui() {
 			base.BuildGui();
@@ -809,12 +876,51 @@ namespace Basenji.Gui
 			actEditItem = CreateAction("edititem", S._("Edit Item"), null, Stock.Edit, OnActEditItemActivated);
 			ag.Add(actEditItem, null);
 			
+			actVolumesSortBy = CreateAction("volumes_sortby", S._("Sort by"), null, null, null);
+			ag.Add(actVolumesSortBy, null);
+			
+			actVolumesSortDescending = CreateToggleAction("volumes_sortdescending", S._("Descending"), null, null, OnSortActionActivated);
+			ag.Add(actVolumesSortDescending, null);
+			
+			RadioAction tmp = CreateRadioAction("volumes_sortby_archiveno", S._("Archive No."), null, null, (int)Widgets.VolumeSortProperty.ArchiveNo, null, OnSortActionActivated);
+			volumeSortActions = new Gtk.RadioAction[] {
+				tmp,
+				CreateRadioAction("volumes_sortby_added", S._("Date added"), null, null, (int)Widgets.VolumeSortProperty.Added, tmp.Group, OnSortActionActivated),
+				CreateRadioAction("volumes_sortby_title", S._("Title"), null, null, (int)Widgets.VolumeSortProperty.Title, tmp.Group, OnSortActionActivated),
+				CreateRadioAction("volumes_sortby_drivetype", S._("Drivetype"), null, null, (int)Widgets.VolumeSortProperty.DriveType, tmp.Group, OnSortActionActivated),
+				CreateRadioAction("volumes_sortby_category", S._("Category"), null, null, (int)Widgets.VolumeSortProperty.Category, tmp.Group, OnSortActionActivated)
+			};
+			
+			// retrieve sort property from settings
+			Widgets.VolumeSortProperty sp;
+			bool desc;
+			GetVolumeSortProperty(out sp, out desc);
+			
+			foreach (var a in volumeSortActions) {
+				ag.Add(a, null);
+				
+				if (a.Value == (int)sp)
+					a.Active = true;
+			}
+			actVolumesSortDescending.Active = desc;
+			
 			// ui manager
 			UIManager manager = new UIManager();
 			manager.InsertActionGroup(ag, 0);
 			this.AddAccelGroup(manager.AccelGroup);
 			
-			string ui = @"
+			string sortMenu = @"
+			<menu action=""volumes_sortby"">
+				<menuitem action=""volumes_sortby_archiveno""/>
+				<menuitem action=""volumes_sortby_added""/>
+				<menuitem action=""volumes_sortby_title""/>
+				<menuitem action=""volumes_sortby_category""/>
+				<menuitem action=""volumes_sortby_drivetype""/>
+				<separator/>
+				<menuitem action=""volumes_sortdescending""/>
+			</menu>";
+			
+			string ui = string.Format(@"
 			<ui>
 				<menubar name=""menubar"">
 					<menu action=""file"">
@@ -848,19 +954,25 @@ namespace Basenji.Gui
 				<popup name=""volume_contextmenu"">
 					<menuitem action=""editvolume""/>
 					<menuitem action=""removevolume""/>
+					<separator/>
+					{0}
+				</popup>
+				<popup name=""volume_sort_contextmenu"">
+					{0}
 				</popup>
 				<popup name=""item_contextmenu"">
 					<menuitem action=""edititem""/>
 				</popup>
 			</ui>
-			";
+			", sortMenu);
 			
 			manager.AddUiFromString(ui);
 			
-			menubar				= (MenuBar)manager.GetWidget("/menubar");
-			toolbar				= (Toolbar)manager.GetWidget("/toolbar");
-			volumeContextMenu	= (Menu)manager.GetWidget("/volume_contextmenu");
-			itemContextMenu		= (Menu)manager.GetWidget("/item_contextmenu");
+			menubar					= (MenuBar)manager.GetWidget("/menubar");
+			toolbar					= (Toolbar)manager.GetWidget("/toolbar");
+			volumeContextMenu		= (Menu)manager.GetWidget("/volume_contextmenu");
+			volumeSortContextMenu	= (Menu)manager.GetWidget("/volume_sort_contextmenu");
+			itemContextMenu			= (Menu)manager.GetWidget("/item_contextmenu");
 			
 			// gtk will use SmallToolbar on windows by default 
 			// (no custom icons available for this size)
@@ -935,6 +1047,8 @@ namespace Basenji.Gui
 			// must be called _after_ ShowAll()
 			itemInfo.Minimized = itemInfoMinimized;
 			itemInfo.Hide();
+			
+			buildGuiCompleted = true;
 		}
 	}
 }

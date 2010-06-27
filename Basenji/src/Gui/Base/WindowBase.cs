@@ -48,8 +48,45 @@ namespace Basenji.Gui.Base
 			this.Show();		
 		}*/
 		
-		internal static Gtk.Action CreateAction(string name, string label, string tooltip, string stockid, EventHandler activated) {
+		internal static Gtk.Action CreateAction(string name,
+		                                        string label,
+		                                        string tooltip,
+		                                        string stockid,
+		                                        EventHandler activated) {
+			
 			Gtk.Action a = new Gtk.Action(name, label, tooltip, stockid);
+			if (activated != null)			  
+				a.Activated += activated;
+
+			return a;
+		}
+		
+		internal static Gtk.RadioAction CreateRadioAction(string name,
+		                                                  string label,
+		                                                  string tooltip,
+		                                                  string stockid,
+		                                                  int value,
+		                                                  GLib.SList grp,
+		                                                  EventHandler activated) {
+			
+			Gtk.RadioAction a = new Gtk.RadioAction(name, label, tooltip, stockid, value);
+			
+			if (grp != null)
+				a.Group = grp;
+			
+			if (activated != null)
+				a.Activated += activated;
+
+			return a;
+		}
+		
+		internal static Gtk.ToggleAction CreateToggleAction(string name,
+		                                                    string label,
+		                                                    string tooltip,
+		                                                    string stockid,
+		                                                    EventHandler activated) {
+			
+			Gtk.ToggleAction a = new Gtk.ToggleAction(name, label, tooltip, stockid);
 			if (activated != null)			  
 				a.Activated += activated;
 
