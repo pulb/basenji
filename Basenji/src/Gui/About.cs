@@ -85,7 +85,10 @@ Spanish:
   Nicolás M. Zahlut (https://launchpad.net/~nzahlut)
   Paco Molinero (https://launchpad.net/~franciscomol)
   Rommel Anatoli Quintanilla Cruz (https://launchpad.net/~romeluko1100)
-  victor tejada yau (https://launchpad.net/~victormtyau)";
+  victor tejada yau (https://launchpad.net/~victormtyau)
+
+Turkish:
+  Cihan Ersoy (https://launchpad.net/~cihan.ersoy)";
 		
 		public About() {
 			// general window settings
