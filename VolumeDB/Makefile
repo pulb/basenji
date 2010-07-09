@@ -244,7 +244,8 @@ RESOURCES = \
 	po/it.resources,VolumeDB.po.it.resources \
 	po/bg.resources,VolumeDB.po.bg.resources \
 	po/oc.resources,VolumeDB.po.oc.resources \
-	po/pt_BR.resources,VolumeDB.po.pt_BR.resources 
+	po/pt_BR.resources,VolumeDB.po.pt_BR.resources \
+	po/tr.resources,VolumeDB.po.tr.resources 
 
 EXTRAS = \
 	volumedb.pc.in 
