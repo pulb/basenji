@@ -222,7 +222,8 @@ FILES = \
 	src/Gui/Widgets/Editors/ObjectEditorExceptions.cs \
 	src/Gui/Widgets/Editors/VolumeEditor.cs \
 	src/Gui/Widgets/Editors/FileItemEditor.cs \
-	src/Gui/Widgets/Editors/DirectoryItemEditor.cs 
+	src/Gui/Widgets/Editors/DirectoryItemEditor.cs \
+	src/Gui/Widgets/Sorting.cs 
 
 DATA_FILES = 
 

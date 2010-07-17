@@ -91,7 +91,7 @@ namespace Basenji.Gui.Widgets
 					case VolumeSortProperty.Added:
 						return Math.Sign(vol_a.Added.Subtract(vol_b.Added).Ticks);
 					case VolumeSortProperty.ArchiveNo:
-						return string.Compare(vol_a.ArchiveNo, vol_b.ArchiveNo);
+						return Sorting.NatCompare(vol_a.ArchiveNo, vol_b.ArchiveNo);
 					case VolumeSortProperty.Category:
 						return string.Compare(vol_a.Category, vol_b.Category);
 					case VolumeSortProperty.DriveType:

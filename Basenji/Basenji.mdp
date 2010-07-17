@@ -99,6 +99,7 @@
     <File subtype="Code" buildaction="EmbedAsResource" name="po/oc.resources" resource_id="Basenji.po.oc.resources" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/pt_BR.resources" resource_id="Basenji.po.pt_BR.resources" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/tr.resources" resource_id="Basenji.po.tr.resources" />
+    <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/Sorting.cs" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
