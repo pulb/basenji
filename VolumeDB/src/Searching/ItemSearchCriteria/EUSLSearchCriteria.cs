@@ -66,28 +66,14 @@ namespace VolumeDB.Searching.ItemSearchCriteria
 									"euslQuery");
 							}
 						}
-						
+					
 						CompareOperator cOp = CompareOperator.Equal;
-						switch (e.Relation) {
-							case Relation.Equal:
-								cOp = CompareOperator.Equal;
-								break;
-							case Relation.Greater:
-								cOp = CompareOperator.Greater;
-								break;									
-							case Relation.GreaterOrEqual:
-								cOp = CompareOperator.GreaterOrEqual;
-								break;
-							case Relation.Less:
-								cOp = CompareOperator.Less;
-								break;
-							case Relation.LessOrEqual:
-								cOp = CompareOperator.LessOrEqual;
-								break;
-							default:
-								throw new ArgumentException(
-										string.Format(S._("Invalid compare operator for keyword '{0}'"), e.Keyword),
-										"euslQuery");
+						try {
+							cOp = GetNumericCompareOpForRelation(e.Relation);
+						} catch (ArgumentException) {
+							throw new ArgumentException(
+						                            string.Format(S._("Invalid compare operator for keyword '{0}'"), e.Keyword),
+						                            "euslQuery");
 						}
 						
 						criteria = new FileSizeSearchCriteria(byteSize, cOp);
@@ -137,19 +123,15 @@ namespace VolumeDB.Searching.ItemSearchCriteria
 											"euslQuery");
 							}
 						}
-						
-						TextCompareOperator tcOp = TextCompareOperator.Contains;							
-						switch (e.Relation) {
-							case Relation.Contains:
-								tcOp = TextCompareOperator.Contains;
-								break;
-							case Relation.Equal:
-								tcOp = TextCompareOperator.IsEqual;
-								break;
-							default:
-								throw new ArgumentException(
-											S._("Invalid compare operator for a keyword that maps to textual content"),
-											"euslQuery");
+					
+						TextCompareOperator tcOp = TextCompareOperator.Contains;
+					
+						try {
+							tcOp = GetTextCompareOpForRelation(e.Relation);
+						} catch (ArgumentException) {
+							throw new ArgumentException(
+						                            S._("Invalid compare operator for a keyword that maps to textual content"),
+						                            "euslQuery");
 						}
 						
 						string s;

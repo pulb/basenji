@@ -106,7 +106,7 @@ namespace VolumeDB.Searching
 			searchCriteria = outerOrGroup;
 		}
 		
-		/*protected*/ internal abstract void OnTermParsed(TermParsedEventArgs e, out ISearchCriteria criteria);
+		internal /*protected*/ abstract void OnTermParsed(TermParsedEventArgs e, out ISearchCriteria criteria);
 		
 		protected static long GetByteSize(string sizeStr) {
 			int exp = 0;
@@ -152,6 +152,49 @@ namespace VolumeDB.Searching
 			return bytes;
 		}
 
+		internal /*protected*/ static CompareOperator GetNumericCompareOpForRelation(Relation rel) {
+			CompareOperator cOp = CompareOperator.Equal;
+			
+			switch (rel) {
+				case Relation.Equal:
+					cOp = CompareOperator.Equal;
+					break;
+				case Relation.Greater:
+					cOp = CompareOperator.Greater;
+					break;									
+				case Relation.GreaterOrEqual:
+					cOp = CompareOperator.GreaterOrEqual;
+					break;
+				case Relation.Less:
+					cOp = CompareOperator.Less;
+					break;
+				case Relation.LessOrEqual:
+					cOp = CompareOperator.LessOrEqual;
+					break;
+				default:
+					throw new ArgumentException("Specified relation is not suited for numeric comparision");
+			}
+			
+			return cOp;
+		}
+		
+		internal /*protected*/ static TextCompareOperator GetTextCompareOpForRelation(Relation rel) {
+			TextCompareOperator tcOp = TextCompareOperator.Contains;							
+			
+			switch (rel) {
+				case Relation.Contains:
+					tcOp = TextCompareOperator.Contains;
+					break;
+				case Relation.Equal:
+					tcOp = TextCompareOperator.IsEqual;
+					break;
+				default:
+					throw new ArgumentException("Specified relation is not suited for textual comparision");
+			}
+			
+			return tcOp;
+		}
+		
 		#region ISearchCriteria Members
 		string ISearchCriteria.GetSqlSearchCondition() {
 			return searchCriteria.GetSqlSearchCondition();
