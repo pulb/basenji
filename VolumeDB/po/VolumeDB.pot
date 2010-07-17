@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-15 16:31+0200\n"
+"POT-Creation-Date: 2010-07-17 15:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,39 +16,46 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:91
-msgid ""
-"Operand for keyword 'filesize' must be a number with an optional multiplier"
-msgstr ""
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:115
-msgid "Invalid compare operator for keyword 'filesize'"
-msgstr ""
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:125
-msgid "Operand for keyword 'type' must be a string"
-msgstr ""
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:134
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:74
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:65
 #, csharp-format
-msgid "Unknown type '{0}'"
+msgid "Operand for keyword '{0}' must be a number with an optional multiplier"
 msgstr ""
 
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:140
-msgid "Keyword 'type' only supports '=' and ':' operators"
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:84
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:75
+#, csharp-format
+msgid "Invalid compare operator for keyword '{0}'"
 msgstr ""
 
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:162
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:99
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:122
 #, csharp-format
 msgid "Unknown keyword '{0}'"
 msgstr ""
 
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:177
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:109
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:133
 msgid "Invalid compare operator for a keyword that maps to textual content"
 msgstr ""
 
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:230
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:234
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:85
+#, csharp-format
+msgid "Operand for keyword '{0}' must be a string"
+msgstr ""
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:94
+#, csharp-format
+msgid "Unknown type '{0}'"
+msgstr ""
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:100
+#, csharp-format
+msgid "Keyword '{0}' only supports '=' and ':' operators"
+msgstr ""
+
+#: src/Searching/AbstractEUSLSearchCriteria.cs:87
+#: src/Searching/AbstractEUSLSearchCriteria.cs:91
 #, csharp-format
 msgid "Parsing error: search statement is malformed at position {0}"
 msgstr ""
