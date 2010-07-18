@@ -50,7 +50,7 @@ namespace Basenji.Gui.Widgets.Editors
 			{ "Videos",			S._("Videos")		},
 			{ "Pictures",		S._("Pictures")		},
 			{ "Games",			S._("Games")		},
-			{ "Applications",	S._("Applications")	},
+			{ "Software",		S._("Software")		},
 			{ "Misc",			S._("Misc")			},
 			{ "Other",			S._("Other")		}
 		};

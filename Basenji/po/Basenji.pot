@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-18 21:10+0200\n"
+"POT-Creation-Date: 2010-07-18 22:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -224,9 +224,8 @@ msgstr ""
 msgid "Games"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:53
-#: src/Gui/Widgets/CategoryView.cs:64
-msgid "Applications"
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:53 src/Gui/Widgets/ItemInfo.cs:292
+msgid "Software"
 msgstr ""
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:54
@@ -295,6 +294,10 @@ msgstr ""
 
 #: src/Gui/Widgets/CategoryView.cs:63
 msgid "Images"
+msgstr ""
+
+#: src/Gui/Widgets/CategoryView.cs:64
+msgid "Applications"
 msgstr ""
 
 #: src/Gui/Widgets/CategoryView.cs:65
@@ -371,10 +374,6 @@ msgstr ""
 
 #: src/Gui/Widgets/ItemInfo.cs:290
 msgid "Creator"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:292
-msgid "Software"
 msgstr ""
 
 #: src/Gui/Widgets/ItemInfo.cs:294
