@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-17 15:20+0200\n"
+"POT-Creation-Date: 2010-07-18 21:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,7 +66,7 @@ msgid "Unnamed"
 msgstr ""
 
 #: src/Gui/Widgets/VolumeView.cs:43
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:209
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:213
 msgid "Category:"
 msgstr ""
 
@@ -204,67 +204,84 @@ msgid "Music"
 msgstr ""
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:48
+msgid "Audiobooks"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:49
 #: src/Gui/Widgets/CategoryView.cs:62
 msgid "Movies"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:49
-msgid "Pictures"
-msgstr ""
-
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:50
-msgid "Misc"
+msgid "Videos"
 msgstr ""
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:51
+msgid "Pictures"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:52
+msgid "Games"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:53
+#: src/Gui/Widgets/CategoryView.cs:64
+msgid "Applications"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:54
+msgid "Misc"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:55
 msgid "Other"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:175
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:179
 msgid "Yes"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:175
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:179
 msgid "No"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:185
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:189
 msgid "Volume type:"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:186
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:190
 msgid "Hashed:"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:187
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:191
 msgid "Added:"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:208
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:212
 msgid "Archive No.:"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:210
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:214
 msgid "Title:"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:211 src/Gui/DBProperties.cs:88
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:215 src/Gui/DBProperties.cs:88
 msgid "Description:"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:212
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:216
 msgid "Keywords:"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:213
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:217
 msgid "Loaned to:"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:214
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:218
 msgid "Loaned date:"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:215
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:219
 msgid "Return date:"
 msgstr ""
 
@@ -278,10 +295,6 @@ msgstr ""
 
 #: src/Gui/Widgets/CategoryView.cs:63
 msgid "Images"
-msgstr ""
-
-#: src/Gui/Widgets/CategoryView.cs:64
-msgid "Applications"
 msgstr ""
 
 #: src/Gui/Widgets/CategoryView.cs:65
