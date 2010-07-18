@@ -1,5 +1,5 @@
 // Copyright (c) 2009 Yves Goergen,
-// released in the PUBLIC DOMAIN
+// released in the PUBLIC DOMAIN.
 // http://beta.unclassified.de/code/dotnet/naturalsort/
 
 // Character comparison modes: (choose exactly one!)
