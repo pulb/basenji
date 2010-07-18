@@ -42,13 +42,17 @@ namespace Basenji.Gui.Widgets.Editors
 		//   which will open a dialog to add/edit categories (e.g. add "Roms" category)
 		// - suggest category depending on cd content
 		public static readonly TranslatedStringTable categories = new TranslatedStringTable() {
-			{ "Backup",		S._("Backup")		},
-			{ "Documents",	S._("Documents")	},
-			{ "Music",		S._("Music")		},
-			{ "Movies",		S._("Movies")		},
-			{ "Pictures",	S._("Pictures")		},
-			{ "Misc",		S._("Misc")			},
-			{ "Other",		S._("Other")		}
+			{ "Backup",			S._("Backup")		},
+			{ "Documents",		S._("Documents")	},
+			{ "Music",			S._("Music")		},
+			{ "Audiobooks",		S._("Audiobooks")	},
+			{ "Movies",			S._("Movies")		},
+			{ "Videos",			S._("Videos")		},
+			{ "Pictures",		S._("Pictures")		},
+			{ "Games",			S._("Games")		},
+			{ "Applications",	S._("Applications")	},
+			{ "Misc",			S._("Misc")			},
+			{ "Other",			S._("Other")		}
 		};
 		
 		protected VolumeEditor(string volumeType) : base() {
