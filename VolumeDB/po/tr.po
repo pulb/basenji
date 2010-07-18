@@ -7,49 +7,57 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-05-15 16:31+0200\n"
-"PO-Revision-Date: 2010-07-07 09:51+0000\n"
+"POT-Creation-Date: 2010-07-18 21:10+0200\n"
+"PO-Revision-Date: 2010-07-10 13:42+0000\n"
 "Last-Translator: Cihan Ersoy <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-07-09 15:48+0000\n"
+"X-Launchpad-Export-Date: 2010-07-18 20:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:91
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:74
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:65
+#, csharp-format
 msgid ""
-"Operand for keyword 'filesize' must be a number with an optional multiplier"
+"Operand for keyword '{0}' must be a number with an optional multiplier"
 msgstr ""
 
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:115
-msgid "Invalid compare operator for keyword 'filesize'"
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:84
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:75
+#, csharp-format
+msgid "Invalid compare operator for keyword '{0}'"
 msgstr ""
 
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:125
-msgid "Operand for keyword 'type' must be a string"
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:99
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:122
+#, csharp-format
+msgid "Unknown keyword '{0}'"
+msgstr "Bilinmeyen '{0}' anahtar kelimesi"
+
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:109
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:133
+msgid "Invalid compare operator for a keyword that maps to textual content"
 msgstr ""
 
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:134
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:85
+#, csharp-format
+msgid "Operand for keyword '{0}' must be a string"
+msgstr ""
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:94
 #, csharp-format
 msgid "Unknown type '{0}'"
 msgstr "Bilinmeyen '{0}' türü"
 
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:140
-msgid "Keyword 'type' only supports '=' and ':' operators"
-msgstr ""
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:162
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:100
 #, csharp-format
-msgid "Unknown keyword '{0}'"
+msgid "Keyword '{0}' only supports '=' and ':' operators"
 msgstr ""
 
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:177
-msgid "Invalid compare operator for a keyword that maps to textual content"
-msgstr ""
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:230
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:234
+#: src/Searching/AbstractEUSLSearchCriteria.cs:87
+#: src/Searching/AbstractEUSLSearchCriteria.cs:91
 #, csharp-format
 msgid "Parsing error: search statement is malformed at position {0}"
 msgstr ""
@@ -84,7 +92,7 @@ msgstr "'{0}' dizini bulunamadı. (Hatalı dosya ismi kodlaması?)"
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:196
 #, csharp-format
 msgid "Skipped item '{0}' as it doesn't seem to be a real directory."
-msgstr ""
+msgstr "Gerçek bir dizin gibi gözükmediği için '{0}' ögesi atlanıldı."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:217
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:343
@@ -119,7 +127,7 @@ msgstr ""
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:366
 #, csharp-format
 msgid "Skipped item '{0}' as it appears to be some kind of special file."
-msgstr ""
+msgstr "Özel bir dosya gibi gözüktüğü için '{0}' ögesi atlanıldı."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:384
 #, csharp-format

@@ -7,15 +7,65 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-04-29 00:47+0200\n"
-"PO-Revision-Date: 2010-04-20 12:53+0000\n"
+"POT-Creation-Date: 2010-07-18 21:10+0200\n"
+"PO-Revision-Date: 2010-07-17 13:41+0000\n"
 "Last-Translator: Patrick Ulbrich <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-29 12:36+0000\n"
+"X-Launchpad-Export-Date: 2010-07-18 20:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
+
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:74
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:65
+#, csharp-format
+msgid ""
+"Operand for keyword '{0}' must be a number with an optional multiplier"
+msgstr ""
+"Der Operand für das Schlüsselwort '{0}' muss eine Nummer mit einem "
+"optionalen Multiplikator sein"
+
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:84
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:75
+#, csharp-format
+msgid "Invalid compare operator for keyword '{0}'"
+msgstr "Unzulässiger Vergleichsoperator für Schlüsselwort '{0}'"
+
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:99
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:122
+#, csharp-format
+msgid "Unknown keyword '{0}'"
+msgstr "Unbekanntes Schlüsselwort '{0}'"
+
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:109
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:133
+msgid "Invalid compare operator for a keyword that maps to textual content"
+msgstr ""
+"Unzulässiger Vergleichsoperator für ein Schlüsselwort das auf textuellen "
+"Inhalt abgebildet wird"
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:85
+#, csharp-format
+msgid "Operand for keyword '{0}' must be a string"
+msgstr "Der Operand für das Schlüsselwort '{0}' muss ein String sein"
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:94
+#, csharp-format
+msgid "Unknown type '{0}'"
+msgstr "Unbekannter type '{0}'"
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:100
+#, csharp-format
+msgid "Keyword '{0}' only supports '=' and ':' operators"
+msgstr "Das Schlüsselwort '{0}' erlaubt nur die Operatoren '=' und ':'"
+
+#: src/Searching/AbstractEUSLSearchCriteria.cs:87
+#: src/Searching/AbstractEUSLSearchCriteria.cs:91
+#, csharp-format
+msgid "Parsing error: search statement is malformed at position {0}"
+msgstr ""
+"Parsing Fehler: Der Suchausdruck ist an der Position {0} missgebildet"
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:55
 msgid "Hashcode generation not implemented for audio cds yet."
@@ -113,45 +163,3 @@ msgid "Failed to resolve target item for symlink '{0}'."
 msgstr ""
 "Das Auflösen des Zielelements für den symbolischen Link '{0}' ist "
 "fehlgeschlagen."
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:91
-msgid ""
-"Operand for keyword 'filesize' must be a number with an optional multiplier"
-msgstr ""
-"Der Operand für das Schlüßelwort 'filesize' muss eine Nummer mit einem "
-"optionalen Multiplikator sein"
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:115
-msgid "Invalid compare operator for keyword 'filesize'"
-msgstr "Unzulässiger Vergleichsoperator für das Schlüßelwort 'filesize'"
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:125
-msgid "Operand for keyword 'type' must be a string"
-msgstr "Der Operand für das Schlüßelwort 'type' muss ein String sein"
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:134
-#, csharp-format
-msgid "Unknown type '{0}'"
-msgstr "Unbekannter type '{0}'"
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:140
-msgid "Keyword 'type' only supports '=' and ':' operators"
-msgstr "Das Schlüsselwort 'type' erlaubt nur die Operatoren '=' und ':'"
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:162
-#, csharp-format
-msgid "Unknown keyword '{0}'"
-msgstr "Unbekanntes Schlüsselwort '{0}'"
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:177
-msgid "Invalid compare operator for a keyword that maps to textual content"
-msgstr ""
-"Unzulässiger  Vergleichsoperator für ein Schlüsselwort das auf textuellen "
-"Inhalt abgebildet wird"
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:230
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:234
-#, csharp-format
-msgid "Parsing error: search statement is malformed at position {0}"
-msgstr ""
-"Parsing Fehler: Der Suchausdruck ist an der Position {0} missgebildet"

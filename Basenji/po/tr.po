@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-05-15 16:31+0200\n"
-"PO-Revision-Date: 2010-07-09 08:08+0000\n"
+"POT-Creation-Date: 2010-07-18 21:10+0200\n"
+"PO-Revision-Date: 2010-07-10 13:47+0000\n"
 "Last-Translator: Cihan Ersoy <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-07-09 15:48+0000\n"
+"X-Launchpad-Export-Date: 2010-07-18 20:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/Util.cs:30
@@ -50,9 +50,10 @@ msgstr ""
 msgid "All files"
 msgstr "Tüm dosyalar"
 
-#: src/Main.cs:65 src/Gui/MainWindow.cs:67 src/Gui/MainWindow.cs:237
-#: src/Gui/MainWindow.cs:258 src/Gui/MainWindow.cs:280
-#: src/Gui/MainWindow.cs:289 src/Gui/MainWindow.cs:513
+#: src/Main.cs:65 src/Gui/MainWindow.cs:74 src/Gui/MainWindow.cs:90
+#: src/Gui/MainWindow.cs:261 src/Gui/MainWindow.cs:282
+#: src/Gui/MainWindow.cs:304 src/Gui/MainWindow.cs:313
+#: src/Gui/MainWindow.cs:555
 msgid "Error"
 msgstr "Hata"
 
@@ -61,20 +62,20 @@ msgstr "Hata"
 msgid "{0} is already running."
 msgstr "{0} zaten çalışıyor."
 
-#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/SearchResultView.cs:30
+#: src/Gui/Widgets/VolumeView.cs:42 src/Gui/Widgets/SearchResultView.cs:30
 msgid "Unnamed"
 msgstr "Adlandırılmamış"
 
-#: src/Gui/Widgets/VolumeView.cs:31
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:209
+#: src/Gui/Widgets/VolumeView.cs:43
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:213
 msgid "Category:"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeView.cs:32
+#: src/Gui/Widgets/VolumeView.cs:44
 msgid "files"
 msgstr "dosyalar"
 
-#: src/Gui/Widgets/VolumeView.cs:33
+#: src/Gui/Widgets/VolumeView.cs:45
 msgid "tracks"
 msgstr "parçalar"
 
@@ -90,15 +91,15 @@ msgstr "(boş)"
 msgid "Unknown"
 msgstr "Bilinmeyen"
 
-#: src/Gui/Widgets/ItemView.cs:168 src/Gui/Widgets/Editors/ItemEditor.cs:86
+#: src/Gui/Widgets/ItemView.cs:170 src/Gui/Widgets/Editors/ItemEditor.cs:86
 msgid "Name"
 msgstr "İsim"
 
-#: src/Gui/Widgets/ItemView.cs:173
+#: src/Gui/Widgets/ItemView.cs:176
 msgid "Artist"
 msgstr "Sanatçı"
 
-#: src/Gui/Widgets/ItemView.cs:178
+#: src/Gui/Widgets/ItemView.cs:181
 #: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:53
 #: src/Gui/Widgets/ItemInfo.cs:223 src/Gui/Widgets/ItemInfo.cs:275
 msgid "Duration"
@@ -204,67 +205,84 @@ msgid "Music"
 msgstr "Müzik"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:48
+msgid "Audiobooks"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:49
 #: src/Gui/Widgets/CategoryView.cs:62
 msgid "Movies"
 msgstr "Filmler"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:49
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:50
+msgid "Videos"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:51
 msgid "Pictures"
 msgstr "Resimler"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:50
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:52
+msgid "Games"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:53
+#: src/Gui/Widgets/CategoryView.cs:64
+msgid "Applications"
+msgstr "Uygulamalar"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:54
 msgid "Misc"
 msgstr "Çeşitli"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:51
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:55
 msgid "Other"
 msgstr "Diğer"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:175
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:179
 msgid "Yes"
 msgstr "Evet"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:175
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:179
 msgid "No"
 msgstr "Hayır"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:185
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:189
 msgid "Volume type:"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:186
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:190
 msgid "Hashed:"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:187
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:191
 msgid "Added:"
 msgstr "Ekleme:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:208
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:212
 msgid "Archive No.:"
 msgstr "Arşiv Numarası:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:210
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:214
 msgid "Title:"
 msgstr "Başlık:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:211 src/Gui/DBProperties.cs:88
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:215 src/Gui/DBProperties.cs:88
 msgid "Description:"
 msgstr "Açıklama:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:212
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:216
 msgid "Keywords:"
 msgstr "Anahtar kelimeler:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:213
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:217
 msgid "Loaned to:"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:214
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:218
 msgid "Loaned date:"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:215
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:219
 msgid "Return date:"
 msgstr ""
 
@@ -280,10 +298,6 @@ msgstr "Metin"
 msgid "Images"
 msgstr "Görüntüler"
 
-#: src/Gui/Widgets/CategoryView.cs:64
-msgid "Applications"
-msgstr "Uygulamalar"
-
 #: src/Gui/Widgets/CategoryView.cs:65
 msgid "Archives"
 msgstr "Arşivler"
@@ -292,7 +306,7 @@ msgstr "Arşivler"
 msgid "Development"
 msgstr "Geliştirme"
 
-#: src/Gui/Widgets/CategoryView.cs:96
+#: src/Gui/Widgets/CategoryView.cs:96 src/Gui/MainWindow.cs:891
 msgid "Category"
 msgstr ""
 
@@ -304,9 +318,9 @@ msgstr "Tüm Ögeler"
 msgid "Volume"
 msgstr ""
 
-#: src/Gui/Widgets/SearchResultView.cs:33
+#: src/Gui/Widgets/SearchResultView.cs:33 src/Gui/MainWindow.cs:885
 msgid "Archive No."
-msgstr ""
+msgstr "Arşiv No."
 
 #: src/Gui/Widgets/ItemInfo.cs:39
 msgid "by"
@@ -322,7 +336,7 @@ msgstr ""
 
 #: src/Gui/Widgets/ItemInfo.cs:225
 msgid "Track No."
-msgstr ""
+msgstr "Parça No."
 
 #: src/Gui/Widgets/ItemInfo.cs:257
 msgid "Genre"
@@ -346,7 +360,7 @@ msgstr "Biçim"
 
 #: src/Gui/Widgets/ItemInfo.cs:284
 msgid "Author"
-msgstr ""
+msgstr "Yazar"
 
 #: src/Gui/Widgets/ItemInfo.cs:286
 msgid "Copyright"
@@ -378,7 +392,7 @@ msgstr ""
 
 #: src/Gui/Widgets/PageNavigation.cs:27
 msgid "No items."
-msgstr ""
+msgstr "Öge yok."
 
 #: src/Gui/Widgets/PageNavigation.cs:145
 #, csharp-format
@@ -408,7 +422,7 @@ msgstr "İsim:"
 
 #: src/Gui/DBProperties.cs:89
 msgid "Created:"
-msgstr ""
+msgstr "Oluşturuldu:"
 
 #: src/Gui/VolumeProperties.cs:29
 msgid "Volume Properties"
@@ -416,7 +430,7 @@ msgstr ""
 
 #: src/Gui/DriveSelection.cs:60
 msgid "Waiting for drives..."
-msgstr ""
+msgstr "Sürücüler bekleniyor..."
 
 #: src/Gui/DriveSelection.cs:133
 msgid "Drive"
@@ -428,7 +442,7 @@ msgstr "Etiket"
 
 #: src/Gui/DriveSelection.cs:240
 msgid "Please select a drive to scan"
-msgstr ""
+msgstr "Lütfen taramak için bir sürücü seçin"
 
 #: src/Gui/About.cs:28
 msgid "A portable volume indexing tool"
@@ -441,14 +455,14 @@ msgstr ""
 
 #: src/Gui/About.cs:31
 msgid "Copyright (c) "
-msgstr ""
+msgstr "Telif Hakkı (c) "
 
 #: src/Gui/ItemSearch.cs:78
 #, csharp-format
 msgid "Found {0} items in {1:F3} seconds."
-msgstr ""
+msgstr "{1:F3} saniyede {0} öge bulundu."
 
-#: src/Gui/ItemSearch.cs:89 src/Gui/MainWindow.cs:432
+#: src/Gui/ItemSearch.cs:89 src/Gui/MainWindow.cs:452
 msgid "Timeout: another search is probably still in progress."
 msgstr ""
 
@@ -456,7 +470,7 @@ msgstr ""
 msgid "Too many search results. Please refine your search criteria."
 msgstr ""
 
-#: src/Gui/ItemSearch.cs:106 src/Gui/MainWindow.cs:448
+#: src/Gui/ItemSearch.cs:106 src/Gui/MainWindow.cs:468
 msgid "Searching..."
 msgstr "Aranıyor..."
 
@@ -472,171 +486,191 @@ msgstr "Ara:"
 msgid "No search results."
 msgstr ""
 
-#: src/Gui/ItemSearch.cs:329 src/Gui/MainWindow.cs:797
+#: src/Gui/ItemSearch.cs:329 src/Gui/MainWindow.cs:876
 msgid "Edit Item"
 msgstr "Ögeyi Düzenle"
 
-#: src/Gui/MainWindow.cs:68
+#: src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91 src/Gui/MainWindow.cs:555
 #, csharp-format
 msgid "Database '{0}' not found."
-msgstr ""
+msgstr "Veritabanı '{0}' bulunamadı."
 
-#: src/Gui/MainWindow.cs:90
+#: src/Gui/MainWindow.cs:114
 msgid "Database not found"
 msgstr "Veritabanı bulunamadı"
 
-#: src/Gui/MainWindow.cs:91
+#: src/Gui/MainWindow.cs:115
 msgid "Default database not found. Create?"
 msgstr "Öntanımlı veritabanı bulunamadı. Oluştur?"
 
-#: src/Gui/MainWindow.cs:120
+#: src/Gui/MainWindow.cs:144
 msgid "Unsupported database version"
 msgstr "Desteklenmeyen veritabanı sürümü"
 
-#: src/Gui/MainWindow.cs:121
+#: src/Gui/MainWindow.cs:145
 msgid "This database version is not supported."
 msgstr "Bu veritabanı sürümü desteklenmiyor."
 
-#: src/Gui/MainWindow.cs:140
+#: src/Gui/MainWindow.cs:164
 #, csharp-format
 msgid "{0} volumes loaded."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:161
+#: src/Gui/MainWindow.cs:185
 #, csharp-format
 msgid "An error occured while loading the volume list: {0}"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:203
+#: src/Gui/MainWindow.cs:227
 msgid "Please enter the name for the new database"
 msgstr "Yeni veritabanı için lütfen bir isim girin"
 
-#: src/Gui/MainWindow.cs:215
+#: src/Gui/MainWindow.cs:239
 msgid "Database exists"
 msgstr "Veritabanı mevcut"
 
-#: src/Gui/MainWindow.cs:216
+#: src/Gui/MainWindow.cs:240
 msgid "Database already exists. Overwrite?"
 msgstr "Veritabanı zaten mevcut. Üzerine yaz?"
 
-#: src/Gui/MainWindow.cs:229
+#: src/Gui/MainWindow.cs:253
 msgid "Please select a database"
 msgstr "Lütfen bir veritabanı seçin"
 
-#: src/Gui/MainWindow.cs:238 src/Gui/MainWindow.cs:513 src/Gui/Import.cs:109
+#: src/Gui/MainWindow.cs:262 src/Gui/Import.cs:109
 msgid "Database not found."
 msgstr "Veritabını bulunamadı"
 
-#: src/Gui/MainWindow.cs:259
+#: src/Gui/MainWindow.cs:283
 #, csharp-format
 msgid ""
 "An error occured while accessing drive {0}:\n"
 "{1}"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:281
+#: src/Gui/MainWindow.cs:305
 #, csharp-format
 msgid "Drive {0} is not ready."
-msgstr ""
+msgstr "{0} sürücüsü hazır değil."
 
-#: src/Gui/MainWindow.cs:290
+#: src/Gui/MainWindow.cs:314
 #, csharp-format
 msgid "Drive {0} is neither mounted nor does it contain an audio cd."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:317 src/Gui/MainWindow.cs:347
+#: src/Gui/MainWindow.cs:341 src/Gui/MainWindow.cs:371
 msgid "No volume selected"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:318
+#: src/Gui/MainWindow.cs:342
 msgid "Please select a volume record to remove."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:325
+#: src/Gui/MainWindow.cs:349
 msgid "Confirmation"
 msgstr "Doğrulama"
 
-#: src/Gui/MainWindow.cs:326
+#: src/Gui/MainWindow.cs:350
 msgid "Are you sure you really want to remove the selected volume?"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:348
+#: src/Gui/MainWindow.cs:372
 msgid "Please select a volume to edit."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:365
+#: src/Gui/MainWindow.cs:389
 msgid "No item selected"
 msgstr "Hiçbir öge seçilmedi"
 
-#: src/Gui/MainWindow.cs:366
+#: src/Gui/MainWindow.cs:390
 msgid "Please select an item to edit."
 msgstr "Lütfen düzenlemek için bir öge seçin."
 
-#: src/Gui/MainWindow.cs:738
+#: src/Gui/MainWindow.cs:816
 msgid "_File"
 msgstr "_Dosya"
 
-#: src/Gui/MainWindow.cs:741
+#: src/Gui/MainWindow.cs:819
 msgid "_New Database"
 msgstr "_Yeni Veritabanı"
 
-#: src/Gui/MainWindow.cs:744
+#: src/Gui/MainWindow.cs:822
 msgid "_Open Database"
 msgstr "Veritabanı _Aç"
 
-#: src/Gui/MainWindow.cs:747
+#: src/Gui/MainWindow.cs:825
 msgid "Open Default Database"
 msgstr "Öntanımlı Veritabanını Aç"
 
-#: src/Gui/MainWindow.cs:750
+#: src/Gui/MainWindow.cs:828
 msgid "_Database Properties"
 msgstr "_Veritabanı Özellikleri"
 
-#: src/Gui/MainWindow.cs:753
+#: src/Gui/MainWindow.cs:831
 msgid "_Import"
 msgstr "_İçe aktar"
 
-#: src/Gui/MainWindow.cs:756
+#: src/Gui/MainWindow.cs:834
 msgid "_Quit"
 msgstr "_Çık"
 
-#: src/Gui/MainWindow.cs:762
+#: src/Gui/MainWindow.cs:840
 msgid "Recent Databases"
 msgstr "Şu Anki Veritabanı"
 
-#: src/Gui/MainWindow.cs:769
+#: src/Gui/MainWindow.cs:848
 msgid "_Edit"
 msgstr "_Düzenle"
 
-#: src/Gui/MainWindow.cs:772
+#: src/Gui/MainWindow.cs:851
 msgid "_Preferences"
 msgstr "_Tercihler"
 
-#: src/Gui/MainWindow.cs:776
+#: src/Gui/MainWindow.cs:855
 msgid "_Help"
 msgstr "_Yardım"
 
-#: src/Gui/MainWindow.cs:779
+#: src/Gui/MainWindow.cs:858
 msgid "_Info"
 msgstr "_Bilgi"
 
-#: src/Gui/MainWindow.cs:783
+#: src/Gui/MainWindow.cs:862
 msgid "_Add Volume"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:787
+#: src/Gui/MainWindow.cs:866
 msgid "_Remove Volume"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:790
+#: src/Gui/MainWindow.cs:869
 msgid "_Edit Volume"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:793
+#: src/Gui/MainWindow.cs:872
 msgid "_Search"
 msgstr "_Ara"
 
-#: src/Gui/MainWindow.cs:878
+#: src/Gui/MainWindow.cs:879
+msgid "Sort by"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:882
+msgid "Descending"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:888
+msgid "Date added"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:889
+msgid "Title"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:890
+msgid "Drivetype"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:1002
 msgid "Filter volumes"
 msgstr ""
 
@@ -778,7 +812,7 @@ msgstr ""
 
 #: src/Gui/VolumeScanner.cs:460
 msgid "<b>Scanner Log:</b>"
-msgstr ""
+msgstr "<b>Tarayıcı Kaydı:</b>"
 
 #: src/Gui/VolumeScanner.cs:481
 msgid "Database access"
