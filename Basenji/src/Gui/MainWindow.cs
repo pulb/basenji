@@ -44,6 +44,7 @@ namespace Basenji.Gui
 			recentManager = RecentManager.Default;
 			
 			// retrieve the sort property from settings
+			// (from default settings if the settings file does not exist yet)
 			Widgets.VolumeSortProperty sp;
 			bool desc;
 			GetVolumeSortProperty(out sp, out desc);
