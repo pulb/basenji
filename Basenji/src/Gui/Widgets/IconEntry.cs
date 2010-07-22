@@ -31,8 +31,8 @@ namespace Basenji.Gui.Widgets
 			try {
 				gtk_entry_set_icon_from_stock(this.Handle, iconPos, stockIcon);
 				
-			} catch(EntryPointNotFoundException) {
-			} catch(DllNotFoundException) {
+			} catch (EntryPointNotFoundException) {
+			} catch (DllNotFoundException) {
 			}
 		}
 		
@@ -40,8 +40,8 @@ namespace Basenji.Gui.Widgets
 			try {
 				gtk_entry_set_icon_activatable(this.Handle, iconPos, activatable);
 				
-			} catch(EntryPointNotFoundException) {
-			} catch(DllNotFoundException) {
+			} catch (EntryPointNotFoundException) {
+			} catch (DllNotFoundException) {
 			}
 		}
 		
