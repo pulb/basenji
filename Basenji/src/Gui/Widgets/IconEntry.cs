@@ -32,6 +32,11 @@ namespace Basenji.Gui.Widgets
 				gtk_entry_set_icon_from_stock(this.Handle, iconPos, stockIcon);
 		}
 		
+		public void SetIconFromPixbuf(Gdk.Pixbuf pb, EntryIconPosition iconPos) {
+			if (IconsSupported)
+				gtk_entry_set_icon_from_pixbuf(this.Handle, iconPos, pb.Handle);
+		}
+		
 		public void SetIconActivatable(EntryIconPosition iconPos, bool activatable) {
 			if (IconsSupported)
 				gtk_entry_set_icon_activatable(this.Handle, iconPos, activatable);
@@ -110,6 +115,9 @@ namespace Basenji.Gui.Widgets
 		
 		[DllImport("libgtk-x11-2.0")]
 		private static extern void gtk_entry_set_icon_from_stock(IntPtr gtk_entry, EntryIconPosition icon_pos, string icon_name);
+		
+		[DllImport("libgtk-x11-2.0")]
+		private static extern void gtk_entry_set_icon_from_pixbuf(IntPtr gtk_entry, EntryIconPosition icon_pos, IntPtr pixbuf);
 		
 		[DllImport("libgtk-x11-2.0")]
 		private static extern void gtk_entry_set_icon_activatable(IntPtr gtk_entry, EntryIconPosition icon_pos, bool activatable);
