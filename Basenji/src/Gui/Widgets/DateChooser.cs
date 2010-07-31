@@ -1,6 +1,6 @@
 // DateChooser.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2010 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ namespace Basenji.Gui.Widgets
 {	
 	public class DateChooser : BinBase
 	{
-		private Entry			entry;
+		private IconEntry		entry;
 		private ToggleButton	btn;
 		private Gtk.Window		win;
 		private Gtk.Calendar	cal;
@@ -90,26 +90,38 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		protected override void BuildGui() {
-			HBox hbox = new HBox();
-			hbox.Spacing = 2;
+			entry = new IconEntry();
+			entry.Changed += OnEntryChanged;
 			
-			entry = new Entry();
-			hbox.PackStart(entry, true, true, 0);
-			
-			btn = new ToggleButton();
-			btn.Add(new Arrow(ArrowType.Down, ShadowType.None));
-			hbox.PackStart(btn, false, false, 0);
-			
-			this.Add(hbox);
-			
-			// events
-			btn.Toggled		+= OnBtnToggled;
-			entry.Changed	+= OnEntryChanged;
+			if (entry.IconsSupported) {
+				Pixbuf pb = Gdk.Pixbuf.LoadFromResource("Basenji.images.calendar.png");
+				entry.SetIconFromPixbuf(pb, EntryIconPosition.Secondary);
+				
+				entry.IconPress	+= OnIconPressEvent;
+				
+				this.Add(entry);
+			} else {
+				// no icons inside entries supported ->
+				// add a fallback button to the right of the entry
+				HBox hbox = new HBox();
+				hbox.Spacing = 2;
+				
+				hbox.PackStart(entry, true, true, 0);
+				
+				btn = new ToggleButton();
+				btn.Add(new Arrow(ArrowType.Down, ShadowType.None));
+				hbox.PackStart(btn, false, false, 0);
+				
+				this.Add(hbox);
+				
+				btn.Toggled += OnBtnToggled;
+			}
 		}
 		
 		private void ShowPopup() {
 			win = new Gtk.Window(Gtk.WindowType.Popup);
 			win.Screen = this.Screen;
+			win.WidthRequest = this.Allocation.Width;
 
 			cal = new Gtk.Calendar();
 			win.Add(cal);
@@ -165,7 +177,8 @@ namespace Basenji.Gui.Widgets
 				win = null;
 			}
 			
-			btn.Active = false;		   
+			if (btn != null)
+				btn.Active = false;		   
 		}
 		
 		private static void GetWidgetPos(Gtk.Widget w, out int x, out int y) {
@@ -185,6 +198,10 @@ namespace Basenji.Gui.Widgets
 				ShowPopup();
 			else
 				ClosePopup(false);
+		}
+		
+		private void OnIconPressEvent(object o, IconPressReleaseEventArgs args) {
+			ShowPopup();
 		}
 		
 		private void OnEntryChanged(object o, EventArgs args) {
