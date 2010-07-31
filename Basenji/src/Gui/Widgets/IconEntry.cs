@@ -28,20 +28,30 @@ namespace Basenji.Gui.Widgets
 	public class IconEntry : Entry
 	{
 		public void SetIconFromStock(string stockIcon, EntryIconPosition iconPos) {
-			try {
+			if (IconsSupported)
 				gtk_entry_set_icon_from_stock(this.Handle, iconPos, stockIcon);
-				
-			} catch (EntryPointNotFoundException) {
-			} catch (DllNotFoundException) {
-			}
 		}
 		
 		public void SetIconActivatable(EntryIconPosition iconPos, bool activatable) {
-			try {
+			if (IconsSupported)
 				gtk_entry_set_icon_activatable(this.Handle, iconPos, activatable);
+		}
+		
+		private bool? iconsSupported = null;
+		public bool IconsSupported {
+			get {
+				if (!iconsSupported.HasValue) {
+					try {
+						gtk_entry_get_icon_at_pos(this.Handle, 0, 0);	
+						iconsSupported = true;
+					} catch (EntryPointNotFoundException) {
+						iconsSupported = false;
+					} catch (DllNotFoundException) {
+						iconsSupported = false;
+					}
+				}
 				
-			} catch (EntryPointNotFoundException) {
-			} catch (DllNotFoundException) {
+				return iconsSupported.Value;
 			}
 		}
 		
@@ -103,6 +113,10 @@ namespace Basenji.Gui.Widgets
 		
 		[DllImport("libgtk-x11-2.0")]
 		private static extern void gtk_entry_set_icon_activatable(IntPtr gtk_entry, EntryIconPosition icon_pos, bool activatable);
+		
+		// only used to check for GTK 2.16 icon support
+		[DllImport("libgtk-x11-2.0")]
+		private static extern int gtk_entry_get_icon_at_pos(IntPtr gtk_entry, int x, int y);
 	}
 	
 	public class IconPressReleaseEventArgs : SignalArgs {
