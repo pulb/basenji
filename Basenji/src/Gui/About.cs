@@ -41,6 +41,7 @@ Mauro Solcia (https://launchpad.net/~maurosolcia)
 		
 		private static readonly string		translatorCredits	= 
 @"Brazilian Portuguese
+  André Gondim (https://launchpad.net/~andregondim)
   Gilberto Martins (https://launchpad.net/~gsilva-martins)
   Gustavo Guidorizzi (https://launchpad.net/~gguido)
 
