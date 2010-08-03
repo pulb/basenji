@@ -1,4 +1,4 @@
-# Brazilian Portuguese translation for basenji
+# Polish translation for basenji
 # Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
 # This file is distributed under the same license as the basenji package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-07-18 22:11+0200\n"
-"PO-Revision-Date: 2010-06-22 05:59+0000\n"
-"Last-Translator: Gilberto Martins <Unknown>\n"
-"Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
+"PO-Revision-Date: 2010-08-03 14:34+0000\n"
+"Last-Translator: Stanisław Chmiela <chmiela.st@gmail.com>\n"
+"Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,18 +28,20 @@ msgstr ""
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:75
 #, csharp-format
 msgid "Invalid compare operator for keyword '{0}'"
-msgstr ""
+msgstr "Nieprawidłowy operator porównania dla słowa '{0}'"
 
 #: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:99
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:122
 #, csharp-format
 msgid "Unknown keyword '{0}'"
-msgstr "Palavra-chave desconhecida '{0}'"
+msgstr "Nieznane słowo '{0}'"
 
 #: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:109
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:133
 msgid "Invalid compare operator for a keyword that maps to textual content"
 msgstr ""
+"Nieprawidłowy operator porównania dla słowa, które wskazuje na zawartość "
+"tekstową"
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:85
 #, csharp-format
@@ -49,57 +51,60 @@ msgstr ""
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:94
 #, csharp-format
 msgid "Unknown type '{0}'"
-msgstr "Tipo desconhecido '{0}'"
+msgstr "Nieznany typ '{0}'"
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:100
 #, csharp-format
 msgid "Keyword '{0}' only supports '=' and ':' operators"
-msgstr ""
+msgstr "Słowo kluczowe '{0}' obsługuje tylko operatory '=' i ':'"
 
 #: src/Searching/AbstractEUSLSearchCriteria.cs:87
 #: src/Searching/AbstractEUSLSearchCriteria.cs:91
 #, csharp-format
 msgid "Parsing error: search statement is malformed at position {0}"
 msgstr ""
+"Błąd analizy składni: wyszukiwane wyrażenie jest nieprawidłowe na pozycji {0}"
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:55
 msgid "Hashcode generation not implemented for audio cds yet."
-msgstr ""
+msgstr "Generowanie hash jest niezaimplementowane jeszcze dla płyt audio."
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:97
 msgid "No MusicBrainz metadata available for this disc."
-msgstr "Não há metadados do MusicBrainz disponíveis para este disco."
+msgstr "Nie znaleziono metadanych MusicBrainz dla tego dysku."
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:102
 msgid ""
 "The trackcount retrieved from MusicBrainz does not match the trackcount of "
 "the local disc. Skipped."
 msgstr ""
+"Liczba ścieżek pobrana z MusicBrainz nie jest taka sama jak liczba ścieżek "
+"płyty. Pominięto."
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:125
 msgid "Error connecting to MusicBrainz server."
-msgstr "Erro ao conectar ao servidor MusicBrainz."
+msgstr "Błąd przy połączeniu z serwerem MusicBrainz."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:105
 msgid "libExtractor not found. Metadata extraction disabled."
-msgstr "libExtractor não encontrado. A extração de metadados foi desativada."
+msgstr ""
+"Biblioteka libExtractor nie znaleziona. Pobranie metadanych wyłączone."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:187
 #, csharp-format
 msgid "Directory '{0}' not found. (Wrong filename encoding?)"
-msgstr ""
-"Diretório '{0}' não encontrado. (Codificação do nome do arquivo incorreta?)"
+msgstr "Katalog '{0}' nie znaleziony. (Złe kodowanie nazw?)"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:196
 #, csharp-format
 msgid "Skipped item '{0}' as it doesn't seem to be a real directory."
-msgstr "Item '{0}' pulado pois não parece ser uma pasta verdadeira."
+msgstr "Pominięto element '{0}', ponieważ nie wygląda na katalog."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:217
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:343
 #, csharp-format
 msgid "Skipped symlink item '{0}' as the target does not exist."
-msgstr ""
+msgstr "Pominięto dowiązanie '{0}', ponieważ jego cel nie istnieje."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:226
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:350
@@ -107,42 +112,44 @@ msgstr ""
 msgid ""
 "Skipped symlink item '{0}' as it appears to point to a different drive "
 "('{1}')."
-msgstr ""
+msgstr "Pominięto dowiązanie '{0}', ponieważ wskazuje na inny dysk ('{1}')."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:265
 #, csharp-format
 msgid "File '{0}' not found. (Wrong filename encoding?)"
-msgstr ""
+msgstr "Plik '{0}' nie znaleziony. (Złe kodowanie nazw?)"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:313
 #, csharp-format
 msgid "Error opening file '{0}', can't retrieve any mime/metadata. ({1})"
 msgstr ""
+"Nie udało się otworzyć pliku '{0}', nie udało się pobrać mime/metadanych. "
+"({1})"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:357
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."
 msgstr ""
-"Pulado o link simbólico '{0}' pois não aponta para um arquivo regular "
-"('{1}')."
+"Pominięto dowiązanie '{0}', ponieważ nie wskazuje na zwykły plik ('{1}')."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:366
 #, csharp-format
 msgid "Skipped item '{0}' as it appears to be some kind of special file."
-msgstr "Item '{0}' pulado pois parece ser algum tipo de arquivo especial."
+msgstr "Pominięty element '{0}' wygląda na rodzaj specjalnego pliku."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:384
 #, csharp-format
 msgid "Unable to dump dir '{0}'. ({1})"
-msgstr ""
+msgstr "Nie udało się opuścić katalogu '{0}'. ({1})"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:503
 #, csharp-format
 msgid "Can't read LastWriteTime from item '{0}' ({1})."
 msgstr ""
+"Nie udało się odczytać Czasu Ostatniego Zapisu z elementu '{0}' ({1})."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:667
 #, csharp-format
 msgid "Failed to resolve target item for symlink '{0}'."
-msgstr ""
+msgstr "Nie udało się pobrać celu z dowiązania '{0}'."

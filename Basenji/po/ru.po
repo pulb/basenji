@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-05-15 16:31+0200\n"
-"PO-Revision-Date: 2010-06-13 16:14+0000\n"
-"Last-Translator: Eugene Marshal <Unknown>\n"
+"POT-Creation-Date: 2010-07-18 22:11+0200\n"
+"PO-Revision-Date: 2010-08-03 06:45+0000\n"
+"Last-Translator: Papazu <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-18 14:12+0000\n"
+"X-Launchpad-Export-Date: 2010-08-03 17:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/Util.cs:30
@@ -50,9 +50,10 @@ msgstr "Файлы томов базы данных"
 msgid "All files"
 msgstr "Все файлы"
 
-#: src/Main.cs:65 src/Gui/MainWindow.cs:67 src/Gui/MainWindow.cs:237
-#: src/Gui/MainWindow.cs:258 src/Gui/MainWindow.cs:280
-#: src/Gui/MainWindow.cs:289 src/Gui/MainWindow.cs:513
+#: src/Main.cs:65 src/Gui/MainWindow.cs:74 src/Gui/MainWindow.cs:90
+#: src/Gui/MainWindow.cs:261 src/Gui/MainWindow.cs:282
+#: src/Gui/MainWindow.cs:304 src/Gui/MainWindow.cs:313
+#: src/Gui/MainWindow.cs:555
 msgid "Error"
 msgstr "Ошибка"
 
@@ -61,20 +62,20 @@ msgstr "Ошибка"
 msgid "{0} is already running."
 msgstr "{0} уже выполняется."
 
-#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/SearchResultView.cs:30
+#: src/Gui/Widgets/VolumeView.cs:42 src/Gui/Widgets/SearchResultView.cs:30
 msgid "Unnamed"
 msgstr "Без имени"
 
-#: src/Gui/Widgets/VolumeView.cs:31
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:209
+#: src/Gui/Widgets/VolumeView.cs:43
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:213
 msgid "Category:"
 msgstr "Категория:"
 
-#: src/Gui/Widgets/VolumeView.cs:32
+#: src/Gui/Widgets/VolumeView.cs:44
 msgid "files"
 msgstr "файлов"
 
-#: src/Gui/Widgets/VolumeView.cs:33
+#: src/Gui/Widgets/VolumeView.cs:45
 msgid "tracks"
 msgstr "дорожек"
 
@@ -90,15 +91,15 @@ msgstr "(пусто)"
 msgid "Unknown"
 msgstr "Неизвестный"
 
-#: src/Gui/Widgets/ItemView.cs:168 src/Gui/Widgets/Editors/ItemEditor.cs:86
+#: src/Gui/Widgets/ItemView.cs:170 src/Gui/Widgets/Editors/ItemEditor.cs:86
 msgid "Name"
 msgstr "Имя"
 
-#: src/Gui/Widgets/ItemView.cs:173
+#: src/Gui/Widgets/ItemView.cs:176
 msgid "Artist"
 msgstr "Исполнитель"
 
-#: src/Gui/Widgets/ItemView.cs:178
+#: src/Gui/Widgets/ItemView.cs:181
 #: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:53
 #: src/Gui/Widgets/ItemInfo.cs:223 src/Gui/Widgets/ItemInfo.cs:275
 msgid "Duration"
@@ -204,67 +205,83 @@ msgid "Music"
 msgstr "Музыка"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:48
+msgid "Audiobooks"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:49
 #: src/Gui/Widgets/CategoryView.cs:62
 msgid "Movies"
 msgstr "Фильмы"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:49
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:50
+msgid "Videos"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:51
 msgid "Pictures"
 msgstr "Изображения"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:50
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:52
+msgid "Games"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:53 src/Gui/Widgets/ItemInfo.cs:292
+msgid "Software"
+msgstr "Программа"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:54
 msgid "Misc"
 msgstr "Разное"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:51
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:55
 msgid "Other"
 msgstr "Прочее"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:175
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:179
 msgid "Yes"
 msgstr "Да"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:175
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:179
 msgid "No"
 msgstr "Нет"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:185
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:189
 msgid "Volume type:"
 msgstr "Тип тома:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:186
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:190
 msgid "Hashed:"
 msgstr "Хэширование:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:187
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:191
 msgid "Added:"
 msgstr "Добавлено:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:208
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:212
 msgid "Archive No.:"
 msgstr "Номер архива:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:210
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:214
 msgid "Title:"
 msgstr "Название:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:211 src/Gui/DBProperties.cs:88
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:215 src/Gui/DBProperties.cs:88
 msgid "Description:"
 msgstr "Описание:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:212
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:216
 msgid "Keywords:"
 msgstr "Ключевые слова:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:213
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:217
 msgid "Loaned to:"
 msgstr "Займ:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:214
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:218
 msgid "Loaned date:"
 msgstr "Датай займа:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:215
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:219
 msgid "Return date:"
 msgstr "Дата возврата:"
 
@@ -292,19 +309,19 @@ msgstr "Архивы"
 msgid "Development"
 msgstr "Разработка"
 
-#: src/Gui/Widgets/CategoryView.cs:96
+#: src/Gui/Widgets/CategoryView.cs:96 src/Gui/MainWindow.cs:891
 msgid "Category"
 msgstr "Категория"
 
 #: src/Gui/Widgets/CategoryView.cs:128
 msgid "All items"
-msgstr ""
+msgstr "Все элементы"
 
 #: src/Gui/Widgets/SearchResultView.cs:32
 msgid "Volume"
 msgstr "Том"
 
-#: src/Gui/Widgets/SearchResultView.cs:33
+#: src/Gui/Widgets/SearchResultView.cs:33 src/Gui/MainWindow.cs:885
 msgid "Archive No."
 msgstr "Номер архива:"
 
@@ -359,10 +376,6 @@ msgstr "Продюсер"
 #: src/Gui/Widgets/ItemInfo.cs:290
 msgid "Creator"
 msgstr "Автор"
-
-#: src/Gui/Widgets/ItemInfo.cs:292
-msgid "Software"
-msgstr "Программа"
 
 #: src/Gui/Widgets/ItemInfo.cs:294
 msgid "Language"
@@ -452,7 +465,7 @@ msgstr "Copyright (c) "
 msgid "Found {0} items in {1:F3} seconds."
 msgstr "Найдено {0} объектов за {1:F3} секунд."
 
-#: src/Gui/ItemSearch.cs:89 src/Gui/MainWindow.cs:432
+#: src/Gui/ItemSearch.cs:89 src/Gui/MainWindow.cs:452
 msgid "Timeout: another search is probably still in progress."
 msgstr ""
 "Превышение лимита времени: еще один поиск, возможно, все еще продолжается."
@@ -463,7 +476,7 @@ msgstr ""
 "Слишком большое количество результатов поиска. Пожалуйста, уточните критерии "
 "поиска."
 
-#: src/Gui/ItemSearch.cs:106 src/Gui/MainWindow.cs:448
+#: src/Gui/ItemSearch.cs:106 src/Gui/MainWindow.cs:468
 msgid "Searching..."
 msgstr "Идёт поиск..."
 
@@ -479,62 +492,62 @@ msgstr "Найти:"
 msgid "No search results."
 msgstr "Поиск ничего не дал."
 
-#: src/Gui/ItemSearch.cs:329 src/Gui/MainWindow.cs:797
+#: src/Gui/ItemSearch.cs:329 src/Gui/MainWindow.cs:876
 msgid "Edit Item"
 msgstr "Редактировать объект"
 
-#: src/Gui/MainWindow.cs:68
+#: src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91 src/Gui/MainWindow.cs:555
 #, csharp-format
 msgid "Database '{0}' not found."
 msgstr "База данных '{0}'не найдена"
 
-#: src/Gui/MainWindow.cs:90
+#: src/Gui/MainWindow.cs:114
 msgid "Database not found"
 msgstr "База данных не найдена"
 
-#: src/Gui/MainWindow.cs:91
+#: src/Gui/MainWindow.cs:115
 msgid "Default database not found. Create?"
 msgstr "Основная база данных не найдена. Создать?"
 
-#: src/Gui/MainWindow.cs:120
+#: src/Gui/MainWindow.cs:144
 msgid "Unsupported database version"
 msgstr "Неподдерживаемая версия базы данных"
 
-#: src/Gui/MainWindow.cs:121
+#: src/Gui/MainWindow.cs:145
 msgid "This database version is not supported."
 msgstr "Эта версия базы данных не поддерживается."
 
-#: src/Gui/MainWindow.cs:140
+#: src/Gui/MainWindow.cs:164
 #, csharp-format
 msgid "{0} volumes loaded."
 msgstr "{0} томов загружено."
 
-#: src/Gui/MainWindow.cs:161
+#: src/Gui/MainWindow.cs:185
 #, csharp-format
 msgid "An error occured while loading the volume list: {0}"
 msgstr "Обнаружена ошибка при загрузке списка томов: {0}"
 
-#: src/Gui/MainWindow.cs:203
+#: src/Gui/MainWindow.cs:227
 msgid "Please enter the name for the new database"
 msgstr "Пожалуйста, введите название для новой базы данных"
 
-#: src/Gui/MainWindow.cs:215
+#: src/Gui/MainWindow.cs:239
 msgid "Database exists"
 msgstr "База данных уже существует"
 
-#: src/Gui/MainWindow.cs:216
+#: src/Gui/MainWindow.cs:240
 msgid "Database already exists. Overwrite?"
 msgstr "Такая база данных уже существует. Перезаписать?"
 
-#: src/Gui/MainWindow.cs:229
+#: src/Gui/MainWindow.cs:253
 msgid "Please select a database"
 msgstr "Пожалуйста, выберите базу данных"
 
-#: src/Gui/MainWindow.cs:238 src/Gui/MainWindow.cs:513 src/Gui/Import.cs:109
+#: src/Gui/MainWindow.cs:262 src/Gui/Import.cs:109
 msgid "Database not found."
 msgstr "База данных не найдена."
 
-#: src/Gui/MainWindow.cs:259
+#: src/Gui/MainWindow.cs:283
 #, csharp-format
 msgid ""
 "An error occured while accessing drive {0}:\n"
@@ -543,111 +556,131 @@ msgstr ""
 "Ошибка при доступе к диску {0}:\n"
 "{1}"
 
-#: src/Gui/MainWindow.cs:281
+#: src/Gui/MainWindow.cs:305
 #, csharp-format
 msgid "Drive {0} is not ready."
 msgstr "Диск {0} не готов."
 
-#: src/Gui/MainWindow.cs:290
+#: src/Gui/MainWindow.cs:314
 #, csharp-format
 msgid "Drive {0} is neither mounted nor does it contain an audio cd."
 msgstr "Диск {0} не подключен и не содержит звуковых данных."
 
-#: src/Gui/MainWindow.cs:317 src/Gui/MainWindow.cs:347
+#: src/Gui/MainWindow.cs:341 src/Gui/MainWindow.cs:371
 msgid "No volume selected"
 msgstr "Нет выбранных томов"
 
-#: src/Gui/MainWindow.cs:318
+#: src/Gui/MainWindow.cs:342
 msgid "Please select a volume record to remove."
 msgstr "Пожалуйста, выберите том, чтобы удалить запись."
 
-#: src/Gui/MainWindow.cs:325
+#: src/Gui/MainWindow.cs:349
 msgid "Confirmation"
 msgstr "Подтверждение"
 
-#: src/Gui/MainWindow.cs:326
+#: src/Gui/MainWindow.cs:350
 msgid "Are you sure you really want to remove the selected volume?"
 msgstr "Вы действительно хотите удалить выбранный том?"
 
-#: src/Gui/MainWindow.cs:348
+#: src/Gui/MainWindow.cs:372
 msgid "Please select a volume to edit."
 msgstr "Пожалуйста, выберите том для редактирования."
 
-#: src/Gui/MainWindow.cs:365
+#: src/Gui/MainWindow.cs:389
 msgid "No item selected"
 msgstr "Ничего не выбрано"
 
-#: src/Gui/MainWindow.cs:366
+#: src/Gui/MainWindow.cs:390
 msgid "Please select an item to edit."
 msgstr "Пожалуйста, выберите объект для редактирования."
 
-#: src/Gui/MainWindow.cs:738
+#: src/Gui/MainWindow.cs:816
 msgid "_File"
 msgstr "_Файл"
 
-#: src/Gui/MainWindow.cs:741
+#: src/Gui/MainWindow.cs:819
 msgid "_New Database"
 msgstr "_Новая база данных"
 
-#: src/Gui/MainWindow.cs:744
+#: src/Gui/MainWindow.cs:822
 msgid "_Open Database"
 msgstr "_Открыть базу данных"
 
-#: src/Gui/MainWindow.cs:747
+#: src/Gui/MainWindow.cs:825
 msgid "Open Default Database"
 msgstr "Открыть основную базу данных"
 
-#: src/Gui/MainWindow.cs:750
+#: src/Gui/MainWindow.cs:828
 msgid "_Database Properties"
 msgstr "_Свойства базы данных"
 
-#: src/Gui/MainWindow.cs:753
+#: src/Gui/MainWindow.cs:831
 msgid "_Import"
 msgstr "_Импортировать"
 
-#: src/Gui/MainWindow.cs:756
+#: src/Gui/MainWindow.cs:834
 msgid "_Quit"
 msgstr "_Выход"
 
-#: src/Gui/MainWindow.cs:762
+#: src/Gui/MainWindow.cs:840
 msgid "Recent Databases"
-msgstr ""
+msgstr "Недавние базы данных"
 
-#: src/Gui/MainWindow.cs:769
+#: src/Gui/MainWindow.cs:848
 msgid "_Edit"
 msgstr "_Правка"
 
-#: src/Gui/MainWindow.cs:772
+#: src/Gui/MainWindow.cs:851
 msgid "_Preferences"
 msgstr "_Настройки"
 
-#: src/Gui/MainWindow.cs:776
+#: src/Gui/MainWindow.cs:855
 msgid "_Help"
 msgstr "_Справка"
 
-#: src/Gui/MainWindow.cs:779
+#: src/Gui/MainWindow.cs:858
 msgid "_Info"
 msgstr "_Информация"
 
-#: src/Gui/MainWindow.cs:783
+#: src/Gui/MainWindow.cs:862
 msgid "_Add Volume"
 msgstr "_Добавить том"
 
-#: src/Gui/MainWindow.cs:787
+#: src/Gui/MainWindow.cs:866
 msgid "_Remove Volume"
 msgstr "_Удалить том"
 
-#: src/Gui/MainWindow.cs:790
+#: src/Gui/MainWindow.cs:869
 msgid "_Edit Volume"
 msgstr "_Редактировать том"
 
-#: src/Gui/MainWindow.cs:793
+#: src/Gui/MainWindow.cs:872
 msgid "_Search"
 msgstr "_Поиск"
 
-#: src/Gui/MainWindow.cs:878
-msgid "Filter volumes"
+#: src/Gui/MainWindow.cs:879
+msgid "Sort by"
 msgstr ""
+
+#: src/Gui/MainWindow.cs:882
+msgid "Descending"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:888
+msgid "Date added"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:889
+msgid "Title"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:890
+msgid "Drivetype"
+msgstr "Тип накопителя"
+
+#: src/Gui/MainWindow.cs:1002
+msgid "Filter volumes"
+msgstr "Фильтр томов"
 
 #: src/Gui/Import.cs:29
 msgid "Import"
@@ -758,7 +791,7 @@ msgstr ""
 #: src/Gui/VolumeScanner.cs:313
 #, csharp-format
 msgid "An unhandled exception occured ({0})."
-msgstr ""
+msgstr "Возникло необрабатываемое исключение ({0})."
 
 #: src/Gui/VolumeScanner.cs:314
 msgid "All database changes have been rolled back."
@@ -832,7 +865,7 @@ msgstr ""
 
 #: src/Gui/Preferences.cs:330
 msgid "Don't prompt, always scan:"
-msgstr ""
+msgstr "Не запрашивать, всегда сканировать:"
 
 #: src/Gui/Preferences.cs:349
 msgid "Generate Thumbnails"
@@ -844,7 +877,7 @@ msgstr ""
 
 #: src/Gui/Preferences.cs:357
 msgid "Discard symbolic links"
-msgstr ""
+msgstr "Отклонить символические ссылки."
 
 #: src/Gui/Preferences.cs:361
 msgid "Compute hashcodes for files (slow!)"
