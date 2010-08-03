@@ -69,9 +69,13 @@ Italian:
 Occitan (post 1500):
   Cédric Valmary (https://launchpad.net/~cvalmary)
 
+Polish:
+  Stanisław Chmiela (https://launchpad.net/~chmiela-st)
+
 Russian:
   Eugene Marshal (https://launchpad.net/~lowrider)
   Nikolai Romanik (https://launchpad.net/~arhey)
+  Papazu (https://launchpad.net/~pavel-z)
   Sciko (https://launchpad.net/~tempsciko-gmail)
   Sergey Sedov (https://launchpad.net/~serg-sedov)
   Vladimir (https://launchpad.net/~bonza-land)
