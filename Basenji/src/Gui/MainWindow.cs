@@ -1002,6 +1002,16 @@ namespace Basenji.Gui
 			txtSearchString = new Widgets.SearchEntry();
 			txtSearchString.PlaceholderText = S._("Filter volumes");
 			
+			txtSearchString.SetPresets(new Widgets.SearchEntryPreset[] {
+				new Widgets.SearchEntryPreset(string.Format("title ({0})", S._("default")), "title:", null),
+				new Widgets.SearchEntryPreset("loanedto", "loanedto:", null),
+				new Widgets.SearchEntryPreset("description", "description:", null),
+				new Widgets.SearchEntryPreset("keywords", "keywords:", null),
+				new Widgets.SearchEntryPreset("files", "files", "< 10"),
+				new Widgets.SearchEntryPreset("dirs", "dirs", "< 10"),
+				new Widgets.SearchEntryPreset("size", "size", "> 700mb")
+			});
+			
 			vbLeft.PackStart(txtSearchString, false, false, 0);
 			
 			hpaned.Pack1(vbLeft, false, false);

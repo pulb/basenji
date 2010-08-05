@@ -22,12 +22,38 @@ using Basenji.Icons;
 
 namespace Basenji.Gui.Widgets
 {
-	public class SearchEntry : IconEntry
+	public class SearchEntryPreset
 	{
+		public string Caption { get; set; }
+		public string Value { get; set; }		
+		public string Suggestion { get; set; }
+		
+		public SearchEntryPreset() {
+			Caption = Value = Suggestion = null;
+		}
+		
+		public SearchEntryPreset(string caption, 
+		                             string value, 
+		                             string suggestion) {
+			Caption = caption;
+			Value = value;
+			Suggestion = suggestion;
+		}
+	}
+	
+	public class SearchEntry : IconEntry
+	{	
 		private string placeholderText;
+		private SearchEntryPreset[] presets;
+		private bool presetsChanged;
+		private Gtk.Menu popup;
 		
 		public SearchEntry () {
 			this.placeholderText = null;
+			this.presets = null;
+			this.presetsChanged = false;
+			this.popup = null;
+			this.ShowClearIcon = true;
 			
 			this.SetIconFromStock(Icon.Stock_Find.Name,
 			                      EntryIconPosition.Primary);
@@ -50,6 +76,70 @@ namespace Basenji.Gui.Widgets
 					SetPlaceholderText(true);
 				}
 			}
+		}
+		
+		public void SetPresets(SearchEntryPreset[] presets) {
+			this.presets = presets;
+			this.presetsChanged = true;
+		}
+		
+		public bool ShowClearIcon {
+			get; set;
+		}
+		
+		private void ShowPopup() {
+			if ((presets == null) || (presets.Length == 0))
+				return;
+			
+			EventHandler onActivated = delegate(object sender, EventArgs e) {
+				Gtk.MenuItem item = (Gtk.MenuItem)sender;
+				
+				SetPlaceholderText(false);
+				
+				if (Text.Length > 0) {
+					if (!Text.EndsWith(" "))
+						Text += " ";
+					
+					Text += "and ";
+				}
+				
+				var p = (SearchEntryPreset)item.Data["preset"];
+				
+				if (!string.IsNullOrEmpty(p.Value)) {
+					Text += p.Value;
+					
+					if (!string.IsNullOrEmpty(p.Suggestion)) {
+						Text += " " + p.Suggestion;
+						
+						GrabFocus();
+						SelectRegion(Text.Length - p.Suggestion.Length, Text.Length);
+					} else {
+						GrabFocus();
+						SelectRegion(Text.Length, Text.Length);
+					}
+				}				
+			};
+			
+			if (presetsChanged) {
+				
+				if (popup != null)
+					popup.Dispose();
+				
+				popup = new Gtk.Menu();
+				
+				foreach (var p in presets) {
+					Gtk.MenuItem item = new Gtk.MenuItem(p.Caption);
+					item.Activated += onActivated;
+					item.Data["preset"] = p;
+					
+					popup.Append(item);
+				}
+				
+				popup.ShowAll();
+				presetsChanged = false;
+			}
+			
+			popup.Popup();
 		}
 		
 		protected virtual void OnSearch() {
@@ -89,20 +179,18 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		private void OnIconPressEvent(object o, IconPressReleaseEventArgs args) {
-			if (IsPlaceholderTextActive()) {
-				GrabFocus();
-			} else {				
-				// clear-button pressed
-				if (args.IconPos == EntryIconPosition.Secondary)
-					Text = String.Empty;
-				
+			if (args.IconPos == EntryIconPosition.Primary) {
+				ShowPopup();
+			} else { // clear-button pressed
+				Text = String.Empty;
+			
 				// update search results
 				OnSearch();
 			}
 		}
 		
 		private void OnChanged(object o, EventArgs args) {
-			if ((Text.Length > 0) && !IsPlaceholderTextActive())
+			if (ShowClearIcon && ((Text.Length > 0) && !IsPlaceholderTextActive()))
 				SetIconFromStock(Icon.Stock_Clear.Name,
 				                 EntryIconPosition.Secondary);
 			else

@@ -27,7 +27,7 @@ using VolumeDB.Searching.ItemSearchCriteria;
 namespace Basenji.Gui
 {
 	public partial class ItemSearch : WindowBase
-	{
+	{	
 		private VolumeDatabase database;
 		private volatile bool windowDeleted;
 		
@@ -130,14 +130,13 @@ namespace Basenji.Gui
 			BeginSearch();
 		}
 		
-		[GLib.ConnectBefore()]
-		private void OnTxtSearchStringKeyPressEvent(object o, Gtk.KeyPressEventArgs args) {
-			if (args.Event.Key == Gdk.Key.Return)
-				BeginSearch();
+		private void OnTxtSearchStringSearch(object o, Widgets.SearchEventArgs args) {
+			BeginSearch();
 		}
 		
 		private void OnTxtSearchStringChanged(object o, EventArgs args) {
-			btnSearch.Sensitive = (txtSearchString.Text.Length >= VolumeDatabase.MIN_SEARCHSTR_LENGTH);
+			btnSearch.Sensitive = ( (txtSearchString.Text.Length >= VolumeDatabase.MIN_SEARCHSTR_LENGTH) 
+			                       && (txtSearchString.Text != txtSearchString.PlaceholderText) );
 		}
 
 		/*
@@ -210,13 +209,12 @@ namespace Basenji.Gui
 	// gui initialization
 	public partial class ItemSearch : WindowBase {
 		
-		private Entry						txtSearchString;
+		private SearchEntry					txtSearchString;
 		private Button						btnSearch;
 		private CategoryView				tvCategory;
 		private PageNavigation<VolumeItem>	navi; 
 		private SearchResultView			tvSearchResult;		
 		private ItemInfo					itemInfo;
-		//private Button			  btnClose;
 		private Statusbar					statusbar;
 		private Menu						itemContextMenu;
 		
@@ -239,20 +237,29 @@ namespace Basenji.Gui
 			// search box
 			HBox hbSearch = new HBox();
 			hbSearch.Spacing = 6;
-			hbSearch.BorderWidth = 12;
+			hbSearch.BorderWidth = 6;
 			
-			Image img = new Image(Gdk.Pixbuf.LoadFromResource("Basenji.images.search.png"));
-			hbSearch.PackStart(img, false, false, 0);
+			string STR_DEFAULT = S._("default");
 			
-			hbSearch.PackStart(CreateLabel(S._("Search:")), false, false, 0);
+			txtSearchString = new SearchEntry();
+			txtSearchString.ShowClearIcon = false;
+			txtSearchString.PlaceholderText = S._("Search items");
 			
-			txtSearchString = new Entry();
+			txtSearchString.SetPresets(new Widgets.SearchEntryPreset[] {
+				new Widgets.SearchEntryPreset(string.Format("filename ({0})", STR_DEFAULT), "filename:", null),
+				new Widgets.SearchEntryPreset(string.Format("directoryname ({0})", STR_DEFAULT), "directoryname:", null),
+				new Widgets.SearchEntryPreset("location", "location:", null),
+				new Widgets.SearchEntryPreset("note", "note:", null),
+				new Widgets.SearchEntryPreset("keywords", "keywords:", null),
+				new Widgets.SearchEntryPreset("volume-title", "volume-title:", null),
+				new Widgets.SearchEntryPreset("type [audio, video, image, text, directory]", "type =", "audio"),
+				new Widgets.SearchEntryPreset("filesize", "filesize", "> 1mb")
+			});
+			
 			hbSearch.PackStart(txtSearchString, true, true, 0);
 			
 			btnSearch = CreateButton(Stock.Find, true, OnBtnSearchClicked);
-			Alignment algn = new Alignment(0.5f, 0.5f, 0f, 0f);
-			algn.Add(btnSearch);
-			hbSearch.PackStart(algn, false, false, 0); 
+			hbSearch.PackStart(btnSearch, false, false, 0); 
 			
 			vbOuter.PackStart(hbSearch, false, false, 0);
 			
@@ -287,18 +294,6 @@ namespace Basenji.Gui
 			
 			vbOuter.PackStart(hpaned, true, true, 0);
 			
-			/*
-			// hbuttonbox
-			HButtonBox bbox = new HButtonBox();
-			//bbox.Spacing = 6;
-			bbox.LayoutStyle = ButtonBoxStyle.End;
-			
-			btnClose = CreateButton(Stock.Close, true, OnBtnCloseClicked);
-			
-			bbox.PackStart(btnClose, false, false, 0);
-			vbOuter.PackStart(bbox, false, false, 0); 
-			*/
-			
 			// statusbar
 			statusbar = new Statusbar();
 			statusbar.Spacing = 6;
@@ -310,7 +305,7 @@ namespace Basenji.Gui
 			itemContextMenu = CreateContextMenu();
 			
 			// event handlers
-			txtSearchString.KeyPressEvent		+= OnTxtSearchStringKeyPressEvent;
+			txtSearchString.Search				+= OnTxtSearchStringSearch;
 			txtSearchString.Changed				+= OnTxtSearchStringChanged;
 			tvCategory.Selection.Changed		+= OnTvCategorySelectionChanged;
 			navi.Navigate						+= OnNaviNavigate;

@@ -233,7 +233,6 @@ RESOURCES = \
 	po/de.resources,Basenji.po.de.resources \
 	po/he.resources,Basenji.po.he.resources \
 	po/da.resources,Basenji.po.da.resources \
-	images/search.png,Basenji.images.search.png \
 	po/es.resources,Basenji.po.es.resources \
 	po/fr.resources,Basenji.po.fr.resources \
 	po/ru.resources,Basenji.po.ru.resources \
