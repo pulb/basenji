@@ -46,15 +46,21 @@
   -->
   <ItemGroup>
     <Content Include="images\basenji.ico" />
+    <EmbeddedResource Include="images\calendar.png" />
     <EmbeddedResource Include="images\LED_Off.png" />
     <EmbeddedResource Include="images\LED_On.png" />
-    <EmbeddedResource Include="images\search.png" />
+    <EmbeddedResource Include="po\bg.resources" />
     <EmbeddedResource Include="po\da.resources" />
     <EmbeddedResource Include="po\de.resources" />
     <EmbeddedResource Include="po\es.resources" />
     <EmbeddedResource Include="po\fr.resources" />
     <EmbeddedResource Include="po\he.resources" />
+    <EmbeddedResource Include="po\it.resources" />
+    <EmbeddedResource Include="po\oc.resources" />
+    <EmbeddedResource Include="po\pl.resources" />
+    <EmbeddedResource Include="po\pt_BR.resources" />
     <EmbeddedResource Include="po\ru.resources" />
+    <EmbeddedResource Include="po\tr.resources" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
@@ -91,15 +97,26 @@
     <Compile Include="src\Gui\DriveSelection.cs" />
     <Compile Include="src\Gui\Events.cs" />
     <Compile Include="src\Gui\Import.cs" />
+    <Compile Include="src\Gui\ItemProperties.cs" />
     <Compile Include="src\Gui\ItemSearch.cs" />
     <Compile Include="src\Gui\MainWindow.cs" />
+    <Compile Include="src\Gui\ObjectProperties.cs" />
     <Compile Include="src\Gui\Preferences.cs" />
     <Compile Include="src\Gui\VolumeProperties.cs" />
     <Compile Include="src\Gui\VolumeScanner.cs" />
-    <Compile Include="src\Gui\Widgets\AudioCdVolumeEdit.cs" />
     <Compile Include="src\Gui\Widgets\CategoryView.cs" />
     <Compile Include="src\Gui\Widgets\DateChooser.cs" />
-    <Compile Include="src\Gui\Widgets\FSVolumeEdit.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\AudioCdVolumeEditor.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\AudioTrackItemEditor.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\DirectoryItemEditor.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\FileItemEditor.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\FileSystemItemEditor.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\FileSystemVolumeEditor.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\ItemEditor.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\ObjectEditor.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\ObjectEditorEvents.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\ObjectEditorExceptions.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\VolumeEditor.cs" />
     <Compile Include="src\Gui\Widgets\IconEntry.cs" />
     <Compile Include="src\Gui\Widgets\ItemInfo.cs" />
     <Compile Include="src\Gui\Widgets\ItemPreview.cs" />
@@ -109,8 +126,7 @@
     <Compile Include="src\Gui\Widgets\PageNavigationEvents.cs" />
     <Compile Include="src\Gui\Widgets\SearchEntry.cs" />
     <Compile Include="src\Gui\Widgets\SearchResultView.cs" />
-    <Compile Include="src\Gui\Widgets\VolumeEdit.cs" />
-    <Compile Include="src\Gui\Widgets\VolumeEditEvents.cs" />
+    <Compile Include="src\Gui\Widgets\Sorting.cs" />
     <Compile Include="src\Gui\Widgets\VolumeView.cs" />
     <Compile Include="src\Icons\CustomIconTheme.cs" />
     <Compile Include="src\Icons\CustomIconThemeMimeMapping.cs" />
