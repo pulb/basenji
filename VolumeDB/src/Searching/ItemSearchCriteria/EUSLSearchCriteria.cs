@@ -85,7 +85,7 @@ namespace VolumeDB.Searching.ItemSearchCriteria
 								string.Format(S._("Operand for keyword '{0}' must be a string"), e.Keyword),
 								"euslQuery");
 								
-						// try to map the word of the type selector to an MediaType
+						// try to map the word of the type selector to a MediaType
 						MediaType type = MediaType.None;							
 						try {
 							type = MediaType.FromString(e.Word);
@@ -95,9 +95,9 @@ namespace VolumeDB.Searching.ItemSearchCriteria
 										"euslQuery");
 						}
 						
-						if (e.Relation != Relation.Contains && e.Relation != Relation.Equal) {
+						if (e.Relation != Relation.Equal) {
 							throw new ArgumentException(
-										string.Format(S._("Keyword '{0}' only supports '=' and ':' operators"), e.Keyword),
+										string.Format(S._("Keyword '{0}' only supports the equality operator ('=')"), e.Keyword),
 										"euslQuery");
 						}
 						
