@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-07-18 21:10+0200\n"
-"PO-Revision-Date: 2010-07-17 13:41+0000\n"
+"POT-Creation-Date: 2010-08-07 13:08+0200\n"
+"PO-Revision-Date: 2010-08-07 12:09+0000\n"
 "Last-Translator: Patrick Ulbrich <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-07-18 20:04+0000\n"
+"X-Launchpad-Export-Date: 2010-08-07 12:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:74
@@ -57,8 +57,8 @@ msgstr "Unbekannter type '{0}'"
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:100
 #, csharp-format
-msgid "Keyword '{0}' only supports '=' and ':' operators"
-msgstr "Das Schlüsselwort '{0}' erlaubt nur die Operatoren '=' und ':'"
+msgid "Keyword '{0}' only supports the equality operator ('=')"
+msgstr "Das Schlüsselwort '{0}' erlaubt nur den Gleichheitsoperator ('=')"
 
 #: src/Searching/AbstractEUSLSearchCriteria.cs:87
 #: src/Searching/AbstractEUSLSearchCriteria.cs:91

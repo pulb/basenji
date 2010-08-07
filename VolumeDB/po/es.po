@@ -7,54 +7,59 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-05-15 16:31+0200\n"
-"PO-Revision-Date: 2010-05-26 12:03+0000\n"
-"Last-Translator: Jonay <jonay.santana@gmail.com>\n"
+"POT-Creation-Date: 2010-08-07 13:08+0200\n"
+"PO-Revision-Date: 2010-06-03 04:46+0000\n"
+"Last-Translator: victor tejada yau <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-02 19:00+0000\n"
+"X-Launchpad-Export-Date: 2010-08-07 12:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:91
-msgid ""
-"Operand for keyword 'filesize' must be a number with an optional multiplier"
-msgstr ""
-"El operador para la palabra clave 'tamaño de archivo' debe ser un número con "
-"un multiplicador opcional"
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:115
-msgid "Invalid compare operator for keyword 'filesize'"
-msgstr ""
-"Operador de comparación para la palabra clave 'tamaño de archivo' no válido"
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:125
-msgid "Operand for keyword 'type' must be a string"
-msgstr "El operador para la palabra clave 'tipo' debe ser una cadena"
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:134
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:74
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:65
 #, csharp-format
-msgid "Unknown type '{0}'"
-msgstr "Desconocido tipo «{0}»"
+msgid ""
+"Operand for keyword '{0}' must be a number with an optional multiplier"
+msgstr ""
 
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:140
-msgid "Keyword 'type' only supports '=' and ':' operators"
-msgstr "La palabra clave 'type' sólo soporta los operadores '=' y ':'"
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:84
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:75
+#, csharp-format
+msgid "Invalid compare operator for keyword '{0}'"
+msgstr ""
 
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:162
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:99
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:122
 #, csharp-format
 msgid "Unknown keyword '{0}'"
 msgstr "Palabra clave desconocida «{0}»"
 
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:177
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:109
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:133
 msgid "Invalid compare operator for a keyword that maps to textual content"
 msgstr ""
 "Operador de comparación no válido para una palabra clave que mapea a "
 "contenido contextual"
 
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:230
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:234
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:85
+#, csharp-format
+msgid "Operand for keyword '{0}' must be a string"
+msgstr ""
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:94
+#, csharp-format
+msgid "Unknown type '{0}'"
+msgstr "Desconocido tipo «{0}»"
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:100
+#, csharp-format
+msgid "Keyword '{0}' only supports the equality operator ('=')"
+msgstr ""
+
+#: src/Searching/AbstractEUSLSearchCriteria.cs:87
+#: src/Searching/AbstractEUSLSearchCriteria.cs:91
 #, csharp-format
 msgid "Parsing error: search statement is malformed at position {0}"
 msgstr ""
@@ -151,7 +156,7 @@ msgstr "Imposible volcar el directorio «{0}». ({1})"
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:503
 #, csharp-format
 msgid "Can't read LastWriteTime from item '{0}' ({1})."
-msgstr ""
+msgstr "No se puede leer LastWriteTime del elemento '{0}' ({1})."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:667
 #, csharp-format

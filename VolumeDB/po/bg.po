@@ -7,15 +7,60 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-04-29 00:47+0200\n"
+"POT-Creation-Date: 2010-08-07 13:08+0200\n"
 "PO-Revision-Date: 2010-04-22 13:42+0000\n"
 "Last-Translator: svilborg <Unknown>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-14 13:52+0000\n"
+"X-Launchpad-Export-Date: 2010-08-07 12:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
+
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:74
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:65
+#, csharp-format
+msgid ""
+"Operand for keyword '{0}' must be a number with an optional multiplier"
+msgstr ""
+
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:84
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:75
+#, csharp-format
+msgid "Invalid compare operator for keyword '{0}'"
+msgstr ""
+
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:99
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:122
+#, csharp-format
+msgid "Unknown keyword '{0}'"
+msgstr ""
+
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:109
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:133
+msgid "Invalid compare operator for a keyword that maps to textual content"
+msgstr ""
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:85
+#, csharp-format
+msgid "Operand for keyword '{0}' must be a string"
+msgstr ""
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:94
+#, csharp-format
+msgid "Unknown type '{0}'"
+msgstr ""
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:100
+#, csharp-format
+msgid "Keyword '{0}' only supports the equality operator ('=')"
+msgstr ""
+
+#: src/Searching/AbstractEUSLSearchCriteria.cs:87
+#: src/Searching/AbstractEUSLSearchCriteria.cs:91
+#, csharp-format
+msgid "Parsing error: search statement is malformed at position {0}"
+msgstr ""
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:55
 msgid "Hashcode generation not implemented for audio cds yet."
@@ -97,41 +142,4 @@ msgstr ""
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:667
 #, csharp-format
 msgid "Failed to resolve target item for symlink '{0}'."
-msgstr ""
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:91
-msgid ""
-"Operand for keyword 'filesize' must be a number with an optional multiplier"
-msgstr ""
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:115
-msgid "Invalid compare operator for keyword 'filesize'"
-msgstr ""
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:125
-msgid "Operand for keyword 'type' must be a string"
-msgstr ""
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:134
-#, csharp-format
-msgid "Unknown type '{0}'"
-msgstr ""
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:140
-msgid "Keyword 'type' only supports '=' and ':' operators"
-msgstr ""
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:162
-#, csharp-format
-msgid "Unknown keyword '{0}'"
-msgstr ""
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:177
-msgid "Invalid compare operator for a keyword that maps to textual content"
-msgstr ""
-
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:230
-#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:234
-#, csharp-format
-msgid "Parsing error: search statement is malformed at position {0}"
 msgstr ""

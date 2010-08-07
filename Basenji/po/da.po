@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-04-20 13:13+0200\n"
+"POT-Creation-Date: 2010-08-07 13:08+0200\n"
 "PO-Revision-Date: 2008-11-21 23:20+0000\n"
 "Last-Translator: nanker <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-20 12:56+0000\n"
+"X-Launchpad-Export-Date: 2010-08-07 12:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/Util.cs:30
@@ -42,497 +42,41 @@ msgstr "GB"
 msgid "TB"
 msgstr "TB"
 
-#: src/Gui/Import.cs:29
-msgid "Import"
-msgstr ""
+#: src/FileDialog.cs:51
+msgid "VolumeDatabase files"
+msgstr "VolumeDatabase filer"
 
-#: src/Gui/Import.cs:30
-msgid "Abort"
-msgstr ""
+#: src/FileDialog.cs:56
+msgid "All files"
+msgstr "Alle filer"
 
-#: src/Gui/Import.cs:98
-#, csharp-format
-msgid "{0:0}% completed."
-msgstr ""
-
-#: src/Gui/Import.cs:108
-msgid "Import failed"
-msgstr ""
-
-#: src/Gui/Import.cs:109 src/Gui/MainWindow.cs:227
-msgid "Database not found."
-msgstr "Databasen blev ikke fundet."
-
-#: src/Gui/Import.cs:111
-msgid "Import failed!"
-msgstr ""
-
-#: src/Gui/Import.cs:113
-msgid "Import aborted."
-msgstr ""
-
-#: src/Gui/Import.cs:115
-msgid "Import completed successfully."
-msgstr ""
-
-#: src/Gui/Import.cs:134
-msgid "Import in progress"
-msgstr ""
-
-#: src/Gui/Import.cs:135
-msgid "You must stop the import before closing this window."
-msgstr ""
-
-#: src/Gui/Import.cs:160
-msgid "Import Database"
-msgstr ""
-
-#: src/Gui/Import.cs:171
-msgid "Please select a database to import"
-msgstr ""
-
-#: src/Gui/Import.cs:184
-msgid "Database:"
-msgstr ""
-
-#: src/Gui/Import.cs:185
-msgid "Format:"
-msgstr ""
-
-#: src/Gui/VolumeScanner.cs:111
-msgid "Scanning started."
-msgstr ""
-
-#: src/Gui/VolumeScanner.cs:113
-#, csharp-format
-msgid "Scanning of drive '{0}' started."
-msgstr ""
-
-#: src/Gui/VolumeScanner.cs:121
-#, csharp-format
-msgid ""
-"Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
-"hashing: {3}."
-msgstr ""
-
-#: src/Gui/VolumeScanner.cs:129
-#, csharp-format
-msgid "Options: MusicBrainz enabled: {0}"
-msgstr ""
-
-#: src/Gui/VolumeScanner.cs:151
-msgid "Time"
-msgstr "Tid"
-
-#: src/Gui/VolumeScanner.cs:155
-msgid "Message"
-msgstr "Meddelelse"
-
-#: src/Gui/VolumeScanner.cs:232 src/Gui/VolumeProperties.cs:41
-msgid "Invalid data"
-msgstr "Ugyldige data"
-
-#: src/Gui/VolumeScanner.cs:232 src/Gui/VolumeProperties.cs:41
-#, csharp-format
-msgid ""
-"\"{0}\" is {1}.\n"
-"\n"
-"Expected format: {2}\n"
-"Please correct or remove the data you entered."
-msgstr ""
-"\"{0}\" is {1}.\n"
-"\n"
-"Forventet format: {2}\n"
-"Ret venligst eller fjern de data du indtastede."
-
-#: src/Gui/VolumeScanner.cs:239
-msgid "yes"
-msgstr "ja"
-
-#: src/Gui/VolumeScanner.cs:239
-msgid "no"
-msgstr "nej"
-
-#: src/Gui/VolumeScanner.cs:262
-msgid "Scan in progress"
-msgstr "Skanning pågår"
-
-#: src/Gui/VolumeScanner.cs:262
-msgid "You must stop scanning before closing this window."
-msgstr "Du skal stoppe skanning før du lukker vinduet."
-
-#: src/Gui/VolumeScanner.cs:272
-msgid "Stopping Scanner and performing rollback..."
-msgstr "Stopper skanning og ruller tilbage..."
-
-#: src/Gui/VolumeScanner.cs:314
-#, csharp-format
-msgid "An unhandled exception occured ({0})."
-msgstr "En uventet undtagelse opstod ({0})."
-
-#: src/Gui/VolumeScanner.cs:315
-msgid "All database changes have been rolled back."
-msgstr "Alle databaseændringer er rullet tilbage."
-
-#: src/Gui/VolumeScanner.cs:338
-#, csharp-format
-msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
-msgstr "Skanning mislykkedes. Årsag: En uventet undtagelse opstod ({0})."
-
-#: src/Gui/VolumeScanner.cs:340
-msgid "Scanning aborted."
-msgstr "Skanning afbrudt"
-
-#: src/Gui/VolumeScanner.cs:342
-msgid "Scanning completed successfully."
-msgstr "Skanning gennemført med succes."
-
-#: src/Gui/VolumeScanner.cs:439
-msgid "VolumeScanner"
-msgstr "Volumen skanner"
-
-#: src/Gui/VolumeScanner.cs:451
-msgid "<b>Volume Information:</b>"
-msgstr "<b>Volume Information:</b>"
-
-#: src/Gui/VolumeScanner.cs:461
-msgid "<b>Scanner Log:</b>"
-msgstr "<b>Skanningslog:</b>"
-
-#: src/Gui/VolumeScanner.cs:478
-msgid "Database access"
-msgstr "Database adgang"
-
-#: src/Gui/About.cs:28
-msgid "A portable volume indexing tool"
-msgstr ""
-
-#: src/Gui/About.cs:29
-#, csharp-format
-msgid "Using VolumeDB v{0}."
-msgstr "Bruger VolumeDB v{0}."
-
-#: src/Gui/About.cs:31
-msgid "Copyright (c) "
-msgstr "Copyright (c) "
-
-#: src/Gui/DBProperties.cs:77
-msgid "Database Properties"
-msgstr "Database egenskaber"
-
-#: src/Gui/DBProperties.cs:89
-msgid "Name:"
-msgstr "Navn:"
-
-#: src/Gui/DBProperties.cs:90 src/Gui/Widgets/VolumeEdit.cs:326
-msgid "Description:"
-msgstr "Beskrivelse:"
-
-#: src/Gui/DBProperties.cs:91
-msgid "Created:"
-msgstr "Oprettet:"
-
-#: src/Gui/MainWindow.cs:58 src/Gui/MainWindow.cs:226
-#: src/Gui/MainWindow.cs:247 src/Gui/MainWindow.cs:269
-#: src/Gui/MainWindow.cs:278 src/Main.cs:65
+#: src/Main.cs:65 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
+#: src/Gui/MainWindow.cs:262 src/Gui/MainWindow.cs:283
+#: src/Gui/MainWindow.cs:305 src/Gui/MainWindow.cs:314
+#: src/Gui/MainWindow.cs:556
 msgid "Error"
 msgstr "Fejl"
 
-#: src/Gui/MainWindow.cs:59
+#: src/Main.cs:65
 #, csharp-format
-msgid "Database '{0}' not found."
-msgstr "Database '{0}' ikke fundet."
+msgid "{0} is already running."
+msgstr "{0} kører allerede."
 
-#: src/Gui/MainWindow.cs:81
-msgid "Database not found"
-msgstr ""
-
-#: src/Gui/MainWindow.cs:82
-msgid "Default database not found. Create?"
-msgstr ""
-
-#: src/Gui/MainWindow.cs:111
-msgid "Unsupported database version"
-msgstr "Ikke understøttet databaseversion"
-
-#: src/Gui/MainWindow.cs:112
-msgid "This database version is not supported."
-msgstr "Denne databaseversion ikke understøttet."
-
-#: src/Gui/MainWindow.cs:131
-#, csharp-format
-msgid "{0} volumes loaded."
-msgstr "{0} volumes indlæst."
-
-#: src/Gui/MainWindow.cs:150
-#, csharp-format
-msgid "An error occured while loading the volume list: {0}"
-msgstr ""
-
-#: src/Gui/MainWindow.cs:192
-msgid "Please enter the name for the new database"
-msgstr "Indtast venligst navnet på den nye database"
-
-#: src/Gui/MainWindow.cs:204
-msgid "Database exists"
-msgstr "Databasen findes allerede"
-
-#: src/Gui/MainWindow.cs:205
-msgid "Database already exists. Overwrite?"
-msgstr "Databasen findes allerede. Overskriv?"
-
-#: src/Gui/MainWindow.cs:218
-msgid "Please select a database"
-msgstr "Vælg venligst en database"
-
-#: src/Gui/MainWindow.cs:248
-#, csharp-format
-msgid ""
-"An error occured while accessing drive {0}:\n"
-"{1}"
-msgstr ""
-"En fejl opstod under adgang til drev {0}:\n"
-"{1}"
-
-#: src/Gui/MainWindow.cs:270
-#, csharp-format
-msgid "Drive {0} is not ready."
-msgstr "Drev {0} ikke klar."
-
-#: src/Gui/MainWindow.cs:279
-#, csharp-format
-msgid "Drive {0} is neither mounted nor does it contain an audio cd."
-msgstr ""
-
-#: src/Gui/MainWindow.cs:306 src/Gui/MainWindow.cs:336
-msgid "No volume selected"
-msgstr "Ingen volumen valgt."
-
-#: src/Gui/MainWindow.cs:307
-msgid "Please select a volume record to remove."
-msgstr "Vælg venligst en volume optagelse som du vil fjerne."
-
-#: src/Gui/MainWindow.cs:314
-msgid "Confirmation"
-msgstr "Bekræftelse"
-
-#: src/Gui/MainWindow.cs:315
-msgid "Are you sure you really want to remove the selected volume?"
-msgstr "Er du sikker på at du virkelig vil fjerne den valgte volume?"
-
-#: src/Gui/MainWindow.cs:337
-msgid "Please select a volume record to edit."
-msgstr ""
-
-#: src/Gui/MainWindow.cs:398 src/Gui/ItemSearch.cs:88
-msgid "Timeout: another search is probably still in progress."
-msgstr "Stoppet: en anden søgning pågår sikkert fortsat."
-
-#: src/Gui/MainWindow.cs:414 src/Gui/ItemSearch.cs:105
-msgid "Searching..."
-msgstr "Søger..."
-
-#: src/Gui/MainWindow.cs:661
-msgid "_File"
-msgstr "_Fil"
-
-#: src/Gui/MainWindow.cs:664
-msgid "_New Database"
-msgstr "_Ny database"
-
-#: src/Gui/MainWindow.cs:667
-msgid "_Open Database"
-msgstr "_Åben database"
-
-#: src/Gui/MainWindow.cs:670
-msgid "Open Default Database"
-msgstr ""
-
-#: src/Gui/MainWindow.cs:673
-msgid "_Database Properties"
-msgstr "_Database rettigheder"
-
-#: src/Gui/MainWindow.cs:676
-msgid "_Import"
-msgstr ""
-
-#: src/Gui/MainWindow.cs:679
-msgid "_Quit"
-msgstr "_Afslut"
-
-#: src/Gui/MainWindow.cs:683
-msgid "_Edit"
-msgstr "R_edigér"
-
-#: src/Gui/MainWindow.cs:686
-msgid "_Preferences"
-msgstr "_Indstillinger"
-
-#: src/Gui/MainWindow.cs:690
-msgid "_Help"
-msgstr "_Hjælp"
-
-#: src/Gui/MainWindow.cs:693
-msgid "_Info"
-msgstr "_Info"
-
-#: src/Gui/MainWindow.cs:697
-msgid "_Add Volume"
-msgstr "_Tilføj Volume"
-
-#: src/Gui/MainWindow.cs:701
-msgid "_Remove Volume"
-msgstr "_Fjer Volume"
-
-#: src/Gui/MainWindow.cs:704
-msgid "_Edit Volume"
-msgstr ""
-
-#: src/Gui/MainWindow.cs:707
-msgid "_Search"
-msgstr "_Søg"
-
-#: src/Gui/MainWindow.cs:782
-msgid "Filter volumes"
-msgstr ""
-
-#: src/Gui/DriveSelection.cs:60
-msgid "Waiting for drives..."
-msgstr "Venter på drev..."
-
-#: src/Gui/DriveSelection.cs:131
-msgid "Drive"
-msgstr "Drev"
-
-#: src/Gui/DriveSelection.cs:136
-msgid "Label"
-msgstr "Mærkat"
-
-#: src/Gui/DriveSelection.cs:145 src/Gui/Widgets/ItemInfo.cs:202
-#: src/Gui/Widgets/ItemInfo.cs:224
-msgid "Size"
-msgstr "Størrelse"
-
-#: src/Gui/DriveSelection.cs:169 src/Gui/Widgets/FSVolumeEdit.cs:34
-msgid "Filesystem"
-msgstr "Filsystem"
-
-#: src/Gui/DriveSelection.cs:242
-msgid "Please select a drive to scan"
-msgstr "Vælg venligst et drev til skanning"
-
-#: src/Gui/Preferences.cs:107
-msgid "None"
-msgstr "Ingen"
-
-#: src/Gui/Preferences.cs:227
-msgid "Restart required"
-msgstr "Genstart påkrævet"
-
-#: src/Gui/Preferences.cs:227
-#, csharp-format
-msgid "You must restart {0} for icontheme changes to take effect."
-msgstr ""
-
-#: src/Gui/Preferences.cs:254
-msgid "Preferences"
-msgstr "Indstillinger"
-
-#: src/Gui/Preferences.cs:276
-msgid "_Load Defaults"
-msgstr "_Indlæs standardindstillinger"
-
-#: src/Gui/Preferences.cs:301
-msgid "Icon theme:"
-msgstr "Ikon tema:"
-
-#: src/Gui/Preferences.cs:312
-msgid "Reopen most recent database on startup"
-msgstr "Genåben den seneste database ved start"
-
-#: src/Gui/Preferences.cs:315
-msgid "General"
-msgstr "Generelt"
-
-#: src/Gui/Preferences.cs:323
-msgid "Don't prompt, always scan:"
-msgstr ""
-
-#: src/Gui/Preferences.cs:342
-msgid "Generate Thumbnails"
-msgstr ""
-
-#: src/Gui/Preferences.cs:346
-msgid "Extract metadata"
-msgstr ""
-
-#: src/Gui/Preferences.cs:350
-msgid "Discard symbolic links"
-msgstr ""
-
-#: src/Gui/Preferences.cs:354
-msgid "Compute hashcodes for files (slow!)"
-msgstr ""
-
-#: src/Gui/Preferences.cs:358
-msgid "Fetch audio cd metadata from MusicBrainz.org"
-msgstr ""
-
-#: src/Gui/Preferences.cs:361
-msgid "Scanner"
-msgstr "Skanner"
-
-#: src/Gui/ItemSearch.cs:77
-#, csharp-format
-msgid "Found {0} items in {1:F3} seconds."
-msgstr "Fandt {0} emner på {1:F3} sekunder."
-
-#: src/Gui/ItemSearch.cs:90
-msgid "Too many search results. Please refine your search criteria."
-msgstr ""
-
-#: src/Gui/ItemSearch.cs:193
-msgid "Search Items"
-msgstr "Søge emner"
-
-#: src/Gui/ItemSearch.cs:208
-msgid "Search:"
-msgstr ""
-
-#: src/Gui/ItemSearch.cs:235
-msgid "No search results."
-msgstr ""
-
-#: src/Gui/VolumeProperties.cs:81
-msgid "Volume Properties"
-msgstr "Volume rettigheder"
-
-#: src/Gui/Widgets/VolumeView.cs:29 src/Gui/Widgets/SearchResultView.cs:30
+#: src/Gui/Widgets/VolumeView.cs:42 src/Gui/Widgets/SearchResultView.cs:30
 msgid "Unnamed"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/VolumeEdit.cs:324
+#: src/Gui/Widgets/VolumeView.cs:43
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:213
 msgid "Category:"
 msgstr "Kategori:"
 
-#: src/Gui/Widgets/VolumeView.cs:31
+#: src/Gui/Widgets/VolumeView.cs:44
 msgid "files"
 msgstr ""
 
-#: src/Gui/Widgets/VolumeView.cs:32
+#: src/Gui/Widgets/VolumeView.cs:45
 msgid "tracks"
-msgstr ""
-
-#: src/Gui/Widgets/AudioCdVolumeEdit.cs:33
-msgid "Audio CD"
-msgstr ""
-
-#: src/Gui/Widgets/AudioCdVolumeEdit.cs:60
-msgid "Tracks:"
-msgstr ""
-
-#: src/Gui/Widgets/AudioCdVolumeEdit.cs:61
-msgid "Duration:"
 msgstr ""
 
 #: src/Gui/Widgets/ItemView.cs:29
@@ -543,21 +87,242 @@ msgstr "Indlæser..."
 msgid "(empty)"
 msgstr "(tom)"
 
-#: src/Gui/Widgets/ItemView.cs:91
+#: src/Gui/Widgets/ItemView.cs:99
 msgid "Unknown"
 msgstr ""
 
-#: src/Gui/Widgets/ItemView.cs:160
+#: src/Gui/Widgets/ItemView.cs:170 src/Gui/Widgets/Editors/ItemEditor.cs:86
 msgid "Name"
 msgstr ""
 
-#: src/Gui/Widgets/ItemView.cs:165
+#: src/Gui/Widgets/ItemView.cs:176
 msgid "Artist"
 msgstr ""
 
-#: src/Gui/Widgets/ItemView.cs:170 src/Gui/Widgets/ItemInfo.cs:223
-#: src/Gui/Widgets/ItemInfo.cs:275
+#: src/Gui/Widgets/ItemView.cs:181
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:53
+#: src/Gui/Widgets/ItemInfo.cs:223 src/Gui/Widgets/ItemInfo.cs:275
 msgid "Duration"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:34
+#: src/Gui/DriveSelection.cs:168
+msgid "Filesystem"
+msgstr "Filsystem"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:65
+msgid "Files:"
+msgstr "Filer:"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:66
+msgid "Directories:"
+msgstr "Kataloger:"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:67
+msgid "Total size:"
+msgstr "Samlet størrelse:"
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:85
+msgid "Item type"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:101 src/Gui/Widgets/ItemInfo.cs:324
+msgid "Note"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:102 src/Gui/Widgets/ItemInfo.cs:327
+msgid "Keywords"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:31
+#: src/Gui/Widgets/SearchResultView.cs:34
+msgid "Audio CD track"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:54
+#: src/Gui/Widgets/ItemInfo.cs:228
+msgid "Type"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/DirectoryItemEditor.cs:28
+msgid "Directory"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:59
+#: src/Gui/Widgets/SearchResultView.cs:31 src/Gui/Widgets/ItemInfo.cs:182
+msgid "Location"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:60
+#: src/Gui/Widgets/ItemInfo.cs:183
+msgid "Last write time"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:61
+#: src/Gui/Widgets/ItemInfo.cs:208
+msgid "Filetype"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:31
+msgid "File"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:52
+#: src/Gui/Widgets/ItemInfo.cs:202 src/Gui/Widgets/ItemInfo.cs:224
+#: src/Gui/DriveSelection.cs:148
+msgid "Size"
+msgstr "Størrelse"
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:53
+#: src/Gui/Widgets/ItemInfo.cs:204
+msgid "Hash"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:33
+msgid "Audio CD"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:63
+msgid "Tracks:"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:64
+msgid "Duration:"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:45
+msgid "Backup"
+msgstr "Backup"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:46
+#: src/Gui/Widgets/CategoryView.cs:60
+msgid "Documents"
+msgstr "Dokumenter"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:47
+#: src/Gui/Widgets/CategoryView.cs:61
+msgid "Music"
+msgstr "Musik"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:48
+msgid "Audiobooks"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:49
+#: src/Gui/Widgets/CategoryView.cs:62
+msgid "Movies"
+msgstr "Film"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:50
+msgid "Videos"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:51
+msgid "Pictures"
+msgstr "Billeder"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:52
+msgid "Games"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:53 src/Gui/Widgets/ItemInfo.cs:292
+msgid "Software"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:54
+msgid "Misc"
+msgstr "Diverse"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:55
+msgid "Other"
+msgstr "Andet"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:179
+msgid "Yes"
+msgstr "Ja"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:179
+msgid "No"
+msgstr "Nej"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:189
+msgid "Volume type:"
+msgstr "Volume type:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:190
+msgid "Hashed:"
+msgstr "Hashed:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:191
+msgid "Added:"
+msgstr "Tilføjet:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:212
+msgid "Archive No.:"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:214
+msgid "Title:"
+msgstr "Titel:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:215 src/Gui/DBProperties.cs:88
+msgid "Description:"
+msgstr "Beskrivelse:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:216
+msgid "Keywords:"
+msgstr "Nøgleord:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:217
+msgid "Loaned to:"
+msgstr "Lånt til:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:218
+msgid "Loaned date:"
+msgstr "Lånedato:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:219
+msgid "Return date:"
+msgstr "Retur dato:"
+
+#: src/Gui/Widgets/CategoryView.cs:58
+msgid "Directories"
+msgstr ""
+
+#: src/Gui/Widgets/CategoryView.cs:59
+msgid "Text"
+msgstr ""
+
+#: src/Gui/Widgets/CategoryView.cs:63
+msgid "Images"
+msgstr ""
+
+#: src/Gui/Widgets/CategoryView.cs:64
+msgid "Applications"
+msgstr ""
+
+#: src/Gui/Widgets/CategoryView.cs:65
+msgid "Archives"
+msgstr ""
+
+#: src/Gui/Widgets/CategoryView.cs:66
+msgid "Development"
+msgstr ""
+
+#: src/Gui/Widgets/CategoryView.cs:96 src/Gui/MainWindow.cs:892
+msgid "Category"
+msgstr ""
+
+#: src/Gui/Widgets/CategoryView.cs:128
+msgid "All items"
+msgstr ""
+
+#: src/Gui/Widgets/SearchResultView.cs:32
+msgid "Volume"
+msgstr ""
+
+#: src/Gui/Widgets/SearchResultView.cs:33 src/Gui/MainWindow.cs:886
+msgid "Archive No."
 msgstr ""
 
 #: src/Gui/Widgets/ItemInfo.cs:39
@@ -568,32 +333,12 @@ msgstr ""
 msgid "from"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:182 src/Gui/Widgets/SearchResultView.cs:31
-msgid "Location"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:183
-msgid "Last write time"
-msgstr ""
-
 #: src/Gui/Widgets/ItemInfo.cs:194
 msgid "Symlink target"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:204
-msgid "Hash"
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:208
-msgid "Filetype"
-msgstr ""
-
 #: src/Gui/Widgets/ItemInfo.cs:225
 msgid "Track No."
-msgstr ""
-
-#: src/Gui/Widgets/ItemInfo.cs:228
-msgid "Type"
 msgstr ""
 
 #: src/Gui/Widgets/ItemInfo.cs:257
@@ -632,10 +377,6 @@ msgstr ""
 msgid "Creator"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:292
-msgid "Software"
-msgstr ""
-
 #: src/Gui/Widgets/ItemInfo.cs:294
 msgid "Language"
 msgstr ""
@@ -657,143 +398,496 @@ msgstr ""
 msgid "<b>Page {0}/{1}</b>  ({2} - {3} of {4} items)"
 msgstr ""
 
-#: src/Gui/Widgets/CategoryView.cs:58
-msgid "Directories"
-msgstr ""
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:231
+msgid "Invalid data"
+msgstr "Ugyldige data"
 
-#: src/Gui/Widgets/CategoryView.cs:59
-msgid "Text"
-msgstr ""
-
-#: src/Gui/Widgets/CategoryView.cs:60 src/Gui/Widgets/VolumeEdit.cs:49
-msgid "Documents"
-msgstr "Dokumenter"
-
-#: src/Gui/Widgets/CategoryView.cs:61 src/Gui/Widgets/VolumeEdit.cs:50
-msgid "Music"
-msgstr "Musik"
-
-#: src/Gui/Widgets/CategoryView.cs:62 src/Gui/Widgets/VolumeEdit.cs:51
-msgid "Movies"
-msgstr "Film"
-
-#: src/Gui/Widgets/CategoryView.cs:63
-msgid "Images"
-msgstr ""
-
-#: src/Gui/Widgets/CategoryView.cs:64
-msgid "Applications"
-msgstr ""
-
-#: src/Gui/Widgets/CategoryView.cs:65
-msgid "Archives"
-msgstr ""
-
-#: src/Gui/Widgets/CategoryView.cs:66
-msgid "Development"
-msgstr ""
-
-#: src/Gui/Widgets/CategoryView.cs:96
-msgid "Category"
-msgstr ""
-
-#: src/Gui/Widgets/CategoryView.cs:128
-msgid "All items"
-msgstr ""
-
-#: src/Gui/Widgets/FSVolumeEdit.cs:62
-msgid "Files:"
-msgstr "Filer:"
-
-#: src/Gui/Widgets/FSVolumeEdit.cs:63
-msgid "Directories:"
-msgstr "Kataloger:"
-
-#: src/Gui/Widgets/FSVolumeEdit.cs:64
-msgid "Total size:"
-msgstr "Samlet størrelse:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:48
-msgid "Backup"
-msgstr "Backup"
-
-#: src/Gui/Widgets/VolumeEdit.cs:52
-msgid "Pictures"
-msgstr "Billeder"
-
-#: src/Gui/Widgets/VolumeEdit.cs:53
-msgid "Misc"
-msgstr "Diverse"
-
-#: src/Gui/Widgets/VolumeEdit.cs:54
-msgid "Other"
-msgstr "Andet"
-
-#: src/Gui/Widgets/VolumeEdit.cs:241
-msgid "Yes"
-msgstr "Ja"
-
-#: src/Gui/Widgets/VolumeEdit.cs:241
-msgid "No"
-msgstr "Nej"
-
-#: src/Gui/Widgets/VolumeEdit.cs:251
-msgid "Volume type:"
-msgstr "Volume type:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:252
-msgid "Hashed:"
-msgstr "Hashed:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:253
-msgid "Added:"
-msgstr "Tilføjet:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:323
-msgid "Archive No.:"
-msgstr ""
-
-#: src/Gui/Widgets/VolumeEdit.cs:325
-msgid "Title:"
-msgstr "Titel:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:327
-msgid "Keywords:"
-msgstr "Nøgleord:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:328
-msgid "Loaned to:"
-msgstr "Lånt til:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:329
-msgid "Loaned date:"
-msgstr "Lånedato:"
-
-#: src/Gui/Widgets/VolumeEdit.cs:330
-msgid "Return date:"
-msgstr "Retur dato:"
-
-#: src/Gui/Widgets/SearchResultView.cs:32
-msgid "Volume"
-msgstr ""
-
-#: src/Gui/Widgets/SearchResultView.cs:33
-msgid "Archive No."
-msgstr ""
-
-#: src/Gui/Widgets/SearchResultView.cs:34
-msgid "Audio CD track"
-msgstr ""
-
-#: src/FileDialog.cs:51
-msgid "VolumeDatabase files"
-msgstr "VolumeDatabase filer"
-
-#: src/FileDialog.cs:56
-msgid "All files"
-msgstr "Alle filer"
-
-#: src/Main.cs:65
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:231
 #, csharp-format
-msgid "{0} is already running."
-msgstr "{0} kører allerede."
+msgid ""
+"\"{0}\" is {1}.\n"
+"\n"
+"Expected format: {2}\n"
+"Please correct or remove the data you entered."
+msgstr ""
+"\"{0}\" is {1}.\n"
+"\n"
+"Forventet format: {2}\n"
+"Ret venligst eller fjern de data du indtastede."
+
+#: src/Gui/DBProperties.cs:75
+msgid "Database Properties"
+msgstr "Database egenskaber"
+
+#: src/Gui/DBProperties.cs:87
+msgid "Name:"
+msgstr "Navn:"
+
+#: src/Gui/DBProperties.cs:89
+msgid "Created:"
+msgstr "Oprettet:"
+
+#: src/Gui/VolumeProperties.cs:29
+msgid "Volume Properties"
+msgstr "Volume rettigheder"
+
+#: src/Gui/DriveSelection.cs:60
+msgid "Waiting for drives..."
+msgstr "Venter på drev..."
+
+#: src/Gui/DriveSelection.cs:133
+msgid "Drive"
+msgstr "Drev"
+
+#: src/Gui/DriveSelection.cs:139
+msgid "Label"
+msgstr "Mærkat"
+
+#: src/Gui/DriveSelection.cs:240
+msgid "Please select a drive to scan"
+msgstr "Vælg venligst et drev til skanning"
+
+#: src/Gui/About.cs:28
+msgid "A portable volume indexing tool"
+msgstr ""
+
+#: src/Gui/About.cs:29
+#, csharp-format
+msgid "Using VolumeDB v{0}."
+msgstr "Bruger VolumeDB v{0}."
+
+#: src/Gui/About.cs:31
+msgid "Copyright (c) "
+msgstr "Copyright (c) "
+
+#: src/Gui/ItemSearch.cs:78
+#, csharp-format
+msgid "Found {0} items in {1:F3} seconds."
+msgstr "Fandt {0} emner på {1:F3} sekunder."
+
+#: src/Gui/ItemSearch.cs:89 src/Gui/MainWindow.cs:453
+msgid "Timeout: another search is probably still in progress."
+msgstr "Stoppet: en anden søgning pågår sikkert fortsat."
+
+#: src/Gui/ItemSearch.cs:91
+msgid "Too many search results. Please refine your search criteria."
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:106 src/Gui/MainWindow.cs:469
+msgid "Searching..."
+msgstr "Søger..."
+
+#: src/Gui/ItemSearch.cs:230
+msgid "Search Items"
+msgstr "Søge emner"
+
+#: src/Gui/ItemSearch.cs:242 src/Gui/MainWindow.cs:1006
+msgid "default"
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:246
+msgid "Search items"
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:281
+msgid "No search results."
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:324 src/Gui/MainWindow.cs:877
+msgid "Edit Item"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:76 src/Gui/MainWindow.cs:92 src/Gui/MainWindow.cs:556
+#, csharp-format
+msgid "Database '{0}' not found."
+msgstr "Database '{0}' ikke fundet."
+
+#: src/Gui/MainWindow.cs:115
+msgid "Database not found"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:116
+msgid "Default database not found. Create?"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:145
+msgid "Unsupported database version"
+msgstr "Ikke understøttet databaseversion"
+
+#: src/Gui/MainWindow.cs:146
+msgid "This database version is not supported."
+msgstr "Denne databaseversion ikke understøttet."
+
+#: src/Gui/MainWindow.cs:165
+#, csharp-format
+msgid "{0} volumes loaded."
+msgstr "{0} volumes indlæst."
+
+#: src/Gui/MainWindow.cs:186
+#, csharp-format
+msgid "An error occured while loading the volume list: {0}"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:228
+msgid "Please enter the name for the new database"
+msgstr "Indtast venligst navnet på den nye database"
+
+#: src/Gui/MainWindow.cs:240
+msgid "Database exists"
+msgstr "Databasen findes allerede"
+
+#: src/Gui/MainWindow.cs:241
+msgid "Database already exists. Overwrite?"
+msgstr "Databasen findes allerede. Overskriv?"
+
+#: src/Gui/MainWindow.cs:254
+msgid "Please select a database"
+msgstr "Vælg venligst en database"
+
+#: src/Gui/MainWindow.cs:263 src/Gui/Import.cs:109
+msgid "Database not found."
+msgstr "Databasen blev ikke fundet."
+
+#: src/Gui/MainWindow.cs:284
+#, csharp-format
+msgid ""
+"An error occured while accessing drive {0}:\n"
+"{1}"
+msgstr ""
+"En fejl opstod under adgang til drev {0}:\n"
+"{1}"
+
+#: src/Gui/MainWindow.cs:306
+#, csharp-format
+msgid "Drive {0} is not ready."
+msgstr "Drev {0} ikke klar."
+
+#: src/Gui/MainWindow.cs:315
+#, csharp-format
+msgid "Drive {0} is neither mounted nor does it contain an audio cd."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:342 src/Gui/MainWindow.cs:372
+msgid "No volume selected"
+msgstr "Ingen volumen valgt."
+
+#: src/Gui/MainWindow.cs:343
+msgid "Please select a volume record to remove."
+msgstr "Vælg venligst en volume optagelse som du vil fjerne."
+
+#: src/Gui/MainWindow.cs:350
+msgid "Confirmation"
+msgstr "Bekræftelse"
+
+#: src/Gui/MainWindow.cs:351
+msgid "Are you sure you really want to remove the selected volume?"
+msgstr "Er du sikker på at du virkelig vil fjerne den valgte volume?"
+
+#: src/Gui/MainWindow.cs:373
+msgid "Please select a volume to edit."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:390
+msgid "No item selected"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:391
+msgid "Please select an item to edit."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:817
+msgid "_File"
+msgstr "_Fil"
+
+#: src/Gui/MainWindow.cs:820
+msgid "_New Database"
+msgstr "_Ny database"
+
+#: src/Gui/MainWindow.cs:823
+msgid "_Open Database"
+msgstr "_Åben database"
+
+#: src/Gui/MainWindow.cs:826
+msgid "Open Default Database"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:829
+msgid "_Database Properties"
+msgstr "_Database rettigheder"
+
+#: src/Gui/MainWindow.cs:832
+msgid "_Import"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:835
+msgid "_Quit"
+msgstr "_Afslut"
+
+#: src/Gui/MainWindow.cs:841
+msgid "Recent Databases"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:849
+msgid "_Edit"
+msgstr "R_edigér"
+
+#: src/Gui/MainWindow.cs:852
+msgid "_Preferences"
+msgstr "_Indstillinger"
+
+#: src/Gui/MainWindow.cs:856
+msgid "_Help"
+msgstr "_Hjælp"
+
+#: src/Gui/MainWindow.cs:859
+msgid "_Info"
+msgstr "_Info"
+
+#: src/Gui/MainWindow.cs:863
+msgid "_Add Volume"
+msgstr "_Tilføj Volume"
+
+#: src/Gui/MainWindow.cs:867
+msgid "_Remove Volume"
+msgstr "_Fjer Volume"
+
+#: src/Gui/MainWindow.cs:870
+msgid "_Edit Volume"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:873
+msgid "_Search"
+msgstr "_Søg"
+
+#: src/Gui/MainWindow.cs:880
+msgid "Sort by"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:883
+msgid "Descending"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:889
+msgid "Date added"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:890
+msgid "Title"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:891
+msgid "Drivetype"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:1003
+msgid "Filter volumes"
+msgstr ""
+
+#: src/Gui/Import.cs:29
+msgid "Import"
+msgstr ""
+
+#: src/Gui/Import.cs:30
+msgid "Abort"
+msgstr ""
+
+#: src/Gui/Import.cs:98
+#, csharp-format
+msgid "{0:0}% completed."
+msgstr ""
+
+#: src/Gui/Import.cs:108
+msgid "Import failed"
+msgstr ""
+
+#: src/Gui/Import.cs:111
+msgid "Import failed!"
+msgstr ""
+
+#: src/Gui/Import.cs:113
+msgid "Import aborted."
+msgstr ""
+
+#: src/Gui/Import.cs:115
+msgid "Import completed successfully."
+msgstr ""
+
+#: src/Gui/Import.cs:134
+msgid "Import in progress"
+msgstr ""
+
+#: src/Gui/Import.cs:135
+msgid "You must stop the import before closing this window."
+msgstr ""
+
+#: src/Gui/Import.cs:160
+msgid "Import Database"
+msgstr ""
+
+#: src/Gui/Import.cs:171
+msgid "Please select a database to import"
+msgstr ""
+
+#: src/Gui/Import.cs:189
+msgid "Database:"
+msgstr ""
+
+#: src/Gui/Import.cs:190
+msgid "Format:"
+msgstr ""
+
+#: src/Gui/ItemProperties.cs:29
+msgid "Item Properties"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:111
+msgid "Scanning started."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:113
+#, csharp-format
+msgid "Scanning of drive '{0}' started."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:121
+#, csharp-format
+msgid ""
+"Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
+"hashing: {3}."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:129
+#, csharp-format
+msgid "Options: MusicBrainz enabled: {0}"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:151
+msgid "Time"
+msgstr "Tid"
+
+#: src/Gui/VolumeScanner.cs:155
+msgid "Message"
+msgstr "Meddelelse"
+
+#: src/Gui/VolumeScanner.cs:238
+msgid "yes"
+msgstr "ja"
+
+#: src/Gui/VolumeScanner.cs:238
+msgid "no"
+msgstr "nej"
+
+#: src/Gui/VolumeScanner.cs:261
+msgid "Scan in progress"
+msgstr "Skanning pågår"
+
+#: src/Gui/VolumeScanner.cs:261
+msgid "You must stop scanning before closing this window."
+msgstr "Du skal stoppe skanning før du lukker vinduet."
+
+#: src/Gui/VolumeScanner.cs:271
+msgid "Stopping Scanner and performing rollback..."
+msgstr "Stopper skanning og ruller tilbage..."
+
+#: src/Gui/VolumeScanner.cs:313
+#, csharp-format
+msgid "An unhandled exception occured ({0})."
+msgstr "En uventet undtagelse opstod ({0})."
+
+#: src/Gui/VolumeScanner.cs:314
+msgid "All database changes have been rolled back."
+msgstr "Alle databaseændringer er rullet tilbage."
+
+#: src/Gui/VolumeScanner.cs:337
+#, csharp-format
+msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
+msgstr "Skanning mislykkedes. Årsag: En uventet undtagelse opstod ({0})."
+
+#: src/Gui/VolumeScanner.cs:339
+msgid "Scanning aborted."
+msgstr "Skanning afbrudt"
+
+#: src/Gui/VolumeScanner.cs:341
+msgid "Scanning completed successfully."
+msgstr "Skanning gennemført med succes."
+
+#: src/Gui/VolumeScanner.cs:438
+msgid "VolumeScanner"
+msgstr "Volumen skanner"
+
+#: src/Gui/VolumeScanner.cs:450
+msgid "<b>Volume Information:</b>"
+msgstr "<b>Volume Information:</b>"
+
+#: src/Gui/VolumeScanner.cs:460
+msgid "<b>Scanner Log:</b>"
+msgstr "<b>Skanningslog:</b>"
+
+#: src/Gui/VolumeScanner.cs:481
+msgid "Database access"
+msgstr "Database adgang"
+
+#: src/Gui/Preferences.cs:107
+msgid "None"
+msgstr "Ingen"
+
+#: src/Gui/Preferences.cs:229
+msgid "Restart required"
+msgstr "Genstart påkrævet"
+
+#: src/Gui/Preferences.cs:229
+#, csharp-format
+msgid "You must restart {0} for icontheme changes to take effect."
+msgstr ""
+
+#: src/Gui/Preferences.cs:257
+msgid "Preferences"
+msgstr "Indstillinger"
+
+#: src/Gui/Preferences.cs:279
+msgid "_Load Defaults"
+msgstr "_Indlæs standardindstillinger"
+
+#: src/Gui/Preferences.cs:304
+msgid "Icon theme:"
+msgstr "Ikon tema:"
+
+#: src/Gui/Preferences.cs:315
+msgid "Reopen most recent database on startup"
+msgstr "Genåben den seneste database ved start"
+
+#: src/Gui/Preferences.cs:319
+msgid "Show thumbnails in the filebrowser"
+msgstr ""
+
+#: src/Gui/Preferences.cs:322
+msgid "General"
+msgstr "Generelt"
+
+#: src/Gui/Preferences.cs:330
+msgid "Don't prompt, always scan:"
+msgstr ""
+
+#: src/Gui/Preferences.cs:349
+msgid "Generate Thumbnails"
+msgstr ""
+
+#: src/Gui/Preferences.cs:353
+msgid "Extract metadata"
+msgstr ""
+
+#: src/Gui/Preferences.cs:357
+msgid "Discard symbolic links"
+msgstr ""
+
+#: src/Gui/Preferences.cs:361
+msgid "Compute hashcodes for files (slow!)"
+msgstr ""
+
+#: src/Gui/Preferences.cs:365
+msgid "Fetch audio cd metadata from MusicBrainz.org"
+msgstr ""
+
+#: src/Gui/Preferences.cs:368
+msgid "Scanner"
+msgstr "Skanner"

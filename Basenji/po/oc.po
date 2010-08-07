@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-05-15 16:31+0200\n"
+"POT-Creation-Date: 2010-08-07 13:08+0200\n"
 "PO-Revision-Date: 2010-05-22 15:55+0000\n"
 "Last-Translator: Cédric VALMARY (Tot en òc) <cvalmary@yahoo.fr>\n"
 "Language-Team: Occitan (post 1500) <oc@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-23 13:56+0000\n"
+"X-Launchpad-Export-Date: 2010-08-07 12:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/Util.cs:30
@@ -50,9 +50,10 @@ msgstr "Fichièrs VolumeDatabase"
 msgid "All files"
 msgstr "Totes los fichièrs"
 
-#: src/Main.cs:65 src/Gui/MainWindow.cs:67 src/Gui/MainWindow.cs:237
-#: src/Gui/MainWindow.cs:258 src/Gui/MainWindow.cs:280
-#: src/Gui/MainWindow.cs:289 src/Gui/MainWindow.cs:513
+#: src/Main.cs:65 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
+#: src/Gui/MainWindow.cs:262 src/Gui/MainWindow.cs:283
+#: src/Gui/MainWindow.cs:305 src/Gui/MainWindow.cs:314
+#: src/Gui/MainWindow.cs:556
 msgid "Error"
 msgstr "Error"
 
@@ -61,20 +62,20 @@ msgstr "Error"
 msgid "{0} is already running."
 msgstr "{0} es en cors de tractament."
 
-#: src/Gui/Widgets/VolumeView.cs:30 src/Gui/Widgets/SearchResultView.cs:30
+#: src/Gui/Widgets/VolumeView.cs:42 src/Gui/Widgets/SearchResultView.cs:30
 msgid "Unnamed"
 msgstr "Sens nom"
 
-#: src/Gui/Widgets/VolumeView.cs:31
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:209
+#: src/Gui/Widgets/VolumeView.cs:43
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:213
 msgid "Category:"
 msgstr "Categoria :"
 
-#: src/Gui/Widgets/VolumeView.cs:32
+#: src/Gui/Widgets/VolumeView.cs:44
 msgid "files"
 msgstr "fichièrs"
 
-#: src/Gui/Widgets/VolumeView.cs:33
+#: src/Gui/Widgets/VolumeView.cs:45
 msgid "tracks"
 msgstr "pistas"
 
@@ -90,15 +91,15 @@ msgstr "(void)"
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: src/Gui/Widgets/ItemView.cs:168 src/Gui/Widgets/Editors/ItemEditor.cs:86
+#: src/Gui/Widgets/ItemView.cs:170 src/Gui/Widgets/Editors/ItemEditor.cs:86
 msgid "Name"
 msgstr "Nom"
 
-#: src/Gui/Widgets/ItemView.cs:173
+#: src/Gui/Widgets/ItemView.cs:176
 msgid "Artist"
 msgstr "Artista"
 
-#: src/Gui/Widgets/ItemView.cs:178
+#: src/Gui/Widgets/ItemView.cs:181
 #: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:53
 #: src/Gui/Widgets/ItemInfo.cs:223 src/Gui/Widgets/ItemInfo.cs:275
 msgid "Duration"
@@ -204,67 +205,83 @@ msgid "Music"
 msgstr "Musica"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:48
+msgid "Audiobooks"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:49
 #: src/Gui/Widgets/CategoryView.cs:62
 msgid "Movies"
 msgstr "Filmes"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:49
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:50
+msgid "Videos"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:51
 msgid "Pictures"
 msgstr "Imatges"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:50
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:52
+msgid "Games"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:53 src/Gui/Widgets/ItemInfo.cs:292
+msgid "Software"
+msgstr "Logicial"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:54
 msgid "Misc"
 msgstr "Divèrs"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:51
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:55
 msgid "Other"
 msgstr "Autre"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:175
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:179
 msgid "Yes"
 msgstr "Òc"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:175
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:179
 msgid "No"
 msgstr "Non"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:185
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:189
 msgid "Volume type:"
 msgstr "Tipe de mèdia :"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:186
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:190
 msgid "Hashed:"
 msgstr "Emprencha :"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:187
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:191
 msgid "Added:"
 msgstr "Apondut :"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:208
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:212
 msgid "Archive No.:"
 msgstr "N° d'archiu :"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:210
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:214
 msgid "Title:"
 msgstr "Títol :"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:211 src/Gui/DBProperties.cs:88
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:215 src/Gui/DBProperties.cs:88
 msgid "Description:"
 msgstr "Descripcion :"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:212
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:216
 msgid "Keywords:"
 msgstr "Mots claus :"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:213
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:217
 msgid "Loaned to:"
 msgstr "Prestats a :"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:214
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:218
 msgid "Loaned date:"
 msgstr "Data de prèst :"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:215
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:219
 msgid "Return date:"
 msgstr "Data de retorn :"
 
@@ -292,7 +309,7 @@ msgstr "Archius"
 msgid "Development"
 msgstr "Desvolopament"
 
-#: src/Gui/Widgets/CategoryView.cs:96
+#: src/Gui/Widgets/CategoryView.cs:96 src/Gui/MainWindow.cs:892
 msgid "Category"
 msgstr "Categoria"
 
@@ -304,7 +321,7 @@ msgstr "Totes los objèctes"
 msgid "Volume"
 msgstr "Volum"
 
-#: src/Gui/Widgets/SearchResultView.cs:33
+#: src/Gui/Widgets/SearchResultView.cs:33 src/Gui/MainWindow.cs:886
 msgid "Archive No."
 msgstr "N° d'Archiu"
 
@@ -359,10 +376,6 @@ msgstr "Productor"
 #: src/Gui/Widgets/ItemInfo.cs:290
 msgid "Creator"
 msgstr "Creator"
-
-#: src/Gui/Widgets/ItemInfo.cs:292
-msgid "Software"
-msgstr "Logicial"
 
 #: src/Gui/Widgets/ItemInfo.cs:294
 msgid "Language"
@@ -448,7 +461,7 @@ msgstr "Copyright (c) "
 msgid "Found {0} items in {1:F3} seconds."
 msgstr "Trobat {0} objèctes en {1:F3} segondas."
 
-#: src/Gui/ItemSearch.cs:89 src/Gui/MainWindow.cs:432
+#: src/Gui/ItemSearch.cs:89 src/Gui/MainWindow.cs:453
 msgid "Timeout: another search is probably still in progress."
 msgstr ""
 
@@ -456,187 +469,211 @@ msgstr ""
 msgid "Too many search results. Please refine your search criteria."
 msgstr ""
 
-#: src/Gui/ItemSearch.cs:106 src/Gui/MainWindow.cs:448
+#: src/Gui/ItemSearch.cs:106 src/Gui/MainWindow.cs:469
 msgid "Searching..."
 msgstr "Recèrca en cors..."
 
-#: src/Gui/ItemSearch.cs:232
+#: src/Gui/ItemSearch.cs:230
 msgid "Search Items"
 msgstr "Objèctes recercats"
 
-#: src/Gui/ItemSearch.cs:247
-msgid "Search:"
-msgstr "Recercar :"
+#: src/Gui/ItemSearch.cs:242 src/Gui/MainWindow.cs:1006
+msgid "default"
+msgstr ""
 
-#: src/Gui/ItemSearch.cs:274
+#: src/Gui/ItemSearch.cs:246
+msgid "Search items"
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:281
 msgid "No search results."
 msgstr "Pas cap de resultat de recèrca."
 
-#: src/Gui/ItemSearch.cs:329 src/Gui/MainWindow.cs:797
+#: src/Gui/ItemSearch.cs:324 src/Gui/MainWindow.cs:877
 msgid "Edit Item"
 msgstr "Modificar un element"
 
-#: src/Gui/MainWindow.cs:68
+#: src/Gui/MainWindow.cs:76 src/Gui/MainWindow.cs:92 src/Gui/MainWindow.cs:556
 #, csharp-format
 msgid "Database '{0}' not found."
 msgstr "Banca de donadas '{0}' introbabla."
 
-#: src/Gui/MainWindow.cs:90
+#: src/Gui/MainWindow.cs:115
 msgid "Database not found"
 msgstr "Banca de donadas pas trobada"
 
-#: src/Gui/MainWindow.cs:91
+#: src/Gui/MainWindow.cs:116
 msgid "Default database not found. Create?"
 msgstr "Banca de donadas per defaut pas trobada. Crear una novèla ?"
 
-#: src/Gui/MainWindow.cs:120
+#: src/Gui/MainWindow.cs:145
 msgid "Unsupported database version"
 msgstr "Version de banca de donadas pas suportada"
 
-#: src/Gui/MainWindow.cs:121
+#: src/Gui/MainWindow.cs:146
 msgid "This database version is not supported."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:140
+#: src/Gui/MainWindow.cs:165
 #, csharp-format
 msgid "{0} volumes loaded."
 msgstr "{0} mèdias cargats."
 
-#: src/Gui/MainWindow.cs:161
+#: src/Gui/MainWindow.cs:186
 #, csharp-format
 msgid "An error occured while loading the volume list: {0}"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:203
+#: src/Gui/MainWindow.cs:228
 msgid "Please enter the name for the new database"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:215
+#: src/Gui/MainWindow.cs:240
 msgid "Database exists"
 msgstr "La banca de donadas existís ja"
 
-#: src/Gui/MainWindow.cs:216
+#: src/Gui/MainWindow.cs:241
 msgid "Database already exists. Overwrite?"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:229
+#: src/Gui/MainWindow.cs:254
 msgid "Please select a database"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:238 src/Gui/MainWindow.cs:513 src/Gui/Import.cs:109
+#: src/Gui/MainWindow.cs:263 src/Gui/Import.cs:109
 msgid "Database not found."
 msgstr "Banca de donadas introbabla."
 
-#: src/Gui/MainWindow.cs:259
+#: src/Gui/MainWindow.cs:284
 #, csharp-format
 msgid ""
 "An error occured while accessing drive {0}:\n"
 "{1}"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:281
+#: src/Gui/MainWindow.cs:306
 #, csharp-format
 msgid "Drive {0} is not ready."
 msgstr "Lo lector {0} es pas prèst."
 
-#: src/Gui/MainWindow.cs:290
+#: src/Gui/MainWindow.cs:315
 #, csharp-format
 msgid "Drive {0} is neither mounted nor does it contain an audio cd."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:317 src/Gui/MainWindow.cs:347
+#: src/Gui/MainWindow.cs:342 src/Gui/MainWindow.cs:372
 msgid "No volume selected"
 msgstr "Cap de mèdia es pas seleccionat"
 
-#: src/Gui/MainWindow.cs:318
+#: src/Gui/MainWindow.cs:343
 msgid "Please select a volume record to remove."
 msgstr "Seleccionatz lo mèdia de suprimir."
 
-#: src/Gui/MainWindow.cs:325
+#: src/Gui/MainWindow.cs:350
 msgid "Confirmation"
 msgstr "Confirmacion"
 
-#: src/Gui/MainWindow.cs:326
+#: src/Gui/MainWindow.cs:351
 msgid "Are you sure you really want to remove the selected volume?"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:348
+#: src/Gui/MainWindow.cs:373
 msgid "Please select a volume to edit."
 msgstr "Seleccionatz un mèdia d'editar."
 
-#: src/Gui/MainWindow.cs:365
+#: src/Gui/MainWindow.cs:390
 msgid "No item selected"
 msgstr "Cap d'element es pas seleccionat"
 
-#: src/Gui/MainWindow.cs:366
+#: src/Gui/MainWindow.cs:391
 msgid "Please select an item to edit."
 msgstr "Seleccionatz un element d'editar."
 
-#: src/Gui/MainWindow.cs:738
+#: src/Gui/MainWindow.cs:817
 msgid "_File"
 msgstr "_Fichièr"
 
-#: src/Gui/MainWindow.cs:741
+#: src/Gui/MainWindow.cs:820
 msgid "_New Database"
 msgstr "BDD _novèla"
 
-#: src/Gui/MainWindow.cs:744
+#: src/Gui/MainWindow.cs:823
 msgid "_Open Database"
 msgstr "D_obrir BDD"
 
-#: src/Gui/MainWindow.cs:747
+#: src/Gui/MainWindow.cs:826
 msgid "Open Default Database"
 msgstr "Dobrir la BDD per defaut"
 
-#: src/Gui/MainWindow.cs:750
+#: src/Gui/MainWindow.cs:829
 msgid "_Database Properties"
 msgstr "_Proprietats BDD"
 
-#: src/Gui/MainWindow.cs:753
+#: src/Gui/MainWindow.cs:832
 msgid "_Import"
 msgstr "_Importar"
 
-#: src/Gui/MainWindow.cs:756
+#: src/Gui/MainWindow.cs:835
 msgid "_Quit"
 msgstr "_Quitar"
 
-#: src/Gui/MainWindow.cs:762
+#: src/Gui/MainWindow.cs:841
 msgid "Recent Databases"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:769
+#: src/Gui/MainWindow.cs:849
 msgid "_Edit"
 msgstr "_Edicion"
 
-#: src/Gui/MainWindow.cs:772
+#: src/Gui/MainWindow.cs:852
 msgid "_Preferences"
 msgstr "_Preferéncias"
 
-#: src/Gui/MainWindow.cs:776
+#: src/Gui/MainWindow.cs:856
 msgid "_Help"
 msgstr "_Ajuda"
 
-#: src/Gui/MainWindow.cs:779
+#: src/Gui/MainWindow.cs:859
 msgid "_Info"
 msgstr "_Info"
 
-#: src/Gui/MainWindow.cs:783
+#: src/Gui/MainWindow.cs:863
 msgid "_Add Volume"
 msgstr "_Apondre un Mèdia"
 
-#: src/Gui/MainWindow.cs:787
+#: src/Gui/MainWindow.cs:867
 msgid "_Remove Volume"
 msgstr "_Suprimir un Mèdia"
 
-#: src/Gui/MainWindow.cs:790
+#: src/Gui/MainWindow.cs:870
 msgid "_Edit Volume"
 msgstr "_Editar un Mèdia"
 
-#: src/Gui/MainWindow.cs:793
+#: src/Gui/MainWindow.cs:873
 msgid "_Search"
 msgstr "_Recercar"
 
-#: src/Gui/MainWindow.cs:878
+#: src/Gui/MainWindow.cs:880
+msgid "Sort by"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:883
+msgid "Descending"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:889
+msgid "Date added"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:890
+msgid "Title"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:891
+msgid "Drivetype"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:1003
 msgid "Filter volumes"
 msgstr "Filtrar los mèdias"
 

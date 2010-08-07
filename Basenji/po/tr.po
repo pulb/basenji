@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-07-18 21:10+0200\n"
+"POT-Creation-Date: 2010-08-07 13:08+0200\n"
 "PO-Revision-Date: 2010-07-10 13:47+0000\n"
 "Last-Translator: Cihan Ersoy <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-07-18 20:04+0000\n"
+"X-Launchpad-Export-Date: 2010-08-07 12:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/Util.cs:30
@@ -50,10 +50,10 @@ msgstr ""
 msgid "All files"
 msgstr "Tüm dosyalar"
 
-#: src/Main.cs:65 src/Gui/MainWindow.cs:74 src/Gui/MainWindow.cs:90
-#: src/Gui/MainWindow.cs:261 src/Gui/MainWindow.cs:282
-#: src/Gui/MainWindow.cs:304 src/Gui/MainWindow.cs:313
-#: src/Gui/MainWindow.cs:555
+#: src/Main.cs:65 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
+#: src/Gui/MainWindow.cs:262 src/Gui/MainWindow.cs:283
+#: src/Gui/MainWindow.cs:305 src/Gui/MainWindow.cs:314
+#: src/Gui/MainWindow.cs:556
 msgid "Error"
 msgstr "Hata"
 
@@ -225,10 +225,9 @@ msgstr "Resimler"
 msgid "Games"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:53
-#: src/Gui/Widgets/CategoryView.cs:64
-msgid "Applications"
-msgstr "Uygulamalar"
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:53 src/Gui/Widgets/ItemInfo.cs:292
+msgid "Software"
+msgstr "Yazılım"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:54
 msgid "Misc"
@@ -298,6 +297,10 @@ msgstr "Metin"
 msgid "Images"
 msgstr "Görüntüler"
 
+#: src/Gui/Widgets/CategoryView.cs:64
+msgid "Applications"
+msgstr "Uygulamalar"
+
 #: src/Gui/Widgets/CategoryView.cs:65
 msgid "Archives"
 msgstr "Arşivler"
@@ -306,7 +309,7 @@ msgstr "Arşivler"
 msgid "Development"
 msgstr "Geliştirme"
 
-#: src/Gui/Widgets/CategoryView.cs:96 src/Gui/MainWindow.cs:891
+#: src/Gui/Widgets/CategoryView.cs:96 src/Gui/MainWindow.cs:892
 msgid "Category"
 msgstr ""
 
@@ -318,7 +321,7 @@ msgstr "Tüm Ögeler"
 msgid "Volume"
 msgstr ""
 
-#: src/Gui/Widgets/SearchResultView.cs:33 src/Gui/MainWindow.cs:885
+#: src/Gui/Widgets/SearchResultView.cs:33 src/Gui/MainWindow.cs:886
 msgid "Archive No."
 msgstr "Arşiv No."
 
@@ -373,10 +376,6 @@ msgstr "Yapımcı"
 #: src/Gui/Widgets/ItemInfo.cs:290
 msgid "Creator"
 msgstr "Oluşturan"
-
-#: src/Gui/Widgets/ItemInfo.cs:292
-msgid "Software"
-msgstr "Yazılım"
 
 #: src/Gui/Widgets/ItemInfo.cs:294
 msgid "Language"
@@ -462,7 +461,7 @@ msgstr "Telif Hakkı (c) "
 msgid "Found {0} items in {1:F3} seconds."
 msgstr "{1:F3} saniyede {0} öge bulundu."
 
-#: src/Gui/ItemSearch.cs:89 src/Gui/MainWindow.cs:452
+#: src/Gui/ItemSearch.cs:89 src/Gui/MainWindow.cs:453
 msgid "Timeout: another search is probably still in progress."
 msgstr ""
 
@@ -470,207 +469,211 @@ msgstr ""
 msgid "Too many search results. Please refine your search criteria."
 msgstr ""
 
-#: src/Gui/ItemSearch.cs:106 src/Gui/MainWindow.cs:468
+#: src/Gui/ItemSearch.cs:106 src/Gui/MainWindow.cs:469
 msgid "Searching..."
 msgstr "Aranıyor..."
 
-#: src/Gui/ItemSearch.cs:232
+#: src/Gui/ItemSearch.cs:230
 msgid "Search Items"
 msgstr ""
 
-#: src/Gui/ItemSearch.cs:247
-msgid "Search:"
-msgstr "Ara:"
+#: src/Gui/ItemSearch.cs:242 src/Gui/MainWindow.cs:1006
+msgid "default"
+msgstr ""
 
-#: src/Gui/ItemSearch.cs:274
+#: src/Gui/ItemSearch.cs:246
+msgid "Search items"
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:281
 msgid "No search results."
 msgstr ""
 
-#: src/Gui/ItemSearch.cs:329 src/Gui/MainWindow.cs:876
+#: src/Gui/ItemSearch.cs:324 src/Gui/MainWindow.cs:877
 msgid "Edit Item"
 msgstr "Ögeyi Düzenle"
 
-#: src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91 src/Gui/MainWindow.cs:555
+#: src/Gui/MainWindow.cs:76 src/Gui/MainWindow.cs:92 src/Gui/MainWindow.cs:556
 #, csharp-format
 msgid "Database '{0}' not found."
 msgstr "Veritabanı '{0}' bulunamadı."
 
-#: src/Gui/MainWindow.cs:114
+#: src/Gui/MainWindow.cs:115
 msgid "Database not found"
 msgstr "Veritabanı bulunamadı"
 
-#: src/Gui/MainWindow.cs:115
+#: src/Gui/MainWindow.cs:116
 msgid "Default database not found. Create?"
 msgstr "Öntanımlı veritabanı bulunamadı. Oluştur?"
 
-#: src/Gui/MainWindow.cs:144
+#: src/Gui/MainWindow.cs:145
 msgid "Unsupported database version"
 msgstr "Desteklenmeyen veritabanı sürümü"
 
-#: src/Gui/MainWindow.cs:145
+#: src/Gui/MainWindow.cs:146
 msgid "This database version is not supported."
 msgstr "Bu veritabanı sürümü desteklenmiyor."
 
-#: src/Gui/MainWindow.cs:164
+#: src/Gui/MainWindow.cs:165
 #, csharp-format
 msgid "{0} volumes loaded."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:185
+#: src/Gui/MainWindow.cs:186
 #, csharp-format
 msgid "An error occured while loading the volume list: {0}"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:227
+#: src/Gui/MainWindow.cs:228
 msgid "Please enter the name for the new database"
 msgstr "Yeni veritabanı için lütfen bir isim girin"
 
-#: src/Gui/MainWindow.cs:239
+#: src/Gui/MainWindow.cs:240
 msgid "Database exists"
 msgstr "Veritabanı mevcut"
 
-#: src/Gui/MainWindow.cs:240
+#: src/Gui/MainWindow.cs:241
 msgid "Database already exists. Overwrite?"
 msgstr "Veritabanı zaten mevcut. Üzerine yaz?"
 
-#: src/Gui/MainWindow.cs:253
+#: src/Gui/MainWindow.cs:254
 msgid "Please select a database"
 msgstr "Lütfen bir veritabanı seçin"
 
-#: src/Gui/MainWindow.cs:262 src/Gui/Import.cs:109
+#: src/Gui/MainWindow.cs:263 src/Gui/Import.cs:109
 msgid "Database not found."
 msgstr "Veritabını bulunamadı"
 
-#: src/Gui/MainWindow.cs:283
+#: src/Gui/MainWindow.cs:284
 #, csharp-format
 msgid ""
 "An error occured while accessing drive {0}:\n"
 "{1}"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:305
+#: src/Gui/MainWindow.cs:306
 #, csharp-format
 msgid "Drive {0} is not ready."
 msgstr "{0} sürücüsü hazır değil."
 
-#: src/Gui/MainWindow.cs:314
+#: src/Gui/MainWindow.cs:315
 #, csharp-format
 msgid "Drive {0} is neither mounted nor does it contain an audio cd."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:341 src/Gui/MainWindow.cs:371
+#: src/Gui/MainWindow.cs:342 src/Gui/MainWindow.cs:372
 msgid "No volume selected"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:342
+#: src/Gui/MainWindow.cs:343
 msgid "Please select a volume record to remove."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:349
+#: src/Gui/MainWindow.cs:350
 msgid "Confirmation"
 msgstr "Doğrulama"
 
-#: src/Gui/MainWindow.cs:350
+#: src/Gui/MainWindow.cs:351
 msgid "Are you sure you really want to remove the selected volume?"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:372
+#: src/Gui/MainWindow.cs:373
 msgid "Please select a volume to edit."
 msgstr ""
 
-#: src/Gui/MainWindow.cs:389
+#: src/Gui/MainWindow.cs:390
 msgid "No item selected"
 msgstr "Hiçbir öge seçilmedi"
 
-#: src/Gui/MainWindow.cs:390
+#: src/Gui/MainWindow.cs:391
 msgid "Please select an item to edit."
 msgstr "Lütfen düzenlemek için bir öge seçin."
 
-#: src/Gui/MainWindow.cs:816
+#: src/Gui/MainWindow.cs:817
 msgid "_File"
 msgstr "_Dosya"
 
-#: src/Gui/MainWindow.cs:819
+#: src/Gui/MainWindow.cs:820
 msgid "_New Database"
 msgstr "_Yeni Veritabanı"
 
-#: src/Gui/MainWindow.cs:822
+#: src/Gui/MainWindow.cs:823
 msgid "_Open Database"
 msgstr "Veritabanı _Aç"
 
-#: src/Gui/MainWindow.cs:825
+#: src/Gui/MainWindow.cs:826
 msgid "Open Default Database"
 msgstr "Öntanımlı Veritabanını Aç"
 
-#: src/Gui/MainWindow.cs:828
+#: src/Gui/MainWindow.cs:829
 msgid "_Database Properties"
 msgstr "_Veritabanı Özellikleri"
 
-#: src/Gui/MainWindow.cs:831
+#: src/Gui/MainWindow.cs:832
 msgid "_Import"
 msgstr "_İçe aktar"
 
-#: src/Gui/MainWindow.cs:834
+#: src/Gui/MainWindow.cs:835
 msgid "_Quit"
 msgstr "_Çık"
 
-#: src/Gui/MainWindow.cs:840
+#: src/Gui/MainWindow.cs:841
 msgid "Recent Databases"
 msgstr "Şu Anki Veritabanı"
 
-#: src/Gui/MainWindow.cs:848
+#: src/Gui/MainWindow.cs:849
 msgid "_Edit"
 msgstr "_Düzenle"
 
-#: src/Gui/MainWindow.cs:851
+#: src/Gui/MainWindow.cs:852
 msgid "_Preferences"
 msgstr "_Tercihler"
 
-#: src/Gui/MainWindow.cs:855
+#: src/Gui/MainWindow.cs:856
 msgid "_Help"
 msgstr "_Yardım"
 
-#: src/Gui/MainWindow.cs:858
+#: src/Gui/MainWindow.cs:859
 msgid "_Info"
 msgstr "_Bilgi"
 
-#: src/Gui/MainWindow.cs:862
+#: src/Gui/MainWindow.cs:863
 msgid "_Add Volume"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:866
+#: src/Gui/MainWindow.cs:867
 msgid "_Remove Volume"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:869
+#: src/Gui/MainWindow.cs:870
 msgid "_Edit Volume"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:872
+#: src/Gui/MainWindow.cs:873
 msgid "_Search"
 msgstr "_Ara"
 
-#: src/Gui/MainWindow.cs:879
+#: src/Gui/MainWindow.cs:880
 msgid "Sort by"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:882
+#: src/Gui/MainWindow.cs:883
 msgid "Descending"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:888
+#: src/Gui/MainWindow.cs:889
 msgid "Date added"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:889
+#: src/Gui/MainWindow.cs:890
 msgid "Title"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:890
+#: src/Gui/MainWindow.cs:891
 msgid "Drivetype"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:1002
+#: src/Gui/MainWindow.cs:1003
 msgid "Filter volumes"
 msgstr ""
 
