@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-08-07 13:08+0200\n"
-"PO-Revision-Date: 2010-05-29 16:41+0000\n"
-"Last-Translator: Rommel Anatoli Quintanilla Cruz <romeluko@gmail.com>\n"
+"PO-Revision-Date: 2010-08-11 00:22+0000\n"
+"Last-Translator: martin <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-08-07 12:44+0000\n"
+"X-Launchpad-Export-Date: 2010-08-11 17:36+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/Util.cs:30
@@ -206,7 +206,7 @@ msgstr "Música"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:48
 msgid "Audiobooks"
-msgstr ""
+msgstr "Audiolibros"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:49
 #: src/Gui/Widgets/CategoryView.cs:62
@@ -215,7 +215,7 @@ msgstr "Películas"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:50
 msgid "Videos"
-msgstr ""
+msgstr "Videos"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:51
 msgid "Pictures"
@@ -223,7 +223,7 @@ msgstr "Fotografìas"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:52
 msgid "Games"
-msgstr ""
+msgstr "Juegos"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:53 src/Gui/Widgets/ItemInfo.cs:292
 msgid "Software"
@@ -485,11 +485,11 @@ msgstr "Buscar Elementos"
 
 #: src/Gui/ItemSearch.cs:242 src/Gui/MainWindow.cs:1006
 msgid "default"
-msgstr ""
+msgstr "predeterminado"
 
 #: src/Gui/ItemSearch.cs:246
 msgid "Search items"
-msgstr ""
+msgstr "Buscar items"
 
 #: src/Gui/ItemSearch.cs:281
 msgid "No search results."
@@ -665,23 +665,23 @@ msgstr "_Buscar"
 
 #: src/Gui/MainWindow.cs:880
 msgid "Sort by"
-msgstr ""
+msgstr "Ordenar por"
 
 #: src/Gui/MainWindow.cs:883
 msgid "Descending"
-msgstr ""
+msgstr "Descendente"
 
 #: src/Gui/MainWindow.cs:889
 msgid "Date added"
-msgstr ""
+msgstr "Fecha de Añadido"
 
 #: src/Gui/MainWindow.cs:890
 msgid "Title"
-msgstr ""
+msgstr "Titulo"
 
 #: src/Gui/MainWindow.cs:891
 msgid "Drivetype"
-msgstr ""
+msgstr "Tipo de Unidad"
 
 #: src/Gui/MainWindow.cs:1003
 msgid "Filter volumes"
