@@ -328,7 +328,7 @@ namespace LibExtractor
 			const char BOM_UTF16_BE = (char)0xFEFF;
 			const char BOM_UTF16_LE = (char)0xFFFE;
 			
-			if ((s != null) && (s[0] == BOM_UTF16_BE || s[0] == BOM_UTF16_LE))
+			if ((!string.IsNullOrEmpty(s)) && (s[0] == BOM_UTF16_BE || s[0] == BOM_UTF16_LE))
 				return s.Substring(1, s.Length -1);
 			else
 				return s;
