@@ -276,7 +276,10 @@ namespace Basenji.Gui
 			//bbox.Spacing = 6
 			
 			// reset button
-			btnReset = CreateCustomButton(RenderIcon(Icons.Icon.Stock_Clear, IconSize.Button), S._("_Load Defaults"), OnBtnResetClicked);
+			btnReset = CreateCustomButton(RenderIcon(Icons.Icon.Stock_Clear, 
+			                                         IconSize.Menu /* use small icons */), 
+			                              			 S._("_Load Defaults"), 
+			                              			 OnBtnResetClicked);
 
 			bbox.PackStart(btnReset, false, false, 0);
 			
