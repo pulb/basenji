@@ -728,7 +728,6 @@ namespace Basenji.Gui
 			About a = new About();
 			a.Run();
 			a.Destroy();
-			return;
 		}
 	}
 	

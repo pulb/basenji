@@ -26,6 +26,9 @@ namespace Basenji.Gui.Base
 		public DialogBase() : base() {}
 
 		protected virtual void BuildGui() {
+			if ((WindowBase.MainWindow != null) && (this != WindowBase.MainWindow))
+				this.TransientFor = WindowBase.MainWindow;
+			
 			this.BorderWidth		= 0;
 			this.WindowPosition		= WindowPosition.CenterOnParent;
 			this.Modal				= true;

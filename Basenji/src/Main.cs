@@ -49,7 +49,9 @@ namespace Basenji
 				}
 				
 				Gui.MainWindow win = new Gui.MainWindow (args.Length > 0 ? args[0] : null);
-				win.Show ();
+				Gui.Base.WindowBase.MainWindow = win;
+				
+				win.Show();
 				Application.Run();
 			}
 		}

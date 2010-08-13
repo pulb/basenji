@@ -25,10 +25,17 @@ namespace Basenji.Gui.Base
 	public abstract class WindowBase : Gtk.Window
 	{	
 		public static readonly Pixbuf DEFAULT_ICON = new Gdk.Pixbuf(App.WINDOW_DEFAULT_ICON); // TODO : fix path (e.g. /usr/share/icons) 
-
+		
 		public WindowBase() : base(Gtk.WindowType.Toplevel) {}
 
+		public static Gtk.Window MainWindow {
+			get; set;
+		}
+		
 		protected virtual void BuildGui() {
+			if ((MainWindow != null) && (this != MainWindow))
+				this.TransientFor = MainWindow;
+			
 			this.BorderWidth	= 0;
 			this.WindowPosition = WindowPosition.Center;
 			this.Icon			= DEFAULT_ICON;

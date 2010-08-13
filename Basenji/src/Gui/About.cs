@@ -98,8 +98,12 @@ Turkish:
 		
 		public About() {
 			// general window settings
+			if (Gui.Base.WindowBase.MainWindow != null)
+				this.TransientFor = Gui.Base.WindowBase.MainWindow;
+			
 			this.Modal = true;
 			SkipTaskbarHint	= true;
+			
 			Icon = Basenji.Icons.Icon.Stock_About.Render(this, IconSize.Menu);
 			
 			// about dialog settings
