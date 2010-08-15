@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-08-07 13:08+0200\n"
+"POT-Creation-Date: 2010-08-15 14:18+0200\n"
 "PO-Revision-Date: 2010-04-29 08:00+0000\n"
 "Last-Translator: Stephane Ricci <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-08-07 12:44+0000\n"
+"X-Launchpad-Export-Date: 2010-08-15 12:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/Util.cs:30
@@ -50,14 +50,14 @@ msgstr "Fichiers VolumeDatabase"
 msgid "All files"
 msgstr "Tous les fichiers"
 
-#: src/Main.cs:65 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
+#: src/Main.cs:67 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
 #: src/Gui/MainWindow.cs:262 src/Gui/MainWindow.cs:283
 #: src/Gui/MainWindow.cs:305 src/Gui/MainWindow.cs:314
 #: src/Gui/MainWindow.cs:556
 msgid "Error"
 msgstr "Erreur"
 
-#: src/Main.cs:65
+#: src/Main.cs:67
 #, csharp-format
 msgid "{0} is already running."
 msgstr "{0} est en cours de traitement."
@@ -309,7 +309,7 @@ msgstr "Archives"
 msgid "Development"
 msgstr "Développement"
 
-#: src/Gui/Widgets/CategoryView.cs:96 src/Gui/MainWindow.cs:892
+#: src/Gui/Widgets/CategoryView.cs:96 src/Gui/MainWindow.cs:891
 msgid "Category"
 msgstr "Catégorie"
 
@@ -321,7 +321,7 @@ msgstr "Tous les objets"
 msgid "Volume"
 msgstr "Volume"
 
-#: src/Gui/Widgets/SearchResultView.cs:33 src/Gui/MainWindow.cs:886
+#: src/Gui/Widgets/SearchResultView.cs:33 src/Gui/MainWindow.cs:885
 msgid "Archive No."
 msgstr "No. Archive"
 
@@ -483,7 +483,7 @@ msgstr "Recherche en cours..."
 msgid "Search Items"
 msgstr "Objets recherchés"
 
-#: src/Gui/ItemSearch.cs:242 src/Gui/MainWindow.cs:1006
+#: src/Gui/ItemSearch.cs:242 src/Gui/MainWindow.cs:1005
 msgid "default"
 msgstr ""
 
@@ -495,7 +495,7 @@ msgstr ""
 msgid "No search results."
 msgstr "Aucun résultat de recherche."
 
-#: src/Gui/ItemSearch.cs:324 src/Gui/MainWindow.cs:877
+#: src/Gui/ItemSearch.cs:324 src/Gui/MainWindow.cs:876
 msgid "Edit Item"
 msgstr "Éditer un élément"
 
@@ -598,91 +598,91 @@ msgstr "Aucun élément sélectionné"
 msgid "Please select an item to edit."
 msgstr "Sélectionnez un élément à éditer."
 
-#: src/Gui/MainWindow.cs:817
+#: src/Gui/MainWindow.cs:816
 msgid "_File"
 msgstr "_Fichier"
 
-#: src/Gui/MainWindow.cs:820
+#: src/Gui/MainWindow.cs:819
 msgid "_New Database"
 msgstr "_Nouvelle BDD"
 
-#: src/Gui/MainWindow.cs:823
+#: src/Gui/MainWindow.cs:822
 msgid "_Open Database"
 msgstr "_Ouvrir BDD"
 
-#: src/Gui/MainWindow.cs:826
+#: src/Gui/MainWindow.cs:825
 msgid "Open Default Database"
 msgstr "Ouvrir la BDD par défaut"
 
-#: src/Gui/MainWindow.cs:829
+#: src/Gui/MainWindow.cs:828
 msgid "_Database Properties"
 msgstr "_Propriétés BDD"
 
-#: src/Gui/MainWindow.cs:832
+#: src/Gui/MainWindow.cs:831
 msgid "_Import"
 msgstr "_Importer"
 
-#: src/Gui/MainWindow.cs:835
+#: src/Gui/MainWindow.cs:834
 msgid "_Quit"
 msgstr "_Quitter"
 
-#: src/Gui/MainWindow.cs:841
+#: src/Gui/MainWindow.cs:840
 msgid "Recent Databases"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:849
+#: src/Gui/MainWindow.cs:848
 msgid "_Edit"
 msgstr "_Édition"
 
-#: src/Gui/MainWindow.cs:852
+#: src/Gui/MainWindow.cs:851
 msgid "_Preferences"
 msgstr "_Préférences"
 
-#: src/Gui/MainWindow.cs:856
+#: src/Gui/MainWindow.cs:855
 msgid "_Help"
 msgstr "_Aide"
 
-#: src/Gui/MainWindow.cs:859
+#: src/Gui/MainWindow.cs:858
 msgid "_Info"
 msgstr "_Info"
 
-#: src/Gui/MainWindow.cs:863
+#: src/Gui/MainWindow.cs:862
 msgid "_Add Volume"
 msgstr "_Ajouter Média"
 
-#: src/Gui/MainWindow.cs:867
+#: src/Gui/MainWindow.cs:866
 msgid "_Remove Volume"
 msgstr "_Supprimer Média"
 
-#: src/Gui/MainWindow.cs:870
+#: src/Gui/MainWindow.cs:869
 msgid "_Edit Volume"
 msgstr "_Editer Média"
 
-#: src/Gui/MainWindow.cs:873
+#: src/Gui/MainWindow.cs:872
 msgid "_Search"
 msgstr "_Recherche"
 
-#: src/Gui/MainWindow.cs:880
+#: src/Gui/MainWindow.cs:879
 msgid "Sort by"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:883
+#: src/Gui/MainWindow.cs:882
 msgid "Descending"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:889
+#: src/Gui/MainWindow.cs:888
 msgid "Date added"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:890
+#: src/Gui/MainWindow.cs:889
 msgid "Title"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:891
+#: src/Gui/MainWindow.cs:890
 msgid "Drivetype"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:1003
+#: src/Gui/MainWindow.cs:1002
 msgid "Filter volumes"
 msgstr "Filtrer les médias"
 
@@ -837,63 +837,71 @@ msgstr "Accès à la base de données"
 msgid "None"
 msgstr "Aucun"
 
-#: src/Gui/Preferences.cs:229
+#: src/Gui/Preferences.cs:215
+msgid "Unsupported theme"
+msgstr ""
+
+#: src/Gui/Preferences.cs:216
+msgid "The selected icon theme is currently not supported on your system."
+msgstr ""
+
+#: src/Gui/Preferences.cs:252
 msgid "Restart required"
 msgstr "Redémarrage nécessaire"
 
-#: src/Gui/Preferences.cs:229
+#: src/Gui/Preferences.cs:253
 #, csharp-format
 msgid "You must restart {0} for icontheme changes to take effect."
 msgstr "Vous devez redémarrer {0} pour appliquer le changement du thème."
 
-#: src/Gui/Preferences.cs:257
+#: src/Gui/Preferences.cs:281
 msgid "Preferences"
 msgstr "Préférences"
 
-#: src/Gui/Preferences.cs:279
+#: src/Gui/Preferences.cs:305
 msgid "_Load Defaults"
 msgstr "_Charger défauts"
 
-#: src/Gui/Preferences.cs:304
+#: src/Gui/Preferences.cs:331
 msgid "Icon theme:"
 msgstr "Thème d'icônes :"
 
-#: src/Gui/Preferences.cs:315
+#: src/Gui/Preferences.cs:337
 msgid "Reopen most recent database on startup"
 msgstr "Réouvrir la dernière base de données au démarrage de l'application"
 
-#: src/Gui/Preferences.cs:319
+#: src/Gui/Preferences.cs:341
 msgid "Show thumbnails in the filebrowser"
 msgstr "Affiche les miniatures dans le navigateur de fichiers"
 
-#: src/Gui/Preferences.cs:322
+#: src/Gui/Preferences.cs:344
 msgid "General"
 msgstr "Général"
 
-#: src/Gui/Preferences.cs:330
+#: src/Gui/Preferences.cs:352
 msgid "Don't prompt, always scan:"
 msgstr "Toujours analyser sans confirmation :"
 
-#: src/Gui/Preferences.cs:349
+#: src/Gui/Preferences.cs:371
 msgid "Generate Thumbnails"
 msgstr "Génération des miniatures"
 
-#: src/Gui/Preferences.cs:353
+#: src/Gui/Preferences.cs:375
 msgid "Extract metadata"
 msgstr "Extraction des métadonnées"
 
-#: src/Gui/Preferences.cs:357
+#: src/Gui/Preferences.cs:379
 msgid "Discard symbolic links"
 msgstr "Ignorer les liens symboliques"
 
-#: src/Gui/Preferences.cs:361
+#: src/Gui/Preferences.cs:383
 msgid "Compute hashcodes for files (slow!)"
 msgstr "Calcule la somme de contrôle pour chaque fichier (plus lent !)"
 
-#: src/Gui/Preferences.cs:365
+#: src/Gui/Preferences.cs:387
 msgid "Fetch audio cd metadata from MusicBrainz.org"
 msgstr "Rechercher les données des CD Audio à partir de NusicBrainz.org"
 
-#: src/Gui/Preferences.cs:368
+#: src/Gui/Preferences.cs:390
 msgid "Scanner"
 msgstr "Scanner"

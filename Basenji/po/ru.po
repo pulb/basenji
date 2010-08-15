@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-08-07 13:08+0200\n"
+"POT-Creation-Date: 2010-08-15 14:18+0200\n"
 "PO-Revision-Date: 2010-08-03 06:45+0000\n"
 "Last-Translator: Papazu <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-08-07 12:44+0000\n"
+"X-Launchpad-Export-Date: 2010-08-15 12:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/Util.cs:30
@@ -50,14 +50,14 @@ msgstr "Файлы томов базы данных"
 msgid "All files"
 msgstr "Все файлы"
 
-#: src/Main.cs:65 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
+#: src/Main.cs:67 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
 #: src/Gui/MainWindow.cs:262 src/Gui/MainWindow.cs:283
 #: src/Gui/MainWindow.cs:305 src/Gui/MainWindow.cs:314
 #: src/Gui/MainWindow.cs:556
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/Main.cs:65
+#: src/Main.cs:67
 #, csharp-format
 msgid "{0} is already running."
 msgstr "{0} уже выполняется."
@@ -309,7 +309,7 @@ msgstr "Архивы"
 msgid "Development"
 msgstr "Разработка"
 
-#: src/Gui/Widgets/CategoryView.cs:96 src/Gui/MainWindow.cs:892
+#: src/Gui/Widgets/CategoryView.cs:96 src/Gui/MainWindow.cs:891
 msgid "Category"
 msgstr "Категория"
 
@@ -321,7 +321,7 @@ msgstr "Все элементы"
 msgid "Volume"
 msgstr "Том"
 
-#: src/Gui/Widgets/SearchResultView.cs:33 src/Gui/MainWindow.cs:886
+#: src/Gui/Widgets/SearchResultView.cs:33 src/Gui/MainWindow.cs:885
 msgid "Archive No."
 msgstr "Номер архива:"
 
@@ -484,7 +484,7 @@ msgstr "Идёт поиск..."
 msgid "Search Items"
 msgstr "Поиск объектов"
 
-#: src/Gui/ItemSearch.cs:242 src/Gui/MainWindow.cs:1006
+#: src/Gui/ItemSearch.cs:242 src/Gui/MainWindow.cs:1005
 msgid "default"
 msgstr ""
 
@@ -496,7 +496,7 @@ msgstr ""
 msgid "No search results."
 msgstr "Поиск ничего не дал."
 
-#: src/Gui/ItemSearch.cs:324 src/Gui/MainWindow.cs:877
+#: src/Gui/ItemSearch.cs:324 src/Gui/MainWindow.cs:876
 msgid "Edit Item"
 msgstr "Редактировать объект"
 
@@ -598,91 +598,91 @@ msgstr "Ничего не выбрано"
 msgid "Please select an item to edit."
 msgstr "Пожалуйста, выберите объект для редактирования."
 
-#: src/Gui/MainWindow.cs:817
+#: src/Gui/MainWindow.cs:816
 msgid "_File"
 msgstr "_Файл"
 
-#: src/Gui/MainWindow.cs:820
+#: src/Gui/MainWindow.cs:819
 msgid "_New Database"
 msgstr "_Новая база данных"
 
-#: src/Gui/MainWindow.cs:823
+#: src/Gui/MainWindow.cs:822
 msgid "_Open Database"
 msgstr "_Открыть базу данных"
 
-#: src/Gui/MainWindow.cs:826
+#: src/Gui/MainWindow.cs:825
 msgid "Open Default Database"
 msgstr "Открыть основную базу данных"
 
-#: src/Gui/MainWindow.cs:829
+#: src/Gui/MainWindow.cs:828
 msgid "_Database Properties"
 msgstr "_Свойства базы данных"
 
-#: src/Gui/MainWindow.cs:832
+#: src/Gui/MainWindow.cs:831
 msgid "_Import"
 msgstr "_Импортировать"
 
-#: src/Gui/MainWindow.cs:835
+#: src/Gui/MainWindow.cs:834
 msgid "_Quit"
 msgstr "_Выход"
 
-#: src/Gui/MainWindow.cs:841
+#: src/Gui/MainWindow.cs:840
 msgid "Recent Databases"
 msgstr "Недавние базы данных"
 
-#: src/Gui/MainWindow.cs:849
+#: src/Gui/MainWindow.cs:848
 msgid "_Edit"
 msgstr "_Правка"
 
-#: src/Gui/MainWindow.cs:852
+#: src/Gui/MainWindow.cs:851
 msgid "_Preferences"
 msgstr "_Настройки"
 
-#: src/Gui/MainWindow.cs:856
+#: src/Gui/MainWindow.cs:855
 msgid "_Help"
 msgstr "_Справка"
 
-#: src/Gui/MainWindow.cs:859
+#: src/Gui/MainWindow.cs:858
 msgid "_Info"
 msgstr "_Информация"
 
-#: src/Gui/MainWindow.cs:863
+#: src/Gui/MainWindow.cs:862
 msgid "_Add Volume"
 msgstr "_Добавить том"
 
-#: src/Gui/MainWindow.cs:867
+#: src/Gui/MainWindow.cs:866
 msgid "_Remove Volume"
 msgstr "_Удалить том"
 
-#: src/Gui/MainWindow.cs:870
+#: src/Gui/MainWindow.cs:869
 msgid "_Edit Volume"
 msgstr "_Редактировать том"
 
-#: src/Gui/MainWindow.cs:873
+#: src/Gui/MainWindow.cs:872
 msgid "_Search"
 msgstr "_Поиск"
 
-#: src/Gui/MainWindow.cs:880
+#: src/Gui/MainWindow.cs:879
 msgid "Sort by"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:883
+#: src/Gui/MainWindow.cs:882
 msgid "Descending"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:889
+#: src/Gui/MainWindow.cs:888
 msgid "Date added"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:890
+#: src/Gui/MainWindow.cs:889
 msgid "Title"
 msgstr ""
 
-#: src/Gui/MainWindow.cs:891
+#: src/Gui/MainWindow.cs:890
 msgid "Drivetype"
 msgstr "Тип накопителя"
 
-#: src/Gui/MainWindow.cs:1003
+#: src/Gui/MainWindow.cs:1002
 msgid "Filter volumes"
 msgstr "Фильтр томов"
 
@@ -834,63 +834,71 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: src/Gui/Preferences.cs:229
+#: src/Gui/Preferences.cs:215
+msgid "Unsupported theme"
+msgstr ""
+
+#: src/Gui/Preferences.cs:216
+msgid "The selected icon theme is currently not supported on your system."
+msgstr ""
+
+#: src/Gui/Preferences.cs:252
 msgid "Restart required"
 msgstr "Требуется перезапуск"
 
-#: src/Gui/Preferences.cs:229
+#: src/Gui/Preferences.cs:253
 #, csharp-format
 msgid "You must restart {0} for icontheme changes to take effect."
 msgstr "Вы должны перезапустить {0} для применения изменений в теме иконок"
 
-#: src/Gui/Preferences.cs:257
+#: src/Gui/Preferences.cs:281
 msgid "Preferences"
 msgstr "Настройки"
 
-#: src/Gui/Preferences.cs:279
+#: src/Gui/Preferences.cs:305
 msgid "_Load Defaults"
 msgstr "З_агрузить параметры по умолчанию"
 
-#: src/Gui/Preferences.cs:304
+#: src/Gui/Preferences.cs:331
 msgid "Icon theme:"
 msgstr "Тема иконок"
 
-#: src/Gui/Preferences.cs:315
+#: src/Gui/Preferences.cs:337
 msgid "Reopen most recent database on startup"
 msgstr "Повторное открытие последней базы данных при запуске"
 
-#: src/Gui/Preferences.cs:319
+#: src/Gui/Preferences.cs:341
 msgid "Show thumbnails in the filebrowser"
 msgstr ""
 
-#: src/Gui/Preferences.cs:322
+#: src/Gui/Preferences.cs:344
 msgid "General"
 msgstr ""
 
-#: src/Gui/Preferences.cs:330
+#: src/Gui/Preferences.cs:352
 msgid "Don't prompt, always scan:"
 msgstr "Не запрашивать, всегда сканировать:"
 
-#: src/Gui/Preferences.cs:349
+#: src/Gui/Preferences.cs:371
 msgid "Generate Thumbnails"
 msgstr "Создавать эскизы"
 
-#: src/Gui/Preferences.cs:353
+#: src/Gui/Preferences.cs:375
 msgid "Extract metadata"
 msgstr ""
 
-#: src/Gui/Preferences.cs:357
+#: src/Gui/Preferences.cs:379
 msgid "Discard symbolic links"
 msgstr "Отклонить символические ссылки."
 
-#: src/Gui/Preferences.cs:361
+#: src/Gui/Preferences.cs:383
 msgid "Compute hashcodes for files (slow!)"
 msgstr "Посчитать хеш-коды для файлов (Долго!)"
 
-#: src/Gui/Preferences.cs:365
+#: src/Gui/Preferences.cs:387
 msgid "Fetch audio cd metadata from MusicBrainz.org"
 msgstr ""
 
-#: src/Gui/Preferences.cs:368
+#: src/Gui/Preferences.cs:390
 msgid "Scanner"
 msgstr "Сканер"
