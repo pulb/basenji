@@ -133,9 +133,13 @@ namespace Basenji.Gui
 		
 		private void FillIconThemes() {
 			cmbIconTheme.AppendText(SYSTEM_ICON_THEME_NAME);
-			if (!string.IsNullOrEmpty(App.Settings.CustomThemeLocation) && Directory.Exists(App.Settings.CustomThemeLocation)) {
+			
+			if (!string.IsNullOrEmpty(App.Settings.CustomThemeLocation) && 
+			    Directory.Exists(App.Settings.CustomThemeLocation)) {
+				
 				DirectoryInfo[] customThemeDirs = (new DirectoryInfo(App.Settings.CustomThemeLocation)).GetDirectories();
-				foreach(DirectoryInfo dir in customThemeDirs)
+				
+				foreach (DirectoryInfo dir in customThemeDirs)
 					cmbIconTheme.AppendText(dir.Name);
 			}
 		}
@@ -200,7 +204,25 @@ namespace Basenji.Gui
 			/*
 			 * general settings
 			 */
-			App.Settings.CustomThemeName = (cmbIconTheme.ActiveText == SYSTEM_ICON_THEME_NAME) ? string.Empty : cmbIconTheme.ActiveText;
+			if (cmbIconTheme.ActiveText == SYSTEM_ICON_THEME_NAME) {
+				// prevent non-GNOME users from changing the only custom theme (Tango)
+				// into the incomplete and ugly GTK default theme.
+				if (Platform.Common.Diagnostics.CurrentPlatform.IsGnome) {
+					App.Settings.CustomThemeName = string.Empty;
+				} else {
+					if (iconThemeChanged) {
+						MsgDialog.Show(this, MessageType.Error, ButtonsType.Ok, 
+						               S._("Unsupported theme"), 
+						               string.Format(S._("The selected icon theme is currently not supported on your system.")));
+						
+						// do not notify that a restart is required
+						iconThemeChanged = false;
+					}
+				}
+			} else {
+				App.Settings.CustomThemeName = cmbIconTheme.ActiveText;
+			}
+			
 			App.Settings.OpenMostRecentDB = chkReopenDB.Active;
 			App.Settings.ShowThumbsInItemLists = chkShowThumbs.Active;
 			
@@ -225,8 +247,10 @@ namespace Basenji.Gui
 			
 			App.Settings.Save();
 			
-			if (iconThemeChanged)			 
-				MsgDialog.Show(this, MessageType.Info, ButtonsType.Ok, S._("Restart required"), string.Format(S._("You must restart {0} for icontheme changes to take effect."), App.Name));
+			if (iconThemeChanged)
+				MsgDialog.Show(this, MessageType.Info, ButtonsType.Ok,
+				               S._("Restart required"), 
+				               string.Format(S._("You must restart {0} for icontheme changes to take effect."), App.Name));
 		}
 	}
 	
@@ -308,11 +332,6 @@ namespace Basenji.Gui
 			// combobox icon theme
 			cmbIconTheme = ComboBox.NewText();
 			TblAttach(tbl, cmbIconTheme, 1, 0, AttachOptions.Expand | AttachOptions.Fill | AttachOptions.Shrink, AttachOptions.Fill);
-			
-			// prevent non-GNOME users from changing the only custom theme (Tango)
-			// into the incomplete and ugly GTK default theme.
-			if (!Platform.Common.Diagnostics.CurrentPlatform.IsGnome)
-				cmbIconTheme.Sensitive = false;
 			
 			// reopen db checkbox
 			chkReopenDB = new CheckButton(S._("Reopen most recent database on startup"));
