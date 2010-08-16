@@ -61,6 +61,9 @@ German:
 Hebrew:
   Yaron (https://launchpad.net/~sh-yaron)
 
+Hungarian:
+  Polesz (https://launchpad.net/~polesz-nedudu)
+
 Italian:
   Francesco Marella (https://launchpad.net/~francesco-marella)
   Giuseppe Caliendo (https://launchpad.net/~giuseppe-caliendo)
