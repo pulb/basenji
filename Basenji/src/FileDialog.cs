@@ -44,7 +44,7 @@ namespace Basenji
 			fc.Modal				= true;
 			fc.DestroyWithParent	= true;
 			fc.SkipTaskbarHint		= true;
-			fc.Icon					= WindowBase.DEFAULT_ICON;
+			fc.Icon					= App.DefaultWindowIcon;
 
 			FileFilter ff;
 			ff = new FileFilter();

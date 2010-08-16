@@ -24,8 +24,6 @@ namespace Basenji.Gui.Base
 {	
 	public abstract class WindowBase : Gtk.Window
 	{	
-		public static readonly Pixbuf DEFAULT_ICON = new Gdk.Pixbuf(App.WINDOW_DEFAULT_ICON);
-		
 		public WindowBase() : base(Gtk.WindowType.Toplevel) {}
 
 		public static Gtk.Window MainWindow {
@@ -38,7 +36,7 @@ namespace Basenji.Gui.Base
 			
 			this.BorderWidth	= 0;
 			this.WindowPosition = WindowPosition.Center;
-			this.Icon			= DEFAULT_ICON;
+			this.Icon			= App.DefaultWindowIcon;
 		}
 		
 		protected void SetDialogStyle() {

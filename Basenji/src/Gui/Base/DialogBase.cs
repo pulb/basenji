@@ -35,7 +35,7 @@ namespace Basenji.Gui.Base
 			this.SkipTaskbarHint	= true;
 			this.DestroyWithParent	= true;			
 			this.HasSeparator		= false;
-			this.Icon				= WindowBase.DEFAULT_ICON;
+			this.Icon				= App.DefaultWindowIcon;
 				
 			// outer vbox			
 			VBox vbOuter = this.VBox;

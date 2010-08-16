@@ -29,15 +29,13 @@ namespace Basenji
 		// limits the result size in the item search window
 		public const int SEARCH_RESULTS_LIMIT	= 10000;
 		
-//		public const string DEFAULT_DB			= "volumes.vdb";
-		public const string WINDOW_DEFAULT_ICON	= "data/basenji.svg";
-		
 		private static string name;
 		private static string version;
 		private static string copyright;
 		
 		private static Settings settings;
 		private static string defaultDB;
+		private static Gdk.Pixbuf defaultIcon;
 		
 		static App() {
 			Assembly asm = Assembly.GetExecutingAssembly();
@@ -84,5 +82,13 @@ namespace Basenji
 			}
 		}
 		
+		public static Gdk.Pixbuf DefaultWindowIcon {
+			get {
+				if (defaultIcon == null)
+					defaultIcon = new Gdk.Pixbuf("data/basenji.svg", 16, 16);
+				
+				return defaultIcon;
+			}
+		}
 	}
 }
