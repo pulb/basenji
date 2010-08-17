@@ -63,6 +63,7 @@ Hebrew:
 
 Hungarian:
   Polesz (https://launchpad.net/~polesz-nedudu)
+  Roti (https://launchpad.net/~roti-al)
 
 Italian:
   Francesco Marella (https://launchpad.net/~francesco-marella)
