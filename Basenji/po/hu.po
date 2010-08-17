@@ -1,0 +1,905 @@
+# Hungarian translation for basenji
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the basenji package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: basenji\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2010-08-15 14:18+0200\n"
+"PO-Revision-Date: 2010-08-16 05:51+0000\n"
+"Last-Translator: Polesz <polesz@nedudu.hu>\n"
+"Language-Team: Hungarian <hu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-08-17 19:36+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: src/Util.cs:30
+#, csharp-format
+msgid "{0} Bytes"
+msgstr "{0} bájt"
+
+#: src/Util.cs:32
+msgid "Bytes"
+msgstr "bájt"
+
+#: src/Util.cs:32
+msgid "KB"
+msgstr "KB"
+
+#: src/Util.cs:32
+msgid "MB"
+msgstr "MB"
+
+#: src/Util.cs:32
+msgid "GB"
+msgstr "GB"
+
+#: src/Util.cs:32
+msgid "TB"
+msgstr "TB"
+
+#: src/FileDialog.cs:51
+msgid "VolumeDatabase files"
+msgstr "KötetAdatbázis fájlok"
+
+#: src/FileDialog.cs:56
+msgid "All files"
+msgstr "Minden fájl"
+
+#: src/Main.cs:67 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
+#: src/Gui/MainWindow.cs:262 src/Gui/MainWindow.cs:283
+#: src/Gui/MainWindow.cs:305 src/Gui/MainWindow.cs:314
+#: src/Gui/MainWindow.cs:556
+msgid "Error"
+msgstr "Hiba"
+
+#: src/Main.cs:67
+#, csharp-format
+msgid "{0} is already running."
+msgstr "{0} már fut."
+
+#: src/Gui/Widgets/VolumeView.cs:42 src/Gui/Widgets/SearchResultView.cs:30
+msgid "Unnamed"
+msgstr "Névtelen"
+
+#: src/Gui/Widgets/VolumeView.cs:43
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:213
+msgid "Category:"
+msgstr "Kategória:"
+
+#: src/Gui/Widgets/VolumeView.cs:44
+msgid "files"
+msgstr "fájlok"
+
+#: src/Gui/Widgets/VolumeView.cs:45
+msgid "tracks"
+msgstr "számok"
+
+#: src/Gui/Widgets/ItemView.cs:29
+msgid "Loading..."
+msgstr "Betöltés…"
+
+#: src/Gui/Widgets/ItemView.cs:30
+msgid "(empty)"
+msgstr "(üres)"
+
+#: src/Gui/Widgets/ItemView.cs:99
+msgid "Unknown"
+msgstr "Ismeretlen"
+
+#: src/Gui/Widgets/ItemView.cs:170 src/Gui/Widgets/Editors/ItemEditor.cs:86
+msgid "Name"
+msgstr "Név"
+
+#: src/Gui/Widgets/ItemView.cs:176
+msgid "Artist"
+msgstr "Előadó"
+
+#: src/Gui/Widgets/ItemView.cs:181
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:53
+#: src/Gui/Widgets/ItemInfo.cs:223 src/Gui/Widgets/ItemInfo.cs:275
+msgid "Duration"
+msgstr "Hossz"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:34
+#: src/Gui/DriveSelection.cs:168
+msgid "Filesystem"
+msgstr "Fájlrendszer"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:65
+msgid "Files:"
+msgstr "Fájlok:"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:66
+msgid "Directories:"
+msgstr "Könyvtárak:"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:67
+msgid "Total size:"
+msgstr "Teljes méret:"
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:85
+msgid "Item type"
+msgstr "Elem típusa"
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:101 src/Gui/Widgets/ItemInfo.cs:324
+msgid "Note"
+msgstr "Megjegyzés"
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:102 src/Gui/Widgets/ItemInfo.cs:327
+msgid "Keywords"
+msgstr "Kulcsszavak"
+
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:31
+#: src/Gui/Widgets/SearchResultView.cs:34
+msgid "Audio CD track"
+msgstr "Audió CD sáv"
+
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:54
+#: src/Gui/Widgets/ItemInfo.cs:228
+msgid "Type"
+msgstr "Típus"
+
+#: src/Gui/Widgets/Editors/DirectoryItemEditor.cs:28
+msgid "Directory"
+msgstr "Könyvtár"
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:59
+#: src/Gui/Widgets/SearchResultView.cs:31 src/Gui/Widgets/ItemInfo.cs:182
+msgid "Location"
+msgstr "Hely"
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:60
+#: src/Gui/Widgets/ItemInfo.cs:183
+msgid "Last write time"
+msgstr "Utolsó írás ideje"
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:61
+#: src/Gui/Widgets/ItemInfo.cs:208
+msgid "Filetype"
+msgstr "Fájltípus"
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:31
+msgid "File"
+msgstr "Fájl"
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:52
+#: src/Gui/Widgets/ItemInfo.cs:202 src/Gui/Widgets/ItemInfo.cs:224
+#: src/Gui/DriveSelection.cs:148
+msgid "Size"
+msgstr "Méret"
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:53
+#: src/Gui/Widgets/ItemInfo.cs:204
+msgid "Hash"
+msgstr "Hash"
+
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:33
+msgid "Audio CD"
+msgstr "Audió CD"
+
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:63
+msgid "Tracks:"
+msgstr "Számok:"
+
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:64
+msgid "Duration:"
+msgstr "Hossz:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:45
+msgid "Backup"
+msgstr "Biztonsági mentés"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:46
+#: src/Gui/Widgets/CategoryView.cs:60
+msgid "Documents"
+msgstr "Dokumentumok"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:47
+#: src/Gui/Widgets/CategoryView.cs:61
+msgid "Music"
+msgstr "Zene"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:48
+msgid "Audiobooks"
+msgstr "Hangoskönyvek"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:49
+#: src/Gui/Widgets/CategoryView.cs:62
+msgid "Movies"
+msgstr "Filmek"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:50
+msgid "Videos"
+msgstr "Videók"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:51
+msgid "Pictures"
+msgstr "Képek"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:52
+msgid "Games"
+msgstr "Játékok"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:53 src/Gui/Widgets/ItemInfo.cs:292
+msgid "Software"
+msgstr "Szoftver"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:54
+msgid "Misc"
+msgstr "Egyéb"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:55
+msgid "Other"
+msgstr "Egyéb"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:179
+msgid "Yes"
+msgstr "Igen"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:179
+msgid "No"
+msgstr "Nem"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:189
+msgid "Volume type:"
+msgstr "Kötet típusa:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:190
+msgid "Hashed:"
+msgstr "Hash:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:191
+msgid "Added:"
+msgstr "Hozzáadva:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:212
+msgid "Archive No.:"
+msgstr "Archívum szám:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:214
+msgid "Title:"
+msgstr "Cím:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:215 src/Gui/DBProperties.cs:88
+msgid "Description:"
+msgstr "Leírás:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:216
+msgid "Keywords:"
+msgstr "Kulcsszavak:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:217
+msgid "Loaned to:"
+msgstr "Kölcsönadva:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:218
+msgid "Loaned date:"
+msgstr "Kölcsönadás dátuma:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:219
+msgid "Return date:"
+msgstr "Visszahozás dátuma"
+
+#: src/Gui/Widgets/CategoryView.cs:58
+msgid "Directories"
+msgstr "Könyvtárak"
+
+#: src/Gui/Widgets/CategoryView.cs:59
+msgid "Text"
+msgstr "Szöveg"
+
+#: src/Gui/Widgets/CategoryView.cs:63
+msgid "Images"
+msgstr "Képek"
+
+#: src/Gui/Widgets/CategoryView.cs:64
+msgid "Applications"
+msgstr "Alkalmazások"
+
+#: src/Gui/Widgets/CategoryView.cs:65
+msgid "Archives"
+msgstr "Archívumok"
+
+#: src/Gui/Widgets/CategoryView.cs:66
+msgid "Development"
+msgstr "Fejlesztés"
+
+#: src/Gui/Widgets/CategoryView.cs:96 src/Gui/MainWindow.cs:891
+msgid "Category"
+msgstr "Kategória"
+
+#: src/Gui/Widgets/CategoryView.cs:128
+msgid "All items"
+msgstr "Minden elem"
+
+#: src/Gui/Widgets/SearchResultView.cs:32
+msgid "Volume"
+msgstr "Kötet"
+
+#: src/Gui/Widgets/SearchResultView.cs:33 src/Gui/MainWindow.cs:885
+msgid "Archive No."
+msgstr "Archívum szám."
+
+#: src/Gui/Widgets/ItemInfo.cs:39
+msgid "by"
+msgstr "ezzel:"
+
+#: src/Gui/Widgets/ItemInfo.cs:40
+msgid "from"
+msgstr "innen:"
+
+#: src/Gui/Widgets/ItemInfo.cs:194
+msgid "Symlink target"
+msgstr "Szimbolikus link cél"
+
+#: src/Gui/Widgets/ItemInfo.cs:225
+msgid "Track No."
+msgstr "Szám"
+
+#: src/Gui/Widgets/ItemInfo.cs:257
+msgid "Genre"
+msgstr "Műfaj"
+
+#: src/Gui/Widgets/ItemInfo.cs:269
+msgid "Year"
+msgstr "Év"
+
+#: src/Gui/Widgets/ItemInfo.cs:272
+msgid "Description"
+msgstr "Leírás"
+
+#: src/Gui/Widgets/ItemInfo.cs:279
+msgid "Dimensions"
+msgstr "Méretek"
+
+#: src/Gui/Widgets/ItemInfo.cs:282
+msgid "Format"
+msgstr "Formátum"
+
+#: src/Gui/Widgets/ItemInfo.cs:284
+msgid "Author"
+msgstr "Szerző"
+
+#: src/Gui/Widgets/ItemInfo.cs:286
+msgid "Copyright"
+msgstr "Szerzői jog"
+
+#: src/Gui/Widgets/ItemInfo.cs:288
+msgid "Producer"
+msgstr "Készítő"
+
+#: src/Gui/Widgets/ItemInfo.cs:290
+msgid "Creator"
+msgstr "Létrehozó"
+
+#: src/Gui/Widgets/ItemInfo.cs:294
+msgid "Language"
+msgstr "Nyelv"
+
+#: src/Gui/Widgets/ItemInfo.cs:296
+msgid "Page count"
+msgstr "Lap szám"
+
+#: src/Gui/Widgets/ItemInfo.cs:300
+msgid "File count"
+msgstr "Fájl szám"
+
+#: src/Gui/Widgets/PageNavigation.cs:27
+msgid "No items."
+msgstr "Nincs elem"
+
+#: src/Gui/Widgets/PageNavigation.cs:145
+#, csharp-format
+msgid "<b>Page {0}/{1}</b>  ({2} - {3} of {4} items)"
+msgstr "<b>Lap {0}/{1}</b>  ({2} - {3} / {4} elem)"
+
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:231
+msgid "Invalid data"
+msgstr "Érvénytelen adat"
+
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:231
+#, csharp-format
+msgid ""
+"\"{0}\" is {1}.\n"
+"\n"
+"Expected format: {2}\n"
+"Please correct or remove the data you entered."
+msgstr ""
+"A \"{0} a következő: {1}.\n"
+"A kívánt formátum pedig: {2}\n"
+"Korrigálja, vagy távolítsa el a helytelen adatot."
+
+#: src/Gui/DBProperties.cs:75
+msgid "Database Properties"
+msgstr "Adatbázis tulajdonságok"
+
+#: src/Gui/DBProperties.cs:87
+msgid "Name:"
+msgstr "Név:"
+
+#: src/Gui/DBProperties.cs:89
+msgid "Created:"
+msgstr "Létrehozva:"
+
+#: src/Gui/VolumeProperties.cs:29
+msgid "Volume Properties"
+msgstr "Kötet tulajdonságai"
+
+#: src/Gui/DriveSelection.cs:60
+msgid "Waiting for drives..."
+msgstr "Várakozás az eszközre..."
+
+#: src/Gui/DriveSelection.cs:133
+msgid "Drive"
+msgstr "Meghajtó"
+
+#: src/Gui/DriveSelection.cs:139
+msgid "Label"
+msgstr "Címke"
+
+#: src/Gui/DriveSelection.cs:240
+msgid "Please select a drive to scan"
+msgstr "Kérem válasszon meghajtót a vizsgálathoz"
+
+#: src/Gui/About.cs:28
+msgid "A portable volume indexing tool"
+msgstr "Egy hordozható kötet indexelő eszköz"
+
+#: src/Gui/About.cs:29
+#, csharp-format
+msgid "Using VolumeDB v{0}."
+msgstr "VolumeDB v{0} használatával."
+
+#: src/Gui/About.cs:31
+msgid "Copyright (c) "
+msgstr "Minden jog fenntartva (c) "
+
+#: src/Gui/ItemSearch.cs:78
+#, csharp-format
+msgid "Found {0} items in {1:F3} seconds."
+msgstr "{0} elem található, {1:F3} másodpercen belül."
+
+#: src/Gui/ItemSearch.cs:89 src/Gui/MainWindow.cs:453
+msgid "Timeout: another search is probably still in progress."
+msgstr "Időtúllépés: másik keresés még valószínűleg folyamatban van."
+
+#: src/Gui/ItemSearch.cs:91
+msgid "Too many search results. Please refine your search criteria."
+msgstr "Túl sok találat. Kérem finomítsa a keresési kritériumokat."
+
+#: src/Gui/ItemSearch.cs:106 src/Gui/MainWindow.cs:469
+msgid "Searching..."
+msgstr "Keresés..."
+
+#: src/Gui/ItemSearch.cs:230
+msgid "Search Items"
+msgstr "Elemek keresése"
+
+#: src/Gui/ItemSearch.cs:242 src/Gui/MainWindow.cs:1005
+msgid "default"
+msgstr "alapértelmezett"
+
+#: src/Gui/ItemSearch.cs:246
+msgid "Search items"
+msgstr "Elemek keresése"
+
+#: src/Gui/ItemSearch.cs:281
+msgid "No search results."
+msgstr "Nincs a keresésnek megfelelő találat."
+
+#: src/Gui/ItemSearch.cs:324 src/Gui/MainWindow.cs:876
+msgid "Edit Item"
+msgstr "Elem szerkesztése"
+
+#: src/Gui/MainWindow.cs:76 src/Gui/MainWindow.cs:92 src/Gui/MainWindow.cs:556
+#, csharp-format
+msgid "Database '{0}' not found."
+msgstr "A következő adatbázis nem található: '{0}'."
+
+#: src/Gui/MainWindow.cs:115
+msgid "Database not found"
+msgstr "Az adatbázis nem található"
+
+#: src/Gui/MainWindow.cs:116
+msgid "Default database not found. Create?"
+msgstr "Az alapértelmezett adatbázis nem található. Létrehozzam?"
+
+#: src/Gui/MainWindow.cs:145
+msgid "Unsupported database version"
+msgstr "Nem támogatott adatbázis verzió"
+
+#: src/Gui/MainWindow.cs:146
+msgid "This database version is not supported."
+msgstr "Ez az adatbázis verzió nem támogatott"
+
+#: src/Gui/MainWindow.cs:165
+#, csharp-format
+msgid "{0} volumes loaded."
+msgstr "{0} kötet betöltve."
+
+#: src/Gui/MainWindow.cs:186
+#, csharp-format
+msgid "An error occured while loading the volume list: {0}"
+msgstr "Hiba történt a kötetlista betöltésekor: {0}"
+
+#: src/Gui/MainWindow.cs:228
+msgid "Please enter the name for the new database"
+msgstr "Adja meg az új adatbázis nevét"
+
+#: src/Gui/MainWindow.cs:240
+msgid "Database exists"
+msgstr "Az adatbázis már létezik"
+
+#: src/Gui/MainWindow.cs:241
+msgid "Database already exists. Overwrite?"
+msgstr "Az adatbázis már létezik. Felülírjam?"
+
+#: src/Gui/MainWindow.cs:254
+msgid "Please select a database"
+msgstr "Válasszon egy adatbázist"
+
+#: src/Gui/MainWindow.cs:263 src/Gui/Import.cs:109
+msgid "Database not found."
+msgstr "Az adatbázis nem tlaálható."
+
+#: src/Gui/MainWindow.cs:284
+#, csharp-format
+msgid ""
+"An error occured while accessing drive {0}:\n"
+"{1}"
+msgstr ""
+"Hiba történt a következő meghajtó elérésekor {0}:\n"
+"{1}"
+
+#: src/Gui/MainWindow.cs:306
+#, csharp-format
+msgid "Drive {0} is not ready."
+msgstr "Az eszköz {0} nem áll készen."
+
+#: src/Gui/MainWindow.cs:315
+#, csharp-format
+msgid "Drive {0} is neither mounted nor does it contain an audio cd."
+msgstr "A meghajtó {0} nem csatolható vagy nem audio cd."
+
+#: src/Gui/MainWindow.cs:342 src/Gui/MainWindow.cs:372
+msgid "No volume selected"
+msgstr "Nincs kötet kiválasztva"
+
+#: src/Gui/MainWindow.cs:343
+msgid "Please select a volume record to remove."
+msgstr "Kérem válasszon egy kötetet a törléshez."
+
+#: src/Gui/MainWindow.cs:350
+msgid "Confirmation"
+msgstr "Megerősítés"
+
+#: src/Gui/MainWindow.cs:351
+msgid "Are you sure you really want to remove the selected volume?"
+msgstr "Valóban törölni szeretné a kijelölt kötetet?"
+
+#: src/Gui/MainWindow.cs:373
+msgid "Please select a volume to edit."
+msgstr "Kérem válasszon kötetet a szerkesztéshez."
+
+#: src/Gui/MainWindow.cs:390
+msgid "No item selected"
+msgstr "Nincs elem kiválasztva"
+
+#: src/Gui/MainWindow.cs:391
+msgid "Please select an item to edit."
+msgstr "Kérem válasszon elemet a szerkesztéshez."
+
+#: src/Gui/MainWindow.cs:816
+msgid "_File"
+msgstr "_Fájl"
+
+#: src/Gui/MainWindow.cs:819
+msgid "_New Database"
+msgstr "Új _adatbázis"
+
+#: src/Gui/MainWindow.cs:822
+msgid "_Open Database"
+msgstr "Adatbázis _megnyitása"
+
+#: src/Gui/MainWindow.cs:825
+msgid "Open Default Database"
+msgstr "Alapértelmezett adatbázis megnyitása"
+
+#: src/Gui/MainWindow.cs:828
+msgid "_Database Properties"
+msgstr "A_datbázis tulajdonságai"
+
+#: src/Gui/MainWindow.cs:831
+msgid "_Import"
+msgstr "_Importálás"
+
+#: src/Gui/MainWindow.cs:834
+msgid "_Quit"
+msgstr "_Kilépés"
+
+#: src/Gui/MainWindow.cs:840
+msgid "Recent Databases"
+msgstr "Előzőleg használt adatbázisok"
+
+#: src/Gui/MainWindow.cs:848
+msgid "_Edit"
+msgstr "Sz_erkesztés"
+
+#: src/Gui/MainWindow.cs:851
+msgid "_Preferences"
+msgstr "_Beállítások"
+
+#: src/Gui/MainWindow.cs:855
+msgid "_Help"
+msgstr "_Súgó"
+
+#: src/Gui/MainWindow.cs:858
+msgid "_Info"
+msgstr "_Információ"
+
+#: src/Gui/MainWindow.cs:862
+msgid "_Add Volume"
+msgstr "Kötet hozzá_adása"
+
+#: src/Gui/MainWindow.cs:866
+msgid "_Remove Volume"
+msgstr "Kötet el_távolítása"
+
+#: src/Gui/MainWindow.cs:869
+msgid "_Edit Volume"
+msgstr "Kötet sz_erkesztése"
+
+#: src/Gui/MainWindow.cs:872
+msgid "_Search"
+msgstr "Kere_sés"
+
+#: src/Gui/MainWindow.cs:879
+msgid "Sort by"
+msgstr "Rendezés"
+
+#: src/Gui/MainWindow.cs:882
+msgid "Descending"
+msgstr "Csökkenő"
+
+#: src/Gui/MainWindow.cs:888
+msgid "Date added"
+msgstr "Hozzáadás dátuma"
+
+#: src/Gui/MainWindow.cs:889
+msgid "Title"
+msgstr "Cím"
+
+#: src/Gui/MainWindow.cs:890
+msgid "Drivetype"
+msgstr "Eszköz típus"
+
+#: src/Gui/MainWindow.cs:1002
+msgid "Filter volumes"
+msgstr "Kötetek szűrése"
+
+#: src/Gui/Import.cs:29
+msgid "Import"
+msgstr "Importálás"
+
+#: src/Gui/Import.cs:30
+msgid "Abort"
+msgstr "Megszakít"
+
+#: src/Gui/Import.cs:98
+#, csharp-format
+msgid "{0:0}% completed."
+msgstr "{0:0}% kész"
+
+#: src/Gui/Import.cs:108
+msgid "Import failed"
+msgstr "Az importálás sikertelen volt"
+
+#: src/Gui/Import.cs:111
+msgid "Import failed!"
+msgstr "Az importálás nem sikerült!"
+
+#: src/Gui/Import.cs:113
+msgid "Import aborted."
+msgstr "Importálás megszakítva."
+
+#: src/Gui/Import.cs:115
+msgid "Import completed successfully."
+msgstr "Az importálás sikeres."
+
+#: src/Gui/Import.cs:134
+msgid "Import in progress"
+msgstr "Importálás folyamatban"
+
+#: src/Gui/Import.cs:135
+msgid "You must stop the import before closing this window."
+msgstr "Le kell állítania az importálást, mielőtt bezárja ezt az ablakot."
+
+#: src/Gui/Import.cs:160
+msgid "Import Database"
+msgstr "Adatbázis importálása"
+
+#: src/Gui/Import.cs:171
+msgid "Please select a database to import"
+msgstr "Válasszon egy adatbázist az importáshoz"
+
+#: src/Gui/Import.cs:189
+msgid "Database:"
+msgstr "Adatbázis:"
+
+#: src/Gui/Import.cs:190
+msgid "Format:"
+msgstr "Formátum:"
+
+#: src/Gui/ItemProperties.cs:29
+msgid "Item Properties"
+msgstr "Elem tulajdonságok"
+
+#: src/Gui/VolumeScanner.cs:111
+msgid "Scanning started."
+msgstr "Vizsgálat elindult."
+
+#: src/Gui/VolumeScanner.cs:113
+#, csharp-format
+msgid "Scanning of drive '{0}' started."
+msgstr "A következő meghajtó beolvasása megkezdődött: '{0}'."
+
+#: src/Gui/VolumeScanner.cs:121
+#, csharp-format
+msgid ""
+"Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
+"hashing: {3}."
+msgstr ""
+"Opciók: kisképek generálása: {0}, meta információk kinyerése: {1}, "
+"szimbólikus linkek figyelmen kívül hagyása {2}, ellenőrzőösszeg használata "
+"{3}."
+
+#: src/Gui/VolumeScanner.cs:129
+#, csharp-format
+msgid "Options: MusicBrainz enabled: {0}"
+msgstr "Opciók: MusicBrainz engedélyezve: {0}"
+
+#: src/Gui/VolumeScanner.cs:151
+msgid "Time"
+msgstr "Idő"
+
+#: src/Gui/VolumeScanner.cs:155
+msgid "Message"
+msgstr "Üzenet"
+
+#: src/Gui/VolumeScanner.cs:238
+msgid "yes"
+msgstr "igen"
+
+#: src/Gui/VolumeScanner.cs:238
+msgid "no"
+msgstr "nem"
+
+#: src/Gui/VolumeScanner.cs:261
+msgid "Scan in progress"
+msgstr "Átvizsgálás folyamatban"
+
+#: src/Gui/VolumeScanner.cs:261
+msgid "You must stop scanning before closing this window."
+msgstr ""
+"Meg kell szakítania az átvizsgálást ahhoz hogy becsukja azt az ablakot"
+
+#: src/Gui/VolumeScanner.cs:271
+msgid "Stopping Scanner and performing rollback..."
+msgstr "Átvizsgálás megállítása és visszatérés ..."
+
+#: src/Gui/VolumeScanner.cs:313
+#, csharp-format
+msgid "An unhandled exception occured ({0})."
+msgstr "Váratlan hiba történt ({0})."
+
+#: src/Gui/VolumeScanner.cs:314
+msgid "All database changes have been rolled back."
+msgstr "Az adatbázis változások visszaállításra kerültek."
+
+#: src/Gui/VolumeScanner.cs:337
+#, csharp-format
+msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
+msgstr "Az átvizsgálás nem sikerült. Ok: váratlan hiba történt ({0})."
+
+#: src/Gui/VolumeScanner.cs:339
+msgid "Scanning aborted."
+msgstr "Átvizsgálás megszakítva."
+
+#: src/Gui/VolumeScanner.cs:341
+msgid "Scanning completed successfully."
+msgstr "Az átvizsgálás sikeresen befejeződött."
+
+#: src/Gui/VolumeScanner.cs:438
+msgid "VolumeScanner"
+msgstr "KötetVizsgáló"
+
+#: src/Gui/VolumeScanner.cs:450
+msgid "<b>Volume Information:</b>"
+msgstr "<b>Kötet információ:</b>"
+
+#: src/Gui/VolumeScanner.cs:460
+msgid "<b>Scanner Log:</b>"
+msgstr "<b>Átvizsgálás log:</b>"
+
+#: src/Gui/VolumeScanner.cs:481
+msgid "Database access"
+msgstr "Adatbázis elérés"
+
+#: src/Gui/Preferences.cs:107
+msgid "None"
+msgstr "Nincs"
+
+#: src/Gui/Preferences.cs:215
+msgid "Unsupported theme"
+msgstr "Nem támogatott téma"
+
+#: src/Gui/Preferences.cs:216
+msgid "The selected icon theme is currently not supported on your system."
+msgstr "A kiválaszott ikon téma jelenleg nem támogatott az Ön rendszerén."
+
+#: src/Gui/Preferences.cs:252
+msgid "Restart required"
+msgstr "Újraindítás szükséges"
+
+#: src/Gui/Preferences.cs:253
+#, csharp-format
+msgid "You must restart {0} for icontheme changes to take effect."
+msgstr ""
+"Újraindítás szükséges, hogy az új ikontéma {0} változásai érvényre jussanak."
+
+#: src/Gui/Preferences.cs:281
+msgid "Preferences"
+msgstr "Beállítások"
+
+#: src/Gui/Preferences.cs:305
+msgid "_Load Defaults"
+msgstr "A_lapértelmezések betöltése"
+
+#: src/Gui/Preferences.cs:331
+msgid "Icon theme:"
+msgstr "Ikontéma:"
+
+#: src/Gui/Preferences.cs:337
+msgid "Reopen most recent database on startup"
+msgstr "A legutóbb használt adatbázis megnyitása a program indításakor"
+
+#: src/Gui/Preferences.cs:341
+msgid "Show thumbnails in the filebrowser"
+msgstr "Előnézeti képek mutatása a fájlböngészőben"
+
+#: src/Gui/Preferences.cs:344
+msgid "General"
+msgstr "Általános"
+
+#: src/Gui/Preferences.cs:352
+msgid "Don't prompt, always scan:"
+msgstr "Nincs kérdés, mindig keres:"
+
+#: src/Gui/Preferences.cs:371
+msgid "Generate Thumbnails"
+msgstr "Előnézeti képek létrehozása"
+
+#: src/Gui/Preferences.cs:375
+msgid "Extract metadata"
+msgstr "Metaadatok kibontása"
+
+#: src/Gui/Preferences.cs:379
+msgid "Discard symbolic links"
+msgstr "Szimbolikus linkek eldobása"
+
+#: src/Gui/Preferences.cs:383
+msgid "Compute hashcodes for files (slow!)"
+msgstr "Hash kódok számolása a fájlokhoz (lassú!)"
+
+#: src/Gui/Preferences.cs:387
+msgid "Fetch audio cd metadata from MusicBrainz.org"
+msgstr "Audió CD metaadat lekérése a MusicBrainz.org szerverről"
+
+#: src/Gui/Preferences.cs:390
+msgid "Scanner"
+msgstr "Kereső"
