@@ -85,6 +85,7 @@ Russian:
   Vladimir (https://launchpad.net/~bonza-land)
 
 Spanish:
+  Daniel Garcia Stelzner (https://launchpad.net/~dani-garcia87)
   DiegoJ (https://launchpad.net/~diegojromerolopez)
   Emiliano (https://launchpad.net/~emilianohfernandez)
   Feder Sáiz (https://launchpad.net/~federsaiz)
