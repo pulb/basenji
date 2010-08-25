@@ -1,0 +1,3 @@
+version=3
+https://launchpad.net/basenji/+download \
+    (?:.*/)?basenji-([\d\.]+)\.tar\.gz
