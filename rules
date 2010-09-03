@@ -34,5 +34,6 @@ binary-indep: build install
 
 clean: configure-stamp
 	dh $@
+	rm -f config.log
 ##	make clean
 #	dh clean
