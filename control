@@ -30,9 +30,10 @@ Description: A portable volume indexing tool
  Basenji is a volume indexing tool designed for easy and fast indexing 
  of volume collections. It currently supports indexing of removable media 
  such as CDs and USB sticks and stores them as volume objects in a database. 
- After being stored in this database, volumes can be browsed and searched trough 
- for specific files very quickly.
+ After being stored in this database, volumes can be browsed and 
+ searched trough for specific files very quickly.
  .
- Basenji has been developed with platform independency in mind right from the start 
- and presently consists of a GTK+ GUI frontend and a reusable library backend (VolumeDB) 
- that implements the actual indexing, searching and database logic.
+ Basenji has been developed with platform independency in mind right from 
+ the start and presently consists of a GTK+ GUI frontend and a reusable 
+ library backend (VolumeDB) that implements the actual indexing, 
+ searching and database logic.
