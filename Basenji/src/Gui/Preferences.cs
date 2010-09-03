@@ -169,6 +169,7 @@ namespace Basenji.Gui
 			}
 			
 			chkReopenDB.Active = s.OpenMostRecentDB;
+			chkShowItemInfo.Active = s.ShowItemInfo;
 			chkShowThumbs.Active = s.ShowThumbsInItemLists;
 			
 			/*
@@ -224,6 +225,7 @@ namespace Basenji.Gui
 			}
 			
 			App.Settings.OpenMostRecentDB = chkReopenDB.Active;
+			App.Settings.ShowItemInfo = chkShowItemInfo.Active;
 			App.Settings.ShowThumbsInItemLists = chkShowThumbs.Active;
 			
 			/*
@@ -258,6 +260,7 @@ namespace Basenji.Gui
 	public partial class Preferences : Base.WindowBase
 	{
 		private CheckButton chkReopenDB;
+		private CheckButton chkShowItemInfo;
 		private CheckButton chkShowThumbs;
 		private ComboBox	cmbIconTheme;
 		
@@ -324,7 +327,7 @@ namespace Basenji.Gui
 		}
 		
 		private void AppendGeneralPage(Notebook nb) {
-			Table tbl = CreateTable(3, 2);
+			Table tbl = CreateTable(4, 2);
 			tbl.BorderWidth = 12;			 
 			
 			// label
@@ -337,9 +340,13 @@ namespace Basenji.Gui
 			chkReopenDB = new CheckButton(S._("Reopen most recent database on startup"));
 			TblAttach(tbl, chkReopenDB, 0, 1, 2, 1);
 			
+			// show iteminfo checkbox
+			chkShowItemInfo = new CheckButton(S._("Show iteminfo panel"));
+			TblAttach(tbl, chkShowItemInfo, 0, 2, 2, 1);
+			
 			// show thumbs checkbox
 			chkShowThumbs = new CheckButton(S._("Show thumbnails in the filebrowser"));
-			TblAttach(tbl, chkShowThumbs, 0, 2, 2, 1);
+			TblAttach(tbl, chkShowThumbs, 0, 3, 2, 1);
 			
 			nb.AppendPage(tbl, new Label(S._("General")));		 
 		}

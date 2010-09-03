@@ -197,7 +197,10 @@ namespace Basenji.Gui
 			if (item == null)
 				return;
 			
-			itemInfo.ShowInfo(item, database);
+			if (App.Settings.ShowItemInfo) 
+				itemInfo.ShowInfo(item, database);
+			else if (itemInfo.Visible)
+				itemInfo.Hide();
 		}
 		
 		private void OnDeleteEvent(object sender, DeleteEventArgs args) {

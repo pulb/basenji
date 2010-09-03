@@ -108,6 +108,11 @@ namespace Basenji
 			set { properties["MainWindowIsMaximized"] = value ? "1" : "0"; }
 		}
 
+		public bool ShowItemInfo {
+			get { return properties["ShowItemInfo"] == "1"; }
+			set { properties["ShowItemInfo"] = value ? "1" : "0"; }
+		}
+		
 		public bool ItemInfoMinimized1 {
 			get { return properties["ItemInfoMinimized1"] == "1"; }
 			set { properties["ItemInfoMinimized1"] = value ? "1" : "0"; }
@@ -161,6 +166,7 @@ namespace Basenji
 			properties.Add("MainWindowWidth",				"800");
 			properties.Add("MainWindowHeight",				"480");
 			properties.Add("MainWindowIsMaximized",			"0");
+			properties.Add("ShowItemInfo",					"1");
 			properties.Add("ItemInfoMinimized1",			"0");
 			properties.Add("ItemInfoMinimized2",			"0");
 			properties.Add("MainWindowSplitterPosition",	"260");
