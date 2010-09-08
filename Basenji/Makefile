@@ -243,7 +243,8 @@ RESOURCES = \
 	po/tr.resources,Basenji.po.tr.resources \
 	images/calendar.png,Basenji.images.calendar.png \
 	po/pl.resources,Basenji.po.pl.resources \
-	po/hu.resources,Basenji.po.hu.resources 
+	po/hu.resources,Basenji.po.hu.resources \
+	po/et.resources,Basenji.po.et.resources 
 
 EXTRAS = \
 	app.desktop \

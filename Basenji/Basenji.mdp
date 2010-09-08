@@ -102,6 +102,7 @@
     <File subtype="Code" buildaction="EmbedAsResource" name="images/calendar.png" resource_id="Basenji.images.calendar.png" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/pl.resources" resource_id="Basenji.po.pl.resources" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/hu.resources" resource_id="Basenji.po.hu.resources" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="po/et.resources" resource_id="Basenji.po.et.resources" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
