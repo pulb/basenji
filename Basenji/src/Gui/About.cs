@@ -51,6 +51,9 @@ Bulgarian:
 Danish:
   nanker (https://launchpad.net/~nanker)
 
+Estonian:
+  olavi tohver (https://launchpad.net/~olts16)
+
 French:
   Stephane Ricci (https://launchpad.net/~stephane-ricci)
   Anthony Guéchoum (https://launchpad.net/~athael)
