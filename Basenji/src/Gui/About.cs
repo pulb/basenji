@@ -71,6 +71,7 @@ Hungarian:
 Italian:
   Francesco Marella (https://launchpad.net/~francesco-marella)
   Giuseppe Caliendo (https://launchpad.net/~giuseppe-caliendo)
+  Guybrush88 (https://launchpad.net/~erpizzo)
   meltingshell (https://launchpad.net/~meltingshell)
 
 Occitan (post 1500):
