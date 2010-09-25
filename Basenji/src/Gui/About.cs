@@ -69,6 +69,7 @@ Hungarian:
   Roti (https://launchpad.net/~roti-al)
 
 Italian:
+  Davide Vidal (https://launchpad.net/~davide-vidal)
   Francesco Marella (https://launchpad.net/~francesco-marella)
   Giuseppe Caliendo (https://launchpad.net/~giuseppe-caliendo)
   Guybrush88 (https://launchpad.net/~erpizzo)
