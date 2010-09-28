@@ -98,6 +98,7 @@ Spanish:
   Jonay Santana (https://launchpad.net/~jonay-santana)
   Jorge Dardón (https://launchpad.net/~jdardon)
   martin (https://launchpad.net/~martu)
+  Martín V. (https://launchpad.net/~martinvukovic)
   monkey (https://launchpad.net/~monkey-libre)  
   Nicolás M. Zahlut (https://launchpad.net/~nzahlut)
   Paco Molinero (https://launchpad.net/~franciscomol)
