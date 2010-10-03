@@ -19,8 +19,7 @@ Homepage: http://launchpad.net/basenji
 
 Package: basenji
 Architecture: all
-Depends: ${shlibs:Depends},
-         ${misc:Depends},
+Depends: ${misc:Depends},
          ${cli:Depends},
          libextractor1c2a (>= 0.5.21),
          libextractor-plugins (>= 0.5.21),
