@@ -21,4 +21,5 @@ binary-indep: build install
 
 clean: configure-stamp
 	dh $@
-	rm -f config.log
+	rm -f config.log config.make Basenji/basenji.desktop
+	find -name "*.pc" | xargs rm -f 
