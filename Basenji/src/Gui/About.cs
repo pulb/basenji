@@ -82,6 +82,7 @@ Polish:
   Stanisław Chmiela (https://launchpad.net/~chmiela-st)
 
 Russian:
+  Alexander 'FONTER' Zinin (https://launchpad.net/~spore-09)
   Dmitri Konoplev (https://launchpad.net/~knoplef)
   Eugene Marshal (https://launchpad.net/~lowrider)
   Nikolai Romanik (https://launchpad.net/~arhey)
