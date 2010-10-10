@@ -68,9 +68,13 @@ SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 PROGRAMFILES = \
 	$(PLATFORM_DLL_MDB)  
 
+LINUX_PKGCONFIG = \
+	$(PLATFORM_PC)  
+
 
 RESGEN=resgen2
 
+PLATFORM_PC = $(BUILD_DIR)/platform.pc
 
 FILES = \
 	src/Common/Diagnostics/CurrentPlatform.cs \
@@ -101,7 +105,8 @@ DATA_FILES =
 
 RESOURCES = 
 
-EXTRAS = 
+EXTRAS = \
+	platform.pc.in 
 
 REFERENCES =  \
 	System \
@@ -111,16 +116,17 @@ REFERENCES =  \
 
 DLL_REFERENCES = 
 
-CLEANFILES = $(PROGRAMFILES) 
+CLEANFILES = $(PROGRAMFILES) $(LINUX_PKGCONFIG) 
 
 #Targets
-all: $(ASSEMBLY) $(PROGRAMFILES)  $(top_srcdir)/config.make
+all: $(ASSEMBLY) $(PROGRAMFILES) $(LINUX_PKGCONFIG)  $(top_srcdir)/config.make
 
 include $(top_srcdir)/Makefile.include
 #include $(srcdir)/custom-hooks.make
 
 
 
+$(eval $(call emit-deploy-wrapper,PLATFORM_PC,platform.pc))
 
 
 $(eval $(call emit_resgen_targets))
@@ -144,6 +150,8 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call cp,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	mkdir -p '$(DESTDIR)$(libdir)/pkgconfig'
+	$(call cp,$(PLATFORM_PC),$(DESTDIR)$(libdir)/pkgconfig)
 	make post-install-local-hook prefix=$(prefix)
 
 uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
@@ -152,6 +160,7 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call rm,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(PLATFORM_PC),$(DESTDIR)$(libdir)/pkgconfig)
 	make post-uninstall-local-hook prefix=$(prefix)
 
 install: install-local
