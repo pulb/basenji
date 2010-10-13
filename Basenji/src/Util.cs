@@ -33,12 +33,12 @@ namespace Basenji
 			double dblSize = size;
 			int n = 0;
 
-			while (dblSize > 1023.998 /* dblSize >= 1024.0 */) {
+			while (dblSize > 1023.995 /* dblSize >= 1024.0 */) {
 				dblSize /= 1024.0;
 				n++;
 			}
 			
-			// rounds up from .999
+			// rounds up starting at .995
 			return string.Format("{0:N2} {1}", dblSize, units[n]);
 		}
 
