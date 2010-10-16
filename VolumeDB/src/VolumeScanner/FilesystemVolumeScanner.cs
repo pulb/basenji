@@ -16,7 +16,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-/*#define DEBUG_FILE_VERBOSE*/
+//#define DEBUG_FILE_VERBOSE
 
 using System;
 using System.IO;
@@ -253,9 +253,11 @@ namespace VolumeDB.VolumeScanner
 //					  bool isRegularFile  = true;
 //					  bool isSymLink	  = false;
 					
-#if DEBUG && DEBUG_FILE_VERBOSE
-					Debug.WriteLine(string.Format("Indexing file '{0}'", files[i].FullName));
-#endif
+//#if DEBUG && DEBUG_FILE_VERBOSE
+					if (Global.EnableDebugging) {
+						Debug.WriteLine(string.Format("Indexing file '{0}'", files[i].FullName));
+					}
+//#endif
 					// catch possible FileNotFoundExceptions
 					// (e.g. on filesystems with wrong filename encoding or vanishing virtual files in /dev).
 					try {
@@ -711,13 +713,13 @@ namespace VolumeDB.VolumeScanner
 						// increase totalsize by size of symlinks too? (not size of target!)
 						// or are symlinks as big as dirs, those aren't respected as well.. 
 						//Interlocked.Add(ref VolumeInfo.size, sli.size);
-#if DEBUG
-						Debug.WriteLine("Successfully resolved and saved symlink item: {0}/{1} -> {2}/{3}",
-						                (sli.location == PATH_SEPARATOR.ToString() ? "" : sli.location),
-						                sli.name,
-						                (targetItem.Location == PATH_SEPARATOR.ToString() ? "" : targetItem.Location),
-						                (targetItem.Name == PATH_SEPARATOR.ToString() ? "" : targetItem.Name));
-#endif
+						if (Global.EnableDebugging) {
+							Debug.WriteLine("Successfully resolved and saved symlink item: {0}/{1} -> {2}/{3}",
+							                (sli.location == PATH_SEPARATOR.ToString() ? "" : sli.location),
+						                    sli.name,
+						                    (targetItem.Location == PATH_SEPARATOR.ToString() ? "" : targetItem.Location),
+						                    (targetItem.Name == PATH_SEPARATOR.ToString() ? "" : targetItem.Name));
+						}
 					} // end if
 				} // end foreach
 			}

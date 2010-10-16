@@ -70,9 +70,9 @@ namespace Basenji.Icons
 					string fullPath = Path.Combine(Path.Combine(themePath, sz.ToString()), nameInCustomTheme);
 
 					if (!File.Exists(fullPath)) {
-#if DEBUG
-						Debug.WriteLine(string.Format("IconTheme: could not find custom icon for \"{0}\" (size = {1}), using system default", name, sz));
-#endif
+						if (Global.EnableDebugging) {
+							Debug.WriteLine(string.Format("IconTheme: could not find custom icon for \"{0}\" (size = {1}), using system default", name, sz));
+						}
 						continue;
 					}
 					

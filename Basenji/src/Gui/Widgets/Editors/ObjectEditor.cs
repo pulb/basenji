@@ -74,14 +74,14 @@ namespace Basenji.Gui.Widgets.Editors
 				throw new InvalidOperationException("No object loaded");
 
 			if (!DataChanged) {
-#if DEBUG
-				Debug.WriteLine("not saving, nothing changed.");
-#endif
+				if (Global.EnableDebugging) {
+					Debug.WriteLine("not saving, nothing changed.");
+				}
 				return;
 			} else {
-#if DEBUG
-				Debug.WriteLine("saving form.");
-#endif
+				if (Global.EnableDebugging) {
+					Debug.WriteLine("saving form.");
+				}
 			}
 			
 			ValidateForm(); // may throw a ValidationException

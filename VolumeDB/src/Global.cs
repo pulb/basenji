@@ -22,8 +22,20 @@ namespace VolumeDB
 	// global settings
 	public static class Global
 	{
+#if DEBUG
+		private static bool enableDebugging = true;
+#else
+		private static bool enableDebugging = false;
+#endif
+		
 		public static bool EnableDebugging {
-			get; set;
+			get {
+				return enableDebugging;
+			}
+			
+			set {
+				enableDebugging = value;
+			}
 		}
 	}
 }

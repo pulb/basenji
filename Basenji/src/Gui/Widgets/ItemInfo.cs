@@ -300,10 +300,10 @@ namespace Basenji.Gui.Widgets
 								tmp.Add(new ItemProperty(S._("File count"), filenames.Length.ToString(), 117));
 							}
 	
-#if DEBUG
-						 	Platform.Common.Diagnostics.Debug.WriteLine(
-								String.Format("{0}: {1}", pair.Key, pair.Value));
-#endif
+							if (Global.EnableDebugging) {
+						 		Platform.Common.Diagnostics.Debug.WriteLine(
+									String.Format("{0}: {1}", pair.Key, pair.Value));
+							}
 					 	}
 					} catch (DllNotFoundException) { /* libextractor package not installed */ }
 				}
