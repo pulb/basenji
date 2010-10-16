@@ -231,7 +231,8 @@ FILES = \
 	src/AudioCdVolume.cs \
 	src/AudioCdRootVolumeItem.cs \
 	src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs \
-	src/Searching/AbstractEUSLSearchCriteria.cs 
+	src/Searching/AbstractEUSLSearchCriteria.cs \
+	src/Global.cs 
 
 DATA_FILES = 
 

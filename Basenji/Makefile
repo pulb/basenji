@@ -223,7 +223,9 @@ FILES = \
 	src/Gui/Widgets/Editors/VolumeEditor.cs \
 	src/Gui/Widgets/Editors/FileItemEditor.cs \
 	src/Gui/Widgets/Editors/DirectoryItemEditor.cs \
-	src/Gui/Widgets/Sorting.cs 
+	src/Gui/Widgets/Sorting.cs \
+	src/Options.cs \
+	src/Global.cs 
 
 DATA_FILES = 
 
