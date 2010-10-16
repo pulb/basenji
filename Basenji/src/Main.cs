@@ -29,7 +29,7 @@ namespace Basenji
 		public static void Main (string[] args) {
 			
 			string dbPath;
-			bool debug = Basenji.Global.EnableDebugging;
+			bool debug;
 			
 			if (!GetOptions(args, out dbPath, out debug))
 				return;
