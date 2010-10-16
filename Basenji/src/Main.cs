@@ -17,14 +17,28 @@
 //
 
 using System;
+using System.Collections.Generic;
 using Gtk;
 using Platform.Common.Diagnostics;
+using NDesk.Options;
 
 namespace Basenji
 {
 	class MainClass
 	{
 		public static void Main (string[] args) {
+			
+			string dbPath;
+			bool debug;
+			
+			if (!GetOptions(args, out dbPath, out debug))
+				return;
+			
+			if (debug) {
+				Basenji.Global.EnableDebugging = true;
+				VolumeDB.Global.EnableDebugging = true;
+			}
+			
 			Debug.WriteLine(string.Format("{0} {1}", App.Name, App.Version));
 			Debug.WriteLine(string.Format("Used runtime: {0}",
 			                              System.Runtime.InteropServices.RuntimeEnvironment.GetRuntimeDirectory()));
@@ -48,12 +62,69 @@ namespace Basenji
 					Icons.CustomIconTheme.Load(fullPath);
 				}
 				
-				Gui.MainWindow win = new Gui.MainWindow (args.Length > 0 ? args[0] : null);
+				Gui.MainWindow win = new Gui.MainWindow (dbPath);
 				Gui.Base.WindowBase.MainWindow = win;
 				
 				win.Show();
 				Application.Run();
 			}
+		}
+		
+		private static bool GetOptions(string[] args, out string dbPath, out bool debug) {
+			
+			bool show_help = false;
+			string optDbPath = null;
+			bool optDebug = false;
+			
+			dbPath = optDbPath;
+			debug = optDebug;
+			
+			// parse options
+			var p = new OptionSet() {
+				{ "g|debug",
+					"enable debugging output",
+					v => optDebug = (v != null)
+				},
+				{ "d|database=",
+					"path of database to open",
+					(string v) => optDbPath = v
+				},
+				/* help */
+				{ "h|help", 
+					"show this message and exit",
+					v => show_help = (v != null)
+				}
+			};
+			
+			try {
+				List<string> extra = p.Parse(args);
+				
+				if (extra.Count > 0)
+					throw new OptionException(string.Format("Unknown option: {0}", extra[0]), extra[0]);
+					                          
+			} catch (OptionException e) {
+				Console.Write(string.Format("{0}: ", App.Name));
+				Console.WriteLine(e.Message);
+				Console.WriteLine(string.Format("Try `{0}: --help' for more information.", App.Name.ToLower()));
+				return false;
+			}
+			
+			if (show_help) {
+				ShowHelp(p);
+				return false;
+			}
+			
+			dbPath = optDbPath;
+			debug = optDebug;
+			
+			return true;
+		}
+		
+		private static void ShowHelp(OptionSet p) {
+			Console.WriteLine (string.Format("Usage: {0} [OPTIONS]", App.Name.ToLower()));
+			Console.WriteLine ();
+			Console.WriteLine ("Options:");
+			p.WriteOptionDescriptions (Console.Out);
 		}
 		
 		// allows only one instance of the app
