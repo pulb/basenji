@@ -44,6 +44,7 @@ Mauro Solcia (https://launchpad.net/~maurosolcia)
   André Gondim (https://launchpad.net/~andregondim)
   Gilberto Martins (https://launchpad.net/~gsilva-martins)
   Gustavo Guidorizzi (https://launchpad.net/~gguido)
+  Matheus de Araújo (https://launchpad.net/~suetamac)
 
 Bulgarian:
   svilborg (https://launchpad.net/~svilborg)
