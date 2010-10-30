@@ -105,6 +105,7 @@
     <File subtype="Code" buildaction="EmbedAsResource" name="po/et.resources" resource_id="Basenji.po.et.resources" />
     <File subtype="Code" buildaction="Compile" name="src/Options.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Global.cs" />
+    <File subtype="Code" buildaction="Nothing" name="src/App.cs.in" Gettext.ScanForTranslations="False" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
