@@ -87,7 +87,7 @@ namespace Basenji
 		public static Gdk.Pixbuf DefaultWindowIcon {
 			get {
 				if (defaultIcon == null)
-					defaultIcon = new Gdk.Pixbuf(Path.Combine(APP_DATA_PATH, "basenji.svg"));
+					defaultIcon = new Gdk.Pixbuf(APP_DATA_PATH + "/basenji.svg");
 				
 				return defaultIcon;
 			}
