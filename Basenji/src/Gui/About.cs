@@ -81,6 +81,7 @@ Occitan (post 1500):
 
 Polish:
   Stanisław Chmiela (https://launchpad.net/~chmiela-st)
+  XeonBloomfield (https://launchpad.net/~xeonbloomfield)
 
 Russian:
   Alexander 'FONTER' Zinin (https://launchpad.net/~spore-09)
