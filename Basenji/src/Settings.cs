@@ -128,11 +128,6 @@ namespace Basenji
 			set { properties["MainWindowSplitterPosition"] = value.ToString(); }
 		}
 		
-		public string CustomThemeLocation {
-			get { return properties["CustomThemeLocation"]; }
-			set { properties["CustomThemeLocation"] = value; }
-		}
-		
 		public string CustomThemeName {
 			get { return properties["CustomThemeName"]; }
 			set { properties["CustomThemeName"] = value; }
@@ -170,7 +165,6 @@ namespace Basenji
 			properties.Add("ItemInfoMinimized1",			"0");
 			properties.Add("ItemInfoMinimized2",			"0");
 			properties.Add("MainWindowSplitterPosition",	"260");
-			properties.Add("CustomThemeLocation",			Path.Combine("data", "themes"));
 			properties.Add("CustomThemeName",				CurrentPlatform.IsGnome ? "" : NON_GNOME_CUSTOM_THEME);
 			properties.Add("SearchResultPageSize",			"10");
 			properties.Add("VolumeSortProperty",			((int)Gui.Widgets.VolumeSortProperty.Added).ToString());
@@ -210,7 +204,7 @@ namespace Basenji
 				return;
 			}
 			
-			using(StreamReader sr = new StreamReader(Path.Combine(GetSettingsPath(), SETTINGS_FILE))) {
+			using (StreamReader sr = new StreamReader(Path.Combine(GetSettingsPath(), SETTINGS_FILE))) {
 				string line;
 				while((line = sr.ReadLine()) != null) {
 					string[] pair = line.Split('=');

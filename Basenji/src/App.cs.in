@@ -27,9 +27,9 @@ namespace Basenji
 	{
 		// search result limit,
 		// limits the result size in the item search window
-		public const int SEARCH_RESULTS_LIMIT			= 10000;
-		public const string APP_DATA_PATH				= "data"; // path to app data like images
-		public static readonly string CUSTOM_THEME_PATH	= Path.Combine(APP_DATA_PATH, "themes");
+		public const int SEARCH_RESULTS_LIMIT	= 10000;
+		public const string APP_DATA_PATH = "@expanded_datadir@/@PACKAGE@"; // path to app data like images
+		public static readonly string CUSTOM_THEME_PATH = Path.Combine(APP_DATA_PATH, "themes");
 		
 		private static string name;
 		private static string version;

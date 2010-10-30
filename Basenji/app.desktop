@@ -3,5 +3,5 @@ Type=Application
 Name=Basenji
 Exec=basenji
 Terminal=false
-Icon=@ProgramFiles@/data/basenji.svg
+Icon=@expanded_datadir@/@PACKAGE@/basenji.svg
 Categories=Utility;

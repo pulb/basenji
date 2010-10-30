@@ -134,10 +134,9 @@ namespace Basenji.Gui
 		private void FillIconThemes() {
 			cmbIconTheme.AppendText(SYSTEM_ICON_THEME_NAME);
 			
-			if (!string.IsNullOrEmpty(App.Settings.CustomThemeLocation) && 
-			    Directory.Exists(App.Settings.CustomThemeLocation)) {
+			if (Directory.Exists(App.CUSTOM_THEME_PATH)) {
 				
-				DirectoryInfo[] customThemeDirs = (new DirectoryInfo(App.Settings.CustomThemeLocation)).GetDirectories();
+				DirectoryInfo[] customThemeDirs = (new DirectoryInfo(App.CUSTOM_THEME_PATH)).GetDirectories();
 				
 				foreach (DirectoryInfo dir in customThemeDirs)
 					cmbIconTheme.AppendText(dir.Name);

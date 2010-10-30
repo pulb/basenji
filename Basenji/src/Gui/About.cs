@@ -121,7 +121,7 @@ Turkish:
 			Icon = Basenji.Icons.Icon.Stock_About.Render(this, IconSize.Menu);
 			
 			// about dialog settings
-			Logo				= new Pixbuf("data/basenji.svg", 200, 200);
+			Logo				= new Pixbuf(System.IO.Path.Combine(App.APP_DATA_PATH, "basenji.svg"), 200, 200);
 			ProgramName			= App.Name;
 			Version				= App.Version;
 			Comments			= comments;
