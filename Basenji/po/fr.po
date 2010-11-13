@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-09-03 17:11+0200\n"
-"PO-Revision-Date: 2010-04-29 08:00+0000\n"
-"Last-Translator: Stephane Ricci <Unknown>\n"
+"PO-Revision-Date: 2010-11-12 11:26+0000\n"
+"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-10-06 17:22+0000\n"
+"X-Launchpad-Export-Date: 2010-11-13 12:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/Util.cs:30
@@ -206,7 +206,7 @@ msgstr "Musique"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:48
 msgid "Audiobooks"
-msgstr ""
+msgstr "Livres Audio"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:49
 #: src/Gui/Widgets/CategoryView.cs:62
@@ -215,7 +215,7 @@ msgstr "Films"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:50
 msgid "Videos"
-msgstr ""
+msgstr "Vidéos"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:51
 msgid "Pictures"
@@ -223,7 +223,7 @@ msgstr "Images"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:52
 msgid "Games"
-msgstr ""
+msgstr "Jeux"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:53 src/Gui/Widgets/ItemInfo.cs:292
 msgid "Software"
@@ -628,7 +628,7 @@ msgstr "_Quitter"
 
 #: src/Gui/MainWindow.cs:843
 msgid "Recent Databases"
-msgstr ""
+msgstr "Bases de données récentes"
 
 #: src/Gui/MainWindow.cs:851
 msgid "_Edit"
@@ -664,7 +664,7 @@ msgstr "_Recherche"
 
 #: src/Gui/MainWindow.cs:882
 msgid "Sort by"
-msgstr ""
+msgstr "Trier par"
 
 #: src/Gui/MainWindow.cs:885
 msgid "Descending"
@@ -672,11 +672,11 @@ msgstr ""
 
 #: src/Gui/MainWindow.cs:891
 msgid "Date added"
-msgstr ""
+msgstr "Date d'ajout"
 
 #: src/Gui/MainWindow.cs:892
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: src/Gui/MainWindow.cs:893
 msgid "Drivetype"
@@ -839,7 +839,7 @@ msgstr "Aucun"
 
 #: src/Gui/Preferences.cs:216
 msgid "Unsupported theme"
-msgstr ""
+msgstr "Thème non pris en charge"
 
 #: src/Gui/Preferences.cs:217
 msgid "The selected icon theme is currently not supported on your system."

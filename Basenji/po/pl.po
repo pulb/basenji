@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-09-03 17:11+0200\n"
-"PO-Revision-Date: 2010-08-03 17:42+0000\n"
-"Last-Translator: Patrick Ulbrich <Unknown>\n"
+"PO-Revision-Date: 2010-10-27 12:39+0000\n"
+"Last-Translator: XeonBloomfield <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-10-06 17:22+0000\n"
+"X-Launchpad-Export-Date: 2010-11-13 12:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/Util.cs:30
@@ -483,11 +483,11 @@ msgstr "Elementy Wyszukiwania"
 
 #: src/Gui/ItemSearch.cs:245 src/Gui/MainWindow.cs:1008
 msgid "default"
-msgstr ""
+msgstr "domyślne"
 
 #: src/Gui/ItemSearch.cs:249
 msgid "Search items"
-msgstr ""
+msgstr "Szukaj przedmiotów"
 
 #: src/Gui/ItemSearch.cs:284
 msgid "No search results."
@@ -835,11 +835,11 @@ msgstr "Brak"
 
 #: src/Gui/Preferences.cs:216
 msgid "Unsupported theme"
-msgstr ""
+msgstr "Nieobługiwany motyw"
 
 #: src/Gui/Preferences.cs:217
 msgid "The selected icon theme is currently not supported on your system."
-msgstr ""
+msgstr "Wybrany motyw ikon jest obecnie nie obsługiwany przez twój system."
 
 #: src/Gui/Preferences.cs:254
 msgid "Restart required"
@@ -869,7 +869,7 @@ msgstr "Otwórz ostatnią bazę danych przy uruchomieniu"
 
 #: src/Gui/Preferences.cs:344
 msgid "Show iteminfo panel"
-msgstr ""
+msgstr "Pokaż panel informacji o przedmiocie"
 
 #: src/Gui/Preferences.cs:348
 msgid "Show thumbnails in the filebrowser"
