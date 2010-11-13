@@ -56,8 +56,9 @@ Estonian:
   olavi tohver (https://launchpad.net/~olts16)
 
 French:
-  Stephane Ricci (https://launchpad.net/~stephane-ricci)
   Anthony Guéchoum (https://launchpad.net/~athael)
+  Pierre Slamich (https://launchpad.net/~pierre-slamich)
+  Stephane Ricci (https://launchpad.net/~stephane-ricci)
 
 German:
   Patrick Ulbrich (https://launchpad.net/~pulb)
