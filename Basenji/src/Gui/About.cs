@@ -32,11 +32,11 @@ namespace Basenji.Gui
 		
 		private static readonly string[]	authors		= new string[] {
 @"Maintainer:
-Patrick Ulbrich <zulu99@gmx.net>
+  Patrick Ulbrich <zulu99@gmx.net>
 
 Contributors:
-Francesco Marella (https://launchpad.net/~francesco-marella)
-Mauro Solcia (https://launchpad.net/~maurosolcia)
+  Francesco Marella (https://launchpad.net/~francesco-marella)
+  Mauro Solcia (https://launchpad.net/~maurosolcia)
 " };
 		
 		private static readonly string		translatorCredits	= 
