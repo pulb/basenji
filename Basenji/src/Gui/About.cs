@@ -99,6 +99,7 @@ Spanish:
   DiegoJ (https://launchpad.net/~diegojromerolopez)
   Emiliano (https://launchpad.net/~emilianohfernandez)
   Feder Sáiz (https://launchpad.net/~federsaiz)
+  Fitoschido (https://launchpad.net/~fitoschido)
   Jonay Santana (https://launchpad.net/~jonay-santana)
   Jorge Dardón (https://launchpad.net/~jdardon)
   martin (https://launchpad.net/~martu)
