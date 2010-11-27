@@ -3,23 +3,14 @@ export DH_VERBOSE=1
 
 include /usr/share/cli-common/cli.make
 
-configure: configure-stamp
-configure-stamp:
-	dh_testdir
+%:
+	dh $@
+
+override_dh_auto_configure:
 	./configure --prefix=/usr --config=GNOME_RELEASE
-	touch configure-stamp
 
-build: configure-stamp
-	dh $@ --after configure
-
-install: build
-	dh $@
-
-binary: binary-indep
-binary-indep: build install
-	dh $@
-
-clean: configure-stamp
-	dh $@
+override_dh_auto_clean: override_dh_auto_configure
+	dh_auto_clean	
 	rm -f config.log config.make Basenji/basenji.desktop
-	find -name "*.pc" | xargs rm -f 
+	find -name "*.pc" | xargs rm -f
+
