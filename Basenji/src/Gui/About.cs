@@ -86,6 +86,7 @@ Polish:
 
 Russian:
   Alexander 'FONTER' Zinin (https://launchpad.net/~spore-09)
+  Alexey Ivanov (https://launchpad.net/~alexey-ivanov)
   Dmitri Konoplev (https://launchpad.net/~knoplef)
   Eugene Marshal (https://launchpad.net/~lowrider)
   Nikolai Romanik (https://launchpad.net/~arhey)
