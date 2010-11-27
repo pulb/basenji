@@ -2,7 +2,7 @@ Source: basenji
 Section: gnome
 Priority: optional
 Maintainer: Patrick Ulbrich <zulu99@gmx.net>
-Build-Depends: debhelper (>= 7),
+Build-Depends: debhelper (>= 7.0.50~),
                autotools-dev,
                pkg-config,
                mono-2.0-devel (>= 2.4.2),
