@@ -59,6 +59,7 @@ French:
   Anthony Guéchoum (https://launchpad.net/~athael)
   Pierre Slamich (https://launchpad.net/~pierre-slamich)
   Stephane Ricci (https://launchpad.net/~stephane-ricci)
+  Y.Bélaïd (https://launchpad.net/~belaid-younsi-gmail)
 
 German:
   Patrick Ulbrich (https://launchpad.net/~pulb)
