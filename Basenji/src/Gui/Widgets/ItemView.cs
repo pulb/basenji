@@ -36,6 +36,7 @@ namespace Basenji.Gui.Widgets
 		
 		private VolumeDatabase database;
 		private bool showHiddenItems;
+		private bool showThumbs;
 		private VolumeType currentVolumeType;
 		private int item_col;
 		
@@ -63,6 +64,7 @@ namespace Basenji.Gui.Widgets
 
 			this.database = db;
 			this.showHiddenItems = App.Settings.ShowHiddenItems;
+			this.showThumbs = App.Settings.ShowThumbsInItemLists;
 			
 			TreeModel model;
 			VolumeType volType = volume.GetVolumeType();
@@ -235,7 +237,7 @@ namespace Basenji.Gui.Widgets
 		private Gdk.Pixbuf GetImage(VolumeItem item) {
 			Gdk.Pixbuf img = null;
 			
-			if (App.Settings.ShowThumbsInItemLists) {
+			if (showThumbs) {
 				int sz = IconUtils.GetIconSizeVal(ICON_SIZE);
 				img = PathUtil.GetThumb(item, database, sz);
 			}
