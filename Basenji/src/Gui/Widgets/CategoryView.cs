@@ -143,7 +143,7 @@ namespace Basenji.Gui.Widgets
 			ColumnsAutosize();
 			
 			// select "all items"
-			if (!iter.Equals(TreeIter.Zero))
+			if (iter.Stamp != TreeIter.Zero.Stamp)
 				Selection.SelectIter(iter);
 		}
 		

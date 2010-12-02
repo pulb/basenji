@@ -124,7 +124,7 @@ namespace Basenji.Gui.Widgets.Editors
 			
 			// remove user-specied custom category, 
 			// that possibly has been appended on a previous load of another volume
-			if (!customCategory.Equals(TreeIter.Zero)) {
+			if (customCategory.Stamp != TreeIter.Zero.Stamp) {
 				((ListStore)cmbCategory.Model).Remove(ref customCategory);
 				customCategory = TreeIter.Zero;
 			}

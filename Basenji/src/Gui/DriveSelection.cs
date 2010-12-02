@@ -84,12 +84,12 @@ namespace Basenji.Gui
 						TreeIter iter = store.AppendValues(icon, drive, label, size, d);
 
 						// preselect the first cdrom drive found
-						if (selectedIter.Equals(TreeIter.Zero) && d.DriveType == DriveType.CDRom)
+						if ((selectedIter.Stamp == TreeIter.Zero.Stamp) && d.DriveType == DriveType.CDRom)
 							selectedIter = iter;
 					}
 					
 					// if no cdrom drive was selected, select first drive
-					if (selectedIter.Equals(TreeIter.Zero))
+					if (selectedIter.Stamp == TreeIter.Zero.Stamp)
 						store.GetIterFirst(out selectedIter);
 						
 					if (!isDestroyed) {
