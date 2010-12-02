@@ -170,6 +170,7 @@ namespace Basenji.Gui
 			chkReopenDB.Active = s.OpenMostRecentDB;
 			chkShowItemInfo.Active = s.ShowItemInfo;
 			chkShowThumbs.Active = s.ShowThumbsInItemLists;
+			chkShowHiddenFiles.Active = s.ShowHiddenItems;
 			
 			/*
 			 * scanner settings
@@ -226,6 +227,7 @@ namespace Basenji.Gui
 			App.Settings.OpenMostRecentDB = chkReopenDB.Active;
 			App.Settings.ShowItemInfo = chkShowItemInfo.Active;
 			App.Settings.ShowThumbsInItemLists = chkShowThumbs.Active;
+			App.Settings.ShowHiddenItems = chkShowHiddenFiles.Active;
 			
 			/*
 			 * scanner settings
@@ -261,6 +263,7 @@ namespace Basenji.Gui
 		private CheckButton chkReopenDB;
 		private CheckButton chkShowItemInfo;
 		private CheckButton chkShowThumbs;
+		private CheckButton chkShowHiddenFiles;
 		private ComboBox	cmbIconTheme;
 		
 		private ComboBox	cmbScannerDevice;
@@ -326,8 +329,8 @@ namespace Basenji.Gui
 		}
 		
 		private void AppendGeneralPage(Notebook nb) {
-			Table tbl = CreateTable(4, 2);
-			tbl.BorderWidth = 12;			 
+			Table tbl = CreateTable(5, 2);
+			tbl.BorderWidth = 12;
 			
 			// label
 			TblAttach(tbl, CreateLabel(S._("Icon theme:")), 0, 0);  
@@ -343,9 +346,13 @@ namespace Basenji.Gui
 			chkShowItemInfo = new CheckButton(S._("Show iteminfo panel"));
 			TblAttach(tbl, chkShowItemInfo, 0, 2, 2, 1);
 			
+			// show hidden files checkbox
+			chkShowHiddenFiles = new CheckButton(S._("Show hidden files"));
+			TblAttach(tbl, chkShowHiddenFiles, 0, 3, 2, 1);
+			
 			// show thumbs checkbox
 			chkShowThumbs = new CheckButton(S._("Show thumbnails in the filebrowser"));
-			TblAttach(tbl, chkShowThumbs, 0, 3, 2, 1);
+			TblAttach(tbl, chkShowThumbs, 0, 4, 2, 1);
 			
 			nb.AppendPage(tbl, new Label(S._("General")));		 
 		}

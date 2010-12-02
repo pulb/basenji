@@ -35,6 +35,7 @@ namespace Basenji.Gui.Widgets
 		private Gdk.Pixbuf loadingIcon;
 		
 		private VolumeDatabase database;
+		private bool showHiddenItems;
 		private VolumeType currentVolumeType;
 		private int item_col;
 		
@@ -61,6 +62,7 @@ namespace Basenji.Gui.Widgets
 				throw new ArgumentNullException("db");
 
 			this.database = db;
+			this.showHiddenItems = App.Settings.ShowHiddenItems;
 			
 			TreeModel model;
 			VolumeType volType = volume.GetVolumeType();
@@ -199,7 +201,7 @@ namespace Basenji.Gui.Widgets
 		}
 		
 		private void AppendDirRows(TreeStore store, TreeIter parent, DirectoryVolumeItem item) {
-			bool					parentIsRoot	= parent.Equals(TreeIter.Zero);
+			bool					parentIsRoot	= (parent.Stamp == TreeIter.Zero.Stamp);
 			DirectoryVolumeItem[]	dirs			= item.GetDirectories();
 			FileVolumeItem[]		files			= item.GetFiles();
 			
@@ -209,7 +211,8 @@ namespace Basenji.Gui.Widgets
 			} else {
 				foreach (DirectoryVolumeItem dir in dirs) {
 					TreeIter iter = AppendDirValues(store, parent, parentIsRoot, GetImage(dir), dir.Name, dir);
-					AppendDirValues(store, iter, false, loadingIcon, STR_LOADING, null);
+					if (iter.Stamp != TreeIter.Zero.Stamp)
+						AppendDirValues(store, iter, false, loadingIcon, STR_LOADING, null);
 				}
 				
 				foreach (FileVolumeItem file in files) {
@@ -218,7 +221,11 @@ namespace Basenji.Gui.Widgets
 			}			 
 		}
 		
-		private static TreeIter AppendDirValues(TreeStore store, TreeIter parent, bool parentIsRoot, Gdk.Pixbuf icon, string name, VolumeItem item) {
+		private TreeIter AppendDirValues(TreeStore store, TreeIter parent, bool parentIsRoot, 
+		                                        Gdk.Pixbuf icon, string name, VolumeItem item) {
+			if ((item != null) && !showHiddenItems && item.Name.StartsWith("."))
+			    return TreeIter.Zero;
+			
 			if (parentIsRoot)
 				return store.AppendValues(icon, name, item);
 			else
