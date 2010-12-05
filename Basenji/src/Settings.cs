@@ -20,15 +20,84 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using Platform.Common.Diagnostics;
+using System.Reflection;
 
 namespace Basenji
-{	
+{
 	public class Settings
-	{		
+	{
 		private const string SETTINGS_FILE			= "settings";
 		private const string NON_GNOME_CUSTOM_THEME	= "Tango";
+		private const int DEFAULT_SORT_PROPERTY		= (int)Gui.Widgets.VolumeSortProperty.Added;
 		
-		private Dictionary<string, string> properties;
+		[SettingsAttribute("ScannerDevice", "")]
+		public string ScannerDevice { get; set; }
+		
+		// WARNING: the higher the value, the longer it 
+		// will take the cancellation (triggered by CancelAsync()) to complete.
+		[SettingsAttribute("ScannerBufferSize", "10")]
+		public int ScannerBufferSize { get; set; }
+		
+		[SettingsAttribute("ScannerDiscardSymLinks", "0")]
+		public bool ScannerDiscardSymLinks  { get; set; }
+		
+		[SettingsAttribute("ScannerComputeHashs", "0")]
+		public bool ScannerComputeHashs { get; set; }
+		
+		[SettingsAttribute("ScannerGenerateThumbnails", "1")]
+		public bool ScannerGenerateThumbnails { get; set; }
+
+		[SettingsAttribute("ScannerExtractMetaData", "1")]
+		public bool ScannerExtractMetaData { get; set; }
+		
+		// e.g. "pdf, mp3"
+		[SettingsAttribute("ScannerExtractionBlacklist", "")]
+		public string ScannerExtractionBlacklist { get; set; }
+		
+		[SettingsAttribute("ScannerEnableMusicBrainz", "1")]
+		public bool ScannerEnableMusicBrainz { get; set; }
+		
+		[SettingsAttribute("OpenMostRecentDB", "1")]
+		public bool OpenMostRecentDB { get; set; }
+		
+		[SettingsAttribute("MostRecentDBPath", "")]
+		public string MostRecentDBPath { get; set; }
+		
+		[SettingsAttribute("ShowThumbsInItemLists", "0")]
+		public bool ShowThumbsInItemLists { get; set; }
+		
+		[SettingsAttribute("MainWindowWidth", "800")]
+		public int MainWindowWidth { get; set; }
+		
+		[SettingsAttribute("MainWindowHeight", "480")]
+		public int MainWindowHeight { get; set; }
+		
+		[SettingsAttribute("MainWindowIsMaximized", "0")]
+		public bool MainWindowIsMaximized { get; set; }
+		
+		[SettingsAttribute("ShowItemInfo", "1")]
+		public bool ShowItemInfo { get; set; }
+		
+		[SettingsAttribute("ShowHiddenItems", "0")]
+		public bool ShowHiddenItems { get; set; }
+		
+		[SettingsAttribute("ItemInfoMinimized1", "0")]
+		public bool ItemInfoMinimized1 { get; set; }
+
+		[SettingsAttribute("ItemInfoMinimized2", "0")]
+		public bool ItemInfoMinimized2 { get; set; }
+		
+		[SettingsAttribute("MainWindowSplitterPosition", "260")]
+		public int MainWindowSplitterPosition { get; set; }
+		
+		[SettingsAttribute("CustomThemeName", "")]
+		public string CustomThemeName { get; set; }
+		
+		[SettingsAttribute("SearchResultPageSize", "10")]
+		public int SearchResultPageSize { get; set; }
+		
+		[SettingsAttribute("VolumeSortProperty", "3")]
+		public int VolumeSortProperty { get; set; }
 		
 		public Settings() : this(false) {}
 		
@@ -36,144 +105,6 @@ namespace Basenji
 			Reset();
 			if (!defaults)
 				Load(false);
-		}
-		
-		public string ScannerDevice {
-			get { return properties["ScannerDevice"]; }
-			set { properties["ScannerDevice"] = value; }
-		}
-		
-		public int ScannerBufferSize {
-			get { return int.Parse(properties["ScannerBufferSize"]); }
-			set { properties["ScannerBufferSize"] = value.ToString(); }
-		}
-		
-		public bool ScannerDiscardSymLinks {
-			get { return properties["ScannerDiscardSymLinks"] == "1"; }
-			set { properties["ScannerDiscardSymLinks"] = value ? "1" : "0"; }
-		}
-		
-		public bool ScannerComputeHashs {
-			get { return properties["ScannerComputeHashs"] == "1"; }
-			set { properties["ScannerComputeHashs"] = value ? "1" : "0"; }
-		}
-		
-		public bool ScannerGenerateThumbnails {
-			get { return properties["ScannerGenerateThumbnails"] == "1"; }
-			set { properties["ScannerGenerateThumbnails"] = value ? "1" : "0"; }
-		}
-
-		public bool ScannerExtractMetaData {
-			get { return properties["ScannerExtractMetaData"] == "1"; }
-			set { properties["ScannerExtractMetaData"] = value ? "1" : "0"; }
-		}
-		
-		public string ScannerExtractionBlacklist {
-			get { return properties["ScannerExtractionBlacklist"]; }
-			set { properties["ScannerExtractionBlacklist"] = value; }
-		}
-		
-		public bool ScannerEnableMusicBrainz {
-			get { return properties["ScannerEnableMusicBrainz"] == "1"; }
-			set { properties["ScannerEnableMusicBrainz"] = value ? "1" : "0"; }
-		}
-		
-		public bool OpenMostRecentDB {
-			get { return properties["OpenMostRecentDB"] == "1"; }
-			set { properties["OpenMostRecentDB"] = value ? "1" : "0"; }
-		}
-		
-		public string MostRecentDBPath {
-			get { return properties["MostRecentDBPath"]; }
-			set { properties["MostRecentDBPath"] = value; }
-		}
-		
-		public bool ShowThumbsInItemLists {
-			get { return properties["ShowThumbsInItemLists"] == "1"; }
-			set { properties["ShowThumbsInItemLists"] = value ? "1" : "0"; }
-		}
-		
-		public int MainWindowWidth {
-			get { return int.Parse(properties["MainWindowWidth"]); }
-			set { properties["MainWindowWidth"] = value.ToString(); }
-		}
-		
-		public int MainWindowHeight {
-			get { return int.Parse(properties["MainWindowHeight"]); }
-			set { properties["MainWindowHeight"] = value.ToString(); }
-		}
-		
-		public bool MainWindowIsMaximized {
-			get { return properties["MainWindowIsMaximized"] == "1"; }
-			set { properties["MainWindowIsMaximized"] = value ? "1" : "0"; }
-		}
-
-		public bool ShowItemInfo {
-			get { return properties["ShowItemInfo"] == "1"; }
-			set { properties["ShowItemInfo"] = value ? "1" : "0"; }
-		}
-		
-		public bool ShowHiddenItems {
-			get { return properties["ShowHiddenItems"] == "1"; }
-			set { properties["ShowHiddenItems"] = value ? "1" : "0"; }
-		}
-		
-		public bool ItemInfoMinimized1 {
-			get { return properties["ItemInfoMinimized1"] == "1"; }
-			set { properties["ItemInfoMinimized1"] = value ? "1" : "0"; }
-		}
-
-		public bool ItemInfoMinimized2 {
-			get { return properties["ItemInfoMinimized2"] == "1"; }
-			set { properties["ItemInfoMinimized2"] = value ? "1" : "0"; }
-		}
-		
-		public int MainWindowSplitterPosition {
-			get { return int.Parse(properties["MainWindowSplitterPosition"]); }
-			set { properties["MainWindowSplitterPosition"] = value.ToString(); }
-		}
-		
-		public string CustomThemeName {
-			get { return properties["CustomThemeName"]; }
-			set { properties["CustomThemeName"] = value; }
-		}
-		
-		public int SearchResultPageSize {
-			get { return int.Parse(properties["SearchResultPageSize"]); }
-			set { properties["SearchResultPageSize"] = value.ToString(); }
-		}
-		
-		public int VolumeSortProperty {
-			get { return int.Parse(properties["VolumeSortProperty"]); }
-			set { properties["VolumeSortProperty"] = value.ToString(); }
-		}
-		
-		// restore default settings
-		public void Reset() {
-			properties = new Dictionary<string, string>();
-			
-			properties.Add("ScannerDevice",					"");
-			properties.Add("ScannerBufferSize",				"10"); // WARNING: the higher the value, the longer it will take the cancellation (triggered by CancelAsync()) to complete.
-			properties.Add("ScannerDiscardSymLinks",		"0");			 
-			properties.Add("ScannerComputeHashs",			"0");
-			properties.Add("ScannerGenerateThumbnails",		"1");
-			properties.Add("ScannerExtractMetaData",		"1");
-			properties.Add("ScannerExtractionBlacklist",	""); // e.g. "pdf, mp3"
-			properties.Add("ScannerEnableMusicBrainz",		"1");
-			properties.Add("OpenMostRecentDB",				"1");
-			properties.Add("MostRecentDBPath",				"");
-			properties.Add("ShowThumbsInItemLists",			"0");
-			properties.Add("MainWindowWidth",				"800");
-			properties.Add("MainWindowHeight",				"480");
-			properties.Add("MainWindowIsMaximized",			"0");
-			properties.Add("ShowItemInfo",					"1");
-			properties.Add("ShowHiddenItems",				"0");
-			properties.Add("ItemInfoMinimized1",			"0");
-			properties.Add("ItemInfoMinimized2",			"0");
-			properties.Add("MainWindowSplitterPosition",	"260");
-			properties.Add("CustomThemeName",				CurrentPlatform.IsGnome ? "" : NON_GNOME_CUSTOM_THEME);
-			properties.Add("SearchResultPageSize",			"10");
-			properties.Add("VolumeSortProperty",			((int)Gui.Widgets.VolumeSortProperty.Added).ToString());
 		}
 		
 		// returns a Settings instance with defaults loaded
@@ -191,11 +122,48 @@ namespace Basenji
 			return File.Exists(Path.Combine(GetSettingsPath(), SETTINGS_FILE));		   
 		}
 		
+		// restore default settings
+		public void Reset() {
+			PropertyInfo[] propInfos = GetProperties();
+			
+			foreach (PropertyInfo pi in propInfos) {
+				Attribute[] atts = (Attribute[])pi.GetCustomAttributes(typeof(SettingsAttribute), false);
+				
+				// check if the property has the SettingsAttribute
+				if (atts.Length == 0)
+					continue;
+				
+				SettingsAttribute sa = (SettingsAttribute)atts[0];
+				SetPropertyValueFromString(pi, sa.DefaultValue);
+			}
+			
+			// manually override with settings determined at runtime
+			CustomThemeName = CurrentPlatform.IsGnome ? "" : NON_GNOME_CUSTOM_THEME;
+			VolumeSortProperty = DEFAULT_SORT_PROPERTY;
+		}
+		
 		public void Save() {
 			// writes in UTF-8 encoding
 			using (StreamWriter sw = new StreamWriter(Path.Combine(GetSettingsPath(), SETTINGS_FILE), false)) {
-				foreach(KeyValuePair<string, string> pair in properties)
-					sw.WriteLine("{0} = {1}", pair.Key, pair.Value);
+				PropertyInfo[] propInfos = GetProperties();
+				
+				foreach (PropertyInfo pi in propInfos) {
+					Attribute[] atts = (Attribute[])pi.GetCustomAttributes(typeof(SettingsAttribute), false);
+					
+					// check if the property has the SettingsAttribute
+					if (atts.Length == 0)
+						continue;
+					
+					SettingsAttribute sa = (SettingsAttribute)atts[0];
+					string val;
+					
+					if (pi.PropertyType == typeof(bool))
+						val = (((bool)pi.GetValue(this, null)) ? "1" : "0");
+					else
+						val = pi.GetValue(this, null).ToString();
+					
+					sw.WriteLine("{0} = {1}", sa.Name, val);					
+				}
 			}
 		}
 		
@@ -210,8 +178,13 @@ namespace Basenji
 				return;
 			}
 			
+			Dictionary<string, string> settings = new Dictionary<string, string>();
+			
+			// read settings in a dictionary for faster access
 			using (StreamReader sr = new StreamReader(Path.Combine(GetSettingsPath(), SETTINGS_FILE))) {
+				
 				string line;
+				
 				while((line = sr.ReadLine()) != null) {
 					string[] pair = line.Split('=');
 					
@@ -221,12 +194,39 @@ namespace Basenji
 					string key = pair[0].Trim();
 					string value = pair[1].Trim();
 
-					if (properties.ContainsKey(key))
-						properties[key] = value;
+					if (!settings.ContainsKey(key))
+						settings.Add(key, value);
 				}
 			}
 			
-			//return true;
+			// assign settings to the properties
+			PropertyInfo[] propInfos = GetProperties();
+			
+			foreach (PropertyInfo pi in propInfos) {
+				Attribute[] atts = (Attribute[])pi.GetCustomAttributes(typeof(SettingsAttribute), false);
+				
+				// check if the property has the SettingsAttribute
+				if (atts.Length == 0)
+					continue;
+				
+				SettingsAttribute sa = (SettingsAttribute)atts[0];
+				string val;
+				
+				if (settings.TryGetValue(sa.Name, out val))
+					SetPropertyValueFromString(pi, val);
+			}
+		}
+		
+		private void SetPropertyValueFromString(PropertyInfo pi, string val) {
+			if (pi.PropertyType == typeof(string)) {
+				pi.SetValue(this, val, null);
+			} else if (pi.PropertyType == typeof(int)) {
+				pi.SetValue(this, int.Parse(val), null);
+			} else if (pi.PropertyType == typeof(long)) {
+				pi.SetValue(this, long.Parse(val), null);
+			} else if (pi.PropertyType == typeof(bool)) {
+				pi.SetValue(this, (val == "1" ? true : false), null);
+			}
 		}
 		
 		private static string GetSettingsPath() {
@@ -246,6 +246,28 @@ namespace Basenji
 				
 				return settingsPath;
 			}
+		}
+		
+		private static PropertyInfo[] propertyInfos = null;
+		private static PropertyInfo[] GetProperties() {
+			if (propertyInfos != null)
+				return propertyInfos;
+			
+			Type t = typeof(Settings);
+			propertyInfos = t.GetProperties(BindingFlags.Instance | BindingFlags.Public);
+			return propertyInfos;
+		}
+		
+		[AttributeUsage(AttributeTargets.Property)]
+		class SettingsAttribute : Attribute
+		{
+			public SettingsAttribute(string name, string defaultValue) : base() {
+				this.Name = name;
+				this.DefaultValue = defaultValue;
+			}
+			
+			public string Name { get; set; }
+			public string DefaultValue { get; set; }
 		}
 	}
 }
