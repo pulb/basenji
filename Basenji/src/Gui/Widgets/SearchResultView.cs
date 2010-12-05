@@ -37,7 +37,6 @@ namespace Basenji.Gui.Widgets
 		
 		private ItemIcons itemIcons;
 		private Dictionary<long, Volume> volumeCache;
-		private bool showThumbs;
 		
 		public SearchResultView() {
 			itemIcons = new ItemIcons(this);
@@ -69,8 +68,6 @@ namespace Basenji.Gui.Widgets
 			
 			if (db == null)
 				throw new ArgumentNullException("db");
-			
-			this.showThumbs = App.Settings.ShowThumbsInItemLists;
 			
 			ListStore store = new Gtk.ListStore(	typeof(Gdk.Pixbuf),
 													typeof(string),
@@ -138,7 +135,7 @@ namespace Basenji.Gui.Widgets
 		private Gdk.Pixbuf GetImage(VolumeItem item, VolumeDatabase db) {
 			Gdk.Pixbuf img = null;
 			
-			if (showThumbs) {
+			if (App.Settings.ShowThumbsInItemLists) {
 				int sz = IconUtils.GetIconSizeVal(ICON_SIZE);
 				img = PathUtil.GetThumb(item, db, sz);
 			}

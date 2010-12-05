@@ -35,8 +35,6 @@ namespace Basenji.Gui.Widgets
 		private Gdk.Pixbuf loadingIcon;
 		
 		private VolumeDatabase database;
-		private bool showHiddenItems;
-		private bool showThumbs;
 		private VolumeType currentVolumeType;
 		private int item_col;
 		
@@ -63,8 +61,6 @@ namespace Basenji.Gui.Widgets
 				throw new ArgumentNullException("db");
 
 			this.database = db;
-			this.showHiddenItems = App.Settings.ShowHiddenItems;
-			this.showThumbs = App.Settings.ShowThumbsInItemLists;
 			
 			TreeModel model;
 			VolumeType volType = volume.GetVolumeType();
@@ -225,7 +221,9 @@ namespace Basenji.Gui.Widgets
 		
 		private TreeIter AppendDirValues(TreeStore store, TreeIter parent, bool parentIsRoot, 
 		                                        Gdk.Pixbuf icon, string name, VolumeItem item) {
-			if ((item != null) && !showHiddenItems && item.Name.StartsWith("."))
+			if ((item != null) && 
+			    !App.Settings.ShowHiddenItems && 
+			    item.Name.StartsWith("."))
 			    return TreeIter.Zero;
 			
 			if (parentIsRoot)
@@ -237,7 +235,7 @@ namespace Basenji.Gui.Widgets
 		private Gdk.Pixbuf GetImage(VolumeItem item) {
 			Gdk.Pixbuf img = null;
 			
-			if (showThumbs) {
+			if (App.Settings.ShowThumbsInItemLists) {
 				int sz = IconUtils.GetIconSizeVal(ICON_SIZE);
 				img = PathUtil.GetThumb(item, database, sz);
 			}
