@@ -83,6 +83,7 @@ Occitan (post 1500):
   Cédric Valmary (https://launchpad.net/~cvalmary)
 
 Polish:
+  Piotr Strębski (https://launchpad.net/~strebski)
   Stanisław Chmiela (https://launchpad.net/~chmiela-st)
   XeonBloomfield (https://launchpad.net/~xeonbloomfield)
 
