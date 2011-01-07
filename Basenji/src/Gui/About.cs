@@ -32,90 +32,92 @@ namespace Basenji.Gui
 		
 		private static readonly string[]	authors		= new string[] {
 @"Maintainer:
-  Patrick Ulbrich <zulu99@gmx.net>
+    Patrick Ulbrich <zulu99@gmx.net>
 
 Contributors:
-  Francesco Marella (https://launchpad.net/~francesco-marella)
-  Mauro Solcia (https://launchpad.net/~maurosolcia)
+    Francesco Marella (https://launchpad.net/~francesco-marella)
+    Mauro Solcia (https://launchpad.net/~maurosolcia)
 " };
 		
 		private static readonly string		translatorCredits	= 
 @"Brazilian Portuguese
-  André Gondim (https://launchpad.net/~andregondim)
-  Gilberto Martins (https://launchpad.net/~gsilva-martins)
-  Gustavo Guidorizzi (https://launchpad.net/~gguido)
-  Matheus de Araújo (https://launchpad.net/~suetamac)
+    André Gondim (https://launchpad.net/~andregondim)
+    Gilberto Martins (https://launchpad.net/~gsilva-martins)
+    Gustavo Guidorizzi (https://launchpad.net/~gguido)
+    Matheus de Araújo (https://launchpad.net/~suetamac)
 
 Bulgarian:
-  svilborg (https://launchpad.net/~svilborg)
+    svilborg (https://launchpad.net/~svilborg)
 
 Danish:
-  nanker (https://launchpad.net/~nanker)
+    nanker (https://launchpad.net/~nanker)
 
 Estonian:
-  olavi tohver (https://launchpad.net/~olts16)
+    olavi tohver (https://launchpad.net/~olts16)
 
 French:
-  Anthony Guéchoum (https://launchpad.net/~athael)
-  Aurélien Mino (https://launchpad.net/~murdos)
-  Pierre Slamich (https://launchpad.net/~pierre-slamich)
-  Stephane Ricci (https://launchpad.net/~stephane-ricci)
-  Y.Bélaïd (https://launchpad.net/~belaid-younsi-gmail)
+    Anthony Guéchoum (https://launchpad.net/~athael)
+    Aurélien Mino (https://launchpad.net/~murdos)
+    Pierre Slamich (https://launchpad.net/~pierre-slamich)
+    Stephane Ricci (https://launchpad.net/~stephane-ricci)
+    Y.Bélaïd (https://launchpad.net/~belaid-younsi-gmail)
 
 German:
-  Patrick Ulbrich (https://launchpad.net/~pulb)
+    Patrick Ulbrich (https://launchpad.net/~pulb)
 
 Hebrew:
-  Yaron (https://launchpad.net/~sh-yaron)
+    Yaron (https://launchpad.net/~sh-yaron)
 
 Hungarian:
-  Polesz (https://launchpad.net/~polesz-nedudu)
-  Roti (https://launchpad.net/~roti-al)
+    Polesz (https://launchpad.net/~polesz-nedudu)
+    Roti (https://launchpad.net/~roti-al)
 
 Italian:
-  Davide Vidal (https://launchpad.net/~davide-vidal)
-  Francesco Marella (https://launchpad.net/~francesco-marella)
-  Giuseppe Caliendo (https://launchpad.net/~giuseppe-caliendo)
-  Guybrush88 (https://launchpad.net/~erpizzo)
-  meltingshell (https://launchpad.net/~meltingshell)
+    Davide Vidal (https://launchpad.net/~davide-vidal)
+    Francesco Marella (https://launchpad.net/~francesco-marella)
+    Giuseppe Caliendo (https://launchpad.net/~giuseppe-caliendo)
+    Guybrush88 (https://launchpad.net/~erpizzo)
+    Martino Barbon (https://launchpad.net/~martins999)
+    meltingshell (https://launchpad.net/~meltingshell)
+    simone.sandri (https://launchpad.net/~lexluxsox)
 
 Occitan (post 1500):
-  Cédric Valmary (https://launchpad.net/~cvalmary)
+    Cédric Valmary (https://launchpad.net/~cvalmary)
 
 Polish:
-  Piotr Strębski (https://launchpad.net/~strebski)
-  Stanisław Chmiela (https://launchpad.net/~chmiela-st)
-  XeonBloomfield (https://launchpad.net/~xeonbloomfield)
+    Piotr Strębski (https://launchpad.net/~strebski)
+    Stanisław Chmiela (https://launchpad.net/~chmiela-st)
+    XeonBloomfield (https://launchpad.net/~xeonbloomfield)
 
 Russian:
-  Alexander 'FONTER' Zinin (https://launchpad.net/~spore-09)
-  Alexey Ivanov (https://launchpad.net/~alexey-ivanov)
-  Dmitri Konoplev (https://launchpad.net/~knoplef)
-  Eugene Marshal (https://launchpad.net/~lowrider)
-  Nikolai Romanik (https://launchpad.net/~arhey)
-  Papazu (https://launchpad.net/~pavel-z)
-  Sciko (https://launchpad.net/~tempsciko-gmail)
-  Sergey Sedov (https://launchpad.net/~serg-sedov)
-  Vladimir (https://launchpad.net/~bonza-land)
+    Alexander 'FONTER' Zinin (https://launchpad.net/~spore-09)
+    Alexey Ivanov (https://launchpad.net/~alexey-ivanov)
+    Dmitri Konoplev (https://launchpad.net/~knoplef)
+    Eugene Marshal (https://launchpad.net/~lowrider)
+    Nikolai Romanik (https://launchpad.net/~arhey)
+    Papazu (https://launchpad.net/~pavel-z)
+    Sciko (https://launchpad.net/~tempsciko-gmail)
+    Sergey Sedov (https://launchpad.net/~serg-sedov)
+    Vladimir (https://launchpad.net/~bonza-land)
 
 Spanish:
-  Daniel Garcia Stelzner (https://launchpad.net/~dani-garcia87)
-  DiegoJ (https://launchpad.net/~diegojromerolopez)
-  Emiliano (https://launchpad.net/~emilianohfernandez)
-  Feder Sáiz (https://launchpad.net/~federsaiz)
-  Fitoschido (https://launchpad.net/~fitoschido)
-  Jonay Santana (https://launchpad.net/~jonay-santana)
-  Jorge Dardón (https://launchpad.net/~jdardon)
-  martin (https://launchpad.net/~martu)
-  Martín V. (https://launchpad.net/~martinvukovic)
-  monkey (https://launchpad.net/~monkey-libre)  
-  Nicolás M. Zahlut (https://launchpad.net/~nzahlut)
-  Paco Molinero (https://launchpad.net/~franciscomol)
-  Rommel Anatoli Quintanilla Cruz (https://launchpad.net/~romeluko1100)
-  victor tejada yau (https://launchpad.net/~victormtyau)
+    Daniel Garcia Stelzner (https://launchpad.net/~dani-garcia87)
+    DiegoJ (https://launchpad.net/~diegojromerolopez)
+    Emiliano (https://launchpad.net/~emilianohfernandez)
+    Feder Sáiz (https://launchpad.net/~federsaiz)
+    Fitoschido (https://launchpad.net/~fitoschido)
+    Jonay Santana (https://launchpad.net/~jonay-santana)
+    Jorge Dardón (https://launchpad.net/~jdardon)
+    martin (https://launchpad.net/~martu)
+    Martín V. (https://launchpad.net/~martinvukovic)
+    monkey (https://launchpad.net/~monkey-libre)  
+    Nicolás M. Zahlut (https://launchpad.net/~nzahlut)
+    Paco Molinero (https://launchpad.net/~franciscomol)
+    Rommel Anatoli Quintanilla Cruz (https://launchpad.net/~romeluko1100)
+    victor tejada yau (https://launchpad.net/~victormtyau)
 
 Turkish:
-  Cihan Ersoy (https://launchpad.net/~cihan.ersoy)";
+    Cihan Ersoy (https://launchpad.net/~cihan.ersoy)";
 		
 		public About() {
 			// general window settings
