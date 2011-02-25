@@ -45,9 +45,13 @@ Contributors:
     Gilberto Martins (https://launchpad.net/~gsilva-martins)
     Gustavo Guidorizzi (https://launchpad.net/~gguido)
     Matheus de Araújo (https://launchpad.net/~suetamac)
+    Rafael nossal (https://launchpad.net/~rafaelnossal)
 
 Bulgarian:
     svilborg (https://launchpad.net/~svilborg)
+
+Chinese (Simplified):
+    Li Jin (https://launchpad.net/~lijin)
 
 Danish:
     nanker (https://launchpad.net/~nanker)
@@ -100,6 +104,9 @@ Russian:
     Sergey Sedov (https://launchpad.net/~serg-sedov)
     Vladimir (https://launchpad.net/~bonza-land)
 
+Serbian:
+    Kosava (https://launchpad.net/~kosava)
+
 Spanish:
     Daniel Garcia Stelzner (https://launchpad.net/~dani-garcia87)
     DiegoJ (https://launchpad.net/~diegojromerolopez)
@@ -117,7 +124,12 @@ Spanish:
     victor tejada yau (https://launchpad.net/~victormtyau)
 
 Turkish:
-    Cihan Ersoy (https://launchpad.net/~cihan.ersoy)";
+    Cihan Ersoy (https://launchpad.net/~cihan.ersoy)
+
+Ukrainian:
+    Serhey Kusyumoff (https://launchpad.net/~sergemine)
+    Wladimir Rossinski (https://launchpad.net/~wrossin)
+";
 		
 		public About() {
 			// general window settings
