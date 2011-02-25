@@ -112,6 +112,8 @@
     <File subtype="Code" buildaction="EmbedAsResource" name="po/hu.resources" resource_id="VolumeDB.po.hu.resources" />
     <File subtype="Code" buildaction="Compile" name="src/Global.cs" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/et.resources" resource_id="VolumeDB.po.et.resources" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="po/zh_CN.resources" resource_id="VolumeDB.po.zh_CN.resources" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="po/sr.resources" resource_id="VolumeDB.po.sr.resources" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />

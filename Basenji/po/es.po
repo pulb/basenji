@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-09-03 17:11+0200\n"
-"PO-Revision-Date: 2010-10-14 15:48+0000\n"
-"Last-Translator: Martín V. <Unknown>\n"
+"POT-Creation-Date: 2010-12-03 19:54+0100\n"
+"PO-Revision-Date: 2010-12-14 03:35+0000\n"
+"Last-Translator: Fitoschido <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-11-13 12:48+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2011-02-25 20:40+0000\n"
+"X-Generator: Launchpad (build 12460)\n"
 
 #: src/Util.cs:30
 #, csharp-format
@@ -42,6 +42,10 @@ msgstr "GB"
 msgid "TB"
 msgstr "TB"
 
+#: src/Options.cs:477
+msgid "OptionName"
+msgstr "OptionName"
+
 #: src/FileDialog.cs:51
 msgid "VolumeDatabase files"
 msgstr "Archivos de base de datos del volumen"
@@ -50,14 +54,14 @@ msgstr "Archivos de base de datos del volumen"
 msgid "All files"
 msgstr "Todos los archivos"
 
-#: src/Main.cs:67 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
+#: src/Main.cs:137 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
 #: src/Gui/MainWindow.cs:262 src/Gui/MainWindow.cs:283
 #: src/Gui/MainWindow.cs:305 src/Gui/MainWindow.cs:314
 #: src/Gui/MainWindow.cs:556
 msgid "Error"
 msgstr "Error"
 
-#: src/Main.cs:67
+#: src/Main.cs:137
 #, csharp-format
 msgid "{0} is already running."
 msgstr "{0} ya se está ejecutando."
@@ -87,19 +91,19 @@ msgstr "Cargando…"
 msgid "(empty)"
 msgstr "(vacío)"
 
-#: src/Gui/Widgets/ItemView.cs:99
+#: src/Gui/Widgets/ItemView.cs:103
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: src/Gui/Widgets/ItemView.cs:170 src/Gui/Widgets/Editors/ItemEditor.cs:86
+#: src/Gui/Widgets/ItemView.cs:174 src/Gui/Widgets/Editors/ItemEditor.cs:86
 msgid "Name"
 msgstr "Nombre"
 
-#: src/Gui/Widgets/ItemView.cs:176
+#: src/Gui/Widgets/ItemView.cs:180
 msgid "Artist"
 msgstr "Artista"
 
-#: src/Gui/Widgets/ItemView.cs:181
+#: src/Gui/Widgets/ItemView.cs:185
 #: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:53
 #: src/Gui/Widgets/ItemInfo.cs:223 src/Gui/Widgets/ItemInfo.cs:275
 msgid "Duration"
@@ -343,7 +347,7 @@ msgstr "Pïsta No."
 
 #: src/Gui/Widgets/ItemInfo.cs:257
 msgid "Genre"
-msgstr "Estilo"
+msgstr "Género"
 
 #: src/Gui/Widgets/ItemInfo.cs:269
 msgid "Year"
@@ -443,7 +447,7 @@ msgstr "Unidad"
 msgid "Label"
 msgstr "Etiqueta"
 
-#: src/Gui/DriveSelection.cs:240
+#: src/Gui/DriveSelection.cs:241
 msgid "Please select a drive to scan"
 msgstr "Seleccione una unidad para escanear"
 
@@ -847,68 +851,105 @@ msgid "The selected icon theme is currently not supported on your system."
 msgstr ""
 "El tema de íconos actualmente seleccionado no es soportado por su sistema."
 
-#: src/Gui/Preferences.cs:254
+#: src/Gui/Preferences.cs:255
 msgid "Restart required"
 msgstr "Se requiere reiniciar"
 
-#: src/Gui/Preferences.cs:255
+#: src/Gui/Preferences.cs:256
 #, csharp-format
 msgid "You must restart {0} for icontheme changes to take effect."
 msgstr ""
 "Debe reiniciar {0} para que tengan efecto los cambios del tema de iconos."
 
-#: src/Gui/Preferences.cs:284
+#: src/Gui/Preferences.cs:286
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: src/Gui/Preferences.cs:308
+#: src/Gui/Preferences.cs:310
 msgid "_Load Defaults"
 msgstr "_Cargar opciones por defecto"
 
-#: src/Gui/Preferences.cs:334
+#: src/Gui/Preferences.cs:336
 msgid "Icon theme:"
 msgstr "Tema de iconos:"
 
-#: src/Gui/Preferences.cs:340
+#: src/Gui/Preferences.cs:342
 msgid "Reopen most recent database on startup"
 msgstr "Abrir base de datos más reciente al iniciar"
 
-#: src/Gui/Preferences.cs:344
+#: src/Gui/Preferences.cs:346
 msgid "Show iteminfo panel"
 msgstr "Mostrar panel de información del ítem."
 
-#: src/Gui/Preferences.cs:348
+#: src/Gui/Preferences.cs:350
+msgid "Show hidden files"
+msgstr "Mostrar archivos ocultos"
+
+#: src/Gui/Preferences.cs:354
 msgid "Show thumbnails in the filebrowser"
 msgstr "Mostrar miniaturas en el explorador de archivos"
 
-#: src/Gui/Preferences.cs:351
+#: src/Gui/Preferences.cs:357
 msgid "General"
 msgstr "General"
 
-#: src/Gui/Preferences.cs:359
+#: src/Gui/Preferences.cs:365
 msgid "Don't prompt, always scan:"
 msgstr "No preguntar, escanear siempre:"
 
-#: src/Gui/Preferences.cs:378
+#: src/Gui/Preferences.cs:384
 msgid "Generate Thumbnails"
 msgstr "Generar miniaturas"
 
-#: src/Gui/Preferences.cs:382
+#: src/Gui/Preferences.cs:388
 msgid "Extract metadata"
 msgstr "Extraer metadatos"
 
-#: src/Gui/Preferences.cs:386
+#: src/Gui/Preferences.cs:392
 msgid "Discard symbolic links"
 msgstr "Descartar enlaces simbólicos"
 
-#: src/Gui/Preferences.cs:390
+#: src/Gui/Preferences.cs:396
 msgid "Compute hashcodes for files (slow!)"
 msgstr "Computar hashcodes para los archivos (¡lento!)"
 
-#: src/Gui/Preferences.cs:394
+#: src/Gui/Preferences.cs:400
 msgid "Fetch audio cd metadata from MusicBrainz.org"
 msgstr "Buscar metadata del cd de audio desde MusicBrainz.org"
 
-#: src/Gui/Preferences.cs:397
+#: src/Gui/Preferences.cs:403
 msgid "Scanner"
 msgstr "Escáner"
+
+#~ msgid "Please select a volume record to edit."
+#~ msgstr "Seleccione un registro de volumen a editar."
+
+#~ msgid "Search:"
+#~ msgstr "Buscar:"
+
+#, csharp-format
+#~ msgid ""
+#~ "<b>{0}</b>\n"
+#~ "<span size=\"smaller\"><i>Location:</i> {1}\n"
+#~ "<i>Volume:</i> {2}, <i>Archive No.:</i> {3}</span>"
+#~ msgstr ""
+#~ "<b>{0}</b>\n"
+#~ "<span size=\"smaller\"><i>Ubicación:</i> {1}\n"
+#~ "<i>Volume:</i> {2}, <i>Nº de Archivo:</i> {3}</span>"
+
+#, csharp-format
+#~ msgid ""
+#~ "<b>{0}</b>\n"
+#~ "<span size=\"medium\"><i>Category:</i> {1}\n"
+#~ "<i>Added:</i> {2}\n"
+#~ "<i>Files:</i> {3}\n"
+#~ "<i>Size:</i> {4}</span>"
+#~ msgstr ""
+#~ "<b>{0}</b>\n"
+#~ "<span size=\"medium\"><i>Categoría:</i> {1}\n"
+#~ "<i>Añadido:</i> {2}\n"
+#~ "<i>Archivos:</i> {3}\n"
+#~ "<i>Tamaño:</i> {4}</span>"
+
+#~ msgid "Size:"
+#~ msgstr "Tamaño:"

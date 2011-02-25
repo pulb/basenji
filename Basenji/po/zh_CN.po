@@ -1,16 +1,16 @@
-# Danish translation for basenji
-# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# Chinese (Simplified) translation for basenji
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
 # This file is distributed under the same license as the basenji package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-12-03 19:54+0100\n"
-"PO-Revision-Date: 2008-11-21 23:20+0000\n"
-"Last-Translator: nanker <Unknown>\n"
-"Language-Team: Danish <da@li.org>\n"
+"PO-Revision-Date: 2010-12-12 23:42+0000\n"
+"Last-Translator: Li Jin <lijin@lijinit.com>\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,11 +20,11 @@ msgstr ""
 #: src/Util.cs:30
 #, csharp-format
 msgid "{0} Bytes"
-msgstr "{0} byte"
+msgstr ""
 
 #: src/Util.cs:32
 msgid "Bytes"
-msgstr "Byte"
+msgstr "字节"
 
 #: src/Util.cs:32
 msgid "KB"
@@ -32,48 +32,48 @@ msgstr "KB"
 
 #: src/Util.cs:32
 msgid "MB"
-msgstr "MB"
+msgstr "兆字节"
 
 #: src/Util.cs:32
 msgid "GB"
-msgstr "GB"
+msgstr ""
 
 #: src/Util.cs:32
 msgid "TB"
-msgstr "TB"
+msgstr ""
 
 #: src/Options.cs:477
 msgid "OptionName"
-msgstr ""
+msgstr "选项名"
 
 #: src/FileDialog.cs:51
 msgid "VolumeDatabase files"
-msgstr "VolumeDatabase filer"
+msgstr ""
 
 #: src/FileDialog.cs:56
 msgid "All files"
-msgstr "Alle filer"
+msgstr "所有文件"
 
 #: src/Main.cs:137 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
 #: src/Gui/MainWindow.cs:262 src/Gui/MainWindow.cs:283
 #: src/Gui/MainWindow.cs:305 src/Gui/MainWindow.cs:314
 #: src/Gui/MainWindow.cs:556
 msgid "Error"
-msgstr "Fejl"
+msgstr "错误"
 
 #: src/Main.cs:137
 #, csharp-format
 msgid "{0} is already running."
-msgstr "{0} kører allerede."
+msgstr "{0} 已在运行中。"
 
 #: src/Gui/Widgets/VolumeView.cs:42 src/Gui/Widgets/SearchResultView.cs:30
 msgid "Unnamed"
-msgstr ""
+msgstr "未命名"
 
 #: src/Gui/Widgets/VolumeView.cs:43
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:213
 msgid "Category:"
-msgstr "Kategori:"
+msgstr ""
 
 #: src/Gui/Widgets/VolumeView.cs:44
 msgid "files"
@@ -81,19 +81,19 @@ msgstr ""
 
 #: src/Gui/Widgets/VolumeView.cs:45
 msgid "tracks"
-msgstr ""
+msgstr "曲目"
 
 #: src/Gui/Widgets/ItemView.cs:29
 msgid "Loading..."
-msgstr "Indlæser..."
+msgstr "载入中..."
 
 #: src/Gui/Widgets/ItemView.cs:30
 msgid "(empty)"
-msgstr "(tom)"
+msgstr ""
 
 #: src/Gui/Widgets/ItemView.cs:103
 msgid "Unknown"
-msgstr ""
+msgstr "未知"
 
 #: src/Gui/Widgets/ItemView.cs:174 src/Gui/Widgets/Editors/ItemEditor.cs:86
 msgid "Name"
@@ -101,30 +101,30 @@ msgstr ""
 
 #: src/Gui/Widgets/ItemView.cs:180
 msgid "Artist"
-msgstr ""
+msgstr "艺术家"
 
 #: src/Gui/Widgets/ItemView.cs:185
 #: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:53
 #: src/Gui/Widgets/ItemInfo.cs:223 src/Gui/Widgets/ItemInfo.cs:275
 msgid "Duration"
-msgstr ""
+msgstr "时长"
 
 #: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:34
 #: src/Gui/DriveSelection.cs:168
 msgid "Filesystem"
-msgstr "Filsystem"
+msgstr "文件系统"
 
 #: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:65
 msgid "Files:"
-msgstr "Filer:"
+msgstr ""
 
 #: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:66
 msgid "Directories:"
-msgstr "Kataloger:"
+msgstr "文件夹："
 
 #: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:67
 msgid "Total size:"
-msgstr "Samlet størrelse:"
+msgstr "总大小："
 
 #: src/Gui/Widgets/Editors/ItemEditor.cs:85
 msgid "Item type"
@@ -136,46 +136,46 @@ msgstr ""
 
 #: src/Gui/Widgets/Editors/ItemEditor.cs:102 src/Gui/Widgets/ItemInfo.cs:327
 msgid "Keywords"
-msgstr ""
+msgstr "关键词"
 
 #: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:31
 #: src/Gui/Widgets/SearchResultView.cs:34
 msgid "Audio CD track"
-msgstr ""
+msgstr "音频CD音轨"
 
 #: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:54
 #: src/Gui/Widgets/ItemInfo.cs:228
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
 #: src/Gui/Widgets/Editors/DirectoryItemEditor.cs:28
 msgid "Directory"
-msgstr ""
+msgstr "文件夹"
 
 #: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:59
 #: src/Gui/Widgets/SearchResultView.cs:31 src/Gui/Widgets/ItemInfo.cs:182
 msgid "Location"
-msgstr ""
+msgstr "位置"
 
 #: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:60
 #: src/Gui/Widgets/ItemInfo.cs:183
 msgid "Last write time"
-msgstr ""
+msgstr "上次写入时间"
 
 #: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:61
 #: src/Gui/Widgets/ItemInfo.cs:208
 msgid "Filetype"
-msgstr ""
+msgstr "文件类型"
 
 #: src/Gui/Widgets/Editors/FileItemEditor.cs:31
 msgid "File"
-msgstr ""
+msgstr "文件"
 
 #: src/Gui/Widgets/Editors/FileItemEditor.cs:52
 #: src/Gui/Widgets/ItemInfo.cs:202 src/Gui/Widgets/ItemInfo.cs:224
 #: src/Gui/DriveSelection.cs:148
 msgid "Size"
-msgstr "Størrelse"
+msgstr ""
 
 #: src/Gui/Widgets/Editors/FileItemEditor.cs:53
 #: src/Gui/Widgets/ItemInfo.cs:204
@@ -184,7 +184,7 @@ msgstr ""
 
 #: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:33
 msgid "Audio CD"
-msgstr ""
+msgstr "音频CD"
 
 #: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:63
 msgid "Tracks:"
@@ -192,102 +192,102 @@ msgstr ""
 
 #: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:64
 msgid "Duration:"
-msgstr ""
+msgstr "时长："
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:45
 msgid "Backup"
-msgstr "Backup"
+msgstr "备份"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:46
 #: src/Gui/Widgets/CategoryView.cs:60
 msgid "Documents"
-msgstr "Dokumenter"
+msgstr "文档"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:47
 #: src/Gui/Widgets/CategoryView.cs:61
 msgid "Music"
-msgstr "Musik"
+msgstr "音乐"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:48
 msgid "Audiobooks"
-msgstr ""
+msgstr "有声书"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:49
 #: src/Gui/Widgets/CategoryView.cs:62
 msgid "Movies"
-msgstr "Film"
+msgstr "电影"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:50
 msgid "Videos"
-msgstr ""
+msgstr "视频"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:51
 msgid "Pictures"
-msgstr "Billeder"
+msgstr "图片"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:52
 msgid "Games"
-msgstr ""
+msgstr "游戏"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:53 src/Gui/Widgets/ItemInfo.cs:292
 msgid "Software"
-msgstr ""
+msgstr "软件"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:54
 msgid "Misc"
-msgstr "Diverse"
+msgstr "杂项"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:55
 msgid "Other"
-msgstr "Andet"
+msgstr "其它"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:179
 msgid "Yes"
-msgstr "Ja"
+msgstr "确定"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:179
 msgid "No"
-msgstr "Nej"
+msgstr "取消"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:189
 msgid "Volume type:"
-msgstr "Volume type:"
+msgstr ""
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:190
 msgid "Hashed:"
-msgstr "Hashed:"
+msgstr ""
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:191
 msgid "Added:"
-msgstr "Tilføjet:"
+msgstr "已添加："
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:212
 msgid "Archive No.:"
-msgstr ""
+msgstr "存档编号："
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:214
 msgid "Title:"
-msgstr "Titel:"
+msgstr "标题:"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:215 src/Gui/DBProperties.cs:88
 msgid "Description:"
-msgstr "Beskrivelse:"
+msgstr "描述:"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:216
 msgid "Keywords:"
-msgstr "Nøgleord:"
+msgstr "关键词:"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:217
 msgid "Loaned to:"
-msgstr "Lånt til:"
+msgstr "租给："
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:218
 msgid "Loaned date:"
-msgstr "Lånedato:"
+msgstr ""
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:219
 msgid "Return date:"
-msgstr "Retur dato:"
+msgstr ""
 
 #: src/Gui/Widgets/CategoryView.cs:58
 msgid "Directories"
@@ -295,19 +295,19 @@ msgstr ""
 
 #: src/Gui/Widgets/CategoryView.cs:59
 msgid "Text"
-msgstr ""
+msgstr "文本"
 
 #: src/Gui/Widgets/CategoryView.cs:63
 msgid "Images"
-msgstr ""
+msgstr "图像"
 
 #: src/Gui/Widgets/CategoryView.cs:64
 msgid "Applications"
-msgstr ""
+msgstr "程序"
 
 #: src/Gui/Widgets/CategoryView.cs:65
 msgid "Archives"
-msgstr ""
+msgstr "存档"
 
 #: src/Gui/Widgets/CategoryView.cs:66
 msgid "Development"
@@ -331,11 +331,11 @@ msgstr ""
 
 #: src/Gui/Widgets/ItemInfo.cs:39
 msgid "by"
-msgstr ""
+msgstr "由"
 
 #: src/Gui/Widgets/ItemInfo.cs:40
 msgid "from"
-msgstr ""
+msgstr "从"
 
 #: src/Gui/Widgets/ItemInfo.cs:194
 msgid "Symlink target"
@@ -347,51 +347,51 @@ msgstr ""
 
 #: src/Gui/Widgets/ItemInfo.cs:257
 msgid "Genre"
-msgstr ""
+msgstr "流派"
 
 #: src/Gui/Widgets/ItemInfo.cs:269
 msgid "Year"
-msgstr ""
+msgstr "年份"
 
 #: src/Gui/Widgets/ItemInfo.cs:272
 msgid "Description"
-msgstr ""
+msgstr "描述"
 
 #: src/Gui/Widgets/ItemInfo.cs:279
 msgid "Dimensions"
-msgstr ""
+msgstr "尺寸"
 
 #: src/Gui/Widgets/ItemInfo.cs:282
 msgid "Format"
-msgstr ""
+msgstr "格式"
 
 #: src/Gui/Widgets/ItemInfo.cs:284
 msgid "Author"
-msgstr ""
+msgstr "作者"
 
 #: src/Gui/Widgets/ItemInfo.cs:286
 msgid "Copyright"
-msgstr ""
+msgstr "版权"
 
 #: src/Gui/Widgets/ItemInfo.cs:288
 msgid "Producer"
-msgstr ""
+msgstr "制作人"
 
 #: src/Gui/Widgets/ItemInfo.cs:290
 msgid "Creator"
-msgstr ""
+msgstr "创建人"
 
 #: src/Gui/Widgets/ItemInfo.cs:294
 msgid "Language"
-msgstr ""
+msgstr "语言"
 
 #: src/Gui/Widgets/ItemInfo.cs:296
 msgid "Page count"
-msgstr ""
+msgstr "页数"
 
 #: src/Gui/Widgets/ItemInfo.cs:300
 msgid "File count"
-msgstr ""
+msgstr "文件数"
 
 #: src/Gui/Widgets/PageNavigation.cs:27
 msgid "No items."
@@ -400,11 +400,11 @@ msgstr ""
 #: src/Gui/Widgets/PageNavigation.cs:145
 #, csharp-format
 msgid "<b>Page {0}/{1}</b>  ({2} - {3} of {4} items)"
-msgstr ""
+msgstr "<b>页 {0}/{1}</b>  ({2} - {3} 共 {4} 项)"
 
 #: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:231
 msgid "Invalid data"
-msgstr "Ugyldige data"
+msgstr "数据无效"
 
 #: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:231
 #, csharp-format
@@ -414,42 +414,38 @@ msgid ""
 "Expected format: {2}\n"
 "Please correct or remove the data you entered."
 msgstr ""
-"\"{0}\" is {1}.\n"
-"\n"
-"Forventet format: {2}\n"
-"Ret venligst eller fjern de data du indtastede."
 
 #: src/Gui/DBProperties.cs:75
 msgid "Database Properties"
-msgstr "Database egenskaber"
+msgstr "数据库属性"
 
 #: src/Gui/DBProperties.cs:87
 msgid "Name:"
-msgstr "Navn:"
+msgstr ""
 
 #: src/Gui/DBProperties.cs:89
 msgid "Created:"
-msgstr "Oprettet:"
+msgstr "创建时间："
 
 #: src/Gui/VolumeProperties.cs:29
 msgid "Volume Properties"
-msgstr "Volume rettigheder"
+msgstr "音量属性"
 
 #: src/Gui/DriveSelection.cs:60
 msgid "Waiting for drives..."
-msgstr "Venter på drev..."
+msgstr "等待驱动器..."
 
 #: src/Gui/DriveSelection.cs:133
 msgid "Drive"
-msgstr "Drev"
+msgstr "驱动器"
 
 #: src/Gui/DriveSelection.cs:139
 msgid "Label"
-msgstr "Mærkat"
+msgstr "卷标"
 
 #: src/Gui/DriveSelection.cs:241
 msgid "Please select a drive to scan"
-msgstr "Vælg venligst et drev til skanning"
+msgstr "请选择要扫描的磁盘"
 
 #: src/Gui/About.cs:28
 msgid "A portable volume indexing tool"
@@ -458,20 +454,20 @@ msgstr ""
 #: src/Gui/About.cs:29
 #, csharp-format
 msgid "Using VolumeDB v{0}."
-msgstr "Bruger VolumeDB v{0}."
+msgstr ""
 
 #: src/Gui/About.cs:31
 msgid "Copyright (c) "
-msgstr "Copyright (c) "
+msgstr "版权所有 (c) "
 
 #: src/Gui/ItemSearch.cs:78
 #, csharp-format
 msgid "Found {0} items in {1:F3} seconds."
-msgstr "Fandt {0} emner på {1:F3} sekunder."
+msgstr ""
 
 #: src/Gui/ItemSearch.cs:89 src/Gui/MainWindow.cs:453
 msgid "Timeout: another search is probably still in progress."
-msgstr "Stoppet: en anden søgning pågår sikkert fortsat."
+msgstr ""
 
 #: src/Gui/ItemSearch.cs:91
 msgid "Too many search results. Please refine your search criteria."
@@ -479,11 +475,11 @@ msgstr ""
 
 #: src/Gui/ItemSearch.cs:106 src/Gui/MainWindow.cs:469
 msgid "Searching..."
-msgstr "Søger..."
+msgstr "正在搜索......"
 
 #: src/Gui/ItemSearch.cs:233
 msgid "Search Items"
-msgstr "Søge emner"
+msgstr "搜索项目"
 
 #: src/Gui/ItemSearch.cs:245 src/Gui/MainWindow.cs:1008
 msgid "default"
@@ -495,16 +491,16 @@ msgstr ""
 
 #: src/Gui/ItemSearch.cs:284
 msgid "No search results."
-msgstr ""
+msgstr "没有搜索结果。"
 
 #: src/Gui/ItemSearch.cs:327 src/Gui/MainWindow.cs:879
 msgid "Edit Item"
-msgstr ""
+msgstr "编辑项"
 
 #: src/Gui/MainWindow.cs:76 src/Gui/MainWindow.cs:92 src/Gui/MainWindow.cs:556
 #, csharp-format
 msgid "Database '{0}' not found."
-msgstr "Database '{0}' ikke fundet."
+msgstr ""
 
 #: src/Gui/MainWindow.cs:115
 msgid "Database not found"
@@ -516,16 +512,16 @@ msgstr ""
 
 #: src/Gui/MainWindow.cs:145
 msgid "Unsupported database version"
-msgstr "Ikke understøttet databaseversion"
+msgstr ""
 
 #: src/Gui/MainWindow.cs:146
 msgid "This database version is not supported."
-msgstr "Denne databaseversion ikke understøttet."
+msgstr ""
 
 #: src/Gui/MainWindow.cs:165
 #, csharp-format
 msgid "{0} volumes loaded."
-msgstr "{0} volumes indlæst."
+msgstr ""
 
 #: src/Gui/MainWindow.cs:186
 #, csharp-format
@@ -534,23 +530,23 @@ msgstr ""
 
 #: src/Gui/MainWindow.cs:228
 msgid "Please enter the name for the new database"
-msgstr "Indtast venligst navnet på den nye database"
+msgstr ""
 
 #: src/Gui/MainWindow.cs:240
 msgid "Database exists"
-msgstr "Databasen findes allerede"
+msgstr "数据库已存在"
 
 #: src/Gui/MainWindow.cs:241
 msgid "Database already exists. Overwrite?"
-msgstr "Databasen findes allerede. Overskriv?"
+msgstr "数据库已存在。是否覆盖？"
 
 #: src/Gui/MainWindow.cs:254
 msgid "Please select a database"
-msgstr "Vælg venligst en database"
+msgstr "请选择数据库"
 
 #: src/Gui/MainWindow.cs:263 src/Gui/Import.cs:109
 msgid "Database not found."
-msgstr "Databasen blev ikke fundet."
+msgstr "数据库不存在"
 
 #: src/Gui/MainWindow.cs:284
 #, csharp-format
@@ -558,13 +554,11 @@ msgid ""
 "An error occured while accessing drive {0}:\n"
 "{1}"
 msgstr ""
-"En fejl opstod under adgang til drev {0}:\n"
-"{1}"
 
 #: src/Gui/MainWindow.cs:306
 #, csharp-format
 msgid "Drive {0} is not ready."
-msgstr "Drev {0} ikke klar."
+msgstr ""
 
 #: src/Gui/MainWindow.cs:315
 #, csharp-format
@@ -573,19 +567,19 @@ msgstr ""
 
 #: src/Gui/MainWindow.cs:342 src/Gui/MainWindow.cs:372
 msgid "No volume selected"
-msgstr "Ingen volumen valgt."
+msgstr ""
 
 #: src/Gui/MainWindow.cs:343
 msgid "Please select a volume record to remove."
-msgstr "Vælg venligst en volume optagelse som du vil fjerne."
+msgstr ""
 
 #: src/Gui/MainWindow.cs:350
 msgid "Confirmation"
-msgstr "Bekræftelse"
+msgstr "确认"
 
 #: src/Gui/MainWindow.cs:351
 msgid "Are you sure you really want to remove the selected volume?"
-msgstr "Er du sikker på at du virkelig vil fjerne den valgte volume?"
+msgstr ""
 
 #: src/Gui/MainWindow.cs:373
 msgid "Please select a volume to edit."
@@ -593,7 +587,7 @@ msgstr ""
 
 #: src/Gui/MainWindow.cs:390
 msgid "No item selected"
-msgstr ""
+msgstr "未选中项目"
 
 #: src/Gui/MainWindow.cs:391
 msgid "Please select an item to edit."
@@ -601,31 +595,31 @@ msgstr ""
 
 #: src/Gui/MainWindow.cs:819
 msgid "_File"
-msgstr "_Fil"
+msgstr "文件(_F)"
 
 #: src/Gui/MainWindow.cs:822
 msgid "_New Database"
-msgstr "_Ny database"
+msgstr ""
 
 #: src/Gui/MainWindow.cs:825
 msgid "_Open Database"
-msgstr "_Åben database"
+msgstr "打开数据库(_O)"
 
 #: src/Gui/MainWindow.cs:828
 msgid "Open Default Database"
-msgstr ""
+msgstr "打开默认数据库"
 
 #: src/Gui/MainWindow.cs:831
 msgid "_Database Properties"
-msgstr "_Database rettigheder"
+msgstr "数据库属性(_D)"
 
 #: src/Gui/MainWindow.cs:834
 msgid "_Import"
-msgstr ""
+msgstr "导入(_I)"
 
 #: src/Gui/MainWindow.cs:837
 msgid "_Quit"
-msgstr "_Afslut"
+msgstr "退出 (_Q)"
 
 #: src/Gui/MainWindow.cs:843
 msgid "Recent Databases"
@@ -633,35 +627,35 @@ msgstr ""
 
 #: src/Gui/MainWindow.cs:851
 msgid "_Edit"
-msgstr "R_edigér"
+msgstr "编辑(_E)"
 
 #: src/Gui/MainWindow.cs:854
 msgid "_Preferences"
-msgstr "_Indstillinger"
+msgstr "首选项(_P)"
 
 #: src/Gui/MainWindow.cs:858
 msgid "_Help"
-msgstr "_Hjælp"
+msgstr "帮助(_H)"
 
 #: src/Gui/MainWindow.cs:861
 msgid "_Info"
-msgstr "_Info"
+msgstr "信息(_I)"
 
 #: src/Gui/MainWindow.cs:865
 msgid "_Add Volume"
-msgstr "_Tilføj Volume"
+msgstr "添加卷(_A)"
 
 #: src/Gui/MainWindow.cs:869
 msgid "_Remove Volume"
-msgstr "_Fjer Volume"
+msgstr "移除卷(_R)"
 
 #: src/Gui/MainWindow.cs:872
 msgid "_Edit Volume"
-msgstr ""
+msgstr "编辑卷(_E)"
 
 #: src/Gui/MainWindow.cs:875
 msgid "_Search"
-msgstr "_Søg"
+msgstr "搜索(_S)"
 
 #: src/Gui/MainWindow.cs:882
 msgid "Sort by"
@@ -669,31 +663,31 @@ msgstr ""
 
 #: src/Gui/MainWindow.cs:885
 msgid "Descending"
-msgstr ""
+msgstr "递减"
 
 #: src/Gui/MainWindow.cs:891
 msgid "Date added"
-msgstr ""
+msgstr "添加日期"
 
 #: src/Gui/MainWindow.cs:892
 msgid "Title"
-msgstr ""
+msgstr "标题"
 
 #: src/Gui/MainWindow.cs:893
 msgid "Drivetype"
-msgstr ""
+msgstr "磁盘类型"
 
 #: src/Gui/MainWindow.cs:1005
 msgid "Filter volumes"
-msgstr ""
+msgstr "过滤卷"
 
 #: src/Gui/Import.cs:29
 msgid "Import"
-msgstr ""
+msgstr "导入"
 
 #: src/Gui/Import.cs:30
 msgid "Abort"
-msgstr ""
+msgstr "中止"
 
 #: src/Gui/Import.cs:98
 #, csharp-format
@@ -702,43 +696,43 @@ msgstr ""
 
 #: src/Gui/Import.cs:108
 msgid "Import failed"
-msgstr ""
+msgstr "导入失败"
 
 #: src/Gui/Import.cs:111
 msgid "Import failed!"
-msgstr ""
+msgstr "导入失败！"
 
 #: src/Gui/Import.cs:113
 msgid "Import aborted."
-msgstr ""
+msgstr "导入已取消。"
 
 #: src/Gui/Import.cs:115
 msgid "Import completed successfully."
-msgstr ""
+msgstr "成功完成导入。"
 
 #: src/Gui/Import.cs:134
 msgid "Import in progress"
-msgstr ""
+msgstr "导入进行中"
 
 #: src/Gui/Import.cs:135
 msgid "You must stop the import before closing this window."
-msgstr ""
+msgstr "关闭窗口前必须停止导入。"
 
 #: src/Gui/Import.cs:160
 msgid "Import Database"
-msgstr ""
+msgstr "导入数据库"
 
 #: src/Gui/Import.cs:171
 msgid "Please select a database to import"
-msgstr ""
+msgstr "请选择要导入的数据库"
 
 #: src/Gui/Import.cs:189
 msgid "Database:"
-msgstr ""
+msgstr "数据库："
 
 #: src/Gui/Import.cs:190
 msgid "Format:"
-msgstr ""
+msgstr "格式:"
 
 #: src/Gui/ItemProperties.cs:29
 msgid "Item Properties"
@@ -767,73 +761,73 @@ msgstr ""
 
 #: src/Gui/VolumeScanner.cs:151
 msgid "Time"
-msgstr "Tid"
+msgstr ""
 
 #: src/Gui/VolumeScanner.cs:155
 msgid "Message"
-msgstr "Meddelelse"
+msgstr ""
 
 #: src/Gui/VolumeScanner.cs:238
 msgid "yes"
-msgstr "ja"
+msgstr "是"
 
 #: src/Gui/VolumeScanner.cs:238
 msgid "no"
-msgstr "nej"
+msgstr "否"
 
 #: src/Gui/VolumeScanner.cs:261
 msgid "Scan in progress"
-msgstr "Skanning pågår"
+msgstr "正在扫描"
 
 #: src/Gui/VolumeScanner.cs:261
 msgid "You must stop scanning before closing this window."
-msgstr "Du skal stoppe skanning før du lukker vinduet."
+msgstr ""
 
 #: src/Gui/VolumeScanner.cs:271
 msgid "Stopping Scanner and performing rollback..."
-msgstr "Stopper skanning og ruller tilbage..."
+msgstr ""
 
 #: src/Gui/VolumeScanner.cs:313
 #, csharp-format
 msgid "An unhandled exception occured ({0})."
-msgstr "En uventet undtagelse opstod ({0})."
+msgstr ""
 
 #: src/Gui/VolumeScanner.cs:314
 msgid "All database changes have been rolled back."
-msgstr "Alle databaseændringer er rullet tilbage."
+msgstr ""
 
 #: src/Gui/VolumeScanner.cs:337
 #, csharp-format
 msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
-msgstr "Skanning mislykkedes. Årsag: En uventet undtagelse opstod ({0})."
+msgstr ""
 
 #: src/Gui/VolumeScanner.cs:339
 msgid "Scanning aborted."
-msgstr "Skanning afbrudt"
+msgstr "扫描已取消。"
 
 #: src/Gui/VolumeScanner.cs:341
 msgid "Scanning completed successfully."
-msgstr "Skanning gennemført med succes."
+msgstr ""
 
 #: src/Gui/VolumeScanner.cs:438
 msgid "VolumeScanner"
-msgstr "Volumen skanner"
+msgstr ""
 
 #: src/Gui/VolumeScanner.cs:450
 msgid "<b>Volume Information:</b>"
-msgstr "<b>Volume Information:</b>"
+msgstr ""
 
 #: src/Gui/VolumeScanner.cs:460
 msgid "<b>Scanner Log:</b>"
-msgstr "<b>Skanningslog:</b>"
+msgstr ""
 
 #: src/Gui/VolumeScanner.cs:481
 msgid "Database access"
-msgstr "Database adgang"
+msgstr ""
 
 #: src/Gui/Preferences.cs:107
 msgid "None"
-msgstr "Ingen"
+msgstr ""
 
 #: src/Gui/Preferences.cs:216
 msgid "Unsupported theme"
@@ -845,7 +839,7 @@ msgstr ""
 
 #: src/Gui/Preferences.cs:255
 msgid "Restart required"
-msgstr "Genstart påkrævet"
+msgstr "需要重新启动"
 
 #: src/Gui/Preferences.cs:256
 #, csharp-format
@@ -854,19 +848,19 @@ msgstr ""
 
 #: src/Gui/Preferences.cs:286
 msgid "Preferences"
-msgstr "Indstillinger"
+msgstr "首选项"
 
 #: src/Gui/Preferences.cs:310
 msgid "_Load Defaults"
-msgstr "_Indlæs standardindstillinger"
+msgstr "加载默认值(_L)"
 
 #: src/Gui/Preferences.cs:336
 msgid "Icon theme:"
-msgstr "Ikon tema:"
+msgstr "图标主题："
 
 #: src/Gui/Preferences.cs:342
 msgid "Reopen most recent database on startup"
-msgstr "Genåben den seneste database ved start"
+msgstr "启动时打开最近的数据库"
 
 #: src/Gui/Preferences.cs:346
 msgid "Show iteminfo panel"
@@ -882,19 +876,19 @@ msgstr ""
 
 #: src/Gui/Preferences.cs:357
 msgid "General"
-msgstr "Generelt"
+msgstr ""
 
 #: src/Gui/Preferences.cs:365
 msgid "Don't prompt, always scan:"
-msgstr ""
+msgstr "不要提示，总是扫描："
 
 #: src/Gui/Preferences.cs:384
 msgid "Generate Thumbnails"
-msgstr ""
+msgstr "生成缩略图"
 
 #: src/Gui/Preferences.cs:388
 msgid "Extract metadata"
-msgstr ""
+msgstr "提取元数据"
 
 #: src/Gui/Preferences.cs:392
 msgid "Discard symbolic links"
@@ -910,23 +904,4 @@ msgstr ""
 
 #: src/Gui/Preferences.cs:403
 msgid "Scanner"
-msgstr "Skanner"
-
-#~ msgid "<b>Size:</b>"
-#~ msgstr "<b>Størrelse:</b>"
-
-#~ msgid "<b>Location:</b>"
-#~ msgstr "<b>Sted:</b>"
-
-#~ msgid "<b>Name:</b>"
-#~ msgstr "<b>Navn:</b>"
-
-#, csharp-format
-#~ msgid "{0} <i>(link to {1}</i>)"
-#~ msgstr "{0} <i>(link til {1}</i>)"
-
-#~ msgid "<b>Hash:</b>"
-#~ msgstr "<b>Hash:</b>"
-
-#~ msgid "<b>Last write time:</b>"
-#~ msgstr "<b>Sidste skrivetid:</b>"
+msgstr ""

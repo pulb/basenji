@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-09-03 17:11+0200\n"
-"PO-Revision-Date: 2010-10-05 07:01+0000\n"
+"POT-Creation-Date: 2010-12-03 19:54+0100\n"
+"PO-Revision-Date: 2011-01-11 06:49+0000\n"
 "Last-Translator: Alexander 'FONTER' Zinin <spore_09@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-11-13 12:48+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2011-02-25 20:40+0000\n"
+"X-Generator: Launchpad (build 12460)\n"
 
 #: src/Util.cs:30
 #, csharp-format
@@ -42,6 +42,10 @@ msgstr "ГБ"
 msgid "TB"
 msgstr "ТБ"
 
+#: src/Options.cs:477
+msgid "OptionName"
+msgstr "Название Опции"
+
 #: src/FileDialog.cs:51
 msgid "VolumeDatabase files"
 msgstr "Файлы томов базы данных"
@@ -50,14 +54,14 @@ msgstr "Файлы томов базы данных"
 msgid "All files"
 msgstr "Все файлы"
 
-#: src/Main.cs:67 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
+#: src/Main.cs:137 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
 #: src/Gui/MainWindow.cs:262 src/Gui/MainWindow.cs:283
 #: src/Gui/MainWindow.cs:305 src/Gui/MainWindow.cs:314
 #: src/Gui/MainWindow.cs:556
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/Main.cs:67
+#: src/Main.cs:137
 #, csharp-format
 msgid "{0} is already running."
 msgstr "{0} уже выполняется."
@@ -87,19 +91,19 @@ msgstr "Загрузка..."
 msgid "(empty)"
 msgstr "(пусто)"
 
-#: src/Gui/Widgets/ItemView.cs:99
+#: src/Gui/Widgets/ItemView.cs:103
 msgid "Unknown"
 msgstr "Неизвестный"
 
-#: src/Gui/Widgets/ItemView.cs:170 src/Gui/Widgets/Editors/ItemEditor.cs:86
+#: src/Gui/Widgets/ItemView.cs:174 src/Gui/Widgets/Editors/ItemEditor.cs:86
 msgid "Name"
 msgstr "Имя"
 
-#: src/Gui/Widgets/ItemView.cs:176
+#: src/Gui/Widgets/ItemView.cs:180
 msgid "Artist"
 msgstr "Исполнитель"
 
-#: src/Gui/Widgets/ItemView.cs:181
+#: src/Gui/Widgets/ItemView.cs:185
 #: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:53
 #: src/Gui/Widgets/ItemInfo.cs:223 src/Gui/Widgets/ItemInfo.cs:275
 msgid "Duration"
@@ -443,7 +447,7 @@ msgstr "Носитель информации"
 msgid "Label"
 msgstr "Метка"
 
-#: src/Gui/DriveSelection.cs:240
+#: src/Gui/DriveSelection.cs:241
 msgid "Please select a drive to scan"
 msgstr "Пожалуйста, выберите диск для сканирования"
 
@@ -758,11 +762,13 @@ msgid ""
 "Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
 "hashing: {3}."
 msgstr ""
+"Параметры: Предварительный просмотр: {0}, Извлечение мета-данных: {1}, Не "
+"ссылаться на символы: {2}, Хэшировать: {3}."
 
 #: src/Gui/VolumeScanner.cs:129
 #, csharp-format
 msgid "Options: MusicBrainz enabled: {0}"
-msgstr ""
+msgstr "Функции: MusicBrainz включено: {0}"
 
 #: src/Gui/VolumeScanner.cs:151
 msgid "Time"
@@ -821,7 +827,7 @@ msgstr "Глубина сканирования"
 
 #: src/Gui/VolumeScanner.cs:450
 msgid "<b>Volume Information:</b>"
-msgstr ""
+msgstr "<b> Информаия о звуке: </ B>"
 
 #: src/Gui/VolumeScanner.cs:460
 msgid "<b>Scanner Log:</b>"
@@ -842,68 +848,88 @@ msgstr "Непригодный материал"
 #: src/Gui/Preferences.cs:217
 msgid "The selected icon theme is currently not supported on your system."
 msgstr ""
+"Выбранные темы значков в настоящее время не поддерживается на вашей системе."
 
-#: src/Gui/Preferences.cs:254
+#: src/Gui/Preferences.cs:255
 msgid "Restart required"
 msgstr "Требуется перезапуск"
 
-#: src/Gui/Preferences.cs:255
+#: src/Gui/Preferences.cs:256
 #, csharp-format
 msgid "You must restart {0} for icontheme changes to take effect."
 msgstr "Вы должны перезапустить {0} для применения изменений в теме иконок"
 
-#: src/Gui/Preferences.cs:284
+#: src/Gui/Preferences.cs:286
 msgid "Preferences"
 msgstr "Настройки"
 
-#: src/Gui/Preferences.cs:308
+#: src/Gui/Preferences.cs:310
 msgid "_Load Defaults"
 msgstr "З_агрузить параметры по умолчанию"
 
-#: src/Gui/Preferences.cs:334
+#: src/Gui/Preferences.cs:336
 msgid "Icon theme:"
 msgstr "Тема иконок"
 
-#: src/Gui/Preferences.cs:340
+#: src/Gui/Preferences.cs:342
 msgid "Reopen most recent database on startup"
 msgstr "Повторное открытие последней базы данных при запуске"
 
-#: src/Gui/Preferences.cs:344
+#: src/Gui/Preferences.cs:346
 msgid "Show iteminfo panel"
-msgstr ""
+msgstr "Показать панель \"iteminfo\""
 
-#: src/Gui/Preferences.cs:348
+#: src/Gui/Preferences.cs:350
+msgid "Show hidden files"
+msgstr "Показывать скрытые файлы"
+
+#: src/Gui/Preferences.cs:354
 msgid "Show thumbnails in the filebrowser"
-msgstr ""
+msgstr "Показывать эскизы изображений в окне просмотра файлов"
 
-#: src/Gui/Preferences.cs:351
+#: src/Gui/Preferences.cs:357
 msgid "General"
 msgstr "Общее"
 
-#: src/Gui/Preferences.cs:359
+#: src/Gui/Preferences.cs:365
 msgid "Don't prompt, always scan:"
 msgstr "Не запрашивать, всегда сканировать:"
 
-#: src/Gui/Preferences.cs:378
+#: src/Gui/Preferences.cs:384
 msgid "Generate Thumbnails"
 msgstr "Создавать эскизы"
 
-#: src/Gui/Preferences.cs:382
+#: src/Gui/Preferences.cs:388
 msgid "Extract metadata"
 msgstr "Извлечения метаданных"
 
-#: src/Gui/Preferences.cs:386
+#: src/Gui/Preferences.cs:392
 msgid "Discard symbolic links"
 msgstr "Отклонить символические ссылки."
 
-#: src/Gui/Preferences.cs:390
+#: src/Gui/Preferences.cs:396
 msgid "Compute hashcodes for files (slow!)"
 msgstr "Посчитать хеш-коды для файлов (Долго!)"
 
-#: src/Gui/Preferences.cs:394
+#: src/Gui/Preferences.cs:400
 msgid "Fetch audio cd metadata from MusicBrainz.org"
-msgstr ""
+msgstr "Взять метаданные для аудио дисков с сайта MusicBrainz.org"
 
-#: src/Gui/Preferences.cs:397
+#: src/Gui/Preferences.cs:403
 msgid "Scanner"
 msgstr "Сканер"
+
+#~ msgid "<b>Name:</b>"
+#~ msgstr "<b>Название:</b>"
+
+#~ msgid "<b>Size:</b>"
+#~ msgstr "<b>Размер:</b>"
+
+#~ msgid "<b>Hash:</b>"
+#~ msgstr "<b>Хеш:</b>"
+
+#~ msgid "Please select a volume record to edit."
+#~ msgstr "Пожалуйста, выберите том для редактирования записи."
+
+#~ msgid "Search:"
+#~ msgstr "Найти:"

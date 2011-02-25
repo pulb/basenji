@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-09-03 17:11+0200\n"
-"PO-Revision-Date: 2010-09-16 17:51+0000\n"
+"POT-Creation-Date: 2010-12-03 19:54+0100\n"
+"PO-Revision-Date: 2010-12-09 15:02+0000\n"
 "Last-Translator: olavi tohver <Unknown>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-11-13 12:48+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2011-02-25 20:40+0000\n"
+"X-Generator: Launchpad (build 12460)\n"
 
 #: src/Util.cs:30
 #, csharp-format
@@ -42,6 +42,10 @@ msgstr "GB"
 msgid "TB"
 msgstr "TB"
 
+#: src/Options.cs:477
+msgid "OptionName"
+msgstr "OptionName"
+
 #: src/FileDialog.cs:51
 msgid "VolumeDatabase files"
 msgstr "VolumeDatabase failid (.vdb)"
@@ -50,14 +54,14 @@ msgstr "VolumeDatabase failid (.vdb)"
 msgid "All files"
 msgstr "Kõik failid"
 
-#: src/Main.cs:67 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
+#: src/Main.cs:137 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
 #: src/Gui/MainWindow.cs:262 src/Gui/MainWindow.cs:283
 #: src/Gui/MainWindow.cs:305 src/Gui/MainWindow.cs:314
 #: src/Gui/MainWindow.cs:556
 msgid "Error"
 msgstr "Viga"
 
-#: src/Main.cs:67
+#: src/Main.cs:137
 #, csharp-format
 msgid "{0} is already running."
 msgstr "{0} juba töötab."
@@ -87,19 +91,19 @@ msgstr "Laadimine..."
 msgid "(empty)"
 msgstr "(tühi)"
 
-#: src/Gui/Widgets/ItemView.cs:99
+#: src/Gui/Widgets/ItemView.cs:103
 msgid "Unknown"
 msgstr "Tundmatu"
 
-#: src/Gui/Widgets/ItemView.cs:170 src/Gui/Widgets/Editors/ItemEditor.cs:86
+#: src/Gui/Widgets/ItemView.cs:174 src/Gui/Widgets/Editors/ItemEditor.cs:86
 msgid "Name"
 msgstr "Nimi"
 
-#: src/Gui/Widgets/ItemView.cs:176
+#: src/Gui/Widgets/ItemView.cs:180
 msgid "Artist"
 msgstr "Esitaja"
 
-#: src/Gui/Widgets/ItemView.cs:181
+#: src/Gui/Widgets/ItemView.cs:185
 #: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:53
 #: src/Gui/Widgets/ItemInfo.cs:223 src/Gui/Widgets/ItemInfo.cs:275
 msgid "Duration"
@@ -443,7 +447,7 @@ msgstr "Ketas"
 msgid "Label"
 msgstr "Silt"
 
-#: src/Gui/DriveSelection.cs:240
+#: src/Gui/DriveSelection.cs:241
 msgid "Please select a drive to scan"
 msgstr "Palun vali skaneerimiseks ketas"
 
@@ -841,67 +845,71 @@ msgstr "Sobimatu teema"
 msgid "The selected icon theme is currently not supported on your system."
 msgstr "Valitud ikooniteema ei ole hetkel teie süsteemis toetatud."
 
-#: src/Gui/Preferences.cs:254
+#: src/Gui/Preferences.cs:255
 msgid "Restart required"
 msgstr "Vajalik taaskäivitus"
 
-#: src/Gui/Preferences.cs:255
+#: src/Gui/Preferences.cs:256
 #, csharp-format
 msgid "You must restart {0} for icontheme changes to take effect."
 msgstr "Te peate taaskäivitama {0} , et ikooniteema muudatused rakenduksid."
 
-#: src/Gui/Preferences.cs:284
+#: src/Gui/Preferences.cs:286
 msgid "Preferences"
 msgstr "Eelistused"
 
-#: src/Gui/Preferences.cs:308
+#: src/Gui/Preferences.cs:310
 msgid "_Load Defaults"
 msgstr "_Lae vaikeseaded"
 
-#: src/Gui/Preferences.cs:334
+#: src/Gui/Preferences.cs:336
 msgid "Icon theme:"
 msgstr "Ikooniteema:"
 
-#: src/Gui/Preferences.cs:340
+#: src/Gui/Preferences.cs:342
 msgid "Reopen most recent database on startup"
 msgstr "Käivitusel taasava kõige hilisem andmebaas"
 
-#: src/Gui/Preferences.cs:344
+#: src/Gui/Preferences.cs:346
 msgid "Show iteminfo panel"
 msgstr "Näita kirjete infopaneeli"
 
-#: src/Gui/Preferences.cs:348
+#: src/Gui/Preferences.cs:350
+msgid "Show hidden files"
+msgstr "Näita peidetud faile"
+
+#: src/Gui/Preferences.cs:354
 msgid "Show thumbnails in the filebrowser"
 msgstr "Näita pisipilte failisirvija paneelil"
 
-#: src/Gui/Preferences.cs:351
+#: src/Gui/Preferences.cs:357
 msgid "General"
 msgstr "Üldine"
 
-#: src/Gui/Preferences.cs:359
+#: src/Gui/Preferences.cs:365
 msgid "Don't prompt, always scan:"
 msgstr "Ära küsi, alati skanni:"
 
-#: src/Gui/Preferences.cs:378
+#: src/Gui/Preferences.cs:384
 msgid "Generate Thumbnails"
 msgstr "Loo pisipildid"
 
-#: src/Gui/Preferences.cs:382
+#: src/Gui/Preferences.cs:388
 msgid "Extract metadata"
 msgstr "Eralda metaandmed (nt ID3, EXIF jne)"
 
-#: src/Gui/Preferences.cs:386
+#: src/Gui/Preferences.cs:392
 msgid "Discard symbolic links"
 msgstr "Eira nimeviitasid"
 
-#: src/Gui/Preferences.cs:390
+#: src/Gui/Preferences.cs:396
 msgid "Compute hashcodes for files (slow!)"
 msgstr "Arvuta failide kontrollsummad (aeglane!)"
 
-#: src/Gui/Preferences.cs:394
+#: src/Gui/Preferences.cs:400
 msgid "Fetch audio cd metadata from MusicBrainz.org"
 msgstr "Tõmba audio cd metaandmeid MusicBrainz.org-st."
 
-#: src/Gui/Preferences.cs:397
+#: src/Gui/Preferences.cs:403
 msgid "Scanner"
 msgstr "Skanner"

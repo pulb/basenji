@@ -246,13 +246,17 @@ RESOURCES = \
 	images/calendar.png,Basenji.images.calendar.png \
 	po/pl.resources,Basenji.po.pl.resources \
 	po/hu.resources,Basenji.po.hu.resources \
-	po/et.resources,Basenji.po.et.resources 
+	po/et.resources,Basenji.po.et.resources \
+	po/uk.resources,Basenji.po.uk.resources \
+	po/zh_CN.resources,Basenji.po.zh_CN.resources \
+	po/sr.resources,Basenji.po.sr.resources 
 
 EXTRAS = \
 	app.desktop \
 	basenji \
 	LibExtractor.dll.config \
 	Basenji.exe.config \
+	src/App.cs.in \
 	basenji.desktop.in \
 	basenji.in 
 
