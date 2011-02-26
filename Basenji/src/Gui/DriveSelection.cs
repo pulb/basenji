@@ -76,8 +76,8 @@ namespace Basenji.Gui
 						//string stockID = Util.GetDriveStockIconID(d);
 						//Pixbuf icon = this.RenderIcon(stockID, IconSize.Dialog, string.Empty);
 						Pixbuf icon = RenderIcon(Icons.IconUtils.GetDriveIcon(d), IconSize.Dialog);
-							
-						string drive = d.Device;
+						
+						string drive = string.IsNullOrEmpty(d.Device) ? S._("Unknown") : d.Device;
 						string label = GetLabel(d);
 						string size = Util.GetSizeStr(d.TotalSize);
 

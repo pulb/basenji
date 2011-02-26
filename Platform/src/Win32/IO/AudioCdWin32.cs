@@ -22,7 +22,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using Microsoft.Win32.SafeHandles;
 
-namespace Platform.Common.IO
+namespace Platform.Win32.IO
 {
 	internal static class AudioCdWin32
 	{

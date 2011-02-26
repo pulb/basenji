@@ -16,13 +16,13 @@
       <Output directory="bin/Debug" assembly="Platform" assemblyKeyFile="." />
       <Build debugmode="True" target="Library" />
       <Execution consolepause="True" runwithwarnings="True" runtime="MsNet" clr-version="Net_2_0" />
-      <CodeGeneration compiler="Mcs" warninglevel="3" optimize="False" unsafecodeallowed="False" generateoverflowchecks="True" definesymbols="UNIX,DEBUG,GNOME" generatexmldocumentation="False" additionalargs="-pkg:gnome-sharp-2.0" ctype="CSharpCompilerParameters" />
+      <CodeGeneration compiler="Mcs" warninglevel="3" optimize="False" unsafecodeallowed="False" generateoverflowchecks="True" definesymbols="UNIX,DEBUG,GNOME" generatexmldocumentation="False" additionalargs="-pkg:gnome-sharp-2.0 -pkg:gio-sharp-2.0" ctype="CSharpCompilerParameters" />
     </Configuration>
     <Configuration name="Gnome_Release" ctype="DotNetProjectConfiguration">
       <Output directory="bin/Release" assembly="Platform" assemblyKeyFile="." />
       <Build debugmode="False" target="Library" />
       <Execution consolepause="True" runwithwarnings="True" runtime="MsNet" clr-version="Net_2_0" />
-      <CodeGeneration compiler="Mcs" warninglevel="3" optimize="True" unsafecodeallowed="False" generateoverflowchecks="False" definesymbols="UNIX,GNOME" generatexmldocumentation="False" additionalargs="-pkg:gnome-sharp-2.0" ctype="CSharpCompilerParameters" />
+      <CodeGeneration compiler="Mcs" warninglevel="3" optimize="True" unsafecodeallowed="False" generateoverflowchecks="False" definesymbols="UNIX,GNOME" generatexmldocumentation="False" additionalargs="-pkg:gnome-sharp-2.0 -pkg:gio-sharp-2.0" ctype="CSharpCompilerParameters" />
     </Configuration>
   </Configurations>
   <Contents>
@@ -49,14 +49,21 @@
     <File subtype="Code" buildaction="Compile" name="src/Win32/ThumbnailCreator.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Win32/ThumbnailGenerator.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Common/Diagnostics/AssertionFailedException.cs" />
-    <File subtype="Code" buildaction="Compile" name="src/Common/IO/DkDisk.cs" />
-    <File subtype="Code" buildaction="Compile" name="src/Common/IO/AudioCdWin32.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Unix/IO/DkDisk.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Common/IO/IDriveInfoProvider.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Unix/IO/DkDriveInfoProvider.cs" />
+    <File subtype="Directory" buildaction="Compile" name="src/Win32/IO" />
+    <File subtype="Code" buildaction="Compile" name="src/Win32/IO/Win32DriveInfoProvider.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Win32/IO/AudioCdWin32.cs" />
+    <File subtype="Directory" buildaction="Compile" name="src/Gnome/IO" />
+    <File subtype="Code" buildaction="Compile" name="src/Gnome/IO/GioDriveInfoProvider.cs" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <ProjectReference type="Gac" localcopy="True" refto="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
     <ProjectReference type="Gac" localcopy="True" refto="NDesk.DBus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f6716e4f9b2ed099" />
     <ProjectReference type="Gac" localcopy="True" refto="NDesk.DBus.GLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f6716e4f9b2ed099" />
+    <ProjectReference type="Gac" localcopy="True" refto="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   </References>
   <Deployment.LinuxDeployData />
 </Project>

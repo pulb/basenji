@@ -33,7 +33,7 @@ using System;
 using NDesk.DBus;
 using System.Collections.Generic;
 
-namespace Platform.Common.IO
+namespace Platform.Unix.IO
 {
 	// modified/extended DeviceKit binding from Banshee
 	// (http://banshee-project.org/)

@@ -12,6 +12,7 @@ Requirements:
 	gtk-sharp (2.12.9 or later)
 	gnome-sharp (2.24.1 or later)
 	gnome-vfs-sharp (2.24.1 or later)
+	gio-sharp (2.22.2 or later)
 	ndesk-dbus (0.6 or later)
 	ndesk-dbus-glib (0.4.1 or later)
 	mono-cairo (2.4.2.3 or later)
