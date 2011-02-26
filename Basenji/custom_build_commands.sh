@@ -19,7 +19,13 @@ case $arg in
 	"--after-clean")
 		rm -rf $target_dir/data
 
-		rm $target_dir/gio*
+		copied_gio_file=$target_dir/"`basename $gio_assembly`"		
+		if [ -f $copied_gio_file ]; then
+			rm $copied_gio_file
+		fi
+		if [ -f $copied_gio_file.config ]; then
+			rm $copied_gio_file.config
+		fi
 		;;
 	*)
 		echo "error: invalid argument."
