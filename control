@@ -2,38 +2,38 @@ Source: basenji
 Section: gnome
 Priority: optional
 Maintainer: Patrick Ulbrich <zulu99@gmx.net>
-Build-Depends: debhelper (>= 7.0.50~),
-               autotools-dev,
-               pkg-config,
-               mono-2.0-devel (>= 2.4.2),
+Build-Depends: autotools-dev,
                cli-common-dev,
-               libglib2.0-cil-dev,
+               debhelper (>= 7.0.50~),
                libgio2.0-cil-dev,
-               libgtk2.0-cil-dev,
-               libgnome2.0-cil-dev,
+               libglib2.0-cil-dev,
                libgnome-vfs2.0-cil-dev,
-               libndesk-dbus1.0-cil-dev,
+               libgnome2.0-cil-dev,
+               libgtk2.0-cil-dev,
+               libmono-cairo2.0-cil,
                libndesk-dbus-glib1.0-cil-dev,
-               libmono-cairo2.0-cil
+               libndesk-dbus1.0-cil-dev,
+               mono-2.0-devel (>= 2.4.2),
+               pkg-config
 Standards-Version: 3.9.1
 Homepage: http://launchpad.net/basenji
 
 Package: basenji
 Architecture: all
-Depends: ${misc:Depends},
-         ${cli:Depends},
+Depends: libextractor-plugins (>= 0.5.21),
          libextractor1c2a (>= 0.5.21),
-         libextractor-plugins (>= 0.5.21),
          librsvg2-common (>= 2.26.0),
-         udisks
+         udisks,
+         ${cli:Depends},
+         ${misc:Depends}
 Description: A portable volume indexing tool
- Basenji is a volume indexing tool designed for easy and fast indexing 
- of volume collections. It currently supports indexing of removable media 
- such as CDs and USB sticks and stores them as volume objects in a database. 
- After being stored in this database, volumes can be browsed and 
+ Basenji is a volume indexing tool designed for easy and fast indexing
+ of volume collections. It currently supports indexing of removable media
+ such as CDs and USB sticks and stores them as volume objects in a database.
+ After being stored in this database, volumes can be browsed and
  searched trough for specific files very quickly.
  .
- Basenji has been developed with platform independency in mind right from 
- the start and presently consists of a GTK+ GUI frontend and a reusable 
- library backend (VolumeDB) that implements the actual indexing, 
+ Basenji has been developed with platform independency in mind right from
+ the start and presently consists of a GTK+ GUI frontend and a reusable
+ library backend (VolumeDB) that implements the actual indexing,
  searching and database logic.
