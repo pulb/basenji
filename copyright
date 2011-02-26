@@ -27,7 +27,7 @@ Files: Platform/src/Unix/Mime/Mime.cs
 Copyright: © 2006 Alexander Olk <alex.olk@googlemail.com>
 License: MIT
 
-Files: Platform/src/Common/IO/DKDisk.cs
+Files: Platform/src/Unix/IO/DKDisk.cs
 Copyright: © 2009 Novell, Inc.
 License: MIT
 
