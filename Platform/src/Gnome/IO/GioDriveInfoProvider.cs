@@ -69,7 +69,7 @@ namespace Platform.Gnome.IO
 			
 			foreach (var m in mounts) {
 				if (supportedSchemes.ContainsKey(m.Root.UriScheme) && 
-				    (drives.FindIndex(e => (e.RootPath == m.Root.Uri.AbsolutePath)) == -1))
+				    (drives.FindIndex(e => IsEqual(e, m)) == -1))
 				{
 					DriveInfo d = new DriveInfo();
 					FillDriveInfo(d, m);
@@ -90,6 +90,10 @@ namespace Platform.Gnome.IO
 			d.isMounted = true;
 			d.isReady = true;
 			d.hasAudioCdVolume = false;
+		}
+		
+		private static bool IsEqual(DriveInfo d, GLib.Mount m) {
+			return d.IsMounted && (d.RootPath == m.Root.Uri.AbsolutePath);
 		}
 	}
 }
