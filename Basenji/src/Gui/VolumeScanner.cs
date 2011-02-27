@@ -472,15 +472,11 @@ namespace Basenji.Gui
 			hbbox.BorderWidth = 12;
 			hbbox.LayoutStyle = ButtonBoxStyle.End;
 			
-			// hbLed
-			HBox hbLed = new HBox();
-			hbLed.Spacing = 6;
-			
-			led = new Led(false);			 
-			hbLed.PackStart(led, false, false, 0);
-			hbLed.PackStart(CreateLabel(S._("Database access")));
-
-			hbbox.PackStart(hbLed, false, false, 0);
+			led = new Led(false);
+			Alignment a = new Alignment(1.0f, 0.5f, 0.0f, 0.0f);
+			led.TooltipText = S._("Database access");
+			a.Add(led);
+			hbbox.PackStart(a, false, false, 0);
 			
 			btnAbort = CreateButton(Stock.Cancel, true, OnBtnAbortClicked);
 			hbbox.PackEnd(btnAbort, false, false, 0);
