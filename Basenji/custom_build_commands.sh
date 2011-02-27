@@ -4,7 +4,9 @@ arg=$1
 target_dir=$2
 
 # gio-sharp is currenlty unstable and not installed into the GAC
-gio_assembly="`pkg-config --variable=Libraries gio-sharp-2.0`"
+# so link to it localy
+gio_assembly_path="`pkg-config --variable=Libraries gio-sharp-2.0`"
+gio_assembly_name="`basename $gio_assembly_path`"
 
 case $arg in
 	"--after-build")
@@ -13,18 +15,17 @@ case $arg in
 			cp -R images/basenji.svg images/themes $target_dir/data
 		fi
 		
-		cp $gio_assembly $target_dir/
-		cp $gio_assembly.config $target_dir
+		ln -s $gio_assembly_path -n $target_dir/$gio_assembly_name
+		ln -s $gio_assembly_path.config -n $target_dir/$gio_assembly_name.config
 		;;
 	"--after-clean")
 		rm -rf $target_dir/data
-
-		copied_gio_file=$target_dir/"`basename $gio_assembly`"		
-		if [ -f $copied_gio_file ]; then
-			rm $copied_gio_file
+	
+		if [ -f $target_dir/$gio_assembly_name ]; then
+			rm $target_dir/$gio_assembly_name
 		fi
-		if [ -f $copied_gio_file.config ]; then
-			rm $copied_gio_file.config
+		if [ -f $target_dir/$gio_assembly_name.config ]; then
+			rm $target_dir/$gio_assembly_name.config
 		fi
 		;;
 	*)
