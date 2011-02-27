@@ -63,7 +63,7 @@ namespace Basenji.Icons
 		[NameInCustomIconTheme("drive-removable-media.png")]
 		public static Icon DriveRemovableMedia		{ get { return new Icon("drive-removable-media"); } }
 		[NameInCustomIconTheme("drive-network.png")]
-		public static Icon Stock_Network			{ get { return new Icon(Stock.Network);			  } }
+		public static Icon Stock_Network			{ get { return new Icon("folder-remote");		  } }
 		[NameInCustomIconTheme("file.png")]
 		public static Icon Stock_File				{ get { return new Icon(Stock.File);			  } }
 		[NameInCustomIconTheme("directory.png")]
