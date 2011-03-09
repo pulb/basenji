@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Patrick Ulbrich <zulu99@gmx.net>
 Build-Depends: autotools-dev,
                cli-common-dev,
-               debhelper (>= 7.0.50~),
+               debhelper (>= 8.0.0),
                libgio2.0-cil-dev,
                libglib2.0-cil-dev,
                libgnome-vfs2.0-cil-dev,
