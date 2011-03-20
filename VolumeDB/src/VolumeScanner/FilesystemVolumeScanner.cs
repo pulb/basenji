@@ -1,6 +1,6 @@
 // FilesystemVolumeScanner.cs
 // 
-// Copyright (C) 2008 - 2010 Patrick Ulbrich
+// Copyright (C) 2008 - 2011 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ using Platform.Common.Mime;
 using Platform.Common.Diagnostics;
 using VolumeDB.Searching;
 using VolumeDB.Searching.ItemSearchCriteria;
-using LibExtractor;
+using VolumeDB.Metadata;
 
 namespace VolumeDB.VolumeScanner
 {
@@ -48,7 +48,6 @@ namespace VolumeDB.VolumeScanner
 		private Paths				paths;
 		private SymLinkHelper		symLinkHelper;
 		private ThumbnailGenerator	thumbGen;
-		private Extractor			extractor;
 
 		// note:
 		// do not allow to modify the constuctor parameters 
@@ -76,20 +75,6 @@ namespace VolumeDB.VolumeScanner
 			this.paths				= new Paths(Options.DbDataPath, null, null);
 			this.symLinkHelper		= new SymLinkHelper(this);
 			this.thumbGen			= new ThumbnailGenerator();
-
-			this.extractor			= null;
-			if (Options.ExtractMetaData) {
-				try {
-					this.extractor	= Extractor.GetDefault();
-					
-					if (Options.ExtractionBlacklist != null) {
-						foreach (string ext in Options.ExtractionBlacklist)
-							this.extractor.RemoveLibrary("libextractor_" + ext);
-					}
-				} catch (DllNotFoundException) {
-					// a warning will be sent in ScanningThreadMain().
-				}
-			}
 		}
 		
 		internal override void ScanningThreadMain(Platform.Common.IO.DriveInfo drive,
@@ -99,10 +84,6 @@ namespace VolumeDB.VolumeScanner
 				if (Options.GenerateThumbnails) {
 					paths.volumeDataPath = DbData.CreateVolumeDataPath(paths.dbDataPath, volume.VolumeID);
 					paths.thumbnailPath = DbData.CreateVolumeDataThumbsPath(paths.volumeDataPath);
-				}
-
-				if (Options.ExtractMetaData && (extractor == null)) {
-					SendScannerWarning(S._("libExtractor not found. Metadata extraction disabled."));
 				}
 				
 				string rootPath = drive.RootPath;
@@ -145,13 +126,9 @@ namespace VolumeDB.VolumeScanner
 			if (!disposed) {
 				if (disposing) {
 					thumbGen.Dispose();
-
-					if (extractor != null)
-						extractor.Dispose();
 				}
 
 				thumbGen		= null;
-				extractor		= null;
 				sbPathFixer		= null;
 				paths			= null;
 				symLinkHelper	= null;
@@ -275,10 +252,10 @@ namespace VolumeDB.VolumeScanner
 
 					if (isRegularFile) {
 						
-						string	mimeType		= null;
-						string	metaData		= null;
-						string	hash			= null;
-						bool	thumbGenerated	= false;
+						string			mimeType		= null;
+						MetadataStore	metaData		= MetadataStore.Empty;
+						string			hash			= null;
+						bool			thumbGenerated	= false;
 						
 						FileStream fs = null;
 						try {
@@ -288,14 +265,8 @@ namespace VolumeDB.VolumeScanner
 							
 							mimeType = MimeType.GetMimeTypeForFile(files[i].FullName);
 							
-							if (Options.ExtractMetaData && (extractor != null)) {
-								Keyword[] keywords = extractor.GetKeywords(files[i].FullName);
-								// removes duplicates like the same year in idv2 and idv3 tags,
-								// does not remove keywords of the same type with different data (e.g. filename)
-								keywords = Extractor.RemoveDuplicateKeywords(keywords, DuplicateOptions.DUPLICATES_REMOVE_UNKNOWN);
-								// removes whitespace-only keywords
-								keywords = Extractor.RemoveEmptyKeywords(keywords);
-								metaData = MetaDataHelper.PackExtractorKeywords(keywords);
+							if (Options.MetadataProvider != null) {
+								metaData = new MetadataStore(Options.MetadataProvider.GetMetadata(files[i].FullName));
 							}
 							
 							if (Options.ComputeHashs) {
@@ -423,7 +394,7 @@ namespace VolumeDB.VolumeScanner
 			DirectoryVolumeItem item = GetNewVolumeItem<DirectoryVolumeItem>(parentID,
 			                                                                 name,
 			                                                                 MIME_TYPE_DIRECTORY,
-			                                                                 null,
+			                                                                 MetadataStore.Empty,
 			                                                                 VolumeItemType.DirectoryVolumeItem);
 			
 			item.SetFileSystemVolumeItemFields(location, lastWriteTime, VolumeDatabase.ID_NONE);
@@ -455,7 +426,7 @@ namespace VolumeDB.VolumeScanner
 		                        BufferedVolumeItemWriter writer,
 		                        long parentID,
 		                        string mimeType,
-		                        string metaData,
+		                        MetadataStore metaData,
 		                        string hash) {
 			/* if scanner has no db associated, just update the counters
 			 * and return 

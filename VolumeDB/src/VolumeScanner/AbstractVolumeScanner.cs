@@ -1,6 +1,6 @@
 // AbstractVolumeScanner.cs
 // 
-// Copyright (C) 2008 - 2010 Patrick Ulbrich
+// Copyright (C) 2008 - 2011 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@ using System;
 using System.Threading;
 using System.ComponentModel;
 using System.Reflection;
+using VolumeDB.Metadata;
 using Platform.Common.Diagnostics;
 using PlatformIO = Platform.Common.IO;
 
@@ -250,7 +251,7 @@ namespace VolumeDB.VolumeScanner
 		protected TVolumeItem GetNewVolumeItem<TVolumeItem>(long parentID,
 		                                                    string name,
 		                                                    string mimeType,
-		                                                    string metaData,
+		                                                    MetadataStore metaData,
 		                                                    VolumeItemType itemType)
 			where TVolumeItem : VolumeItem
 		{

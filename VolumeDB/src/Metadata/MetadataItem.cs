@@ -1,6 +1,6 @@
-// ScannerOptions.cs
+// MetadataItem.cs
 //
-// Copyright (C) 2010, 2011 Patrick Ulbrich
+// Copyright (C) 2011 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -15,33 +15,26 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
-
 using System;
-
-namespace VolumeDB.VolumeScanner
+namespace VolumeDB.Metadata
 {
-	public abstract class ScannerOptions
+	public class MetadataItem
 	{
-		public ScannerOptions () {
-			BufferSize = 10;
-			ComputeHashs = false;
+		internal MetadataItem (MetadataType type, string value)
+		{
+			this.Type = type;
+			this.Value = value;
 		}
 		
-		public int BufferSize {
-			get; set;
+		public MetadataType Type {
+			get;
+			private set;
 		}
 		
-		public bool ComputeHashs {
-			get; set;
+		public string Value {
+			get;
+			private set;
 		}
-		
-		public void CopyTo(ScannerOptions opts) {
-			CopyOptions(opts);
-			
-			opts.BufferSize = this.BufferSize;
-			opts.ComputeHashs = this.ComputeHashs;
-		}
-		
-		protected abstract void CopyOptions(ScannerOptions opts);
 	}
 }
+

@@ -80,7 +80,6 @@
     <File subtype="Code" buildaction="Compile" name="src/Searching/FreeTextSearchCriteria.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Searching/IFreeTextSearchField.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Searching/VolumeSearchCriteria/FreeTextSearchField.cs" />
-    <File subtype="Code" buildaction="Compile" name="src/MetaDataHelper.cs" />
     <File subtype="Directory" buildaction="Compile" name="src/Import" />
     <File subtype="Code" buildaction="Compile" name="src/Import/GnomeCatalogImport.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Import/BasenjiImport.cs" />
@@ -115,6 +114,14 @@
     <File subtype="Code" buildaction="EmbedAsResource" name="po/zh_CN.resources" resource_id="VolumeDB.po.zh_CN.resources" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/sr.resources" resource_id="VolumeDB.po.sr.resources" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/ru.resources" resource_id="VolumeDB.po.ru.resources" />
+    <File subtype="Directory" buildaction="Compile" name="src/Metadata" />
+    <File subtype="Code" buildaction="Compile" name="src/Metadata/MetadataProvider.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Metadata/ExtractorMetadataProvider.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Metadata/MetadataType.cs" />
+    <File subtype="Directory" buildaction="Compile" name="src/VolumeScanner" />
+    <File subtype="Code" buildaction="Compile" name="src/Metadata/MetadataItem.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Metadata/MetadataStore.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Metadata/MetadataUtils.cs" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />

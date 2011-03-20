@@ -1,6 +1,6 @@
 // FilesystemScannerOptions.cs
 //
-// Copyright (C) 2010 Patrick Ulbrich
+// Copyright (C) 2010, 2011 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@
 //
 
 using System;
+using VolumeDB.Metadata;
 
 namespace VolumeDB.VolumeScanner
 {
@@ -25,8 +26,7 @@ namespace VolumeDB.VolumeScanner
 		public FilesystemScannerOptions() : base() {
 			DiscardSymLinks = false;
 			GenerateThumbnails = false;
-			ExtractMetaData = false;
-			ExtractionBlacklist = null;
+			MetadataProvider = null;
 			DbDataPath = null;
 		}
 		
@@ -38,11 +38,7 @@ namespace VolumeDB.VolumeScanner
 			get; set;
 		}
 		
-		public bool ExtractMetaData {
-			get; set;
-		}
-		
-		public string[] ExtractionBlacklist {
+		public MetadataProvider MetadataProvider {
 			get; set;
 		}
 		
@@ -59,9 +55,24 @@ namespace VolumeDB.VolumeScanner
 			
 			tmp.DiscardSymLinks = this.DiscardSymLinks;
 			tmp.GenerateThumbnails = this.GenerateThumbnails;
-			tmp.ExtractMetaData = this.ExtractMetaData;
-			tmp.ExtractionBlacklist = this.ExtractionBlacklist;
+			
+			// don't deep-copy the metadata provider, it's too expensive
+			// (e.g. native libextractor instantiation and initialization)
+			tmp.MetadataProvider = this.MetadataProvider;
 			tmp.DbDataPath = this.DbDataPath;
+			
+///*			
+//			if (this.MetadataProvider != null) {
+//				// the target may have a different metadataprovider assigned, 
+//				// so assign a flat copy of this objects provider
+//				tmp.MetadataProvider = (MetadataProvider)this.MetadataProvider.MemberwiseClone();
+//
+//				this.MetadataProvider.CopyTo(tmp.MetadataProvider);
+//			} else {
+//				tmp.MetadataProvider = null;
+//			}*/
+			
+			
 		}
 	}
 }

@@ -1,6 +1,6 @@
 // ItemInfo.cs
 // 
-// Copyright (C) 2008 - 2010 Patrick Ulbrich
+// Copyright (C) 2008 - 2011 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -23,6 +23,7 @@ using Gtk;
 using Cairo;
 using Basenji.Gui.Base;
 using VolumeDB;
+using VolumeDB.Metadata;
 
 namespace Basenji.Gui.Widgets
 {
@@ -242,72 +243,105 @@ namespace Basenji.Gui.Widgets
 				// add metadata properties first (higher priority)
 				//
 				
-				// check if metadata is present before parsing
-				// (prevents unnecessary DllNotFoundExceptions 
-				// if libextractor is not installed and there is no metadata anyway).
-				if (!string.IsNullOrEmpty(item.MetaData)) {
-					try {
-					 	Dictionary<string, string> metadata = item.ParseMetaData();
+				if (!item.MetaData.IsEmpty) {
+				 	Dictionary<MetadataType, string> metadata = item.MetaData.ToDictionary();
+					
+					//
+					// cherry-pick interesting properties
+					//
+					string val;
+					
+					/* audio properties*/
+					if (metadata.TryGetValue(MetadataType.GENRE, out val)) {
+						// NOTE: genre keyword is used in e.g. deb packages as well
+						tmp.Add(new ItemProperty(S._("Genre"), RemoveSimilarIDTags(val), 105));
+					}
+					
+					if (metadata.TryGetValue(MetadataType.ARTIST, out val)) {
+						//tmp2.Add(new ItemProperty(S._("Artist"), val, 101));
+						nameProperty.Add("artist", RemoveSimilarIDTags(val));
+					}
+					
+					if (metadata.TryGetValue(MetadataType.TITLE, out val)) {
+						// NOTE: title keyword is used in e.g. html or doc files as well
+						//tmp2.Add(new ItemProperty(S._("Title"), val, 101));
+						nameProperty.Add("title", RemoveSimilarIDTags(val));
+					}
+					
+					if (metadata.TryGetValue(MetadataType.ALBUM, out val)) {
+						//tmp2.Add(new ItemProperty(S._("Album"), val, 103));
+						nameProperty.Add("album", RemoveSimilarIDTags(val));
+					}
+					
+					if (metadata.TryGetValue(MetadataType.YEAR, out val)) {
+						tmp.Add(new ItemProperty(S._("Year"), RemoveSimilarIDTags(val), 104));
+					}
+					
+					if (metadata.TryGetValue(MetadataType.DESCRIPTION, out val)) {
+						// NOTE: description keyword is used in e.g. html files as well
+						tmp.Add(new ItemProperty(S._("Description"), RemoveSimilarIDTags(val), 110));
+					}
+					
+					/* audio / picture / video properties */
+					if (metadata.TryGetValue(MetadataType.DURATION, out val)) {
+						tmp.Add(new ItemProperty(S._("Duration"), FormatDuration(MetadataUtils.MetadataDurationToTimespan(val)), 106));
+					}
+					
+					if (metadata.TryGetValue(MetadataType.SIZE, out val)) {
+						// NOTE: size keyword is used in e.g. deb packages as well (unpacked size in kb)
+						if (item.MimeType.StartsWith("image") || item.MimeType.StartsWith("video"))
+							tmp.Add(new ItemProperty(S._("Dimensions"), val, 107));
+					}
+					
+					/* other properties*/
+					if (metadata.TryGetValue(MetadataType.FORMAT, out val)) {
+						tmp.Add(new ItemProperty(S._("Format"), val, 108));
+					}
+					
+					if (metadata.TryGetValue(MetadataType.AUTHOR, out val)) {
+						tmp.Add(new ItemProperty(S._("Author"), val, 111));
+					}
+					
+					if (metadata.TryGetValue(MetadataType.COPYRIGHT, out val)) {
+						tmp.Add(new ItemProperty(S._("Copyright"), val, 112));
+					}
+					
+					if (metadata.TryGetValue(MetadataType.PRODUCER, out val)) {
+						tmp.Add(new ItemProperty(S._("Producer"), val, 115));
+					}
+					
+					if (metadata.TryGetValue(MetadataType.CREATOR, out val)) {
+						tmp.Add(new ItemProperty(S._("Creator"), val, 114));
+					}
+					
+					if (metadata.TryGetValue(MetadataType.SOFTWARE, out val)) {
+						tmp.Add(new ItemProperty(S._("Software"), val, 116));
+					}
+					
+					if (metadata.TryGetValue(MetadataType.LANGUAGE, out val)) {
+						tmp.Add(new ItemProperty(S._("Language"), val, 113));
+					}
+					
+					if (metadata.TryGetValue(MetadataType.PAGE_COUNT, out val)) {
+						tmp.Add(new ItemProperty(S._("Page count"), val, 109));
+					}
+					
+					if (metadata.TryGetValue(MetadataType.FILENAME, out val)) {
+						// count files in archives 
+						// (filenames were joined by MetadataStore.ToDictionary())
+						string[] filenames = val.Split(KEYWORD_SEPARATORS, StringSplitOptions.None);
+						tmp.Add(new ItemProperty(S._("File count"), filenames.Length.ToString(), 117));
+					}
+					
+					if (Global.EnableDebugging) {
+				 		foreach (KeyValuePair<MetadataType, string> pair in metadata) {
+							Platform.Common.Diagnostics.Debug.WriteLine(
+								String.Format("{0}: {1}", pair.Key, pair.Value));
+						}
+					}
 						
-						foreach (KeyValuePair<string, string> pair in metadata) {
-					 		// cherry-pick interesting properties
-							/* audio properties*/
-							if (pair.Key == "genre") {
-								// NOTE: genre keyword is used in e.g. deb packages as well
-								tmp.Add(new ItemProperty(S._("Genre"), RemoveSimilarIDTags(pair.Value), 105));
-							} else if (pair.Key == "artist") {
-								//tmp2.Add(new ItemProperty(S._("Artist"), pair.Value, 101));
-								nameProperty.Add("artist", RemoveSimilarIDTags(pair.Value));
-							} else if (pair.Key == "title") {
-								// NOTE: title keyword is used in e.g. html or doc files as well
-								//tmp2.Add(new ItemProperty(S._("Title"), pair.Value, 101));
-								nameProperty.Add("title", RemoveSimilarIDTags(pair.Value));
-							} else if (pair.Key == "album") {
-								//tmp2.Add(new ItemProperty(S._("Album"), pair.Value, 103));
-								nameProperty.Add("album", RemoveSimilarIDTags(pair.Value));
-							} else if (pair.Key == "year") {
-								tmp.Add(new ItemProperty(S._("Year"), RemoveSimilarIDTags(pair.Value), 104));
-							} else if (pair.Key == "description") {
-								// NOTE: description keyword is used in e.g. html files as well
-								tmp.Add(new ItemProperty(S._("Description"), RemoveSimilarIDTags(pair.Value), 110));
-							/* audio / picture / video properties */
-							} else if (pair.Key == "duration") {
-								tmp.Add(new ItemProperty(S._("Duration"), FormatDuration(ParseExtractorDuration(pair.Value)), 106));
-							} else if (pair.Key == "size") {
-								// NOTE: size keyword is used in e.g. deb packages as well (unpacked size in kb)
-								if(item.MimeType.StartsWith("image") || item.MimeType.StartsWith("video"))
-									tmp.Add(new ItemProperty(S._("Dimensions"), pair.Value, 107));
-							/* other properties*/
-							} else if (pair.Key == "format") {
-								tmp.Add(new ItemProperty(S._("Format"), pair.Value, 108));
-							} else if (pair.Key == "author") {
-								tmp.Add(new ItemProperty(S._("Author"), pair.Value, 111));
-							} else if (pair.Key == "copyright") {
-								tmp.Add(new ItemProperty(S._("Copyright"), pair.Value, 112));
-							} else if (pair.Key == "producer") {
-								tmp.Add(new ItemProperty(S._("Producer"), pair.Value, 115));
-							} else if (pair.Key == "creator") {
-								tmp.Add(new ItemProperty(S._("Creator"), pair.Value, 114));
-							} else if (pair.Key == "software") {
-								tmp.Add(new ItemProperty(S._("Software"), pair.Value, 116));
-							} else if (pair.Key == "language") {
-								tmp.Add(new ItemProperty(S._("Language"), pair.Value, 113));
-							} else if (pair.Key == "page count") {
-								tmp.Add(new ItemProperty(S._("Page count"), pair.Value, 109));
-							} else if (pair.Key == "filename") {
-								// count files in archives
-								string[] filenames = pair.Value.Split(KEYWORD_SEPARATORS, StringSplitOptions.None);
-								tmp.Add(new ItemProperty(S._("File count"), filenames.Length.ToString(), 117));
-							}
-	
-							if (Global.EnableDebugging) {
-						 		Platform.Common.Diagnostics.Debug.WriteLine(
-									String.Format("{0}: {1}", pair.Key, pair.Value));
-							}
-					 	}
-					} catch (DllNotFoundException) { /* libextractor package not installed */ }
 				}
-
+				
 				//
 				// add common item properties (low priority, shown only if there's room left)
 				//
@@ -347,28 +381,6 @@ namespace Basenji.Gui.Widgets
 					}
 				}
 				return separatedTags;
-			}
-			
-			public static TimeSpan ParseExtractorDuration(string duration) {
-				TimeSpan t;
-				string[] numbers = duration.Split(new string[] { "m", "s" }, StringSplitOptions.RemoveEmptyEntries);
-				
-				if (numbers.Length == 2) {
-					// minutes AND seconds expected (e.g. "12m51")
-					// (also "12m51s", although I've yet to see this occur)
-					t = new TimeSpan(0, int.Parse(numbers[0]), int.Parse(numbers[1]));
-				} else {
-					// minutes OR seconds OR milliseconds expected 
-					// (e.g. "12m", "51,43s", "51,43 s", "209711")
-					if (duration[duration.Length - 1] == 'm')
-						t = TimeSpan.FromMinutes(double.Parse(numbers[0]));
-					else if (duration[duration.Length - 1] == 's')
-						t = TimeSpan.FromSeconds(double.Parse(numbers[0]));
-					else // ms expcepted
-						t = TimeSpan.FromMilliseconds(double.Parse(numbers[0]));
-				}
-				
-				return t;
 			}
 			
 			private static string FormatDuration(TimeSpan duration) {

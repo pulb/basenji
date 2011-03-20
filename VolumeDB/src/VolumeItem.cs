@@ -1,6 +1,6 @@
 // VolumeItem.cs
 // 
-// Copyright (C) 2008, 2010 Patrick Ulbrich
+// Copyright (C) 2008, 2010, 2011 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
 
 using System;
 using System.Collections.Generic;
-using LibExtractor;
+using VolumeDB.Metadata;
 
 // TODO : IDiposable to free VolumeDatabase? (if yes, do so in Volume class as well!)
 namespace VolumeDB
@@ -51,7 +51,7 @@ namespace VolumeDB
 		
 		private string			name;
 		private string			mimeType; // content type
-		private string			metaData;
+		private MetadataStore	metaData;
 		private string			note;
 		private string			keywords;
 		
@@ -62,7 +62,7 @@ namespace VolumeDB
 		private VolumeItemType	itemType;
 		
 		internal VolumeItem(VolumeDatabase database, VolumeItemType itemType)
-			: base(tableName,primarykeyFields)
+			: base(tableName, primarykeyFields)
 		{
 			this.volumeID		= 0L;
 			this.itemID			= 0L;
@@ -71,7 +71,7 @@ namespace VolumeDB
 			
 			this.name			= null;
 			this.mimeType		= null;
-			this.metaData		= null;
+			this.metaData		= MetadataStore.Empty;
 			this.note			= null;
 			this.keywords		= null;
 			
@@ -101,7 +101,7 @@ namespace VolumeDB
 
 			string name,
 			string mimeType,
-			string metaData,
+			MetadataStore metaData,
 			string note,
 			string keywords
 
@@ -152,7 +152,7 @@ namespace VolumeDB
 			parentID	= (long)				  		recordData["ParentID"];
 			name		= Util.ReplaceDBNull<string>(	recordData["Name"],		null);
 			mimeType	= Util.ReplaceDBNull<string>(	recordData["MimeType"],	null);
-			metaData	= Util.ReplaceDBNull<string>(	recordData["MetaData"],	null);
+			metaData	= new MetadataStore(Util.ReplaceDBNull<string>(	recordData["MetaData"],	null));
 			note		= Util.ReplaceDBNull<string>(	recordData["Note"],		null);
 			keywords	= Util.ReplaceDBNull<string>(	recordData["Keywords"],	null);
 		}
@@ -165,7 +165,8 @@ namespace VolumeDB
 			recordData.AddField("ItemType", itemType);
 			recordData.AddField("Name",		name);
 			recordData.AddField("MimeType", mimeType);
-			recordData.AddField("MetaData", metaData);
+			// NOTE : metadata can't be null since it is a struct
+			recordData.AddField("MetaData", metaData.MetadataString);
 			recordData.AddField("Note",		note);
 			recordData.AddField("Keywords", keywords);			  
 		}
@@ -200,7 +201,7 @@ namespace VolumeDB
 					item = new AudioTrackVolumeItem(database);
 					break;
 				default:
-					throw new NotImplementedException(string.Format("Instanciation of type {0} is not implemented", type.ToString()));
+					throw new NotImplementedException(string.Format("Instantiation of type {0} is not implemented", type.ToString()));
 			}
 			return item;
 		}
@@ -257,8 +258,9 @@ namespace VolumeDB
 			internal set	{ mimeType = value; }
 		}
 		
-		public string MetaData {
-			get				{ return metaData ?? string.Empty; }
+		public MetadataStore MetaData {
+			// NOTE : metadata can't be null since it is a struct
+			get				{ return metaData; }
 			internal set	{ metaData = value;	}
 		}
 
@@ -282,37 +284,6 @@ namespace VolumeDB
 			}
 		}
 		#endregion
-
-		/// <summary>
-		/// Parses the raw metadata and returns a (type, keyword) dictionary.
-		/// </summary>
-		/// <returns>
-		/// A <see cref="Dictionary"/> containing (type, keyword) pairs.
-		/// </returns>
-		public Dictionary<String, String> ParseMetaData() {
-			// Don't expose the libextractor Keyword enum outside volumedb
-			// - calling code should not depend on libextractor.
-			// Return a dictionary containig string representations instead.
-			Dictionary<string, string> dict = new Dictionary<string, string>();
-
-			if (string.IsNullOrEmpty(metaData))
-			    return dict;
-
-			Keyword[] keywords = MetaDataHelper.UnpackExtractorKeywords(metaData);
-			foreach (Keyword kw in keywords) {
-				// may throw DllNotFoundException
-				string typestr = Extractor.GetKeywordTypeAsString(kw.keywordType);
-				string existing;
-
-				// join keywords of the same type (e.g. "format" or "filename")
-				// (a dictionary can't contain the same key multiple times)
-				if (dict.TryGetValue(typestr, out existing))
-					dict[typestr] =  string.Format("{0}; {1}", existing, kw.keyword);
-				else
-					dict.Add(typestr, kw.keyword);
-			}
-			return dict;
-		}
 		
 		public override string ToString() {
 			return Name;		

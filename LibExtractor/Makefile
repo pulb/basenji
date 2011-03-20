@@ -17,9 +17,9 @@ COMPILE_TARGET = library
 PROJECT_REFERENCES = 
 BUILD_DIR = bin/Debug
 
-LIBEXTRACTOR_DLL_CONFIG_SOURCE=LibExtractor.dll.config
 LIBEXTRACTOR_DLL_MDB_SOURCE=bin/Debug/LibExtractor.dll.mdb
 LIBEXTRACTOR_DLL_MDB=$(BUILD_DIR)/LibExtractor.dll.mdb
+LIBEXTRACTOR_DLL_CONFIG_SOURCE=LibExtractor.dll.config
 
 endif
 
@@ -32,8 +32,8 @@ COMPILE_TARGET = library
 PROJECT_REFERENCES = 
 BUILD_DIR = bin/Release
 
-LIBEXTRACTOR_DLL_CONFIG_SOURCE=LibExtractor.dll.config
 LIBEXTRACTOR_DLL_MDB=
+LIBEXTRACTOR_DLL_CONFIG_SOURCE=LibExtractor.dll.config
 
 endif
 
@@ -46,9 +46,9 @@ COMPILE_TARGET = library
 PROJECT_REFERENCES = 
 BUILD_DIR = bin/Debug
 
-LIBEXTRACTOR_DLL_CONFIG_SOURCE=LibExtractor.dll.config
 LIBEXTRACTOR_DLL_MDB_SOURCE=bin/Debug/LibExtractor.dll.mdb
 LIBEXTRACTOR_DLL_MDB=$(BUILD_DIR)/LibExtractor.dll.mdb
+LIBEXTRACTOR_DLL_CONFIG_SOURCE=LibExtractor.dll.config
 
 endif
 
@@ -61,8 +61,8 @@ COMPILE_TARGET = library
 PROJECT_REFERENCES = 
 BUILD_DIR = bin/Release
 
-LIBEXTRACTOR_DLL_CONFIG_SOURCE=LibExtractor.dll.config
 LIBEXTRACTOR_DLL_MDB=
+LIBEXTRACTOR_DLL_CONFIG_SOURCE=LibExtractor.dll.config
 
 endif
 
@@ -70,8 +70,8 @@ AL=al2
 SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 
 PROGRAMFILES = \
-	$(LIBEXTRACTOR_DLL_CONFIG) \
-	$(LIBEXTRACTOR_DLL_MDB)  
+	$(LIBEXTRACTOR_DLL_MDB) \
+	$(LIBEXTRACTOR_DLL_CONFIG)  
 
 
 RESGEN=resgen2
@@ -130,8 +130,8 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	mkdir -p '$(DESTDIR)$(libdir)/$(PACKAGE)'
 	$(call cp,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(LIBEXTRACTOR_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(LIBEXTRACTOR_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(LIBEXTRACTOR_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	make post-install-local-hook prefix=$(prefix)
 
 uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
@@ -139,8 +139,8 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	make uninstall-satellite-assemblies prefix=$(prefix)
 	$(call rm,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(LIBEXTRACTOR_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(LIBEXTRACTOR_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(LIBEXTRACTOR_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	make post-uninstall-local-hook prefix=$(prefix)
 
 install: install-local

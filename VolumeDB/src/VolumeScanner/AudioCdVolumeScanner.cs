@@ -1,6 +1,6 @@
 // AudioCdVolumeScanner.cs
 // 
-// Copyright (C) 2010 Patrick Ulbrich
+// Copyright (C) 2010, 2011 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ using System;
 using System.Collections.Generic;
 using PlatformIO = Platform.Common.IO;
 using MusicBrainz;
-using LibExtractor;
+using VolumeDB.Metadata;
 
 namespace VolumeDB.VolumeScanner
 {
@@ -60,7 +60,7 @@ namespace VolumeDB.VolumeScanner
 			AudioCdRootVolumeItem root = GetNewVolumeItem<AudioCdRootVolumeItem>(VolumeDatabase.ID_NONE,
 			                                                                     "/",
 			                                                                     null,
-			                                                                     null,
+			                                                                     MetadataStore.Empty,
 			                                                                     VolumeItemType.AudioCdRootVolumeItem);
 			
 			LocalDisc localdisc = LocalDisc.GetFromDevice(drive.Device);
@@ -74,7 +74,7 @@ namespace VolumeDB.VolumeScanner
 				AudioTrackVolumeItem item = GetNewVolumeItem<AudioTrackVolumeItem>(root.ItemID,
 				                                                                   "Track " + (i + 1),
 				                                                                   MIME_TYPE_AUDIO_TRACK,
-				                                                                   null,
+				                                                                   MetadataStore.Empty,
 				                                                                   VolumeItemType.AudioTrackVolumeItem);
 				item.SetAudioTrackVolumeItemFields(durations[i]);
 				
@@ -106,7 +106,7 @@ namespace VolumeDB.VolumeScanner
 							
 							for(int i = 0; i < tracks.Count; i++) {							
 								items[i].Name = tracks[i].GetTitle();
-								items[i].MetaData = GetMetaData(tracks[i], albumTitle, releaseYear);
+								items[i].MetaData = GetMetadata(tracks[i], albumTitle, releaseYear);
 							}
 							
 							volume.Title = albumTitle;
@@ -138,43 +138,34 @@ namespace VolumeDB.VolumeScanner
 			}
 		}
 
-		private static string GetMetaData(Track track,
+		private static MetadataStore GetMetadata(Track track,
 		                                  string albumTitle,
 		                                  int releaseYear) {
 			
-			List<Keyword> keywords = new List<Keyword>();
+			List<MetadataItem> metadata = new List<MetadataItem>();
 			
 			if (!string.IsNullOrEmpty(albumTitle)) {
-				keywords.Add(new Keyword {
-					keywordType = KeywordType.EXTRACTOR_ALBUM,
-					keyword = albumTitle
-				});
+				metadata.Add(new MetadataItem(MetadataType.ALBUM, albumTitle));
 			}
 			
 			string artistName = track.GetArtist().GetName();
 			if (!string.IsNullOrEmpty(artistName)) {
-				keywords.Add(new Keyword {
-					keywordType = KeywordType.EXTRACTOR_ARTIST,
-					keyword = artistName
-				});
+				metadata.Add(new MetadataItem(MetadataType.ARTIST, artistName));
 			}
 			
 			string title = track.GetTitle();
 			if (!string.IsNullOrEmpty(title)) {
-				keywords.Add(new Keyword {
-					keywordType = KeywordType.EXTRACTOR_TITLE,
-					keyword = title
-				});
+				metadata.Add(new MetadataItem(MetadataType.TITLE, title));
 			}
 			
 			if (releaseYear > 0) {
-				keywords.Add(new Keyword {
-					keywordType = KeywordType.EXTRACTOR_YEAR,
-					keyword = releaseYear.ToString()
-				});
+				metadata.Add(new MetadataItem(MetadataType.YEAR, releaseYear.ToString()));
 			}
 			
-			return MetaDataHelper.PackExtractorKeywords(keywords.ToArray());
+			if (metadata.Count == 0)
+				return MetadataStore.Empty;
+			else
+				return new MetadataStore(metadata);
 		}
 		
 		private static int GetReleaseYear(Release release) {

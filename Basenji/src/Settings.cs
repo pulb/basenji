@@ -1,6 +1,6 @@
 // Settings.cs
 // 
-// Copyright (C) 2008 - 2010 Patrick Ulbrich
+// Copyright (C) 2008 - 2011 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -50,7 +50,11 @@ namespace Basenji
 		[SettingsAttribute("ScannerExtractMetaData", "1")]
 		public bool ScannerExtractMetaData { get; set; }
 		
-		// e.g. "pdf, mp3"
+		// 0 = taglib-sharp, 1 = libextractor 0.5.x
+		[SettingsAttribute("ScannerMetaDataProvider", "0")]
+		public int ScannerMetaDataProvider { get; set; }
+		
+		// e.g. "pdf, mp3" (used by libextractor metadata provider only)
 		[SettingsAttribute("ScannerExtractionBlacklist", "")]
 		public string ScannerExtractionBlacklist { get; set; }
 		

@@ -1,6 +1,6 @@
 // GnomeCatalogImport.cs
 // 
-// Copyright (C) 2010 Patrick Ulbrich
+// Copyright (C) 2010, 2011 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@ using System.Data;
 using System.Globalization;
 using Platform.Common.DB;
 using Platform.Common.Diagnostics;
-using LibExtractor;
+using VolumeDB.Metadata;
 
 namespace VolumeDB.Import
 {
@@ -180,7 +180,7 @@ namespace VolumeDB.Import
 			                         0L,
 			                         "/",
 			                         VolumeScanner.FilesystemVolumeScanner.MIME_TYPE_DIRECTORY,
-			                         null,
+			                         MetadataStore.Empty,
 			                         null,
 			                         null);
 			
@@ -191,7 +191,7 @@ namespace VolumeDB.Import
 		                               long volumeID,
 		                               long minFileID,
 		                               string rootPath,
-		                               string metaData,
+		                               MetadataStore metaData,
 		                               VolumeDatabase db,
 		                               BufferedVolumeItemWriter writer,
 		                               long[] counters) {
@@ -240,54 +240,49 @@ namespace VolumeDB.Import
 			writer.Write(item);
 		}
 		
-		private static string ConvertMetaData(IDbConnection conn, long fileID) {
+		private static MetadataStore ConvertMetaData(IDbConnection conn, long fileID) {
 			string sql = string.Format("SELECT * FROM metadata WHERE id = {0}", fileID);
 			
-			Dictionary<string, string> metaData = new Dictionary<string, string>();
-			List<Keyword> keywords = new List<Keyword>();
+			Dictionary<string, string> originalData = new Dictionary<string, string>();
+			List<MetadataItem> convertedData = new List<MetadataItem>();
 			string tmp;
 			
 			using (IDbCommand cmd = conn.CreateCommand()) {
 				cmd.CommandText = sql;
 				using (IDataReader reader = cmd.ExecuteReader()) {
 					while (reader.Read()) {
-						metaData.Add((string)reader["key"], (string)reader["value"]);
+						originalData.Add((string)reader["key"], (string)reader["value"]);
 					}
 				}
 			}
 			
-			if (metaData.Count == 0)
-				return null;
+			if (originalData.Count == 0)
+				return MetadataStore.Empty;
 			
 			// import width / height
 			string width = null;
 			string height = null;
 			
-			if (!(metaData.TryGetValue("width", out width) &&
-			      metaData.TryGetValue("height", out height))) {
+			if (!(originalData.TryGetValue("width", out width) &&
+			      originalData.TryGetValue("height", out height))) {
 				
-				metaData.TryGetValue("video_width", out width);
-				metaData.TryGetValue("video_height", out height);
+				originalData.TryGetValue("video_width", out width);
+				originalData.TryGetValue("video_height", out height);
 			}
 			
 			if (!string.IsNullOrEmpty(width) && !string.IsNullOrEmpty(height)) {
-				keywords.Add(new Keyword() {
-					keywordType = KeywordType.EXTRACTOR_SIZE,
-					keyword = string.Format("{0}x{1}", width, height)
-				});
+				convertedData.Add(new MetadataItem(MetadataType.SIZE, 
+				                                   string.Format("{0}x{1}", width, height)));
 			}
 			
 			// import software			
-			if (metaData.TryGetValue("software", out tmp)) {
-				keywords.Add(new Keyword() {
-					keywordType = KeywordType.EXTRACTOR_SOFTWARE,
-					keyword = tmp
-				});
+			if (originalData.TryGetValue("software", out tmp)) {
+				convertedData.Add(new MetadataItem(MetadataType.SOFTWARE, tmp));
 			}
 			
 			// import duration
-			if (metaData.TryGetValue("video_length", out tmp) ||
-			    metaData.TryGetValue("length", out tmp)) {
+			if (originalData.TryGetValue("video_length", out tmp) ||
+			    originalData.TryGetValue("length", out tmp)) {
 				
 				double val;
 				if (double.TryParse(tmp,
@@ -295,67 +290,44 @@ namespace VolumeDB.Import
 				                    CultureInfo.InvariantCulture.NumberFormat,
 				                    out val)) {
 					
-					keywords.Add(new Keyword() {
-						keywordType = KeywordType.EXTRACTOR_DURATION,
-						keyword = MetaDataHelper.SecsToExtractorDuration(val)
-					});
+					convertedData.Add(new MetadataItem(MetadataType.DURATION, 
+					                                   MetadataUtils.SecsToMetadataDuration(val)));
 				}
 			}
 			
 			// import comment
-			if (metaData.TryGetValue("comment", out tmp)) {
-				keywords.Add(new Keyword() {
-					keywordType = KeywordType.EXTRACTOR_COMMENT,
-					keyword = tmp
-				});
+			if (originalData.TryGetValue("comment", out tmp)) {
+				convertedData.Add(new MetadataItem(MetadataType.COMMENT, tmp));
 			}			
 			
 			// import album
-			if (metaData.TryGetValue("album", out tmp)) {
-				keywords.Add(new Keyword() {
-					keywordType = KeywordType.EXTRACTOR_ALBUM,
-					keyword = tmp
-				});
+			if (originalData.TryGetValue("album", out tmp)) {
+				convertedData.Add(new MetadataItem(MetadataType.ALBUM, tmp));
 			}
 			
 			// import artist
-			if (metaData.TryGetValue("artist", out tmp)) {
-				keywords.Add(new Keyword() {
-					keywordType = KeywordType.EXTRACTOR_ARTIST,
-					keyword = tmp
-				});
+			if (originalData.TryGetValue("artist", out tmp)) {
+				convertedData.Add(new MetadataItem(MetadataType.ARTIST, tmp));
 			}
 			
 			// import title
-			if (metaData.TryGetValue("title", out tmp)) {
-				keywords.Add(new Keyword() {
-					keywordType = KeywordType.EXTRACTOR_TITLE,
-					keyword = tmp
-				});
+			if (originalData.TryGetValue("title", out tmp)) {
+				convertedData.Add(new MetadataItem(MetadataType.TITLE, tmp));
 			}
 			
 			// import genre
-			if (metaData.TryGetValue("genre", out tmp)) {
-				keywords.Add(new Keyword() {
-					keywordType = KeywordType.EXTRACTOR_GENRE,
-					keyword = tmp
-				});
+			if (originalData.TryGetValue("genre", out tmp)) {
+				convertedData.Add(new MetadataItem(MetadataType.GENRE, tmp));
 			}
 			
 			// import year
-			if (metaData.TryGetValue("userdate", out tmp)) {
-				keywords.Add(new Keyword() {
-					keywordType = KeywordType.EXTRACTOR_YEAR,
-					keyword = tmp
-				});
+			if (originalData.TryGetValue("userdate", out tmp)) {
+				convertedData.Add(new MetadataItem(MetadataType.YEAR, tmp));
 			}
 			
 			// import publisher
-			if (metaData.TryGetValue("publisher", out tmp)) {
-				keywords.Add(new Keyword() {
-					keywordType = KeywordType.EXTRACTOR_PUBLISHER,
-					keyword = tmp
-				});
+			if (originalData.TryGetValue("publisher", out tmp)) {
+				convertedData.Add(new MetadataItem(MetadataType.PUBLISHER, tmp));
 			}
 			
 			// import format
@@ -367,7 +339,7 @@ namespace VolumeDB.Import
 			string audio = null;
 			
 			foreach (string key in new string[] { "video_codec", "audio_codec", "codec" }) {
-				if (metaData.TryGetValue(key, out tmp)) {
+				if (originalData.TryGetValue(key, out tmp)) {
 					if (codec == null)
 						codec = string.Format("Codec: {0}", tmp);
 					else
@@ -375,7 +347,7 @@ namespace VolumeDB.Import
 				}
 			}
 			
-			if (metaData.TryGetValue("vidoe_fps", out tmp)) {
+			if (originalData.TryGetValue("vidoe_fps", out tmp)) {
 				video = tmp + "fps";
 			}
 			
@@ -387,7 +359,7 @@ namespace VolumeDB.Import
 			};
 			
 			foreach (string[] key in keys) {
-				if (metaData.TryGetValue(key[0], out tmp)) {
+				if (originalData.TryGetValue(key[0], out tmp)) {
 					string val = tmp + key[1];
 					if (audio == null)
 						audio = val;
@@ -408,13 +380,13 @@ namespace VolumeDB.Import
 			}
 			
 			if (format != null) {
-				keywords.Add(new Keyword() {
-					keywordType = KeywordType.EXTRACTOR_FORMAT,
-					keyword = format
-				});
+				convertedData.Add(new MetadataItem(MetadataType.FORMAT, format));
 			}
 			
-			return MetaDataHelper.PackExtractorKeywords(keywords.ToArray());
+			if (convertedData.Count == 0)
+				return MetadataStore.Empty;
+			else
+				return new MetadataStore(convertedData);
 		}
 	}
 }

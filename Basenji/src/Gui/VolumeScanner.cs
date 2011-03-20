@@ -1,6 +1,6 @@
 // VolumeScanner.cs
 // 
-// Copyright (C) 2008 - 2010 Patrick Ulbrich
+// Copyright (C) 2008 - 2011 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -26,6 +26,7 @@ using Basenji.Gui.Widgets.Editors;
 using Platform.Common.IO;
 using VolumeDB;
 using VolumeDB.VolumeScanner;
+using VolumeDB.Metadata;
 
 namespace Basenji.Gui
 {
@@ -40,6 +41,7 @@ namespace Basenji.Gui
 		private ListStore			logStore;
 		private VolumeDatabase		database;
 		private IVolumeScanner		scanner;
+		private MetadataProvider	mdp;
 		private StringBuilder		scannerLog;
 		private StatusUpdateTimer	timer;
 
@@ -53,10 +55,26 @@ namespace Basenji.Gui
 			////this.Destroyed += Object_Destroyed;
 			//volInfo.Sensitive = false; // will be enabled when scanning has been finished
 			//InitTreeView();
-
-			string[] blacklist = App.Settings.ScannerExtractionBlacklist
-				.Split(new string[] { ", ", "," },
-				StringSplitOptions.RemoveEmptyEntries);
+			
+			mdp = null;
+			string extractorWarning = null;
+			if (App.Settings.ScannerExtractMetaData) {
+/*				if (App.Settings.ScannerMetaDataProvider == 0) {
+					//mdp = new TagLibMetadataProvider();
+				} else {*/
+					
+					string[] blacklist = App.Settings.ScannerExtractionBlacklist
+						.Split(new string[] { ", ", "," },
+						StringSplitOptions.RemoveEmptyEntries);
+					
+					try {
+						mdp = new ExtractorMetadataProvider(blacklist);
+					} catch (DllNotFoundException) {
+						// libextractor package not installed
+						extractorWarning = S._("libExtractor not found. Metadata extraction disabled.");
+					}
+/*				}*/
+			}
 			
 			// setup scanner options
 			ScannerOptions[] opts = new ScannerOptions[2] {
@@ -66,8 +84,7 @@ namespace Basenji.Gui
 					ComputeHashs		= App.Settings.ScannerComputeHashs,
 					DiscardSymLinks		= App.Settings.ScannerDiscardSymLinks,
 					GenerateThumbnails	= App.Settings.ScannerGenerateThumbnails,
-					ExtractMetaData		= App.Settings.ScannerExtractMetaData,
-					ExtractionBlacklist	= blacklist,
+					MetadataProvider	= mdp,
 					DbDataPath			= PathUtil.GetDbDataPath(database)
 				},
 			
@@ -116,22 +133,22 @@ namespace Basenji.Gui
 				
 				switch (scanner.VolumeInfo.GetVolumeType()) {
 					case VolumeType.FileSystemVolume:
-						FilesystemScannerOptions fsopts = (FilesystemScannerOptions)opts[0];
-						
 						UpdateLog(LogIcon.Info, string.Format(S._("Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, hashing: {3}."),
-						                                      BoolToStr(fsopts.GenerateThumbnails),
-					                                          BoolToStr(fsopts.ExtractMetaData),
-					                                          BoolToStr(fsopts.DiscardSymLinks),
-					                                          BoolToStr(fsopts.ComputeHashs)));
+						                                      BoolToStr(App.Settings.ScannerGenerateThumbnails),
+					                                          BoolToStr(App.Settings.ScannerExtractMetaData),
+					                                          BoolToStr(App.Settings.ScannerDiscardSymLinks),
+					                                          BoolToStr(App.Settings.ScannerComputeHashs)));
 						break;
 					case VolumeType.AudioCdVolume:
-						AudioCdScannerOptions aopts = (AudioCdScannerOptions)opts[1];					
 						UpdateLog(LogIcon.Info, string.Format(S._("Options: MusicBrainz enabled: {0}"),
-					                                      BoolToStr(aopts.EnableMusicBrainz)));
+					                                      BoolToStr(App.Settings.ScannerEnableMusicBrainz)));
 						break;
 					default:
 						throw new NotImplementedException(string.Format("Missing options output for scannertyp {0}", scanner.GetType()));
 				}
+				
+				if (extractorWarning != null)
+					UpdateLog(LogIcon.Warning, extractorWarning);
 				
 				scanner.RunAsync(); // starts scanning on a new thread and returns
 			} catch {
@@ -227,8 +244,15 @@ namespace Basenji.Gui
 				}
 
 				this.Destroy();
+				
+				if (scanner != null)
+					scanner.Dispose();
+				if (mdp != null)
+					mdp.Dispose();
 			} catch (ValidationException e) {
-				MsgDialog.ShowError(this, S._("Invalid data"), string.Format(S._("\"{0}\" is {1}.\n\nExpected format: {2}\nPlease correct or remove the data you entered.") , e.WidgetName, e.Message, e.ExpectedFormat));
+				MsgDialog.ShowError(this, S._("Invalid data"), 
+				                    string.Format(S._("\"{0}\" is {1}.\n\nExpected format: {2}\nPlease correct or remove the data you entered."), 
+				                                  e.WidgetName, e.Message, e.ExpectedFormat));
 				return false;			 
 			}
 			return true;
