@@ -15,8 +15,13 @@ case $arg in
 			cp -R images/basenji.svg images/themes $target_dir/data
 		fi
 		
-		ln -s $gio_assembly_path -n $target_dir/$gio_assembly_name
-		ln -s $gio_assembly_path.config -n $target_dir/$gio_assembly_name.config
+		if [ ! -f $target_dir/$gio_assembly_name ]; then
+			ln -s $gio_assembly_path -n $target_dir/$gio_assembly_name
+		fi
+
+		if [ ! -f $target_dir/$gio_assembly_name.config ]; then		
+			ln -s $gio_assembly_path.config -n $target_dir/$gio_assembly_name.config
+		fi
 		;;
 	"--after-clean")
 		rm -rf $target_dir/data

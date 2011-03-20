@@ -11,8 +11,8 @@ post-install-local-hook:
 	\
 	gio_assembly_path="`pkg-config --variable=Libraries gio-sharp-2.0`"; \
 	gio_assembly_name="`basename $$gio_assembly_path`"; \
-	ln -s "$$gio_assembly_path" -n $(DESTDIR)$(libdir)/$(PACKAGE)/"$$gio_assembly_name"; \
-	ln -s "$$gio_assembly_path.config" -n $(DESTDIR)$(libdir)/$(PACKAGE)/"$$gio_assembly_name.config";
+	ln -sf "$$gio_assembly_path" -n $(DESTDIR)$(libdir)/$(PACKAGE)/"$$gio_assembly_name"; \
+	ln -sf "$$gio_assembly_path.config" -n $(DESTDIR)$(libdir)/$(PACKAGE)/"$$gio_assembly_name.config";
 
 post-uninstall-local-hook:
 	# remove prefix/share/basenji
