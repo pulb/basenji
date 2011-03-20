@@ -1,0 +1,152 @@
+# Croatian translation for basenji
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the basenji package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: basenji\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2010-12-03 19:54+0100\n"
+"PO-Revision-Date: 2011-03-05 11:28+0000\n"
+"Last-Translator: Borna Bilas <Unknown>\n"
+"Language-Team: Croatian <hr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-03-20 16:28+0000\n"
+"X-Generator: Launchpad (build 12617)\n"
+
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:74
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:65
+#, csharp-format
+msgid ""
+"Operand for keyword '{0}' must be a number with an optional multiplier"
+msgstr ""
+"Operator za ključnu riječ '{0}' mora biti broj s opcionalnim množiteljem"
+
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:84
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:75
+#, csharp-format
+msgid "Invalid compare operator for keyword '{0}'"
+msgstr "Nevažeći operator uspoređivanja za ključnu riječ '{0}'"
+
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:99
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:122
+#, csharp-format
+msgid "Unknown keyword '{0}'"
+msgstr "Nepoznata ključna riječ '{0}'."
+
+#: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:109
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:133
+msgid "Invalid compare operator for a keyword that maps to textual content"
+msgstr ""
+"Nevažeći operator uspoređivanja za ključnu riječ mapiranu na tekstualni "
+"sadržaj."
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:85
+#, csharp-format
+msgid "Operand for keyword '{0}' must be a string"
+msgstr "Operator za ključnu riječ '{0}' mora biti string"
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:94
+#, csharp-format
+msgid "Unknown type '{0}'"
+msgstr "Nepoznata vrsta '{0}'"
+
+#: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:100
+#, csharp-format
+msgid "Keyword '{0}' only supports the equality operator ('=')"
+msgstr "Ključna riječ '{0}' podržava samo operator jednakosti ('=')"
+
+#: src/Searching/AbstractEUSLSearchCriteria.cs:87
+#: src/Searching/AbstractEUSLSearchCriteria.cs:91
+#, csharp-format
+msgid "Parsing error: search statement is malformed at position {0}"
+msgstr "Graška u analizi: pojam u pretraživanju je deformiran u poziciji {0}"
+
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:55
+msgid "Hashcode generation not implemented for audio cds yet."
+msgstr "Generacija Hash kodova za audio CD-e nije još implementirana."
+
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:97
+msgid "No MusicBrainz metadata available for this disc."
+msgstr "Nema MusicBrainz metapodataka dostupnih za disk."
+
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:102
+msgid ""
+"The trackcount retrieved from MusicBrainz does not match the trackcount of "
+"the local disc. Skipped."
+msgstr ""
+"Broj pjesama dobiven od MusicBrainz se ne slaže s brojem pjesama na lokalnom "
+"disku. Preskočeno."
+
+#: src/VolumeScanner/AudioCdVolumeScanner.cs:125
+msgid "Error connecting to MusicBrainz server."
+msgstr "Greška u spajanju na MusicBrainz server."
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:105
+msgid "libExtractor not found. Metadata extraction disabled."
+msgstr "libExtractor nije nađen. Izvoz Metapodataka onemogućeno."
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:187
+#, csharp-format
+msgid "Directory '{0}' not found. (Wrong filename encoding?)"
+msgstr "Mapa '{0}' nije nađena. (Pogrešno kodiranje imena?)"
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:196
+#, csharp-format
+msgid "Skipped item '{0}' as it doesn't seem to be a real directory."
+msgstr "Preskačena stavka '{0}' jer nije prava mapa."
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:217
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:345
+#, csharp-format
+msgid "Skipped symlink item '{0}' as the target does not exist."
+msgstr "Preskočena simbolička veza '{0}' jer cilj nije valjan."
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:226
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:352
+#, csharp-format
+msgid ""
+"Skipped symlink item '{0}' as it appears to point to a different drive "
+"('{1}')."
+msgstr ""
+"Preskočena simbolička veza '{0}' jer pokazuje na drugi pogon ('{1}')."
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:267
+#, csharp-format
+msgid "File '{0}' not found. (Wrong filename encoding?)"
+msgstr "Datoteka '{0}' nije nađena. (Pogrešno kodiranje imena?)"
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:315
+#, csharp-format
+msgid "Error opening file '{0}', can't retrieve any mime/metadata. ({1})"
+msgstr "Greška u otvaranju '{0}', nije moguće dohvatiti metapodatke. ({1})"
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:359
+#, csharp-format
+msgid ""
+"Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."
+msgstr ""
+"Preskočena simbolička veza '{0}' jer ne pokazuje normalnu datoteku ('{1}')."
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:368
+#, csharp-format
+msgid "Skipped item '{0}' as it appears to be some kind of special file."
+msgstr "Prekočena stavka '{0}' jer je nekakva posebna datoteka."
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:386
+#, csharp-format
+msgid "Unable to dump dir '{0}'. ({1})"
+msgstr "Nije moguće odbaciti mapu '{0}'. ({1})"
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:505
+#, csharp-format
+msgid "Can't read LastWriteTime from item '{0}' ({1})."
+msgstr "Nije moguće pročitati LastWriteTime iz stavke '{0}' ({1})"
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:669
+#, csharp-format
+msgid "Failed to resolve target item for symlink '{0}'."
+msgstr "Nije moguće razriješiti ciljnu stavku za simboličku vezu '{0}'."

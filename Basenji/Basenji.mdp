@@ -1,4 +1,5 @@
 <Project name="Basenji" fileversion="2.0" DefaultNamespace="Basenji" language="C#" clr-version="Net_2_0" targetFramework="3.5" ctype="DotNetProject">
+  <Deployment.LinuxDeployData generateScript="False" />
   <Configurations active="Gnome_Debug">
     <Configuration name="Debug" ctype="DotNetProjectConfiguration">
       <CustomCommands>
@@ -109,6 +110,7 @@
     <File subtype="Code" buildaction="EmbedAsResource" name="po/uk.resources" resource_id="Basenji.po.uk.resources" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/zh_CN.resources" resource_id="Basenji.po.zh_CN.resources" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/sr.resources" resource_id="Basenji.po.sr.resources" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="po/hr.resources" resource_id="Basenji.po.hr.resources" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
@@ -122,5 +124,4 @@
     <ProjectReference type="Gac" localcopy="True" refto="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   </References>
   <LanguageParameters ApplicationIcon="images/basenji.ico" ctype="CSharpProjectParameters" />
-  <Deployment.LinuxDeployData generateScript="False" />
 </Project>

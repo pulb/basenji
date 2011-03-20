@@ -53,6 +53,9 @@ Bulgarian:
 Chinese (Simplified):
     Li Jin (https://launchpad.net/~lijin)
 
+Croatian:
+    Borna Bilas (https://launchpad.net/~borna-bilas)
+
 Danish:
     nanker (https://launchpad.net/~nanker)
 

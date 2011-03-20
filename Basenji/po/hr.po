@@ -1,0 +1,916 @@
+# Croatian translation for basenji
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the basenji package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: basenji\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2010-12-03 19:54+0100\n"
+"PO-Revision-Date: 2011-03-10 21:31+0000\n"
+"Last-Translator: Borna Bilas <Unknown>\n"
+"Language-Team: Croatian <hr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-03-20 16:28+0000\n"
+"X-Generator: Launchpad (build 12617)\n"
+
+#: src/Util.cs:30
+#, csharp-format
+msgid "{0} Bytes"
+msgstr "{0} Bajtova"
+
+#: src/Util.cs:32
+msgid "Bytes"
+msgstr "Bajtovi"
+
+#: src/Util.cs:32
+msgid "KB"
+msgstr "KB"
+
+#: src/Util.cs:32
+msgid "MB"
+msgstr "MB"
+
+#: src/Util.cs:32
+msgid "GB"
+msgstr "GB"
+
+#: src/Util.cs:32
+msgid "TB"
+msgstr "TB"
+
+#: src/Options.cs:477
+msgid "OptionName"
+msgstr "ImaOpcije"
+
+#: src/FileDialog.cs:51
+msgid "VolumeDatabase files"
+msgstr "VolumeDatabase datoteke"
+
+#: src/FileDialog.cs:56
+msgid "All files"
+msgstr "Sve datoteke"
+
+#: src/Main.cs:137 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
+#: src/Gui/MainWindow.cs:262 src/Gui/MainWindow.cs:283
+#: src/Gui/MainWindow.cs:305 src/Gui/MainWindow.cs:314
+#: src/Gui/MainWindow.cs:556
+msgid "Error"
+msgstr "Greška"
+
+#: src/Main.cs:137
+#, csharp-format
+msgid "{0} is already running."
+msgstr "{0} je već pokrenut."
+
+#: src/Gui/Widgets/VolumeView.cs:42 src/Gui/Widgets/SearchResultView.cs:30
+msgid "Unnamed"
+msgstr "Neimenovano"
+
+#: src/Gui/Widgets/VolumeView.cs:43
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:213
+msgid "Category:"
+msgstr "Kategorija:"
+
+#: src/Gui/Widgets/VolumeView.cs:44
+msgid "files"
+msgstr "datoteke"
+
+#: src/Gui/Widgets/VolumeView.cs:45
+msgid "tracks"
+msgstr "pjesme"
+
+#: src/Gui/Widgets/ItemView.cs:29
+msgid "Loading..."
+msgstr "Učitavanje…"
+
+#: src/Gui/Widgets/ItemView.cs:30
+msgid "(empty)"
+msgstr "(prazno)"
+
+#: src/Gui/Widgets/ItemView.cs:103
+msgid "Unknown"
+msgstr "Nepoznato"
+
+#: src/Gui/Widgets/ItemView.cs:174 src/Gui/Widgets/Editors/ItemEditor.cs:86
+msgid "Name"
+msgstr "Naziv"
+
+#: src/Gui/Widgets/ItemView.cs:180
+msgid "Artist"
+msgstr "Umjetnik/ca"
+
+#: src/Gui/Widgets/ItemView.cs:185
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:53
+#: src/Gui/Widgets/ItemInfo.cs:223 src/Gui/Widgets/ItemInfo.cs:275
+msgid "Duration"
+msgstr "Trajanje"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:34
+#: src/Gui/DriveSelection.cs:168
+msgid "Filesystem"
+msgstr "Datotečni sustav"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:65
+msgid "Files:"
+msgstr "Datoteke:"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:66
+msgid "Directories:"
+msgstr "Mape:"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:67
+msgid "Total size:"
+msgstr "Ukupna veličina:"
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:85
+msgid "Item type"
+msgstr "Vrsta stavke"
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:101 src/Gui/Widgets/ItemInfo.cs:324
+msgid "Note"
+msgstr "Napomena"
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:102 src/Gui/Widgets/ItemInfo.cs:327
+msgid "Keywords"
+msgstr "Ključne riječi"
+
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:31
+#: src/Gui/Widgets/SearchResultView.cs:34
+msgid "Audio CD track"
+msgstr "AudioCD pjesma"
+
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:54
+#: src/Gui/Widgets/ItemInfo.cs:228
+msgid "Type"
+msgstr "Vrsta"
+
+#: src/Gui/Widgets/Editors/DirectoryItemEditor.cs:28
+msgid "Directory"
+msgstr "Mapa"
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:59
+#: src/Gui/Widgets/SearchResultView.cs:31 src/Gui/Widgets/ItemInfo.cs:182
+msgid "Location"
+msgstr "Lokacija"
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:60
+#: src/Gui/Widgets/ItemInfo.cs:183
+msgid "Last write time"
+msgstr "Vrijeme zadnjeg pisanja"
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:61
+#: src/Gui/Widgets/ItemInfo.cs:208
+msgid "Filetype"
+msgstr "Vrsta datoteke"
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:31
+msgid "File"
+msgstr "Datoteka"
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:52
+#: src/Gui/Widgets/ItemInfo.cs:202 src/Gui/Widgets/ItemInfo.cs:224
+#: src/Gui/DriveSelection.cs:148
+msgid "Size"
+msgstr "Veličina"
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:53
+#: src/Gui/Widgets/ItemInfo.cs:204
+msgid "Hash"
+msgstr "Hash"
+
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:33
+msgid "Audio CD"
+msgstr "Audio CD"
+
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:63
+msgid "Tracks:"
+msgstr "Pjesme:"
+
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:64
+msgid "Duration:"
+msgstr "Trajanje:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:45
+msgid "Backup"
+msgstr "Sigurnosna kopija"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:46
+#: src/Gui/Widgets/CategoryView.cs:60
+msgid "Documents"
+msgstr "Dokumenti"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:47
+#: src/Gui/Widgets/CategoryView.cs:61
+msgid "Music"
+msgstr "Glazba"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:48
+msgid "Audiobooks"
+msgstr "Glazbene knjige"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:49
+#: src/Gui/Widgets/CategoryView.cs:62
+msgid "Movies"
+msgstr "Filmovi"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:50
+msgid "Videos"
+msgstr "Video snimke"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:51
+msgid "Pictures"
+msgstr "Fotografije"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:52
+msgid "Games"
+msgstr "Igre"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:53 src/Gui/Widgets/ItemInfo.cs:292
+msgid "Software"
+msgstr "Software"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:54
+msgid "Misc"
+msgstr "Razno"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:55
+msgid "Other"
+msgstr "Ostalo"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:179
+msgid "Yes"
+msgstr "Da"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:179
+msgid "No"
+msgstr "Ne"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:189
+msgid "Volume type:"
+msgstr "Vrsta uređaja:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:190
+msgid "Hashed:"
+msgstr "Hashirano:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:191
+msgid "Added:"
+msgstr "Dodano:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:212
+msgid "Archive No.:"
+msgstr "Br. Arhive:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:214
+msgid "Title:"
+msgstr "Naslov:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:215 src/Gui/DBProperties.cs:88
+msgid "Description:"
+msgstr "Opis:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:216
+msgid "Keywords:"
+msgstr "Ključne riječi:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:217
+msgid "Loaned to:"
+msgstr "Posuđeno:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:218
+msgid "Loaned date:"
+msgstr "Datum posudbe:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:219
+msgid "Return date:"
+msgstr "Datum vraćanja:"
+
+#: src/Gui/Widgets/CategoryView.cs:58
+msgid "Directories"
+msgstr "Mape"
+
+#: src/Gui/Widgets/CategoryView.cs:59
+msgid "Text"
+msgstr "Tekst"
+
+#: src/Gui/Widgets/CategoryView.cs:63
+msgid "Images"
+msgstr "Slike"
+
+#: src/Gui/Widgets/CategoryView.cs:64
+msgid "Applications"
+msgstr "Aplikacije"
+
+#: src/Gui/Widgets/CategoryView.cs:65
+msgid "Archives"
+msgstr "Arhive"
+
+#: src/Gui/Widgets/CategoryView.cs:66
+msgid "Development"
+msgstr "Razvoj"
+
+#: src/Gui/Widgets/CategoryView.cs:96 src/Gui/MainWindow.cs:894
+msgid "Category"
+msgstr "Kategorija"
+
+#: src/Gui/Widgets/CategoryView.cs:128
+msgid "All items"
+msgstr "Sve stavke"
+
+#: src/Gui/Widgets/SearchResultView.cs:32
+msgid "Volume"
+msgstr "Glasnoća"
+
+#: src/Gui/Widgets/SearchResultView.cs:33 src/Gui/MainWindow.cs:888
+msgid "Archive No."
+msgstr "Arhiva No."
+
+#: src/Gui/Widgets/ItemInfo.cs:39
+msgid "by"
+msgstr "od"
+
+#: src/Gui/Widgets/ItemInfo.cs:40
+msgid "from"
+msgstr "od"
+
+#: src/Gui/Widgets/ItemInfo.cs:194
+msgid "Symlink target"
+msgstr "Cilj simboličke veze"
+
+#: src/Gui/Widgets/ItemInfo.cs:225
+msgid "Track No."
+msgstr "Br. Pjesme"
+
+#: src/Gui/Widgets/ItemInfo.cs:257
+msgid "Genre"
+msgstr "Žanr"
+
+#: src/Gui/Widgets/ItemInfo.cs:269
+msgid "Year"
+msgstr "Godina"
+
+#: src/Gui/Widgets/ItemInfo.cs:272
+msgid "Description"
+msgstr "Opis"
+
+#: src/Gui/Widgets/ItemInfo.cs:279
+msgid "Dimensions"
+msgstr "Dimnezije"
+
+#: src/Gui/Widgets/ItemInfo.cs:282
+msgid "Format"
+msgstr "Format"
+
+#: src/Gui/Widgets/ItemInfo.cs:284
+msgid "Author"
+msgstr "Autor"
+
+#: src/Gui/Widgets/ItemInfo.cs:286
+msgid "Copyright"
+msgstr "Autorsko pravo"
+
+#: src/Gui/Widgets/ItemInfo.cs:288
+msgid "Producer"
+msgstr "Producent"
+
+#: src/Gui/Widgets/ItemInfo.cs:290
+msgid "Creator"
+msgstr "Stvaralac"
+
+#: src/Gui/Widgets/ItemInfo.cs:294
+msgid "Language"
+msgstr "Jezik"
+
+#: src/Gui/Widgets/ItemInfo.cs:296
+msgid "Page count"
+msgstr "Broj stranica"
+
+#: src/Gui/Widgets/ItemInfo.cs:300
+msgid "File count"
+msgstr "Broj datoteka"
+
+#: src/Gui/Widgets/PageNavigation.cs:27
+msgid "No items."
+msgstr "Nema stavki."
+
+#: src/Gui/Widgets/PageNavigation.cs:145
+#, csharp-format
+msgid "<b>Page {0}/{1}</b>  ({2} - {3} of {4} items)"
+msgstr "<b>Strana {0}/{1}</b> ({2} - {3} od {4} stavke)"
+
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:231
+msgid "Invalid data"
+msgstr "Nevažeći podaci"
+
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:231
+#, csharp-format
+msgid ""
+"\"{0}\" is {1}.\n"
+"\n"
+"Expected format: {2}\n"
+"Please correct or remove the data you entered."
+msgstr ""
+"\"{0}\" je {1}.\n"
+"\n"
+"Treženi format: {2}\n"
+"Molim ispravite ili izbrišite unesene podatke."
+
+#: src/Gui/DBProperties.cs:75
+msgid "Database Properties"
+msgstr "Svojstva databaze"
+
+#: src/Gui/DBProperties.cs:87
+msgid "Name:"
+msgstr "Naziv:"
+
+#: src/Gui/DBProperties.cs:89
+msgid "Created:"
+msgstr "Izrađeno:"
+
+#: src/Gui/VolumeProperties.cs:29
+msgid "Volume Properties"
+msgstr "Svojstva pogona"
+
+#: src/Gui/DriveSelection.cs:60
+msgid "Waiting for drives..."
+msgstr "Čekanje pogona..."
+
+#: src/Gui/DriveSelection.cs:133
+msgid "Drive"
+msgstr "Pogon"
+
+#: src/Gui/DriveSelection.cs:139
+msgid "Label"
+msgstr "Oznaka"
+
+#: src/Gui/DriveSelection.cs:241
+msgid "Please select a drive to scan"
+msgstr "Molim odaberite pogon za pretražiti"
+
+#: src/Gui/About.cs:28
+msgid "A portable volume indexing tool"
+msgstr "Prenosiv alat za indeksiranje pogona"
+
+#: src/Gui/About.cs:29
+#, csharp-format
+msgid "Using VolumeDB v{0}."
+msgstr "Korištenje VolumeDB v{0}."
+
+#: src/Gui/About.cs:31
+msgid "Copyright (c) "
+msgstr "Copyright (c) "
+
+#: src/Gui/ItemSearch.cs:78
+#, csharp-format
+msgid "Found {0} items in {1:F3} seconds."
+msgstr "Nađeno {0} stavki u {1:F3} sekunde."
+
+#: src/Gui/ItemSearch.cs:89 src/Gui/MainWindow.cs:453
+msgid "Timeout: another search is probably still in progress."
+msgstr "Vrijeme isteklo: drugo pretraživanje još u tijeku."
+
+#: src/Gui/ItemSearch.cs:91
+msgid "Too many search results. Please refine your search criteria."
+msgstr "Previše rezultata. Prepravite kriterij pretrage."
+
+#: src/Gui/ItemSearch.cs:106 src/Gui/MainWindow.cs:469
+msgid "Searching..."
+msgstr "Pretraživanje..."
+
+#: src/Gui/ItemSearch.cs:233
+msgid "Search Items"
+msgstr "Pretraži stavke"
+
+#: src/Gui/ItemSearch.cs:245 src/Gui/MainWindow.cs:1008
+msgid "default"
+msgstr "zadano"
+
+#: src/Gui/ItemSearch.cs:249
+msgid "Search items"
+msgstr "Pretraži stavke"
+
+#: src/Gui/ItemSearch.cs:284
+msgid "No search results."
+msgstr "Nema rezultata."
+
+#: src/Gui/ItemSearch.cs:327 src/Gui/MainWindow.cs:879
+msgid "Edit Item"
+msgstr "Izmijeniti stavku"
+
+#: src/Gui/MainWindow.cs:76 src/Gui/MainWindow.cs:92 src/Gui/MainWindow.cs:556
+#, csharp-format
+msgid "Database '{0}' not found."
+msgstr "Baza podataka '{0}' nije nađena."
+
+#: src/Gui/MainWindow.cs:115
+msgid "Database not found"
+msgstr "Baza podataka nije pronađena"
+
+#: src/Gui/MainWindow.cs:116
+msgid "Default database not found. Create?"
+msgstr "Zadana baza podataka nije nađena. Izraditi?"
+
+#: src/Gui/MainWindow.cs:145
+msgid "Unsupported database version"
+msgstr "Verzija baze podataka nije podržana"
+
+#: src/Gui/MainWindow.cs:146
+msgid "This database version is not supported."
+msgstr "Verzija baze podataka nije podržana."
+
+#: src/Gui/MainWindow.cs:165
+#, csharp-format
+msgid "{0} volumes loaded."
+msgstr "{0} pogona učitano."
+
+#: src/Gui/MainWindow.cs:186
+#, csharp-format
+msgid "An error occured while loading the volume list: {0}"
+msgstr "Greška kod učitavanja popisa pogona: {0}"
+
+#: src/Gui/MainWindow.cs:228
+msgid "Please enter the name for the new database"
+msgstr "Upišite ime nove baze podataka"
+
+#: src/Gui/MainWindow.cs:240
+msgid "Database exists"
+msgstr "Baza podataka postoji"
+
+#: src/Gui/MainWindow.cs:241
+msgid "Database already exists. Overwrite?"
+msgstr "Baza podataka postoji. Prepisati?"
+
+#: src/Gui/MainWindow.cs:254
+msgid "Please select a database"
+msgstr "Odaberite bazu podataka."
+
+#: src/Gui/MainWindow.cs:263 src/Gui/Import.cs:109
+msgid "Database not found."
+msgstr "Baza podataka nije nađena"
+
+#: src/Gui/MainWindow.cs:284
+#, csharp-format
+msgid ""
+"An error occured while accessing drive {0}:\n"
+"{1}"
+msgstr ""
+"Grška kod pristupanja pogonu {0}:\n"
+"{1}"
+
+#: src/Gui/MainWindow.cs:306
+#, csharp-format
+msgid "Drive {0} is not ready."
+msgstr "Pogon{0} nije spreman."
+
+#: src/Gui/MainWindow.cs:315
+#, csharp-format
+msgid "Drive {0} is neither mounted nor does it contain an audio cd."
+msgstr "Pogon {0} nije montiran ili ne sadrži audio cd."
+
+#: src/Gui/MainWindow.cs:342 src/Gui/MainWindow.cs:372
+msgid "No volume selected"
+msgstr "Nije odabran pogon"
+
+#: src/Gui/MainWindow.cs:343
+msgid "Please select a volume record to remove."
+msgstr "Odaberite pogon za odbaciti"
+
+#: src/Gui/MainWindow.cs:350
+msgid "Confirmation"
+msgstr "Potvrda"
+
+#: src/Gui/MainWindow.cs:351
+msgid "Are you sure you really want to remove the selected volume?"
+msgstr "Jeste li sigurni da želite izbrisati odabran pogon?"
+
+#: src/Gui/MainWindow.cs:373
+msgid "Please select a volume to edit."
+msgstr "Odaberite pogon za uređivati."
+
+#: src/Gui/MainWindow.cs:390
+msgid "No item selected"
+msgstr "Nije odabrana stavka"
+
+#: src/Gui/MainWindow.cs:391
+msgid "Please select an item to edit."
+msgstr "Odaberite stavku za urediti."
+
+#: src/Gui/MainWindow.cs:819
+msgid "_File"
+msgstr "_Datoteka"
+
+#: src/Gui/MainWindow.cs:822
+msgid "_New Database"
+msgstr "_Nova baza podataka"
+
+#: src/Gui/MainWindow.cs:825
+msgid "_Open Database"
+msgstr "_Otvoriti bazu podataka"
+
+#: src/Gui/MainWindow.cs:828
+msgid "Open Default Database"
+msgstr "_Otvori zadanu bazu podataka"
+
+#: src/Gui/MainWindow.cs:831
+msgid "_Database Properties"
+msgstr "_Svojstva baze podataka"
+
+#: src/Gui/MainWindow.cs:834
+msgid "_Import"
+msgstr "_Uvozi"
+
+#: src/Gui/MainWindow.cs:837
+msgid "_Quit"
+msgstr "_Izlaz"
+
+#: src/Gui/MainWindow.cs:843
+msgid "Recent Databases"
+msgstr "Nedavne baze podataka"
+
+#: src/Gui/MainWindow.cs:851
+msgid "_Edit"
+msgstr "_Uredi"
+
+#: src/Gui/MainWindow.cs:854
+msgid "_Preferences"
+msgstr "_Osobitosti"
+
+#: src/Gui/MainWindow.cs:858
+msgid "_Help"
+msgstr "_Pomoć"
+
+#: src/Gui/MainWindow.cs:861
+msgid "_Info"
+msgstr "_Info"
+
+#: src/Gui/MainWindow.cs:865
+msgid "_Add Volume"
+msgstr "_Dodaj pogon"
+
+#: src/Gui/MainWindow.cs:869
+msgid "_Remove Volume"
+msgstr "_Izbriši pogon"
+
+#: src/Gui/MainWindow.cs:872
+msgid "_Edit Volume"
+msgstr "_Uredi pogon"
+
+#: src/Gui/MainWindow.cs:875
+msgid "_Search"
+msgstr "_Pretraži"
+
+#: src/Gui/MainWindow.cs:882
+msgid "Sort by"
+msgstr "Razvrstaj po"
+
+#: src/Gui/MainWindow.cs:885
+msgid "Descending"
+msgstr "Silazno"
+
+#: src/Gui/MainWindow.cs:891
+msgid "Date added"
+msgstr "Datum dodavanja"
+
+#: src/Gui/MainWindow.cs:892
+msgid "Title"
+msgstr "Naslov"
+
+#: src/Gui/MainWindow.cs:893
+msgid "Drivetype"
+msgstr "Vrsta pogona"
+
+#: src/Gui/MainWindow.cs:1005
+msgid "Filter volumes"
+msgstr "Filtriranje pogona"
+
+#: src/Gui/Import.cs:29
+msgid "Import"
+msgstr "Uvezi"
+
+#: src/Gui/Import.cs:30
+msgid "Abort"
+msgstr "Prekid"
+
+#: src/Gui/Import.cs:98
+#, csharp-format
+msgid "{0:0}% completed."
+msgstr "{0:0}% Završreno"
+
+#: src/Gui/Import.cs:108
+msgid "Import failed"
+msgstr "Uvoz nije uspio"
+
+#: src/Gui/Import.cs:111
+msgid "Import failed!"
+msgstr "Uvoz neuspješan"
+
+#: src/Gui/Import.cs:113
+msgid "Import aborted."
+msgstr "Uvoz obstavljen."
+
+#: src/Gui/Import.cs:115
+msgid "Import completed successfully."
+msgstr "Uvoz završen uspješno."
+
+#: src/Gui/Import.cs:134
+msgid "Import in progress"
+msgstr "Uvoz u tijeku"
+
+#: src/Gui/Import.cs:135
+msgid "You must stop the import before closing this window."
+msgstr "Morate zaustaviti uvoz prije zatvaranja prozora."
+
+#: src/Gui/Import.cs:160
+msgid "Import Database"
+msgstr "Uvezi bazu podataka"
+
+#: src/Gui/Import.cs:171
+msgid "Please select a database to import"
+msgstr "Odaberite bazu podataka za uvoz"
+
+#: src/Gui/Import.cs:189
+msgid "Database:"
+msgstr "Baza podataka:"
+
+#: src/Gui/Import.cs:190
+msgid "Format:"
+msgstr "Oblik:"
+
+#: src/Gui/ItemProperties.cs:29
+msgid "Item Properties"
+msgstr "Svojstva stavke"
+
+#: src/Gui/VolumeScanner.cs:111
+msgid "Scanning started."
+msgstr "Skeniranje je počelo."
+
+#: src/Gui/VolumeScanner.cs:113
+#, csharp-format
+msgid "Scanning of drive '{0}' started."
+msgstr "Počelo je skeniranje pogona '{0}'."
+
+#: src/Gui/VolumeScanner.cs:121
+#, csharp-format
+msgid ""
+"Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
+"hashing: {3}."
+msgstr ""
+"Opcije: generirati sličice: {0} , izvaditi metapodatke: {1}, odbaciti "
+"simboličke veze: {2}, hashing: {3}."
+
+#: src/Gui/VolumeScanner.cs:129
+#, csharp-format
+msgid "Options: MusicBrainz enabled: {0}"
+msgstr "Opcije: MusicBrainz omogućena: {0}"
+
+#: src/Gui/VolumeScanner.cs:151
+msgid "Time"
+msgstr "Vrijeme"
+
+#: src/Gui/VolumeScanner.cs:155
+msgid "Message"
+msgstr "Poruka"
+
+#: src/Gui/VolumeScanner.cs:238
+msgid "yes"
+msgstr "da"
+
+#: src/Gui/VolumeScanner.cs:238
+msgid "no"
+msgstr "ne"
+
+#: src/Gui/VolumeScanner.cs:261
+msgid "Scan in progress"
+msgstr "Skeniranje u tijeku"
+
+#: src/Gui/VolumeScanner.cs:261
+msgid "You must stop scanning before closing this window."
+msgstr "Morate zaustaviti skeniranje prije zatvaranja prozora."
+
+#: src/Gui/VolumeScanner.cs:271
+msgid "Stopping Scanner and performing rollback..."
+msgstr "Zaustavljam skener i storniram."
+
+#: src/Gui/VolumeScanner.cs:313
+#, csharp-format
+msgid "An unhandled exception occured ({0})."
+msgstr "Dogodila se neobradiva iznimka ({0})."
+
+#: src/Gui/VolumeScanner.cs:314
+msgid "All database changes have been rolled back."
+msgstr "Promjene u bazi podataka su stornirane."
+
+#: src/Gui/VolumeScanner.cs:337
+#, csharp-format
+msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
+msgstr ""
+"Skeniranje nije uspjelo. Razlog: dogodila se neobradiva iznimka ({0})."
+
+#: src/Gui/VolumeScanner.cs:339
+msgid "Scanning aborted."
+msgstr "Skeniranje prekinuto."
+
+#: src/Gui/VolumeScanner.cs:341
+msgid "Scanning completed successfully."
+msgstr "Skeniranje uspješno završeno."
+
+#: src/Gui/VolumeScanner.cs:438
+msgid "VolumeScanner"
+msgstr "SkenerPogona"
+
+#: src/Gui/VolumeScanner.cs:450
+msgid "<b>Volume Information:</b>"
+msgstr "<b>Informacije o pogonu:</b>"
+
+#: src/Gui/VolumeScanner.cs:460
+msgid "<b>Scanner Log:</b>"
+msgstr "<b>Dnevnik skenera:</b>"
+
+#: src/Gui/VolumeScanner.cs:481
+msgid "Database access"
+msgstr "Pristup bazi podataka"
+
+#: src/Gui/Preferences.cs:107
+msgid "None"
+msgstr "Ništa"
+
+#: src/Gui/Preferences.cs:216
+msgid "Unsupported theme"
+msgstr "Nrpodržana tema"
+
+#: src/Gui/Preferences.cs:217
+msgid "The selected icon theme is currently not supported on your system."
+msgstr "Odabrana tema ikona trenutno nije podržana na vašem sistemu."
+
+#: src/Gui/Preferences.cs:255
+msgid "Restart required"
+msgstr "Potrebno ponovno pokretanje"
+
+#: src/Gui/Preferences.cs:256
+#, csharp-format
+msgid "You must restart {0} for icontheme changes to take effect."
+msgstr "Izmjene teme ikona bit će vidljive nakon ponovnog pokretanja {0}"
+
+#: src/Gui/Preferences.cs:286
+msgid "Preferences"
+msgstr "Osobitosti"
+
+#: src/Gui/Preferences.cs:310
+msgid "_Load Defaults"
+msgstr "_Učitaj uobičajene vrijednosti"
+
+#: src/Gui/Preferences.cs:336
+msgid "Icon theme:"
+msgstr "Tema ikona:"
+
+#: src/Gui/Preferences.cs:342
+msgid "Reopen most recent database on startup"
+msgstr "Otvori prijašnju bazu podataka na pokretanju."
+
+#: src/Gui/Preferences.cs:346
+msgid "Show iteminfo panel"
+msgstr "Prikaži panel za info. o stavkama."
+
+#: src/Gui/Preferences.cs:350
+msgid "Show hidden files"
+msgstr "Prikaži skrivene datoteke"
+
+#: src/Gui/Preferences.cs:354
+msgid "Show thumbnails in the filebrowser"
+msgstr "Prikaži sličice u pregledniku datoteka"
+
+#: src/Gui/Preferences.cs:357
+msgid "General"
+msgstr "Općenito"
+
+#: src/Gui/Preferences.cs:365
+msgid "Don't prompt, always scan:"
+msgstr "Ne pitaj, uvijek skeniraj:"
+
+#: src/Gui/Preferences.cs:384
+msgid "Generate Thumbnails"
+msgstr "Generiti ikone"
+
+#: src/Gui/Preferences.cs:388
+msgid "Extract metadata"
+msgstr "Izvadi meta podatke"
+
+#: src/Gui/Preferences.cs:392
+msgid "Discard symbolic links"
+msgstr "Odbaci dimboličke veze"
+
+#: src/Gui/Preferences.cs:396
+msgid "Compute hashcodes for files (slow!)"
+msgstr "Izračunaj hash vrijednosti za datoteke (sporo!)"
+
+#: src/Gui/Preferences.cs:400
+msgid "Fetch audio cd metadata from MusicBrainz.org"
+msgstr "Dobavi meta podatke za audio cd s MusicBrainz.org"
+
+#: src/Gui/Preferences.cs:403
+msgid "Scanner"
+msgstr "Skener"
