@@ -49,7 +49,7 @@ namespace Platform.Gnome.IO
 				var mounts = GLib.VolumeMonitor.Default.Mounts;
 				foreach (var m in mounts) {
 					if (supportedSchemes.ContainsKey(m.Root.UriScheme) && 
-					  	(m.Root.Uri.AbsolutePath) == rootPath)
+					  	(m.Root.Path == rootPath))
 					{
 						FillDriveInfo(d, m);
 						return;
@@ -83,7 +83,7 @@ namespace Platform.Gnome.IO
 		private static void FillDriveInfo(DriveInfo d, GLib.Mount m) {
 			d.volumeLabel = m.Name;
 			d.totalSize = 0L;
-			d.rootPath = m.Root.Uri.AbsolutePath;
+			d.rootPath = m.Root.Path;
 			d.device = null;
 			d.driveType = Platform.Common.IO.DriveType.Network;
 			d.filesystem = null;			
@@ -93,7 +93,7 @@ namespace Platform.Gnome.IO
 		}
 		
 		private static bool IsEqual(DriveInfo d, GLib.Mount m) {
-			return d.IsMounted && (d.RootPath == m.Root.Uri.AbsolutePath);
+			return d.IsMounted && (d.RootPath == m.Root.Path);
 		}
 	}
 }
