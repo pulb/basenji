@@ -58,7 +58,9 @@ namespace Basenji.Gui
 			
 			mdp = null;
 			string extractorWarning = null;
-			if (App.Settings.ScannerExtractMetaData) {
+			
+			if (App.Settings.ScannerExtractMetaData && 
+			    (VolumeProber.ProbeVolume(drive) == VolumeProber.VolumeProbeResult.Filesystem)) {
 /*				if (App.Settings.ScannerMetaDataProvider == 0) {
 					//mdp = new TagLibMetadataProvider();
 				} else {*/
