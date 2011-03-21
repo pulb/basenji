@@ -138,6 +138,10 @@ namespace Basenji.Gui
 					                                          BoolToStr(App.Settings.ScannerExtractMetaData),
 					                                          BoolToStr(App.Settings.ScannerDiscardSymLinks),
 					                                          BoolToStr(App.Settings.ScannerComputeHashs)));
+						
+						if (extractorWarning != null)
+							UpdateLog(LogIcon.Warning, extractorWarning);
+					
 						break;
 					case VolumeType.AudioCdVolume:
 						UpdateLog(LogIcon.Info, string.Format(S._("Options: MusicBrainz enabled: {0}"),
@@ -146,9 +150,6 @@ namespace Basenji.Gui
 					default:
 						throw new NotImplementedException(string.Format("Missing options output for scannertyp {0}", scanner.GetType()));
 				}
-				
-				if (extractorWarning != null)
-					UpdateLog(LogIcon.Warning, extractorWarning);
 				
 				scanner.RunAsync(); // starts scanning on a new thread and returns
 			} catch {
