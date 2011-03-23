@@ -87,7 +87,7 @@ namespace Platform.Gnome.IO
 			d.totalSize = 0L;
 			d.rootPath = m.Root.Path;
 			d.device = null;
-			d.driveType = Platform.Common.IO.DriveType.Unknown;
+			d.driveType = GetDriveType(m);
 			d.filesystem = null;			
 			d.isMounted = true;
 			d.isReady = true;
@@ -96,6 +96,19 @@ namespace Platform.Gnome.IO
 		
 		private static bool IsEqual(DriveInfo d, GLib.Mount m) {
 			return d.IsMounted && (d.RootPath == m.Root.Path);
+		}
+		
+		private static Platform.Common.IO.DriveType GetDriveType(GLib.Mount m) {
+			switch (m.Root.UriScheme) {
+				case "file":
+				case "archive":
+					return DriveType.Unknown;
+				case "ssh":
+				case "smb":
+					return DriveType.Network;
+				default:
+					return DriveType.Unknown;
+			}
 		}
 	}
 }
