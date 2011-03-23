@@ -45,7 +45,7 @@ namespace Platform.Gnome.IO
 			try	{
 				base.FromPath(d, rootPath);
 			} catch (ArgumentException) {
-				// rootpth was not found in devicekit disks
+				// rootpath was not found in devicekit disks
 				// try to find a GIO mountpoint with that path
 				var mounts = GLib.VolumeMonitor.Default.Mounts;
 				foreach (var m in mounts) {
@@ -64,8 +64,9 @@ namespace Platform.Gnome.IO
 		public override List<DriveInfo> GetAll(bool readyDrivesOnly) {
 			List<DriveInfo> drives = base.GetAll(readyDrivesOnly);
 			
-			// base.GetAll() has returned all mounted (and unmounted) fixed and removable volumes
-			// so the remaining mounted volumes must be network shares or dirs mounted with bindfs
+			// base.GetAll() has returned all mounted (and unmounted) fixed and removable volumes.
+			// the remaining mounts are expected to be network shares, virtual volumes
+			// (mounted iso images, dirs mounted with bindfs) etc.
 			var mounts = GLib.VolumeMonitor.Default.Mounts;
 			
 			foreach (var m in mounts) {
@@ -86,7 +87,7 @@ namespace Platform.Gnome.IO
 			d.totalSize = 0L;
 			d.rootPath = m.Root.Path;
 			d.device = null;
-			d.driveType = Platform.Common.IO.DriveType.Network;
+			d.driveType = Platform.Common.IO.DriveType.Unknown;
 			d.filesystem = null;			
 			d.isMounted = true;
 			d.isReady = true;
