@@ -31,9 +31,10 @@ namespace Platform.Gnome.IO
 		private static readonly Dictionary<string, string> supportedSchemes 
 			= new Dictionary<string, string>()
 		{
-			{ "file",	"FILE" },
-			{ "smb",	"SMB" },
-			{ "ssh",	"SSH" }
+			{ "file",		"FILE" },
+			{ "smb",		"SMB" },
+			{ "ssh",		"SSH" },
+			{ "archive",	"ARCHIVE" }
 		};
 		
 		public override void FromDevice(DriveInfo d, string device)	{
