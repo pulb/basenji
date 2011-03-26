@@ -94,6 +94,7 @@ Occitan (post 1500):
 Polish:
     Piotr Strębski (https://launchpad.net/~strebski)
     Stanisław Chmiela (https://launchpad.net/~chmiela-st)
+    Szymon Sieciński (https://launchpad.net/~szymon-siecinski)
     XeonBloomfield (https://launchpad.net/~xeonbloomfield)
 
 Russian:
