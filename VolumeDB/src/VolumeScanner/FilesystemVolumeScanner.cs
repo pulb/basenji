@@ -266,7 +266,7 @@ namespace VolumeDB.VolumeScanner
 							mimeType = MimeType.GetMimeTypeForFile(files[i].FullName);
 							
 							if (Options.MetadataProvider != null) {
-								metaData = new MetadataStore(Options.MetadataProvider.GetMetadata(files[i].FullName));
+								metaData = new MetadataStore(Options.MetadataProvider.GetMetadata(files[i].FullName, mimeType));
 							}
 							
 							if (Options.ComputeHashs) {

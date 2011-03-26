@@ -42,7 +42,7 @@ namespace VolumeDB.Metadata
 			}
 		}
 		
-		public override IEnumerable<MetadataItem> GetMetadata(string filename) {
+		public override IEnumerable<MetadataItem> GetMetadata(string filename, string mimetype) {
 			EnsureNotDisposed();
 			
 			Keyword[] keywords = extractor.GetKeywords(filename);

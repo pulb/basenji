@@ -30,7 +30,7 @@ namespace VolumeDB.Metadata
 			disposed = false;
 		}
 		
-		public abstract IEnumerable<MetadataItem> GetMetadata(string filename);
+		public abstract IEnumerable<MetadataItem> GetMetadata(string filename, string mimetype);
 		
 //		public void CopyTo(MetaDataProvider p) {
 //			CopyProvider(p);
