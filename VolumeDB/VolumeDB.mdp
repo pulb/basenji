@@ -123,6 +123,8 @@
     <File subtype="Code" buildaction="Compile" name="src/Metadata/MetadataStore.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Metadata/MetadataUtils.cs" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/hr.resources" resource_id="VolumeDB.po.hr.resources" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="po/cs.resources" resource_id="VolumeDB.po.cs.resources" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="po/nl.resources" resource_id="VolumeDB.po.nl.resources" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />

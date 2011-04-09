@@ -258,7 +258,9 @@ RESOURCES = \
 	po/zh_CN.resources,VolumeDB.po.zh_CN.resources \
 	po/sr.resources,VolumeDB.po.sr.resources \
 	po/ru.resources,VolumeDB.po.ru.resources \
-	po/hr.resources,VolumeDB.po.hr.resources 
+	po/hr.resources,VolumeDB.po.hr.resources \
+	po/cs.resources,VolumeDB.po.cs.resources \
+	po/nl.resources,VolumeDB.po.nl.resources 
 
 EXTRAS = \
 	volumedb.pc.in 

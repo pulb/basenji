@@ -111,6 +111,8 @@
     <File subtype="Code" buildaction="EmbedAsResource" name="po/zh_CN.resources" resource_id="Basenji.po.zh_CN.resources" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/sr.resources" resource_id="Basenji.po.sr.resources" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/hr.resources" resource_id="Basenji.po.hr.resources" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="po/nl.resources" resource_id="Basenji.po.nl.resources" />
+    <File subtype="Code" buildaction="EmbedAsResource" name="po/cs.resources" resource_id="Basenji.po.cs.resources" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />

@@ -250,7 +250,9 @@ RESOURCES = \
 	po/uk.resources,Basenji.po.uk.resources \
 	po/zh_CN.resources,Basenji.po.zh_CN.resources \
 	po/sr.resources,Basenji.po.sr.resources \
-	po/hr.resources,Basenji.po.hr.resources 
+	po/hr.resources,Basenji.po.hr.resources \
+	po/nl.resources,Basenji.po.nl.resources \
+	po/cs.resources,Basenji.po.cs.resources 
 
 EXTRAS = \
 	app.desktop \

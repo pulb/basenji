@@ -56,8 +56,14 @@ Chinese (Simplified):
 Croatian:
     Borna Bilas (https://launchpad.net/~borna-bilas)
 
+Czech:
+    Konki (https://launchpad.net/~pavel-konkol)
+
 Danish:
     nanker (https://launchpad.net/~nanker)
+
+Dutch:
+    Bjorn Robijns (https://launchpad.net/~bjornken)
 
 Estonian:
     olavi tohver (https://launchpad.net/~olts16)

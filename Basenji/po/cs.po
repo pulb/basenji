@@ -1,0 +1,915 @@
+# Czech translation for basenji
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the basenji package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: basenji\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2011-03-21 20:19+0100\n"
+"PO-Revision-Date: 2011-04-03 13:25+0000\n"
+"Last-Translator: Konki <pavel.konkol@seznam.cz>\n"
+"Language-Team: Czech <cs@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-04-09 16:44+0000\n"
+"X-Generator: Launchpad (build 12757)\n"
+
+#: src/Util.cs:30
+#, csharp-format
+msgid "{0} Bytes"
+msgstr "{0} Bajtů"
+
+#: src/Util.cs:32
+msgid "Bytes"
+msgstr "Bajty"
+
+#: src/Util.cs:32
+msgid "KB"
+msgstr "kB"
+
+#: src/Util.cs:32
+msgid "MB"
+msgstr "MB"
+
+#: src/Util.cs:32
+msgid "GB"
+msgstr "GB"
+
+#: src/Util.cs:32
+msgid "TB"
+msgstr "TB"
+
+#: src/Options.cs:477
+msgid "OptionName"
+msgstr "JménoVolby"
+
+#: src/FileDialog.cs:51
+msgid "VolumeDatabase files"
+msgstr ""
+
+#: src/FileDialog.cs:56
+msgid "All files"
+msgstr "Všechny soubory"
+
+#: src/Main.cs:137 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
+#: src/Gui/MainWindow.cs:262 src/Gui/MainWindow.cs:283
+#: src/Gui/MainWindow.cs:305 src/Gui/MainWindow.cs:314
+#: src/Gui/MainWindow.cs:556
+msgid "Error"
+msgstr "Chyba"
+
+#: src/Main.cs:137
+#, csharp-format
+msgid "{0} is already running."
+msgstr "{0} již běží."
+
+#: src/Gui/Widgets/VolumeView.cs:42 src/Gui/Widgets/SearchResultView.cs:30
+msgid "Unnamed"
+msgstr "Bezejmenný"
+
+#: src/Gui/Widgets/VolumeView.cs:43
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:213
+msgid "Category:"
+msgstr "Kategorie:"
+
+#: src/Gui/Widgets/VolumeView.cs:44
+msgid "files"
+msgstr "soubory"
+
+#: src/Gui/Widgets/VolumeView.cs:45
+msgid "tracks"
+msgstr "stopy"
+
+#: src/Gui/Widgets/ItemView.cs:29
+msgid "Loading..."
+msgstr "Načítání..."
+
+#: src/Gui/Widgets/ItemView.cs:30
+msgid "(empty)"
+msgstr "(prázdné)"
+
+#: src/Gui/Widgets/ItemView.cs:99 src/Gui/DriveSelection.cs:80
+msgid "Unknown"
+msgstr "Neznámý"
+
+#: src/Gui/Widgets/ItemView.cs:170 src/Gui/Widgets/Editors/ItemEditor.cs:86
+msgid "Name"
+msgstr "Název"
+
+#: src/Gui/Widgets/ItemView.cs:176
+msgid "Artist"
+msgstr "Umělec"
+
+#: src/Gui/Widgets/ItemView.cs:181
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:53
+#: src/Gui/Widgets/ItemInfo.cs:224 src/Gui/Widgets/ItemInfo.cs:287
+msgid "Duration"
+msgstr "Délka"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:34
+#: src/Gui/DriveSelection.cs:168
+msgid "Filesystem"
+msgstr "Systém souborů"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:65
+msgid "Files:"
+msgstr "Soubory:"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:66
+msgid "Directories:"
+msgstr "Adresáře:"
+
+#: src/Gui/Widgets/Editors/FileSystemVolumeEditor.cs:67
+msgid "Total size:"
+msgstr "Celková velikost:"
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:85
+msgid "Item type"
+msgstr "Typ položky"
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:101 src/Gui/Widgets/ItemInfo.cs:358
+msgid "Note"
+msgstr "Poznámka"
+
+#: src/Gui/Widgets/Editors/ItemEditor.cs:102 src/Gui/Widgets/ItemInfo.cs:361
+msgid "Keywords"
+msgstr "Klíčová slova"
+
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:31
+#: src/Gui/Widgets/SearchResultView.cs:34
+msgid "Audio CD track"
+msgstr "Stopa audio cd"
+
+#: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:54
+#: src/Gui/Widgets/ItemInfo.cs:229
+msgid "Type"
+msgstr "Typ"
+
+#: src/Gui/Widgets/Editors/DirectoryItemEditor.cs:28
+msgid "Directory"
+msgstr "Adresář"
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:59
+#: src/Gui/Widgets/SearchResultView.cs:31 src/Gui/Widgets/ItemInfo.cs:183
+msgid "Location"
+msgstr "Umístění"
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:60
+#: src/Gui/Widgets/ItemInfo.cs:184
+msgid "Last write time"
+msgstr "Poslední čas zápisu"
+
+#: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:61
+#: src/Gui/Widgets/ItemInfo.cs:209
+msgid "Filetype"
+msgstr "Typ souboru"
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:31
+msgid "File"
+msgstr "Soubor"
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:52
+#: src/Gui/Widgets/ItemInfo.cs:203 src/Gui/Widgets/ItemInfo.cs:225
+#: src/Gui/DriveSelection.cs:148
+msgid "Size"
+msgstr "Velikost"
+
+#: src/Gui/Widgets/Editors/FileItemEditor.cs:53
+#: src/Gui/Widgets/ItemInfo.cs:205
+msgid "Hash"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:33
+msgid "Audio CD"
+msgstr "Audio CD"
+
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:63
+msgid "Tracks:"
+msgstr "Stop:"
+
+#: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:64
+msgid "Duration:"
+msgstr "Délka:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:45
+msgid "Backup"
+msgstr "Zálohovat"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:46
+#: src/Gui/Widgets/CategoryView.cs:60
+msgid "Documents"
+msgstr "Dokumenty"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:47
+#: src/Gui/Widgets/CategoryView.cs:61
+msgid "Music"
+msgstr "Hudba"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:48
+msgid "Audiobooks"
+msgstr "Mluvené knihy"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:49
+#: src/Gui/Widgets/CategoryView.cs:62
+msgid "Movies"
+msgstr "Filmy"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:50
+msgid "Videos"
+msgstr "Videa"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:51
+msgid "Pictures"
+msgstr "Obrázky"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:52
+msgid "Games"
+msgstr "Hry"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:53 src/Gui/Widgets/ItemInfo.cs:318
+msgid "Software"
+msgstr "Software"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:54
+msgid "Misc"
+msgstr "Různé"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:55
+msgid "Other"
+msgstr "Ostatní"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:179
+msgid "Yes"
+msgstr "Ano"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:179
+msgid "No"
+msgstr "Ne"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:189
+msgid "Volume type:"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:190
+msgid "Hashed:"
+msgstr ""
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:191
+msgid "Added:"
+msgstr "Přidáno:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:212
+msgid "Archive No.:"
+msgstr "Archiv č.:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:214
+msgid "Title:"
+msgstr "Název:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:215 src/Gui/DBProperties.cs:88
+msgid "Description:"
+msgstr "Popisek:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:216
+msgid "Keywords:"
+msgstr "Klíčová slova:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:217
+msgid "Loaned to:"
+msgstr "Půjčeno do:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:218
+msgid "Loaned date:"
+msgstr "Datum zapůjčení:"
+
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:219
+msgid "Return date:"
+msgstr "Datum vrácení:"
+
+#: src/Gui/Widgets/CategoryView.cs:58
+msgid "Directories"
+msgstr "Adresáře"
+
+#: src/Gui/Widgets/CategoryView.cs:59
+msgid "Text"
+msgstr "Text"
+
+#: src/Gui/Widgets/CategoryView.cs:63
+msgid "Images"
+msgstr "Obrázky"
+
+#: src/Gui/Widgets/CategoryView.cs:64
+msgid "Applications"
+msgstr "Aplikace"
+
+#: src/Gui/Widgets/CategoryView.cs:65
+msgid "Archives"
+msgstr "Archivy"
+
+#: src/Gui/Widgets/CategoryView.cs:66
+msgid "Development"
+msgstr "Vývoj"
+
+#: src/Gui/Widgets/CategoryView.cs:96 src/Gui/MainWindow.cs:894
+msgid "Category"
+msgstr "Skupina"
+
+#: src/Gui/Widgets/CategoryView.cs:128
+msgid "All items"
+msgstr "Všechny položky"
+
+#: src/Gui/Widgets/SearchResultView.cs:32
+msgid "Volume"
+msgstr ""
+
+#: src/Gui/Widgets/SearchResultView.cs:33 src/Gui/MainWindow.cs:888
+msgid "Archive No."
+msgstr "Archiv č."
+
+#: src/Gui/Widgets/ItemInfo.cs:40
+msgid "by"
+msgstr "od"
+
+#: src/Gui/Widgets/ItemInfo.cs:41
+msgid "from"
+msgstr "z"
+
+#: src/Gui/Widgets/ItemInfo.cs:195
+msgid "Symlink target"
+msgstr "Cíl symlinku"
+
+#: src/Gui/Widgets/ItemInfo.cs:226
+msgid "Track No."
+msgstr "Stopa č."
+
+#: src/Gui/Widgets/ItemInfo.cs:257
+msgid "Genre"
+msgstr "Žánr"
+
+#: src/Gui/Widgets/ItemInfo.cs:277
+msgid "Year"
+msgstr "Rok"
+
+#: src/Gui/Widgets/ItemInfo.cs:282
+msgid "Description"
+msgstr "Popisek"
+
+#: src/Gui/Widgets/ItemInfo.cs:293
+msgid "Dimensions"
+msgstr "Rozměrů"
+
+#: src/Gui/Widgets/ItemInfo.cs:298
+msgid "Format"
+msgstr "Formát"
+
+#: src/Gui/Widgets/ItemInfo.cs:302
+msgid "Author"
+msgstr "Autor"
+
+#: src/Gui/Widgets/ItemInfo.cs:306
+msgid "Copyright"
+msgstr "Autorská práva"
+
+#: src/Gui/Widgets/ItemInfo.cs:310
+msgid "Producer"
+msgstr "Producent"
+
+#: src/Gui/Widgets/ItemInfo.cs:314
+msgid "Creator"
+msgstr "Tvůrce"
+
+#: src/Gui/Widgets/ItemInfo.cs:322
+msgid "Language"
+msgstr "Jazyk"
+
+#: src/Gui/Widgets/ItemInfo.cs:326
+msgid "Page count"
+msgstr "Počet stránek"
+
+#: src/Gui/Widgets/ItemInfo.cs:333
+msgid "File count"
+msgstr "Počet souborů"
+
+#: src/Gui/Widgets/PageNavigation.cs:27
+msgid "No items."
+msgstr "Žádné položky."
+
+#: src/Gui/Widgets/PageNavigation.cs:145
+#, csharp-format
+msgid "<b>Page {0}/{1}</b>  ({2} - {3} of {4} items)"
+msgstr "<b>Stránka {0}/{1}</b>  ({2} - {3} z {4} položek)"
+
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:256
+msgid "Invalid data"
+msgstr "Neplatná data"
+
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:257
+#, csharp-format
+msgid ""
+"\"{0}\" is {1}.\n"
+"\n"
+"Expected format: {2}\n"
+"Please correct or remove the data you entered."
+msgstr ""
+"\"{0}\" je {1}.\n"
+"\n"
+"Předpokládaný formát: {2}\n"
+"Opravte nebo odstraňte zadaná data."
+
+#: src/Gui/DBProperties.cs:75
+msgid "Database Properties"
+msgstr "Vlastnosti databáze"
+
+#: src/Gui/DBProperties.cs:87
+msgid "Name:"
+msgstr "Název:"
+
+#: src/Gui/DBProperties.cs:89
+msgid "Created:"
+msgstr "Vytvořeno:"
+
+#: src/Gui/VolumeProperties.cs:29
+msgid "Volume Properties"
+msgstr ""
+
+#: src/Gui/DriveSelection.cs:60
+msgid "Waiting for drives..."
+msgstr "Čeká se na mechaniky..."
+
+#: src/Gui/DriveSelection.cs:133
+msgid "Drive"
+msgstr "Mechanika"
+
+#: src/Gui/DriveSelection.cs:139
+msgid "Label"
+msgstr "Popisek"
+
+#: src/Gui/DriveSelection.cs:241
+msgid "Please select a drive to scan"
+msgstr "Prosím zvolte mechaniku pro skenování"
+
+#: src/Gui/About.cs:28
+msgid "A portable volume indexing tool"
+msgstr ""
+
+#: src/Gui/About.cs:29
+#, csharp-format
+msgid "Using VolumeDB v{0}."
+msgstr ""
+
+#: src/Gui/About.cs:31
+msgid "Copyright (c) "
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:78
+#, csharp-format
+msgid "Found {0} items in {1:F3} seconds."
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:89 src/Gui/MainWindow.cs:453
+msgid "Timeout: another search is probably still in progress."
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:91
+msgid "Too many search results. Please refine your search criteria."
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:106 src/Gui/MainWindow.cs:469
+msgid "Searching..."
+msgstr "Vyhledávání…"
+
+#: src/Gui/ItemSearch.cs:233
+msgid "Search Items"
+msgstr "Hledané položky"
+
+#: src/Gui/ItemSearch.cs:245 src/Gui/MainWindow.cs:1008
+msgid "default"
+msgstr "výchozí"
+
+#: src/Gui/ItemSearch.cs:249
+msgid "Search items"
+msgstr "Hledané položky"
+
+#: src/Gui/ItemSearch.cs:284
+msgid "No search results."
+msgstr "Žádné výsledky vyhledávání."
+
+#: src/Gui/ItemSearch.cs:327 src/Gui/MainWindow.cs:879
+msgid "Edit Item"
+msgstr "Upravit položku"
+
+#: src/Gui/MainWindow.cs:76 src/Gui/MainWindow.cs:92 src/Gui/MainWindow.cs:556
+#, csharp-format
+msgid "Database '{0}' not found."
+msgstr "Databáze '{0}' nebyla nalezena."
+
+#: src/Gui/MainWindow.cs:115
+msgid "Database not found"
+msgstr "Databáze nebyla nalezena"
+
+#: src/Gui/MainWindow.cs:116
+msgid "Default database not found. Create?"
+msgstr "Výchozí databáze nebyla nalezena. Vytvořit?"
+
+#: src/Gui/MainWindow.cs:145
+msgid "Unsupported database version"
+msgstr "Nepodporovaná verze databáze"
+
+#: src/Gui/MainWindow.cs:146
+msgid "This database version is not supported."
+msgstr "Tato verze databáze není podporována."
+
+#: src/Gui/MainWindow.cs:165
+#, csharp-format
+msgid "{0} volumes loaded."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:186
+#, csharp-format
+msgid "An error occured while loading the volume list: {0}"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:228
+msgid "Please enter the name for the new database"
+msgstr "Vložte název pro novou databázi"
+
+#: src/Gui/MainWindow.cs:240
+msgid "Database exists"
+msgstr "Databáze existuje"
+
+#: src/Gui/MainWindow.cs:241
+msgid "Database already exists. Overwrite?"
+msgstr "Databáze již existuje. Přepsat?"
+
+#: src/Gui/MainWindow.cs:254
+msgid "Please select a database"
+msgstr "Prosím vyberte databázi"
+
+#: src/Gui/MainWindow.cs:263 src/Gui/Import.cs:109
+msgid "Database not found."
+msgstr "Databáze nebyla nalezena."
+
+#: src/Gui/MainWindow.cs:284
+#, csharp-format
+msgid ""
+"An error occured while accessing drive {0}:\n"
+"{1}"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:306
+#, csharp-format
+msgid "Drive {0} is not ready."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:315
+#, csharp-format
+msgid "Drive {0} is neither mounted nor does it contain an audio cd."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:342 src/Gui/MainWindow.cs:372
+msgid "No volume selected"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:343
+msgid "Please select a volume record to remove."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:350
+msgid "Confirmation"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:351
+msgid "Are you sure you really want to remove the selected volume?"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:373
+msgid "Please select a volume to edit."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:390
+msgid "No item selected"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:391
+msgid "Please select an item to edit."
+msgstr ""
+
+#: src/Gui/MainWindow.cs:819
+msgid "_File"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:822
+msgid "_New Database"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:825
+msgid "_Open Database"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:828
+msgid "Open Default Database"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:831
+msgid "_Database Properties"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:834
+msgid "_Import"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:837
+msgid "_Quit"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:843
+msgid "Recent Databases"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:851
+msgid "_Edit"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:854
+msgid "_Preferences"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:858
+msgid "_Help"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:861
+msgid "_Info"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:865
+msgid "_Add Volume"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:869
+msgid "_Remove Volume"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:872
+msgid "_Edit Volume"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:875
+msgid "_Search"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:882
+msgid "Sort by"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:885
+msgid "Descending"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:891
+msgid "Date added"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:892
+msgid "Title"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:893
+msgid "Drivetype"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:1005
+msgid "Filter volumes"
+msgstr ""
+
+#: src/Gui/Import.cs:29
+msgid "Import"
+msgstr ""
+
+#: src/Gui/Import.cs:30
+msgid "Abort"
+msgstr ""
+
+#: src/Gui/Import.cs:98
+#, csharp-format
+msgid "{0:0}% completed."
+msgstr ""
+
+#: src/Gui/Import.cs:108
+msgid "Import failed"
+msgstr ""
+
+#: src/Gui/Import.cs:111
+msgid "Import failed!"
+msgstr ""
+
+#: src/Gui/Import.cs:113
+msgid "Import aborted."
+msgstr ""
+
+#: src/Gui/Import.cs:115
+msgid "Import completed successfully."
+msgstr ""
+
+#: src/Gui/Import.cs:134
+msgid "Import in progress"
+msgstr ""
+
+#: src/Gui/Import.cs:135
+msgid "You must stop the import before closing this window."
+msgstr ""
+
+#: src/Gui/Import.cs:160
+msgid "Import Database"
+msgstr ""
+
+#: src/Gui/Import.cs:171
+msgid "Please select a database to import"
+msgstr ""
+
+#: src/Gui/Import.cs:189
+msgid "Database:"
+msgstr ""
+
+#: src/Gui/Import.cs:190
+msgid "Format:"
+msgstr ""
+
+#: src/Gui/ItemProperties.cs:29
+msgid "Item Properties"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:76
+msgid "libExtractor not found. Metadata extraction disabled."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:130
+msgid "Scanning started."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:132
+#, csharp-format
+msgid "Scanning of drive '{0}' started."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:138
+#, csharp-format
+msgid ""
+"Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
+"hashing: {3}."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:149
+#, csharp-format
+msgid "Options: MusicBrainz enabled: {0}"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:171
+msgid "Time"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:175
+msgid "Message"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:265
+msgid "yes"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:265
+msgid "no"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:288
+msgid "Scan in progress"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:288
+msgid "You must stop scanning before closing this window."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:298
+msgid "Stopping Scanner and performing rollback..."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:340
+#, csharp-format
+msgid "An unhandled exception occured ({0})."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:341
+msgid "All database changes have been rolled back."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:364
+#, csharp-format
+msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:366
+msgid "Scanning aborted."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:368
+msgid "Scanning completed successfully."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:465
+msgid "VolumeScanner"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:477
+msgid "<b>Volume Information:</b>"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:487
+msgid "<b>Scanner Log:</b>"
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:504
+msgid "Database access"
+msgstr ""
+
+#: src/Gui/Preferences.cs:107
+msgid "None"
+msgstr ""
+
+#: src/Gui/Preferences.cs:216
+msgid "Unsupported theme"
+msgstr ""
+
+#: src/Gui/Preferences.cs:217
+msgid "The selected icon theme is currently not supported on your system."
+msgstr ""
+
+#: src/Gui/Preferences.cs:255
+msgid "Restart required"
+msgstr ""
+
+#: src/Gui/Preferences.cs:256
+#, csharp-format
+msgid "You must restart {0} for icontheme changes to take effect."
+msgstr ""
+
+#: src/Gui/Preferences.cs:286
+msgid "Preferences"
+msgstr ""
+
+#: src/Gui/Preferences.cs:310
+msgid "_Load Defaults"
+msgstr ""
+
+#: src/Gui/Preferences.cs:336
+msgid "Icon theme:"
+msgstr ""
+
+#: src/Gui/Preferences.cs:342
+msgid "Reopen most recent database on startup"
+msgstr ""
+
+#: src/Gui/Preferences.cs:346
+msgid "Show iteminfo panel"
+msgstr ""
+
+#: src/Gui/Preferences.cs:350
+msgid "Show hidden files"
+msgstr ""
+
+#: src/Gui/Preferences.cs:354
+msgid "Show thumbnails in the filebrowser"
+msgstr ""
+
+#: src/Gui/Preferences.cs:357
+msgid "General"
+msgstr ""
+
+#: src/Gui/Preferences.cs:365
+msgid "Don't prompt, always scan:"
+msgstr ""
+
+#: src/Gui/Preferences.cs:384
+msgid "Generate Thumbnails"
+msgstr ""
+
+#: src/Gui/Preferences.cs:388
+msgid "Extract metadata"
+msgstr ""
+
+#: src/Gui/Preferences.cs:392
+msgid "Discard symbolic links"
+msgstr ""
+
+#: src/Gui/Preferences.cs:396
+msgid "Compute hashcodes for files (slow!)"
+msgstr ""
+
+#: src/Gui/Preferences.cs:400
+msgid "Fetch audio cd metadata from MusicBrainz.org"
+msgstr ""
+
+#: src/Gui/Preferences.cs:403
+msgid "Scanner"
+msgstr ""
