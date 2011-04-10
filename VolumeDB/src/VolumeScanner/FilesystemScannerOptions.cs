@@ -17,6 +17,7 @@
 //
 
 using System;
+using System.Collections.Generic;
 using VolumeDB.Metadata;
 
 namespace VolumeDB.VolumeScanner
@@ -26,7 +27,7 @@ namespace VolumeDB.VolumeScanner
 		public FilesystemScannerOptions() : base() {
 			DiscardSymLinks = false;
 			GenerateThumbnails = false;
-			MetadataProvider = null;
+			MetadataProviders = null;
 			DbDataPath = null;
 		}
 		
@@ -38,7 +39,7 @@ namespace VolumeDB.VolumeScanner
 			get; set;
 		}
 		
-		public MetadataProvider MetadataProvider {
+		public IEnumerable<MetadataProvider> MetadataProviders {
 			get; set;
 		}
 		
@@ -56,23 +57,10 @@ namespace VolumeDB.VolumeScanner
 			tmp.DiscardSymLinks = this.DiscardSymLinks;
 			tmp.GenerateThumbnails = this.GenerateThumbnails;
 			
-			// don't deep-copy the metadata provider, it's too expensive
+			// don't deep-copy the metadata providers, it's too expensive
 			// (e.g. native libextractor instantiation and initialization)
-			tmp.MetadataProvider = this.MetadataProvider;
-			tmp.DbDataPath = this.DbDataPath;
-			
-///*			
-//			if (this.MetadataProvider != null) {
-//				// the target may have a different metadataprovider assigned, 
-//				// so assign a flat copy of this objects provider
-//				tmp.MetadataProvider = (MetadataProvider)this.MetadataProvider.MemberwiseClone();
-//
-//				this.MetadataProvider.CopyTo(tmp.MetadataProvider);
-//			} else {
-//				tmp.MetadataProvider = null;
-//			}*/
-			
-			
+			tmp.MetadataProviders = this.MetadataProviders;
+			tmp.DbDataPath = this.DbDataPath;			
 		}
 	}
 }

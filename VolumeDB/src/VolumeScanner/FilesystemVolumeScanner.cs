@@ -24,6 +24,7 @@ using System.Text;
 using System.Threading;
 using System.Security.Cryptography;
 using System.Collections.Generic;
+using System.Linq;
 using Platform.Common;
 using Platform.Common.IO;
 using Platform.Common.Mime;
@@ -265,8 +266,20 @@ namespace VolumeDB.VolumeScanner
 							
 							mimeType = MimeType.GetMimeTypeForFile(files[i].FullName);
 							
-							if (Options.MetadataProvider != null) {
-								metaData = new MetadataStore(Options.MetadataProvider.GetMetadata(files[i].FullName, mimeType));
+							if (Options.MetadataProviders != null) {
+								IEnumerable<MetadataItem> items = null;
+								
+								foreach (MetadataProvider mdp in Options.MetadataProviders) {
+									IEnumerable<MetadataItem> tmp = mdp.GetMetadata(files[i].FullName, mimeType);
+									if (items == null) {
+										items = tmp;
+									} else {
+										if (tmp != null)
+											items = items.Concat(tmp);
+									}
+								}
+								
+								metaData = new MetadataStore(items);
 							}
 							
 							if (Options.ComputeHashs) {

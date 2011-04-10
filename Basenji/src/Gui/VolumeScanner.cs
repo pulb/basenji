@@ -18,6 +18,7 @@
 
 using System;
 using System.Text;
+using System.Collections.Generic;
 using IO = System.IO;
 using Gtk;
 using Gdk;
@@ -38,12 +39,12 @@ namespace Basenji.Gui
 		private Gdk.Pixbuf warningIcon;
 		private Gdk.Pixbuf errorIcon;
 		
-		private ListStore			logStore;
-		private VolumeDatabase		database;
-		private IVolumeScanner		scanner;
-		private MetadataProvider	mdp;
-		private StringBuilder		scannerLog;
-		private StatusUpdateTimer	timer;
+		private ListStore				logStore;
+		private VolumeDatabase			database;
+		private IVolumeScanner			scanner;
+		private List<MetadataProvider>	mdps;
+		private StringBuilder			scannerLog;
+		private StatusUpdateTimer		timer;
 
 		public VolumeScanner(VolumeDatabase db, DriveInfo drive) {
 			this.database = db;
@@ -56,13 +57,16 @@ namespace Basenji.Gui
 			//volInfo.Sensitive = false; // will be enabled when scanning has been finished
 			//InitTreeView();
 			
-			mdp = null;
+			mdps = null;
 			string extractorWarning = null;
 			
 			if (App.Settings.ScannerExtractMetaData && 
 			    (VolumeProber.ProbeVolume(drive) == VolumeProber.VolumeProbeResult.Filesystem)) {
+				
+				mdps = new List<MetadataProvider>();
+				
 /*				if (App.Settings.ScannerMetaDataProvider == 0) {
-					//mdp = new TagLibMetadataProvider();
+					//mdps.Add(new TagLibMetadataProvider());
 				} else {*/
 					
 					string[] blacklist = App.Settings.ScannerExtractionBlacklist
@@ -70,7 +74,7 @@ namespace Basenji.Gui
 						StringSplitOptions.RemoveEmptyEntries);
 					
 					try {
-						mdp = new ExtractorMetadataProvider(blacklist);
+						mdps.Add(new ExtractorMetadataProvider(blacklist));
 					} catch (DllNotFoundException) {
 						// libextractor package not installed
 						extractorWarning = S._("libExtractor not found. Metadata extraction disabled.");
@@ -86,7 +90,7 @@ namespace Basenji.Gui
 					ComputeHashs		= App.Settings.ScannerComputeHashs,
 					DiscardSymLinks		= App.Settings.ScannerDiscardSymLinks,
 					GenerateThumbnails	= App.Settings.ScannerGenerateThumbnails,
-					MetadataProvider	= mdp,
+					MetadataProviders	= mdps,
 					DbDataPath			= PathUtil.GetDbDataPath(database)
 				},
 			
@@ -250,8 +254,11 @@ namespace Basenji.Gui
 				
 				if (scanner != null)
 					scanner.Dispose();
-				if (mdp != null)
-					mdp.Dispose();
+				
+				if (mdps != null) {
+					foreach (var m in mdps)
+						m.Dispose();
+				}
 			} catch (ValidationException e) {
 				MsgDialog.ShowError(this, S._("Invalid data"), 
 				                    string.Format(S._("\"{0}\" is {1}.\n\nExpected format: {2}\nPlease correct or remove the data you entered."), 
