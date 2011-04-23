@@ -254,6 +254,7 @@ namespace Basenji.Gui
 				new Widgets.SearchEntryPreset("location", "location:", null),
 				new Widgets.SearchEntryPreset("note", "note:", null),
 				new Widgets.SearchEntryPreset("keywords", "keywords:", null),
+				new Widgets.SearchEntryPreset("metadata", "metadata:", null),
 				new Widgets.SearchEntryPreset("volume-title", "volume-title:", null),
 				new Widgets.SearchEntryPreset("type [audio, video, image, text, directory]", "type =", "audio"),
 				new Widgets.SearchEntryPreset("filesize", "filesize", "> 1mb")
