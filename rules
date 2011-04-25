@@ -12,5 +12,5 @@ override_dh_auto_configure:
 override_dh_auto_clean: override_dh_auto_configure
 	dh_auto_clean	
 	rm -f config.log config.make Basenji/basenji.desktop
-	find -name "*.pc" | xargs rm -f
+	find -name "*.pc" | xargs rm -rf
 
