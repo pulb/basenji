@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-12-03 19:54+0100\n"
+"POT-Creation-Date: 2011-03-21 20:19+0100\n"
 "PO-Revision-Date: 2011-03-05 11:28+0000\n"
 "Last-Translator: Borna Bilas <Unknown>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-20 16:28+0000\n"
-"X-Generator: Launchpad (build 12617)\n"
+"X-Launchpad-Export-Date: 2011-04-25 13:52+0000\n"
+"X-Generator: Launchpad (build 12915)\n"
 
 #: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:74
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:65
@@ -85,28 +85,24 @@ msgstr ""
 msgid "Error connecting to MusicBrainz server."
 msgstr "Greška u spajanju na MusicBrainz server."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:105
-msgid "libExtractor not found. Metadata extraction disabled."
-msgstr "libExtractor nije nađen. Izvoz Metapodataka onemogućeno."
-
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:187
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:164
 #, csharp-format
 msgid "Directory '{0}' not found. (Wrong filename encoding?)"
 msgstr "Mapa '{0}' nije nađena. (Pogrešno kodiranje imena?)"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:196
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:173
 #, csharp-format
 msgid "Skipped item '{0}' as it doesn't seem to be a real directory."
 msgstr "Preskačena stavka '{0}' jer nije prava mapa."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:217
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:345
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:194
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:316
 #, csharp-format
 msgid "Skipped symlink item '{0}' as the target does not exist."
 msgstr "Preskočena simbolička veza '{0}' jer cilj nije valjan."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:226
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:352
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:203
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:323
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it appears to point to a different drive "
@@ -114,39 +110,42 @@ msgid ""
 msgstr ""
 "Preskočena simbolička veza '{0}' jer pokazuje na drugi pogon ('{1}')."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:267
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:244
 #, csharp-format
 msgid "File '{0}' not found. (Wrong filename encoding?)"
 msgstr "Datoteka '{0}' nije nađena. (Pogrešno kodiranje imena?)"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:315
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:286
 #, csharp-format
 msgid "Error opening file '{0}', can't retrieve any mime/metadata. ({1})"
 msgstr "Greška u otvaranju '{0}', nije moguće dohvatiti metapodatke. ({1})"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:359
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:330
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."
 msgstr ""
 "Preskočena simbolička veza '{0}' jer ne pokazuje normalnu datoteku ('{1}')."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:368
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:339
 #, csharp-format
 msgid "Skipped item '{0}' as it appears to be some kind of special file."
 msgstr "Prekočena stavka '{0}' jer je nekakva posebna datoteka."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:386
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:357
 #, csharp-format
 msgid "Unable to dump dir '{0}'. ({1})"
 msgstr "Nije moguće odbaciti mapu '{0}'. ({1})"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:505
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:476
 #, csharp-format
 msgid "Can't read LastWriteTime from item '{0}' ({1})."
 msgstr "Nije moguće pročitati LastWriteTime iz stavke '{0}' ({1})"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:669
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:640
 #, csharp-format
 msgid "Failed to resolve target item for symlink '{0}'."
 msgstr "Nije moguće razriješiti ciljnu stavku za simboličku vezu '{0}'."
+
+#~ msgid "libExtractor not found. Metadata extraction disabled."
+#~ msgstr "libExtractor nije nađen. Izvoz Metapodataka onemogućeno."

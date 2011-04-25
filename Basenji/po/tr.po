@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-12-03 19:54+0100\n"
+"POT-Creation-Date: 2011-03-21 20:19+0100\n"
 "PO-Revision-Date: 2010-07-10 13:47+0000\n"
 "Last-Translator: Cihan Ersoy <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-02-25 20:40+0000\n"
-"X-Generator: Launchpad (build 12460)\n"
+"X-Launchpad-Export-Date: 2011-04-25 13:52+0000\n"
+"X-Generator: Launchpad (build 12915)\n"
 
 #: src/Util.cs:30
 #, csharp-format
@@ -91,21 +91,21 @@ msgstr "Yükleniyor..."
 msgid "(empty)"
 msgstr "(boş)"
 
-#: src/Gui/Widgets/ItemView.cs:103
+#: src/Gui/Widgets/ItemView.cs:99 src/Gui/DriveSelection.cs:80
 msgid "Unknown"
 msgstr "Bilinmeyen"
 
-#: src/Gui/Widgets/ItemView.cs:174 src/Gui/Widgets/Editors/ItemEditor.cs:86
+#: src/Gui/Widgets/ItemView.cs:170 src/Gui/Widgets/Editors/ItemEditor.cs:86
 msgid "Name"
 msgstr "İsim"
 
-#: src/Gui/Widgets/ItemView.cs:180
+#: src/Gui/Widgets/ItemView.cs:176
 msgid "Artist"
 msgstr "Sanatçı"
 
-#: src/Gui/Widgets/ItemView.cs:185
+#: src/Gui/Widgets/ItemView.cs:181
 #: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:53
-#: src/Gui/Widgets/ItemInfo.cs:223 src/Gui/Widgets/ItemInfo.cs:275
+#: src/Gui/Widgets/ItemInfo.cs:224 src/Gui/Widgets/ItemInfo.cs:287
 msgid "Duration"
 msgstr "Süre"
 
@@ -130,11 +130,11 @@ msgstr "Toplam boyut:"
 msgid "Item type"
 msgstr "Öge türü"
 
-#: src/Gui/Widgets/Editors/ItemEditor.cs:101 src/Gui/Widgets/ItemInfo.cs:324
+#: src/Gui/Widgets/Editors/ItemEditor.cs:101 src/Gui/Widgets/ItemInfo.cs:358
 msgid "Note"
 msgstr "Not"
 
-#: src/Gui/Widgets/Editors/ItemEditor.cs:102 src/Gui/Widgets/ItemInfo.cs:327
+#: src/Gui/Widgets/Editors/ItemEditor.cs:102 src/Gui/Widgets/ItemInfo.cs:361
 msgid "Keywords"
 msgstr "Anahtar kelimeler"
 
@@ -144,7 +144,7 @@ msgid "Audio CD track"
 msgstr "Ses CD parçası"
 
 #: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:54
-#: src/Gui/Widgets/ItemInfo.cs:228
+#: src/Gui/Widgets/ItemInfo.cs:229
 msgid "Type"
 msgstr "Tür"
 
@@ -153,17 +153,17 @@ msgid "Directory"
 msgstr "Dizin"
 
 #: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:59
-#: src/Gui/Widgets/SearchResultView.cs:31 src/Gui/Widgets/ItemInfo.cs:182
+#: src/Gui/Widgets/SearchResultView.cs:31 src/Gui/Widgets/ItemInfo.cs:183
 msgid "Location"
 msgstr "Konum"
 
 #: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:60
-#: src/Gui/Widgets/ItemInfo.cs:183
+#: src/Gui/Widgets/ItemInfo.cs:184
 msgid "Last write time"
 msgstr "Son yazma zamanı"
 
 #: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:61
-#: src/Gui/Widgets/ItemInfo.cs:208
+#: src/Gui/Widgets/ItemInfo.cs:209
 msgid "Filetype"
 msgstr "Dosya türü"
 
@@ -172,13 +172,13 @@ msgid "File"
 msgstr "Dosya"
 
 #: src/Gui/Widgets/Editors/FileItemEditor.cs:52
-#: src/Gui/Widgets/ItemInfo.cs:202 src/Gui/Widgets/ItemInfo.cs:224
+#: src/Gui/Widgets/ItemInfo.cs:203 src/Gui/Widgets/ItemInfo.cs:225
 #: src/Gui/DriveSelection.cs:148
 msgid "Size"
 msgstr "Boyut"
 
 #: src/Gui/Widgets/Editors/FileItemEditor.cs:53
-#: src/Gui/Widgets/ItemInfo.cs:204
+#: src/Gui/Widgets/ItemInfo.cs:205
 msgid "Hash"
 msgstr ""
 
@@ -229,7 +229,7 @@ msgstr "Resimler"
 msgid "Games"
 msgstr ""
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:53 src/Gui/Widgets/ItemInfo.cs:292
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:53 src/Gui/Widgets/ItemInfo.cs:318
 msgid "Software"
 msgstr "Yazılım"
 
@@ -329,19 +329,19 @@ msgstr ""
 msgid "Archive No."
 msgstr "Arşiv No."
 
-#: src/Gui/Widgets/ItemInfo.cs:39
+#: src/Gui/Widgets/ItemInfo.cs:40
 msgid "by"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:40
+#: src/Gui/Widgets/ItemInfo.cs:41
 msgid "from"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:194
+#: src/Gui/Widgets/ItemInfo.cs:195
 msgid "Symlink target"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:225
+#: src/Gui/Widgets/ItemInfo.cs:226
 msgid "Track No."
 msgstr "Parça No."
 
@@ -349,47 +349,47 @@ msgstr "Parça No."
 msgid "Genre"
 msgstr "Tarz"
 
-#: src/Gui/Widgets/ItemInfo.cs:269
+#: src/Gui/Widgets/ItemInfo.cs:277
 msgid "Year"
 msgstr "Yıl"
 
-#: src/Gui/Widgets/ItemInfo.cs:272
+#: src/Gui/Widgets/ItemInfo.cs:282
 msgid "Description"
 msgstr "Tanım"
 
-#: src/Gui/Widgets/ItemInfo.cs:279
+#: src/Gui/Widgets/ItemInfo.cs:293
 msgid "Dimensions"
 msgstr "Boyutlar"
 
-#: src/Gui/Widgets/ItemInfo.cs:282
+#: src/Gui/Widgets/ItemInfo.cs:298
 msgid "Format"
 msgstr "Biçim"
 
-#: src/Gui/Widgets/ItemInfo.cs:284
+#: src/Gui/Widgets/ItemInfo.cs:302
 msgid "Author"
 msgstr "Yazar"
 
-#: src/Gui/Widgets/ItemInfo.cs:286
+#: src/Gui/Widgets/ItemInfo.cs:306
 msgid "Copyright"
 msgstr "Telif"
 
-#: src/Gui/Widgets/ItemInfo.cs:288
+#: src/Gui/Widgets/ItemInfo.cs:310
 msgid "Producer"
 msgstr "Yapımcı"
 
-#: src/Gui/Widgets/ItemInfo.cs:290
+#: src/Gui/Widgets/ItemInfo.cs:314
 msgid "Creator"
 msgstr "Oluşturan"
 
-#: src/Gui/Widgets/ItemInfo.cs:294
+#: src/Gui/Widgets/ItemInfo.cs:322
 msgid "Language"
 msgstr "Dil"
 
-#: src/Gui/Widgets/ItemInfo.cs:296
+#: src/Gui/Widgets/ItemInfo.cs:326
 msgid "Page count"
 msgstr ""
 
-#: src/Gui/Widgets/ItemInfo.cs:300
+#: src/Gui/Widgets/ItemInfo.cs:333
 msgid "File count"
 msgstr ""
 
@@ -402,11 +402,11 @@ msgstr "Öge yok."
 msgid "<b>Page {0}/{1}</b>  ({2} - {3} of {4} items)"
 msgstr ""
 
-#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:231
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:256
 msgid "Invalid data"
 msgstr "Geçersiz veri"
 
-#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:231
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:257
 #, csharp-format
 msgid ""
 "\"{0}\" is {1}.\n"
@@ -738,90 +738,94 @@ msgstr "Format:"
 msgid "Item Properties"
 msgstr "Öge Özellikleri"
 
-#: src/Gui/VolumeScanner.cs:111
+#: src/Gui/VolumeScanner.cs:76
+msgid "libExtractor not found. Metadata extraction disabled."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:130
 msgid "Scanning started."
 msgstr "Tarama başlatıldı."
 
-#: src/Gui/VolumeScanner.cs:113
+#: src/Gui/VolumeScanner.cs:132
 #, csharp-format
 msgid "Scanning of drive '{0}' started."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:121
+#: src/Gui/VolumeScanner.cs:138
 #, csharp-format
 msgid ""
 "Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
 "hashing: {3}."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:129
+#: src/Gui/VolumeScanner.cs:149
 #, csharp-format
 msgid "Options: MusicBrainz enabled: {0}"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:151
+#: src/Gui/VolumeScanner.cs:171
 msgid "Time"
 msgstr "Süre"
 
-#: src/Gui/VolumeScanner.cs:155
+#: src/Gui/VolumeScanner.cs:175
 msgid "Message"
 msgstr "İleti"
 
-#: src/Gui/VolumeScanner.cs:238
+#: src/Gui/VolumeScanner.cs:265
 msgid "yes"
 msgstr "evet"
 
-#: src/Gui/VolumeScanner.cs:238
+#: src/Gui/VolumeScanner.cs:265
 msgid "no"
 msgstr "hayır"
 
-#: src/Gui/VolumeScanner.cs:261
+#: src/Gui/VolumeScanner.cs:288
 msgid "Scan in progress"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:261
+#: src/Gui/VolumeScanner.cs:288
 msgid "You must stop scanning before closing this window."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:271
+#: src/Gui/VolumeScanner.cs:298
 msgid "Stopping Scanner and performing rollback..."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:313
+#: src/Gui/VolumeScanner.cs:340
 #, csharp-format
 msgid "An unhandled exception occured ({0})."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:314
+#: src/Gui/VolumeScanner.cs:341
 msgid "All database changes have been rolled back."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:337
+#: src/Gui/VolumeScanner.cs:364
 #, csharp-format
 msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:339
+#: src/Gui/VolumeScanner.cs:366
 msgid "Scanning aborted."
 msgstr "Tarama iptal edildi."
 
-#: src/Gui/VolumeScanner.cs:341
+#: src/Gui/VolumeScanner.cs:368
 msgid "Scanning completed successfully."
 msgstr "Tarama başarıyla tamamlandı."
 
-#: src/Gui/VolumeScanner.cs:438
+#: src/Gui/VolumeScanner.cs:465
 msgid "VolumeScanner"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:450
+#: src/Gui/VolumeScanner.cs:477
 msgid "<b>Volume Information:</b>"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:460
+#: src/Gui/VolumeScanner.cs:487
 msgid "<b>Scanner Log:</b>"
 msgstr "<b>Tarayıcı Kaydı:</b>"
 
-#: src/Gui/VolumeScanner.cs:481
+#: src/Gui/VolumeScanner.cs:504
 msgid "Database access"
 msgstr "Veritabanı erişimi"
 

@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-12-03 19:54+0100\n"
+"POT-Creation-Date: 2011-03-21 20:19+0100\n"
 "PO-Revision-Date: 2010-08-17 20:28+0000\n"
 "Last-Translator: Patrick Ulbrich <Unknown>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-02-25 20:40+0000\n"
-"X-Generator: Launchpad (build 12460)\n"
+"X-Launchpad-Export-Date: 2011-04-25 13:52+0000\n"
+"X-Generator: Launchpad (build 12915)\n"
 
 #: src/Util.cs:30
 #, csharp-format
@@ -91,21 +91,21 @@ msgstr "Betöltés…"
 msgid "(empty)"
 msgstr "(üres)"
 
-#: src/Gui/Widgets/ItemView.cs:103
+#: src/Gui/Widgets/ItemView.cs:99 src/Gui/DriveSelection.cs:80
 msgid "Unknown"
 msgstr "Ismeretlen"
 
-#: src/Gui/Widgets/ItemView.cs:174 src/Gui/Widgets/Editors/ItemEditor.cs:86
+#: src/Gui/Widgets/ItemView.cs:170 src/Gui/Widgets/Editors/ItemEditor.cs:86
 msgid "Name"
 msgstr "Név"
 
-#: src/Gui/Widgets/ItemView.cs:180
+#: src/Gui/Widgets/ItemView.cs:176
 msgid "Artist"
 msgstr "Előadó"
 
-#: src/Gui/Widgets/ItemView.cs:185
+#: src/Gui/Widgets/ItemView.cs:181
 #: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:53
-#: src/Gui/Widgets/ItemInfo.cs:223 src/Gui/Widgets/ItemInfo.cs:275
+#: src/Gui/Widgets/ItemInfo.cs:224 src/Gui/Widgets/ItemInfo.cs:287
 msgid "Duration"
 msgstr "Hossz"
 
@@ -130,11 +130,11 @@ msgstr "Teljes méret:"
 msgid "Item type"
 msgstr "Elem típusa"
 
-#: src/Gui/Widgets/Editors/ItemEditor.cs:101 src/Gui/Widgets/ItemInfo.cs:324
+#: src/Gui/Widgets/Editors/ItemEditor.cs:101 src/Gui/Widgets/ItemInfo.cs:358
 msgid "Note"
 msgstr "Megjegyzés"
 
-#: src/Gui/Widgets/Editors/ItemEditor.cs:102 src/Gui/Widgets/ItemInfo.cs:327
+#: src/Gui/Widgets/Editors/ItemEditor.cs:102 src/Gui/Widgets/ItemInfo.cs:361
 msgid "Keywords"
 msgstr "Kulcsszavak"
 
@@ -144,7 +144,7 @@ msgid "Audio CD track"
 msgstr "Audió CD sáv"
 
 #: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:54
-#: src/Gui/Widgets/ItemInfo.cs:228
+#: src/Gui/Widgets/ItemInfo.cs:229
 msgid "Type"
 msgstr "Típus"
 
@@ -153,17 +153,17 @@ msgid "Directory"
 msgstr "Könyvtár"
 
 #: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:59
-#: src/Gui/Widgets/SearchResultView.cs:31 src/Gui/Widgets/ItemInfo.cs:182
+#: src/Gui/Widgets/SearchResultView.cs:31 src/Gui/Widgets/ItemInfo.cs:183
 msgid "Location"
 msgstr "Hely"
 
 #: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:60
-#: src/Gui/Widgets/ItemInfo.cs:183
+#: src/Gui/Widgets/ItemInfo.cs:184
 msgid "Last write time"
 msgstr "Utolsó írás ideje"
 
 #: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:61
-#: src/Gui/Widgets/ItemInfo.cs:208
+#: src/Gui/Widgets/ItemInfo.cs:209
 msgid "Filetype"
 msgstr "Fájltípus"
 
@@ -172,13 +172,13 @@ msgid "File"
 msgstr "Fájl"
 
 #: src/Gui/Widgets/Editors/FileItemEditor.cs:52
-#: src/Gui/Widgets/ItemInfo.cs:202 src/Gui/Widgets/ItemInfo.cs:224
+#: src/Gui/Widgets/ItemInfo.cs:203 src/Gui/Widgets/ItemInfo.cs:225
 #: src/Gui/DriveSelection.cs:148
 msgid "Size"
 msgstr "Méret"
 
 #: src/Gui/Widgets/Editors/FileItemEditor.cs:53
-#: src/Gui/Widgets/ItemInfo.cs:204
+#: src/Gui/Widgets/ItemInfo.cs:205
 msgid "Hash"
 msgstr "Hash"
 
@@ -229,7 +229,7 @@ msgstr "Képek"
 msgid "Games"
 msgstr "Játékok"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:53 src/Gui/Widgets/ItemInfo.cs:292
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:53 src/Gui/Widgets/ItemInfo.cs:318
 msgid "Software"
 msgstr "Szoftver"
 
@@ -329,19 +329,19 @@ msgstr "Kötet"
 msgid "Archive No."
 msgstr "Archívum szám."
 
-#: src/Gui/Widgets/ItemInfo.cs:39
+#: src/Gui/Widgets/ItemInfo.cs:40
 msgid "by"
 msgstr "ezzel:"
 
-#: src/Gui/Widgets/ItemInfo.cs:40
+#: src/Gui/Widgets/ItemInfo.cs:41
 msgid "from"
 msgstr "innen:"
 
-#: src/Gui/Widgets/ItemInfo.cs:194
+#: src/Gui/Widgets/ItemInfo.cs:195
 msgid "Symlink target"
 msgstr "Szimbolikus link cél"
 
-#: src/Gui/Widgets/ItemInfo.cs:225
+#: src/Gui/Widgets/ItemInfo.cs:226
 msgid "Track No."
 msgstr "Szám"
 
@@ -349,47 +349,47 @@ msgstr "Szám"
 msgid "Genre"
 msgstr "Műfaj"
 
-#: src/Gui/Widgets/ItemInfo.cs:269
+#: src/Gui/Widgets/ItemInfo.cs:277
 msgid "Year"
 msgstr "Év"
 
-#: src/Gui/Widgets/ItemInfo.cs:272
+#: src/Gui/Widgets/ItemInfo.cs:282
 msgid "Description"
 msgstr "Leírás"
 
-#: src/Gui/Widgets/ItemInfo.cs:279
+#: src/Gui/Widgets/ItemInfo.cs:293
 msgid "Dimensions"
 msgstr "Méretek"
 
-#: src/Gui/Widgets/ItemInfo.cs:282
+#: src/Gui/Widgets/ItemInfo.cs:298
 msgid "Format"
 msgstr "Formátum"
 
-#: src/Gui/Widgets/ItemInfo.cs:284
+#: src/Gui/Widgets/ItemInfo.cs:302
 msgid "Author"
 msgstr "Szerző"
 
-#: src/Gui/Widgets/ItemInfo.cs:286
+#: src/Gui/Widgets/ItemInfo.cs:306
 msgid "Copyright"
 msgstr "Szerzői jog"
 
-#: src/Gui/Widgets/ItemInfo.cs:288
+#: src/Gui/Widgets/ItemInfo.cs:310
 msgid "Producer"
 msgstr "Készítő"
 
-#: src/Gui/Widgets/ItemInfo.cs:290
+#: src/Gui/Widgets/ItemInfo.cs:314
 msgid "Creator"
 msgstr "Létrehozó"
 
-#: src/Gui/Widgets/ItemInfo.cs:294
+#: src/Gui/Widgets/ItemInfo.cs:322
 msgid "Language"
 msgstr "Nyelv"
 
-#: src/Gui/Widgets/ItemInfo.cs:296
+#: src/Gui/Widgets/ItemInfo.cs:326
 msgid "Page count"
 msgstr "Lap szám"
 
-#: src/Gui/Widgets/ItemInfo.cs:300
+#: src/Gui/Widgets/ItemInfo.cs:333
 msgid "File count"
 msgstr "Fájl szám"
 
@@ -402,11 +402,11 @@ msgstr "Nincs elem"
 msgid "<b>Page {0}/{1}</b>  ({2} - {3} of {4} items)"
 msgstr "<b>Lap {0}/{1}</b>  ({2} - {3} / {4} elem)"
 
-#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:231
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:256
 msgid "Invalid data"
 msgstr "Érvénytelen adat"
 
-#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:231
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:257
 #, csharp-format
 msgid ""
 "\"{0}\" is {1}.\n"
@@ -743,16 +743,20 @@ msgstr "Formátum:"
 msgid "Item Properties"
 msgstr "Elem tulajdonságok"
 
-#: src/Gui/VolumeScanner.cs:111
+#: src/Gui/VolumeScanner.cs:76
+msgid "libExtractor not found. Metadata extraction disabled."
+msgstr ""
+
+#: src/Gui/VolumeScanner.cs:130
 msgid "Scanning started."
 msgstr "Vizsgálat elindult."
 
-#: src/Gui/VolumeScanner.cs:113
+#: src/Gui/VolumeScanner.cs:132
 #, csharp-format
 msgid "Scanning of drive '{0}' started."
 msgstr "A következő meghajtó beolvasása megkezdődött: '{0}'."
 
-#: src/Gui/VolumeScanner.cs:121
+#: src/Gui/VolumeScanner.cs:138
 #, csharp-format
 msgid ""
 "Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
@@ -762,75 +766,75 @@ msgstr ""
 "szimbólikus linkek figyelmen kívül hagyása {2}, ellenőrzőösszeg használata "
 "{3}."
 
-#: src/Gui/VolumeScanner.cs:129
+#: src/Gui/VolumeScanner.cs:149
 #, csharp-format
 msgid "Options: MusicBrainz enabled: {0}"
 msgstr "Opciók: MusicBrainz engedélyezve: {0}"
 
-#: src/Gui/VolumeScanner.cs:151
+#: src/Gui/VolumeScanner.cs:171
 msgid "Time"
 msgstr "Idő"
 
-#: src/Gui/VolumeScanner.cs:155
+#: src/Gui/VolumeScanner.cs:175
 msgid "Message"
 msgstr "Üzenet"
 
-#: src/Gui/VolumeScanner.cs:238
+#: src/Gui/VolumeScanner.cs:265
 msgid "yes"
 msgstr "igen"
 
-#: src/Gui/VolumeScanner.cs:238
+#: src/Gui/VolumeScanner.cs:265
 msgid "no"
 msgstr "nem"
 
-#: src/Gui/VolumeScanner.cs:261
+#: src/Gui/VolumeScanner.cs:288
 msgid "Scan in progress"
 msgstr "Átvizsgálás folyamatban"
 
-#: src/Gui/VolumeScanner.cs:261
+#: src/Gui/VolumeScanner.cs:288
 msgid "You must stop scanning before closing this window."
 msgstr ""
 "Meg kell szakítania az átvizsgálást ahhoz hogy becsukja azt az ablakot"
 
-#: src/Gui/VolumeScanner.cs:271
+#: src/Gui/VolumeScanner.cs:298
 msgid "Stopping Scanner and performing rollback..."
 msgstr "Átvizsgálás megállítása és visszatérés ..."
 
-#: src/Gui/VolumeScanner.cs:313
+#: src/Gui/VolumeScanner.cs:340
 #, csharp-format
 msgid "An unhandled exception occured ({0})."
 msgstr "Váratlan hiba történt ({0})."
 
-#: src/Gui/VolumeScanner.cs:314
+#: src/Gui/VolumeScanner.cs:341
 msgid "All database changes have been rolled back."
 msgstr "Az adatbázis változások visszaállításra kerültek."
 
-#: src/Gui/VolumeScanner.cs:337
+#: src/Gui/VolumeScanner.cs:364
 #, csharp-format
 msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
 msgstr "Az átvizsgálás nem sikerült. Ok: váratlan hiba történt ({0})."
 
-#: src/Gui/VolumeScanner.cs:339
+#: src/Gui/VolumeScanner.cs:366
 msgid "Scanning aborted."
 msgstr "Átvizsgálás megszakítva."
 
-#: src/Gui/VolumeScanner.cs:341
+#: src/Gui/VolumeScanner.cs:368
 msgid "Scanning completed successfully."
 msgstr "Az átvizsgálás sikeresen befejeződött."
 
-#: src/Gui/VolumeScanner.cs:438
+#: src/Gui/VolumeScanner.cs:465
 msgid "VolumeScanner"
 msgstr "KötetVizsgáló"
 
-#: src/Gui/VolumeScanner.cs:450
+#: src/Gui/VolumeScanner.cs:477
 msgid "<b>Volume Information:</b>"
 msgstr "<b>Kötet információ:</b>"
 
-#: src/Gui/VolumeScanner.cs:460
+#: src/Gui/VolumeScanner.cs:487
 msgid "<b>Scanner Log:</b>"
 msgstr "<b>Átvizsgálás log:</b>"
 
-#: src/Gui/VolumeScanner.cs:481
+#: src/Gui/VolumeScanner.cs:504
 msgid "Database access"
 msgstr "Adatbázis elérés"
 
