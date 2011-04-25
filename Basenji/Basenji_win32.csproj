@@ -50,17 +50,25 @@
     <EmbeddedResource Include="images\LED_Off.png" />
     <EmbeddedResource Include="images\LED_On.png" />
     <EmbeddedResource Include="po\bg.resources" />
+    <EmbeddedResource Include="po\cs.resources" />
     <EmbeddedResource Include="po\da.resources" />
     <EmbeddedResource Include="po\de.resources" />
     <EmbeddedResource Include="po\es.resources" />
+    <EmbeddedResource Include="po\et.resources" />
     <EmbeddedResource Include="po\fr.resources" />
     <EmbeddedResource Include="po\he.resources" />
+    <EmbeddedResource Include="po\hr.resources" />
+    <EmbeddedResource Include="po\hu.resources" />
     <EmbeddedResource Include="po\it.resources" />
+    <EmbeddedResource Include="po\nl.resources" />
     <EmbeddedResource Include="po\oc.resources" />
     <EmbeddedResource Include="po\pl.resources" />
     <EmbeddedResource Include="po\pt_BR.resources" />
     <EmbeddedResource Include="po\ru.resources" />
+    <EmbeddedResource Include="po\sr.resources" />
     <EmbeddedResource Include="po\tr.resources" />
+    <EmbeddedResource Include="po\uk.resources" />
+    <EmbeddedResource Include="po\zh_CN.resources" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
@@ -88,6 +96,7 @@
     <Compile Include="src\App.cs" />
     <Compile Include="src\AssemblyInfo.cs" />
     <Compile Include="src\FileDialog.cs" />
+    <Compile Include="src\Global.cs" />
     <Compile Include="src\Gui\About.cs" />
     <Compile Include="src\Gui\Base\BinBase.cs" />
     <Compile Include="src\Gui\Base\DialogBase.cs" />
@@ -139,6 +148,7 @@
     <Compile Include="src\Main.cs" />
     <Compile Include="src\MimeCategoryMapping.cs" />
     <Compile Include="src\MsgDialog.cs" />
+    <Compile Include="src\Options.cs" />
     <Compile Include="src\PathUtil.cs" />
     <Compile Include="src\S.cs" />
     <Compile Include="src\Settings.cs" />
