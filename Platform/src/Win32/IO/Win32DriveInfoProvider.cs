@@ -20,12 +20,13 @@
 
 using System;
 using System.Collections.Generic;
+using Platform.Common.IO;
 
 namespace Platform.Win32.IO
 {
 	internal class Win32DriveInfoProvider : IDriveInfoProvider
 	{		
-		public virtual void FromDevice(DriveIndo d, string device) {
+		public virtual void FromDevice(DriveInfo d, string device) {
 			string rootPath = device; // FromPath() adds an ending slash ("d:\")
 			FromPath(d, rootPath); // throws ArgumentException if drive cant be found
 		}
