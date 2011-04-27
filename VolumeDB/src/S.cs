@@ -1,6 +1,6 @@
 // S.cs
 // 
-// Copyright (C) 2008, 2009 Patrick Ulbrich
+// Copyright (C) 2008, 2009, 2011 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -27,13 +27,28 @@ namespace VolumeDB
 	internal static class S
 	{
 		private static Catalog c;
+		private static string ns;
 		
 		static S() {
-			string ns = String.Format("{0}.{1}",
-			                          Assembly.GetCallingAssembly().GetName().Name,
-			                          "po");
+			ns = String.Format("{0}.{1}",
+			                   Assembly.GetCallingAssembly().GetName().Name,
+			                   "po");
 			
 			c = Catalog.GetCatalogForCulture(CultureInfo.CurrentUICulture, ns, true);
+		}
+		
+		public static void SetCulture(CultureInfo ci) {
+			if (ci == null)
+				throw new ArgumentNullException("ci");
+			
+			c = Catalog.GetCatalogForCulture(ci, ns, true);			
+		}
+		
+		public static void SetCulture(string name) {
+			if (name == null)
+				throw new ArgumentNullException("name");
+			
+			c = Catalog.GetCatalogForCulture(name, ns, true);			
 		}
 		
 		public static string _(string msgid) {

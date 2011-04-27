@@ -1,6 +1,6 @@
 // Global.cs
 // 
-// Copyright (C) 2010 Patrick Ulbrich
+// Copyright (C) 2010, 2011 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -36,6 +36,10 @@ namespace Basenji
 			set {
 				enableDebugging = value;
 			}
+		}
+		
+		public static void EnforceCulture(string name) {
+			S.SetCulture(name);
 		}
 	}
 }

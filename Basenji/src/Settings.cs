@@ -103,6 +103,9 @@ namespace Basenji
 		[SettingsAttribute("VolumeSortProperty", "3")]
 		public int VolumeSortProperty { get; set; }
 		
+		[SettingsAttribute("EnforceCulture", "")]
+		public string EnforceCulture { get; set; }
+		
 		public Settings() : this(false) {}
 		
 		private Settings(bool defaults) {

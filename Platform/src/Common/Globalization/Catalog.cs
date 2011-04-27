@@ -1,6 +1,6 @@
 // Catalog.cs
 // 
-// Copyright (C) 2008, 2009 Patrick Ulbrich
+// Copyright (C) 2008, 2009, 2011 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -45,7 +45,7 @@ namespace Platform.Common.Globalization
 			return translated ?? msgid;
 		}
 		
-		// returns the actual culure used
+		// returns the actual culture used
 		// (may be different than the requested culture)
 		public CultureInfo Culture {
 			get {
@@ -71,7 +71,7 @@ namespace Platform.Common.Globalization
 			ResourceManager rm;
 			
 			// try to set sub-language, e.g. "de_CH"
-			rm = GetResourceManagerForCulture(ci, asm, resourceNamespace); 
+			rm = GetResourceManagerForCulture(ci.Name, asm, resourceNamespace); 
 			if (rm == null ) {
 				if (!useFallbacksOnFailure)
 					return null;
@@ -79,7 +79,7 @@ namespace Platform.Common.Globalization
 				// try to set parent language, e.g. "de"
 				ci = ci.Parent;
 				if (ci != null) {
-					rm = GetResourceManagerForCulture(ci, asm, resourceNamespace);
+					rm = GetResourceManagerForCulture(ci.Name, asm, resourceNamespace);
 					if (rm == null)
 						ci = null;
 				}
@@ -88,13 +88,44 @@ namespace Platform.Common.Globalization
 			return new Catalog(ci, rm);
 		}
 		
-		private static ResourceManager GetResourceManagerForCulture(CultureInfo ci,
+		// if useFallbacksOnFailure is set a Catolog object will be returned in every case:
+		// if the catalog for the requested culture name can't be created,
+		// ir returns a catalog that returns the orginal, untranslated strings.
+		public static Catalog GetCatalogForCulture(string name, 
+		                                           string resourceNamespace, 
+		                                           bool useFallbacksOnFailure) {
+			if (name == null)
+				throw new ArgumentNullException("name");
+			
+			if (resourceNamespace == null)
+				throw new ArgumentNullException("resourceNamespace");
+			
+			Assembly asm = Assembly.GetCallingAssembly();
+			ResourceManager rm;
+			CultureInfo ci = null;
+			
+			rm = GetResourceManagerForCulture(name, asm, resourceNamespace);
+			
+			if (rm == null) {
+				if (!useFallbacksOnFailure)
+					return null;
+			} else {
+				try {
+					// may fail on unsupported culture names like "sr" (serbian)
+					ci = new CultureInfo(name);
+				} catch {}
+			}
+			
+			return new Catalog(ci, rm);			
+		}
+		                                           
+		private static ResourceManager GetResourceManagerForCulture(string name,
 		                                                            Assembly asm,
 		                                                            string resourceNamespace) {
 			string baseName = string.Format("{0}.{1}", 
 			                                   resourceNamespace,
 			                                   /* replace minus in sub-languages */
-			                                   ci.Name.Replace('-', '_'));
+			                                   name.Replace('-', '_'));
 			
 			if (asm.GetManifestResourceInfo(baseName + ".resources") != null)
 				return new ResourceManager(baseName, asm);

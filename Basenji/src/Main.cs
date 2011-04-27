@@ -39,6 +39,11 @@ namespace Basenji
 				VolumeDB.Global.EnableDebugging = true;
 			}
 			
+			if (!string.IsNullOrEmpty(App.Settings.EnforceCulture)) {
+				Basenji.Global.EnforceCulture(App.Settings.EnforceCulture);
+				VolumeDB.Global.EnforceCulture(App.Settings.EnforceCulture);
+			}
+			
 			Debug.WriteLine(string.Format("{0} {1}", App.Name, App.Version));
 			Debug.WriteLine(string.Format("Used runtime: {0}",
 			                              System.Runtime.InteropServices.RuntimeEnvironment.GetRuntimeDirectory()));
