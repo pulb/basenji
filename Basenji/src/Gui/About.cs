@@ -116,6 +116,7 @@ Russian:
 
 Serbian:
     Kosava (https://launchpad.net/~kosava)
+    Srdjan Hrnjak (https://launchpad.net/~srdjan-hrnjak)
 
 Spanish:
     Daniel Garcia Stelzner (https://launchpad.net/~dani-garcia87)
