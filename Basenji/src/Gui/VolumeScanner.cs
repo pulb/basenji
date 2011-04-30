@@ -186,24 +186,20 @@ namespace Basenji.Gui
 		}
 		
 		private void UpdateLog(LogIcon icon, string message) {
-			//string stockIcon;
 			Pixbuf pb;
 			string messageType;
 			string timeStr = DateTime.Now.ToShortTimeString();
 
 			switch(icon) {
 				case LogIcon.Info:
-					//stockIcon = Stock.DialogInfo;
 					pb = infoIcon;
 					messageType = "[ INFO  ]";
 					break;
 				case LogIcon.Warning:
-					//stockIcon = Stock.DialogWarning;
 					pb = warningIcon;
 					messageType = "[WARNING]";
 					break;
 				case LogIcon.Error:
-					//stockIcon = Stock.DialogError;
 					pb = errorIcon;
 					messageType = "[ ERROR ]";
 					break;
@@ -211,7 +207,6 @@ namespace Basenji.Gui
 					throw new Exception("Invalid LogIcon");
 			}
 
-			//Pixbuf pb = this.RenderIcon(stockIcon, IconSize.Menu, string.Empty);
 			logStore.AppendValues(pb, timeStr, message);
 
 			scannerLog.AppendFormat("[{0}] {1} {2}\n", timeStr, messageType, message);
