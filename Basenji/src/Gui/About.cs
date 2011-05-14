@@ -126,6 +126,7 @@ Spanish:
     Fitoschido (https://launchpad.net/~fitoschido)
     Jonay Santana (https://launchpad.net/~jonay-santana)
     Jorge Dardón (https://launchpad.net/~jdardon)
+	Julian Lamus (https://launchpad.net/~lamusj)
     martin (https://launchpad.net/~martu)
     Martín V. (https://launchpad.net/~martinvukovic)
     monkey (https://launchpad.net/~monkey-libre)  
