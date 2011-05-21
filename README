@@ -33,6 +33,9 @@ Compile:
 	if you get a "GLib.GException: Couldn't recognize the image file format for file 'data/basenji.svg'" runtime error,
 	you most likely don't have SVG pixbuf loaders installed (package librsvg2-common in ubuntu).
 	
+	If you're using GNOME 3 and Basenji does not generate file previews (thumbnails), your gconf setup is most likely
+	missing thumbnailer keys. To fix this run "gconftool-2 --load thumbnailers.xml".
+	
 
 MS Windows:
 ===========
