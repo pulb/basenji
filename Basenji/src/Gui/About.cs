@@ -71,6 +71,7 @@ Estonian:
 French:
     Anthony Guéchoum (https://launchpad.net/~athael)
     Aurélien Mino (https://launchpad.net/~murdos)
+    Olivier Duperray (https://launchpad.net/~duperray-olivier)
     Pierre Slamich (https://launchpad.net/~pierre-slamich)
     Stephane Ricci (https://launchpad.net/~stephane-ricci)
     Y.Bélaïd (https://launchpad.net/~belaid-younsi-gmail)
