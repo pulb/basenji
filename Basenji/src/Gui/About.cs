@@ -110,6 +110,7 @@ Russian:
     Dmitri Konoplev (https://launchpad.net/~knoplef)
     Eugene Marshal (https://launchpad.net/~lowrider)
     Nikolai Romanik (https://launchpad.net/~arhey)
+    Oleksiy Zaytsev (https://launchpad.net/~alexiy74)
     Papazu (https://launchpad.net/~pavel-z)
     Sciko (https://launchpad.net/~tempsciko-gmail)
     Sergey Sedov (https://launchpad.net/~serg-sedov)
