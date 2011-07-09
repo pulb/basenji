@@ -17,8 +17,8 @@ Requirements:
 	ndesk-dbus-glib (0.4.1 or later)
 	mono-cairo (2.4.2.3 or later)
 	libextractor1c2a (<= 0.5.23*)
-    libextractor-plugins (<= 0.5.23*)
-    udisks (1.0.1 or later)
+	libextractor-plugins (<= 0.5.23*)
+	udisks (1.0.1 or later)
     
     * libextractor 0.6 introduces a new API 
       and is not supported.
