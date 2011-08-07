@@ -88,7 +88,7 @@ namespace Basenji.Gui
 			base.BuildGui();
 			
 			// general window settings
-			SetDialogStyle();
+			SetModal();
 			this.DefaultWidth		= this.width;
 			this.DefaultHeight		= this.height;
 			this.Title				= this.title;

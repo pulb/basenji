@@ -227,7 +227,7 @@ namespace Basenji.Gui
 			bool itemInfoMinimized = App.Settings.ItemInfoMinimized2;
 			
 			// general window settings
-			SetDialogStyle();
+			SetModal();
 			this.DefaultWidth		= 800;
 			this.DefaultHeight		= 600;
 			this.Title				= S._("Search Items");

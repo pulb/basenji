@@ -461,7 +461,7 @@ namespace Basenji.Gui
 			base.BuildGui();
 			
 			// general window settings
-			SetDialogStyle();
+			SetModal();
 			//this.DefaultWidth		= 580;
 			this.DefaultHeight		= 600;
 			this.Title				= S._("VolumeScanner");

@@ -69,7 +69,7 @@ namespace Basenji.Gui
 			base.BuildGui();
 			
 			//general window settings
-			SetDialogStyle();
+			SetModal();
 //			this.DefaultWidth		= 400;
 			this.DefaultHeight		= 240;
 			this.Title				= S._("Database Properties");

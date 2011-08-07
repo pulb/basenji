@@ -280,7 +280,7 @@ namespace Basenji.Gui
 			base.BuildGui();
 			
 			//general window settings
-			SetDialogStyle();
+			SetModal();
 			this.DefaultWidth		= 400;
 			this.DefaultHeight		= 400;
 			this.Title				= S._("Preferences");

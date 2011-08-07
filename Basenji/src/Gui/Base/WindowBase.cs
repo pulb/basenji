@@ -39,10 +39,11 @@ namespace Basenji.Gui.Base
 			this.Icon			= App.DefaultWindowIcon;
 		}
 		
-		protected void SetDialogStyle() {
-			this.Modal				= true;
-			this.SkipTaskbarHint	= true;
-			this.TypeHint			= WindowTypeHint.Dialog; // disable minimize button
+		protected void SetModal() {
+			this.Modal = true;
+			/* TODO : somehow disable the minimize button on modal windows 
+			   when Gtk supports it. */
+			// this.SkipTaskbarHint	= true;
 		}
 		
 		/*

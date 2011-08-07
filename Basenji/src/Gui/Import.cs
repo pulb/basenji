@@ -155,7 +155,7 @@ namespace Basenji.Gui
 			base.BuildGui();
 			
 			// general window settings
-			SetDialogStyle();
+			SetModal();
 			//this.DefaultWidth	= 320;
 			this.Title			= S._("Import Database");
 			
