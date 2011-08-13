@@ -330,7 +330,16 @@ namespace Basenji.Gui.Widgets
 						// count files in archives 
 						// (filenames were joined by MetadataStore.ToDictionary())
 						string[] filenames = val.Split(KEYWORD_SEPARATORS, StringSplitOptions.None);
-						tmp.Add(new ItemProperty(S._("File count"), filenames.Length.ToString(), 117));
+						int filecount = 0;
+						
+						foreach (string fn in filenames) {
+							// only count files, skip directory names
+							if ((fn[fn.Length - 1] != '/') && (fn[fn.Length - 1] != '\\'))
+								filecount++;
+						}
+						
+						if (filecount > 0)
+							tmp.Add(new ItemProperty(S._("File count"), filecount.ToString(), 117));
 					}
 					
 					if (Global.EnableDebugging) {
