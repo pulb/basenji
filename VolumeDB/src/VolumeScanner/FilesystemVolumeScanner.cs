@@ -270,7 +270,18 @@ namespace VolumeDB.VolumeScanner
 								IEnumerable<MetadataItem> items = null;
 								
 								foreach (MetadataProvider mdp in Options.MetadataProviders) {
-									IEnumerable<MetadataItem> tmp = mdp.GetMetadata(files[i].FullName, mimeType);
+									IEnumerable<MetadataItem> tmp = null;
+									
+									try {
+										tmp = mdp.GetMetadata(files[i].FullName, mimeType);
+									} catch (Exception e) {
+										/* may throw ScanCancelledException */
+										SendScannerWarning(string.Format(S._("Extracting metadata from file '{0}' failed. ({1})"),
+										                                 files[i].FullName,
+										                                 e.Message),
+										                   	             e);
+									}
+									
 									if (items == null) {
 										items = tmp;
 									} else {
