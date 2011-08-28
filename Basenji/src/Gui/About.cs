@@ -121,6 +121,7 @@ Serbian:
     Srdjan Hrnjak (https://launchpad.net/~srdjan-hrnjak)
 
 Spanish:
+    Alfredo Hernández (https://launchpad.net/~aldomann)
     Daniel Garcia Stelzner (https://launchpad.net/~dani-garcia87)
     DiegoJ (https://launchpad.net/~diegojromerolopez)
     Emiliano (https://launchpad.net/~emilianohfernandez)
