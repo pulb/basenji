@@ -44,6 +44,7 @@ Contributors:
     André Gondim (https://launchpad.net/~andregondim)
     Gilberto Martins (https://launchpad.net/~gsilva-martins)
     Gustavo Guidorizzi (https://launchpad.net/~gguido)
+    Marcos Oliveira da Cruz (https://launchpad.net/~marcosoliveiradacruz)
     Matheus de Araújo (https://launchpad.net/~suetamac)
     Rafael nossal (https://launchpad.net/~rafaelnossal)
 
