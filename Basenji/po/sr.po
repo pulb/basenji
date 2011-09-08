@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-03-21 20:19+0100\n"
-"PO-Revision-Date: 2011-04-27 08:56+0000\n"
-"Last-Translator: Srdjan Hrnjak <Unknown>\n"
+"POT-Creation-Date: 2011-08-16 22:43+0200\n"
+"PO-Revision-Date: 2011-04-28 09:31+0000\n"
+"Last-Translator: Срђан Хрњак <Unknown>\n"
 "Language-Team: Serbian <sr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-04-27 13:56+0000\n"
-"X-Generator: Launchpad (build 12915)\n"
+"X-Launchpad-Export-Date: 2011-09-08 16:24+0000\n"
+"X-Generator: Launchpad (build 13891)\n"
 
 #: src/Util.cs:30
 #, csharp-format
@@ -54,14 +54,14 @@ msgstr "Датотеке са базом података"
 msgid "All files"
 msgstr "Све датотеке"
 
-#: src/Main.cs:137 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
+#: src/Main.cs:142 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
 #: src/Gui/MainWindow.cs:262 src/Gui/MainWindow.cs:283
 #: src/Gui/MainWindow.cs:305 src/Gui/MainWindow.cs:314
 #: src/Gui/MainWindow.cs:556
 msgid "Error"
 msgstr "Грешка"
 
-#: src/Main.cs:137
+#: src/Main.cs:142
 #, csharp-format
 msgid "{0} is already running."
 msgstr "{0} је већ покренут."
@@ -130,11 +130,11 @@ msgstr "Укупна величина:"
 msgid "Item type"
 msgstr "Врста ставке"
 
-#: src/Gui/Widgets/Editors/ItemEditor.cs:101 src/Gui/Widgets/ItemInfo.cs:358
+#: src/Gui/Widgets/Editors/ItemEditor.cs:101 src/Gui/Widgets/ItemInfo.cs:367
 msgid "Note"
 msgstr "Белешка"
 
-#: src/Gui/Widgets/Editors/ItemEditor.cs:102 src/Gui/Widgets/ItemInfo.cs:361
+#: src/Gui/Widgets/Editors/ItemEditor.cs:102 src/Gui/Widgets/ItemInfo.cs:370
 msgid "Keywords"
 msgstr "Кључне речи"
 
@@ -389,7 +389,7 @@ msgstr "Језик"
 msgid "Page count"
 msgstr "Број страна"
 
-#: src/Gui/Widgets/ItemInfo.cs:333
+#: src/Gui/Widgets/ItemInfo.cs:342
 msgid "File count"
 msgstr "Број датотека"
 
@@ -402,11 +402,11 @@ msgstr "Нема ставки."
 msgid "<b>Page {0}/{1}</b>  ({2} - {3} of {4} items)"
 msgstr "<b>Страна {0}/{1}</b>  (ставке {2} - {3} од {4})"
 
-#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:256
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:258
 msgid "Invalid data"
 msgstr "Неисправни подаци"
 
-#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:257
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:259
 #, csharp-format
 msgid ""
 "\"{0}\" is {1}.\n"
@@ -458,7 +458,7 @@ msgstr "Преносива алатка за пописивање садржај
 #: src/Gui/About.cs:29
 #, csharp-format
 msgid "Using VolumeDB v{0}."
-msgstr "Користи VolumeDB верзија{0}."
+msgstr "Користи VolumeDB верзију {0}."
 
 #: src/Gui/About.cs:31
 msgid "Copyright (c) "
@@ -493,11 +493,11 @@ msgstr "подразумевани"
 msgid "Search items"
 msgstr "Претражи ставке"
 
-#: src/Gui/ItemSearch.cs:284
+#: src/Gui/ItemSearch.cs:285
 msgid "No search results."
 msgstr "Нема резултата претраге."
 
-#: src/Gui/ItemSearch.cs:327 src/Gui/MainWindow.cs:879
+#: src/Gui/ItemSearch.cs:328 src/Gui/MainWindow.cs:879
 msgid "Edit Item"
 msgstr "Измени ставку"
 
@@ -744,96 +744,96 @@ msgstr "Формат:"
 msgid "Item Properties"
 msgstr "Својства ставке"
 
-#: src/Gui/VolumeScanner.cs:76
+#: src/Gui/VolumeScanner.cs:80
 msgid "libExtractor not found. Metadata extraction disabled."
 msgstr "libExtractor није пронађен. Онемогућено је извлачење метаподатака."
 
-#: src/Gui/VolumeScanner.cs:130
+#: src/Gui/VolumeScanner.cs:134
 msgid "Scanning started."
 msgstr "Скенирање је почело."
 
-#: src/Gui/VolumeScanner.cs:132
+#: src/Gui/VolumeScanner.cs:136
 #, csharp-format
 msgid "Scanning of drive '{0}' started."
 msgstr "Скенирање диска '{0}' је почело."
 
-#: src/Gui/VolumeScanner.cs:138
+#: src/Gui/VolumeScanner.cs:142
 #, csharp-format
 msgid ""
 "Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
 "hashing: {3}."
 msgstr ""
 "Опције: прављење сличица: {0}, извлачење метаподатака: {1}, одбацивање "
-"симболичних веза: {2}, хаширање: {3}."
+"симболичких веза: {2}, хеширање: {3}."
 
-#: src/Gui/VolumeScanner.cs:149
+#: src/Gui/VolumeScanner.cs:153
 #, csharp-format
 msgid "Options: MusicBrainz enabled: {0}"
 msgstr "Опције: омогућен МјузикБрејнз: {0}"
 
-#: src/Gui/VolumeScanner.cs:171
+#: src/Gui/VolumeScanner.cs:175
 msgid "Time"
 msgstr "Време"
 
-#: src/Gui/VolumeScanner.cs:175
+#: src/Gui/VolumeScanner.cs:179
 msgid "Message"
 msgstr "Порука"
 
-#: src/Gui/VolumeScanner.cs:265
+#: src/Gui/VolumeScanner.cs:267
 msgid "yes"
 msgstr "да"
 
-#: src/Gui/VolumeScanner.cs:265
+#: src/Gui/VolumeScanner.cs:267
 msgid "no"
 msgstr "не"
 
-#: src/Gui/VolumeScanner.cs:288
+#: src/Gui/VolumeScanner.cs:290
 msgid "Scan in progress"
 msgstr "Скенирање је у току"
 
-#: src/Gui/VolumeScanner.cs:288
+#: src/Gui/VolumeScanner.cs:290
 msgid "You must stop scanning before closing this window."
 msgstr "Морате зауставити скенирање пре него што затворите овај прозор."
 
-#: src/Gui/VolumeScanner.cs:298
+#: src/Gui/VolumeScanner.cs:300
 msgid "Stopping Scanner and performing rollback..."
 msgstr "Заустављање скенирања и враћање на претходно стање..."
 
-#: src/Gui/VolumeScanner.cs:340
+#: src/Gui/VolumeScanner.cs:342
 #, csharp-format
 msgid "An unhandled exception occured ({0})."
 msgstr "Дошло је до неочекиване грешке ({0})."
 
-#: src/Gui/VolumeScanner.cs:341
+#: src/Gui/VolumeScanner.cs:343
 msgid "All database changes have been rolled back."
 msgstr "Све промене на бази података су поништене."
 
-#: src/Gui/VolumeScanner.cs:364
+#: src/Gui/VolumeScanner.cs:366
 #, csharp-format
 msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
 msgstr "Скенирање није успело. Разлог: дошло је до неочекиване грешке ({0})."
 
-#: src/Gui/VolumeScanner.cs:366
+#: src/Gui/VolumeScanner.cs:368
 msgid "Scanning aborted."
 msgstr "Скенирање је прекинуто."
 
-#: src/Gui/VolumeScanner.cs:368
+#: src/Gui/VolumeScanner.cs:370
 msgid "Scanning completed successfully."
 msgstr "Скенирање је успешно завршено."
 
-#: src/Gui/VolumeScanner.cs:465
+#: src/Gui/VolumeScanner.cs:467
 msgid "VolumeScanner"
 msgstr "Скенер дискова"
 
-#: src/Gui/VolumeScanner.cs:477
+#: src/Gui/VolumeScanner.cs:479
 msgid "<b>Volume Information:</b>"
 msgstr "<b>Подаци о запису:</b>"
 
-#: src/Gui/VolumeScanner.cs:487
+#: src/Gui/VolumeScanner.cs:489
 msgid "<b>Scanner Log:</b>"
 msgstr "<б> Дневник скенирања: </ Б>"
 
-#: src/Gui/VolumeScanner.cs:504
+#: src/Gui/VolumeScanner.cs:506
 msgid "Database access"
 msgstr "Приступ базама података"
 

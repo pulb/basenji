@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-03-21 20:19+0100\n"
-"PO-Revision-Date: 2010-11-16 05:15+0000\n"
-"Last-Translator: Fitoschido <fitoschido@gmail.com>\n"
+"POT-Creation-Date: 2011-08-16 22:43+0200\n"
+"PO-Revision-Date: 2011-08-22 07:01+0000\n"
+"Last-Translator: Alfredo Hernández <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-04-25 13:52+0000\n"
-"X-Generator: Launchpad (build 12915)\n"
+"X-Launchpad-Export-Date: 2011-09-08 16:24+0000\n"
+"X-Generator: Launchpad (build 13891)\n"
 
 #: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:74
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:65
@@ -88,27 +88,27 @@ msgstr ""
 msgid "Error connecting to MusicBrainz server."
 msgstr "Error al conectarse con el servidor MusicBrainz."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:164
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:165
 #, csharp-format
 msgid "Directory '{0}' not found. (Wrong filename encoding?)"
 msgstr ""
 "Directorio «{0}» no encontrado. (¿Mala codificación del nombre de archivo?)"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:173
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:174
 #, csharp-format
 msgid "Skipped item '{0}' as it doesn't seem to be a real directory."
 msgstr ""
 "Se ha saltado el elemento «{0}» dado que no parece ser un directorio real."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:194
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:316
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:195
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:340
 #, csharp-format
 msgid "Skipped symlink item '{0}' as the target does not exist."
 msgstr ""
 "Saltado el elemento de symlink «{0}» dado que el destino parece no existir."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:203
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:323
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:204
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:347
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it appears to point to a different drive "
@@ -117,21 +117,26 @@ msgstr ""
 "Se ha omitido el elemento symlink «{0}» ya que parece apuntar a una unidad "
 "diferente («{1}»)."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:244
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:245
 #, csharp-format
 msgid "File '{0}' not found. (Wrong filename encoding?)"
 msgstr ""
 "No se ha encontrado el archivo «{0}». (¿Mala codificación del nombre de "
 "archivo?)"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:286
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:279
+#, csharp-format
+msgid "Extracting metadata from file '{0}' failed. ({1})"
+msgstr "La extracción de los metadatos del archivo «{0}» ha fallado. ({1})"
+
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:310
 #, csharp-format
 msgid "Error opening file '{0}', can't retrieve any mime/metadata. ({1})"
 msgstr ""
 "Error al abrir el archivo «{0}», no se puede recuperar ningún MIME/metadato. "
 "({1})"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:330
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:354
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."
@@ -139,46 +144,24 @@ msgstr ""
 "Se ha omitido el ítem symlink «{0}» al no apuntar a un fichero regular "
 "('{1}')."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:339
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:363
 #, csharp-format
 msgid "Skipped item '{0}' as it appears to be some kind of special file."
 msgstr ""
 "Se ha ignorado el elemento «{0}» debido a que parece ser algún tipo de "
 "fichero especial."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:357
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:381
 #, csharp-format
 msgid "Unable to dump dir '{0}'. ({1})"
 msgstr "Imposible volcar el directorio «{0}». ({1})"
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:476
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:500
 #, csharp-format
 msgid "Can't read LastWriteTime from item '{0}' ({1})."
 msgstr "No se puede leer LastWriteTime del elemento «{0}» ({1})."
 
-#: src/VolumeScanner/FilesystemVolumeScanner.cs:640
+#: src/VolumeScanner/FilesystemVolumeScanner.cs:664
 #, csharp-format
 msgid "Failed to resolve target item for symlink '{0}'."
 msgstr "Error al resolver el elemento destino para el symlink «{0}»."
-
-#~ msgid ""
-#~ "Operand for keyword 'filesize' must be a number with an optional multiplier"
-#~ msgstr ""
-#~ "El operador para la palabra clave 'tamaño de archivo' debe ser un número con "
-#~ "un multiplicador opcional"
-
-#~ msgid "Operand for keyword 'type' must be a string"
-#~ msgstr "El operador para la palabra clave 'tipo' debe ser una cadena"
-
-#~ msgid "Invalid compare operator for keyword 'filesize'"
-#~ msgstr ""
-#~ "Operador de comparación para la palabra clave 'tamaño de archivo' no válido"
-
-#~ msgid "Error retrieving metadata from MusicBrainz."
-#~ msgstr "Error al recuperar metadatos de MusicBrainz."
-
-#~ msgid "Keyword 'type' only supports '=' and ':' operators"
-#~ msgstr "La palabra clave 'type' sólo soporta los operadores '=' y ':'"
-
-#~ msgid "libExtractor not found. Metadata extraction disabled."
-#~ msgstr "libExtractor no encontrado. Extracción de metadatos deshabilitada."

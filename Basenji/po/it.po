@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-03-21 20:19+0100\n"
+"POT-Creation-Date: 2011-08-16 22:43+0200\n"
 "PO-Revision-Date: 2011-03-25 12:41+0000\n"
 "Last-Translator: Guybrush88 <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-04-25 13:52+0000\n"
-"X-Generator: Launchpad (build 12915)\n"
+"X-Launchpad-Export-Date: 2011-09-08 16:24+0000\n"
+"X-Generator: Launchpad (build 13891)\n"
 
 #: src/Util.cs:30
 #, csharp-format
@@ -54,14 +54,14 @@ msgstr "File VolumeDatabase"
 msgid "All files"
 msgstr "Tutti i file"
 
-#: src/Main.cs:137 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
+#: src/Main.cs:142 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
 #: src/Gui/MainWindow.cs:262 src/Gui/MainWindow.cs:283
 #: src/Gui/MainWindow.cs:305 src/Gui/MainWindow.cs:314
 #: src/Gui/MainWindow.cs:556
 msgid "Error"
 msgstr "Errore"
 
-#: src/Main.cs:137
+#: src/Main.cs:142
 #, csharp-format
 msgid "{0} is already running."
 msgstr "{0} è in esecuzione."
@@ -130,11 +130,11 @@ msgstr "Dimensione totale:"
 msgid "Item type"
 msgstr "Tipo elemento"
 
-#: src/Gui/Widgets/Editors/ItemEditor.cs:101 src/Gui/Widgets/ItemInfo.cs:358
+#: src/Gui/Widgets/Editors/ItemEditor.cs:101 src/Gui/Widgets/ItemInfo.cs:367
 msgid "Note"
 msgstr "Annotazioni"
 
-#: src/Gui/Widgets/Editors/ItemEditor.cs:102 src/Gui/Widgets/ItemInfo.cs:361
+#: src/Gui/Widgets/Editors/ItemEditor.cs:102 src/Gui/Widgets/ItemInfo.cs:370
 msgid "Keywords"
 msgstr "Parole chiave"
 
@@ -389,7 +389,7 @@ msgstr "Lingua"
 msgid "Page count"
 msgstr "Conteggio pagine"
 
-#: src/Gui/Widgets/ItemInfo.cs:333
+#: src/Gui/Widgets/ItemInfo.cs:342
 msgid "File count"
 msgstr "Conteggio file"
 
@@ -402,11 +402,11 @@ msgstr "Nessun elemento."
 msgid "<b>Page {0}/{1}</b>  ({2} - {3} of {4} items)"
 msgstr "<b>Pagina {0}/{1}</b>  ({2} - {3} di {4} elementi)"
 
-#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:256
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:258
 msgid "Invalid data"
 msgstr "Dati non validi"
 
-#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:257
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:259
 #, csharp-format
 msgid ""
 "\"{0}\" is {1}.\n"
@@ -493,11 +493,11 @@ msgstr "predefinito"
 msgid "Search items"
 msgstr "Cerca oggetti"
 
-#: src/Gui/ItemSearch.cs:284
+#: src/Gui/ItemSearch.cs:285
 msgid "No search results."
 msgstr "Nessun risultato."
 
-#: src/Gui/ItemSearch.cs:327 src/Gui/MainWindow.cs:879
+#: src/Gui/ItemSearch.cs:328 src/Gui/MainWindow.cs:879
 msgid "Edit Item"
 msgstr "Modifica elemento"
 
@@ -745,20 +745,20 @@ msgstr "Formato:"
 msgid "Item Properties"
 msgstr "Proprietà dell'elemento"
 
-#: src/Gui/VolumeScanner.cs:76
+#: src/Gui/VolumeScanner.cs:80
 msgid "libExtractor not found. Metadata extraction disabled."
 msgstr "libExtractor non trovato. Estrazione di metadati disabilitata."
 
-#: src/Gui/VolumeScanner.cs:130
+#: src/Gui/VolumeScanner.cs:134
 msgid "Scanning started."
 msgstr "Scansione iniziata."
 
-#: src/Gui/VolumeScanner.cs:132
+#: src/Gui/VolumeScanner.cs:136
 #, csharp-format
 msgid "Scanning of drive '{0}' started."
 msgstr "Scansione del dispositivo '{0}' iniziata."
 
-#: src/Gui/VolumeScanner.cs:138
+#: src/Gui/VolumeScanner.cs:142
 #, csharp-format
 msgid ""
 "Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
@@ -767,75 +767,75 @@ msgstr ""
 "Opzioni: generare anteprime: {0}, estrarre metadati: {1}, scartare symlinks: "
 "{2}, hashing: {3}."
 
-#: src/Gui/VolumeScanner.cs:149
+#: src/Gui/VolumeScanner.cs:153
 #, csharp-format
 msgid "Options: MusicBrainz enabled: {0}"
 msgstr "Opzioni: MusicBrainz abilitato: {0}"
 
-#: src/Gui/VolumeScanner.cs:171
+#: src/Gui/VolumeScanner.cs:175
 msgid "Time"
 msgstr "Durata"
 
-#: src/Gui/VolumeScanner.cs:175
+#: src/Gui/VolumeScanner.cs:179
 msgid "Message"
 msgstr "Messaggio"
 
-#: src/Gui/VolumeScanner.cs:265
+#: src/Gui/VolumeScanner.cs:267
 msgid "yes"
 msgstr "sì"
 
-#: src/Gui/VolumeScanner.cs:265
+#: src/Gui/VolumeScanner.cs:267
 msgid "no"
 msgstr "no"
 
-#: src/Gui/VolumeScanner.cs:288
+#: src/Gui/VolumeScanner.cs:290
 msgid "Scan in progress"
 msgstr "Scansione in corso"
 
-#: src/Gui/VolumeScanner.cs:288
+#: src/Gui/VolumeScanner.cs:290
 msgid "You must stop scanning before closing this window."
 msgstr "Interrompere la scansione prima di chiudere questa finestra."
 
-#: src/Gui/VolumeScanner.cs:298
+#: src/Gui/VolumeScanner.cs:300
 msgid "Stopping Scanner and performing rollback..."
 msgstr "Interruzione della scansione e ripristino..."
 
-#: src/Gui/VolumeScanner.cs:340
+#: src/Gui/VolumeScanner.cs:342
 #, csharp-format
 msgid "An unhandled exception occured ({0})."
 msgstr "Si é verificata un'eccezione non gestita ({0})."
 
-#: src/Gui/VolumeScanner.cs:341
+#: src/Gui/VolumeScanner.cs:343
 msgid "All database changes have been rolled back."
 msgstr "Tutti i cambiamenti al database sono stati annullati."
 
-#: src/Gui/VolumeScanner.cs:364
+#: src/Gui/VolumeScanner.cs:366
 #, csharp-format
 msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
 msgstr ""
 "Scansione fallita. Causa: si é verificata un'eccezione non gestita ({0})."
 
-#: src/Gui/VolumeScanner.cs:366
+#: src/Gui/VolumeScanner.cs:368
 msgid "Scanning aborted."
 msgstr "Scansione interrotta."
 
-#: src/Gui/VolumeScanner.cs:368
+#: src/Gui/VolumeScanner.cs:370
 msgid "Scanning completed successfully."
 msgstr "Scansione completata con successo."
 
-#: src/Gui/VolumeScanner.cs:465
+#: src/Gui/VolumeScanner.cs:467
 msgid "VolumeScanner"
 msgstr "VolumeScanner"
 
-#: src/Gui/VolumeScanner.cs:477
+#: src/Gui/VolumeScanner.cs:479
 msgid "<b>Volume Information:</b>"
 msgstr "<b>Informazione volume:</b>"
 
-#: src/Gui/VolumeScanner.cs:487
+#: src/Gui/VolumeScanner.cs:489
 msgid "<b>Scanner Log:</b>"
 msgstr "<b>Registro dello scanner:</b>"
 
-#: src/Gui/VolumeScanner.cs:504
+#: src/Gui/VolumeScanner.cs:506
 msgid "Database access"
 msgstr "Accesso al database"
 
@@ -920,9 +920,3 @@ msgstr "Prelevare metadati per audio cd da MusicBrainz.org"
 #: src/Gui/Preferences.cs:403
 msgid "Scanner"
 msgstr "Scanner"
-
-#~ msgid "Search:"
-#~ msgstr "Cerca:"
-
-#~ msgid "Please select a volume record to edit."
-#~ msgstr "Selezionare un volume da modificare."
