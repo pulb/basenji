@@ -13,7 +13,7 @@ Build-Depends: autotools-dev,
                libmono-cairo2.0-cil,
                libndesk-dbus-glib1.0-cil-dev,
                libndesk-dbus1.0-cil-dev,
-               mono-2.0-devel (>= 2.4.2),
+               mono-devel (>= 2.6.7),
                pkg-config
 Standards-Version: 3.9.1
 Homepage: http://launchpad.net/basenji
