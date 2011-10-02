@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-16 22:43+0200\n"
+"POT-Creation-Date: 2011-10-02 14:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -448,7 +448,7 @@ msgid "Please select a drive to scan"
 msgstr ""
 
 #: src/Gui/About.cs:28
-msgid "A portable volume indexing tool"
+msgid "A cross-platform media indexing/search tool."
 msgstr ""
 
 #: src/Gui/About.cs:29
@@ -813,19 +813,19 @@ msgstr ""
 msgid "Scanning completed successfully."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:467
+#: src/Gui/VolumeScanner.cs:500
 msgid "VolumeScanner"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:479
+#: src/Gui/VolumeScanner.cs:512
 msgid "<b>Volume Information:</b>"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:489
+#: src/Gui/VolumeScanner.cs:522
 msgid "<b>Scanner Log:</b>"
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:506
+#: src/Gui/VolumeScanner.cs:539
 msgid "Database access"
 msgstr ""
 
