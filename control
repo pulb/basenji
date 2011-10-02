@@ -16,7 +16,7 @@ Build-Depends: autotools-dev,
                libndesk-dbus1.0-cil-dev,
                mono-devel (>= 2.6.7),
                pkg-config
-Standards-Version: 3.9.1
+Standards-Version: 3.9.2
 Homepage: http://launchpad.net/basenji
 
 Package: basenji
