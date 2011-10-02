@@ -27,7 +27,7 @@ Depends: libextractor-plugins (>= 0.5.21),
          ${cli:Depends},
          ${misc:Depends},
          libgio-cil (>= 2.22.2)
-Description: portable media indexing/search tool
+Description: Portable media indexing/search tool
  Basenji is a volume indexing tool designed for easy and fast indexing
  of volume collections. It currently supports indexing of removable media
  such as CDs and USB sticks and stores them as volume objects in a database.
