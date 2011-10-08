@@ -27,7 +27,6 @@ Depends: libextractor-plugins (>= 0.5.23),
          udisks,
          ${cli:Depends},
          ${misc:Depends},
-         libgio-cil (>= 2.22.2)
 Description: Cross-platform media indexing/search tool
  Basenji is an indexing and search tool designed for easy and fast indexing
  of media collections. Once being indexed, removable media such as CDs and
