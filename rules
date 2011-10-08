@@ -7,6 +7,10 @@ include /usr/share/cli-common/cli.make
 	dh $@
 
 override_dh_auto_configure:
+	# Dynamically patch the makefiles to use the distributions 
+	# default mono compiler instead of gmcs.
+	find . -name Makefile -exec sed -i "s/ASSEMBLY_COMPILER_COMMAND = gmcs/ASSEMBLY_COMPILER_COMMAND = mono-csc/g" {} \;
+	
 	./configure --prefix=/usr --config=GNOME_RELEASE
 
 override_dh_auto_clean: override_dh_auto_configure
