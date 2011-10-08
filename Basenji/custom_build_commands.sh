@@ -4,7 +4,7 @@ arg=$1
 target_dir=$2
 
 # gio-sharp is currenlty unstable and not installed into the GAC
-# so link to it localy
+# so copy it localy
 gio_assembly_path="`pkg-config --variable=Libraries gio-sharp-2.0`"
 gio_assembly_name="`basename $gio_assembly_path`"
 
@@ -16,11 +16,11 @@ case $arg in
 		fi
 		
 		if [ ! -f $target_dir/$gio_assembly_name ]; then
-			ln -s $gio_assembly_path -n $target_dir/$gio_assembly_name
+			cp $gio_assembly_path $target_dir
 		fi
 
 		if [ ! -f $target_dir/$gio_assembly_name.config ]; then		
-			ln -s $gio_assembly_path.config -n $target_dir/$gio_assembly_name.config
+			cp $gio_assembly_path.config $target_dir/
 		fi
 		;;
 	"--after-clean")
