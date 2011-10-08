@@ -30,80 +30,80 @@ namespace Basenji
 		private const string NON_GNOME_CUSTOM_THEME	= "Tango";
 		private const int DEFAULT_SORT_PROPERTY		= (int)Gui.Widgets.VolumeSortProperty.Added;
 		
-		[SettingsAttribute("ScannerDevice", "")]
+		[SettingsAttribute("")]
 		public string ScannerDevice { get; set; }
 		
 		// WARNING: the higher the value, the longer it 
 		// will take the cancellation (triggered by CancelAsync()) to complete.
-		[SettingsAttribute("ScannerBufferSize", "10")]
+		[SettingsAttribute("10")]
 		public int ScannerBufferSize { get; set; }
 		
-		[SettingsAttribute("ScannerDiscardSymLinks", "0")]
+		[SettingsAttribute("0")]
 		public bool ScannerDiscardSymLinks  { get; set; }
 		
-		[SettingsAttribute("ScannerComputeHashs", "0")]
+		[SettingsAttribute("0")]
 		public bool ScannerComputeHashs { get; set; }
 		
-		[SettingsAttribute("ScannerGenerateThumbnails", "1")]
+		[SettingsAttribute("1")]
 		public bool ScannerGenerateThumbnails { get; set; }
 
-		[SettingsAttribute("ScannerExtractMetaData", "1")]
+		[SettingsAttribute("1")]
 		public bool ScannerExtractMetaData { get; set; }
 		
 		// 0 = taglib-sharp, 1 = libextractor 0.5.x
-		[SettingsAttribute("ScannerMetaDataProvider", "0")]
+		[SettingsAttribute("0")]
 		public int ScannerMetaDataProvider { get; set; }
 		
 		// e.g. "pdf, mp3" (used by libextractor metadata provider only)
-		[SettingsAttribute("ScannerExtractionBlacklist", "")]
+		[SettingsAttribute("")]
 		public string ScannerExtractionBlacklist { get; set; }
 		
-		[SettingsAttribute("ScannerEnableMusicBrainz", "1")]
+		[SettingsAttribute("1")]
 		public bool ScannerEnableMusicBrainz { get; set; }
 		
-		[SettingsAttribute("OpenMostRecentDB", "1")]
+		[SettingsAttribute("1")]
 		public bool OpenMostRecentDB { get; set; }
 		
-		[SettingsAttribute("MostRecentDBPath", "")]
+		[SettingsAttribute("")]
 		public string MostRecentDBPath { get; set; }
 		
-		[SettingsAttribute("ShowThumbsInItemLists", "0")]
+		[SettingsAttribute("0")]
 		public bool ShowThumbsInItemLists { get; set; }
 		
-		[SettingsAttribute("MainWindowWidth", "800")]
+		[SettingsAttribute("800")]
 		public int MainWindowWidth { get; set; }
 		
-		[SettingsAttribute("MainWindowHeight", "480")]
+		[SettingsAttribute("480")]
 		public int MainWindowHeight { get; set; }
 		
-		[SettingsAttribute("MainWindowIsMaximized", "0")]
+		[SettingsAttribute("0")]
 		public bool MainWindowIsMaximized { get; set; }
 		
-		[SettingsAttribute("ShowItemInfo", "1")]
+		[SettingsAttribute("1")]
 		public bool ShowItemInfo { get; set; }
 		
-		[SettingsAttribute("ShowHiddenItems", "0")]
+		[SettingsAttribute("0")]
 		public bool ShowHiddenItems { get; set; }
 		
-		[SettingsAttribute("ItemInfoMinimized1", "0")]
+		[SettingsAttribute("0")]
 		public bool ItemInfoMinimized1 { get; set; }
 
-		[SettingsAttribute("ItemInfoMinimized2", "0")]
+		[SettingsAttribute("0")]
 		public bool ItemInfoMinimized2 { get; set; }
 		
-		[SettingsAttribute("MainWindowSplitterPosition", "260")]
+		[SettingsAttribute("260")]
 		public int MainWindowSplitterPosition { get; set; }
 		
-		[SettingsAttribute("CustomThemeName", "")]
+		[SettingsAttribute("")]
 		public string CustomThemeName { get; set; }
 		
-		[SettingsAttribute("SearchResultPageSize", "10")]
+		[SettingsAttribute("10")]
 		public int SearchResultPageSize { get; set; }
 		
-		[SettingsAttribute("VolumeSortProperty", "3")]
+		[SettingsAttribute("3")]
 		public int VolumeSortProperty { get; set; }
 		
-		[SettingsAttribute("EnforceCulture", "")]
+		[SettingsAttribute("")]
 		public string EnforceCulture { get; set; }
 		
 		public Settings() : this(false) {}
@@ -161,7 +161,6 @@ namespace Basenji
 					if (atts.Length == 0)
 						continue;
 					
-					SettingsAttribute sa = (SettingsAttribute)atts[0];
 					string val;
 					
 					if (pi.PropertyType == typeof(bool))
@@ -169,7 +168,7 @@ namespace Basenji
 					else
 						val = pi.GetValue(this, null).ToString();
 					
-					sw.WriteLine("{0} = {1}", sa.Name, val);					
+					sw.WriteLine("{0} = {1}", pi.Name, val);					
 				}
 			}
 		}
@@ -216,10 +215,9 @@ namespace Basenji
 				if (atts.Length == 0)
 					continue;
 				
-				SettingsAttribute sa = (SettingsAttribute)atts[0];
 				string val;
 				
-				if (settings.TryGetValue(sa.Name, out val))
+				if (settings.TryGetValue(pi.Name, out val))
 					SetPropertyValueFromString(pi, val);
 			}
 		}
@@ -268,12 +266,10 @@ namespace Basenji
 		[AttributeUsage(AttributeTargets.Property)]
 		class SettingsAttribute : Attribute
 		{
-			public SettingsAttribute(string name, string defaultValue) : base() {
-				this.Name = name;
+			public SettingsAttribute(string defaultValue) : base() {
 				this.DefaultValue = defaultValue;
 			}
-			
-			public string Name { get; set; }
+
 			public string DefaultValue { get; set; }
 		}
 	}
