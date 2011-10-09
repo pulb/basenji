@@ -14,7 +14,7 @@ function check_thumbnailers()
 	fi
 
 	if [ ! -d $THUMBNAILER_DIR ]; then
-		echo "Error: Can't import thumnailers - directory '$THUMBNAILER_DIR' not found."
+		echo "Error: Can't import thumbnailers - directory '$THUMBNAILER_DIR' not found."
 		return
 	fi
 
