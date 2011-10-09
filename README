@@ -35,11 +35,6 @@ Compile:
 	you most likely don't have SVG pixbuf loaders installed 
 	(package librsvg2-common in ubuntu).
 	
-	If you're using GNOME 3 and Basenji does not generate 
-	file previews (thumbnails), your gconf setup is most likely	
-	missing thumbnailer keys. 
-	To fix this run ./import_thumbnailers.
-	
 
 MS Windows:
 ===========
