@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Import GNOME 3 thumbnailers into GConf.
 # Workaround for bug lp:864615.
