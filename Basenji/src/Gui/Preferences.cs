@@ -60,8 +60,10 @@ namespace Basenji.Gui
 			// because this operation may take a few seconds on windows systems.
 			// ShowSettings() depends on FillDrives() so it must be called in the same thread.
 			new Thread(delegate() {
+				PlatformIO.DriveInfo[] drives = PlatformIO.DriveInfo.GetDrives(false); // get drives that are _not_ ready, too.
+				
 				Application.Invoke(delegate {				 
-					FillDrives();
+					FillDrives(drives);
 					ShowSettings(App.Settings);
 					iconThemeChanged = false; // must be set after FillIconThemes()!
 					
@@ -95,9 +97,8 @@ namespace Basenji.Gui
 			iconThemeChanged = true;
 		}
 		
-		private void FillDrives() {
+		private void FillDrives(PlatformIO.DriveInfo[] drives) {
 			ListStore store = new ListStore(typeof(Pixbuf), typeof(string));
-			PlatformIO.DriveInfo[] drives = PlatformIO.DriveInfo.GetDrives(false); // get drives that are _not_ ready, too.
 
 			//string stockID;
 			Pixbuf icon;
