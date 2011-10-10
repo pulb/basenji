@@ -1,6 +1,6 @@
 // Preferences.cs
 // 
-// Copyright (C) 2008, 2010 Patrick Ulbrich
+// Copyright (C) 2008 - 2011 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -57,7 +57,7 @@ namespace Basenji.Gui
 			FillIconThemes();
 			
 			// drive refreshing is implemented asynchronously, 
-			// because this operation can take a few seconds on windows systems.
+			// because this operation may take a few seconds on windows systems.
 			// ShowSettings() depends on FillDrives() so it must be called in the same thread.
 			new Thread(delegate() {
 				Application.Invoke(delegate {				 
