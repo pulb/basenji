@@ -17,4 +17,6 @@ override_dh_auto_clean: override_dh_auto_configure
 	dh_auto_clean	
 	rm -f config.log config.make Basenji/basenji.desktop
 	find -name "*.pc" | xargs rm -rf
+	# undo dynamic mono-csc patch to prevent dpkg-source from creating a useless debian patch
+	find . -name Makefile -exec sed -i "s/ASSEMBLY_COMPILER_COMMAND = mono-csc/ASSEMBLY_COMPILER_COMMAND = gmcs/g" {} \;
 
