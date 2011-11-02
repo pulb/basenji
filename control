@@ -29,8 +29,8 @@ Depends: libextractor-plugins (>= 0.5.23),
          ${misc:Depends}
 Description: Cross-platform media indexing/search tool
  Basenji is an indexing and search tool designed for easy and fast indexing
- of media collections. Once being indexed, removable media such as CDs and
- USB sticks can be browsed and searched trough for specific files very quickly,
+ of media collections. Once indexed, removable media such as CDs and
+ USB sticks can be browsed and searched for specific files very quickly,
  without actually being connected to the computer. Besides file hierarchies
  and audio track listings, Basenji also presents extracted metadata
  (image dimensions, mp3 tags etc.) and content previews of indexed media in a
