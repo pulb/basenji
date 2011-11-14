@@ -89,6 +89,7 @@ Hungarian:
 
 Italian:
     Davide Vidal (https://launchpad.net/~davide-vidal)
+    Fidel Nadera (https://launchpad.net/~welthanschauung)
     Francesco Marella (https://launchpad.net/~francesco-marella)
     Giuseppe Caliendo (https://launchpad.net/~giuseppe-caliendo)
     Guybrush88 (https://launchpad.net/~erpizzo)
