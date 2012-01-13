@@ -47,6 +47,7 @@ Contributors:
     Marcos Oliveira da Cruz (https://launchpad.net/~marcosoliveiradacruz)
     Matheus de Araújo (https://launchpad.net/~suetamac)
     Rafael nossal (https://launchpad.net/~rafaelnossal)
+    Ulisses de Castilho Soares (https://launchpad.net/~ulisses-soares)
 
 Bulgarian:
     svilborg (https://launchpad.net/~svilborg)
