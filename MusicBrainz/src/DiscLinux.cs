@@ -37,27 +37,27 @@ namespace MusicBrainz
         const int CD_FRAMES = 75;
         const int XA_INTERVAL = ((60 + 90 + 2) * CD_FRAMES);
 
-        [DllImport ("libc.so.6", CharSet = CharSet.Auto)]
+        [DllImport ("libc", CharSet = CharSet.Auto)]
         static extern int open (string path, int flags);
 
-        [DllImport ("libc.so.6")]
+        [DllImport ("libc")]
         static extern int close (int fd);
 
-        [DllImport ("libc.so.6", EntryPoint = "ioctl")]
+        [DllImport ("libc", EntryPoint = "ioctl")]
         static extern int read_toc_header (int fd, int request, ref cdrom_tochdr header);
         static int read_toc_header (int fd, ref cdrom_tochdr header)
         {
             return read_toc_header (fd, CDROMREADTOCHDR, ref header);
         }
 
-        [DllImport ("libc.so.6", EntryPoint = "ioctl")]
+        [DllImport ("libc", EntryPoint = "ioctl")]
         static extern int read_multisession (int fd, int request, ref cdrom_multisession multisession);
         static int read_multisession (int fd, ref cdrom_multisession multisession)
         {
             return read_multisession (fd, CDROMMULTISESSION, ref multisession);
         }
 
-        [DllImport ("libc.so.6", EntryPoint = "ioctl")]
+        [DllImport ("libc", EntryPoint = "ioctl")]
         static extern int read_toc_entry (int fd, int request, ref cdrom_tocentry entry);
         static int read_toc_entry (int fd, ref cdrom_tocentry entry)
         {
