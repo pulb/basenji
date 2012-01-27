@@ -130,6 +130,7 @@ Spanish:
     Emiliano (https://launchpad.net/~emilianohfernandez)
     Feder Sáiz (https://launchpad.net/~federsaiz)
     Fitoschido (https://launchpad.net/~fitoschido)
+    Luis García (https://launchpad.net/~luismihn)
     Jonay Santana (https://launchpad.net/~jonay-santana)
     Jorge Dardón (https://launchpad.net/~jdardon)
     Julian Lamus (https://launchpad.net/~lamusj)
