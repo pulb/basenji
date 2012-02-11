@@ -41,7 +41,7 @@ MS Windows:
 
 Requirements:
 
-	.NET 3.5 Framework
+	.NET 4.0 Framework
 	Gtk# for .NET (http://www.go-mono.com/mono-downloads/download.html)
 	System.Data.SQLite (http://sqlite.phxsoftware.com/)
 	libextractor (http://www.gnu.org/software/libextractor/download.html)
