@@ -9,7 +9,7 @@ top_srcdir=..
 include $(top_srcdir)/config.make
 
 ifeq ($(CONFIG),DEBUG)
-ASSEMBLY_COMPILER_COMMAND = gmcs
+ASSEMBLY_COMPILER_COMMAND = dmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize- -debug "-define:DEBUG"
 ASSEMBLY = bin/Debug/Basenji.exe
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
@@ -42,7 +42,7 @@ VOLUMEDB_DLL_MDB=$(BUILD_DIR)/VolumeDB.dll.mdb
 endif
 
 ifeq ($(CONFIG),RELEASE)
-ASSEMBLY_COMPILER_COMMAND = gmcs
+ASSEMBLY_COMPILER_COMMAND = dmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize+
 ASSEMBLY = bin/Release/Basenji.exe
 ASSEMBLY_MDB = 
@@ -69,7 +69,7 @@ VOLUMEDB_DLL_MDB=
 endif
 
 ifeq ($(CONFIG),GNOME_DEBUG)
-ASSEMBLY_COMPILER_COMMAND = gmcs
+ASSEMBLY_COMPILER_COMMAND = dmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize- -debug "-define:DEBUG"
 ASSEMBLY = bin/Debug/Basenji.exe
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
@@ -102,7 +102,7 @@ VOLUMEDB_DLL_MDB=$(BUILD_DIR)/VolumeDB.dll.mdb
 endif
 
 ifeq ($(CONFIG),GNOME_RELEASE)
-ASSEMBLY_COMPILER_COMMAND = gmcs
+ASSEMBLY_COMPILER_COMMAND = dmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize+
 ASSEMBLY = bin/Release/Basenji.exe
 ASSEMBLY_MDB = 
@@ -128,7 +128,7 @@ VOLUMEDB_DLL_MDB=
 
 endif
 
-AL=al2
+AL=al
 SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 
 PROGRAMFILES = \
@@ -264,9 +264,9 @@ EXTRAS = \
 	basenji.in 
 
 REFERENCES =  \
-	System \
 	-pkg:gtk-sharp-2.0 \
 	-pkg:glib-sharp-2.0 \
+	System \
 	Mono.Cairo \
 	System.Core
 

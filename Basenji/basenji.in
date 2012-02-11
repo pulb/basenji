@@ -83,5 +83,5 @@ EOF
 
 check_thumbnailers
 
-cd "@expanded_libdir@/@PACKAGE@"
+cd "@ProgramFiles@"
 exec mono Basenji.exe "$@"

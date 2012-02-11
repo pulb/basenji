@@ -9,7 +9,7 @@ top_srcdir=..
 include $(top_srcdir)/config.make
 
 ifeq ($(CONFIG),DEBUG)
-ASSEMBLY_COMPILER_COMMAND = gmcs
+ASSEMBLY_COMPILER_COMMAND = dmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize- -debug -define:DEBUG "-define:UNIX,DEBUG"
 ASSEMBLY = bin/Debug/Platform.dll
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
@@ -23,7 +23,7 @@ PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
 endif
 
 ifeq ($(CONFIG),RELEASE)
-ASSEMBLY_COMPILER_COMMAND = gmcs
+ASSEMBLY_COMPILER_COMMAND = dmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize+ "-define:UNIX"
 ASSEMBLY = bin/Release/Platform.dll
 ASSEMBLY_MDB = 
@@ -36,7 +36,7 @@ PLATFORM_DLL_MDB=
 endif
 
 ifeq ($(CONFIG),GNOME_DEBUG)
-ASSEMBLY_COMPILER_COMMAND = gmcs
+ASSEMBLY_COMPILER_COMMAND = dmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize- -debug -define:DEBUG -pkg:gnome-sharp-2.0 -pkg:gio-sharp-2.0  "-define:UNIX,DEBUG,GNOME"
 ASSEMBLY = bin/Debug/Platform.dll
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
@@ -50,7 +50,7 @@ PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
 endif
 
 ifeq ($(CONFIG),GNOME_RELEASE)
-ASSEMBLY_COMPILER_COMMAND = gmcs
+ASSEMBLY_COMPILER_COMMAND = dmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize+ -pkg:gnome-sharp-2.0 -pkg:gio-sharp-2.0  "-define:UNIX,GNOME"
 ASSEMBLY = bin/Release/Platform.dll
 ASSEMBLY_MDB = 
@@ -62,7 +62,7 @@ PLATFORM_DLL_MDB=
 
 endif
 
-AL=al2
+AL=al
 SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 
 PROGRAMFILES = \
@@ -115,9 +115,9 @@ EXTRAS = \
 REFERENCES =  \
 	System \
 	Mono.Posix \
-	-pkg:ndesk-dbus-1.0 \
-	-pkg:ndesk-dbus-glib-1.0 \
-	System.Core
+	System.Core \
+	-pkg:dbus-sharp-1.0 \
+	-pkg:dbus-sharp-glib-1.0
 
 DLL_REFERENCES = 
 
