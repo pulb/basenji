@@ -8,8 +8,8 @@ include /usr/share/cli-common/cli.make
 
 override_dh_auto_configure:
 	# Dynamically patch the makefiles to use the distributions 
-	# default mono compiler instead of gmcs.
-	find . -name Makefile -exec sed -i "s/ASSEMBLY_COMPILER_COMMAND = gmcs/ASSEMBLY_COMPILER_COMMAND = mono-csc/g" {} \;
+	# default mono compiler instead of dmcs.
+	find . -name Makefile -exec sed -i "s/ASSEMBLY_COMPILER_COMMAND = dmcs/ASSEMBLY_COMPILER_COMMAND = mono-csc/g" {} \;
 	
 	./configure --prefix=/usr --config=GNOME_RELEASE
 
@@ -18,5 +18,5 @@ override_dh_auto_clean: override_dh_auto_configure
 	rm -f config.log config.make Basenji/basenji.desktop
 	find -name "*.pc" | xargs rm -rf
 	# undo dynamic mono-csc patch to prevent dpkg-source from creating a useless debian patch
-	find . -name Makefile -exec sed -i "s/ASSEMBLY_COMPILER_COMMAND = mono-csc/ASSEMBLY_COMPILER_COMMAND = gmcs/g" {} \;
+	find . -name Makefile -exec sed -i "s/ASSEMBLY_COMPILER_COMMAND = mono-csc/ASSEMBLY_COMPILER_COMMAND = dmcs/g" {} \;
 
