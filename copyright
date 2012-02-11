@@ -4,7 +4,7 @@ Maintainer: Patrick Ulbrich <zulu99@gmx.net>
 Source: https://www.launchpad.net/basenji/+download
 
 Files: *
-Copyright: © 2008 - 2011 Patrick Ulbrich
+Copyright: © 2008 - 2012 Patrick Ulbrich
 License: GPL-3+
 
 Files: Basenji/src/Options.cs
