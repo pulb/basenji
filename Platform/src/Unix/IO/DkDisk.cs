@@ -30,7 +30,7 @@
 #if !WIN32
 using System;
 
-using NDesk.DBus;
+using DBus;
 using System.Collections.Generic;
 
 namespace Platform.Unix.IO
