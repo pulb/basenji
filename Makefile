@@ -12,16 +12,16 @@ include $(top_srcdir)/rules.make
 
 #Warning: This is an automatically generated file, do not edit!
 ifeq ($(CONFIG),DEBUG)
- SUBDIRS =  Platform Platform.Common.DB LibExtractor MusicBrainz VolumeDB Basenji
+ SUBDIRS =  Platform Platform.Common.DB MusicBrainz VolumeDB Basenji
 endif
 ifeq ($(CONFIG),RELEASE)
- SUBDIRS =  Platform Platform.Common.DB LibExtractor MusicBrainz VolumeDB Basenji
+ SUBDIRS =  Platform Platform.Common.DB MusicBrainz VolumeDB Basenji
 endif
 ifeq ($(CONFIG),GNOME_DEBUG)
- SUBDIRS =  Platform Platform.Common.DB LibExtractor MusicBrainz VolumeDB Basenji
+ SUBDIRS =  Platform Platform.Common.DB MusicBrainz VolumeDB Basenji
 endif
 ifeq ($(CONFIG),GNOME_RELEASE)
- SUBDIRS =  Platform Platform.Common.DB LibExtractor MusicBrainz VolumeDB Basenji
+ SUBDIRS =  Platform Platform.Common.DB MusicBrainz VolumeDB Basenji
 endif
 
 

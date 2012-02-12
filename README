@@ -16,12 +16,8 @@ Requirements:
 	dbus-sharp (0.7.0 or later)
 	dbus-sharp-glib (0.7.0 or later)
 	mono-cairo (2.4.2.3 or later)
-	libextractor1c2a (<= 0.5.23*)
-	libextractor-plugins (<= 0.5.23*)
+	taglib-sharp (>= 2.0.4.0)
 	udisks (1.0.1 or later)
-    
-    * libextractor 0.6 introduces a new API 
-      and is not supported.
 
 Compile:
 
@@ -44,7 +40,7 @@ Requirements:
 	.NET 4.0 Framework
 	Gtk# for .NET (http://www.go-mono.com/mono-downloads/download.html)
 	System.Data.SQLite (http://sqlite.phxsoftware.com/)
-	libextractor (http://www.gnu.org/software/libextractor/download.html)
+	taglib-sharp (https://github.com/mono/taglib-sharp)
 	
 Compile:
 

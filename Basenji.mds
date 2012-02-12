@@ -1,6 +1,6 @@
 <Combine fileversion="2.0" name="Basenji">
   <Policies>
-    <StandardHeader inheritsSet="LGPLv2License" />
+    <StandardHeader Text="&#xA; ${FileName}&#xA; &#xA; Author:&#xA;      ${AuthorName} &lt;${AuthorEmail}&gt;&#xA;&#xA; Copyright (c) ${Year} ${CopyrightHolder}&#xA;&#xA; This library is free software; you can redistribute it and/or modify&#xA; it under the terms of the GNU Lesser General Public License as&#xA; published by the Free Software Foundation; either version 2.1 of the&#xA; License, or (at your option) any later version.&#xA;&#xA; This library is distributed in the hope that it will be useful, but&#xA; WITHOUT ANY WARRANTY; without even the implied warranty of&#xA; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU&#xA; Lesser General Public License for more details.&#xA;&#xA; You should have received a copy of the GNU Lesser General Public&#xA; License along with this library; if not, write to the Free Software&#xA; Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA" IncludeInNewFiles="True" />
     <DotNetNamingPolicy DirectoryNamespaceAssociation="None" ResourceNamePolicy="FileFormatDefault" />
     <TextStylePolicy FileWidth="120" TabWidth="4" RemoveTrailingWhitespace="True" EolMarker="Unix" inheritsSet="Mono" inheritsScope="text/plain" />
   </Policies>
@@ -10,7 +10,6 @@
       <Entry build="True" name="VolumeDB" configuration="Debug" />
       <Entry build="True" name="Platform" configuration="Debug" />
       <Entry build="True" name="Platform.Common.DB" configuration="Debug" />
-      <Entry build="True" name="LibExtractor" configuration="Debug" />
       <Entry build="True" name="MusicBrainz" configuration="Debug" />
     </Configuration>
     <Configuration name="Release" ctype="CombineConfiguration">
@@ -18,7 +17,6 @@
       <Entry build="True" name="VolumeDB" configuration="Release" />
       <Entry build="True" name="Platform" configuration="Release" />
       <Entry build="True" name="Platform.Common.DB" configuration="Release" />
-      <Entry build="True" name="LibExtractor" configuration="Release" />
       <Entry build="True" name="MusicBrainz" configuration="Release" />
     </Configuration>
     <Configuration name="Gnome_Debug" ctype="CombineConfiguration">
@@ -26,7 +24,6 @@
       <Entry build="True" name="VolumeDB" configuration="Debug" />
       <Entry build="True" name="Platform" configuration="Gnome_Debug" />
       <Entry build="True" name="Platform.Common.DB" configuration="Debug" />
-      <Entry build="True" name="LibExtractor" configuration="Debug" />
       <Entry build="True" name="MusicBrainz" configuration="Debug" />
     </Configuration>
     <Configuration name="Gnome_Release" ctype="CombineConfiguration">
@@ -34,7 +31,6 @@
       <Entry build="True" name="VolumeDB" configuration="Release" />
       <Entry build="True" name="Platform" configuration="Gnome_Release" />
       <Entry build="True" name="Platform.Common.DB" configuration="Release" />
-      <Entry build="True" name="LibExtractor" configuration="Release" />
       <Entry build="True" name="MusicBrainz" configuration="Release" />
     </Configuration>
   </Configurations>
@@ -43,7 +39,6 @@
     <Execute type="None" entry="VolumeDB" />
     <Execute type="None" entry="Platform" />
     <Execute type="None" entry="Platform.Common.DB" />
-    <Execute type="None" entry="LibExtractor" />
     <Execute type="None" entry="MusicBrainz" />
   </StartMode>
   <Entries>
@@ -51,7 +46,6 @@
     <Entry filename="VolumeDB/VolumeDB.mdp" />
     <Entry filename="Platform/Platform.mdp" />
     <Entry filename="Platform.Common.DB/Platform.Common.DB.mdp" />
-    <Entry filename="LibExtractor/LibExtractor.mdp" />
     <Entry filename="MusicBrainz/MusicBrainz.mdp" />
   </Entries>
 </Combine>

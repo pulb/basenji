@@ -1,6 +1,6 @@
 // MetadataUtils.cs
 //
-// Copyright (C) 2011 Patrick Ulbrich
+// Copyright (C) 2011, 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@ namespace VolumeDB.Metadata
 {
 	public static class MetadataUtils
 	{
-		// returns the libextractor duration format.
+		// returns the libextractor 0.5.x duration format.
 		// all metadata items that have a duration must use this format
 		public static string SecsToMetadataDuration (double seconds) {
 			if (seconds < 60.0)

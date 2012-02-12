@@ -116,7 +116,6 @@
     <File subtype="Code" buildaction="EmbedAsResource" name="po/ru.resources" resource_id="VolumeDB.po.ru.resources" />
     <File subtype="Directory" buildaction="Compile" name="src/Metadata" />
     <File subtype="Code" buildaction="Compile" name="src/Metadata/MetadataProvider.cs" />
-    <File subtype="Code" buildaction="Compile" name="src/Metadata/ExtractorMetadataProvider.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Metadata/MetadataType.cs" />
     <File subtype="Directory" buildaction="Compile" name="src/VolumeScanner" />
     <File subtype="Code" buildaction="Compile" name="src/Metadata/MetadataItem.cs" />
@@ -125,14 +124,17 @@
     <File subtype="Code" buildaction="EmbedAsResource" name="po/hr.resources" resource_id="VolumeDB.po.hr.resources" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/cs.resources" resource_id="VolumeDB.po.cs.resources" />
     <File subtype="Code" buildaction="EmbedAsResource" name="po/nl.resources" resource_id="VolumeDB.po.nl.resources" />
+    <File subtype="Code" buildaction="Compile" name="src/Metadata/ArchiveMetadataProvider.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Metadata/TagLibMetadataProvider.cs" />
   </Contents>
   <References>
     <ProjectReference type="Project" localcopy="True" refto="Platform.Common.DB" />
     <ProjectReference type="Project" localcopy="True" refto="Platform" />
-    <ProjectReference type="Project" localcopy="True" refto="LibExtractor" />
     <ProjectReference type="Project" localcopy="True" refto="MusicBrainz" />
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <ProjectReference type="Gac" localcopy="True" refto="System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <ProjectReference type="Gac" localcopy="True" refto="System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <ProjectReference type="Gac" localcopy="False" refto="taglib-sharp, Version=2.0.4.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0" />
+    <ProjectReference specificVersion="False" type="Gac" localcopy="False" refto="ICSharpCode.SharpZipLib, Version=4.84.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73" />
   </References>
 </Project>

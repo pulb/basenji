@@ -17,7 +17,6 @@ COMPILE_TARGET = library
 PROJECT_REFERENCES =  \
 	../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll \
 	../Platform/bin/Debug/Platform.dll \
-	../LibExtractor/bin/Debug/LibExtractor.dll \
 	../MusicBrainz/bin/Debug/MusicBrainz.dll
 BUILD_DIR = bin/Debug
 
@@ -29,10 +28,6 @@ PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
 PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
-LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll
-LIBEXTRACTOR_DLL_CONFIG_SOURCE=../LibExtractor/LibExtractor.dll.config
-LIBEXTRACTOR_DLL_MDB_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll.mdb
-LIBEXTRACTOR_DLL_MDB=$(BUILD_DIR)/LibExtractor.dll.mdb
 MUSICBRAINZ_DLL_SOURCE=../MusicBrainz/bin/Debug/MusicBrainz.dll
 MUSICBRAINZ_DLL_MDB_SOURCE=../MusicBrainz/bin/Debug/MusicBrainz.dll.mdb
 MUSICBRAINZ_DLL_MDB=$(BUILD_DIR)/MusicBrainz.dll.mdb
@@ -48,7 +43,6 @@ COMPILE_TARGET = library
 PROJECT_REFERENCES =  \
 	../Platform.Common.DB/bin/Release/Platform.Common.DB.dll \
 	../Platform/bin/Release/Platform.dll \
-	../LibExtractor/bin/Release/LibExtractor.dll \
 	../MusicBrainz/bin/Release/MusicBrainz.dll
 BUILD_DIR = bin/Release
 
@@ -57,9 +51,6 @@ PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.
 PLATFORM_COMMON_DB_DLL_MDB=
 PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
 PLATFORM_DLL_MDB=
-LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Release/LibExtractor.dll
-LIBEXTRACTOR_DLL_CONFIG_SOURCE=../LibExtractor/LibExtractor.dll.config
-LIBEXTRACTOR_DLL_MDB=
 MUSICBRAINZ_DLL_SOURCE=../MusicBrainz/bin/Release/MusicBrainz.dll
 MUSICBRAINZ_DLL_MDB=
 
@@ -74,7 +65,6 @@ COMPILE_TARGET = library
 PROJECT_REFERENCES =  \
 	../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll \
 	../Platform/bin/Debug/Platform.dll \
-	../LibExtractor/bin/Debug/LibExtractor.dll \
 	../MusicBrainz/bin/Debug/MusicBrainz.dll
 BUILD_DIR = bin/Debug
 
@@ -86,10 +76,6 @@ PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
 PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
-LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll
-LIBEXTRACTOR_DLL_CONFIG_SOURCE=../LibExtractor/LibExtractor.dll.config
-LIBEXTRACTOR_DLL_MDB_SOURCE=../LibExtractor/bin/Debug/LibExtractor.dll.mdb
-LIBEXTRACTOR_DLL_MDB=$(BUILD_DIR)/LibExtractor.dll.mdb
 MUSICBRAINZ_DLL_SOURCE=../MusicBrainz/bin/Debug/MusicBrainz.dll
 MUSICBRAINZ_DLL_MDB_SOURCE=../MusicBrainz/bin/Debug/MusicBrainz.dll.mdb
 MUSICBRAINZ_DLL_MDB=$(BUILD_DIR)/MusicBrainz.dll.mdb
@@ -105,7 +91,6 @@ COMPILE_TARGET = library
 PROJECT_REFERENCES =  \
 	../Platform.Common.DB/bin/Release/Platform.Common.DB.dll \
 	../Platform/bin/Release/Platform.dll \
-	../LibExtractor/bin/Release/LibExtractor.dll \
 	../MusicBrainz/bin/Release/MusicBrainz.dll
 BUILD_DIR = bin/Release
 
@@ -114,9 +99,6 @@ PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.
 PLATFORM_COMMON_DB_DLL_MDB=
 PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
 PLATFORM_DLL_MDB=
-LIBEXTRACTOR_DLL_SOURCE=../LibExtractor/bin/Release/LibExtractor.dll
-LIBEXTRACTOR_DLL_CONFIG_SOURCE=../LibExtractor/LibExtractor.dll.config
-LIBEXTRACTOR_DLL_MDB=
 MUSICBRAINZ_DLL_SOURCE=../MusicBrainz/bin/Release/MusicBrainz.dll
 MUSICBRAINZ_DLL_MDB=
 
@@ -131,9 +113,6 @@ PROGRAMFILES = \
 	$(PLATFORM_COMMON_DB_DLL_MDB) \
 	$(PLATFORM_DLL) \
 	$(PLATFORM_DLL_MDB) \
-	$(LIBEXTRACTOR_DLL) \
-	$(LIBEXTRACTOR_DLL_CONFIG) \
-	$(LIBEXTRACTOR_DLL_MDB) \
 	$(MUSICBRAINZ_DLL) \
 	$(MUSICBRAINZ_DLL_MDB)  
 
@@ -145,8 +124,6 @@ RESGEN=resgen2
 
 PLATFORM_COMMON_DB_DLL = $(BUILD_DIR)/Platform.Common.DB.dll
 PLATFORM_DLL = $(BUILD_DIR)/Platform.dll
-LIBEXTRACTOR_DLL = $(BUILD_DIR)/LibExtractor.dll
-LIBEXTRACTOR_DLL_CONFIG = $(BUILD_DIR)/LibExtractor.dll.config
 MUSICBRAINZ_DLL = $(BUILD_DIR)/MusicBrainz.dll
 VOLUMEDB_PC = $(BUILD_DIR)/volumedb.pc
 
@@ -233,11 +210,12 @@ FILES = \
 	src/Searching/AbstractEUSLSearchCriteria.cs \
 	src/Global.cs \
 	src/Metadata/MetadataProvider.cs \
-	src/Metadata/ExtractorMetadataProvider.cs \
 	src/Metadata/MetadataType.cs \
 	src/Metadata/MetadataItem.cs \
 	src/Metadata/MetadataStore.cs \
-	src/Metadata/MetadataUtils.cs 
+	src/Metadata/MetadataUtils.cs \
+	src/Metadata/ArchiveMetadataProvider.cs \
+	src/Metadata/TagLibMetadataProvider.cs 
 
 DATA_FILES = 
 
@@ -268,7 +246,9 @@ EXTRAS = \
 REFERENCES =  \
 	System \
 	System.Data \
-	System.Core
+	System.Core \
+	-pkg:taglib-sharp \
+	ICSharpCode.SharpZipLib
 
 DLL_REFERENCES = 
 
@@ -286,9 +266,6 @@ $(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL))
 $(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL_MDB))
 $(eval $(call emit-deploy-target,PLATFORM_DLL))
 $(eval $(call emit-deploy-target,PLATFORM_DLL_MDB))
-$(eval $(call emit-deploy-target,LIBEXTRACTOR_DLL))
-$(eval $(call emit-deploy-target,LIBEXTRACTOR_DLL_CONFIG))
-$(eval $(call emit-deploy-target,LIBEXTRACTOR_DLL_MDB))
 $(eval $(call emit-deploy-target,MUSICBRAINZ_DLL))
 $(eval $(call emit-deploy-target,MUSICBRAINZ_DLL_MDB))
 $(eval $(call emit-deploy-wrapper,VOLUMEDB_PC,volumedb.pc))
@@ -319,9 +296,6 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call cp,$(PLATFORM_COMMON_DB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(LIBEXTRACTOR_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(LIBEXTRACTOR_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(LIBEXTRACTOR_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(MUSICBRAINZ_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(MUSICBRAINZ_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	mkdir -p '$(DESTDIR)$(libdir)/pkgconfig'
@@ -338,9 +312,6 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call rm,$(PLATFORM_COMMON_DB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(LIBEXTRACTOR_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(LIBEXTRACTOR_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(LIBEXTRACTOR_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(MUSICBRAINZ_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(MUSICBRAINZ_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(VOLUMEDB_PC),$(DESTDIR)$(libdir)/pkgconfig)

@@ -1,6 +1,6 @@
 // VolumeScanner.cs
 // 
-// Copyright (C) 2008 - 2011 Patrick Ulbrich
+// Copyright (C) 2008 - 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -42,7 +42,7 @@ namespace Basenji.Gui
 		private ListStore				logStore;
 		private VolumeDatabase			database;
 		private IVolumeScanner			scanner;
-		private List<MetadataProvider>	mdps;
+		private MetadataProvider[]		mdps;
 		private StringBuilder			scannerLog;
 		private StatusUpdateTimer		timer;
 
@@ -58,28 +58,14 @@ namespace Basenji.Gui
 			//InitTreeView();
 			
 			mdps = null;
-			string extractorWarning = null;
 			
 			if (App.Settings.ScannerExtractMetaData && 
 			    (VolumeProber.ProbeVolume(drive) == VolumeProber.VolumeProbeResult.Filesystem)) {
 				
-				mdps = new List<MetadataProvider>();
-				
-/*				if (App.Settings.ScannerMetaDataProvider == 0) {
-					//mdps.Add(new TagLibMetadataProvider());
-				} else {*/
-					
-					string[] blacklist = App.Settings.ScannerExtractionBlacklist
-						.Split(new string[] { ", ", "," },
-						StringSplitOptions.RemoveEmptyEntries);
-					
-					try {
-						mdps.Add(new ExtractorMetadataProvider(blacklist));
-					} catch (DllNotFoundException) {
-						// libextractor package not installed
-						extractorWarning = S._("libExtractor not found. Metadata extraction disabled.");
-					}
-/*				}*/
+				mdps = new MetadataProvider[] {				
+					new TagLibMetadataProvider(),
+					new ArchiveMetadataProvider()
+				};
 			}
 			
 			// setup scanner options
@@ -144,10 +130,6 @@ namespace Basenji.Gui
 					                                          BoolToStr(App.Settings.ScannerExtractMetaData),
 					                                          BoolToStr(App.Settings.ScannerDiscardSymLinks),
 					                                          BoolToStr(App.Settings.ScannerComputeHashs)));
-						
-						if (extractorWarning != null)
-							UpdateLog(LogIcon.Warning, extractorWarning);
-					
 						break;
 					case VolumeType.AudioCdVolume:
 						UpdateLog(LogIcon.Info, string.Format(S._("Options: MusicBrainz enabled: {0}"),
