@@ -1,6 +1,6 @@
 // AssemblyInfo.cs
 // 
-// Copyright (C) 2008 - 2011 Patrick Ulbrich
+// Copyright (C) 2008 - 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@ using System.Runtime.CompilerServices;
 // You can specify all values by your own or you can build default build and revision
 // numbers with the '*' character (the default):
 
-[assembly: AssemblyVersion("0.8.1")]
+[assembly: AssemblyVersion("0.8.9")]
 
 // The following attributes specify the key for the sign of your assembly. See the
 // .NET Framework documentation for more information about signing.
