@@ -1,10 +1,8 @@
 #!/usr/bin/make -f
 export DH_VERBOSE=1
 
-include /usr/share/cli-common/cli.make
-
 %:
-	dh $@
+	dh $@ --with cli
 
 override_dh_auto_configure:
 	# Dynamically patch the makefiles to use the distributions 
