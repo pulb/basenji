@@ -55,9 +55,12 @@ namespace VolumeDB.Metadata
 			ArchiveMetadataDelegate GetMetadata;
 			
 			if ((mimetype == null) || !supportedArchiveTypes.TryGetValue(mimetype, out GetMetadata)) {
-				if (VERBOSE && Global.EnableDebugging)
-					Debug.WriteLine("ArchiveMetadataProvider does not like files of type " + mimetype);
-				
+				if (VERBOSE && Global.EnableDebugging) {
+					if (mimetype == null)
+						Debug.WriteLine("ArchiveMetadataProvider got a Mimetype nullptr");
+					else
+						Debug.WriteLine("ArchiveMetadataProvider does not like files of type " + mimetype);
+				}
 				return null;
 			}
 			
