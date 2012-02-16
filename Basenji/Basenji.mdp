@@ -69,7 +69,6 @@
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/CategoryView.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/PageNavigation.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/PageNavigationEvents.cs" />
-    <File subtype="Code" name="LibExtractor.dll.config" buildaction="FileCopy" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/IconEntry.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/SearchEntry.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/ItemPreview.cs" />
