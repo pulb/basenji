@@ -41,10 +41,6 @@
   </Target>
   -->
   <ItemGroup>
-    <ProjectReference Include="..\LibExtractor\LibExtractor_win32.csproj">
-      <Project>{8246984A-9DCD-40FE-8306-023141AA418E}</Project>
-      <Name>LibExtractor_win32</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MusicBrainz\MusicBrainz_win32.csproj">
       <Project>{E0C813A2-FCEF-472F-9FE5-DC0CECF8E8B2}</Project>
       <Name>MusicBrainz_win32</Name>
@@ -59,11 +55,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\basenji_dependencies\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="taglib-sharp, Version=2.0.4.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\basenji_dependencies\taglib-sharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="po\bg.resources" />
@@ -112,12 +116,13 @@
     <Compile Include="src\Import\IImport.cs" />
     <Compile Include="src\IRecordData.cs" />
     <Compile Include="src\IVolumeDBRecord.cs" />
-    <Compile Include="src\Metadata\ExtractorMetadataProvider.cs" />
+    <Compile Include="src\Metadata\ArchiveMetadataProvider.cs" />
     <Compile Include="src\Metadata\MetadataItem.cs" />
     <Compile Include="src\Metadata\MetadataProvider.cs" />
     <Compile Include="src\Metadata\MetadataStore.cs" />
     <Compile Include="src\Metadata\MetadataType.cs" />
     <Compile Include="src\Metadata\MetadataUtils.cs" />
+    <Compile Include="src\Metadata\TagLibMetadataProvider.cs" />
     <Compile Include="src\S.cs" />
     <Compile Include="src\Searching\AbstractEUSLSearchCriteria.cs" />
     <Compile Include="src\Searching\CompareOperator.cs" />

@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VolumeDB_win32", "VolumeDB\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platform_win32", "Platform\Platform_win32.csproj", "{A8624816-6F0F-42EC-96AE-84C001272CD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibExtractor_win32", "LibExtractor\LibExtractor_win32.csproj", "{8246984A-9DCD-40FE-8306-023141AA418E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platform.Common.DB_win32", "Platform.Common.DB\Platform.Common.DB_win32.csproj", "{6F73D36A-FBE3-410A-8976-00FC87A085CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicBrainz_win32", "MusicBrainz\MusicBrainz_win32.csproj", "{E0C813A2-FCEF-472F-9FE5-DC0CECF8E8B2}"
@@ -31,10 +29,6 @@ Global
 		{A8624816-6F0F-42EC-96AE-84C001272CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8624816-6F0F-42EC-96AE-84C001272CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8624816-6F0F-42EC-96AE-84C001272CD8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8246984A-9DCD-40FE-8306-023141AA418E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8246984A-9DCD-40FE-8306-023141AA418E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8246984A-9DCD-40FE-8306-023141AA418E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8246984A-9DCD-40FE-8306-023141AA418E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6F73D36A-FBE3-410A-8976-00FC87A085CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6F73D36A-FBE3-410A-8976-00FC87A085CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F73D36A-FBE3-410A-8976-00FC87A085CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
