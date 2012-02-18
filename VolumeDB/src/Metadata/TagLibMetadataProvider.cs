@@ -44,6 +44,12 @@ namespace VolumeDB.Metadata
 			{ TagLib.Image.ImageOrientation.TopRight,		"top, right"	}
 		};
 		
+		private static string[] formatTypes = new string[] {
+			"Video",
+			"Audio",
+			"Image"
+		};
+		
 		private static readonly NumberFormatInfo numformat = CultureInfo.InvariantCulture.NumberFormat;
 		
 		public TagLibMetadataProvider () {
@@ -158,6 +164,7 @@ namespace VolumeDB.Metadata
 			}
 			
 			string[] formats = new string[3];
+			int fmtCount = 0;
 			int w = int.MinValue, h = int.MinValue;
 			int q = int.MinValue;
 			
@@ -168,7 +175,10 @@ namespace VolumeDB.Metadata
 					w = vcodec.VideoWidth;
 					h = vcodec.VideoHeight;
 					
-					formats[0] = vcodec.Description;
+					if (HasValidData(vcodec.Description)) {
+						formats[0] = vcodec.Description;
+						fmtCount++;
+					}
 				}
 				
 				if ((codec.MediaTypes & MediaTypes.Audio) == TagLib.MediaTypes.Audio) {
@@ -201,8 +211,10 @@ namespace VolumeDB.Metadata
 							fmt.Append(acodec.AudioSampleRate.ToString()).Append(" Hz");
 						}
 						
-						if (fmt.Length > 0)
+						if (fmt.Length > 0) {
 							formats[1] = fmt.ToString();
+							fmtCount++;
+						}
 					}
 				}
 				
@@ -217,7 +229,10 @@ namespace VolumeDB.Metadata
 					
 					q = pcodec.PhotoQuality;
 					
-					formats[2] = pcodec.Description;
+					if (HasValidData(pcodec.Description)) {
+						formats[2] = pcodec.Description;
+						fmtCount++;
+					}
 				}
 			}
 			
@@ -228,15 +243,22 @@ namespace VolumeDB.Metadata
 			if (q > int.MinValue)
 				AddData(metadata, MetadataType.IMAGE_QUALITY, q.ToString());
 			
+			
+			// build format string
 			StringBuilder sb = new StringBuilder();
-			foreach (string s in formats) {
-				if (!HasValidData(s)) 
+			for (int i = 0; i < formats.Length; i++) {
+				string s = formats[i];
+				
+				if (s == null) 
 					continue;
 				
 				if (sb.Length > 0)
 					sb.Append ("; ");
 				
-				sb.Append(s);
+				if (fmtCount > 1)
+					sb.AppendFormat("{0}: {1}", formatTypes[i], s);
+				else
+					sb.Append(s);
 			}
 			
 			if (sb.Length > 0)
