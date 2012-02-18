@@ -39,6 +39,7 @@ namespace VolumeDB.Metadata
 		private readonly Dictionary<string, ArchiveMetadataDelegate> supportedArchiveTypes
 		= new Dictionary<string, ArchiveMetadataDelegate>() {
 			{ "application/zip",					GetZipMetadata },
+			{ "application/x-zip-compressed",		GetZipMetadata },
 			{ "application/x-java-archive",			GetZipMetadata },
 			{ "application/x-tar",					GetUncompressedTarMetadata },
 			{ "application/x-compressed-tar",		GetCompressedTarMetadata },
