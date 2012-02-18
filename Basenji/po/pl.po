@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-08-16 22:43+0200\n"
+"POT-Creation-Date: 2012-02-12 18:41+0100\n"
 "PO-Revision-Date: 2011-03-25 21:56+0000\n"
 "Last-Translator: Szymon Sieciński <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-09-08 16:24+0000\n"
-"X-Generator: Launchpad (build 13891)\n"
+"X-Launchpad-Export-Date: 2012-02-18 14:04+0000\n"
+"X-Generator: Launchpad (build 14814)\n"
 
 #: src/Util.cs:30
 #, csharp-format
@@ -402,11 +402,11 @@ msgstr "Brak elementów."
 msgid "<b>Page {0}/{1}</b>  ({2} - {3} of {4} items)"
 msgstr "<b>Strona {0}/{1}</b> ({2} - {3} z {4} elementów)"
 
-#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:258
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:240
 msgid "Invalid data"
 msgstr "Niepoprawne dane"
 
-#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:259
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:241
 #, csharp-format
 msgid ""
 "\"{0}\" is {1}.\n"
@@ -452,8 +452,8 @@ msgid "Please select a drive to scan"
 msgstr "Proszę wybrać napęd do przeskanowania"
 
 #: src/Gui/About.cs:28
-msgid "A portable volume indexing tool"
-msgstr "Narzędzie indeksowania przenośnych woluminów"
+msgid "A cross-platform media indexing/search tool."
+msgstr ""
 
 #: src/Gui/About.cs:29
 #, csharp-format
@@ -744,20 +744,16 @@ msgstr "Format:"
 msgid "Item Properties"
 msgstr "Właściwości elementu"
 
-#: src/Gui/VolumeScanner.cs:80
-msgid "libExtractor not found. Metadata extraction disabled."
-msgstr "LibExtractor nie znaleziony. Wyodrębnianie metadanych wyłączone."
-
-#: src/Gui/VolumeScanner.cs:134
+#: src/Gui/VolumeScanner.cs:120
 msgid "Scanning started."
 msgstr "Skanowanie rozpoczęte."
 
-#: src/Gui/VolumeScanner.cs:136
+#: src/Gui/VolumeScanner.cs:122
 #, csharp-format
 msgid "Scanning of drive '{0}' started."
 msgstr "Skanowanie napędy '{0}' rozpoczęte."
 
-#: src/Gui/VolumeScanner.cs:142
+#: src/Gui/VolumeScanner.cs:128
 #, csharp-format
 msgid ""
 "Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
@@ -766,155 +762,155 @@ msgstr ""
 "Opcje: generuj miniatury: {0}, pobierz metadane: {1}, usuń dowiązania: {2}, "
 "hashuj: {3}."
 
-#: src/Gui/VolumeScanner.cs:153
+#: src/Gui/VolumeScanner.cs:135
 #, csharp-format
 msgid "Options: MusicBrainz enabled: {0}"
 msgstr "Opcje: MusicBrainz aktywny: {0}"
 
-#: src/Gui/VolumeScanner.cs:175
+#: src/Gui/VolumeScanner.cs:157
 msgid "Time"
 msgstr "Czas"
 
-#: src/Gui/VolumeScanner.cs:179
+#: src/Gui/VolumeScanner.cs:161
 msgid "Message"
 msgstr "Wiadomość"
 
-#: src/Gui/VolumeScanner.cs:267
+#: src/Gui/VolumeScanner.cs:249
 msgid "yes"
 msgstr "tak"
 
-#: src/Gui/VolumeScanner.cs:267
+#: src/Gui/VolumeScanner.cs:249
 msgid "no"
 msgstr "nie"
 
-#: src/Gui/VolumeScanner.cs:290
+#: src/Gui/VolumeScanner.cs:272
 msgid "Scan in progress"
 msgstr "Skanowanie trwa"
 
-#: src/Gui/VolumeScanner.cs:290
+#: src/Gui/VolumeScanner.cs:272
 msgid "You must stop scanning before closing this window."
 msgstr "Musisz przerwać proces skanowania przed zamknięciem tego okna."
 
-#: src/Gui/VolumeScanner.cs:300
+#: src/Gui/VolumeScanner.cs:282
 msgid "Stopping Scanner and performing rollback..."
 msgstr "Zatrzymywanie Skanera i cofanie się..."
 
-#: src/Gui/VolumeScanner.cs:342
+#: src/Gui/VolumeScanner.cs:324
 #, csharp-format
 msgid "An unhandled exception occured ({0})."
 msgstr "Wystąpił nieobsługiwany wyjątek ({0})."
 
-#: src/Gui/VolumeScanner.cs:343
+#: src/Gui/VolumeScanner.cs:325
 msgid "All database changes have been rolled back."
 msgstr "Wszystkie zmiany w bazie zostały cofnięte."
 
-#: src/Gui/VolumeScanner.cs:366
+#: src/Gui/VolumeScanner.cs:348
 #, csharp-format
 msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
 msgstr "Skanowanie nie powiodło się: wystąpił nieobsługiwany wyjątek ({0})."
 
-#: src/Gui/VolumeScanner.cs:368
+#: src/Gui/VolumeScanner.cs:350
 msgid "Scanning aborted."
 msgstr "Skanowanie przerwane."
 
-#: src/Gui/VolumeScanner.cs:370
+#: src/Gui/VolumeScanner.cs:352
 msgid "Scanning completed successfully."
 msgstr "Skanowanie skończone."
 
-#: src/Gui/VolumeScanner.cs:467
+#: src/Gui/VolumeScanner.cs:449
 msgid "VolumeScanner"
 msgstr "Skaner woluminów"
 
-#: src/Gui/VolumeScanner.cs:479
+#: src/Gui/VolumeScanner.cs:461
 msgid "<b>Volume Information:</b>"
 msgstr "<b>Informacje o woluminie:</b>"
 
-#: src/Gui/VolumeScanner.cs:489
+#: src/Gui/VolumeScanner.cs:471
 msgid "<b>Scanner Log:</b>"
 msgstr "<b>Dziennik Skanera:</b>"
 
-#: src/Gui/VolumeScanner.cs:506
+#: src/Gui/VolumeScanner.cs:488
 msgid "Database access"
 msgstr "Dostęp do bazy danych"
 
-#: src/Gui/Preferences.cs:107
+#: src/Gui/Preferences.cs:108
 msgid "None"
 msgstr "Brak"
 
-#: src/Gui/Preferences.cs:216
+#: src/Gui/Preferences.cs:217
 msgid "Unsupported theme"
 msgstr "Nieobługiwany motyw"
 
-#: src/Gui/Preferences.cs:217
+#: src/Gui/Preferences.cs:218
 msgid "The selected icon theme is currently not supported on your system."
 msgstr "Wybrany motyw ikon jest obecnie nie obsługiwany przez twój system."
 
-#: src/Gui/Preferences.cs:255
+#: src/Gui/Preferences.cs:256
 msgid "Restart required"
 msgstr "Wymagane ponowne uruchomienie"
 
-#: src/Gui/Preferences.cs:256
+#: src/Gui/Preferences.cs:257
 #, csharp-format
 msgid "You must restart {0} for icontheme changes to take effect."
 msgstr ""
 "Musisz zrestartować {0} aby zmiany w zestawie ikony zostały zastosowane."
 
-#: src/Gui/Preferences.cs:286
+#: src/Gui/Preferences.cs:287
 msgid "Preferences"
 msgstr "Preferencje"
 
-#: src/Gui/Preferences.cs:310
+#: src/Gui/Preferences.cs:311
 msgid "_Load Defaults"
 msgstr "Wczytaj domyś_lne"
 
-#: src/Gui/Preferences.cs:336
+#: src/Gui/Preferences.cs:337
 msgid "Icon theme:"
 msgstr "Zestaw ikon:"
 
-#: src/Gui/Preferences.cs:342
+#: src/Gui/Preferences.cs:343
 msgid "Reopen most recent database on startup"
 msgstr "Otwórz ostatnią bazę danych przy uruchomieniu"
 
-#: src/Gui/Preferences.cs:346
+#: src/Gui/Preferences.cs:347
 msgid "Show iteminfo panel"
 msgstr "Pokaż panel informacji o przedmiocie"
 
-#: src/Gui/Preferences.cs:350
+#: src/Gui/Preferences.cs:351
 msgid "Show hidden files"
 msgstr "Wyświetlanie ukrytych plików"
 
-#: src/Gui/Preferences.cs:354
+#: src/Gui/Preferences.cs:355
 msgid "Show thumbnails in the filebrowser"
 msgstr "Pokaż miniaturki w przeglądarce plików"
 
-#: src/Gui/Preferences.cs:357
+#: src/Gui/Preferences.cs:358
 msgid "General"
 msgstr "Ogólne"
 
-#: src/Gui/Preferences.cs:365
+#: src/Gui/Preferences.cs:366
 msgid "Don't prompt, always scan:"
 msgstr "Nie pytaj, zawsze skanuj:"
 
-#: src/Gui/Preferences.cs:384
+#: src/Gui/Preferences.cs:385
 msgid "Generate Thumbnails"
 msgstr "Generuj miniaturki"
 
-#: src/Gui/Preferences.cs:388
+#: src/Gui/Preferences.cs:389
 msgid "Extract metadata"
 msgstr "Pobierz metadane"
 
-#: src/Gui/Preferences.cs:392
+#: src/Gui/Preferences.cs:393
 msgid "Discard symbolic links"
 msgstr "Usuń dowiązania"
 
-#: src/Gui/Preferences.cs:396
+#: src/Gui/Preferences.cs:397
 msgid "Compute hashcodes for files (slow!)"
 msgstr "Generuj hash dla plików (powolne!)"
 
-#: src/Gui/Preferences.cs:400
+#: src/Gui/Preferences.cs:401
 msgid "Fetch audio cd metadata from MusicBrainz.org"
 msgstr "Pobierz metadane płyty CD z MusicBrainz.org"
 
-#: src/Gui/Preferences.cs:403
+#: src/Gui/Preferences.cs:404
 msgid "Scanner"
 msgstr "Skaner"

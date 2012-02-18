@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-08-16 22:43+0200\n"
-"PO-Revision-Date: 2011-04-03 13:25+0000\n"
+"POT-Creation-Date: 2012-02-12 18:41+0100\n"
+"PO-Revision-Date: 2012-02-08 10:29+0000\n"
 "Last-Translator: Konki <pavel.konkol@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-09-08 16:24+0000\n"
-"X-Generator: Launchpad (build 13891)\n"
+"X-Launchpad-Export-Date: 2012-02-18 14:04+0000\n"
+"X-Generator: Launchpad (build 14814)\n"
 
 #: src/Util.cs:30
 #, csharp-format
@@ -48,7 +48,7 @@ msgstr "JménoVolby"
 
 #: src/FileDialog.cs:51
 msgid "VolumeDatabase files"
-msgstr ""
+msgstr "Databáze souborů svazku"
 
 #: src/FileDialog.cs:56
 msgid "All files"
@@ -180,7 +180,7 @@ msgstr "Velikost"
 #: src/Gui/Widgets/Editors/FileItemEditor.cs:53
 #: src/Gui/Widgets/ItemInfo.cs:205
 msgid "Hash"
-msgstr ""
+msgstr "Rozdělit"
 
 #: src/Gui/Widgets/Editors/AudioCdVolumeEditor.cs:33
 msgid "Audio CD"
@@ -251,11 +251,11 @@ msgstr "Ne"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:189
 msgid "Volume type:"
-msgstr ""
+msgstr "Typ svazku:"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:190
 msgid "Hashed:"
-msgstr ""
+msgstr "Rozděleno:"
 
 #: src/Gui/Widgets/Editors/VolumeEditor.cs:191
 msgid "Added:"
@@ -323,7 +323,7 @@ msgstr "Všechny položky"
 
 #: src/Gui/Widgets/SearchResultView.cs:32
 msgid "Volume"
-msgstr ""
+msgstr "Svazek"
 
 #: src/Gui/Widgets/SearchResultView.cs:33 src/Gui/MainWindow.cs:888
 msgid "Archive No."
@@ -402,11 +402,11 @@ msgstr "Žádné položky."
 msgid "<b>Page {0}/{1}</b>  ({2} - {3} of {4} items)"
 msgstr "<b>Stránka {0}/{1}</b>  ({2} - {3} z {4} položek)"
 
-#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:258
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:240
 msgid "Invalid data"
 msgstr "Neplatná data"
 
-#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:259
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:241
 #, csharp-format
 msgid ""
 "\"{0}\" is {1}.\n"
@@ -433,7 +433,7 @@ msgstr "Vytvořeno:"
 
 #: src/Gui/VolumeProperties.cs:29
 msgid "Volume Properties"
-msgstr ""
+msgstr "Vlastnosti svazku"
 
 #: src/Gui/DriveSelection.cs:60
 msgid "Waiting for drives..."
@@ -452,30 +452,31 @@ msgid "Please select a drive to scan"
 msgstr "Prosím zvolte mechaniku pro skenování"
 
 #: src/Gui/About.cs:28
-msgid "A portable volume indexing tool"
-msgstr ""
+msgid "A cross-platform media indexing/search tool."
+msgstr "Multiplatformní mediální indexovací/vyhledávací nástroj."
 
 #: src/Gui/About.cs:29
 #, csharp-format
 msgid "Using VolumeDB v{0}."
-msgstr ""
+msgstr "Používá se VolumeDB v{0}."
 
 #: src/Gui/About.cs:31
 msgid "Copyright (c) "
-msgstr ""
+msgstr "Autorská práva (c) "
 
 #: src/Gui/ItemSearch.cs:78
 #, csharp-format
 msgid "Found {0} items in {1:F3} seconds."
-msgstr ""
+msgstr "Nalezeno {0} položek za {1:F3} vteřin."
 
 #: src/Gui/ItemSearch.cs:89 src/Gui/MainWindow.cs:453
 msgid "Timeout: another search is probably still in progress."
-msgstr ""
+msgstr "Vypršel časový limit: pravděpodobně probíhá jiné vyhledávání."
 
 #: src/Gui/ItemSearch.cs:91
 msgid "Too many search results. Please refine your search criteria."
 msgstr ""
+"Příliš mnoho výsledků vyhledávání. Prosím změňte vaše kritéria vyhledávání."
 
 #: src/Gui/ItemSearch.cs:106 src/Gui/MainWindow.cs:469
 msgid "Searching..."
@@ -525,12 +526,12 @@ msgstr "Tato verze databáze není podporována."
 #: src/Gui/MainWindow.cs:165
 #, csharp-format
 msgid "{0} volumes loaded."
-msgstr ""
+msgstr "{0} svazků načteno."
 
 #: src/Gui/MainWindow.cs:186
 #, csharp-format
 msgid "An error occured while loading the volume list: {0}"
-msgstr ""
+msgstr "Během nahrávání seznamu svazků se vyskytla chyba: {0}"
 
 #: src/Gui/MainWindow.cs:228
 msgid "Please enter the name for the new database"
@@ -558,11 +559,13 @@ msgid ""
 "An error occured while accessing drive {0}:\n"
 "{1}"
 msgstr ""
+"Vyskytla se chyba během přístupu k jednotce {0}:\n"
+"{1}"
 
 #: src/Gui/MainWindow.cs:306
 #, csharp-format
 msgid "Drive {0} is not ready."
-msgstr ""
+msgstr "Jednotka {0} není připravena."
 
 #: src/Gui/MainWindow.cs:315
 #, csharp-format
@@ -571,345 +574,341 @@ msgstr ""
 
 #: src/Gui/MainWindow.cs:342 src/Gui/MainWindow.cs:372
 msgid "No volume selected"
-msgstr ""
+msgstr "Nebyla vybrána žádná jednotka"
 
 #: src/Gui/MainWindow.cs:343
 msgid "Please select a volume record to remove."
-msgstr ""
+msgstr "Prosím zvolte nahraný oddíl pro odstranění."
 
 #: src/Gui/MainWindow.cs:350
 msgid "Confirmation"
-msgstr ""
+msgstr "Potvrzení"
 
 #: src/Gui/MainWindow.cs:351
 msgid "Are you sure you really want to remove the selected volume?"
-msgstr ""
+msgstr "Opravdu chcete odstranit vybraný svazek?"
 
 #: src/Gui/MainWindow.cs:373
 msgid "Please select a volume to edit."
-msgstr ""
+msgstr "Prosím zvolte svazek pro úpravu."
 
 #: src/Gui/MainWindow.cs:390
 msgid "No item selected"
-msgstr ""
+msgstr "Není vybrána žádná položka"
 
 #: src/Gui/MainWindow.cs:391
 msgid "Please select an item to edit."
-msgstr ""
+msgstr "Prosím zvolte položku k editaci."
 
 #: src/Gui/MainWindow.cs:819
 msgid "_File"
-msgstr ""
+msgstr "_Soubor"
 
 #: src/Gui/MainWindow.cs:822
 msgid "_New Database"
-msgstr ""
+msgstr "_Nová databáze"
 
 #: src/Gui/MainWindow.cs:825
 msgid "_Open Database"
-msgstr ""
+msgstr "_Otevřít databázi"
 
 #: src/Gui/MainWindow.cs:828
 msgid "Open Default Database"
-msgstr ""
+msgstr "Otevřít standardní databázi."
 
 #: src/Gui/MainWindow.cs:831
 msgid "_Database Properties"
-msgstr ""
+msgstr "_Vlastnosti databáze"
 
 #: src/Gui/MainWindow.cs:834
 msgid "_Import"
-msgstr ""
+msgstr "_Importovat"
 
 #: src/Gui/MainWindow.cs:837
 msgid "_Quit"
-msgstr ""
+msgstr "_Ukončit"
 
 #: src/Gui/MainWindow.cs:843
 msgid "Recent Databases"
-msgstr ""
+msgstr "Poslední databáze"
 
 #: src/Gui/MainWindow.cs:851
 msgid "_Edit"
-msgstr ""
+msgstr "_Upravit"
 
 #: src/Gui/MainWindow.cs:854
 msgid "_Preferences"
-msgstr ""
+msgstr "_Předvolby"
 
 #: src/Gui/MainWindow.cs:858
 msgid "_Help"
-msgstr ""
+msgstr "_Nápověda"
 
 #: src/Gui/MainWindow.cs:861
 msgid "_Info"
-msgstr ""
+msgstr "_Informace"
 
 #: src/Gui/MainWindow.cs:865
 msgid "_Add Volume"
-msgstr ""
+msgstr "_Přidat svazek"
 
 #: src/Gui/MainWindow.cs:869
 msgid "_Remove Volume"
-msgstr ""
+msgstr "_Odstranit svazek"
 
 #: src/Gui/MainWindow.cs:872
 msgid "_Edit Volume"
-msgstr ""
+msgstr "_Upravit svazek"
 
 #: src/Gui/MainWindow.cs:875
 msgid "_Search"
-msgstr ""
+msgstr "_Hledat"
 
 #: src/Gui/MainWindow.cs:882
 msgid "Sort by"
-msgstr ""
+msgstr "Řadit podle"
 
 #: src/Gui/MainWindow.cs:885
 msgid "Descending"
-msgstr ""
+msgstr "Sestupně"
 
 #: src/Gui/MainWindow.cs:891
 msgid "Date added"
-msgstr ""
+msgstr "Datum přidání"
 
 #: src/Gui/MainWindow.cs:892
 msgid "Title"
-msgstr ""
+msgstr "Název"
 
 #: src/Gui/MainWindow.cs:893
 msgid "Drivetype"
-msgstr ""
+msgstr "Typ jednotky"
 
 #: src/Gui/MainWindow.cs:1005
 msgid "Filter volumes"
-msgstr ""
+msgstr "Filtr svazků"
 
 #: src/Gui/Import.cs:29
 msgid "Import"
-msgstr ""
+msgstr "Přidat"
 
 #: src/Gui/Import.cs:30
 msgid "Abort"
-msgstr ""
+msgstr "Zrušit"
 
 #: src/Gui/Import.cs:98
 #, csharp-format
 msgid "{0:0}% completed."
-msgstr ""
+msgstr "{0:0}% dokončeno."
 
 #: src/Gui/Import.cs:108
 msgid "Import failed"
-msgstr ""
+msgstr "Přidání selhalo"
 
 #: src/Gui/Import.cs:111
 msgid "Import failed!"
-msgstr ""
+msgstr "Přidání selhalo!"
 
 #: src/Gui/Import.cs:113
 msgid "Import aborted."
-msgstr ""
+msgstr "Přidání bylo zrušeno."
 
 #: src/Gui/Import.cs:115
 msgid "Import completed successfully."
-msgstr ""
+msgstr "Přidání bylo úspěšně dokončeno."
 
 #: src/Gui/Import.cs:134
 msgid "Import in progress"
-msgstr ""
+msgstr "Přidávání v průběhu"
 
 #: src/Gui/Import.cs:135
 msgid "You must stop the import before closing this window."
-msgstr ""
+msgstr "Před uzavřením tohoto okna musíte ukončit importování."
 
 #: src/Gui/Import.cs:160
 msgid "Import Database"
-msgstr ""
+msgstr "Importovat databázi"
 
 #: src/Gui/Import.cs:171
 msgid "Please select a database to import"
-msgstr ""
+msgstr "Prosím vyberte databázi k importování"
 
 #: src/Gui/Import.cs:189
 msgid "Database:"
-msgstr ""
+msgstr "Databáze:"
 
 #: src/Gui/Import.cs:190
 msgid "Format:"
-msgstr ""
+msgstr "Formát:"
 
 #: src/Gui/ItemProperties.cs:29
 msgid "Item Properties"
-msgstr ""
+msgstr "Vlastnosti položky"
 
-#: src/Gui/VolumeScanner.cs:80
-msgid "libExtractor not found. Metadata extraction disabled."
-msgstr ""
-
-#: src/Gui/VolumeScanner.cs:134
+#: src/Gui/VolumeScanner.cs:120
 msgid "Scanning started."
-msgstr ""
+msgstr "Skenování začalo."
 
-#: src/Gui/VolumeScanner.cs:136
+#: src/Gui/VolumeScanner.cs:122
 #, csharp-format
 msgid "Scanning of drive '{0}' started."
-msgstr ""
+msgstr "Skenování jednotky '{0}' začalo."
 
-#: src/Gui/VolumeScanner.cs:142
+#: src/Gui/VolumeScanner.cs:128
 #, csharp-format
 msgid ""
 "Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
 "hashing: {3}."
 msgstr ""
 
-#: src/Gui/VolumeScanner.cs:153
+#: src/Gui/VolumeScanner.cs:135
 #, csharp-format
 msgid "Options: MusicBrainz enabled: {0}"
-msgstr ""
+msgstr "Volby: MusicBrainz zapnutý: {0}"
 
-#: src/Gui/VolumeScanner.cs:175
+#: src/Gui/VolumeScanner.cs:157
 msgid "Time"
-msgstr ""
+msgstr "Čas"
 
-#: src/Gui/VolumeScanner.cs:179
+#: src/Gui/VolumeScanner.cs:161
 msgid "Message"
-msgstr ""
+msgstr "Zpráva"
 
-#: src/Gui/VolumeScanner.cs:267
+#: src/Gui/VolumeScanner.cs:249
 msgid "yes"
-msgstr ""
+msgstr "ano"
 
-#: src/Gui/VolumeScanner.cs:267
+#: src/Gui/VolumeScanner.cs:249
 msgid "no"
-msgstr ""
+msgstr "ne"
 
-#: src/Gui/VolumeScanner.cs:290
+#: src/Gui/VolumeScanner.cs:272
 msgid "Scan in progress"
-msgstr ""
+msgstr "Probíhá skenování"
 
-#: src/Gui/VolumeScanner.cs:290
+#: src/Gui/VolumeScanner.cs:272
 msgid "You must stop scanning before closing this window."
-msgstr ""
+msgstr "Před uzavřením musíte ukončit skenování."
 
-#: src/Gui/VolumeScanner.cs:300
+#: src/Gui/VolumeScanner.cs:282
 msgid "Stopping Scanner and performing rollback..."
-msgstr ""
+msgstr "Zastavuje se skener a provádí se navracení..."
 
-#: src/Gui/VolumeScanner.cs:342
+#: src/Gui/VolumeScanner.cs:324
 #, csharp-format
 msgid "An unhandled exception occured ({0})."
-msgstr ""
+msgstr "Vyskytla se neošetřená vyjímka ({0})."
 
-#: src/Gui/VolumeScanner.cs:343
+#: src/Gui/VolumeScanner.cs:325
 msgid "All database changes have been rolled back."
-msgstr ""
+msgstr "Všechny změny v databázi byly vráceny zpět."
 
-#: src/Gui/VolumeScanner.cs:366
+#: src/Gui/VolumeScanner.cs:348
 #, csharp-format
 msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
-msgstr ""
+msgstr "Skenování selhalo. Důvod: nastala neošetřená vyjímka ({0})."
 
-#: src/Gui/VolumeScanner.cs:368
+#: src/Gui/VolumeScanner.cs:350
 msgid "Scanning aborted."
-msgstr ""
+msgstr "Skenování bylo zrušeno."
 
-#: src/Gui/VolumeScanner.cs:370
+#: src/Gui/VolumeScanner.cs:352
 msgid "Scanning completed successfully."
-msgstr ""
+msgstr "Skenování bylo úspěšně dokončeno."
 
-#: src/Gui/VolumeScanner.cs:467
+#: src/Gui/VolumeScanner.cs:449
 msgid "VolumeScanner"
-msgstr ""
+msgstr "SkenerSvazku"
 
-#: src/Gui/VolumeScanner.cs:479
+#: src/Gui/VolumeScanner.cs:461
 msgid "<b>Volume Information:</b>"
-msgstr ""
+msgstr "<b>Informace o svazku:</b>"
 
-#: src/Gui/VolumeScanner.cs:489
+#: src/Gui/VolumeScanner.cs:471
 msgid "<b>Scanner Log:</b>"
-msgstr ""
+msgstr "<b>Záznam skenování:</b>"
 
-#: src/Gui/VolumeScanner.cs:506
+#: src/Gui/VolumeScanner.cs:488
 msgid "Database access"
-msgstr ""
+msgstr "Přístup k databázi"
 
-#: src/Gui/Preferences.cs:107
+#: src/Gui/Preferences.cs:108
 msgid "None"
-msgstr ""
-
-#: src/Gui/Preferences.cs:216
-msgid "Unsupported theme"
-msgstr ""
+msgstr "Nic"
 
 #: src/Gui/Preferences.cs:217
-msgid "The selected icon theme is currently not supported on your system."
-msgstr ""
+msgid "Unsupported theme"
+msgstr "Nepodporovaný motiv"
 
-#: src/Gui/Preferences.cs:255
-msgid "Restart required"
-msgstr ""
+#: src/Gui/Preferences.cs:218
+msgid "The selected icon theme is currently not supported on your system."
+msgstr "Vybraný motiv ikony není aktuálně podporovaný ve vašem systému."
 
 #: src/Gui/Preferences.cs:256
+msgid "Restart required"
+msgstr "Vyžadován restart"
+
+#: src/Gui/Preferences.cs:257
 #, csharp-format
 msgid "You must restart {0} for icontheme changes to take effect."
-msgstr ""
+msgstr "Je nutný restart {0} , aby změna schémat ikon měla nějaký efekt."
 
-#: src/Gui/Preferences.cs:286
+#: src/Gui/Preferences.cs:287
 msgid "Preferences"
-msgstr ""
+msgstr "Předvolby"
 
-#: src/Gui/Preferences.cs:310
+#: src/Gui/Preferences.cs:311
 msgid "_Load Defaults"
-msgstr ""
+msgstr "_Načíst výchozí nastavení"
 
-#: src/Gui/Preferences.cs:336
+#: src/Gui/Preferences.cs:337
 msgid "Icon theme:"
-msgstr ""
+msgstr "Motiv ikony:"
 
-#: src/Gui/Preferences.cs:342
+#: src/Gui/Preferences.cs:343
 msgid "Reopen most recent database on startup"
-msgstr ""
+msgstr "Znovu otevřít poslední databázi při startu"
 
-#: src/Gui/Preferences.cs:346
+#: src/Gui/Preferences.cs:347
 msgid "Show iteminfo panel"
-msgstr ""
+msgstr "Zobrazit panel systémových informací"
 
-#: src/Gui/Preferences.cs:350
+#: src/Gui/Preferences.cs:351
 msgid "Show hidden files"
-msgstr ""
+msgstr "Zobrazit skryté soubory"
 
-#: src/Gui/Preferences.cs:354
+#: src/Gui/Preferences.cs:355
 msgid "Show thumbnails in the filebrowser"
-msgstr ""
+msgstr "Zobrazovat náhledy v prohlížeči souborů"
 
-#: src/Gui/Preferences.cs:357
+#: src/Gui/Preferences.cs:358
 msgid "General"
-msgstr ""
+msgstr "Obecné"
 
-#: src/Gui/Preferences.cs:365
+#: src/Gui/Preferences.cs:366
 msgid "Don't prompt, always scan:"
-msgstr ""
+msgstr "Nedotazovat se, vždy skenovat:"
 
-#: src/Gui/Preferences.cs:384
+#: src/Gui/Preferences.cs:385
 msgid "Generate Thumbnails"
-msgstr ""
+msgstr "Generování náhledů"
 
-#: src/Gui/Preferences.cs:388
+#: src/Gui/Preferences.cs:389
 msgid "Extract metadata"
-msgstr ""
+msgstr "Extrahovat metadata"
 
-#: src/Gui/Preferences.cs:392
+#: src/Gui/Preferences.cs:393
 msgid "Discard symbolic links"
-msgstr ""
+msgstr "Vyřadit symbolické odkazy"
 
-#: src/Gui/Preferences.cs:396
+#: src/Gui/Preferences.cs:397
 msgid "Compute hashcodes for files (slow!)"
-msgstr ""
+msgstr "Vypočítat hashkódy pro soubory (pomalé!)"
 
-#: src/Gui/Preferences.cs:400
+#: src/Gui/Preferences.cs:401
 msgid "Fetch audio cd metadata from MusicBrainz.org"
-msgstr ""
+msgstr "Získat metadata audio cd z MusicBrainz.org"
 
-#: src/Gui/Preferences.cs:403
+#: src/Gui/Preferences.cs:404
 msgid "Scanner"
-msgstr ""
+msgstr "Skener"
