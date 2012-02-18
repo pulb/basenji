@@ -261,7 +261,7 @@ namespace Basenji.Gui
 			/* remove event handlers from the extern VolumeDatabase object */
 			database.BeginWriteAccess	-= database_BeginWriteAccess;
 			database.EndWriteAccess		-= database_EndWriteAccess;
-
+			
 			//// remove timeout handler (installed in ctor)
 			//// TODO : comment from GUI_PUSH.txt
 			//m_timer.Remove();
@@ -294,15 +294,15 @@ namespace Basenji.Gui
 		
 		#region VolumeDatabase event handlers (executed on the scanner thread ?)
 		// TODO : 
-		// what is the executing thread of those MediaDB events rised on the MediaDB by the MediaScanner?
+		// what is the executing thread of those VolumeDB events rised on the VolumeDB by the VolumeScanner?
 		// in case of a different thread, 
-		// is the MediaScanner required to raise the event on the the tread of the MediaDB?
+		// is the VolumeScanner required to raise the event on the the tread of the VolumeDB?
 		private void database_BeginWriteAccess(object sender, EventArgs e) {
-			timer.LedState = true; // LED on
+			timer.RequestLedUpdate(true); // LED on
 		}
-
+		
 		private void database_EndWriteAccess(object sender, EventArgs e) {
-			timer.LedState = false; // LED off
+			timer.RequestLedUpdate(false); // LED off
 		}
 		#endregion
 		
@@ -373,20 +373,18 @@ namespace Basenji.Gui
 		 */
 		private class StatusUpdateTimer
 		{
+			/* GUI update frequency: (1000 / TIMEOUT_INTERVAL) Hz */
 			private const uint TIMEOUT_INTERVAL = 20;
 
 			private VolumeScanner	vscanner;
 			private volatile bool	remove;
-
-			//private Led			  led;
-			private volatile bool	ledState;
-
+			private volatile bool	ledOnRequest;
+			private volatile bool	ledOffRequest;
+			private long			lastLedUpdate;
+			
 			public StatusUpdateTimer(VolumeScanner vs) {
 				this.vscanner	= vs;
 				this.remove		= true;
-
-				//this.led		  = new Led(vscanner.imgLed, false);
-				//m_ledState  = false;
 			}
 
 			public void Install() {
@@ -395,19 +393,43 @@ namespace Basenji.Gui
 
 				remove					= false;
 				vscanner.led.LedState	= false;
-				ledState				= false;
+				ledOnRequest			= false;
+				ledOffRequest			= false;
 
 				GLib.Timeout.Add(TIMEOUT_INTERVAL, delegate {
+					/* get local copies of thread shared vars */
 					bool persist = !remove;
-
-					/* update counter labels */
+					bool ledOnReq = ledOnRequest;
+					bool ledOffReq = ledOffRequest;
+					
+					/* 
+					 * update counter labels 
+					 */
 					if (vscanner.scanner != null)
 						vscanner.volEditor.UpdateInfo(vscanner.scanner.VolumeInfo);
 
-					/* LED (database access indicator) */
-					if (ledState != vscanner.led.LedState)
-						vscanner.led.LedState = ledState; /* toggle LED state */
-
+					/* 
+					 * update database write access indicator LED
+					 */
+					if (!persist) {
+						/* switch off the LED when the timer is going to be removed */
+						vscanner.led.LedState = false;
+					} else {
+						if (ledOnReq) {
+							if (!vscanner.led.LedState)
+								vscanner.led.LedState = true; /* toggle LED state */
+							
+							ledOnRequest = false;
+							lastLedUpdate = DateTime.Now.Ticks;
+						}
+						
+						/* switch off the LED if it hasn't been switched on during the last ~300 ms.
+						 * (i.e. make the LED glow for at least 300 ms) */
+						if ( vscanner.led.LedState && ledOffReq &&
+							(((DateTime.Now.Ticks - lastLedUpdate) / 10000) >= 300) )
+							vscanner.led.LedState = false;
+					}
+					
 					return persist;
 				});
 			}
@@ -416,9 +438,20 @@ namespace Basenji.Gui
 				remove = true;
 			}
 
-			public bool LedState {
-				get { return ledState; }
-				set { ledState = value; }
+			public void RequestLedUpdate(bool on) {
+				if (on) {
+					/* remove possibly pending previous switch-off request */
+					ledOffRequest = false;
+					
+					/* request LED switch-on */
+					ledOnRequest = true;
+					
+				} else {
+					/* don't disable the ledOnRequest here !*/
+					
+					/* request LED switch-off */
+					ledOffRequest = true;
+				}
 			}
 		}
 
