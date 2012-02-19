@@ -2,6 +2,12 @@ basenji (0.8.0-0) unstable; urgency=low
 
   * New upstream release
 
+ -- Patrick Ulbrich <zulu99@gmx.net>  Sun, 19 Feb 2012 11:32:46 +0100
+ 
+basenji (0.8.0-0) unstable; urgency=low
+
+  * New upstream release
+
  -- Patrick Ulbrich <zulu99@gmx.net>  Mon, 25 Apr 2011 19:23:46 +0200
 
 basenji (0.7.1-0) unstable; urgency=low
