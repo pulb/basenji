@@ -28,8 +28,6 @@ namespace Platform.Common.Mime
 		static MimeType() {
 //			if (!Platform.Gnome.GnomeNative.gnome_vfs_initialized())
 //				Platform.Gnome.GnomeNative.gnome_vfs_init();
-			if (!global::Gnome.Vfs.Vfs.Initialized)
-				global::Gnome.Vfs.Vfs.Initialize();
 		}
 #endif
 		public static string GetMimeTypeForFile(string filename) {
@@ -37,8 +35,9 @@ namespace Platform.Common.Mime
 #if GNOME
 			// gnome vfs backend
 			// (returns null if the file does not exist)
-			string uri = global::Gnome.Vfs.Uri.GetUriFromLocalPath(filename);
-			mimeType = global::Gnome.Vfs.MimeType.GetMimeTypeForUri(uri);
+			GLib.File file = GLib.FileFactory.NewForPath(filename);
+			GLib.FileInfo info = file.QueryInfo ("standard::content-type", GLib.FileQueryInfoFlags.None, null);
+			mimeType = info.ContentType;
 //			mimeType = Platform.Gnome.GnomeNative.gnome_vfs_get_mime_type(filename);
 #elif UNIX
 			// mono winforms backend
