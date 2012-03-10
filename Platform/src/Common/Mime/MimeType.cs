@@ -1,6 +1,6 @@
 // MimeType.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -24,21 +24,17 @@ namespace Platform.Common.Mime
 	{
 		internal const string MIME_TYPE_UNKNOWN = "application/octet-stream";
 		
-#if GNOME
-		static MimeType() {
-//			if (!Platform.Gnome.GnomeNative.gnome_vfs_initialized())
-//				Platform.Gnome.GnomeNative.gnome_vfs_init();
-		}
-#endif
 		public static string GetMimeTypeForFile(string filename) {
-			string mimeType;
+			string mimeType = null;
 #if GNOME
-			// gnome vfs backend
-			// (returns null if the file does not exist)
+			// GLib backend
+			// (null if the file does not exist)
 			GLib.File file = GLib.FileFactory.NewForPath(filename);
-			GLib.FileInfo info = file.QueryInfo ("standard::content-type", GLib.FileQueryInfoFlags.None, null);
-			mimeType = info.ContentType;
-//			mimeType = Platform.Gnome.GnomeNative.gnome_vfs_get_mime_type(filename);
+			if (file.Exists) {
+				GLib.FileInfo info = file.QueryInfo ("standard::content-type", GLib.FileQueryInfoFlags.None, null);
+				mimeType = info.ContentType;
+			}
+
 #elif UNIX
 			// mono winforms backend
 			// (always returns a mimetype, even if the file does not exist)

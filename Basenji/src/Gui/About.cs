@@ -36,6 +36,7 @@ namespace Basenji.Gui
 
 Contributors:
     Francesco Marella (https://launchpad.net/~francesco-marella)
+    György Balló (https://launchpad.net/~ballogy)
     Mauro Solcia (https://launchpad.net/~maurosolcia)
 " };
 		

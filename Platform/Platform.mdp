@@ -17,13 +17,13 @@
       <Output directory="bin/Debug" assembly="Platform" assemblyKeyFile="." />
       <Build debugmode="True" target="Library" />
       <Execution consolepause="True" runwithwarnings="True" runtime="MsNet" clr-version="Net_2_0" />
-      <CodeGeneration compiler="Mcs" warninglevel="3" optimize="False" unsafecodeallowed="False" generateoverflowchecks="True" definesymbols="UNIX,DEBUG,GNOME" generatexmldocumentation="False" additionalargs="-pkg:gnome-sharp-2.0 -pkg:gio-sharp-2.0" ctype="CSharpCompilerParameters" />
+      <CodeGeneration compiler="Mcs" warninglevel="3" optimize="False" unsafecodeallowed="False" generateoverflowchecks="True" definesymbols="UNIX,DEBUG,GNOME" generatexmldocumentation="False" additionalargs="-pkg:gtk-sharp-2.0 -pkg:gio-sharp-2.0" ctype="CSharpCompilerParameters" />
     </Configuration>
     <Configuration name="Gnome_Release" ctype="DotNetProjectConfiguration">
       <Output directory="bin/Release" assembly="Platform" assemblyKeyFile="." />
       <Build debugmode="False" target="Library" />
       <Execution consolepause="True" runwithwarnings="True" runtime="MsNet" clr-version="Net_2_0" />
-      <CodeGeneration compiler="Mcs" warninglevel="3" optimize="True" unsafecodeallowed="False" generateoverflowchecks="False" definesymbols="UNIX,GNOME" generatexmldocumentation="False" additionalargs="-pkg:gnome-sharp-2.0 -pkg:gio-sharp-2.0" ctype="CSharpCompilerParameters" />
+      <CodeGeneration compiler="Mcs" warninglevel="3" optimize="True" unsafecodeallowed="False" generateoverflowchecks="False" definesymbols="UNIX,GNOME" generatexmldocumentation="False" additionalargs="-pkg:gtk-sharp-2.0 -pkg:gio-sharp-2.0" ctype="CSharpCompilerParameters" />
     </Configuration>
   </Configurations>
   <Contents>
@@ -58,6 +58,9 @@
     <File subtype="Code" buildaction="Compile" name="src/Win32/IO/AudioCdWin32.cs" />
     <File subtype="Directory" buildaction="Compile" name="src/Gnome/IO" />
     <File subtype="Code" buildaction="Compile" name="src/Gnome/IO/GioDriveInfoProvider.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gnome/GnomeDesktop/DesktopThumbnailFactory.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Gnome/GnomeDesktop/DesktopThumbnailSize.cs" />
+    <File subtype="Code" name="Platform.dll.config" buildaction="FileCopy" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />

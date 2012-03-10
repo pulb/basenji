@@ -23,6 +23,7 @@ BASENJI_EXE_MDB_SOURCE=bin/Debug/Basenji.exe.mdb
 BASENJI_EXE_MDB=$(BUILD_DIR)/Basenji.exe.mdb
 BASENJI_EXE_CONFIG_SOURCE=Basenji.exe.config
 PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
+PLATFORM_DLL_CONFIG_SOURCE=../Platform/Platform.dll.config
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
 VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll
@@ -51,6 +52,7 @@ BUILD_DIR = bin/Release
 BASENJI_EXE_MDB=
 BASENJI_EXE_CONFIG_SOURCE=Basenji.exe.config
 PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
+PLATFORM_DLL_CONFIG_SOURCE=../Platform/Platform.dll.config
 PLATFORM_DLL_MDB=
 VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Release/VolumeDB.dll
 PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
@@ -76,6 +78,7 @@ BASENJI_EXE_MDB_SOURCE=bin/Debug/Basenji.exe.mdb
 BASENJI_EXE_MDB=$(BUILD_DIR)/Basenji.exe.mdb
 BASENJI_EXE_CONFIG_SOURCE=Basenji.exe.config
 PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
+PLATFORM_DLL_CONFIG_SOURCE=../Platform/Platform.dll.config
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
 VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Debug/VolumeDB.dll
@@ -104,6 +107,7 @@ BUILD_DIR = bin/Release
 BASENJI_EXE_MDB=
 BASENJI_EXE_CONFIG_SOURCE=Basenji.exe.config
 PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
+PLATFORM_DLL_CONFIG_SOURCE=../Platform/Platform.dll.config
 PLATFORM_DLL_MDB=
 VOLUMEDB_DLL_SOURCE=../VolumeDB/bin/Release/VolumeDB.dll
 PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
@@ -121,6 +125,7 @@ PROGRAMFILES = \
 	$(BASENJI_EXE_MDB) \
 	$(BASENJI_EXE_CONFIG) \
 	$(PLATFORM_DLL) \
+	$(PLATFORM_DLL_CONFIG) \
 	$(PLATFORM_DLL_MDB) \
 	$(VOLUMEDB_DLL) \
 	$(PLATFORM_COMMON_DB_DLL) \
@@ -142,6 +147,7 @@ BASENJI_DESKTOP = $(BUILD_DIR)/basenji.desktop
 BASENJI = $(BUILD_DIR)/basenji
 BASENJI_EXE_CONFIG = $(BUILD_DIR)/Basenji.exe.config
 PLATFORM_DLL = $(BUILD_DIR)/Platform.dll
+PLATFORM_DLL_CONFIG = $(BUILD_DIR)/Platform.dll.config
 VOLUMEDB_DLL = $(BUILD_DIR)/VolumeDB.dll
 PLATFORM_COMMON_DB_DLL = $(BUILD_DIR)/Platform.Common.DB.dll
 MUSICBRAINZ_DLL = $(BUILD_DIR)/MusicBrainz.dll
@@ -266,6 +272,7 @@ $(eval $(call emit-deploy-wrapper,BASENJI_DESKTOP,basenji.desktop))
 $(eval $(call emit-deploy-wrapper,BASENJI,basenji))
 $(eval $(call emit-deploy-target,BASENJI_EXE_CONFIG))
 $(eval $(call emit-deploy-target,PLATFORM_DLL))
+$(eval $(call emit-deploy-target,PLATFORM_DLL_CONFIG))
 $(eval $(call emit-deploy-target,PLATFORM_DLL_MDB))
 $(eval $(call emit-deploy-target,VOLUMEDB_DLL))
 $(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL))
@@ -327,6 +334,7 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call cp,$(BASENJI),$(DESTDIR)$(bindir))
 	$(call cp,$(BASENJI_EXE_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(PLATFORM_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(VOLUMEDB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_COMMON_DB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
@@ -346,6 +354,7 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call rm,$(BASENJI),$(DESTDIR)$(bindir))
 	$(call rm,$(BASENJI_EXE_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(PLATFORM_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(VOLUMEDB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_COMMON_DB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))

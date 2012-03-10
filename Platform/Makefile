@@ -19,6 +19,7 @@ BUILD_DIR = bin/Debug
 
 PLATFORM_DLL_MDB_SOURCE=bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
+PLATFORM_DLL_CONFIG_SOURCE=Platform.dll.config
 
 endif
 
@@ -32,6 +33,7 @@ PROJECT_REFERENCES =
 BUILD_DIR = bin/Release
 
 PLATFORM_DLL_MDB=
+PLATFORM_DLL_CONFIG_SOURCE=Platform.dll.config
 
 endif
 
@@ -46,6 +48,7 @@ BUILD_DIR = bin/Debug
 
 PLATFORM_DLL_MDB_SOURCE=bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
+PLATFORM_DLL_CONFIG_SOURCE=Platform.dll.config
 
 endif
 
@@ -59,6 +62,7 @@ PROJECT_REFERENCES =
 BUILD_DIR = bin/Release
 
 PLATFORM_DLL_MDB=
+PLATFORM_DLL_CONFIG_SOURCE=Platform.dll.config
 
 endif
 
@@ -66,7 +70,8 @@ AL=al
 SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 
 PROGRAMFILES = \
-	$(PLATFORM_DLL_MDB)  
+	$(PLATFORM_DLL_MDB) \
+	$(PLATFORM_DLL_CONFIG)  
 
 LINUX_PKGCONFIG = \
 	$(PLATFORM_PC)  
@@ -74,6 +79,7 @@ LINUX_PKGCONFIG = \
 
 RESGEN=resgen2
 
+PLATFORM_DLL_CONFIG = $(BUILD_DIR)/Platform.dll.config
 PLATFORM_PC = $(BUILD_DIR)/platform.pc
 
 FILES = \
@@ -112,6 +118,7 @@ DATA_FILES =
 RESOURCES = 
 
 EXTRAS = \
+	Platform.dll.config \
 	platform.pc.in 
 
 REFERENCES =  \
@@ -133,6 +140,7 @@ include $(top_srcdir)/Makefile.include
 
 
 
+$(eval $(call emit-deploy-target,PLATFORM_DLL_CONFIG))
 $(eval $(call emit-deploy-wrapper,PLATFORM_PC,platform.pc))
 
 
@@ -157,6 +165,7 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call cp,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(PLATFORM_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	mkdir -p '$(DESTDIR)$(libdir)/pkgconfig'
 	$(call cp,$(PLATFORM_PC),$(DESTDIR)$(libdir)/pkgconfig)
 	make post-install-local-hook prefix=$(prefix)
@@ -167,6 +176,7 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call rm,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(PLATFORM_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_PC),$(DESTDIR)$(libdir)/pkgconfig)
 	make post-uninstall-local-hook prefix=$(prefix)
 

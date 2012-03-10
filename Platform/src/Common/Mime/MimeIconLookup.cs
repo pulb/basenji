@@ -1,6 +1,6 @@
 // MimeIconLookup.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -68,11 +68,10 @@ namespace Platform.Common.Mime
 			if (mimeIcons.TryGetValue(mimeType, out iconName))
 				return iconName;
 #if GNOME
-			//iconName = GnomeNative.gnome_icon_lookup(GnomeNative.gtk_icon_theme_get_default(), IntPtr.Zero, null, null, IntPtr.Zero, mimeType, 0, IntPtr.Zero);
-			GLib.ThemedIcon icon = (GLib.ThemedIcon) GLib.Content.TypeGetIcon (mimeType);
-			for (int i = 0; i < icon.Names.Length; i++) {
-				if (Gtk.IconTheme.Default.HasIcon (icon.Names[i])) {
-	 				iconName = icon.Names[i];
+			GLib.ThemedIcon icon = (GLib.ThemedIcon) GLib.Content.TypeGetIcon(mimeType);
+			foreach (string name in icon.Names) {
+				if (Gtk.IconTheme.Default.HasIcon(name)) {
+					iconName = name;
 					break;
 				}
 			}

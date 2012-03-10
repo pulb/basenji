@@ -10,7 +10,7 @@ Requirements:
 	mono (2.4 or later)
 	glib-sharp (2.12.9 or later)
 	gtk-sharp (2.12.9 or later)
-	gnome-desktop (2.26.0 or later)
+	libgnome-desktop (2.32.0 or later)
 	gio-sharp (2.22.2 or later)
 	dbus-sharp (0.7.0 or later)
 	dbus-sharp-glib (0.7.0 or later)

@@ -26,6 +26,7 @@ PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB
 PLATFORM_COMMON_DB_DLL_MDB_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll.mdb
 PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
 PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
+PLATFORM_DLL_CONFIG_SOURCE=../Platform/Platform.dll.config
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
 MUSICBRAINZ_DLL_SOURCE=../MusicBrainz/bin/Debug/MusicBrainz.dll
@@ -50,6 +51,7 @@ VOLUMEDB_DLL_MDB=
 PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
 PLATFORM_COMMON_DB_DLL_MDB=
 PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
+PLATFORM_DLL_CONFIG_SOURCE=../Platform/Platform.dll.config
 PLATFORM_DLL_MDB=
 MUSICBRAINZ_DLL_SOURCE=../MusicBrainz/bin/Release/MusicBrainz.dll
 MUSICBRAINZ_DLL_MDB=
@@ -74,6 +76,7 @@ PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB
 PLATFORM_COMMON_DB_DLL_MDB_SOURCE=../Platform.Common.DB/bin/Debug/Platform.Common.DB.dll.mdb
 PLATFORM_COMMON_DB_DLL_MDB=$(BUILD_DIR)/Platform.Common.DB.dll.mdb
 PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
+PLATFORM_DLL_CONFIG_SOURCE=../Platform/Platform.dll.config
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
 MUSICBRAINZ_DLL_SOURCE=../MusicBrainz/bin/Debug/MusicBrainz.dll
@@ -98,6 +101,7 @@ VOLUMEDB_DLL_MDB=
 PLATFORM_COMMON_DB_DLL_SOURCE=../Platform.Common.DB/bin/Release/Platform.Common.DB.dll
 PLATFORM_COMMON_DB_DLL_MDB=
 PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
+PLATFORM_DLL_CONFIG_SOURCE=../Platform/Platform.dll.config
 PLATFORM_DLL_MDB=
 MUSICBRAINZ_DLL_SOURCE=../MusicBrainz/bin/Release/MusicBrainz.dll
 MUSICBRAINZ_DLL_MDB=
@@ -112,6 +116,7 @@ PROGRAMFILES = \
 	$(PLATFORM_COMMON_DB_DLL) \
 	$(PLATFORM_COMMON_DB_DLL_MDB) \
 	$(PLATFORM_DLL) \
+	$(PLATFORM_DLL_CONFIG) \
 	$(PLATFORM_DLL_MDB) \
 	$(MUSICBRAINZ_DLL) \
 	$(MUSICBRAINZ_DLL_MDB)  
@@ -124,6 +129,7 @@ RESGEN=resgen2
 
 PLATFORM_COMMON_DB_DLL = $(BUILD_DIR)/Platform.Common.DB.dll
 PLATFORM_DLL = $(BUILD_DIR)/Platform.dll
+PLATFORM_DLL_CONFIG = $(BUILD_DIR)/Platform.dll.config
 MUSICBRAINZ_DLL = $(BUILD_DIR)/MusicBrainz.dll
 VOLUMEDB_PC = $(BUILD_DIR)/volumedb.pc
 
@@ -265,6 +271,7 @@ include $(top_srcdir)/Makefile.include
 $(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL))
 $(eval $(call emit-deploy-target,PLATFORM_COMMON_DB_DLL_MDB))
 $(eval $(call emit-deploy-target,PLATFORM_DLL))
+$(eval $(call emit-deploy-target,PLATFORM_DLL_CONFIG))
 $(eval $(call emit-deploy-target,PLATFORM_DLL_MDB))
 $(eval $(call emit-deploy-target,MUSICBRAINZ_DLL))
 $(eval $(call emit-deploy-target,MUSICBRAINZ_DLL_MDB))
@@ -295,6 +302,7 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call cp,$(PLATFORM_COMMON_DB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_COMMON_DB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(PLATFORM_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(MUSICBRAINZ_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(MUSICBRAINZ_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
@@ -311,6 +319,7 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call rm,$(PLATFORM_COMMON_DB_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_COMMON_DB_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(PLATFORM_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(MUSICBRAINZ_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(MUSICBRAINZ_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
