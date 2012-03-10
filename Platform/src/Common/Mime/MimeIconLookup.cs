@@ -69,16 +69,13 @@ namespace Platform.Common.Mime
 				return iconName;
 #if GNOME
 			//iconName = GnomeNative.gnome_icon_lookup(GnomeNative.gtk_icon_theme_get_default(), IntPtr.Zero, null, null, IntPtr.Zero, mimeType, 0, IntPtr.Zero);
-			global::Gnome.IconLookupResultFlags result;
-			iconName = global::Gnome.Icon.Lookup(
-				Gtk.IconTheme.Default,
-				null,
-				null,
-				null,
-				null,
-				mimeType,
-				global::Gnome.IconLookupFlags.None,
-				out result);
+			GLib.ThemedIcon icon = (GLib.ThemedIcon) GLib.Content.TypeGetIcon (mimeType);
+			for (int i = 0; i < icon.Names.Length; i++) {
+				if (Gtk.IconTheme.Default.HasIcon (icon.Names[i])) {
+	 				iconName = icon.Names[i];
+					break;
+				}
+			}
 #else
 			// TODO : find a portable implementation
 			iconName = null;

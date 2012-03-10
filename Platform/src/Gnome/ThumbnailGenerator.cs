@@ -26,15 +26,15 @@ namespace Platform.Gnome
 {
 	internal class ThumbnailGenerator : Platform.Common.IThumbnailGenerator
 	{	
-		private const ThumbnailSize THUMB_SIZE = ThumbnailSize.Normal; // 100 pix
+		private const DesktopThumbnailSize THUMB_SIZE = DesktopThumbnailSize.Normal; // 100 pix
 		
-		private ThumbnailFactory tf;
+		private DesktopThumbnailFactory tf;
 		private Pixbuf thumbnail;
 		private bool disposed;
 		
 		public ThumbnailGenerator() {
 			disposed = false;
-			tf = new ThumbnailFactory(THUMB_SIZE);
+			tf = new DesktopThumbnailFactory(THUMB_SIZE);
 		}
 		
 		public bool GenerateThumbnail(FileInfo fi, string mimeType) {
@@ -43,7 +43,7 @@ namespace Platform.Gnome
 				thumbnail = null;
 			}
 			
-			string uri = global::Gnome.Vfs.Uri.GetUriFromLocalPath(fi.FullName);
+			string uri = new Uri(fi.FullName).ToString();
 			if (tf.CanThumbnail(uri, mimeType, fi.LastWriteTime)) {
 				thumbnail = tf.GenerateThumbnail(uri, mimeType);
 				if (thumbnail != null)

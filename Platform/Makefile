@@ -37,7 +37,7 @@ endif
 
 ifeq ($(CONFIG),GNOME_DEBUG)
 ASSEMBLY_COMPILER_COMMAND = dmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize- -debug -define:DEBUG -pkg:gnome-sharp-2.0 -pkg:gio-sharp-2.0  "-define:UNIX,DEBUG,GNOME"
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize- -debug -define:DEBUG -pkg:gtk-sharp-2.0 -pkg:gio-sharp-2.0  "-define:UNIX,DEBUG,GNOME"
 ASSEMBLY = bin/Debug/Platform.dll
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
 COMPILE_TARGET = library
@@ -51,7 +51,7 @@ endif
 
 ifeq ($(CONFIG),GNOME_RELEASE)
 ASSEMBLY_COMPILER_COMMAND = dmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize+ -pkg:gnome-sharp-2.0 -pkg:gio-sharp-2.0  "-define:UNIX,GNOME"
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize+ -pkg:gtk-sharp-2.0 -pkg:gio-sharp-2.0  "-define:UNIX,GNOME"
 ASSEMBLY = bin/Release/Platform.dll
 ASSEMBLY_MDB = 
 COMPILE_TARGET = library
@@ -103,7 +103,9 @@ FILES = \
 	src/Unix/IO/DkDriveInfoProvider.cs \
 	src/Win32/IO/Win32DriveInfoProvider.cs \
 	src/Win32/IO/AudioCdWin32.cs \
-	src/Gnome/IO/GioDriveInfoProvider.cs 
+	src/Gnome/IO/GioDriveInfoProvider.cs \
+	src/Gnome/GnomeDesktop/DesktopThumbnailFactory.cs \
+	src/Gnome/GnomeDesktop/DesktopThumbnailSize.cs 
 
 DATA_FILES = 
 
