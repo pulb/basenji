@@ -1,6 +1,6 @@
 // ItemInfo.cs
 // 
-// Copyright (C) 2008 - 2011 Patrick Ulbrich
+// Copyright (C) 2008 - 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -329,12 +329,18 @@ namespace Basenji.Gui.Widgets
 					if (metadata.TryGetValue(MetadataType.FILENAME, out val)) {
 						// count files in archives 
 						// (filenames were joined by MetadataStore.ToDictionary())
-						string[] filenames = val.Split(KEYWORD_SEPARATORS, StringSplitOptions.None);
 						int filecount = 0;
 						
-						foreach (string fn in filenames) {
-							// only count files, skip directory names
-							if ((fn[fn.Length - 1] != '/') && (fn[fn.Length - 1] != '\\'))
+						if (val.Length == 1) {
+							filecount = 1;
+						} else {
+							for (int i = 0; i < val.Length; i++) {
+								// only count files, skip directory names
+								if ((val[i] == ';') && (val[i - 1] != '/') && (val[i - 1] != '\\'))
+									filecount++;
+							}
+	
+							if ((val[val.Length - 1] != '/') && (val[val.Length - 1] != '\\'))
 								filecount++;
 						}
 						
