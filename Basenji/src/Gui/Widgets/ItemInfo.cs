@@ -329,21 +329,18 @@ namespace Basenji.Gui.Widgets
 					if (metadata.TryGetValue(MetadataType.FILENAME, out val)) {
 						// count files in archives 
 						// (filenames were joined by MetadataStore.ToDictionary())
-						int filecount = 0;
+						int filecount = 0;						
+						int lastIndex = -1;
 						
-						if (val.Length == 1) {
-							filecount = 1;
-						} else {
-							for (int i = 0; i < val.Length; i++) {
-								// only count files, skip directory names
-								if ((val[i] == ';') && (val[i - 1] != '/') && (val[i - 1] != '\\'))
+						while ((lastIndex = val.IndexOf(';', lastIndex + 1)) != -1)	{
+							// only count files, skip directory names
+							if ((val[lastIndex - 1] != '/') && (val[lastIndex - 1] != '\\'))
 									filecount++;
-							}
-	
-							if ((val[val.Length - 1] != '/') && (val[val.Length - 1] != '\\'))
-								filecount++;
 						}
 						
+						if ((val[val.Length - 1] != '/') && (val[val.Length - 1] != '\\'))
+								filecount++;
+
 						if (filecount > 0)
 							tmp.Add(new ItemProperty(S._("File count"), filecount.ToString(), 117));
 					}
