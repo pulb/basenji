@@ -22,26 +22,32 @@ namespace Platform.Common.Mime
 {
 	public static class MimeType
 	{
-		internal const string MIME_TYPE_UNKNOWN = "application/octet-stream";
+		public const string MIME_TYPE_UNKNOWN = "application/octet-stream";
 		
 		public static string GetMimeTypeForFile(string filename) {
 			string mimeType = null;
 #if GNOME
-			// GLib backend
-			// (null if the file does not exist)
 			GLib.File file = GLib.FileFactory.NewForPath(filename);
 			if (file.Exists) {
+				// GLib backend
+				// (null if the file does not exist)
 				GLib.FileInfo info = file.QueryInfo ("standard::content-type", GLib.FileQueryInfoFlags.None, null);
 				mimeType = info.ContentType;
+			} else {
+				// use mono winforms backend as fallack for non-existing files
+				// (also takes filename extension into account, 
+				// always returns a mimetype, even if the file does not exist)
+				mimeType = Platform.Unix.Mime.Mime.GetMimeTypeForFile(filename);
 			}
 
 #elif UNIX
 			// mono winforms backend
-			// (always returns a mimetype, even if the file does not exist)
+			// (also takes filename extension into account, 
+			// always returns a mimetype, even if the file does not exist)
 			mimeType = Platform.Unix.Mime.Mime.GetMimeTypeForFile(filename);
 #elif WIN32
 			// win32 registry backend
-			// (always returns a mimetype)
+			// (uses filename extension only, always returns a mimetype)
 			mimeType = Platform.Win32.Mime.RegistryMime.GetMimeTypeForExtension(filename);
 #endif
 			if (mimeType == null)
