@@ -1,6 +1,6 @@
 /// Import.cs
 // 
-// Copyright (C) 2010 Patrick Ulbrich
+// Copyright (C) 2010, 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -70,12 +70,18 @@ namespace Basenji.Gui
 					                                buffSize);
 						break;
 					case 1:
+						import = new CdCatImport(sourceDbPath,
+					                                database, 
+					                                dbDataPath,
+					                                buffSize);
+						break;
+					case 2:
 						import = new CdCollectImport(sourceDbPath,
 					                             database, 
 					                             dbDataPath,
 					                             buffSize);
 						break;
-					case 2:
+					case 3:
 						import = new BasenjiImport(sourceDbPath,
 					                          database, 
 					                          dbDataPath,
@@ -178,6 +184,7 @@ namespace Basenji.Gui
 			cmbFormat = ComboBox.NewText();
 			
 			cmbFormat.AppendText("GnomeCatalog");
+			cmbFormat.AppendText("CdCat");
 			/*cmbFormat.AppendText("CDCollect");
 			cmbFormat.AppendText("Basenji");*/
 			

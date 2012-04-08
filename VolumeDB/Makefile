@@ -221,7 +221,9 @@ FILES = \
 	src/Metadata/MetadataStore.cs \
 	src/Metadata/MetadataUtils.cs \
 	src/Metadata/ArchiveMetadataProvider.cs \
-	src/Metadata/TagLibMetadataProvider.cs 
+	src/Metadata/TagLibMetadataProvider.cs \
+	src/Import/CdCatImport.cs \
+	src/Import/ImportException.cs 
 
 DATA_FILES = 
 
@@ -254,7 +256,8 @@ REFERENCES =  \
 	System.Data \
 	System.Core \
 	-pkg:taglib-sharp \
-	ICSharpCode.SharpZipLib
+	ICSharpCode.SharpZipLib \
+	System.Xml
 
 DLL_REFERENCES = 
 
