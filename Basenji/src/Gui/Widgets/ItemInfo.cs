@@ -181,7 +181,8 @@ namespace Basenji.Gui.Widgets
 				GetCommonItemProperties(item, out tmp, out nameProperty);
 				
 				tmp.Add(new ItemProperty(S._("Location"), item.Location, 202));
-				tmp.Add(new ItemProperty(S._("Last write time"), item.LastWriteTime.ToString(), 205));
+				if (item.LastWriteTime.Ticks > 0L)
+					tmp.Add(new ItemProperty(S._("Last write time"), item.LastWriteTime.ToString(), 205));
 				
 				if (item.IsSymLink) {
 					FileSystemVolumeItem targetItem = item.GetSymLinkTargetItem();
