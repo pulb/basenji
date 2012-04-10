@@ -138,7 +138,7 @@ namespace VolumeDB
 		internal override void ReadFromVolumeDBRecord(IRecordData recordData) {
 			volumeID	  = (long)						  	recordData["VolumeID"];
 			title		  = Util.ReplaceDBNull<string>(		recordData["Title"], null);
-			added		  = (DateTime)					  	recordData["Added"];
+			added		  = Util.ReplaceDBNull<DateTime>(	recordData["Added"], DateTime.MinValue);
 			isHashed	  = (bool)						  	recordData["IsHashed"];
 
 			archiveNo	  = Util.ReplaceDBNull<string>(		recordData["ArchiveNr"], null);
