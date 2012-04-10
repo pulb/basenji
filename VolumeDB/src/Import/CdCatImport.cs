@@ -302,6 +302,11 @@ namespace VolumeDB.Import
 							if (tmp.Length > 0)
 								convertedData.Add(new MetadataItem(pair.Value, tmp));
 						}
+					
+						string comment = node.InnerText.Trim();
+						
+						if (comment.Length > 0)
+							convertedData.Add(new MetadataItem(MetadataType.COMMENT, comment));
 						
 						if (convertedData.Count > 0)
 							metadata = new MetadataStore(convertedData);
@@ -402,8 +407,8 @@ namespace VolumeDB.Import
 								new MetadataItem(MetadataType.DURATION, MetadataUtils.SecsToMetadataDuration(duration))
 							});
 						// try to parse audio only info
-						// e. g. "VBR,44100Hz#Joint stereo"
-						} else if (Regex.IsMatch(tmp, @"^VBR,\d+Hz")) {
+						// e. g. "VBR,44100Hz#Joint stereo" (didn't encounter ABR or CBR yet)
+						} else if (Regex.IsMatch(tmp, @"^(VBR|ABR|CBR){1},\d+Hz")) {
 							// ignored
 						} else {
 							return false;
