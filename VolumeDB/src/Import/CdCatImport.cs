@@ -88,8 +88,16 @@ namespace VolumeDB.Import
 			this.writer = writer;
 			
 			using (GZipStream s = new GZipStream(File.OpenRead(sourceDbPath), CompressionMode.Decompress)) {
+				XmlReaderSettings settings = new XmlReaderSettings() {
+					DtdProcessing = DtdProcessing.Ignore,
+					ValidationType = ValidationType.None,
+					CheckCharacters = false
+				};
+				
+				XmlReader reader = XmlTextReader.Create(s, settings);
+				 
 				XmlDocument xml = new XmlDocument();
-				xml.Load(s);
+				xml.Load(reader);
 				
 				string dummy1 = null;
 				MetadataStore dummy2 = MetadataStore.Empty;
