@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-02-12 18:41+0100\n"
-"PO-Revision-Date: 2011-03-25 21:56+0000\n"
-"Last-Translator: Szymon Sieciński <Unknown>\n"
+"PO-Revision-Date: 2012-04-12 09:44+0000\n"
+"Last-Translator: axel <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-02-18 14:04+0000\n"
-"X-Generator: Launchpad (build 14814)\n"
+"X-Launchpad-Export-Date: 2012-04-12 18:56+0000\n"
+"X-Generator: Launchpad (build 15070)\n"
 
 #: src/Util.cs:30
 #, csharp-format
@@ -323,7 +323,7 @@ msgstr "Wszystkie elementy"
 
 #: src/Gui/Widgets/SearchResultView.cs:32
 msgid "Volume"
-msgstr "Głośność"
+msgstr "Wolumin"
 
 #: src/Gui/Widgets/SearchResultView.cs:33 src/Gui/MainWindow.cs:888
 msgid "Archive No."
