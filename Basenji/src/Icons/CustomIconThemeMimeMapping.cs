@@ -1,6 +1,6 @@
 // CustomIconThemeMimeMapping.cs
 // 
-// Copyright (C) 2010 Patrick Ulbrich
+// Copyright (C) 2010, 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -38,26 +38,14 @@ namespace Basenji.Icons
 			                  /*archiveCategoryData:*/		Icon.Category_Archives,
 			                  /*textCategoryData:*/			Icon.Category_Texts);
 
-		public CustomIconThemeMimeMapping() {
-			DefaultIcon = Icon.Stock_File;
-		}
-		
-		// returned by GetIconNameForMimeType() 
-		// if no appropriate icon can be found
-		public Icon DefaultIcon { get; set; }
-		
-		public Icon GetIconForMimeType(string mimeType) {
+		public bool TryGetIconForMimeType(string mimeType, out Icon icon) {
 			if (mimeType == null)
 				throw new ArgumentNullException("mimeType");
 			
 			if (mimeType.Length == 0)
 				throw new ArgumentException("Argument is emtpy", "mimeType");
 			
-			Icon icon;
-			if (MIME_MAPPING.TryGetValue(mimeType, out icon))
-				return icon;
-			
-			return DefaultIcon;
+			return MIME_MAPPING.TryGetValue(mimeType, out icon);
 		}
 	}
 }

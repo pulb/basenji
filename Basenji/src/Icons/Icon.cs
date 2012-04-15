@@ -110,13 +110,17 @@ namespace Basenji.Icons
 		public static Icon Category_Development		{ get { return new Icon("applications-development");	} }
 		
 		public Pixbuf Render(Widget w, Gtk.IconSize size) {
+			// most basenji icons are gtk stock icons, 
+			// so try to render the icon via widget.RenderIcon() first
+			// (RenderIcon return null if the stock_id wasn't knwon)
 			Pixbuf pb = w.RenderIcon(this.name, size, string.Empty);			
 			
 			if (pb == null) {
-				try {				 
+				// try to render the icon via Gtk.IconTheme
+				if (Gtk.IconTheme.Default.HasIcon(this.name)) {		 
 					pb = Gtk.IconTheme.Default.LoadIcon(this.name, IconUtils.GetIconSizeVal(size), 0);
-				} catch (Exception) {
-					Debug.WriteLine(string.Format("Icon.Render(): Gtk.IconTheme.Default.LoadIcon() threw a exception while trying to load icon \"{0}\"", this.name));
+				} else {
+					Debug.WriteLine(string.Format("Icon.Render(): Failed to render icon \"{0}\"", this.name));
 				}
 			}
 			return pb;

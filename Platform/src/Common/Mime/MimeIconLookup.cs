@@ -27,35 +27,12 @@ namespace Platform.Common.Mime
 	public class MimeIconLookup
 	{		 
 		private string defaultIcon;
-		private Dictionary<string, string> fallbackIcons;
 		private Dictionary<string, string> mimeIcons;
 		
 		public MimeIconLookup() {
-			defaultIcon		= null;
-			fallbackIcons	= new Dictionary<string, string>();
-			mimeIcons		= new Dictionary<string, string>();
+			mimeIcons = new Dictionary<string, string>();
 		}
-		
-		// returned by GetIconNameForMimeType() when no appropriate icon can be found		 
-		public string DefaultIcon {
-			get { return defaultIcon; }
-			set { defaultIcon = value; }
-		}
-		
-		public void AddFallbackIcon(string mimeType, string iconName) {
-			if (mimeType == null || iconName == null)
-				throw new ArgumentNullException();
-			
-			if (mimeType.Length == 0 || iconName.Length == 0)
-				throw new ArgumentException("Argument is empty");
-			
-			fallbackIcons.Add(mimeType, iconName);
-		}
-		
-		public void RemoveFallbackIcons() {
-			fallbackIcons.Clear();		  
-		}
-		
+				
 		public string GetIconNameForMimeType(string mimeType) {
 			string iconName;
 
@@ -79,15 +56,12 @@ namespace Platform.Common.Mime
 			// TODO : find a portable implementation
 			iconName = null;
 #endif
-			if (!string.IsNullOrEmpty(iconName)) {
-				mimeIcons.Add(mimeType, iconName);	  
-				return iconName;
-			}
-
-			if (fallbackIcons.TryGetValue(mimeType, out iconName))
-				return iconName;
 			
-			return defaultIcon;
+			if (!string.IsNullOrEmpty(iconName)) {
+				mimeIcons.Add(mimeType, iconName);
+			}
+			
+			return iconName;
 		}
 	}
 }

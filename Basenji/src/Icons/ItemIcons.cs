@@ -1,6 +1,6 @@
 // ItemIcons.cs
 // 
-// Copyright (C) 2008, 2010 Patrick Ulbrich
+// Copyright (C) 2008 - 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@
 //
 
 using System;
+using System.Collections.Generic;
 using Gtk;
 using VolumeDB;
 
@@ -32,16 +33,15 @@ namespace Basenji.Icons
 		private IconCache		iconCache;
 		
 		public ItemIcons(Widget w) {
+			// create a cache for item icons
 			iconCache = new IconCache(w);
 			
 			bool useCustomMimeIcons = !string.IsNullOrEmpty(App.Settings.CustomThemeName);
-			mimeIconCache = new MimeIconCache(w, useCustomMimeIcons, DEFAULT_ICON);
-				
-			// add default icons to the lookup
-			// (for platforms where mime icons are not implemented)
-			mimeIconCache.AddLookupFallbackIcon("x-directory/normal", Icon.Stock_Directory);
-			/* the default file icon has already been added in the contructor
-			mimeIconCache.DefaultIcon = DEFAULT_ICON; */
+			// create a cache for mime icons and add default and fallback icons
+			// for platforms where mime icons are not implemented
+			mimeIconCache = new MimeIconCache(w, useCustomMimeIcons, DEFAULT_ICON, new Dictionary<string, Icons.Icon>() {
+				{ "x-directory/normal", Icon.Stock_Directory }
+			});
 		}
 		
 		public Gdk.Pixbuf GetIconForItem(VolumeItem item, Gtk.IconSize iconSize) {
