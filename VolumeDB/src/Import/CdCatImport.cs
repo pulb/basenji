@@ -20,6 +20,7 @@ using System;
 using System.IO;
 using System.IO.Compression;
 using System.Collections.Generic;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Globalization;
@@ -46,6 +47,7 @@ namespace VolumeDB.Import
 		private int mediaCounter;
 		private int totalMedia;
 		private Stack<string> path;
+		private string mimePathPrefix;
 		private CultureInfo ci = CultureInfo.InvariantCulture;
 		
 		private VolumeDatabase targetDb;
@@ -84,6 +86,7 @@ namespace VolumeDB.Import
 			//idCounter = 2; // id 1 is the root item
 			//totalMedia = 0;
 			this.path = new Stack<string>();
+			this.mimePathPrefix = GetNonExistingPath() + "/";
 			this.targetDb = targetDb;
 			this.writer = writer;
 			
@@ -148,7 +151,8 @@ namespace VolumeDB.Import
 					break;
 				case "directory":
 					path.Pop();	
-					ImportFile(node, c, volumeID, parentID, dirID, path, md);
+					ImportFile(node, c, volumeID, parentID, dirID, path, 
+				           /* ignore weird CdCat directory metadata */ MetadataStore.Empty);
 					break;
 				case "file":
 					ImportFile(node, c, volumeID, parentID, idCounter++, path, md);
@@ -241,7 +245,9 @@ namespace VolumeDB.Import
 				counters[TOTAL_DIRS]++;
 			} else {
 				item = new FileVolumeItem(targetDb);
-				mimeType = MimeType.GetMimeTypeForFile(name);
+				// prepend a non-existing path to ensure the file doesn't actually exist 
+				// in the current environment directory
+				mimeType = MimeType.GetMimeTypeForFile(mimePathPrefix + name);
 				long size = ConvertSize(node.Attributes["size"].Value);
 				
 				((FileVolumeItem)item).SetFileVolumeItemFields(size, null);
@@ -321,81 +327,85 @@ namespace VolumeDB.Import
 						
 						break;
 					case "comment":
+						string match;
 						string tmp = node.InnerText.Trim();
+						
 						// try to parse Video/Audio info from comments, 
 						// e. g. "Video:#XVID MPEG-4#Gesamtzeit = 1:16:09#Framerate = 23.976 f/s#Aufloesung = 640x272##Audio:#ISO/MPEG Layer-3 
 						//        #Kanaele = 2 #Sample/s = 48.0kHz #Bitrate = 123 kBit"
 						if (tmp.StartsWith("Video:#")) {
 							convertedData = new List<MetadataItem>();
-							
 							string[] streams = tmp.Split(new string[] { "##" }, opts);
-							char[] pairSep = new char[] { '=' };
-							string format;
-						
+							
 							//
 							// parse video info
 							//
-							string[] items = streams[0].Split(new char[] { '#' }, opts);
-							string videoFormat;
-							string framerate = null;							
-							foreach (var s in items) {
-								string[] pair = s.Split(pairSep);
-								if (pair.Length == 2) {
-									string val = pair[1].Trim();
-									if (val.Contains(":")) {
-										// duration
-										TimeSpan duration = TimeSpan.Parse(val);
-										convertedData.Add(new MetadataItem(MetadataType.DURATION, 
-									                                   MetadataUtils.SecsToMetadataDuration(duration.TotalSeconds)));										
-									} else if (val.Contains("x")) {
-										// size (NxM)
-										convertedData.Add(new MetadataItem(MetadataType.SIZE, val.Trim()));
-									} else if (val.EndsWith("f/s")) {
-										// framerate
-										float fps;
-										if (float.TryParse(val.Replace(" f/s", ""),NumberStyles.AllowDecimalPoint, ci.NumberFormat, out fps))
-											framerate =  string.Format(ci.NumberFormat, "{0:F2} fps", fps);
+							string videoFormat = null;
+							string framerate = null;
+							
+							if (Match(streams[0], @"([\d\.]+) f/s", out match)) {
+								// framerate
+								float fps;
+								if (float.TryParse(match, NumberStyles.AllowDecimalPoint, ci.NumberFormat, out fps))
+									framerate = string.Format(ci.NumberFormat, "{0:F2} fps", fps);
+							}
+							
+							if (Match(streams[0], @"^Video:#([#/\w\.\-\+\(\)\$\s]+)#", out match)) {
+								// videoformat
+								videoFormat = match;
+								if (framerate != null)
+									videoFormat += ", " + framerate;
+							}
+						
+							if (Match(streams[0], @"(\d+:\d+:\d+)", out match)) {
+								// duration
+								TimeSpan duration = TimeSpan.Parse(match);
+								convertedData.Add(new MetadataItem(MetadataType.DURATION, 
+							                                   MetadataUtils.SecsToMetadataDuration(duration.TotalSeconds)));										
+							}
+							
+							if (Match(streams[0], @"(\d+x\d+)", out match)) {
+								// size (NxM)
+								convertedData.Add(new MetadataItem(MetadataType.SIZE, match));
+							}
+						
+							if (videoFormat != null) {
+								string format;
+								//
+								// audio stream info available?
+								//
+								if ((streams.Length > 1) && (streams[1].StartsWith("Audio:#"))) {
+									string audioFormat;
+									List<string> fmt = new List<string>();
+									
+									if (Match(streams[1], @"([\w\.\s]+)kHz", out match)) {
+										// frequency
+										int freq = ((int)float.Parse(match, ci.NumberFormat)) * 1000;
+										fmt.Add(freq.ToString() + " Hz");
+									}
+								
+									if (Match(streams[1], @"(\d+) kBit", out match)) {
+										// bitrate
+										fmt.Add(match + " kb/s");
+									}
+									
+									if (Match(streams[1], @"^Audio:#([#/\w\.\-\+\(\)\$\s]+)#", out match)) {
+										// audioformat
+										audioFormat = match;
+									
+										if (fmt.Count > 0)
+											audioFormat += ", " + string.Join(", ", fmt);
+									
+										format = string.Format("Video: {0}; Audio: {1}", videoFormat, audioFormat);
 									} else {
-										// possibly number of channels, not sure since channel# is only a number without unit
+										format = videoFormat;
 									}
-								}
-							}
-						
-							videoFormat = items[1]; // e. g. "XVID MPEG-4"
-							if (framerate != null)
-								videoFormat += ", " + framerate;
-							
-							//
-							// audio stream info available?
-							//
-							if (streams.Length > 1) {
-								items = streams[1].Split(new char[] { '#' }, opts);
-								string audioFormat;
-								List<string> fmt = new List<string>();
-								foreach (var s in items) {
-									string[] pair = s.Split(pairSep);
-									if (pair.Length == 2) {
-										string val = pair[1].Trim();
-										if (val.EndsWith("kHz")) {
-											// frequency
-											int freq = ((int)float.Parse(val.Replace("kHz", ""), ci.NumberFormat)) * 1000;
-											fmt.Add(freq.ToString() + " Hz");
-										} else if (val.EndsWith("kBit")) {
-											fmt.Add(val.Replace("kBit", "") + " kb/s");
-										}
-									}
+								} else {
+									format = videoFormat;
 								}
 							
-								audioFormat = items[1];
-								if (audioFormat.Length > 0)
-									audioFormat += ", " + string.Join(", ", fmt);
-							
-								format = string.Format("Video: {0}; Audio: {1}", videoFormat, audioFormat);
-							} else {
-								format = videoFormat;
+								convertedData.Add(new MetadataItem(MetadataType.FORMAT, format));
 							}
-						
-							convertedData.Add(new MetadataItem(MetadataType.FORMAT, format));
 						
 							if (convertedData.Count > 0)
 								metadata = new MetadataStore(convertedData);
@@ -403,21 +413,85 @@ namespace VolumeDB.Import
 						// try to parse audio only info
 						// e. g. "0:7, 192 kbps#44100Hz, Simple stereo" 
 						// (try to parse duration only)
-						} else if (Regex.IsMatch(tmp, @"^\d+:\d{1,2}, \d+ kbps")) {
-							string[] items = tmp.Split(new char[] { ',' }, opts);
+						} else if (Match(tmp, @"^(\d+:\d{1,2}), \d+ kbps", out match)) {
 							// don't use DateTime.ParseExact() since minutes may be > 59
-							string[] time = items[0].Split(new char[] { ':' }, opts);
+							string[] time = match.Split(new char[] { ':' }, opts);
 							int mins = int.Parse(time[0]);
 							int secs = int.Parse(time[1]);
 							double duration = (mins * 60.0) + secs;
 							
 							metadata = new MetadataStore(new MetadataItem[] { 
-								new MetadataItem(MetadataType.DURATION, MetadataUtils.SecsToMetadataDuration(duration))
+								new MetadataItem(MetadataType.DURATION, 
+							                 MetadataUtils.SecsToMetadataDuration(duration))
 							});
+						
 						// try to parse audio only info
 						// e. g. "VBR,44100Hz#Joint stereo" (didn't encounter ABR or CBR yet)
 						} else if (Regex.IsMatch(tmp, @"^(VBR|ABR|CBR){1},\d+Hz")) {
 							// ignored
+						
+						// "Encoder: Lavf52.77.0
+						// Video tracks:
+						// Track 1: , 640x480 @ 25.0 fps, 1:59:23.5
+						// Audio tracks:
+						// Track 2: MPEG-4 (AAC), 128 kbps, 44100 Hz, Channels: 2, 1:59:23.5"
+						} else if (Regex.IsMatch(tmp, @"Video tracks:\nTrack \d+:")) {
+							convertedData = new List<MetadataItem>();
+							
+							if (Match(tmp, @"(\d+x\d+)", out match)) {
+								// size (NxM)
+								convertedData.Add(new MetadataItem(MetadataType.SIZE, match));
+							}
+							
+							if (Match(tmp, @"(\d+:\d+:\d+)", out match)) {
+								TimeSpan duration = TimeSpan.Parse(match);
+								convertedData.Add(new MetadataItem(MetadataType.DURATION, 
+							                                   MetadataUtils.SecsToMetadataDuration(duration.TotalSeconds)));
+							} else if (Match(tmp, @"(\d+:\d+) min", out match)) {
+								string[] time = match.Split(new char[] { ':' }, opts);
+								int mins = int.Parse(time[0]);
+								int secs = int.Parse(time[1]);
+								double duration = (mins * 60.0) + secs;
+							
+								convertedData.Add(new MetadataItem(MetadataType.DURATION, 
+							                                   MetadataUtils.SecsToMetadataDuration(duration)));
+							}
+							
+							if (convertedData.Count > 0)
+								metadata = new MetadataStore(convertedData);
+						
+						// "foo text
+						// Windows Media Audio 9
+						// 32 kbps, 32 kHz, stereo (A/V) 1-pass CBR"
+						} else if (Regex.IsMatch(tmp, @"Windows Media Audio \d+( Professional)?\n\d+ kbps")) {
+							// ignored, audio only info for a wmv file
+							
+						// "640 x 340, 25,000 fps, 765,8 kbit/s (2:19:29)
+						// XviD MPEG-4 codec
+						// MPEG-1 Layer 3 (MP3), 128,0 kbit/s, 48000 Hz, stereo
+						// ---
+						// Software: VirtualDubMod 1.5.10.2 (build 2542/release)"
+						} else if (Match(tmp, @"^""(\d+ x \d+), \d+[,\.]{1}\d+ fps", out match)) {
+							convertedData = new List<MetadataItem>();
+							convertedData.Add(new MetadataItem(MetadataType.SIZE, match.Replace(" ", "")));
+							
+							if (Match(tmp, @"(\d+:\d+:\d+)", out match)) {
+								TimeSpan duration = TimeSpan.Parse(match);
+								convertedData.Add(new MetadataItem(MetadataType.DURATION, 
+							                                   MetadataUtils.SecsToMetadataDuration(duration.TotalSeconds)));
+							}
+							
+							metadata = new MetadataStore(convertedData);
+						
+						// try to parse image info, e.g.:
+						// "751 x 500, 16.7 million colors (24 bit)
+						// ---
+						// Firmware Version: Adobe Photoshop CS3 Windows
+						// 300 x 300 DPI"
+						} else if (Match(tmp, @"^""?(\d+ x \d+), ([\w\.\s]+ colors|Black and White){1}", out match)) {
+							metadata = new MetadataStore(new MetadataItem[] { 
+								new MetadataItem(MetadataType.SIZE, match.Replace(" ", ""))
+							});
 						} else {
 							return false;
 						}
@@ -445,6 +519,36 @@ namespace VolumeDB.Import
 			}
 			
 			return n;
+		}
+		
+		private static bool Match(string input, string pattern, out string output) {
+			Regex regex = new Regex(pattern);
+			Match match = regex.Match(input);
+			
+			if (match.Success) {
+				output = match.Groups[1].Value;
+				return true;
+			}
+			
+			output = null;
+			return false;
+		}
+		
+		private static string GetNonExistingPath()
+		{
+			Random rand = new Random();
+			StringBuilder sb = new StringBuilder();
+			string path;
+			
+			do {
+				for (int i = 0; i < 2; i++) {
+					sb.Append((char)rand.Next(48, 57));
+					sb.Append((char)rand.Next(65, 90));
+				}
+				path = sb.ToString();
+			} while (Directory.Exists(path));
+			
+			return path;
 		}
 	}
 }
