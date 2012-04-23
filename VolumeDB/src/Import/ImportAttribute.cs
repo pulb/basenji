@@ -1,6 +1,6 @@
-// IImport.cs
+// ImportAttribute.cs
 // 
-// Copyright (C) 2010, 2012 Patrick Ulbrich
+// Copyright (C) 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -15,22 +15,27 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
-
 using System;
-using System.Threading;
 
-namespace VolumeDB.Import
+namespace VolumeDB
 {
-	public interface IImport
+	internal class ImportAttribute : Attribute
 	{
-		WaitHandle RunAsync();
-		void CancelAsync();
-		bool IsBusy { get; }
-		bool ImportSucceeded { get; }
-		string Name { get; }
+		public ImportAttribute (string name, string extension)
+		{
+			this.Name = name;
+			this.Extension = extension;
+		}		
 		
-		event ErrorEventHandler				Error;
-		event ImportCompletedEventHandler	ImportCompleted;
-		event ProgressUpdateEventHandler	ProgressUpdate;
+		public string Name {
+			get;
+			private set;
+		}
+		
+		public string Extension {
+			get;
+			private set;
+		}
 	}
 }
+

@@ -28,6 +28,7 @@ namespace Basenji.Gui
 	{
 		private static readonly string LBL_IMPORT = S._("Import");
 		private static readonly string LBL_ABORT = S._("Abort");
+		private static readonly string LBL_FORMAT_EMPTY = S._("Please choose a database.");
 		
 		private VolumeDatabase database;
 		private IImport import;
@@ -58,43 +59,10 @@ namespace Basenji.Gui
 				progress.Fraction = .0;				
 				progress.Text = string.Empty;
 				
-				string sourceDbPath = fcDatabase.Filename;
-				string dbDataPath = PathUtil.GetDbDataPath(database);
-				int buffSize = App.Settings.ScannerBufferSize;
-				
-				switch (cmbFormat.Active) {
-					case 0:
-						import = new GnomeCatalogImport(sourceDbPath,
-					                                database, 
-					                                dbDataPath,
-					                                buffSize);
-						break;
-					case 1:
-						import = new CdCatImport(sourceDbPath,
-					                                database, 
-					                                dbDataPath,
-					                                buffSize);
-						break;
-					case 2:
-						import = new CdCollectImport(sourceDbPath,
-					                             database, 
-					                             dbDataPath,
-					                             buffSize);
-						break;
-					case 3:
-						import = new BasenjiImport(sourceDbPath,
-					                          database, 
-					                          dbDataPath,
-					                          buffSize);
-						break;
-				}
-				
-				import.ProgressUpdate	+= OnImportProgressUpdate;
-				import.ImportCompleted	+= OnImportCompleted;
-				
 				import.RunAsync();
 				btnImport.Label = LBL_ABORT;
 				btnClose.Sensitive = false;
+				fcDatabase.Sensitive = false;
 			}
 		}
 		
@@ -125,6 +93,7 @@ namespace Basenji.Gui
 			} finally {
 				Application.Invoke(delegate {
 					btnClose.Sensitive = true;
+					fcDatabase.Sensitive = true;
 					btnImport.Sensitive = true;
 					btnImport.Label = LBL_IMPORT;
 				});
@@ -144,7 +113,35 @@ namespace Basenji.Gui
 		}
 		
 		private void OnFcDatabaseSelectionChanged (object sender, EventArgs e) {
-			btnImport.Sensitive = (fcDatabase.Filename != null);
+			
+			if (string.IsNullOrEmpty(fcDatabase.Filename)) {
+				import = null;
+				lblFormat.Text = LBL_FORMAT_EMPTY;
+				btnImport.Sensitive = false;
+				return;
+			}
+			
+			string sourceDbPath = fcDatabase.Filename;
+			string dbDataPath = PathUtil.GetDbDataPath(database);
+			int buffSize = App.Settings.ScannerBufferSize;
+			string ext = System.IO.Path.GetExtension(sourceDbPath);
+			
+			if (ext.Length == 0)
+				import = null;
+			else
+				import = AbstractImport.GetImportByExtension(ext.Substring(1), sourceDbPath, 
+				                                              database, dbDataPath, buffSize);
+			
+			if (import == null) {
+				lblFormat.Text = S._("Unknown format.");
+				btnImport.Sensitive = false;
+			} else {
+				import.ProgressUpdate	+= OnImportProgressUpdate;
+				import.ImportCompleted	+= OnImportCompleted;
+				
+				lblFormat.Text = import.Name;
+				btnImport.Sensitive = true;
+			}
 		}
 	}
 	
@@ -152,7 +149,7 @@ namespace Basenji.Gui
 	public partial class Import : Base.WindowBase
 	{		
 		private FileChooserButton	fcDatabase;
-		private ComboBox			cmbFormat;
+		private Label				lblFormat;
 		private ProgressBar			progress;
 		private Button				btnImport;
 		private Button				btnClose;
@@ -174,21 +171,25 @@ namespace Basenji.Gui
 			Table tblDatabase = WindowBase.CreateTable(2, 2);
 			tblDatabase.BorderWidth = 12;
 			
-			fcDatabase = new FileChooserButton(S._("Please select a database to import"),
+			fcDatabase = new FileChooserButton(S._("Please choose a database to import"),
 			                               FileChooserAction.Open);
 			
 			// set min width of the filechooser widget
 			// (translated labels may make it smaller otherwise)
 			fcDatabase.WidthRequest = 220;
 			
-			cmbFormat = ComboBox.NewText();
+			FileFilter allFilter = new FileFilter();
+			allFilter.Name = S._("All supported formats");
+			fcDatabase.AddFilter(allFilter);
+			foreach (var ext in AbstractImport.GetSupportedExtensions()) {
+				FileFilter ff = new FileFilter();
+				ff.Name = string.Format(S._ (".{0} files"), ext);
+				ff.AddPattern("*." + ext);
+				fcDatabase.AddFilter(ff);
+				allFilter.AddPattern("*." + ext);
+			}
 			
-			cmbFormat.AppendText("GnomeCatalog");
-			cmbFormat.AppendText("CdCat");
-			/*cmbFormat.AppendText("CDCollect");
-			cmbFormat.AppendText("Basenji");*/
-			
-			cmbFormat.Active = 0;
+			lblFormat = WindowBase.CreateLabel(LBL_FORMAT_EMPTY);
 			
 			AttachOptions xAttachOpts = AttachOptions.Expand | AttachOptions.Fill;
 			AttachOptions yAttachOpts = AttachOptions.Fill;
@@ -196,7 +197,7 @@ namespace Basenji.Gui
 			WindowBase.TblAttach(tblDatabase, WindowBase.CreateLabel(S._("Database:")), 0, 0);
 			WindowBase.TblAttach(tblDatabase, WindowBase.CreateLabel(S._("Format:")), 0, 1);
 			WindowBase.TblAttach(tblDatabase, fcDatabase, 1, 0, xAttachOpts, yAttachOpts);
-			WindowBase.TblAttach(tblDatabase, cmbFormat, 1, 1, xAttachOpts, yAttachOpts);
+			WindowBase.TblAttach(tblDatabase, lblFormat, 1, 1, xAttachOpts, yAttachOpts);
 			
 			vbOuter.PackStart(tblDatabase, true, true, 0);
 

@@ -1,6 +1,6 @@
 // AbstractImport.cs
 // 
-// Copyright (C) 2010 Patrick Ulbrich
+// Copyright (C) 2010, 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -66,6 +66,59 @@ namespace VolumeDB.Import
 			this.cancellationRequested	= false;
 		}
 		
+		public static string[] GetSupportedExtensions() {
+			var lst = new List<string>();
+			
+			foreach (var t in GetImportTypes()) {
+				var attrs = t.GetCustomAttributes(false);
+				foreach(var a in attrs) {
+					var ia = a as ImportAttribute;
+					if (ia != null)
+						lst.Add(ia.Extension);
+				}
+			}
+			return lst.ToArray();
+		}
+		
+		public static IImport GetImportByExtension(string extension, string sourceDbPath, 
+		                                           VolumeDatabase targetDb, string dbDataPath,
+		                                           int bufferSize) {
+			
+			if (extension == null)
+				throw new ArgumentNullException("extension");
+			
+			foreach (var t in GetImportTypes()) {
+				var attrs = t.GetCustomAttributes(false);
+				foreach(var a in attrs) {
+					var ia = a as ImportAttribute;
+					if ((ia != null) && (ia.Extension.ToUpper() == extension.ToUpper())) {
+						return (IImport)Activator.CreateInstance(t, new object[] { 
+							sourceDbPath, targetDb, dbDataPath, bufferSize
+						});
+					}
+				}
+			}
+			
+			return null;
+		}
+		
+		private static Type[] importTypes = null;
+		private static Type[] GetImportTypes() {
+			if (importTypes == null) {
+				var lst = new List<Type>();
+				Type[] types = typeof(AbstractImport).Assembly.GetTypes();
+				
+				foreach (var t in types) {
+					if (t.IsSubclassOf(typeof(AbstractImport))) {
+						lst.Add(t);
+					}
+				}
+				
+				importTypes = lst.ToArray();
+			}
+			return importTypes;
+		}
+		
 		public WaitHandle RunAsync() {
 			if (isRunning)
 				throw new InvalidOperationException("Import is already running");
@@ -105,6 +158,18 @@ namespace VolumeDB.Import
 
 		public bool ImportSucceeded {
 			get { return importSucceeded; }
+		}
+		
+		public string Name {
+			get {
+				object[] attrs = this.GetType().GetCustomAttributes(false);
+				foreach (var a in attrs) {
+					var ia = a as ImportAttribute;
+					if (ia != null)
+						return ia.Name;
+				}
+				return ToString();
+			}
 		}
 		
 		#region Events

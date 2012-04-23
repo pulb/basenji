@@ -128,6 +128,7 @@
     <File subtype="Code" buildaction="Compile" name="src/Metadata/TagLibMetadataProvider.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Import/CdCatImport.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Import/ImportException.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/Import/ImportAttribute.cs" />
   </Contents>
   <References>
     <ProjectReference type="Project" localcopy="True" refto="Platform.Common.DB" />

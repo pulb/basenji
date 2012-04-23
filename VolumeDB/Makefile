@@ -223,7 +223,8 @@ FILES = \
 	src/Metadata/ArchiveMetadataProvider.cs \
 	src/Metadata/TagLibMetadataProvider.cs \
 	src/Import/CdCatImport.cs \
-	src/Import/ImportException.cs 
+	src/Import/ImportException.cs \
+	src/Import/ImportAttribute.cs 
 
 DATA_FILES = 
 

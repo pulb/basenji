@@ -32,6 +32,7 @@ using VolumeDB.Metadata;
 
 namespace VolumeDB.Import
 {
+	[Import("CdCat", "hcf")]
 	public sealed class CdCatImport : AbstractImport
 	{
 		

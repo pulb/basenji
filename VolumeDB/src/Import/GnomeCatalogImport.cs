@@ -1,6 +1,6 @@
 // GnomeCatalogImport.cs
 // 
-// Copyright (C) 2010, 2011 Patrick Ulbrich
+// Copyright (C) 2010 - 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -26,6 +26,7 @@ using VolumeDB.Metadata;
 
 namespace VolumeDB.Import
 {
+	[Import("GnomeCatalog", "gcatalog")]
 	public sealed class GnomeCatalogImport : AbstractImport
 	{
 		private const int TOTAL_FILES = 0;
