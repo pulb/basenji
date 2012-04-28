@@ -1,6 +1,6 @@
 // MainWindow.cs
 // 
-// Copyright (C) 2008 - 2010 Patrick Ulbrich
+// Copyright (C) 2008 - 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -838,7 +838,7 @@ namespace Basenji.Gui
 			ag.Add(actQuit, "<control>Q");			  
 			
 			RecentFilter filter = new RecentFilter();
-			filter.AddApplication(App.Name);
+			filter.AddPattern("*.vdb");
 			
 			actRecentlyUsed = new RecentAction("recent_files", S._("Recent Databases"), null, null, recentManager);
 			actRecentlyUsed.ShowNumbers = true;
