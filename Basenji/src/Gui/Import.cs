@@ -28,7 +28,7 @@ namespace Basenji.Gui
 	{
 		private static readonly string LBL_IMPORT = S._("Import");
 		private static readonly string LBL_ABORT = S._("Abort");
-		private static readonly string LBL_FORMAT_EMPTY = S._("Please choose a database.");
+		private static readonly string LBL_FORMAT_EMPTY = S._("Please select a database.");
 		
 		private VolumeDatabase database;
 		private IImport import;
@@ -171,7 +171,7 @@ namespace Basenji.Gui
 			Table tblDatabase = WindowBase.CreateTable(2, 2);
 			tblDatabase.BorderWidth = 12;
 			
-			fcDatabase = new FileChooserButton(S._("Please choose a database to import"),
+			fcDatabase = new FileChooserButton(S._("Please select a database to import"),
 			                               FileChooserAction.Open);
 			
 			// set min width of the filechooser widget
