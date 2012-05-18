@@ -1,6 +1,6 @@
 /// SearchEntry.cs
 // 
-// Copyright (C) 2009, 2010 Patrick Ulbrich
+// Copyright (C) 2009 - 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -64,6 +64,34 @@ namespace Basenji.Gui.Widgets
 			this.Shown			+= OnShown;
 			this.FocusInEvent	+= OnFocusInEvent;
 			this.FocusOutEvent	+= OnFocusOutEvent;
+		}
+		
+		// TODO: remove the method if gkt supports entry icons
+		// on all platforms
+		public Gtk.Widget GetFallbackWrapper()
+		{
+			if (IconsSupported)
+				return this;
+			
+			// if the entry does not support embedded icons (old gtk version, e.g. on MS Windows), 
+			// return a wrapper with the icon left to the entry
+			Gtk.HBox hbox = new Gtk.HBox(false, 3);
+			
+			Gdk.Pixbuf pb = Basenji.Icons.Icon.Stock_Find.Render(this, Gtk.IconSize.Menu);
+			Gtk.Image img = new Gtk.Image(pb);
+			
+			Gtk.Button btn = new Gtk.Button();
+			btn.Relief = Gtk.ReliefStyle.None;
+			btn.Clicked += delegate { ShowPopup(); };
+			btn.Image = img;
+			
+			// also disable the button if the Search entry is disabled
+			this.StateChanged += delegate { btn.Sensitive = this.Sensitive; };
+			
+			hbox.PackStart(btn, false, false, 0);
+			hbox.PackStart(this, true, true, 0);
+			
+			return hbox;
 		}
 		
 		public string PlaceholderText {

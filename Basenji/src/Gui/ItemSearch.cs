@@ -1,6 +1,6 @@
 // ItemSearch.cs
 // 
-// Copyright (C) 2008 - 2010 Patrick Ulbrich
+// Copyright (C) 2008 - 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -36,6 +36,7 @@ namespace Basenji.Gui
 			this.database = db;
 			BuildGui();
 			btnSearch.Sensitive = false;
+			txtSearchString.GrabFocus();
 			
 			// the widget should be visible the first time
 			// when the user clicks on an item
@@ -103,6 +104,9 @@ namespace Basenji.Gui
 			};
 			
 			try {
+				infoBar.Visible = false;
+				navi.Visible = true;
+				
 				SetStatus(S._("Searching..."));
 				database.BeginSearchItem(criteria, callback, DateTime.Now);
 			} catch(Exception) {
@@ -215,7 +219,8 @@ namespace Basenji.Gui
 		private SearchEntry					txtSearchString;
 		private Button						btnSearch;
 		private CategoryView				tvCategory;
-		private PageNavigation<VolumeItem>	navi; 
+		private PageNavigation<VolumeItem>	navi;
+		private InfoBar						infoBar;
 		private SearchResultView			tvSearchResult;		
 		private ItemInfo					itemInfo;
 		private Statusbar					statusbar;
@@ -260,7 +265,7 @@ namespace Basenji.Gui
 				new Widgets.SearchEntryPreset("filesize", "filesize", "> 1mb")
 			});
 			
-			hbSearch.PackStart(txtSearchString, true, true, 0);
+			hbSearch.PackStart(txtSearchString.GetFallbackWrapper(), true, true, 0);
 			
 			btnSearch = CreateButton(Stock.Find, true, OnBtnSearchClicked);
 			hbSearch.PackStart(btnSearch, false, false, 0); 
@@ -279,6 +284,13 @@ namespace Basenji.Gui
 			// search results
 			VBox vbRight = new VBox();
 			vbRight.Spacing = 6;
+			
+			infoBar = new InfoBar();
+			infoBar.Headline = S._("Quick tip:");
+			infoBar.Text = string.Format(S._("Click on the magnifier icon to build advanced search queries.\nExample: {0}"), 
+			                             @"<i>""holidays and type = video and filesize > 600mb""</i>");
+			
+			vbRight.PackStart(infoBar, false, false, 0);
 			
 			navi = new PageNavigation<VolumeItem>();
 			navi.PageSize = App.Settings.SearchResultPageSize;
@@ -319,7 +331,10 @@ namespace Basenji.Gui
 			this.DeleteEvent					+= OnDeleteEvent;
 				
 			ShowAll();
-			itemInfo.Minimized = itemInfoMinimized; // must be called _after_ ShowAll()
+			
+			// must be called _after_ ShowAll()
+			itemInfo.Minimized = itemInfoMinimized;
+			navi.Visible = false;
 		}
 		
 		private Menu CreateContextMenu() {

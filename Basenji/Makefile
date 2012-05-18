@@ -212,7 +212,8 @@ FILES = \
 	src/Gui/Widgets/Editors/DirectoryItemEditor.cs \
 	src/Gui/Widgets/Sorting.cs \
 	src/Options.cs \
-	src/Global.cs 
+	src/Global.cs \
+	src/Gui/Widgets/InfoBar.cs 
 
 DATA_FILES = 
 

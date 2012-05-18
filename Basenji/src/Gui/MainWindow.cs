@@ -1014,7 +1014,7 @@ namespace Basenji.Gui
 				new Widgets.SearchEntryPreset("size", "size", "> 700mb")
 			});
 			
-			vbLeft.PackStart(txtSearchString, false, false, 0);
+			vbLeft.PackStart(txtSearchString.GetFallbackWrapper(), false, false, 0);
 			
 			hpaned.Pack1(vbLeft, false, false);
 			
