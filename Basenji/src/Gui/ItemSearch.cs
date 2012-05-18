@@ -28,11 +28,13 @@ namespace Basenji.Gui
 {
 	public partial class ItemSearch : WindowBase
 	{	
+		private MainWindow mainWindow;
 		private VolumeDatabase database;
 		private volatile bool windowDeleted;
 		
-		public ItemSearch(VolumeDatabase db) {
+		public ItemSearch(MainWindow mainWindow, VolumeDatabase db) {
 			windowDeleted = false;			  
+			this.mainWindow = mainWindow;
 			this.database = db;
 			BuildGui();
 			btnSearch.Sensitive = false;
@@ -128,6 +130,22 @@ namespace Basenji.Gui
 				return;
 			
 			new ItemProperties(item);
+		}
+		
+		private void ShowItemInMainWindow() {
+			TreeIter iter = TreeIter.Zero;
+			
+			if (!tvSearchResult.GetSelectedIter(out iter))
+				return;
+			
+			VolumeItem item = tvSearchResult.GetItem(iter);
+			
+			if (item == null)
+				return;
+			
+			Destroy();
+			
+			mainWindow.FindItem(item);
 		}
 		
 		private void OnBtnSearchClicked(object o, System.EventArgs args) {
@@ -339,11 +357,19 @@ namespace Basenji.Gui
 		
 		private Menu CreateContextMenu() {
 			ActionGroup ag = new ActionGroup("default");
+			
 			ag.Add(WindowBase.CreateAction("edititem",
 			                               S._("Edit Item"),
 			                               null,
 			                               Stock.Edit,
 			                               (o, args) => EditItem()),
+			                               null);
+			
+			ag.Add(WindowBase.CreateAction("show_in_mainwindow",
+			                               S._("Show in Main Window"),
+			                               null,
+			                               Stock.Directory,
+			                               (o, args) => ShowItemInMainWindow()),
 			                               null);
 			
 			UIManager manager = new UIManager();
@@ -353,6 +379,7 @@ namespace Basenji.Gui
 			string ui = @"
 				<popup name=""item_contextmenu"">
 					<menuitem action=""edititem""/>
+					<menuitem action=""show_in_mainwindow""/>
 				</popup>";
 			
 			manager.AddUiFromString(ui);

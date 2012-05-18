@@ -17,6 +17,7 @@
 //
 
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using Gtk;
 using System.IO;
@@ -101,7 +102,76 @@ namespace Basenji.Gui
 				}
 			}			 
 		}
-
+		
+		// finds the specified item:
+		// - select owner volume
+		// - expand the treeview path to the item
+		//   and select the item
+		public void FindItem(VolumeItem item) {
+			if (item == null)
+				throw new ArgumentNullException("item");
+			
+			// get path of volume ids to item
+			Stack<long> path = new Stack<long>();
+			VolumeItem tmp = item;
+			
+			while (tmp.ItemID != 1) { // skip root item
+				path.Push(tmp.ItemID);
+				tmp = database.GetVolumeItem(tmp.VolumeID, tmp.ParentID);
+			}
+			
+			// find and select volume of specified item
+			TreeModel model = tvVolumes.Model;
+			TreeIter iter;
+			long volumeID = item.VolumeID;
+			bool hasMoreIters = true;
+			
+			model.GetIterFirst(out iter);
+			
+			while (hasMoreIters) {
+				Volume vol = tvVolumes.GetVolume(iter);
+				
+				if (vol.VolumeID == volumeID) {
+					// select owner volume
+					tvVolumes.Selection.SelectIter(iter);
+					tvVolumes.ScrollToCell(model.GetPath(iter), null, false, .0f, .0f);
+					
+					if (path.Count > 0) {
+						// find and select specified item
+						tvItems.Model.GetIterFirst(out iter);
+						FindItemRecursive(iter, path);
+					} // else : specified item is the root item so select nothing
+					break;
+				}
+				
+				hasMoreIters = model.IterNext(ref iter);
+			}
+		}
+		
+		private void FindItemRecursive(TreeIter iter, Stack<long> path) {
+			TreeModel model = tvItems.Model;
+			bool hasMoreIters = true;
+			long itemID = path.Pop();
+			
+			while (hasMoreIters) {
+				VolumeItem item = tvItems.GetItem(iter);
+				
+				if (item.ItemID == itemID) {
+					if (path.Count > 0) {
+						tvItems.ExpandRow(model.GetPath(iter), false);
+						model.IterChildren(out iter, iter);
+						FindItemRecursive(iter, path);
+					} else {
+						tvItems.Selection.SelectIter(iter);
+						tvItems.ScrollToCell(model.GetPath(iter), null, false, .0f, .0f);
+					}
+					break;
+				}
+				
+				hasMoreIters = model.IterNext(ref iter);
+			}
+		}
+		
 		private void OpenOrCreateDefaultDB(bool confirmCreation) {
 			// do not overwrite existing db				   
 			if (File.Exists(App.DefaultDB)) {
@@ -580,7 +650,7 @@ namespace Basenji.Gui
 		}
 		
 		private void OnActSearchActivated(object sender, System.EventArgs args) {
-			ItemSearch s = new ItemSearch(database);
+			ItemSearch s = new ItemSearch(this, database);
 			s.Show();
 		}
 		
