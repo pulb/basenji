@@ -274,12 +274,14 @@ namespace Basenji.Gui
 		
 		private void EnableGui(bool enable)	{
 			actAddVolume.Sensitive		= enable;
+			actSearch.Sensitive			= enable;
+			
 			actRemoveVolume.Sensitive	= enable;
 			actEditVolume.Sensitive		= enable;
+			actEditItem.Sensitive		= enable;
 			
-			actDBProperties.Sensitive	= enable;
 			actImport.Sensitive			= enable;
-			actSearch.Sensitive			= enable;
+			actDBProperties.Sensitive	= enable;
 			
 			txtSearchString.Sensitive	= enable;
 		}
@@ -407,12 +409,8 @@ namespace Basenji.Gui
 		private void RemoveVolume() {
 			TreeIter iter;
 			
-			if (!tvVolumes.GetSelectedIter(out iter)) {
-				MsgDialog.ShowError(this,
-				                    S._("No volume selected"),
-				                    S._("Please select a volume record to remove."));
+			if (!tvVolumes.GetSelectedIter(out iter))
 				return;
-			}
 
 			ResponseType result = MsgDialog.Show(this, 
 			                                     MessageType.Question, 
@@ -437,12 +435,8 @@ namespace Basenji.Gui
 		private void EditVolume() {
 			TreeIter iter;
 			
-			if (!tvVolumes.GetSelectedIter(out iter)) {
-				MsgDialog.ShowError(this,
-				                    S._("No volume selected"),
-				                    S._("Please select a volume to edit."));
+			if (!tvVolumes.GetSelectedIter(out iter))
 				return;
-			}
 			
 			// load volume properties
 			Volume volume = tvVolumes.GetVolume(iter);
@@ -455,12 +449,8 @@ namespace Basenji.Gui
 		private void EditItem() {
 			TreeIter iter;
 			
-			if (!tvItems.GetSelectedIter(out iter)) {
-				MsgDialog.ShowError(this,
-				                    S._("No item selected"),
-				                    S._("Please select an item to edit."));
+			if (!tvItems.GetSelectedIter(out iter))
 				return;
-			}
 			
 			// load item properties
 			VolumeItem item = tvItems.GetItem(iter);
@@ -606,6 +596,19 @@ namespace Basenji.Gui
 			App.Settings.Save();
 		}
 		
+		private void OnActAddVolumeActivated(object sender, System.EventArgs args) {
+			AddVolume();
+		}
+		
+		private void OnActSearchActivated(object sender, System.EventArgs args) {
+			ItemSearch s = new ItemSearch(this, database);
+			s.Show();
+		}
+		
+		private void OnActShowAppMenuActivated(object sender, System.EventArgs args) {
+			appMenu.Popup(null, null, null, 1, Gtk.Global.CurrentEventTime);
+		}
+		
 		private void OnActNewDBActivated(object sender, System.EventArgs args) {
 			SelectNewDB();
 		}
@@ -649,25 +652,35 @@ namespace Basenji.Gui
 			import.Show();
 		}
 		
-		private void OnActSearchActivated(object sender, System.EventArgs args) {
-			ItemSearch s = new ItemSearch(this, database);
-			s.Show();
+		private void OnActPreferencesActivated(object sender, System.EventArgs args) {
+			Preferences p = new Preferences();
+			p.Show();
 		}
 		
 		private void OnActDBPropertiesActivated(object sender, System.EventArgs args) {
 			ShowDBProperties();
 		}
 		
-		private void OnActAddVolumeActivated(object sender, System.EventArgs args) {
-			AddVolume();
+		private void OnActInfoActivated(object sender, System.EventArgs args) {
+			About a = new About();
+			a.Run();
+			a.Destroy();
+		}
+		
+		private void OnActQuitActivated(object sender, System.EventArgs args) {
+			Quit();
+		}
+		
+		private void OnActEditVolumeActivated(object sender, System.EventArgs args) {
+			EditVolume();
 		}
 		
 		private void OnActRemoveVolumeActivated(object sender, System.EventArgs args) {
 			RemoveVolume();
 		}
 		
-		private void OnActEditVolumeActivated(object sender, System.EventArgs args) {
-			EditVolume();
+		private void OnActEditItemActivated(object sender, System.EventArgs args) {
+			EditItem();
 		}
 		
 		private void OnSortActionActivated(object sender, System.EventArgs args) {
@@ -693,19 +706,6 @@ namespace Basenji.Gui
 			
 			tvVolumes.SetSortProperty(sp, desc);
 			SaveVolumeSortProperty(sp, desc); 
-		}
-		
-		private void OnActEditItemActivated(object sender, System.EventArgs args) {
-			EditItem();
-		}
-		
-		private void OnActPreferencesActivated(object sender, System.EventArgs args) {
-			Preferences p = new Preferences();
-			p.Show();
-		}
-		
-		private void OnActQuitActivated(object sender, System.EventArgs args) {
-			Quit();
 		}
 		
 		[GLib.ConnectBefore()]
@@ -795,41 +795,31 @@ namespace Basenji.Gui
 			windowDeleted = true;
 			Quit();
 			args.RetVal = true;
-		}		
-		
-		private void OnActInfoActivated(object sender, System.EventArgs args) {
-			About a = new About();
-			a.Run();
-			a.Destroy();
 		}
 	}
 	
 	// gui initialization
 	public partial class MainWindow : Base.WindowBase
 	{
-		// menubar
-		MenuBar menubar;
-			
-		private Gtk.Action actFile;
-		private Gtk.Action actEdit;
-		private Gtk.Action actHelp;
+		// toolbar actions
+		private Gtk.Action actAddVolume;
+		private Gtk.Action actSearch;
+		private Gtk.Action actShowAppMenu;
 		
+		// app menu actions
 		private Gtk.Action actNewDB;
 		private Gtk.Action actOpenDB;
 		private Gtk.Action actOpenDefaultDB;
-		private Gtk.Action actDBProperties;
-		private Gtk.Action actImport;
-		private Gtk.Action actSearch;
-		private Gtk.Action actQuit;
 		private Gtk.RecentAction actRecentlyUsed;
-		
-		private Gtk.Action actAddVolume;
-		private Gtk.Action actRemoveVolume;
-		private Gtk.Action actEditVolume;
+		private Gtk.Action actImport;
 		private Gtk.Action actPreferences;
-		
+		private Gtk.Action actDBProperties;
 		private Gtk.Action actInfo;
+		private Gtk.Action actQuit;
 		
+		// context menu actions
+		private Gtk.Action actRemoveVolume;
+		private Gtk.Action actEditVolume;		
 		private Gtk.Action actEditItem;
 		
 		private Gtk.Action actVolumesSortBy;
@@ -838,6 +828,9 @@ namespace Basenji.Gui
 		
 		// toolbar
 		private Toolbar toolbar;
+		
+		// app menu
+		private Menu appMenu;
 		
 		// context menus
 		private Menu volumeContextMenu;
@@ -884,11 +877,23 @@ namespace Basenji.Gui
 			
 			// actiongroup			  
 			ActionGroup ag = new ActionGroup("default");			
+
+			//
+			// toolbar actions
+			//
+			actAddVolume = CreateAction("addvolume", S._("Add Volume"), null, Stock.Add, OnActAddVolumeActivated);
+			actAddVolume.IsImportant = true;
+			ag.Add(actAddVolume);
 			
-			// file menu
-			actFile = CreateAction("file", S._("_File"), null, null, null);
-			ag.Add(actFile, null);
+			actSearch = CreateAction("searchitems", S._("Search"), null, Stock.Find, OnActSearchActivated);
+			ag.Add(actSearch);
 			
+			actShowAppMenu = CreateAction("show_appmenu", S._("App Menu"), null, Stock.Properties, OnActShowAppMenuActivated);
+			ag.Add(actShowAppMenu);
+			
+			//
+			// app menu actions
+			//
 			actNewDB = CreateAction("newdb", AppendDots(S._("_New Database")), null, Stock.New, OnActNewDBActivated);
 			ag.Add(actNewDB, "<control>N");
 			
@@ -898,15 +903,6 @@ namespace Basenji.Gui
 			actOpenDefaultDB = CreateAction("open_default_db", S._("Open Default Database"), null, null, OnActOpenDefaultDBActivated);
 			ag.Add(actOpenDefaultDB);
 			
-			actDBProperties = CreateAction("dbproperties", S._("_Database Properties"), null, Stock.Properties, OnActDBPropertiesActivated);
-			ag.Add(actDBProperties, "<control>D");
-			
-			actImport = CreateAction("import", AppendDots(S._("_Import")), null, null, OnActImportActivated);
-			ag.Add(actImport, "<control>I");
-			
-			actQuit = CreateAction("quit", S._("_Quit"), null, Stock.Quit, OnActQuitActivated);
-			ag.Add(actQuit, "<control>Q");			  
-			
 			RecentFilter filter = new RecentFilter();
 			filter.AddPattern("*.vdb");
 			
@@ -915,45 +911,46 @@ namespace Basenji.Gui
 			actRecentlyUsed.SortType = RecentSortType.Mru;
 			actRecentlyUsed.AddFilter(filter);
 			actRecentlyUsed.ItemActivated += OnActRecentlyUsedActivated;
-			ag.Add(actRecentlyUsed, null);
+			ag.Add(actRecentlyUsed);
 			
-			// edit menu
-			actEdit = CreateAction("edit", S._("_Edit"), null, null, null);
-			ag.Add(actEdit, null);
+			actImport = CreateAction("import", AppendDots(S._("_Import")), null, null, OnActImportActivated);
+			ag.Add(actImport, "<control>I");
 			
 			actPreferences = CreateAction("preferences", S._("_Preferences"), null, Stock.Preferences, OnActPreferencesActivated);
-			ag.Add(actPreferences, "<control>P");			 
+			ag.Add(actPreferences, "<control>P");			
 			
-			// help menu
-			actHelp = CreateAction("help", S._("_Help"), null, null, null);
-			ag.Add(actHelp, null);
+			actDBProperties = CreateAction("dbproperties", S._("_Database Properties"), null, Stock.Properties, OnActDBPropertiesActivated);
+			ag.Add(actDBProperties, "<control>D");
 			
-			actInfo = CreateAction("info", S._("_Info"), null, Stock.About, OnActInfoActivated);
+			actInfo = CreateAction("info", S._("Info"), null, Stock.About, OnActInfoActivated);
 			ag.Add(actInfo);	
 			
-			// shared actions (used in toolbar buttons / menu items / context menus)
-			actAddVolume = CreateAction("addvolume", S._("_Add Volume"), null, Stock.Add, OnActAddVolumeActivated);
-			actAddVolume.IsImportant = true;
-			ag.Add(actAddVolume, "<control>A");
+			actQuit = CreateAction("quit", S._("_Quit"), null, Stock.Quit, OnActQuitActivated);
+			ag.Add(actQuit, "<control>Q");			  
+			
+			//
+			// volume context menu actions
+			//
+			actEditVolume = CreateAction("editvolume", S._("_Edit Volume"), null, Stock.Edit, OnActEditVolumeActivated);
+			ag.Add(actEditVolume, "<control>E");
 			
 			actRemoveVolume = CreateAction("removevolume", S._("_Remove Volume"), null, Stock.Remove, OnActRemoveVolumeActivated);
 			ag.Add(actRemoveVolume, "<control>R");
 			
-			actEditVolume = CreateAction("editvolume", S._("_Edit Volume"), null, Stock.Edit, OnActEditVolumeActivated);
-			ag.Add(actEditVolume, "<control>E");
-			
-			actSearch = CreateAction("searchitems", S._("_Search"), null, Stock.Find, OnActSearchActivated);
-			ag.Add(actSearch, "<control>S");
-			
-			// context menus
+			//
+			// item context menus
+			//
 			actEditItem = CreateAction("edititem", S._("Edit Item"), null, Stock.Edit, OnActEditItemActivated);
-			ag.Add(actEditItem, null);
+			ag.Add(actEditItem);
 			
+			//
+			// sort context menu actions
+			//
 			actVolumesSortBy = CreateAction("volumes_sortby", S._("Sort by"), null, null, null);
-			ag.Add(actVolumesSortBy, null);
+			ag.Add(actVolumesSortBy);
 			
 			actVolumesSortDescending = CreateToggleAction("volumes_sortdescending", S._("Descending"), null, null, OnSortActionActivated);
-			ag.Add(actVolumesSortDescending, null);
+			ag.Add(actVolumesSortDescending);
 			
 			RadioAction tmp = CreateRadioAction("volumes_sortby_archiveno", S._("Archive No."), null, null, (int)Widgets.VolumeSortProperty.ArchiveNo, null, OnSortActionActivated);
 			volumeSortActions = new Gtk.RadioAction[] {
@@ -977,7 +974,9 @@ namespace Basenji.Gui
 			}
 			actVolumesSortDescending.Active = desc;
 			
+			//
 			// ui manager
+			//
 			UIManager manager = new UIManager();
 			manager.InsertActionGroup(ag, 0);
 			this.AddAccelGroup(manager.AccelGroup);
@@ -995,35 +994,26 @@ namespace Basenji.Gui
 			
 			string ui = string.Format(@"
 			<ui>
-				<menubar name=""menubar"">
-					<menu action=""file"">
-						<menuitem action=""newdb""/>
-						<menuitem action=""opendb""/>
-						<menuitem action=""open_default_db""/>
-						<menuitem action=""recent_files""/>
-						<separator/>
-						<menuitem action=""dbproperties""/>
-						<menuitem action=""import""/>
-						<menuitem action=""searchitems""/>
-						<separator/>
-						<menuitem action=""quit""/>
-					</menu>
-					<menu action=""edit"">
-						<menuitem action=""addvolume""/>
-						<menuitem action=""removevolume""/>
-						<menuitem action=""editvolume""/>
-						<separator/>
-						<menuitem action=""preferences""/>
-					</menu>
-					<menu action=""help"">
-						<menuitem action=""info""/>
-					</menu>
-				</menubar>
 				<toolbar name=""toolbar"">
 					<toolitem action=""addvolume""/>
-					<separator/>
 					<toolitem action=""searchitems""/>
+					<separator expand=""true""/>
+					<toolitem action=""show_appmenu""/>
 				</toolbar>
+				<popup name=""appmenu"">
+					<menuitem action=""newdb""/>
+					<menuitem action=""opendb""/>
+					<menuitem action=""open_default_db""/>
+					<menuitem action=""recent_files""/>
+					<menuitem action=""import""/>
+					<separator/>
+					<menuitem action=""preferences""/>
+					<menuitem action=""dbproperties""/>
+					
+					<separator/>
+					<menuitem action=""info""/>
+					<menuitem action=""quit""/>
+				</popup>
 				<popup name=""volume_contextmenu"">
 					<menuitem action=""editvolume""/>
 					<menuitem action=""removevolume""/>
@@ -1036,12 +1026,13 @@ namespace Basenji.Gui
 				<popup name=""item_contextmenu"">
 					<menuitem action=""edititem""/>
 				</popup>
+				
 			</ui>
 			", sortMenu);
 			
 			manager.AddUiFromString(ui);
 			
-			menubar					= (MenuBar)manager.GetWidget("/menubar");
+			appMenu					= (Menu)manager.GetWidget("/appmenu");
 			toolbar					= (Toolbar)manager.GetWidget("/toolbar");
 			volumeContextMenu		= (Menu)manager.GetWidget("/volume_contextmenu");
 			volumeSortContextMenu	= (Menu)manager.GetWidget("/volume_sort_contextmenu");
@@ -1053,7 +1044,6 @@ namespace Basenji.Gui
 			toolbar.ToolbarStyle	= Gtk.ToolbarStyle.BothHoriz;
 			toolbar.ShowArrow		= false;
 			
-			vbOuter.PackStart(menubar, false, false, 0);
 			vbOuter.PackStart(toolbar, false, false, 0);
 			
 			// hpaned			 
