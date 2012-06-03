@@ -730,8 +730,15 @@ namespace Basenji.Gui
 		
 		[GLib.ConnectBefore()]
 		private void OnTvVolumesKeyPressEvent(object o, Gtk.KeyPressEventArgs args) {
-			if (args.Event.Key == Gdk.Key.Return)
-				EditVolume();
+			switch (args.Event.Key)
+			{
+				case Gdk.Key.Return:
+					EditVolume();
+					break;
+				case Gdk.Key.Delete:
+					RemoveVolume();
+					break;
+			}
 		}
 		
 		private void OnTvVolumesSelectionChanged(object o, EventArgs args) {
