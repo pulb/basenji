@@ -1,6 +1,6 @@
 // Preferences.cs
 // 
-// Copyright (C) 2008 - 2011 Patrick Ulbrich
+// Copyright (C) 2008 - 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -75,9 +75,18 @@ namespace Basenji.Gui
 			
 		}
 
-		private void OnBtnCloseClicked(object sender, System.EventArgs e) {
+		private bool SaveAndClose() {
+			if (!loadingComplete)
+				return false;
+		
 			Save();
-			this.Destroy(); // TODO : not neccessary?
+			this.Destroy();
+			
+			return true;
+		}
+		
+		private void OnBtnCloseClicked(object sender, System.EventArgs e) {
+			SaveAndClose();
 		}
 		
 		private void OnBtnResetClicked(object sender, System.EventArgs e) {
@@ -85,12 +94,14 @@ namespace Basenji.Gui
 		}
 		
 		private void OnDeleteEvent(object o, Gtk.DeleteEventArgs args) {
-			if (loadingComplete) {			  
-				Save();
-				this.Destroy(); // TODO : not neccessary?
-			} else {
-				args.RetVal = true; // cancel window deleting		   
-			}
+			bool cancel = !SaveAndClose();
+			args.RetVal = cancel; // cancel window deleting
+		}
+		
+		[GLib.ConnectBefore()]
+		private void OnWindowKeyPressEvent(object o, Gtk.KeyPressEventArgs args) {
+			if (args.Event.Key == Gdk.Key.Escape)
+				SaveAndClose();
 		}
 		
 		private void OnCmbIconThemeChanged(object o, EventArgs args) {
@@ -324,6 +335,7 @@ namespace Basenji.Gui
 			
 			// event handlers
 			cmbIconTheme.Changed	+= OnCmbIconThemeChanged;
+			this.KeyPressEvent		+= OnWindowKeyPressEvent;
 			this.DeleteEvent		+= OnDeleteEvent;
 			
 			ShowAll();

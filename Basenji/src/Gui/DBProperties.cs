@@ -1,6 +1,6 @@
 // DBProperties.cs
 // 
-// Copyright (C) 2008, 2010 Patrick Ulbrich
+// Copyright (C) 2008 - 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -46,14 +46,24 @@ namespace Basenji.Gui
 			db.UpdateDBProperties(props);
 		}
 		
-		protected virtual void OnBtnCloseClicked(object sender, System.EventArgs e) {
+		private void SaveAndClose()
+		{
 			Save();
-			this.Destroy(); // TODO : not neccessary?
+			this.Destroy();
 		}
 		
-		protected virtual void OnDeleteEvent(object o, Gtk.DeleteEventArgs args) {
-			Save();
-			this.Destroy(); // TODO : not neccessary?
+		private void OnBtnCloseClicked(object sender, System.EventArgs e) {
+			SaveAndClose();
+		}
+		
+		private void OnDeleteEvent(object o, Gtk.DeleteEventArgs args) {
+			SaveAndClose();
+		}
+		
+		[GLib.ConnectBefore()]
+		private void OnWindowKeyPressEvent(object o, Gtk.KeyPressEventArgs args) {
+			if (args.Event.Key == Gdk.Key.Escape)
+				SaveAndClose();
 		}
 	}
 	
@@ -119,6 +129,7 @@ namespace Basenji.Gui
 			
 			this.Add(vbOuter);			  
 			
+			this.KeyPressEvent += OnWindowKeyPressEvent;
 			this.DeleteEvent += OnDeleteEvent;
 			
 			ShowAll();

@@ -45,8 +45,10 @@ namespace Basenji.Gui
 		private MetadataProvider[]		mdps;
 		private StringBuilder			scannerLog;
 		private StatusUpdateTimer		timer;
+		private volatile bool			scanCompleted;
 
 		public VolumeScanner(VolumeDatabase db, DriveInfo drive) {
+			this.scanCompleted = false;
 			this.database = db;
 			
 			infoIcon	= RenderIcon(Icons.Icon.Stock_DialogInfo,	   ICON_SIZE);
@@ -245,6 +247,17 @@ namespace Basenji.Gui
 			return true;
 		}
 		
+		private void AbortScan() {
+			if (!scanCompleted && btnAbort.Sensitive) {
+				UpdateLog(LogIcon.Info, S._("Stopping Scanner and performing rollback..."));
+				
+				scanner.CancelAsync();
+				/* disable button, 
+				 * it will be enabled and converted to a closebutton when the ScanCompleted event is triggered */
+				btnAbort.Sensitive = false;
+			}
+		}
+		
 		private static string BoolToStr(bool val) {
 			return val ? S._("yes") : S._("no");
 		}
@@ -268,7 +281,7 @@ namespace Basenji.Gui
 		}
 		
 		private void OnDeleteEvent(object o, Gtk.DeleteEventArgs args) {
-			if (scanner.IsBusy) {		 
+			if (!scanCompleted) {		 
 				MsgDialog.ShowError(this, S._("Scan in progress"), S._("You must stop scanning before closing this window."));
 				args.RetVal = true;
 			} else {
@@ -276,19 +289,22 @@ namespace Basenji.Gui
 				args.RetVal = cancel;
 			}
 		}
+		
+		[GLib.ConnectBefore()]
+		private void OnWindowKeyPressEvent(object o, Gtk.KeyPressEventArgs args) {
+			if (args.Event.Key == Gdk.Key.Escape) {
+				if (!scanCompleted)
+					AbortScan();
+				else
+					SaveAndClose();
+			}
+		}
 
 		private void OnBtnAbortClicked(object sender, System.EventArgs args) {
-			if (btnAbort.Label == Stock.Cancel) {
-				UpdateLog(LogIcon.Info, S._("Stopping Scanner and performing rollback..."));
-				if (scanner.IsBusy) {
-					scanner.CancelAsync();
-					/* disable button, 
-					 * it will be enabled and converted to a closebutton when the ScanCompleted event is triggered */
-					btnAbort.Sensitive = false;
-				}
-			} else {
-				SaveAndClose();				   
-			}
+			if (!scanCompleted)
+				AbortScan();
+			else
+				SaveAndClose();
 		}
 		#endregion
 		
@@ -355,10 +371,11 @@ namespace Basenji.Gui
 					//mainWindow.RefreshVolumeList(); // TODO : slow on dbs containing many volumes?
 				}
 
-				if (!btnAbort.Sensitive) /* possibly disabled in OnBtnAbortClicked() */
+				if (!btnAbort.Sensitive) /* possibly disabled in AbortScan() */
 					btnAbort.Sensitive = true;
 
 				btnAbort.Label = Stock.Close;
+				scanCompleted = true;
 			});
 
 			/* remove timeout handler (installed in ctor) */
@@ -536,6 +553,7 @@ namespace Basenji.Gui
 			this.Add(vbOuter);
 			
 			// event handlers
+			this.KeyPressEvent += OnWindowKeyPressEvent;
 			this.DeleteEvent	+= OnDeleteEvent;
 			this.Destroyed		+= OnObjectDestroyed;
 			

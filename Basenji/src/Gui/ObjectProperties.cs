@@ -1,6 +1,6 @@
 // ObjectProperties.cs
 // 
-// Copyright (C) 2008, 2010 Patrick Ulbrich
+// Copyright (C) 2008 - 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -76,6 +76,12 @@ namespace Basenji.Gui
 			bool cancel = !SaveAndClose();
 			args.RetVal = cancel;
 		}
+		
+		[GLib.ConnectBefore()]
+		private void OnWindowKeyPressEvent(object o, Gtk.KeyPressEventArgs args) {
+			if (args.Event.Key == Gdk.Key.Escape)
+				SaveAndClose();
+		}
 	}
 	
 	// gui initialization
@@ -112,6 +118,7 @@ namespace Basenji.Gui
 			
 			// events
 			objEditor.Saved		+= OnObjEditorSaved;
+			this.KeyPressEvent	+= OnWindowKeyPressEvent;
 			this.DeleteEvent	+= OnDeleteEvent;
 			
 			this.ShowAll();

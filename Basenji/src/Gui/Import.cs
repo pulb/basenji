@@ -104,6 +104,18 @@ namespace Basenji.Gui
 			this.Destroy();
 		}
 		
+		[GLib.ConnectBefore()]
+		private void OnWindowKeyPressEvent(object o, Gtk.KeyPressEventArgs args) {
+			if (args.Event.Key == Gdk.Key.Escape) {
+				if (import != null && import.IsBusy) {
+					import.CancelAsync();
+					btnImport.Sensitive = false;
+				} else {
+					this.Destroy();
+				}
+			}
+		}
+		
 		private void OnDeleteEvent(object o, Gtk.DeleteEventArgs args) {
 			if (import != null && import.IsBusy) {		 
 				MsgDialog.ShowError(this, S._("Import in progress"),
@@ -230,7 +242,9 @@ namespace Basenji.Gui
 			this.Add(vbOuter);
 			
 			// event handlers
+			this.KeyPressEvent += OnWindowKeyPressEvent;
 			this.DeleteEvent += OnDeleteEvent;
+			
 			fcDatabase.SelectionChanged += OnFcDatabaseSelectionChanged;
 			
 			ShowAll();

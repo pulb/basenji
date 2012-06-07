@@ -148,6 +148,12 @@ namespace Basenji.Gui
 			mainWindow.FindItem(item);
 		}
 		
+		private void Close() {
+			App.Settings.ItemInfoMinimized2 = itemInfo.Minimized;
+			windowDeleted = true;
+			this.Destroy();
+		}
+		
 		private void OnBtnSearchClicked(object o, System.EventArgs args) {
 			BeginSearch();
 		}
@@ -225,9 +231,14 @@ namespace Basenji.Gui
 				itemInfo.Hide();
 		}
 		
+		[GLib.ConnectBefore()]
+		private void OnWindowKeyPressEvent(object o, Gtk.KeyPressEventArgs args) {
+			if (args.Event.Key == Gdk.Key.Escape)
+				Close();
+		}
+		
 		private void OnDeleteEvent(object sender, DeleteEventArgs args) {
-			App.Settings.ItemInfoMinimized2 = itemInfo.Minimized;
-			windowDeleted = true;
+			Close();
 		}
 	}
 	
@@ -346,6 +357,8 @@ namespace Basenji.Gui
 			tvSearchResult.ButtonPressEvent		+= OnTvSearchResultButtonPressEvent;
 			tvSearchResult.KeyPressEvent		+= OnTvSearchResultKeyPressEvent;
 			tvSearchResult.Selection.Changed	+= OnTvSearchResultSelectionChanged;
+			
+			this.KeyPressEvent					+= OnWindowKeyPressEvent;
 			this.DeleteEvent					+= OnDeleteEvent;
 				
 			ShowAll();
