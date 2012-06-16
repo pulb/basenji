@@ -125,10 +125,17 @@ namespace Basenji.Gui.Widgets
 				SetPlaceholderText(false);
 				
 				if (Text.Length > 0) {
-					if (!Text.EndsWith(" "))
-						Text += " ";
-					
-					Text += "and ";
+				    if ((!Text.TrimEnd().EndsWith(" or")) && (!Text.TrimEnd().EndsWith(" OR")) &&
+						(!Text.TrimEnd().EndsWith(" and")) && (!Text.TrimEnd().EndsWith(" AND"))) {
+						
+						if (!Text.EndsWith(" "))
+							Text += " ";
+						
+						Text += "and ";
+					} else {
+						if (!Text.EndsWith(" "))
+							Text += " ";
+					}
 				}
 				
 				var p = (SearchEntryPreset)item.Data["preset"];
