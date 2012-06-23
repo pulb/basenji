@@ -390,7 +390,8 @@ namespace Basenji.Gui
 		 */
 		private class StatusUpdateTimer
 		{
-			/* GUI update frequency: (1000 / TIMEOUT_INTERVAL) Hz */
+			/* Assuming a display refresh rate (frequency) of at least 70 Hz,
+			 * the GUI update resolution shouldn't be smaller than (1000ms / 70Hz) = ~14ms */
 			private const uint TIMEOUT_INTERVAL = 20;
 
 			private VolumeScanner	vscanner;
