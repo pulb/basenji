@@ -421,7 +421,7 @@ namespace Basenji.Gui
 					bool ledOffReq = ledOffRequest;
 					
 					/* 
-					 * update counter labels 
+					 * update counter labels (expected to take less than 1ms)
 					 */
 					if (vscanner.scanner != null)
 						vscanner.volEditor.UpdateInfo(vscanner.scanner.VolumeInfo);
