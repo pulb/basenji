@@ -1,6 +1,6 @@
 // ItemEditor.cs
 // 
-// Copyright (C) 2010 Patrick Ulbrich
+// Copyright (C) 2010, 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -72,8 +72,8 @@ namespace Basenji.Gui.Widgets.Editors
 			//
 			// info labels
 			//
-			lblItemType.LabelProp = itemType;
-			lblName.LabelProp = item.Name;
+			UpdateLabel(lblItemType, itemType);
+			UpdateLabel(lblName, item.Name);
 		}
 		
 		protected override void AddInfoLabels(List<InfoLabel> infoLabels) {

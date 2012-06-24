@@ -1,6 +1,6 @@
 // FileSystemItemEditor.cs
 // 
-// Copyright (C) 2010 Patrick Ulbrich
+// Copyright (C) 2010, 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -40,9 +40,9 @@ namespace Basenji.Gui.Widgets.Editors
 			
 			FileSystemVolumeItem fsvi = (FileSystemVolumeItem)item;
 			
-			lblLocation.LabelProp 		= fsvi.Location;
-			lblLastWriteTime.LabelProp	= fsvi.LastWriteTime.ToString();
-			lblMimeType.LabelProp		= string.IsNullOrEmpty(fsvi.MimeType) ? "-" : fsvi.MimeType;
+			UpdateLabel(lblLocation, fsvi.Location);
+			UpdateLabel(lblLastWriteTime, fsvi.LastWriteTime.ToString());
+			UpdateLabel(lblMimeType, string.IsNullOrEmpty(fsvi.MimeType) ? "-" : fsvi.MimeType);
 		}
 		
 		protected override void AddInfoLabels(List<InfoLabel> infoLabels) {

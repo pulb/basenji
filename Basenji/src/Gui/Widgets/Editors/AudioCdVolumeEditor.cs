@@ -1,6 +1,6 @@
 // AudioCdVolumeEditor.cs
 // 
-// Copyright (C) 2010 Patrick Ulbrich
+// Copyright (C) 2010, 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -66,8 +66,8 @@ namespace Basenji.Gui.Widgets.Editors
 		}
 			
 		private void UpdateInfoLabels(int tracks, TimeSpan duration) {
-			lblTracks.LabelProp		= tracks.ToString();
-			lblDuration.LabelProp	= duration.ToString();
+			UpdateLabel(lblTracks, tracks.ToString());
+			UpdateLabel(lblDuration, duration.ToString());
 		}
 	}
 }

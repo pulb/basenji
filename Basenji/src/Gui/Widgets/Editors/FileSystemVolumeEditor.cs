@@ -1,6 +1,6 @@
 // FileSystemVolumeEditor.cs
 // 
-// Copyright (C) 2008, 2010 Patrick Ulbrich
+// Copyright (C) 2008 - 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -69,9 +69,9 @@ namespace Basenji.Gui.Widgets.Editors
 		}
 			
 		private void UpdateInfoLabels(long files, long directories, long totalSize) {
-			lblFiles.LabelProp			= files.ToString();
-			lblDirectories.LabelProp	= directories.ToString();
-			lblTotalSize.LabelProp		= Util.GetSizeStr(totalSize);		 
+			UpdateLabel(lblFiles, files.ToString());
+			UpdateLabel(lblDirectories, directories.ToString());
+			UpdateLabel(lblTotalSize, Util.GetSizeStr(totalSize));
 		}
 	}
 }

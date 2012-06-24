@@ -1,6 +1,6 @@
 // VolumeEditor.cs
 // 
-// Copyright (C) 2008, 2010 Patrick Ulbrich
+// Copyright (C) 2008 - 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -175,9 +175,9 @@ namespace Basenji.Gui.Widgets.Editors
 		}
 		
 		private void UpdateInfoLabels(bool isHashed, DateTime added) {
-			lblVolumeType.LabelProp = volumeType;
-			lblHashed.LabelProp		= isHashed ? S._("Yes") : S._("No");
-			lblAdded.LabelProp		= added.ToShortDateString();		
+			UpdateLabel(lblVolumeType, volumeType);
+			UpdateLabel(lblHashed, isHashed ? S._("Yes") : S._("No"));
+			UpdateLabel(lblAdded, added.ToShortDateString());		
 		}
 		
 		protected override void AddInfoLabels(List<InfoLabel> infoLabels) {
