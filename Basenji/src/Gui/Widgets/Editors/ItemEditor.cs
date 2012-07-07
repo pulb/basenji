@@ -51,13 +51,23 @@ namespace Basenji.Gui.Widgets.Editors
 		
 		public VolumeItem VolumeItem { get { return Object; } }
 		
+		public string Note {
+			get { return tvNote.Buffer.Text; }
+			set { tvNote.Buffer.Text = value; }
+		}
+		
+		public string Keywords {
+			get { return txtKeywords.Text; }
+			set { txtKeywords.Text = value; }
+		}
+		
 		protected override void ValidateForm() {
 		}
 		
 		protected override void SaveToObject(VolumeDB.VolumeItem item) {
 			// save form
-			item.Note = tvNote.Buffer.Text;
-			item.Keywords = txtKeywords.Text.Trim();
+			item.Note = Note;
+			item.Keywords = Keywords.Trim();
 			
 			item.UpdateChanges();
 		}
@@ -66,8 +76,8 @@ namespace Basenji.Gui.Widgets.Editors
 			//
 			// form
 			//
-			tvNote.Buffer.Text = item.Note;
-			txtKeywords.Text = item.Keywords;
+			Note = item.Note;
+			Keywords = item.Keywords;
 			
 			//
 			// info labels

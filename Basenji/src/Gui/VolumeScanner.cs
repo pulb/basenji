@@ -46,18 +46,16 @@ namespace Basenji.Gui
 		private StringBuilder			scannerLog;
 		private StatusUpdateTimer		timer;
 		private volatile bool			scanCompleted;
+		private Volume					newVolume;
 
 		public VolumeScanner(VolumeDatabase db, DriveInfo drive) {
 			this.scanCompleted = false;
 			this.database = db;
+			this.newVolume = null;
 			
 			infoIcon	= RenderIcon(Icons.Icon.Stock_DialogInfo,	   ICON_SIZE);
 			warningIcon = RenderIcon(Icons.Icon.Stock_DialogWarning,   ICON_SIZE);
-			errorIcon	= RenderIcon(Icons.Icon.Stock_DialogError,	   ICON_SIZE);			  
-			
-			////this.Destroyed += Object_Destroyed;
-			//volInfo.Sensitive = false; // will be enabled when scanning has been finished
-			//InitTreeView();
+			errorIcon	= RenderIcon(Icons.Icon.Stock_DialogError,	   ICON_SIZE);
 			
 			mdps = null;
 			
@@ -99,22 +97,18 @@ namespace Basenji.Gui
 			database.BeginWriteAccess	+= database_BeginWriteAccess;
 			database.EndWriteAccess		+= database_EndWriteAccess;
 			
-			BuildGui();					// must be called _after_ scanner instanciation (requires scanner.VolumeInfo.GetVolumeType())
-			volEditor.Sensitive = false;	// will be enabled when scanning has been finished
+			// must be called _after_ scanner instanciation 
+			// (requires scanner.VolumeInfo.GetVolumeType())
+			BuildGui();
 			InitTreeView();
 			
 			scannerLog = new StringBuilder();
 			timer = new StatusUpdateTimer(this);
 			
 			try {
-				//AddIdleHandler(); // NOTE: make sure the idle handler will be removed properly later, or it will consume a lot of cpu power, even if this window has been closed! (check taskman)
-				
 				/* NOTE: make sure the timer will be removed properly later, 
 				 * or it keeps running, even if this window has been closed. */
 				timer.Install();
-
-				//Log(new LogItem(LogIcon.Info, string.Format("Scanning of drive '{0}' started. [buffersize: {1}, hashing: {2}]", driveName, bufferSize, enableHashing ? "on" : "off")));
-				////m_scanner.BeginScanning(driveName, false);
 				
 				string tmp;
 				// e.g. GIO network 'drives' do not have a devicefile
@@ -141,9 +135,13 @@ namespace Basenji.Gui
 						throw new NotImplementedException(string.Format("Missing options output for scannertyp {0}", scanner.GetType()));
 				}
 				
-				scanner.RunAsync(); // starts scanning on a new thread and returns
+				// copy already known volume data into the editor
+				volEditor.ArchiveNo = scanner.VolumeInfo.ArchiveNo;
+				volEditor.Title = scanner.VolumeInfo.Title;
+				
+				// start scanning on a new thread and return immediately
+				scanner.RunAsync();
 			} catch {
-				//RemoveIdleHandler();
 				timer.Remove();
 				throw;
 			}
@@ -223,10 +221,11 @@ namespace Basenji.Gui
 		
 		private bool SaveAndClose() {
 			try {
-				if (scanner.ScanSucceeded) {
-					volEditor.Save(); // may throw ValidationException
-					SaveLog(volEditor.Volume.VolumeID);
-					OnNewVolumeAdded(volEditor.Volume);				 
+				if (scanner.ScanSucceeded) {				
+					// may throw ValidationException
+					volEditor.SaveTo(newVolume);
+					SaveLog(newVolume.VolumeID);
+					OnNewVolumeAdded(newVolume);
 				}
 
 				this.Destroy();
@@ -344,31 +343,13 @@ namespace Basenji.Gui
 
 		private void scanner_ScanCompleted(object sender, ScanCompletedEventArgs e) {
 			Application.Invoke(delegate {
-				//switch (e.Result)
-				//{
-				//	  case ScanningResult.Success:
-				//		  UpdateLog(new LogItem(LogIcon.Info, "Scanning completed successfully."));
-				//		  m_ownerWindow.RefreshMediaList();
-				//		  break;
-
-				//	  case ScanningResult.Cancelled:
-				//		  UpdateLog(new LogItem(LogIcon.Error, "Scanning aborted."));
-				//		  break;
-
-				//	  case ScanningResult.FatalError:
-				//		  UpdateLog(new LogItem(LogIcon.Error, "Scanning failed. Reason: an unhandled exception occured (" + e.FatalError.Message + ")."));
-				//		  break;
-				//}
-
 				if (e.Error != null) {
 					UpdateLog(LogIcon.Error, string.Format(S._("Scanning failed. Reason: an unhandled exception occured ({0})."), e.Error.Message));
 				} else if (e.Cancelled) {
 					UpdateLog(LogIcon.Error, S._("Scanning aborted."));
 				} else {
 					UpdateLog(LogIcon.Info, S._("Scanning completed successfully."));
-					volEditor.Load(e.Volume);					   
-					volEditor.Sensitive = true;
-					//mainWindow.RefreshVolumeList(); // TODO : slow on dbs containing many volumes?
+					newVolume = e.Volume;
 				}
 
 				if (!btnAbort.Sensitive) /* possibly disabled in AbortScan() */

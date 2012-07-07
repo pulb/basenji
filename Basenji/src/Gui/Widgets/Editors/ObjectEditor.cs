@@ -74,18 +74,27 @@ namespace Basenji.Gui.Widgets.Editors
 				throw new InvalidOperationException("No object loaded");
 
 			if (!DataChanged) {
-				if (Global.EnableDebugging) {
+				if (Global.EnableDebugging)
 					Debug.WriteLine("not saving, nothing changed.");
-				}
-				return;
 			} else {
-				if (Global.EnableDebugging) {
+				if (Global.EnableDebugging)
 					Debug.WriteLine("saving form.");
-				}
+				
+				SaveTo(this.Object);
+				DataChanged = false;
 			}
+		}
+		
+		public void SaveTo(T obj) {
+			// Note : don't check if anything has been changed (DataChanged) 
+			// because it's possible that an object has been loaded and is then saved
+			// to another object without modifications.
+			
+			if (obj == null)
+				throw new ArgumentNullException("obj");
 			
 			ValidateForm(); // may throw a ValidationException
-			SaveToObject(this.Object);
+			SaveToObject(obj);
 			OnSaved();
 		}
 		

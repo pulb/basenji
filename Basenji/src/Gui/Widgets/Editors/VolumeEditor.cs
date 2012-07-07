@@ -73,6 +73,94 @@ namespace Basenji.Gui.Widgets.Editors
 		
 		public Volume Volume { get { return Object; } }
 		
+		public string ArchiveNo {
+			get { return txtArchiveNo.Text; }
+			set { txtArchiveNo.Text = value; }
+		}
+		
+		public string Category {
+			get {
+				// if cmbCategory.ActiveText is empty, no category has been selected for a new volume
+				// or the form has been loaded with an empty category string
+				if (string.IsNullOrEmpty(cmbCategory.ActiveText)) {
+					return null;
+				} else {
+					string category;
+					if (!categories.TryGetUntranslatedString(cmbCategory.ActiveText, out category))
+						category = cmbCategory.ActiveText; // set user-specified custom category
+					return category;
+				}
+			}
+			
+			set {
+				// remove user-specied custom category, 
+				// that possibly has been appended through this setter previously
+				if (customCategory.Stamp != TreeIter.Zero.Stamp) {
+					((ListStore)cmbCategory.Model).Remove(ref customCategory);
+					customCategory = TreeIter.Zero;
+				}
+				
+				// unselect category
+				cmbCategory.Active = -1;
+				if (value.Length > 0) {
+					TreeModel model = cmbCategory.Model;
+					TreeIter iter;
+					bool selected = false;
+					// select category
+					for (int i = 0; i < categories.Count; i++) {
+						if ((categories.GetUntranslatedString(i)) == value) {
+							model.IterNthChild(out iter, i);
+							cmbCategory.SetActiveIter(iter);
+							selected = true;
+							break;
+						}					 
+					}
+					
+					// volume.Category is a user-specified custom category 
+					// -> append it to the combobox
+					if(!selected) {
+						cmbCategory.AppendText(value);
+						model.IterNthChild(out customCategory, categories.Count);
+						cmbCategory.SetActiveIter(customCategory);
+					}
+				}
+			}
+		}
+		
+		public string Title {
+			get { return txtTitle.Text; }
+			set { txtTitle.Text = value; }
+		}
+		
+		public string Description {
+			get { return tvDescription.Buffer.Text; }
+			set { tvDescription.Buffer.Text = value; }
+		}
+		
+		public string Keywords {
+			get { return txtKeywords.Text; }
+			set { txtKeywords.Text = value; }
+		}
+		
+		public string LoanedTo {
+			get { return txtLoanedTo.Text; }
+			set { txtLoanedTo.Text = value; }
+		}
+		
+		public DateTime LoanedDate {
+			get { return (dcLoanedDate.IsEmpty || !dcLoanedDate.IsValid) ? 
+					DateTime.MinValue : dcLoanedDate.Date;
+			}
+			set { dcLoanedDate.Date = value; }
+		}
+		
+		public DateTime ReturnDate {
+			get { return (dcReturnDate.IsEmpty || !dcReturnDate.IsValid) ? 
+				DateTime.MinValue : dcReturnDate.Date;
+			}
+			set { dcReturnDate.Date = value; }
+		}
+		
 		// used by the VolumeScanner window to update the info labels periodically
 		public virtual void UpdateInfo(VolumeInfo vi) {			
 			UpdateInfoLabels(vi.IsHashed, vi.Added);
@@ -93,25 +181,14 @@ namespace Basenji.Gui.Widgets.Editors
 		
 		protected override void SaveToObject(VolumeDB.Volume volume) {
 			// save form
-			volume.ArchiveNo = txtArchiveNo.Text.Trim();
-			
-			// if cmbCategory.ActiveText is empty, no category has been selected for a new volume
-			// or the form has been loaded with an empty category string
-			if (string.IsNullOrEmpty(cmbCategory.ActiveText)) {
-				volume.Category = null;
-			} else {
-				string category;
-				if (!categories.TryGetUntranslatedString(cmbCategory.ActiveText, out category))
-					category = cmbCategory.ActiveText; // set user-specified custom category
-				volume.Category	= category;
-			}
-			
-			volume.Title		= txtTitle.Text.Trim();
-			volume.Description	= tvDescription.Buffer.Text;
-			volume.Keywords		= txtKeywords.Text.Trim();
-			volume.LoanedTo		= txtLoanedTo.Text.Trim();
-			volume.LoanedDate	= dcLoanedDate.IsEmpty ? DateTime.MinValue : dcLoanedDate.Date;
-			volume.ReturnDate	= dcReturnDate.IsEmpty ? DateTime.MinValue : dcReturnDate.Date;
+			volume.ArchiveNo	= ArchiveNo.Trim();
+			volume.Category		= Category;
+			volume.Title		= Title.Trim();
+			volume.Description	= Description;
+			volume.Keywords		= Keywords.Trim();
+			volume.LoanedTo		= LoanedTo.Trim();
+			volume.LoanedDate	= LoanedDate;
+			volume.ReturnDate	= ReturnDate;
 		
 			volume.UpdateChanges();
 		}
@@ -120,51 +197,20 @@ namespace Basenji.Gui.Widgets.Editors
 			//
 			// form
 			//
-			txtArchiveNo.Text = volume.ArchiveNo;
-			
-			// remove user-specied custom category, 
-			// that possibly has been appended on a previous load of another volume
-			if (customCategory.Stamp != TreeIter.Zero.Stamp) {
-				((ListStore)cmbCategory.Model).Remove(ref customCategory);
-				customCategory = TreeIter.Zero;
-			}
-			
-			// unselect category
-			cmbCategory.Active = -1;
-			if (volume.Category.Length > 0) {
-				TreeModel model = cmbCategory.Model;
-				TreeIter iter;
-				bool selected = false;
-				// select category
-				for (int i = 0; i < categories.Count; i++) {
-					if ((categories.GetUntranslatedString(i)) == volume.Category) {
-						model.IterNthChild(out iter, i);
-						cmbCategory.SetActiveIter(iter);
-						selected = true;
-						break;
-					}					 
-				}
-				
-				// volume.Category is a user-specified custom category -> append it to the combobox
-				if(!selected) {
-					cmbCategory.AppendText(volume.Category);
-					model.IterNthChild(out customCategory, categories.Count);
-					cmbCategory.SetActiveIter(customCategory);
-				}
-			}
-			
-			txtTitle.Text				= volume.Title;
-			tvDescription.Buffer.Text	= volume.Description;
-			txtKeywords.Text			= volume.Keywords; 
-			txtLoanedTo.Text			= volume.LoanedTo;
+			ArchiveNo	= volume.ArchiveNo;
+			Category	= volume.Category;
+			Title		= volume.Title;
+			Description	= volume.Description;
+			Keywords	= volume.Keywords; 
+			LoanedTo	= volume.LoanedTo;
 			
 			if (volume.LoanedDate != DateTime.MinValue)
-				dcLoanedDate.Date		= volume.LoanedDate;
+				dcLoanedDate.Date = volume.LoanedDate;
 			else
 				dcLoanedDate.Clear();
 			
 			if (volume.ReturnDate != DateTime.MinValue)
-				dcReturnDate.Date		= volume.ReturnDate;
+				dcReturnDate.Date = volume.ReturnDate;
 			else
 				dcReturnDate.Clear();
 			
