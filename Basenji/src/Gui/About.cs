@@ -77,6 +77,7 @@ French:
     Olivier Duperray (https://launchpad.net/~duperray-olivier)
     Pierre Slamich (https://launchpad.net/~pierre-slamich)
     Stephane Ricci (https://launchpad.net/~stephane-ricci)
+    Tubuntu (https://launchpad.net/~t-ubuntu)
     Y.Bélaïd (https://launchpad.net/~belaid-younsi-gmail)
 
 German:
