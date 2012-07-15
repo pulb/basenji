@@ -316,7 +316,7 @@ namespace Basenji.Gui
 			
 			infoBar = new InfoBar();
 			infoBar.Headline = S._("Quick tip:");
-			infoBar.Text = string.Format(S._("Click on the magnifier icon to build advanced search queries.\nExample: {0}"), 
+			infoBar.Text = string.Format(S._("Click on the icon to the left of the search field to build advanced search queries.\nExample: {0}"), 
 			                             @"<i>""holidays and type = video and filesize > 600mb""</i>");
 			
 			vbRight.PackStart(infoBar, false, false, 0);
