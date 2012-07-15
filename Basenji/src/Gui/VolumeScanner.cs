@@ -167,6 +167,10 @@ namespace Basenji.Gui
 			tvLog.Model = logStore;
 		}
 		
+		public VolumeEditor VolumeEditor {
+			get { return volEditor; }
+		}
+		
 		private void UpdateLog(LogIcon icon, string message) {
 			Pixbuf pb;
 			string messageType;
@@ -222,7 +226,10 @@ namespace Basenji.Gui
 		private bool SaveAndClose() {
 			try {
 				if (scanner.ScanSucceeded) {				
-					// may throw ValidationException
+					// SaveTo() may throw a ValidationException.
+					// Note: The volumeditor has either been filled on scanner start manually
+					// (no volume loaded) or an existing volume has been loaded into it
+					// via the public VolumeEditor property.
 					volEditor.SaveTo(newVolume);
 					SaveLog(newVolume.VolumeID);
 					OnNewVolumeAdded(newVolume);

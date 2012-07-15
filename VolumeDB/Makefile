@@ -224,7 +224,8 @@ FILES = \
 	src/Metadata/TagLibMetadataProvider.cs \
 	src/Import/CdCatImport.cs \
 	src/Import/ImportException.cs \
-	src/Import/ImportAttribute.cs 
+	src/Import/ImportAttribute.cs \
+	src/ExtensionMethods.cs 
 
 DATA_FILES = 
 

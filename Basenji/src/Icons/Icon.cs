@@ -1,6 +1,6 @@
 // Icon.cs
 // 
-// Copyright (C) 2008, 2010 Patrick Ulbrich
+// Copyright (C) 2008 - 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -46,6 +46,8 @@ namespace Basenji.Icons
 		public static Icon Stock_Remove				{ get { return new Icon(Stock.Remove);			  } }
 		[NameInCustomIconTheme("edit.png")]
 		public static Icon Stock_Edit				{ get { return new Icon(Stock.Edit);			  } }
+		[NameInCustomIconTheme("refresh.png")]
+		public static Icon Stock_Refresh			{ get { return new Icon(Stock.Refresh);		  } }
 		[NameInCustomIconTheme("new.png")]
 		public static Icon Stock_New				{ get { return new Icon(Stock.New);				  } }
 		[NameInCustomIconTheme("open.png")]

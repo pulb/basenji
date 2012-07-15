@@ -213,7 +213,8 @@ FILES = \
 	src/Gui/Widgets/Sorting.cs \
 	src/Options.cs \
 	src/Global.cs \
-	src/Gui/Widgets/InfoBar.cs 
+	src/Gui/Widgets/InfoBar.cs \
+	src/Gui/WaitingDialog.cs 
 
 DATA_FILES = 
 

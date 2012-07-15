@@ -1,6 +1,6 @@
 // AbstractVolumeScanner.cs
 // 
-// Copyright (C) 2008 - 2011 Patrick Ulbrich
+// Copyright (C) 2008 - 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -286,36 +286,11 @@ namespace VolumeDB.VolumeScanner
 		                                          VolumeDatabase database,
 		                                          bool isHashed) {
 			// TODO : check here whether everything is still filled correctly after media class reorganisation
-
-			//Util.DriveInfo di = new Util.DriveInfo(rootDir);
-			VolumeDriveType driveType;
-
-			switch (d.DriveType) {
-				case PlatformIO.DriveType.CDRom:
-					driveType = VolumeDriveType.CDRom;
-					break;
-				case PlatformIO.DriveType.Fixed:
-					driveType = VolumeDriveType.Harddisk;
-					break;
-				case PlatformIO.DriveType.Ram:
-					driveType = VolumeDriveType.Ram;
-					break;
-				case PlatformIO.DriveType.Network:
-					driveType = VolumeDriveType.Network;
-					break;
-				case PlatformIO.DriveType.Removable:
-					driveType = VolumeDriveType.Removable;
-					break;
-				case PlatformIO.DriveType.Unknown:
-					driveType = VolumeDriveType.Unknown;
-					break;
-				default:
-					throw new Exception("Invalid DriveType");
-			}
 			
 			long volumeID = VolumeDatabase.ID_NONE;
 			if (database != null) {
-				// TODO : this is neither threadsave nor multi-instance save in general! maybe the db (physical db, VolumeDatabase object? this scanner?) should be locked during scanning?
+				// TODO : this is neither threadsave nor multi-instance save in general! 
+				// maybe the db (physical db, VolumeDatabase object? this scanner?) should be locked during scanning?
 				volumeID = database.GetNextVolumeID();
 			}
 			
@@ -334,7 +309,7 @@ namespace VolumeDB.VolumeScanner
 				/*di.VolumeSerialNumber,*/
 				isHashed,
 				volumeID.ToString(),
-				driveType,
+				d.DriveType.ToVolumeDriveType(),
 				null,
 				DateTime.MinValue,
 				DateTime.MinValue,

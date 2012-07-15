@@ -391,19 +391,7 @@ namespace Basenji.Gui
 			}
 			
 			VolumeScanner vs = new VolumeScanner(database, drive);
-			vs.NewVolumeAdded += (object o, NewVolumeAddedEventArgs args) => {
-				if (lastSuccessfulSearchCriteria != null) {
-					// the volumes treeview is filtered,
-					// so refill the treeview using the last sucessful searchcriteria.
-					// (the freshly added volume may be matched by that criteria.)
-					SearchVolumeAsync(lastSuccessfulSearchCriteria, null);
-				} else {
-					// volumes treeview isn't filtered and contains all volumes,
-					// so just append.
-					tvVolumes.AddVolume(args.Volume);
-				}
-				
-			};
+			AddNewVolumeAddedEventHandler(vs);
 		}
 		
 		private void RemoveVolume() {
@@ -418,18 +406,8 @@ namespace Basenji.Gui
 			                                     S._("Confirmation"), 
 			                                     S._("Are you sure you really want to remove the selected volume?"));
 			
-			if (result == ResponseType.Yes) {
-				Volume volume = tvVolumes.GetVolume(iter);
-				database.RemoveVolume(volume.VolumeID);
-				
-				// remove external db data
-				string dbDataPath = PathUtil.GetDbDataPath(database);
-				string volumeDataPath = DbData.GetVolumeDataPath(dbDataPath, volume.VolumeID);
-				if (Directory.Exists(volumeDataPath))
-					Directory.Delete(volumeDataPath, true);
-				
-				tvVolumes.RemoveVolume(iter);
-			}
+			if (result == ResponseType.Yes)
+				PurgeVolume(iter);
 		}
 		
 		private void EditVolume() {
@@ -463,6 +441,34 @@ namespace Basenji.Gui
 //			ip.Saved += delegate {
 //				tvItems.UpdateItem(iter, item);
 //			};
+		}
+		
+		private void PurgeVolume(TreeIter volumeIter) {
+			Volume volume = tvVolumes.GetVolume(volumeIter);
+			database.RemoveVolume(volume.VolumeID);
+			
+			// remove external db data
+			string dbDataPath = PathUtil.GetDbDataPath(database);
+			string volumeDataPath = DbData.GetVolumeDataPath(dbDataPath, volume.VolumeID);
+			if (Directory.Exists(volumeDataPath))
+				Directory.Delete(volumeDataPath, true);
+			
+			tvVolumes.RemoveVolume(volumeIter);
+		}
+		
+		private void AddNewVolumeAddedEventHandler(VolumeScanner vs) {
+			vs.NewVolumeAdded += (object o, NewVolumeAddedEventArgs args) => {
+				if (lastSuccessfulSearchCriteria != null) {
+					// the volumes treeview is filtered,
+					// so refill the treeview using the last sucessful searchcriteria.
+					// (the freshly added volume may be matched by that criteria.)
+					SearchVolumeAsync(lastSuccessfulSearchCriteria, null);
+				} else {
+					// volumes treeview isn't filtered and contains all volumes,
+					// so just append.
+					tvVolumes.AddVolume(args.Volume);
+				}
+			};
 		}
 		
 		private void BeginVolumeSearch() {
@@ -679,6 +685,54 @@ namespace Basenji.Gui
 			RemoveVolume();
 		}
 		
+		private void OnActRescanVolumeActivated(object sender, System.EventArgs args) {
+			TreeIter iter;
+			if (!tvVolumes.GetSelectedIter(out iter))
+				return;
+			
+			Volume oldVolume = tvVolumes.GetVolume(iter);
+			
+			WaitFunc<PlatformIO.DriveInfo> IsVolumeConnected = delegate(out PlatformIO.DriveInfo dinf) {
+				foreach (PlatformIO.DriveInfo di in PlatformIO.DriveInfo.GetDrives()) {
+					if (di.IsReady && di.IsMounted && 
+					    	(di.DriveType.ToVolumeDriveType() == oldVolume.DriveType) && 
+					    	(di.VolumeLabel == oldVolume.Title)) {
+						dinf = di;
+						return true;
+					}
+				}
+				dinf = null;
+				return false;
+			};
+			
+			bool proceed = true;
+			PlatformIO.DriveInfo drive;
+			
+			if (!IsVolumeConnected(out drive)) {
+				string message = string.Format(S._("Please insert volume '<b>{0}</b>'."), Util.Escape(oldVolume.Title));
+				var wd = new WaitingDialog<PlatformIO.DriveInfo>(IsVolumeConnected, message);
+				wd.Title = S._("Waiting for volume");
+				if (wd.Run() == (int)ResponseType.Ok) {
+					proceed = true;
+					drive = wd.Value;
+				} else {
+					proceed = false;
+				}
+				wd.Destroy();
+			}
+			
+			if (proceed) {
+				VolumeScanner vs = new VolumeScanner(database, drive);
+				vs.VolumeEditor.Load(oldVolume);
+				// remove old volume from the volume treeview and purge all associated data
+				vs.NewVolumeAdded += (object o, NewVolumeAddedEventArgs a) => {
+					PurgeVolume(iter);
+				};
+				// add new volume to the volume treeview
+				AddNewVolumeAddedEventHandler(vs);
+			}
+		}
+		
 		private void OnActEditItemActivated(object sender, System.EventArgs args) {
 			EditItem();
 		}
@@ -712,19 +766,40 @@ namespace Basenji.Gui
 		private void OnTvVolumesButtonPressEvent(object o, ButtonPressEventArgs args) {
 			TreePath path;
 			tvVolumes.GetPathAtPos((int)args.Event.X, (int)args.Event.Y, out path);
-			//if (path == null)
-			//	return;
-				
+			
 			if ((args.Event.Button == 1) && (args.Event.Type == Gdk.EventType.TwoButtonPress)) {
 				if (path != null)
 					EditVolume();
 			} else if ((args.Event.Button == 3) && (args.Event.Type == Gdk.EventType.ButtonPress)) {
-				uint btn = args.Event.Button;
-				uint time = args.Event.Time;
-				if (path != null)
+				// re-enqueue into gtk mainloop since 
+				// the row that has been right-clicked is not selected yet 
+				// (iter is off by one in this event).
+				Application.Invoke(delegate {
+					if (path == null) {
+						// show "sort by" action only
+						actRemoveVolume.Visible = false;
+						actEditVolume.Visible = false;
+						actRescanVolume.Visible = false;
+					} else {
+						actRemoveVolume.Visible = true;
+						actEditVolume.Visible = true;
+						actRescanVolume.Visible = true;
+						
+						TreeIter iter;
+						tvVolumes.GetSelectedIter(out iter);
+						Volume volume = tvVolumes.GetVolume(iter);
+						
+						actRescanVolume.Sensitive = ((volume.DriveType == VolumeDriveType.Removable) || 
+						                             (volume.DriveType == VolumeDriveType.Harddisk) || 
+						                             (volume.DriveType == VolumeDriveType.Network) ||
+						                             ((volume.DriveType == VolumeDriveType.CDRom) && 
+						 							 (volume.GetVolumeType() != VolumeType.AudioCdVolume)));
+					}
+					
+					uint btn = args.Event.Button;
+					uint time = args.Event.Time;
 					volumeContextMenu.Popup(null, null, null, btn, time);
-				else
-					volumeSortContextMenu.Popup(null, null, null, btn, time);
+				});
 			}
 		}
 		
@@ -826,7 +901,8 @@ namespace Basenji.Gui
 		
 		// context menu actions
 		private Gtk.Action actRemoveVolume;
-		private Gtk.Action actEditVolume;		
+		private Gtk.Action actEditVolume;
+		private Gtk.Action actRescanVolume;
 		private Gtk.Action actEditItem;
 		
 		private Gtk.Action actVolumesSortBy;
@@ -841,7 +917,6 @@ namespace Basenji.Gui
 		
 		// context menus
 		private Menu volumeContextMenu;
-		private Menu volumeSortContextMenu;
 		private Menu itemContextMenu;
 		
 		// search entry
@@ -944,6 +1019,9 @@ namespace Basenji.Gui
 			actRemoveVolume = CreateAction("removevolume", S._("_Remove Volume"), null, Stock.Remove, OnActRemoveVolumeActivated);
 			ag.Add(actRemoveVolume, "<control>R");
 			
+			actRescanVolume = CreateAction("rescanvolume", S._("Rescan Volume"), null, Stock.Refresh, OnActRescanVolumeActivated);
+			ag.Add(actRescanVolume, "<control>S");
+			
 			//
 			// item context menus
 			//
@@ -988,18 +1066,7 @@ namespace Basenji.Gui
 			manager.InsertActionGroup(ag, 0);
 			this.AddAccelGroup(manager.AccelGroup);
 			
-			string sortMenu = @"
-			<menu action=""volumes_sortby"">
-				<menuitem action=""volumes_sortby_archiveno""/>
-				<menuitem action=""volumes_sortby_added""/>
-				<menuitem action=""volumes_sortby_title""/>
-				<menuitem action=""volumes_sortby_category""/>
-				<menuitem action=""volumes_sortby_drivetype""/>
-				<separator/>
-				<menuitem action=""volumes_sortdescending""/>
-			</menu>";
-			
-			string ui = string.Format(@"
+			string ui = @"
 			<ui>
 				<toolbar name=""toolbar"">
 					<toolitem action=""addvolume""/>
@@ -1016,7 +1083,6 @@ namespace Basenji.Gui
 					<separator/>
 					<menuitem action=""preferences""/>
 					<menuitem action=""dbproperties""/>
-					
 					<separator/>
 					<menuitem action=""info""/>
 					<menuitem action=""quit""/>
@@ -1024,25 +1090,29 @@ namespace Basenji.Gui
 				<popup name=""volume_contextmenu"">
 					<menuitem action=""editvolume""/>
 					<menuitem action=""removevolume""/>
+					<menuitem action=""rescanvolume""/>
 					<separator/>
-					{0}
-				</popup>
-				<popup name=""volume_sort_contextmenu"">
-					{0}
+					<menu action=""volumes_sortby"">
+						<menuitem action=""volumes_sortby_archiveno""/>
+						<menuitem action=""volumes_sortby_added""/>
+						<menuitem action=""volumes_sortby_title""/>
+						<menuitem action=""volumes_sortby_category""/>
+						<menuitem action=""volumes_sortby_drivetype""/>
+						<separator/>
+						<menuitem action=""volumes_sortdescending""/>
+					</menu>
 				</popup>
 				<popup name=""item_contextmenu"">
 					<menuitem action=""edititem""/>
 				</popup>
-				
 			</ui>
-			", sortMenu);
+			";
 			
 			manager.AddUiFromString(ui);
 			
 			appMenu					= (Menu)manager.GetWidget("/appmenu");
 			toolbar					= (Toolbar)manager.GetWidget("/toolbar");
 			volumeContextMenu		= (Menu)manager.GetWidget("/volume_contextmenu");
-			volumeSortContextMenu	= (Menu)manager.GetWidget("/volume_sort_contextmenu");
 			itemContextMenu			= (Menu)manager.GetWidget("/item_contextmenu");
 			
 			// gtk will use SmallToolbar on windows by default 
