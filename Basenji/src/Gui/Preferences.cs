@@ -115,7 +115,7 @@ namespace Basenji.Gui
 			Pixbuf icon;
 			
 			//stockID = Stock.Cancel;
-			icon = RenderIcon(Icons.Icon.Stock_Cancel, IconSize.Button);
+			icon = RenderIcon(Icons.Icon.Stock_Cancel, IconSize.Menu);
 			store.AppendValues(icon, S._("None"));
 			
 			foreach (PlatformIO.DriveInfo d in drives) {
@@ -123,7 +123,7 @@ namespace Basenji.Gui
 				if (d.DriveType == PlatformIO.DriveType.CDRom || d.DriveType == PlatformIO.DriveType.Removable) {
 					//stockID = Util.GetDriveStockIconID(d);
 					//icon = this.RenderIcon(stockID, IconSize.Button, string.Empty);
-					icon = RenderIcon(Icons.IconUtils.GetDriveIcon(d), IconSize.Button);
+					icon = RenderIcon(Icons.IconUtils.GetDriveIcon(d), IconSize.Menu);
 					string text = d.Device;
 					
 					store.AppendValues(icon, text);
