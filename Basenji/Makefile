@@ -241,14 +241,14 @@ RESOURCES = \
 	po/sr.resources,Basenji.po.sr.resources \
 	po/hr.resources,Basenji.po.hr.resources \
 	po/nl.resources,Basenji.po.nl.resources \
-	po/cs.resources,Basenji.po.cs.resources 
+	po/cs.resources,Basenji.po.cs.resources \
+	po/sk.resources,Basenji.po.sk.resources 
 
 EXTRAS = \
 	app.desktop \
 	basenji \
 	Basenji.exe.config \
 	src/App.cs.in \
-	po/sk.resources \
 	basenji.desktop.in \
 	basenji.in 
 

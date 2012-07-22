@@ -248,10 +248,10 @@ RESOURCES = \
 	po/ru.resources,VolumeDB.po.ru.resources \
 	po/hr.resources,VolumeDB.po.hr.resources \
 	po/cs.resources,VolumeDB.po.cs.resources \
-	po/nl.resources,VolumeDB.po.nl.resources 
+	po/nl.resources,VolumeDB.po.nl.resources \
+	po/sk.resources,VolumeDB.po.sk.resources 
 
 EXTRAS = \
-	po/sk.resources \
 	volumedb.pc.in 
 
 REFERENCES =  \
