@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-02-12 18:41+0100\n"
+"POT-Creation-Date: 2012-07-15 15:49+0200\n"
 "PO-Revision-Date: 2011-04-28 09:31+0000\n"
 "Last-Translator: Срђан Хрњак <Unknown>\n"
 "Language-Team: Serbian <sr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-02-18 14:04+0000\n"
-"X-Generator: Launchpad (build 14814)\n"
+"X-Launchpad-Export-Date: 2012-07-22 10:48+0000\n"
+"X-Generator: Launchpad (build 15654)\n"
 
 #: src/Util.cs:30
 #, csharp-format
@@ -54,10 +54,10 @@ msgstr "Датотеке са базом података"
 msgid "All files"
 msgstr "Све датотеке"
 
-#: src/Main.cs:142 src/Gui/MainWindow.cs:75 src/Gui/MainWindow.cs:91
-#: src/Gui/MainWindow.cs:262 src/Gui/MainWindow.cs:283
-#: src/Gui/MainWindow.cs:305 src/Gui/MainWindow.cs:314
-#: src/Gui/MainWindow.cs:556
+#: src/Main.cs:142 src/Gui/MainWindow.cs:76 src/Gui/MainWindow.cs:92
+#: src/Gui/MainWindow.cs:334 src/Gui/MainWindow.cs:355
+#: src/Gui/MainWindow.cs:377 src/Gui/MainWindow.cs:386
+#: src/Gui/MainWindow.cs:635
 msgid "Error"
 msgstr "Грешка"
 
@@ -71,7 +71,7 @@ msgid "Unnamed"
 msgstr "Неименовано"
 
 #: src/Gui/Widgets/VolumeView.cs:43
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:213
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:259
 msgid "Category:"
 msgstr "Категорије:"
 
@@ -95,7 +95,7 @@ msgstr "(празно)"
 msgid "Unknown"
 msgstr "Непознато"
 
-#: src/Gui/Widgets/ItemView.cs:170 src/Gui/Widgets/Editors/ItemEditor.cs:86
+#: src/Gui/Widgets/ItemView.cs:170 src/Gui/Widgets/Editors/ItemEditor.cs:96
 msgid "Name"
 msgstr "Назив"
 
@@ -105,7 +105,7 @@ msgstr "Извођач"
 
 #: src/Gui/Widgets/ItemView.cs:181
 #: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:53
-#: src/Gui/Widgets/ItemInfo.cs:224 src/Gui/Widgets/ItemInfo.cs:287
+#: src/Gui/Widgets/ItemInfo.cs:225 src/Gui/Widgets/ItemInfo.cs:288
 msgid "Duration"
 msgstr "Трајање"
 
@@ -126,15 +126,15 @@ msgstr "Фасцикле:"
 msgid "Total size:"
 msgstr "Укупна величина:"
 
-#: src/Gui/Widgets/Editors/ItemEditor.cs:85
+#: src/Gui/Widgets/Editors/ItemEditor.cs:95
 msgid "Item type"
 msgstr "Врста ставке"
 
-#: src/Gui/Widgets/Editors/ItemEditor.cs:101 src/Gui/Widgets/ItemInfo.cs:367
+#: src/Gui/Widgets/Editors/ItemEditor.cs:111 src/Gui/Widgets/ItemInfo.cs:371
 msgid "Note"
 msgstr "Белешка"
 
-#: src/Gui/Widgets/Editors/ItemEditor.cs:102 src/Gui/Widgets/ItemInfo.cs:370
+#: src/Gui/Widgets/Editors/ItemEditor.cs:112 src/Gui/Widgets/ItemInfo.cs:374
 msgid "Keywords"
 msgstr "Кључне речи"
 
@@ -144,7 +144,7 @@ msgid "Audio CD track"
 msgstr "Аудио ЦД нумере"
 
 #: src/Gui/Widgets/Editors/AudioTrackItemEditor.cs:54
-#: src/Gui/Widgets/ItemInfo.cs:229
+#: src/Gui/Widgets/ItemInfo.cs:230
 msgid "Type"
 msgstr "Врста"
 
@@ -158,12 +158,12 @@ msgid "Location"
 msgstr "Место"
 
 #: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:60
-#: src/Gui/Widgets/ItemInfo.cs:184
+#: src/Gui/Widgets/ItemInfo.cs:185
 msgid "Last write time"
 msgstr "Време последњег уписивања"
 
 #: src/Gui/Widgets/Editors/FileSystemItemEditor.cs:61
-#: src/Gui/Widgets/ItemInfo.cs:209
+#: src/Gui/Widgets/ItemInfo.cs:210
 msgid "Filetype"
 msgstr "Врста датотеке"
 
@@ -172,13 +172,13 @@ msgid "File"
 msgstr "Датотека"
 
 #: src/Gui/Widgets/Editors/FileItemEditor.cs:52
-#: src/Gui/Widgets/ItemInfo.cs:203 src/Gui/Widgets/ItemInfo.cs:225
+#: src/Gui/Widgets/ItemInfo.cs:204 src/Gui/Widgets/ItemInfo.cs:226
 #: src/Gui/DriveSelection.cs:148
 msgid "Size"
 msgstr "Величина"
 
 #: src/Gui/Widgets/Editors/FileItemEditor.cs:53
-#: src/Gui/Widgets/ItemInfo.cs:205
+#: src/Gui/Widgets/ItemInfo.cs:206
 msgid "Hash"
 msgstr "Хеш"
 
@@ -229,7 +229,7 @@ msgstr "Слике"
 msgid "Games"
 msgstr "Игре"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:53 src/Gui/Widgets/ItemInfo.cs:318
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:53 src/Gui/Widgets/ItemInfo.cs:319
 msgid "Software"
 msgstr "Програми"
 
@@ -241,51 +241,51 @@ msgstr "Разно"
 msgid "Other"
 msgstr "Остало"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:179
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:225
 msgid "Yes"
 msgstr "Да"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:179
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:225
 msgid "No"
 msgstr "Не"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:189
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:235
 msgid "Volume type:"
 msgstr "Врста диска"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:190
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:236
 msgid "Hashed:"
 msgstr "Хеширано"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:191
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:237
 msgid "Added:"
 msgstr "Додато:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:212
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:258
 msgid "Archive No.:"
 msgstr "Архива бр.:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:214
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:260
 msgid "Title:"
 msgstr "Наслов:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:215 src/Gui/DBProperties.cs:88
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:261 src/Gui/DBProperties.cs:98
 msgid "Description:"
 msgstr "Опис:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:216
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:262
 msgid "Keywords:"
 msgstr "Кључне речи:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:217
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:263
 msgid "Loaned to:"
 msgstr "Позајмљена:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:218
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:264
 msgid "Loaned date:"
 msgstr "Датум позајмљивања:"
 
-#: src/Gui/Widgets/Editors/VolumeEditor.cs:219
+#: src/Gui/Widgets/Editors/VolumeEditor.cs:265
 msgid "Return date:"
 msgstr "Датум враћања:"
 
@@ -313,7 +313,7 @@ msgstr "Архиве"
 msgid "Development"
 msgstr "Развој"
 
-#: src/Gui/Widgets/CategoryView.cs:96 src/Gui/MainWindow.cs:894
+#: src/Gui/Widgets/CategoryView.cs:96 src/Gui/MainWindow.cs:1046
 msgid "Category"
 msgstr "Категорија"
 
@@ -325,7 +325,7 @@ msgstr "Све ставке"
 msgid "Volume"
 msgstr "Запис"
 
-#: src/Gui/Widgets/SearchResultView.cs:33 src/Gui/MainWindow.cs:888
+#: src/Gui/Widgets/SearchResultView.cs:33 src/Gui/MainWindow.cs:1040
 msgid "Archive No."
 msgstr "Архива бр."
 
@@ -337,59 +337,59 @@ msgstr "od"
 msgid "from"
 msgstr "od"
 
-#: src/Gui/Widgets/ItemInfo.cs:195
+#: src/Gui/Widgets/ItemInfo.cs:196
 msgid "Symlink target"
 msgstr "Одредиште симболичке везе"
 
-#: src/Gui/Widgets/ItemInfo.cs:226
+#: src/Gui/Widgets/ItemInfo.cs:227
 msgid "Track No."
 msgstr "Нумера бр."
 
-#: src/Gui/Widgets/ItemInfo.cs:257
+#: src/Gui/Widgets/ItemInfo.cs:258
 msgid "Genre"
 msgstr "Жанр"
 
-#: src/Gui/Widgets/ItemInfo.cs:277
+#: src/Gui/Widgets/ItemInfo.cs:278
 msgid "Year"
 msgstr "Година"
 
-#: src/Gui/Widgets/ItemInfo.cs:282
+#: src/Gui/Widgets/ItemInfo.cs:283
 msgid "Description"
 msgstr "Опис"
 
-#: src/Gui/Widgets/ItemInfo.cs:293
+#: src/Gui/Widgets/ItemInfo.cs:294
 msgid "Dimensions"
 msgstr "Димензије"
 
-#: src/Gui/Widgets/ItemInfo.cs:298
+#: src/Gui/Widgets/ItemInfo.cs:299
 msgid "Format"
 msgstr "Формат"
 
-#: src/Gui/Widgets/ItemInfo.cs:302
+#: src/Gui/Widgets/ItemInfo.cs:303
 msgid "Author"
 msgstr "Аутор"
 
-#: src/Gui/Widgets/ItemInfo.cs:306
+#: src/Gui/Widgets/ItemInfo.cs:307
 msgid "Copyright"
 msgstr "Ауторска права"
 
-#: src/Gui/Widgets/ItemInfo.cs:310
+#: src/Gui/Widgets/ItemInfo.cs:311
 msgid "Producer"
 msgstr "Произвођач"
 
-#: src/Gui/Widgets/ItemInfo.cs:314
+#: src/Gui/Widgets/ItemInfo.cs:315
 msgid "Creator"
 msgstr "Творац"
 
-#: src/Gui/Widgets/ItemInfo.cs:322
+#: src/Gui/Widgets/ItemInfo.cs:323
 msgid "Language"
 msgstr "Језик"
 
-#: src/Gui/Widgets/ItemInfo.cs:326
+#: src/Gui/Widgets/ItemInfo.cs:327
 msgid "Page count"
 msgstr "Број страна"
 
-#: src/Gui/Widgets/ItemInfo.cs:342
+#: src/Gui/Widgets/ItemInfo.cs:346
 msgid "File count"
 msgstr "Број датотека"
 
@@ -402,11 +402,11 @@ msgstr "Нема ставки."
 msgid "<b>Page {0}/{1}</b>  ({2} - {3} of {4} items)"
 msgstr "<b>Страна {0}/{1}</b>  (ставке {2} - {3} од {4})"
 
-#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:240
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:248
 msgid "Invalid data"
 msgstr "Неисправни подаци"
 
-#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:241
+#: src/Gui/ObjectProperties.cs:54 src/Gui/VolumeScanner.cs:249
 #, csharp-format
 msgid ""
 "\"{0}\" is {1}.\n"
@@ -419,15 +419,15 @@ msgstr ""
 "Очекивани облик: {2}\n"
 "Исправите или уклоните податке које сте унели."
 
-#: src/Gui/DBProperties.cs:75
+#: src/Gui/DBProperties.cs:85
 msgid "Database Properties"
 msgstr "Својства базе података"
 
-#: src/Gui/DBProperties.cs:87
+#: src/Gui/DBProperties.cs:97
 msgid "Name:"
 msgstr "Име:"
 
-#: src/Gui/DBProperties.cs:89
+#: src/Gui/DBProperties.cs:99
 msgid "Created:"
 msgstr "Направљено:"
 
@@ -464,95 +464,111 @@ msgstr "Користи VolumeDB верзију {0}."
 msgid "Copyright (c) "
 msgstr "Ауторска права - Copyright (c) "
 
-#: src/Gui/ItemSearch.cs:78
+#: src/Gui/ItemSearch.cs:81
 #, csharp-format
 msgid "Found {0} items in {1:F3} seconds."
 msgstr "Пронађено {0} ставки у {1:F3} секунди."
 
-#: src/Gui/ItemSearch.cs:89 src/Gui/MainWindow.cs:453
+#: src/Gui/ItemSearch.cs:92 src/Gui/MainWindow.cs:519
 msgid "Timeout: another search is probably still in progress."
 msgstr "Истекло: друга претрага вероватно још траје."
 
-#: src/Gui/ItemSearch.cs:91
+#: src/Gui/ItemSearch.cs:94
 msgid "Too many search results. Please refine your search criteria."
 msgstr "Пронађено је превише резултата. Сузите критеријум претраге."
 
-#: src/Gui/ItemSearch.cs:106 src/Gui/MainWindow.cs:469
+#: src/Gui/ItemSearch.cs:112 src/Gui/MainWindow.cs:535
 msgid "Searching..."
 msgstr "Тражење..."
 
-#: src/Gui/ItemSearch.cs:233
+#: src/Gui/ItemSearch.cs:267
 msgid "Search Items"
 msgstr "Тражи ставке"
 
-#: src/Gui/ItemSearch.cs:245 src/Gui/MainWindow.cs:1008
+#: src/Gui/ItemSearch.cs:279 src/Gui/MainWindow.cs:1145
 msgid "default"
 msgstr "подразумевани"
 
-#: src/Gui/ItemSearch.cs:249
+#: src/Gui/ItemSearch.cs:283
 msgid "Search items"
 msgstr "Претражи ставке"
 
-#: src/Gui/ItemSearch.cs:285
+#: src/Gui/ItemSearch.cs:318
+msgid "Quick tip:"
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:319
+#, csharp-format
+msgid ""
+"Click on the icon to the left of the search field to build advanced search "
+"queries.\n"
+"Example: {0}"
+msgstr ""
+
+#: src/Gui/ItemSearch.cs:326
 msgid "No search results."
 msgstr "Нема резултата претраге."
 
-#: src/Gui/ItemSearch.cs:328 src/Gui/MainWindow.cs:879
+#: src/Gui/ItemSearch.cs:375 src/Gui/MainWindow.cs:1028
 msgid "Edit Item"
 msgstr "Измени ставку"
 
-#: src/Gui/MainWindow.cs:76 src/Gui/MainWindow.cs:92 src/Gui/MainWindow.cs:556
+#: src/Gui/ItemSearch.cs:382
+msgid "Show in Main Window"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:77 src/Gui/MainWindow.cs:93 src/Gui/MainWindow.cs:635
 #, csharp-format
 msgid "Database '{0}' not found."
 msgstr "База података '{0}' није пронађена."
 
-#: src/Gui/MainWindow.cs:115
+#: src/Gui/MainWindow.cs:185
 msgid "Database not found"
 msgstr "База података није пронађена"
 
-#: src/Gui/MainWindow.cs:116
+#: src/Gui/MainWindow.cs:186
 msgid "Default database not found. Create?"
 msgstr "Подразумевана база података није пронађена. Направи?"
 
-#: src/Gui/MainWindow.cs:145
+#: src/Gui/MainWindow.cs:215
 msgid "Unsupported database version"
 msgstr "Верзија базе података није подржана"
 
-#: src/Gui/MainWindow.cs:146
+#: src/Gui/MainWindow.cs:216
 msgid "This database version is not supported."
 msgstr "Ова верзија базе података није подржана."
 
-#: src/Gui/MainWindow.cs:165
+#: src/Gui/MainWindow.cs:235
 #, csharp-format
 msgid "{0} volumes loaded."
 msgstr "Учитано записа: {0}"
 
-#: src/Gui/MainWindow.cs:186
+#: src/Gui/MainWindow.cs:256
 #, csharp-format
 msgid "An error occured while loading the volume list: {0}"
 msgstr "Дошло је до грешке приликом учитавања списка записа: {0}"
 
-#: src/Gui/MainWindow.cs:228
+#: src/Gui/MainWindow.cs:300
 msgid "Please enter the name for the new database"
 msgstr "Унесите име за нову базу података"
 
-#: src/Gui/MainWindow.cs:240
+#: src/Gui/MainWindow.cs:312
 msgid "Database exists"
 msgstr "База података постоји"
 
-#: src/Gui/MainWindow.cs:241
+#: src/Gui/MainWindow.cs:313
 msgid "Database already exists. Overwrite?"
 msgstr "База података већ постоји. Преписати?"
 
-#: src/Gui/MainWindow.cs:254
+#: src/Gui/MainWindow.cs:326
 msgid "Please select a database"
 msgstr "Изаберите базу података"
 
-#: src/Gui/MainWindow.cs:263 src/Gui/Import.cs:109
+#: src/Gui/MainWindow.cs:335 src/Gui/Import.cs:83
 msgid "Database not found."
 msgstr "База података није пронађена."
 
-#: src/Gui/MainWindow.cs:284
+#: src/Gui/MainWindow.cs:356
 #, csharp-format
 msgid ""
 "An error occured while accessing drive {0}:\n"
@@ -561,129 +577,114 @@ msgstr ""
 "Дошло је до грешке приликом приступања уређају {0}:\n"
 "{1}"
 
-#: src/Gui/MainWindow.cs:306
+#: src/Gui/MainWindow.cs:378
 #, csharp-format
 msgid "Drive {0} is not ready."
 msgstr "Уређај {0} није спреман."
 
-#: src/Gui/MainWindow.cs:315
+#: src/Gui/MainWindow.cs:387
 #, csharp-format
 msgid "Drive {0} is neither mounted nor does it contain an audio cd."
 msgstr "Уређај {0} није ни постављен нити садржи аудио ЦД."
 
-#: src/Gui/MainWindow.cs:342 src/Gui/MainWindow.cs:372
-msgid "No volume selected"
-msgstr "Није одабран запис"
-
-#: src/Gui/MainWindow.cs:343
-msgid "Please select a volume record to remove."
-msgstr "Одаберите запис за уклањање."
-
-#: src/Gui/MainWindow.cs:350
+#: src/Gui/MainWindow.cs:406
 msgid "Confirmation"
 msgstr "Потврда"
 
-#: src/Gui/MainWindow.cs:351
+#: src/Gui/MainWindow.cs:407
 msgid "Are you sure you really want to remove the selected volume?"
 msgstr "Јесте ли сигурни да заиста желите уклонити одабрани запис?"
 
-#: src/Gui/MainWindow.cs:373
-msgid "Please select a volume to edit."
-msgstr "Изаберите запис за уређивање."
+#: src/Gui/MainWindow.cs:712
+#, csharp-format
+msgid "Please insert volume '<b>{0}</b>'."
+msgstr ""
 
-#: src/Gui/MainWindow.cs:390
-msgid "No item selected"
-msgstr "Ниједна ставка није одабрана"
+#: src/Gui/MainWindow.cs:714
+msgid "Waiting for volume"
+msgstr ""
 
-#: src/Gui/MainWindow.cs:391
-msgid "Please select an item to edit."
-msgstr "Изаберите ставку за уређивање."
+#: src/Gui/MainWindow.cs:966
+msgid "Add Volume"
+msgstr ""
 
-#: src/Gui/MainWindow.cs:819
-msgid "_File"
-msgstr "_Датотека"
+#: src/Gui/MainWindow.cs:970
+msgid "Search"
+msgstr ""
 
-#: src/Gui/MainWindow.cs:822
+#: src/Gui/MainWindow.cs:973
+msgid "App Menu"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:979
 msgid "_New Database"
 msgstr "_Нова база података"
 
-#: src/Gui/MainWindow.cs:825
+#: src/Gui/MainWindow.cs:982
 msgid "_Open Database"
 msgstr "_Отвори базу података"
 
-#: src/Gui/MainWindow.cs:828
+#: src/Gui/MainWindow.cs:985
 msgid "Open Default Database"
 msgstr "Отвори подразумевану базу података"
 
-#: src/Gui/MainWindow.cs:831
-msgid "_Database Properties"
-msgstr "_Својства базе података"
-
-#: src/Gui/MainWindow.cs:834
-msgid "_Import"
-msgstr "_Увези"
-
-#: src/Gui/MainWindow.cs:837
-msgid "_Quit"
-msgstr "И_зађи"
-
-#: src/Gui/MainWindow.cs:843
+#: src/Gui/MainWindow.cs:991
 msgid "Recent Databases"
 msgstr "Недавна база података"
 
-#: src/Gui/MainWindow.cs:851
-msgid "_Edit"
-msgstr "У_реди"
+#: src/Gui/MainWindow.cs:998
+msgid "_Import"
+msgstr "_Увези"
 
-#: src/Gui/MainWindow.cs:854
+#: src/Gui/MainWindow.cs:1001
 msgid "_Preferences"
 msgstr "_Поставке"
 
-#: src/Gui/MainWindow.cs:858
-msgid "_Help"
-msgstr "_Помоћ"
+#: src/Gui/MainWindow.cs:1004
+msgid "_Database Properties"
+msgstr "_Својства базе података"
 
-#: src/Gui/MainWindow.cs:861
-msgid "_Info"
-msgstr "_Информације"
+#: src/Gui/MainWindow.cs:1007
+msgid "Info"
+msgstr ""
 
-#: src/Gui/MainWindow.cs:865
-msgid "_Add Volume"
-msgstr "_Додај запис"
+#: src/Gui/MainWindow.cs:1010
+msgid "_Quit"
+msgstr "И_зађи"
 
-#: src/Gui/MainWindow.cs:869
-msgid "_Remove Volume"
-msgstr "У_клони запис"
-
-#: src/Gui/MainWindow.cs:872
+#: src/Gui/MainWindow.cs:1016
 msgid "_Edit Volume"
 msgstr "У_реди запис"
 
-#: src/Gui/MainWindow.cs:875
-msgid "_Search"
-msgstr "_Тражи"
+#: src/Gui/MainWindow.cs:1019
+msgid "_Remove Volume"
+msgstr "У_клони запис"
 
-#: src/Gui/MainWindow.cs:882
+#: src/Gui/MainWindow.cs:1022
+msgid "Rescan Volume"
+msgstr ""
+
+#: src/Gui/MainWindow.cs:1034
 msgid "Sort by"
 msgstr "Сортирај по"
 
-#: src/Gui/MainWindow.cs:885
+#: src/Gui/MainWindow.cs:1037
 msgid "Descending"
 msgstr "Опадајуће"
 
-#: src/Gui/MainWindow.cs:891
+#: src/Gui/MainWindow.cs:1043
 msgid "Date added"
 msgstr "Датуму уноса"
 
-#: src/Gui/MainWindow.cs:892
+#: src/Gui/MainWindow.cs:1044
 msgid "Title"
 msgstr "Наслов"
 
-#: src/Gui/MainWindow.cs:893
+#: src/Gui/MainWindow.cs:1045
 msgid "Drivetype"
 msgstr "Врсти уређаја"
 
-#: src/Gui/MainWindow.cs:1005
+#: src/Gui/MainWindow.cs:1142
 msgid "Filter volumes"
 msgstr "Филтрирај записе"
 
@@ -695,48 +696,65 @@ msgstr "Увези"
 msgid "Abort"
 msgstr "Обустави"
 
-#: src/Gui/Import.cs:98
+#: src/Gui/Import.cs:31
+msgid "Please select a database."
+msgstr ""
+
+#: src/Gui/Import.cs:72
 #, csharp-format
 msgid "{0:0}% completed."
 msgstr "Завршено: {0:0}%"
 
-#: src/Gui/Import.cs:108
+#: src/Gui/Import.cs:82
 msgid "Import failed"
 msgstr "Увоз није успео!"
 
-#: src/Gui/Import.cs:111
+#: src/Gui/Import.cs:85
 msgid "Import failed!"
 msgstr "Увоз није успео!"
 
-#: src/Gui/Import.cs:113
+#: src/Gui/Import.cs:87
 msgid "Import aborted."
 msgstr "Увоз је прекинут."
 
-#: src/Gui/Import.cs:115
+#: src/Gui/Import.cs:89
 msgid "Import completed successfully."
 msgstr "Увоз је успешно завршен."
 
-#: src/Gui/Import.cs:134
+#: src/Gui/Import.cs:121
 msgid "Import in progress"
 msgstr "Увоз је  у току"
 
-#: src/Gui/Import.cs:135
+#: src/Gui/Import.cs:122
 msgid "You must stop the import before closing this window."
 msgstr "Морате зауставити увоз пре него што затворите овај прозор."
 
-#: src/Gui/Import.cs:160
+#: src/Gui/Import.cs:148
+msgid "Unknown format."
+msgstr ""
+
+#: src/Gui/Import.cs:175
 msgid "Import Database"
 msgstr "Увези базу података"
 
-#: src/Gui/Import.cs:171
+#: src/Gui/Import.cs:186
 msgid "Please select a database to import"
 msgstr "Изаберите базу података за увоз"
 
-#: src/Gui/Import.cs:189
+#: src/Gui/Import.cs:194
+msgid "All supported formats"
+msgstr ""
+
+#: src/Gui/Import.cs:198
+#, csharp-format
+msgid ".{0} files"
+msgstr ""
+
+#: src/Gui/Import.cs:209
 msgid "Database:"
 msgstr "База података:"
 
-#: src/Gui/Import.cs:190
+#: src/Gui/Import.cs:210
 msgid "Format:"
 msgstr "Формат:"
 
@@ -744,16 +762,16 @@ msgstr "Формат:"
 msgid "Item Properties"
 msgstr "Својства ставке"
 
-#: src/Gui/VolumeScanner.cs:120
+#: src/Gui/VolumeScanner.cs:116
 msgid "Scanning started."
 msgstr "Скенирање је почело."
 
-#: src/Gui/VolumeScanner.cs:122
+#: src/Gui/VolumeScanner.cs:118
 #, csharp-format
 msgid "Scanning of drive '{0}' started."
 msgstr "Скенирање диска '{0}' је почело."
 
-#: src/Gui/VolumeScanner.cs:128
+#: src/Gui/VolumeScanner.cs:124
 #, csharp-format
 msgid ""
 "Options: generate thumbs: {0}, extract metadata: {1}, discard symlinks: {2}, "
@@ -762,7 +780,7 @@ msgstr ""
 "Опције: прављење сличица: {0}, извлачење метаподатака: {1}, одбацивање "
 "симболичких веза: {2}, хеширање: {3}."
 
-#: src/Gui/VolumeScanner.cs:135
+#: src/Gui/VolumeScanner.cs:131
 #, csharp-format
 msgid "Options: MusicBrainz enabled: {0}"
 msgstr "Опције: омогућен МјузикБрејнз: {0}"
@@ -775,141 +793,141 @@ msgstr "Време"
 msgid "Message"
 msgstr "Порука"
 
-#: src/Gui/VolumeScanner.cs:249
-msgid "yes"
-msgstr "да"
-
-#: src/Gui/VolumeScanner.cs:249
-msgid "no"
-msgstr "не"
-
-#: src/Gui/VolumeScanner.cs:272
-msgid "Scan in progress"
-msgstr "Скенирање је у току"
-
-#: src/Gui/VolumeScanner.cs:272
-msgid "You must stop scanning before closing this window."
-msgstr "Морате зауставити скенирање пре него што затворите овај прозор."
-
-#: src/Gui/VolumeScanner.cs:282
+#: src/Gui/VolumeScanner.cs:258
 msgid "Stopping Scanner and performing rollback..."
 msgstr "Заустављање скенирања и враћање на претходно стање..."
 
-#: src/Gui/VolumeScanner.cs:324
+#: src/Gui/VolumeScanner.cs:268
+msgid "yes"
+msgstr "да"
+
+#: src/Gui/VolumeScanner.cs:268
+msgid "no"
+msgstr "не"
+
+#: src/Gui/VolumeScanner.cs:291
+msgid "Scan in progress"
+msgstr "Скенирање је у току"
+
+#: src/Gui/VolumeScanner.cs:291
+msgid "You must stop scanning before closing this window."
+msgstr "Морате зауставити скенирање пре него што затворите овај прозор."
+
+#: src/Gui/VolumeScanner.cs:346
 #, csharp-format
 msgid "An unhandled exception occured ({0})."
 msgstr "Дошло је до неочекиване грешке ({0})."
 
-#: src/Gui/VolumeScanner.cs:325
+#: src/Gui/VolumeScanner.cs:347
 msgid "All database changes have been rolled back."
 msgstr "Све промене на бази података су поништене."
 
-#: src/Gui/VolumeScanner.cs:348
+#: src/Gui/VolumeScanner.cs:354
 #, csharp-format
 msgid "Scanning failed. Reason: an unhandled exception occured ({0})."
 msgstr "Скенирање није успело. Разлог: дошло је до неочекиване грешке ({0})."
 
-#: src/Gui/VolumeScanner.cs:350
+#: src/Gui/VolumeScanner.cs:356
 msgid "Scanning aborted."
 msgstr "Скенирање је прекинуто."
 
-#: src/Gui/VolumeScanner.cs:352
+#: src/Gui/VolumeScanner.cs:358
 msgid "Scanning completed successfully."
 msgstr "Скенирање је успешно завршено."
 
-#: src/Gui/VolumeScanner.cs:449
+#: src/Gui/VolumeScanner.cs:488
 msgid "VolumeScanner"
 msgstr "Скенер дискова"
 
-#: src/Gui/VolumeScanner.cs:461
+#: src/Gui/VolumeScanner.cs:500
 msgid "<b>Volume Information:</b>"
 msgstr "<b>Подаци о запису:</b>"
 
-#: src/Gui/VolumeScanner.cs:471
+#: src/Gui/VolumeScanner.cs:510
 msgid "<b>Scanner Log:</b>"
 msgstr "<б> Дневник скенирања: </ Б>"
 
-#: src/Gui/VolumeScanner.cs:488
+#: src/Gui/VolumeScanner.cs:527
 msgid "Database access"
 msgstr "Приступ базама података"
 
-#: src/Gui/Preferences.cs:108
+#: src/Gui/Preferences.cs:119
 msgid "None"
 msgstr "Нема"
 
-#: src/Gui/Preferences.cs:217
+#: src/Gui/Preferences.cs:228
 msgid "Unsupported theme"
 msgstr "Неподржана тема"
 
-#: src/Gui/Preferences.cs:218
+#: src/Gui/Preferences.cs:229
 msgid "The selected icon theme is currently not supported on your system."
 msgstr "Изабрана тема икона тренутно није подржана на вашем систему."
 
-#: src/Gui/Preferences.cs:256
+#: src/Gui/Preferences.cs:267
 msgid "Restart required"
 msgstr "Потребно је рестартовање"
 
-#: src/Gui/Preferences.cs:257
+#: src/Gui/Preferences.cs:268
 #, csharp-format
 msgid "You must restart {0} for icontheme changes to take effect."
 msgstr "Морате да рестартујете {0} да би се тема за иконе применила."
 
-#: src/Gui/Preferences.cs:287
+#: src/Gui/Preferences.cs:298
 msgid "Preferences"
 msgstr "Поставке"
 
-#: src/Gui/Preferences.cs:311
+#: src/Gui/Preferences.cs:322
 msgid "_Load Defaults"
 msgstr "_Учитај подразумевано"
 
-#: src/Gui/Preferences.cs:337
+#: src/Gui/Preferences.cs:349
 msgid "Icon theme:"
 msgstr "Тема икона:"
 
-#: src/Gui/Preferences.cs:343
+#: src/Gui/Preferences.cs:355
 msgid "Reopen most recent database on startup"
 msgstr "Приликом покретања отвори најсвежију базу података"
 
-#: src/Gui/Preferences.cs:347
+#: src/Gui/Preferences.cs:359
 msgid "Show iteminfo panel"
 msgstr "Прикажи поље са информацијама"
 
-#: src/Gui/Preferences.cs:351
+#: src/Gui/Preferences.cs:363
 msgid "Show hidden files"
 msgstr "Прикажи скривене датотеке"
 
-#: src/Gui/Preferences.cs:355
+#: src/Gui/Preferences.cs:367
 msgid "Show thumbnails in the filebrowser"
 msgstr "Прикажи сличице у претраживачу датотека"
 
-#: src/Gui/Preferences.cs:358
+#: src/Gui/Preferences.cs:370
 msgid "General"
 msgstr "Опште"
 
-#: src/Gui/Preferences.cs:366
+#: src/Gui/Preferences.cs:378
 msgid "Don't prompt, always scan:"
 msgstr "Не постављај упит већ одмах скенирај:"
 
-#: src/Gui/Preferences.cs:385
+#: src/Gui/Preferences.cs:397
 msgid "Generate Thumbnails"
 msgstr "Направи сличице"
 
-#: src/Gui/Preferences.cs:389
+#: src/Gui/Preferences.cs:401
 msgid "Extract metadata"
 msgstr "Извуци метаподатке"
 
-#: src/Gui/Preferences.cs:393
+#: src/Gui/Preferences.cs:405
 msgid "Discard symbolic links"
 msgstr "Одбаци симболичке везе"
 
-#: src/Gui/Preferences.cs:397
+#: src/Gui/Preferences.cs:409
 msgid "Compute hashcodes for files (slow!)"
 msgstr "Израчунај хеш резултат за датотеке (споро!)"
 
-#: src/Gui/Preferences.cs:401
+#: src/Gui/Preferences.cs:413
 msgid "Fetch audio cd metadata from MusicBrainz.org"
 msgstr "Прибави метаподатке  за аудио ЦД са МјузикБрејнза"
 
-#: src/Gui/Preferences.cs:404
+#: src/Gui/Preferences.cs:416
 msgid "Scanner"
 msgstr "Скенер"

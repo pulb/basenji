@@ -248,6 +248,7 @@ EXTRAS = \
 	basenji \
 	Basenji.exe.config \
 	src/App.cs.in \
+	po/sk.resources \
 	basenji.desktop.in \
 	basenji.in 
 

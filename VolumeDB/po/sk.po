@@ -1,16 +1,16 @@
-# Croatian translation for basenji
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# Slovak translation for basenji
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the basenji package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-07-15 15:49+0200\n"
-"PO-Revision-Date: 2011-03-05 11:28+0000\n"
-"Last-Translator: Borna Bilas <Unknown>\n"
-"Language-Team: Croatian <hr@li.org>\n"
+"PO-Revision-Date: 2012-07-21 22:44+0000\n"
+"Last-Translator: Izidor Matušov <izidor.matusov@gmail.com>\n"
+"Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,84 +22,83 @@ msgstr ""
 #, csharp-format
 msgid ""
 "Operand for keyword '{0}' must be a number with an optional multiplier"
-msgstr ""
-"Operator za ključnu riječ '{0}' mora biti broj s opcionalnim množiteljem"
+msgstr "Operand pre kľúčové slovo '{0}' musí byť číslo s prípadným násobkom"
 
 #: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:84
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:75
 #, csharp-format
 msgid "Invalid compare operator for keyword '{0}'"
-msgstr "Nevažeći operator uspoređivanja za ključnu riječ '{0}'"
+msgstr "Neplatný operátor porovnávania pre kľúčové slovo '{0}'"
 
 #: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:99
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:122
 #, csharp-format
 msgid "Unknown keyword '{0}'"
-msgstr "Nepoznata ključna riječ '{0}'."
+msgstr "Neznáme kľúčové slovo '{0}'"
 
 #: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:109
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:133
 msgid "Invalid compare operator for a keyword that maps to textual content"
 msgstr ""
-"Nevažeći operator uspoređivanja za ključnu riječ mapiranu na tekstualni "
-"sadržaj."
+"Nie je možné použiť operátor porovnávania pre kľúčové slovo, ktoré sa viaže "
+"na textový obsah."
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:85
 #, csharp-format
 msgid "Operand for keyword '{0}' must be a string"
-msgstr "Operator za ključnu riječ '{0}' mora biti string"
+msgstr "Operand pre kľúčové slovo '{0}' musí byť reťazec."
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:94
 #, csharp-format
 msgid "Unknown type '{0}'"
-msgstr "Nepoznata vrsta '{0}'"
+msgstr "Neznámy typ '{0}'"
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:100
 #, csharp-format
 msgid "Keyword '{0}' only supports the equality operator ('=')"
-msgstr "Ključna riječ '{0}' podržava samo operator jednakosti ('=')"
+msgstr "Kľúčové slovo '{0}'podporuje iba operátor rovnosti ('=')"
 
 #: src/Searching/AbstractEUSLSearchCriteria.cs:87
 #: src/Searching/AbstractEUSLSearchCriteria.cs:91
 #, csharp-format
 msgid "Parsing error: search statement is malformed at position {0}"
-msgstr "Graška u analizi: pojam u pretraživanju je deformiran u poziciji {0}"
+msgstr "Chyba spracovania: príkaz vyhľadávania je chybný na pozícií {0}"
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:55
 msgid "Hashcode generation not implemented for audio cds yet."
-msgstr "Generacija Hash kodova za audio CD-e nije još implementirana."
+msgstr "Geneorvanie hash kódov pre zvukové CD nie je ešte implementované."
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:97
 msgid "No MusicBrainz metadata available for this disc."
-msgstr "Nema MusicBrainz metapodataka dostupnih za disk."
+msgstr "Pre tento disk nie sú dostupné žiadne metadáta z MusicBrainz"
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:102
 msgid ""
 "The trackcount retrieved from MusicBrainz does not match the trackcount of "
 "the local disc. Skipped."
 msgstr ""
-"Broj pjesama dobiven od MusicBrainz se ne slaže s brojem pjesama na lokalnom "
-"disku. Preskočeno."
+"Počet skladieb získaný z MusicBrainz sa nezhoduje s počtom skladieb na "
+"lokálnom disky. Preskakujem."
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:125
 msgid "Error connecting to MusicBrainz server."
-msgstr "Greška u spajanju na MusicBrainz server."
+msgstr "Nastala chyba pri pripájaní k serveru MusicBrainz"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:165
 #, csharp-format
 msgid "Directory '{0}' not found. (Wrong filename encoding?)"
-msgstr "Mapa '{0}' nije nađena. (Pogrešno kodiranje imena?)"
+msgstr "Adresár '{0}' nebol nájdený. (Možno zlé kódovanie názvu súboru?)"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:174
 #, csharp-format
 msgid "Skipped item '{0}' as it doesn't seem to be a real directory."
-msgstr "Preskačena stavka '{0}' jer nije prava mapa."
+msgstr "Preskakujem položku '{0}', pretože nie je skutočným adresárom."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:195
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:340
 #, csharp-format
 msgid "Skipped symlink item '{0}' as the target does not exist."
-msgstr "Preskočena simbolička veza '{0}' jer cilj nije valjan."
+msgstr "Preskakujem neplatný symbolický odkaz '{0}'."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:204
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:347
@@ -108,46 +107,48 @@ msgid ""
 "Skipped symlink item '{0}' as it appears to point to a different drive "
 "('{1}')."
 msgstr ""
-"Preskočena simbolička veza '{0}' jer pokazuje na drugi pogon ('{1}')."
+"Preskakujem symbolický odkaz '{0}', ktorý odkazuje na inú jednotku ('{1}')."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:245
 #, csharp-format
 msgid "File '{0}' not found. (Wrong filename encoding?)"
-msgstr "Datoteka '{0}' nije nađena. (Pogrešno kodiranje imena?)"
+msgstr "Nenašiel sa súbor '{0}'. (Možno zlé kódovanie názvu súboru?)"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:279
 #, csharp-format
 msgid "Extracting metadata from file '{0}' failed. ({1})"
-msgstr ""
+msgstr "Extrahovanie metadát zo súboru '{0}' zlyhalo. ({1})"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:310
 #, csharp-format
 msgid "Error opening file '{0}', can't retrieve any mime/metadata. ({1})"
-msgstr "Greška u otvaranju '{0}', nije moguće dohvatiti metapodatke. ({1})"
+msgstr ""
+"Problém pri otváraní súboru '{0}': nie je možné získať žiadne metadáta. ({1})"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:354
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."
 msgstr ""
-"Preskočena simbolička veza '{0}' jer ne pokazuje normalnu datoteku ('{1}')."
+"Preskakujem symbolický odkaz '{0}', pretože neodkazuje na štandardný súbor "
+"('{1}')."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:363
 #, csharp-format
 msgid "Skipped item '{0}' as it appears to be some kind of special file."
-msgstr "Prekočena stavka '{0}' jer je nekakva posebna datoteka."
+msgstr "Preskakujem položku '{0}', pretože je to špeciálny súbor."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:381
 #, csharp-format
 msgid "Unable to dump dir '{0}'. ({1})"
-msgstr "Nije moguće odbaciti mapu '{0}'. ({1})"
+msgstr "Nie je možné otvoriť adresár '{0}'. ({1})"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:500
 #, csharp-format
 msgid "Can't read LastWriteTime from item '{0}' ({1})."
-msgstr "Nije moguće pročitati LastWriteTime iz stavke '{0}' ({1})"
+msgstr "Nie je možné prečítať čas posledného zápisu pre položku '{0}' ({1})."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:664
 #, csharp-format
 msgid "Failed to resolve target item for symlink '{0}'."
-msgstr "Nije moguće razriješiti ciljnu stavku za simboličku vezu '{0}'."
+msgstr "Problém sa nájsť cieľ symbolického odkazu '{0}'."

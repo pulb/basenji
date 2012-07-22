@@ -114,6 +114,7 @@
     <File subtype="Code" buildaction="EmbedAsResource" name="po/cs.resources" resource_id="Basenji.po.cs.resources" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/Widgets/InfoBar.cs" />
     <File subtype="Code" buildaction="Compile" name="src/Gui/WaitingDialog.cs" />
+    <File subtype="Code" buildaction="Nothing" name="po/sk.resources" />
   </Contents>
   <References>
     <ProjectReference type="Project" localcopy="True" refto="Platform" />

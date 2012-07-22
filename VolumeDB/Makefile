@@ -251,6 +251,7 @@ RESOURCES = \
 	po/nl.resources,VolumeDB.po.nl.resources 
 
 EXTRAS = \
+	po/sk.resources \
 	volumedb.pc.in 
 
 REFERENCES =  \
