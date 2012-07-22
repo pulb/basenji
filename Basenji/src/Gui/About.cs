@@ -127,6 +127,9 @@ Serbian:
     Kosava (https://launchpad.net/~kosava)
     Srdjan Hrnjak (https://launchpad.net/~srdjan-hrnjak)
 
+Slovak:
+    Izidor Matušov (https://launchpad.net/~izidor)
+
 Spanish:
     Alfredo Hernández (https://launchpad.net/~aldomann)
     Daniel Garcia Stelzner (https://launchpad.net/~dani-garcia87)
