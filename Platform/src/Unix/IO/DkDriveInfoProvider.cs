@@ -33,7 +33,7 @@ namespace Platform.Unix.IO
 		}
 		
 		public virtual void FromDevice(DriveInfo d, string device) {
-			// dev can be a drive (e.g. cdrom with/without media), 
+			// dev can be a drive (e.g. cdrom with/without media, an usb-stick with a custom format (no partitions), ...), 
 			// a partitiontable, a partition or a luks-holder representing an encrypted filesystem.
 			DkDisk dev = DkDisk.FindByDevice(device);
 			
@@ -69,7 +69,7 @@ namespace Platform.Unix.IO
 		public virtual List<DriveInfo> GetAll(bool readyDrivesOnly)	{
 			List<DriveInfo> drives = new List<DriveInfo>();
 			
-			// dev can be a drive (e.g. cdrom with/without media), 
+			// dev can be a drive (e.g. cdrom with/without media, an usb-stick with a custom format (no partitions), ...), 
 			// a partitiontable, a partition or a luks-holder representing an encrypted filesystem.
 			DkDisk[] devs = DkDisk.EnumerateDevices();
 			
