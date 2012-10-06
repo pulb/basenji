@@ -1,6 +1,6 @@
 // DkDriveInfoProvider.cs
 // 
-// Copyright (C) 2011 Patrick Ulbrich
+// Copyright (C) 2011, 2012 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ namespace Platform.Unix.IO
 		
 		public virtual void FromDevice(DriveInfo d, string device) {
 			// dev can be a drive (e.g. cdrom with/without media), 
-			// a partitiontable, a partition or a luks-holder representing an encrypted partition.
+			// a partitiontable, a partition or a luks-holder representing an encrypted filesystem.
 			DkDisk dev = DkDisk.FindByDevice(device);
 			
 			if (dev == null)
@@ -70,7 +70,7 @@ namespace Platform.Unix.IO
 			List<DriveInfo> drives = new List<DriveInfo>();
 			
 			// dev can be a drive (e.g. cdrom with/without media), 
-			// a partitiontable, a partition or a luks-holder representing an encrypted partition.
+			// a partitiontable, a partition or a luks-holder representing an encrypted filesystem.
 			DkDisk[] devs = DkDisk.EnumerateDevices();
 			
 			foreach (DkDisk dev in devs) {
@@ -125,10 +125,18 @@ namespace Platform.Unix.IO
 				DkDisk parent = new DkDisk(obj_path);
 				d.driveType = GetDriveType(parent);
 			} else if (dev.DeviceIsLuksClearText) {
-				// dev is a luks-holder representing an encrypted partition
-				DkDisk encryptedPartition = new DkDisk(dev.LuksCleartextSlave);
-				DkDisk drive = new DkDisk(encryptedPartition.PartitionSlave);
-				d.driveType = GetDriveType(drive);
+				// dev is a luks-holder representing an encrypted filesystem
+				DkDisk parent = new DkDisk(dev.LuksCleartextSlave);
+				if (parent.IsDrive) {
+					d.driveType = GetDriveType(parent);
+				} else {
+					if (parent.IsPartition) {
+						parent = new DkDisk(parent.PartitionSlave);
+						d.driveType = GetDriveType(parent);
+					} else {
+						d.driveType = DriveType.Unknown;
+					}
+				}
 			} else if (dev.IsDrive) {
 				d.driveType = GetDriveType(dev);
 			} else {
