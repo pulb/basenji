@@ -38,6 +38,7 @@ Contributors:
     Francesco Marella (https://launchpad.net/~francesco-marella)
     György Balló (https://launchpad.net/~ballogy)
     Mauro Solcia (https://launchpad.net/~maurosolcia)
+    Tobias Gruetzmacher (https://launchpad.net/~tobix)
 " };
 		
 		private static readonly string		translatorCredits	= 
