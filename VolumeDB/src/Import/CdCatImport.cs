@@ -308,12 +308,14 @@ namespace VolumeDB.Import
 			             string.Format("Expected 'mp3tag' or 'comment' node but got '{0}' node", node.Name));
 			
 			try {
+				string tmp;
+				
 				switch (node.Name) {
 					case "mp3tag":
 						convertedData = new List<MetadataItem>();
 						
 						foreach (var pair in metadataMapping) {
-							string tmp = node.Attributes[pair.Key].Value.Trim();
+							tmp = node.Attributes[pair.Key].Value.Trim();
 							if (tmp.Length > 0)
 								convertedData.Add(new MetadataItem(pair.Value, tmp));
 						}
@@ -329,7 +331,7 @@ namespace VolumeDB.Import
 						break;
 					case "comment":
 						string match;
-						string tmp = node.InnerText.Trim();
+						tmp = node.InnerText.Trim();
 						
 						// try to parse Video/Audio info from comments, 
 						// e. g. "Video:#XVID MPEG-4#Gesamtzeit = 1:16:09#Framerate = 23.976 f/s#Aufloesung = 640x272##Audio:#ISO/MPEG Layer-3 

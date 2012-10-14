@@ -53,7 +53,7 @@ namespace Basenji.Gui
 		
 		private void BeginWaiting() {
 			System.Action act = delegate {
-				T tmp;
+				T tmp = default(T);
 				while (!canceled && !waitFunc(out tmp))
 					Thread.Sleep(1000);
 				
