@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-07-15 15:49+0200\n"
-"PO-Revision-Date: 2012-07-21 22:17+0000\n"
+"PO-Revision-Date: 2012-07-23 14:01+0000\n"
 "Last-Translator: Izidor Matušov <izidor.matusov@gmail.com>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-07-22 10:48+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-10-27 11:00+0000\n"
+"X-Generator: Launchpad (build 16194)\n"
 
 #: src/Util.cs:30
 #, csharp-format
@@ -859,7 +859,7 @@ msgstr "Prístup k databázi"
 
 #: src/Gui/Preferences.cs:119
 msgid "None"
-msgstr "Žiadna"
+msgstr "Nič"
 
 #: src/Gui/Preferences.cs:228
 msgid "Unsupported theme"
@@ -912,7 +912,7 @@ msgstr "Všeobecné"
 
 #: src/Gui/Preferences.cs:378
 msgid "Don't prompt, always scan:"
-msgstr "Nepýtať sa, vždy prehľadávať:"
+msgstr "Vždy prehľadávaj:"
 
 #: src/Gui/Preferences.cs:397
 msgid "Generate Thumbnails"
@@ -924,15 +924,15 @@ msgstr "Extrahovanie metadát"
 
 #: src/Gui/Preferences.cs:405
 msgid "Discard symbolic links"
-msgstr "Rušiť symbolické odkazy"
+msgstr "Rušenie symbolických odkazov"
 
 #: src/Gui/Preferences.cs:409
 msgid "Compute hashcodes for files (slow!)"
-msgstr "Vypočítať hash kódy súborov (pomalé!)"
+msgstr "Vypočítavanie hash kódov súborov (pomalé!)"
 
 #: src/Gui/Preferences.cs:413
 msgid "Fetch audio cd metadata from MusicBrainz.org"
-msgstr "Sťahuj metadáta pre zvukové CD z MusicBrainz.org"
+msgstr "Sťahovanie metadát pre zvukové CD z MusicBrainz.org"
 
 #: src/Gui/Preferences.cs:416
 msgid "Scanner"
