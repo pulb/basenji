@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basenji_win32", "Basenji\Basenji_win32.csproj", "{9D64337F-0383-47B8-8CAB-D7B7C3FE143C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VolumeDB_win32", "VolumeDB\VolumeDB_win32.csproj", "{59B6E0D9-AF8C-40B1-A2F3-22C37503174C}"

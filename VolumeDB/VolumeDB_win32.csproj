@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,10 +10,30 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VolumeDB</RootNamespace>
     <AssemblyName>VolumeDB</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <StartupObject>
     </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>http://localhost/VolumeDB/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +43,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,6 +52,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -64,6 +86,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.XML" />
     <Reference Include="taglib-sharp, Version=2.0.4.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\basenji_dependencies\taglib-sharp.dll</HintPath>
@@ -86,6 +109,7 @@
     <EmbeddedResource Include="po\pl.resources" />
     <EmbeddedResource Include="po\pt_BR.resources" />
     <EmbeddedResource Include="po\ru.resources" />
+    <EmbeddedResource Include="po\sk.resources" />
     <EmbeddedResource Include="po\sr.resources" />
     <EmbeddedResource Include="po\tr.resources" />
     <EmbeddedResource Include="po\zh_CN.resources" />
@@ -100,6 +124,7 @@
     <Compile Include="src\DbData.cs" />
     <Compile Include="src\DecoderUtility.cs" />
     <Compile Include="src\DirectoryVolumeItem.cs" />
+    <Compile Include="src\ExtensionMethods.cs" />
     <Compile Include="src\FieldnameValuePair.cs" />
     <Compile Include="src\FileSystemVolume.cs" />
     <Compile Include="src\FileSystemVolumeItem.cs" />
@@ -110,10 +135,13 @@
     <Compile Include="src\IHashable.cs" />
     <Compile Include="src\Import\AbstractImport.cs" />
     <Compile Include="src\Import\BasenjiImport.cs" />
+    <Compile Include="src\Import\CdCatImport.cs" />
     <Compile Include="src\Import\CdCollectImport.cs" />
     <Compile Include="src\Import\Events.cs" />
     <Compile Include="src\Import\GnomeCatalogImport.cs" />
     <Compile Include="src\Import\IImport.cs" />
+    <Compile Include="src\Import\ImportAttribute.cs" />
+    <Compile Include="src\Import\ImportException.cs" />
     <Compile Include="src\IRecordData.cs" />
     <Compile Include="src\IVolumeDBRecord.cs" />
     <Compile Include="src\Metadata\ArchiveMetadataProvider.cs" />
@@ -179,5 +207,22 @@
     <Compile Include="src\VolumeScanner\VolumeInfo.cs" />
     <Compile Include="src\VolumeScanner\VolumeProber.cs" />
     <Compile Include="src\VolumeType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
 </Project>
