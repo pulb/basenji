@@ -93,6 +93,8 @@ namespace VolumeDB.VolumeScanner
 					// may throw MusicBrainzNotFoundException
 					Release release = Release.Query(localdisc).PerfectMatch();
 
+					CheckForCancellationRequest();
+
 					if (release == null) {
 						SendScannerWarning(S._("No MusicBrainz metadata available for this disc."));
 					} else {
