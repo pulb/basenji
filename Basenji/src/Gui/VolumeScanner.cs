@@ -135,9 +135,15 @@ namespace Basenji.Gui
 						throw new NotImplementedException(string.Format("Missing options output for scannertyp {0}", scanner.GetType()));
 				}
 				
-				// copy already known volume data into the editor
-				volEditor.ArchiveNo = scanner.VolumeInfo.ArchiveNo;
-				volEditor.Title = scanner.VolumeInfo.Title;
+				if (scanner.VolumeInfo.GetVolumeType() == VolumeType.FileSystemVolume) {
+					// copy already known volume data into the editor
+					volEditor.ArchiveNo = scanner.VolumeInfo.ArchiveNo;
+					volEditor.Title = scanner.VolumeInfo.Title;
+				} else {
+					// other volumetypes have no useful data yet (e.g. AudioCD data may be queried from musicbrainz.org), 
+					// so disable the editor and re-enable it and fill in the data when scanning has been completed.
+					volEditor.Sensitive = false;
+				}
 				
 				// start scanning on a new thread and return immediately
 				scanner.RunAsync();
@@ -229,7 +235,7 @@ namespace Basenji.Gui
 					// SaveTo() may throw a ValidationException.
 					// Note: The volumeditor has either been filled on scanner start manually
 					// (no volume loaded) or an existing volume has been loaded into it
-					// via the public VolumeEditor property.
+					// (via the public VolumeEditor property or via volEditor.Load() on scan completion).
 					volEditor.SaveTo(newVolume);
 					SaveLog(newVolume.VolumeID);
 					OnNewVolumeAdded(newVolume);
@@ -357,6 +363,13 @@ namespace Basenji.Gui
 				} else {
 					UpdateLog(LogIcon.Info, S._("Scanning completed successfully."));
 					newVolume = e.Volume;
+
+					// the volume editor may have been disabled in the ctor 
+					// for some volume types (e.g. AudioCD volumes)
+					if (!volEditor.Sensitive) {
+						volEditor.Load(newVolume);
+						volEditor.Sensitive = true;
+					}
 				}
 
 				if (!btnAbort.Sensitive) /* possibly disabled in AbortScan() */
