@@ -26,7 +26,7 @@ using System.Runtime.CompilerServices;
 // you compile.
 
 [assembly: AssemblyTitle("Basenji")]
-[assembly: AssemblyDescription("A portable volume indexer")]
+[assembly: AssemblyDescription("A cross-platform media indexing/search tool")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
