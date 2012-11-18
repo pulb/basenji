@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-07-15 15:49+0200\n"
-"PO-Revision-Date: 2012-01-26 12:50+0000\n"
-"Last-Translator: Luis García <info@solusystems.net>\n"
+"PO-Revision-Date: 2012-11-13 00:40+0000\n"
+"Last-Translator: Guillermo Espertino (Gez) <gespertino@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-27 11:00+0000\n"
-"X-Generator: Launchpad (build 16194)\n"
+"X-Launchpad-Export-Date: 2012-11-18 12:32+0000\n"
+"X-Generator: Launchpad (build 16278)\n"
 
 #: src/Util.cs:30
 #, csharp-format
@@ -497,7 +497,7 @@ msgstr "Buscar items"
 
 #: src/Gui/ItemSearch.cs:318
 msgid "Quick tip:"
-msgstr ""
+msgstr "Consejo rápido:"
 
 #: src/Gui/ItemSearch.cs:319
 #, csharp-format
@@ -517,7 +517,7 @@ msgstr "Editar Elemento"
 
 #: src/Gui/ItemSearch.cs:382
 msgid "Show in Main Window"
-msgstr ""
+msgstr "Mostrar en la Ventana Principal"
 
 #: src/Gui/MainWindow.cs:77 src/Gui/MainWindow.cs:93 src/Gui/MainWindow.cs:635
 #, csharp-format
@@ -602,23 +602,23 @@ msgstr ""
 #: src/Gui/MainWindow.cs:712
 #, csharp-format
 msgid "Please insert volume '<b>{0}</b>'."
-msgstr ""
+msgstr "Por favor inserte el volumen '<b>{0}</b>'."
 
 #: src/Gui/MainWindow.cs:714
 msgid "Waiting for volume"
-msgstr ""
+msgstr "Esperando el volumen"
 
 #: src/Gui/MainWindow.cs:966
 msgid "Add Volume"
-msgstr ""
+msgstr "Agregar Volumen"
 
 #: src/Gui/MainWindow.cs:970
 msgid "Search"
-msgstr ""
+msgstr "Buscar"
 
 #: src/Gui/MainWindow.cs:973
 msgid "App Menu"
-msgstr ""
+msgstr "Menú de la Aplicación"
 
 #: src/Gui/MainWindow.cs:979
 msgid "_New Database"
@@ -650,7 +650,7 @@ msgstr "_Propiedades de la Base de Datos"
 
 #: src/Gui/MainWindow.cs:1007
 msgid "Info"
-msgstr ""
+msgstr "Información"
 
 #: src/Gui/MainWindow.cs:1010
 msgid "_Quit"
@@ -666,7 +666,7 @@ msgstr "_Eliminar volumen"
 
 #: src/Gui/MainWindow.cs:1022
 msgid "Rescan Volume"
-msgstr ""
+msgstr "Reanalizar el Volumen"
 
 #: src/Gui/MainWindow.cs:1034
 msgid "Sort by"
@@ -702,7 +702,7 @@ msgstr "Anular"
 
 #: src/Gui/Import.cs:31
 msgid "Please select a database."
-msgstr ""
+msgstr "Por favor, seleccione una base de datos."
 
 #: src/Gui/Import.cs:72
 #, csharp-format
@@ -735,7 +735,7 @@ msgstr "Debe detener la importación antes de cerrar esta ventana."
 
 #: src/Gui/Import.cs:148
 msgid "Unknown format."
-msgstr ""
+msgstr "Formato desconocido."
 
 #: src/Gui/Import.cs:175
 msgid "Import Database"
@@ -747,12 +747,12 @@ msgstr "Por favor seleccione una base de datos a importar"
 
 #: src/Gui/Import.cs:194
 msgid "All supported formats"
-msgstr ""
+msgstr "Todos los formatos soportados"
 
 #: src/Gui/Import.cs:198
 #, csharp-format
 msgid ".{0} files"
-msgstr ""
+msgstr ".{0} archivos"
 
 #: src/Gui/Import.cs:209
 msgid "Database:"

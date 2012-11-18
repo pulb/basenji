@@ -1,40 +1,40 @@
 # Serbian translation for basenji
 # Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
 # This file is distributed under the same license as the basenji package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
-#
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-07-15 15:49+0200\n"
-"PO-Revision-Date: 2011-04-27 08:08+0000\n"
-"Last-Translator: Срђан Хрњак <Unknown>\n"
-"Language-Team: Serbian <sr@li.org>\n"
+"PO-Revision-Date: 2012-10-30 14:24+0000\n"
+"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"Language-Team: Serbian translators\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-27 11:00+0000\n"
-"X-Generator: Launchpad (build 16194)\n"
+"X-Launchpad-Export-Date: 2012-11-18 12:32+0000\n"
+"X-Generator: Launchpad (build 16278)\n"
+"Language: sr\n"
 
 #: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:74
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:65
 #, csharp-format
 msgid ""
 "Operand for keyword '{0}' must be a number with an optional multiplier"
-msgstr "Операнд кључне речи '{0}' мора бити број, са опционалним множитељем"
+msgstr "Операнд кључне речи „{0}“ мора бити број, са опционалним множитељем"
 
 #: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:84
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:75
 #, csharp-format
 msgid "Invalid compare operator for keyword '{0}'"
-msgstr "Неправилан оператор поређења за кључну реч '{0}'"
+msgstr "Неправилан оператор поређења за кључну реч „{0}“"
 
 #: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:99
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:122
 #, csharp-format
 msgid "Unknown keyword '{0}'"
-msgstr "Непозната кључна реч '{0}'"
+msgstr "Непозната кључна реч „{0}“"
 
 #: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:109
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:133
@@ -46,59 +46,60 @@ msgstr ""
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:85
 #, csharp-format
 msgid "Operand for keyword '{0}' must be a string"
-msgstr "Операнд кључне речи '{0}' мора бити низ"
+msgstr "Операнд кључне речи „{0}“ мора бити низ"
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:94
 #, csharp-format
 msgid "Unknown type '{0}'"
-msgstr "Непозната врста '{0}'"
+msgstr "Непозната врста „{0}“"
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:100
 #, csharp-format
 msgid "Keyword '{0}' only supports the equality operator ('=')"
-msgstr "Кључна реч '{0}' подржава само једнакост ('=') као оператор"
+msgstr "Кључна реч „{0}“ подржава само једнакост („=“) као оператор"
 
 #: src/Searching/AbstractEUSLSearchCriteria.cs:87
 #: src/Searching/AbstractEUSLSearchCriteria.cs:91
 #, csharp-format
 msgid "Parsing error: search statement is malformed at position {0}"
-msgstr "Грешка у расчлањивању: захтев за претрагу је неправилан на месту {0}"
+msgstr ""
+"Грешка рашчлањивања: захтев за претрагу је неправилан на положају {0}"
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:55
 msgid "Hashcode generation not implemented for audio cds yet."
-msgstr "Рачунање хеш резултата још увек није омогућено за аудио ЦД-ове."
+msgstr "Рачунање хеш резултата још увек није омогућено за аудио дискове."
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:97
 msgid "No MusicBrainz metadata available for this disc."
-msgstr "МјузикБрејнз нема доступне метаподатке за овај диск."
+msgstr "Музички мозгић нема доступне метаподатке за овај диск."
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:102
 msgid ""
 "The trackcount retrieved from MusicBrainz does not match the trackcount of "
 "the local disc. Skipped."
 msgstr ""
-"Број нумера добављен са МјузикБрејнза се не подудара са бројем нумера на "
+"Број нумера добављен са Музичког мозгића се не подудара са бројем нумера на "
 "диску. Прескочено."
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:125
 msgid "Error connecting to MusicBrainz server."
-msgstr "Грешка при повезивању са сервером МјузикБрејнза."
+msgstr "Грешка при повезивању са сервером Музичког мозгића."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:165
 #, csharp-format
 msgid "Directory '{0}' not found. (Wrong filename encoding?)"
-msgstr "Није пронађена фасцикла '{0}'. (Погрешно енкодирано име датотеке?)"
+msgstr "Није пронађена фасцикла „{0}“. (Погрешно кодиран назив датотеке?)"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:174
 #, csharp-format
 msgid "Skipped item '{0}' as it doesn't seem to be a real directory."
-msgstr "Ставка '{0}' је прескочена пошто вероватно није стварна фасцикла."
+msgstr "Ставка „{0}“ је прескочена пошто вероватно није стварна фасцикла."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:195
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:340
 #, csharp-format
 msgid "Skipped symlink item '{0}' as the target does not exist."
-msgstr "Симболичка веза '{0}' је прескочена пошто одредиште не постоји."
+msgstr "Симболичка веза „{0}“ је прескочена пошто одредиште не постоји."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:204
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:347
@@ -107,50 +108,49 @@ msgid ""
 "Skipped symlink item '{0}' as it appears to point to a different drive "
 "('{1}')."
 msgstr ""
-"Симболичка веза '{0}' је прескочена пошто указује на други уређај ('{1}')."
+"Симболичка веза „{0}“ је прескочена пошто указује на други уређај („{1}“)."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:245
 #, csharp-format
 msgid "File '{0}' not found. (Wrong filename encoding?)"
-msgstr "Није пронађена датотека '{0}' . (Погрешно енкодирано име датотеке?)"
+msgstr "Није пронађена датотека „{0}“ . (Погрешно кодиран назив датотеке?)"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:279
 #, csharp-format
 msgid "Extracting metadata from file '{0}' failed. ({1})"
-msgstr ""
+msgstr "Извлачење метаподатка из датотеке „{0}“ није успело. ({1})"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:310
 #, csharp-format
 msgid "Error opening file '{0}', can't retrieve any mime/metadata. ({1})"
 msgstr ""
-"Грешка приликом отварања датотеке '{0}', није могуће прибавити метаподатке. "
-"({1})"
+"Грешка отварања датотеке „{0}“, не могу да прибавим метаподатке. ({1})"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:354
 #, csharp-format
 msgid ""
 "Skipped symlink item '{0}' as it does not point to a regular file ('{1}')."
 msgstr ""
-"Симболичка веза '{0}' је прескочена пошто не указује на исправну датотеку "
-"('{1}')."
+"Симболичка веза „{0}“ је прескочена пошто не указује на исправну датотеку "
+"(„{1}“)."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:363
 #, csharp-format
 msgid "Skipped item '{0}' as it appears to be some kind of special file."
 msgstr ""
-"Ставка '{0}' је прескочена пошто изгледа као нека врста специјалне датотеке."
+"Ставка „{0}“ је прескочена пошто изгледа као нека врста посебне датотеке."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:381
 #, csharp-format
 msgid "Unable to dump dir '{0}'. ({1})"
-msgstr "Није могуће сажети фасциклу '{0}'. ({1})"
+msgstr "Не могу да сажмем фасциклу „{0}“. ({1})"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:500
 #, csharp-format
 msgid "Can't read LastWriteTime from item '{0}' ({1})."
-msgstr "Не може да се очита време последњег уписа за ставку '{0}' ({1})."
+msgstr "Не могу да очитам време последњег уписа за ставку „{0}“ ({1})."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:664
 #, csharp-format
 msgid "Failed to resolve target item for symlink '{0}'."
-msgstr "Није успело прибављање одредишта за симболичку везу '{0}'."
+msgstr "Нисам успео да решим одредишну ставку за симболичку везу „{0}“."

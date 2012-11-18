@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: basenji\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-07-15 15:49+0200\n"
-"PO-Revision-Date: 2011-01-03 11:13+0000\n"
-"Last-Translator: Alexander 'FONTER' Zinin <spore_09@mail.ru>\n"
+"PO-Revision-Date: 2012-10-29 23:52+0000\n"
+"Last-Translator: oleh <rolenin@ukr.net>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-27 11:00+0000\n"
-"X-Generator: Launchpad (build 16194)\n"
+"X-Launchpad-Export-Date: 2012-11-18 12:32+0000\n"
+"X-Generator: Launchpad (build 16278)\n"
 
 #: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:74
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:65
@@ -30,7 +30,7 @@ msgstr ""
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:75
 #, csharp-format
 msgid "Invalid compare operator for keyword '{0}'"
-msgstr ""
+msgstr "Неправильный оператор сравнения для команды '{0}'"
 
 #: src/Searching/VolumeSearchCriteria/EUSLSearchCriteria.cs:99
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:122
@@ -42,6 +42,8 @@ msgstr "Неизвестное ключевое слово '{0}'"
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:133
 msgid "Invalid compare operator for a keyword that maps to textual content"
 msgstr ""
+"Неправильный оператор сравнения для команды, сопоставляющей текстовое "
+"содержимое"
 
 #: src/Searching/ItemSearchCriteria/EUSLSearchCriteria.cs:85
 #, csharp-format
@@ -62,11 +64,11 @@ msgstr "Ключевое слово \"{0} 'поддерживает только
 #: src/Searching/AbstractEUSLSearchCriteria.cs:91
 #, csharp-format
 msgid "Parsing error: search statement is malformed at position {0}"
-msgstr ""
+msgstr "Синтаксическая ошибка: неправильный поисковый запрос в позиции {0}"
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:55
 msgid "Hashcode generation not implemented for audio cds yet."
-msgstr ""
+msgstr "Генерирование хеш-кода пока не включено для аудиодисков."
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:97
 msgid "No MusicBrainz metadata available for this disc."
@@ -77,6 +79,8 @@ msgid ""
 "The trackcount retrieved from MusicBrainz does not match the trackcount of "
 "the local disc. Skipped."
 msgstr ""
+"Список треков, полученный с MusicBrainz, не совпадает со списком треков на "
+"локальном диске. Пропущено."
 
 #: src/VolumeScanner/AudioCdVolumeScanner.cs:125
 msgid "Error connecting to MusicBrainz server."
@@ -90,7 +94,7 @@ msgstr "Каталог '{0} \"не найден. (Неправильная ко�
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:174
 #, csharp-format
 msgid "Skipped item '{0}' as it doesn't seem to be a real directory."
-msgstr ""
+msgstr "Элемент '{0}' пропущен, так как скорее всего не является каталогом."
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:195
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:340
@@ -115,7 +119,7 @@ msgstr "Файл '{0} \"не найден. (Неправильная кодир�
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:279
 #, csharp-format
 msgid "Extracting metadata from file '{0}' failed. ({1})"
-msgstr ""
+msgstr "Извлечь метаданные из файла '{0}' не удалось. ({1})"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:310
 #, csharp-format
@@ -138,7 +142,7 @@ msgstr "Пропущенн пункт '{0} \", кажется это специ�
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:381
 #, csharp-format
 msgid "Unable to dump dir '{0}'. ({1})"
-msgstr ""
+msgstr "Не удаётся записать в дамп каталог '{0}'. ({1})"
 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:500
 #, csharp-format
@@ -148,4 +152,4 @@ msgstr "Невозможно прочитать LastWriteTime из пункта 
 #: src/VolumeScanner/FilesystemVolumeScanner.cs:664
 #, csharp-format
 msgid "Failed to resolve target item for symlink '{0}'."
-msgstr ""
+msgstr "Не разрешено создавать символьную ссылку '{0}' для объекта."
