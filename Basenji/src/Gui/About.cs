@@ -118,6 +118,7 @@ Russian:
     Dmitri Konoplev (https://launchpad.net/~knoplef)
     Eugene Marshal (https://launchpad.net/~lowrider)
     Nikolai Romanik (https://launchpad.net/~arhey)
+    oleh (https://launchpad.net/~rolenin-c)
     Oleksiy Zaytsev (https://launchpad.net/~alexiy74)
     Papazu (https://launchpad.net/~pavel-z)
     Sciko (https://launchpad.net/~tempsciko-gmail)
@@ -126,6 +127,7 @@ Russian:
 
 Serbian:
     Kosava (https://launchpad.net/~kosava)
+    Мирослав Николић (https://launchpad.net/~lipek)
     Srdjan Hrnjak (https://launchpad.net/~srdjan-hrnjak)
 
 Slovak:
@@ -138,6 +140,7 @@ Spanish:
     Emiliano (https://launchpad.net/~emilianohfernandez)
     Feder Sáiz (https://launchpad.net/~federsaiz)
     Fitoschido (https://launchpad.net/~fitoschido)
+    Guillermo Espertino (Gez) (https://launchpad.net/~gespertino-gmail)
     Luis García (https://launchpad.net/~luismihn)
     Jonay Santana (https://launchpad.net/~jonay-santana)
     Jorge Dardón (https://launchpad.net/~jdardon)
