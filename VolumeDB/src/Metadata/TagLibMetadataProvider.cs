@@ -269,6 +269,12 @@ namespace VolumeDB.Metadata
 			if (!HasValidData(data))
 				return false;
 			
+			// TODO : workaround for bug #1084428
+			// remove this if the bug has been fixed upstream
+			// in taglib#.
+			if (data[data.Length - 1] == '\0')
+				data = data.Substring(0, data.Length -1);
+
 			metadata.Add(new MetadataItem(type, data));
 			
 			if (VERBOSE && Global.EnableDebugging)
