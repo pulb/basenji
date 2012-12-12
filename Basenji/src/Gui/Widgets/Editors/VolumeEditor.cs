@@ -284,7 +284,7 @@ namespace Basenji.Gui.Widgets.Editors
 			WindowBase.TblAttach(tbl, txtArchiveNo,		1, 0, xAttachOpts, yAttachOpts);
 			WindowBase.TblAttach(tbl, cmbCategory,		1, 1, xAttachOpts, yAttachOpts);
 			WindowBase.TblAttach(tbl, txtTitle,			1, 2, xAttachOpts, yAttachOpts);
-			WindowBase.TblAttach(tbl, swDescription,	1, 3, xAttachOpts, yAttachOpts);
+			WindowBase.TblAttach(tbl, swDescription,	1, 3, xAttachOpts, AttachOptions.Expand | AttachOptions.Fill);
 			WindowBase.TblAttach(tbl, txtKeywords,		1, 4, xAttachOpts, yAttachOpts);
 			WindowBase.TblAttach(tbl, txtLoanedTo,		1, 5, xAttachOpts, yAttachOpts);
 			WindowBase.TblAttach(tbl, dcLoanedDate,		1, 6, xAttachOpts, yAttachOpts);
