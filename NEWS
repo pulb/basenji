@@ -1,0 +1,144 @@
+Version 1.0.1 (2012-12-28):
+===========================
+* Added workaround for a metadata parsing bug in taglib-sharp
+* Fixed height of the description entry in the volume editor
+* Updated translations
+
+
+Version 1.0 (2012-10-28):
+=========================
+* Added ability to rescan volumes
+* Added ability to view found items in the main window
+* Removed menubar and added chrome-like appmenu button
+* Misc other GUI updates
+* Added CdCat import
+* Added search criteria chooser for MS Windows
+* KDE compatibility fixes
+* Added ability to enter volume information while scanning
+* Added ability to close windows via the esc key / delete items via the del key
+* Removed deprecated Gnome-VFS and Gnome dependencies
+* Speed improvements
+* Misc other bugfixes
+* Updated / added translations
+
+
+Version 0.9 (2012-02-19):
+=========================
+* Migrated to taglib-sharp
+* Migrated to dbus-sharp
+* GNOME 3 improvements
+* Updated translations
+* Bugfixes
+
+
+Version 0.8 (2011-04-25):
+=========================
+* Added support for network drives and mountpoints
+* Added option to disable the iteminfo panel
+* Added option to hide hidden files
+* Added support for metadata searching
+* Added debugging options
+* Added daemon for automated drive scanning
+  (linux only, see http://www.webupd8.org/2010/10/basenji-gets-scanner-daemon-which.html)
+* Many new translations
+* Many optimizations and bugfixes
+
+
+Version 0.7.1 (2010-08-15):
+===========================
+* Fixed a critical bug that was introduced in 0.7 and 
+  causes scan abortion if an empty keyword is encountered (bug #615908)
+* Use a smaller button icon in the prefs dialog
+* Make sure minimized modal windows are brought back to front properly
+* Do not disable theme selection on non-GNOME systems
+* Added highres app icons for Windows
+* Updated brazilian portuguese, spanish and german translations
+
+
+Version 0.7 (2010-08-07):
+=========================
+* Added search presets to volume and item searchentries
+* Added support for thumbnails in the filebrowser (bug #508523)
+* Added ability to sort volumes by various criteria (bug #587169)
+* Added menu for recently used databases (bug #587169)
+* Added item editor (double click on an item)
+* Added note and keyword properties to the ItemInfo widget
+* Highlight items that have notes or keywords assigned
+* Updated libextractor bindings (removes BOMs from unicode keywords)
+* Added EUSL support for volume queries
+* Fixed crash on encrypted drives (bug #574292)
+* Added more volume categories (bug #606796)
+* Beautified DateChooser widget
+* Added ability to open databases via command line
+* Make sure translated labels do not shrink widgets
+* Fixed column widths in some widgets
+* Fixed duration format in the ItemInfo widget
+* Fixed calendar window width
+* Only show search errors temporarily in the mainwindow
+* Fixed some compiler warnings
+* Other minor bugfixes
+* Updated translations
+
+New translations:
+* Italian
+* Bulgarian
+* Occitan
+* Brazilian portuguese
+* Turkish
+* Polish
+
+
+Version 0.6 (2010-04-20):
+=========================
+* Added support for audio cds. Yay!
+* Added GnomeCatalog import
+* Migrated to devicekit-disks (removes HAL dependency)
+* Rewritten symlink resolving (much much faster, resolves symlinks to symlinks)
+* Blacklist support for libextractor plugins that are unstable
+* Added new translations (french, russian)
+* Added support for mimeicons in custom icon themes (e.g. Tango on windows)
+* Fixed a memleak in the libextractor binding
+* Unified duration times
+* Code refactoring
+* Lots of bugfixes
+
+It is strongly recommended to update to this release.
+
+
+Version 0.5 (2010-01-04):
+=========================
+* MS Windows build available!
+* Added spanish translation
+* Beautified ItemInfo widget (featuring bigger thumbnails with less mem usage)
+* Tidied up the volume list
+* Support for a local settings directory ("user_data")
+* Added menu option to open the default database
+* Set saner default widget widths
+* Bugfixes
+
+
+Version 0.4 (2009-12-02):
+=========================
+* LibExtractor integration!
+* Overhauled main window
+* Overhauled iteminfo widget (inspired by tracker)
+* Volume searching
+
+
+Version 0.3 (2009-04-19):
+=========================
+* Added XESAM-like searchlanguage
+* Improved search window
+* Bugfixes
+
+
+Version 0.2 (2008-10-21):
+=========================
+* Translation support
+* Thumbnail creation
+* More
+
+
+Version 0.1 (2008-10-03):
+=========================
+* Initial release
