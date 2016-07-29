@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AE119B81-E7B5-4E27-9303-C0B600E657A9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>VolumeDB</RootNamespace>
+    <AssemblyName>VolumeDB</AssemblyName>
+    <AssemblyOriginatorKeyFile>.</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+    <Execution>
+      <Execution clr-version="Net_2_0" xmlns="" />
+    </Execution>
+    <ConsolePause>false</ConsolePause>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <Execution>
+      <Execution clr-version="Net_2_0" xmlns="" />
+    </Execution>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="src\" />
+    <Folder Include="src\Searching\VolumeSearchCriteria\" />
+    <Folder Include="src\Import\" />
+    <Folder Include="src\Metadata\" />
+    <Folder Include="src\VolumeScanner\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="src\Searching\CompareOperator.cs" />
+    <Compile Include="src\Searching\ISearchCriteria.cs" />
+    <Compile Include="src\Searching\MatchRule.cs" />
+    <Compile Include="src\Searching\SearchCriteriaGroup.cs" />
+    <Compile Include="src\Searching\TextCompareOperator.cs" />
+    <Compile Include="src\VolumeScanner\Events.cs" />
+    <Compile Include="src\VolumeScanner\FilesystemVolumeInfo.cs" />
+    <Compile Include="src\VolumeScanner\FilesystemVolumeScanner.cs" />
+    <Compile Include="src\VolumeScanner\IVolumeScanner.cs" />
+    <Compile Include="src\VolumeScanner\VolumeInfo.cs" />
+    <Compile Include="src\VolumeScanner\AbstractVolumeScanner.cs" />
+    <Compile Include="src\AssemblyInfo.cs" />
+    <Compile Include="src\BufferedVolumeItemWriter.cs" />
+    <Compile Include="src\DatabaseProperties.cs" />
+    <Compile Include="src\DirectoryVolumeItem.cs" />
+    <Compile Include="src\FieldnameValuePair.cs" />
+    <Compile Include="src\FileSystemVolume.cs" />
+    <Compile Include="src\FileSystemVolumeItem.cs" />
+    <Compile Include="src\FileVolumeItem.cs" />
+    <Compile Include="src\IChildItem.cs" />
+    <Compile Include="src\IContainerItem.cs" />
+    <Compile Include="src\IHashable.cs" />
+    <Compile Include="src\IRecordData.cs" />
+    <Compile Include="src\IVolumeDBRecord.cs" />
+    <Compile Include="src\UnsupportedDbVersionException.cs" />
+    <Compile Include="src\Util.cs" />
+    <Compile Include="src\Volume.cs" />
+    <Compile Include="src\VolumeDatabase.cs" />
+    <Compile Include="src\VolumeDatabase.SqlBackend.cs" />
+    <Compile Include="src\VolumeDBDataType.cs" />
+    <Compile Include="src\VolumeDriveType.cs" />
+    <Compile Include="src\VolumeItem.cs" />
+    <Compile Include="src\VolumeItemType.cs" />
+    <Compile Include="src\VolumeType.cs" />
+    <Compile Include="src\S.cs" />
+    <Compile Include="src\Searching\ExcludedSearchCriteria.cs" />
+    <Compile Include="src\Searching\EUSL\Parsing\Collect.cs" />
+    <Compile Include="src\Searching\EUSL\Parsing\EventHandlers.cs" />
+    <Compile Include="src\Searching\EUSL\Parsing\Parser.cs" />
+    <Compile Include="src\Searching\EUSL\Parsing\Relation.cs" />
+    <Compile Include="src\Searching\EUSL\Parsing\TermType.cs" />
+    <Compile Include="src\Searching\EUSL\Parsing\UnexpectedTokenException.cs" />
+    <Compile Include="src\Searching\EUSL\Scanning\Scanner.cs" />
+    <Compile Include="src\Searching\EUSL\Scanning\ScannerException.cs" />
+    <Compile Include="src\Searching\EUSL\Scanning\Token.cs" />
+    <Compile Include="src\Searching\EUSL\Scanning\TokenKind.cs" />
+    <Compile Include="src\TooManyResultsException.cs" />
+    <Compile Include="src\Searching\ItemSearchCriteria\FileSizeSearchCriteria.cs" />
+    <Compile Include="src\Searching\ItemSearchCriteria\FreeTextSearchField.cs" />
+    <Compile Include="src\Searching\ItemSearchCriteria\IDSearchCriteria.cs" />
+    <Compile Include="src\Searching\ItemSearchCriteria\IDSearchField.cs" />
+    <Compile Include="src\Searching\ItemSearchCriteria\MediaType.cs" />
+    <Compile Include="src\Searching\ItemSearchCriteria\MediaTypeSearchCriteria.cs" />
+    <Compile Include="src\Searching\SearchCriteriaType.cs" />
+    <Compile Include="src\Searching\ItemSearchCriteria\EUSLSearchCriteria.cs" />
+    <Compile Include="src\Searching\VolumeSearchCriteria\QuantitySearchCriteria.cs" />
+    <Compile Include="src\Searching\VolumeSearchCriteria\QuantityField.cs" />
+    <Compile Include="src\Searching\SearchUtils.cs" />
+    <Compile Include="src\Searching\FreeTextSearchCriteria.cs" />
+    <Compile Include="src\Searching\IFreeTextSearchField.cs" />
+    <Compile Include="src\Searching\VolumeSearchCriteria\FreeTextSearchField.cs" />
+    <Compile Include="src\Import\GnomeCatalogImport.cs" />
+    <Compile Include="src\Import\BasenjiImport.cs" />
+    <Compile Include="src\Import\AbstractImport.cs" />
+    <Compile Include="src\Import\Events.cs" />
+    <Compile Include="src\Import\CdCollectImport.cs" />
+    <Compile Include="src\Import\IImport.cs" />
+    <Compile Include="src\DecoderUtility.cs" />
+    <Compile Include="src\DbData.cs" />
+    <Compile Include="src\VolumeScanner\ScannerOptions.cs" />
+    <Compile Include="src\VolumeScanner\FilesystemScannerOptions.cs" />
+    <Compile Include="src\VolumeScanner\VolumeProber.cs" />
+    <Compile Include="src\VolumeScanner\AudioCdVolumeScanner.cs" />
+    <Compile Include="src\VolumeScanner\AudioCdVolumeInfo.cs" />
+    <Compile Include="src\VolumeScanner\AudioCdScannerOptions.cs" />
+    <Compile Include="src\AudioTrackVolumeItem.cs" />
+    <Compile Include="src\AudioCdVolume.cs" />
+    <Compile Include="src\AudioCdRootVolumeItem.cs" />
+    <Compile Include="src\Searching\VolumeSearchCriteria\EUSLSearchCriteria.cs" />
+    <Compile Include="src\Searching\AbstractEUSLSearchCriteria.cs" />
+    <Compile Include="src\Global.cs" />
+    <Compile Include="src\Metadata\MetadataProvider.cs" />
+    <Compile Include="src\Metadata\MetadataType.cs" />
+    <Compile Include="src\Metadata\MetadataItem.cs" />
+    <Compile Include="src\Metadata\MetadataStore.cs" />
+    <Compile Include="src\Metadata\MetadataUtils.cs" />
+    <Compile Include="src\Metadata\ArchiveMetadataProvider.cs" />
+    <Compile Include="src\Metadata\TagLibMetadataProvider.cs" />
+    <Compile Include="src\Import\CdCatImport.cs" />
+    <Compile Include="src\Import\ImportException.cs" />
+    <Compile Include="src\Import\ImportAttribute.cs" />
+    <Compile Include="src\ExtensionMethods.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="po\de.resources" />
+    <EmbeddedResource Include="po\he.resources" />
+    <EmbeddedResource Include="po\da.resources" />
+    <EmbeddedResource Include="po\fr.resources" />
+    <EmbeddedResource Include="po\es.resources" />
+    <EmbeddedResource Include="po\it.resources" />
+    <EmbeddedResource Include="po\bg.resources" />
+    <EmbeddedResource Include="po\oc.resources" />
+    <EmbeddedResource Include="po\pt_BR.resources" />
+    <EmbeddedResource Include="po\tr.resources" />
+    <EmbeddedResource Include="po\pl.resources" />
+    <EmbeddedResource Include="po\hu.resources" />
+    <EmbeddedResource Include="po\et.resources" />
+    <EmbeddedResource Include="po\zh_CN.resources" />
+    <EmbeddedResource Include="po\sr.resources" />
+    <EmbeddedResource Include="po\ru.resources" />
+    <EmbeddedResource Include="po\hr.resources" />
+    <EmbeddedResource Include="po\cs.resources" />
+    <EmbeddedResource Include="po\nl.resources" />
+    <EmbeddedResource Include="po\sk.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Platform.Common.DB\Platform.Common.DB.csproj">
+      <Project>{9927EE3F-56D2-4395-A6B2-9CD88FB3F705}</Project>
+      <Name>Platform.Common.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Platform\Platform.csproj">
+      <Project>{D42A6780-6123-481B-AD68-EB0C9BA05455}</Project>
+      <Name>Platform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MusicBrainz\MusicBrainz.csproj">
+      <Project>{FFE0E142-A677-4BDD-999A-743CC0058F48}</Project>
+      <Name>MusicBrainz</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="ICSharpCode.SharpZipLib" />
+    <Reference Include="System.Xml" />
+    <Reference Include="taglib-sharp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

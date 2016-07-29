@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D42A6780-6123-481B-AD68-EB0C9BA05455}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Platform</RootNamespace>
+    <AssemblyName>Platform</AssemblyName>
+    <AssemblyOriginatorKeyFile>.</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>UNIX,DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+    <Execution>
+      <Execution clr-version="Net_2_0" xmlns="" />
+    </Execution>
+    <ConsolePause>false</ConsolePause>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>UNIX</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+    <Execution>
+      <Execution clr-version="Net_2_0" xmlns="" />
+    </Execution>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Gnome_Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>UNIX,DEBUG,GNOME</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Execution>
+      <Execution clr-version="Net_2_0" xmlns="" />
+    </Execution>
+    <additionalargs>-pkg:gtk-sharp-2.0 -pkg:gio-sharp-2.0</additionalargs>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Gnome_Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>UNIX,GNOME</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+    <Execution>
+      <Execution clr-version="Net_2_0" xmlns="" />
+    </Execution>
+    <additionalargs>-pkg:gtk-sharp-2.0 -pkg:gio-sharp-2.0</additionalargs>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="src\" />
+    <Folder Include="src\Common\Globalization\" />
+    <Folder Include="src\Win32\IO\" />
+    <Folder Include="src\Gnome\IO\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="src\Common\Diagnostics\CurrentPlatform.cs" />
+    <Compile Include="src\Common\Diagnostics\CurrentRuntime.cs" />
+    <Compile Include="src\Common\Diagnostics\Debug.cs" />
+    <Compile Include="src\Common\IO\DriveInfo.cs" />
+    <Compile Include="src\Common\IO\DriveNotMountedException.cs" />
+    <Compile Include="src\Common\IO\DriveNotReadyException.cs" />
+    <Compile Include="src\Common\IO\DriveType.cs" />
+    <Compile Include="src\Common\IO\FileHelper.cs" />
+    <Compile Include="src\Common\Mime\MimeIconLookup.cs" />
+    <Compile Include="src\Common\Mime\MimeType.cs" />
+    <Compile Include="src\Unix\IO\UnixFileHelper.cs" />
+    <Compile Include="src\Unix\Mime\Mime.cs" />
+    <Compile Include="src\Win32\Mime\RegistryMime.cs" />
+    <Compile Include="src\AssemblyInfo.cs" />
+    <Compile Include="src\Common\ThumbnailGenerator.cs" />
+    <Compile Include="src\Gnome\ThumbnailGenerator.cs" />
+    <Compile Include="src\Common\Globalization\Catalog.cs" />
+    <Compile Include="src\Common\Globalization\TranslatedStringTable.cs" />
+    <Compile Include="src\Win32\ThumbnailCreator.cs" />
+    <Compile Include="src\Win32\ThumbnailGenerator.cs" />
+    <Compile Include="src\Common\Diagnostics\AssertionFailedException.cs" />
+    <Compile Include="src\Unix\IO\DkDisk.cs" />
+    <Compile Include="src\Common\IO\IDriveInfoProvider.cs" />
+    <Compile Include="src\Unix\IO\DkDriveInfoProvider.cs" />
+    <Compile Include="src\Win32\IO\Win32DriveInfoProvider.cs" />
+    <Compile Include="src\Win32\IO\AudioCdWin32.cs" />
+    <Compile Include="src\Gnome\IO\GioDriveInfoProvider.cs" />
+    <Compile Include="src\Gnome\GnomeDesktop\DesktopThumbnailFactory.cs" />
+    <Compile Include="src\Gnome\GnomeDesktop\DesktopThumbnailSize.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Platform.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Mono.Posix" />
+    <Reference Include="System.Core" />
+    <Reference Include="dbus-sharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5675b0c3093115b5" />
+    <Reference Include="dbus-sharp-glib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5675b0c3093115b5" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties xmlns="">
+        <Deployment.LinuxDeployData />
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>

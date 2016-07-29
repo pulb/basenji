@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{36BB020F-AE84-4660-9193-C6A3F6DC85E3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Basenji</RootNamespace>
+    <ApplicationIcon>images\basenji.ico</ApplicationIcon>
+    <AssemblyName>Basenji</AssemblyName>
+    <AssemblyOriginatorKeyFile>.</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+    <Execution>
+      <Execution clr-version="Net_2_0" xmlns="" />
+    </Execution>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <CustomCommands>
+      <CustomCommands xmlns="">
+        <Command type="AfterBuild" command="./custom_build_commands.sh --after-build ${TargetDir}" workingdir="${ProjectDir}" />
+        <Command type="AfterClean" command="./custom_build_commands.sh --after-clean ${TargetDir}" workingdir="${ProjectDir}" />
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+    <Execution>
+      <Execution clr-version="Net_2_0" xmlns="" />
+    </Execution>
+    <CustomCommands>
+      <CustomCommands xmlns="">
+        <Command type="AfterBuild" command="./custom_build_commands.sh --after-build ${TargetDir}" workingdir="${ProjectDir}" />
+        <Command type="AfterClean" command="./custom_build_commands.sh --after-clean ${TargetDir}" workingdir="${ProjectDir}" />
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="app.desktop">
+      <DeployService-Deploy>True</DeployService-Deploy>
+      <DeployService-HasPathReferences>True</DeployService-HasPathReferences>
+      <DeployService-TargetDirectoryId>Linux.DesktopApplications</DeployService-TargetDirectoryId>
+    </Content>
+    <Content Include="basenji">
+      <DeployService-Deploy>True</DeployService-Deploy>
+      <DeployService-HasPathReferences>True</DeployService-HasPathReferences>
+      <DeployService-TargetDirectoryId>Binaries</DeployService-TargetDirectoryId>
+    </Content>
+    <Content Include="Basenji.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="images\LED_Off.png" />
+    <EmbeddedResource Include="images\LED_On.png" />
+    <EmbeddedResource Include="po\de.resources" />
+    <EmbeddedResource Include="po\he.resources" />
+    <EmbeddedResource Include="po\da.resources" />
+    <EmbeddedResource Include="po\es.resources" />
+    <EmbeddedResource Include="po\fr.resources" />
+    <EmbeddedResource Include="po\ru.resources" />
+    <EmbeddedResource Include="po\bg.resources" />
+    <EmbeddedResource Include="po\it.resources" />
+    <EmbeddedResource Include="po\oc.resources" />
+    <EmbeddedResource Include="po\pt_BR.resources" />
+    <EmbeddedResource Include="po\tr.resources" />
+    <EmbeddedResource Include="images\calendar.png" />
+    <EmbeddedResource Include="po\pl.resources" />
+    <EmbeddedResource Include="po\hu.resources" />
+    <EmbeddedResource Include="po\et.resources" />
+    <EmbeddedResource Include="po\uk.resources" />
+    <EmbeddedResource Include="po\zh_CN.resources" />
+    <EmbeddedResource Include="po\sr.resources" />
+    <EmbeddedResource Include="po\hr.resources" />
+    <EmbeddedResource Include="po\nl.resources" />
+    <EmbeddedResource Include="po\cs.resources" />
+    <EmbeddedResource Include="po\sk.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\" />
+    <Folder Include="src\Gui\Widgets\Editors\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="src\Gui\About.cs" />
+    <Compile Include="src\Gui\DBProperties.cs" />
+    <Compile Include="src\Gui\DriveSelection.cs" />
+    <Compile Include="src\Gui\Events.cs" />
+    <Compile Include="src\Gui\ItemSearch.cs" />
+    <Compile Include="src\Gui\MainWindow.cs" />
+    <Compile Include="src\Gui\Preferences.cs" />
+    <Compile Include="src\Gui\VolumeProperties.cs" />
+    <Compile Include="src\Gui\VolumeScanner.cs" />
+    <Compile Include="src\Gui\Base\BinBase.cs" />
+    <Compile Include="src\Gui\Base\DialogBase.cs" />
+    <Compile Include="src\Gui\Base\ViewBase.cs" />
+    <Compile Include="src\Gui\Base\WindowBase.cs" />
+    <Compile Include="src\Gui\Widgets\DateChooser.cs" />
+    <Compile Include="src\Gui\Widgets\ItemInfo.cs" />
+    <Compile Include="src\Gui\Widgets\ItemView.cs" />
+    <Compile Include="src\Gui\Widgets\Led.cs" />
+    <Compile Include="src\Gui\Widgets\SearchResultView.cs" />
+    <Compile Include="src\Gui\Widgets\VolumeView.cs" />
+    <Compile Include="src\Icons\CustomIconTheme.cs" />
+    <Compile Include="src\Icons\Icon.cs" />
+    <Compile Include="src\Icons\IconCache.cs" />
+    <Compile Include="src\Icons\IconUtils.cs" />
+    <Compile Include="src\Icons\ItemIcons.cs" />
+    <Compile Include="src\Icons\MimeIconCache.cs" />
+    <Compile Include="src\Icons\NameInCustomIconThemeAttribute.cs" />
+    <Compile Include="src\App.cs" />
+    <Compile Include="src\AssemblyInfo.cs" />
+    <Compile Include="src\PathUtil.cs" />
+    <Compile Include="src\FileDialog.cs" />
+    <Compile Include="src\Main.cs" />
+    <Compile Include="src\MsgDialog.cs" />
+    <Compile Include="src\Settings.cs" />
+    <Compile Include="src\Util.cs" />
+    <Compile Include="src\S.cs" />
+    <Compile Include="src\Gui\Widgets\CategoryView.cs" />
+    <Compile Include="src\Gui\Widgets\PageNavigation.cs" />
+    <Compile Include="src\Gui\Widgets\PageNavigationEvents.cs" />
+    <Compile Include="src\Gui\Widgets\IconEntry.cs" />
+    <Compile Include="src\Gui\Widgets\SearchEntry.cs" />
+    <Compile Include="src\Gui\Widgets\ItemPreview.cs" />
+    <Compile Include="src\Gui\Import.cs" />
+    <Compile Include="src\Icons\CustomIconThemeMimeMapping.cs" />
+    <Compile Include="src\MimeCategoryMapping.cs" />
+    <Compile Include="src\Gui\ItemProperties.cs" />
+    <Compile Include="src\Gui\ObjectProperties.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\AudioCdVolumeEditor.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\AudioTrackItemEditor.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\FileSystemItemEditor.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\FileSystemVolumeEditor.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\ItemEditor.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\ObjectEditor.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\ObjectEditorEvents.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\ObjectEditorExceptions.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\VolumeEditor.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\FileItemEditor.cs" />
+    <Compile Include="src\Gui\Widgets\Editors\DirectoryItemEditor.cs" />
+    <Compile Include="src\Gui\Widgets\Sorting.cs" />
+    <Compile Include="src\Options.cs" />
+    <Compile Include="src\Global.cs" />
+    <Compile Include="src\Gui\Widgets\InfoBar.cs" />
+    <Compile Include="src\Gui\WaitingDialog.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\App.cs.in">
+      <Gettext-ScanForTranslations>False</Gettext-ScanForTranslations>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Platform\Platform.csproj">
+      <Project>{D42A6780-6123-481B-AD68-EB0C9BA05455}</Project>
+      <Name>Platform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VolumeDB\VolumeDB.csproj">
+      <Project>{AE119B81-E7B5-4E27-9303-C0B600E657A9}</Project>
+      <Name>VolumeDB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="pango-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>glib-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="Mono.Cairo" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties xmlns="">
+        <Deployment.LinuxDeployData generateScript="False" />
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>

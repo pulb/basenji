@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FFE0E142-A677-4BDD-999A-743CC0058F48}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MusicBrainz</RootNamespace>
+    <AssemblyName>MusicBrainz</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="src\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="src\Artist.cs" />
+    <Compile Include="src\AssemblyInfo.cs" />
+    <Compile Include="src\Disc.cs" />
+    <Compile Include="src\DiscLinux.cs" />
+    <Compile Include="src\DiscWin32.cs" />
+    <Compile Include="src\Event.cs" />
+    <Compile Include="src\Label.cs" />
+    <Compile Include="src\LocalDisc.cs" />
+    <Compile Include="src\MusicBrainzEntity.cs" />
+    <Compile Include="src\MusicBrainzException.cs" />
+    <Compile Include="src\MusicBrainzItem.cs" />
+    <Compile Include="src\MusicBrainzObject.cs" />
+    <Compile Include="src\MusicBrainzService.cs" />
+    <Compile Include="src\Query.cs" />
+    <Compile Include="src\Relation.cs" />
+    <Compile Include="src\Release.cs" />
+    <Compile Include="src\Track.cs" />
+    <Compile Include="src\Utils.cs" />
+    <Compile Include="src\XmlRequestEventArgs.cs" />
+    <Compile Include="src\DiscWin32NT.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties xmlns="">
+        <Deployment.LinuxDeployData generatePcFile="False" />
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>

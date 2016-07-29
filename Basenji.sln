@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basenji", "Basenji\Basenji.csproj", "{36BB020F-AE84-4660-9193-C6A3F6DC85E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VolumeDB", "VolumeDB\VolumeDB.csproj", "{AE119B81-E7B5-4E27-9303-C0B600E657A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platform", "Platform\Platform.csproj", "{D42A6780-6123-481B-AD68-EB0C9BA05455}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platform.Common.DB", "Platform.Common.DB\Platform.Common.DB.csproj", "{9927EE3F-56D2-4395-A6B2-9CD88FB3F705}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicBrainz", "MusicBrainz\MusicBrainz.csproj", "{FFE0E142-A677-4BDD-999A-743CC0058F48}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Gnome_Debug|Any CPU = Gnome_Debug|Any CPU
+		Gnome_Release|Any CPU = Gnome_Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36BB020F-AE84-4660-9193-C6A3F6DC85E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36BB020F-AE84-4660-9193-C6A3F6DC85E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36BB020F-AE84-4660-9193-C6A3F6DC85E3}.Gnome_Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36BB020F-AE84-4660-9193-C6A3F6DC85E3}.Gnome_Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36BB020F-AE84-4660-9193-C6A3F6DC85E3}.Gnome_Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36BB020F-AE84-4660-9193-C6A3F6DC85E3}.Gnome_Release|Any CPU.Build.0 = Release|Any CPU
+		{36BB020F-AE84-4660-9193-C6A3F6DC85E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36BB020F-AE84-4660-9193-C6A3F6DC85E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9927EE3F-56D2-4395-A6B2-9CD88FB3F705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9927EE3F-56D2-4395-A6B2-9CD88FB3F705}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9927EE3F-56D2-4395-A6B2-9CD88FB3F705}.Gnome_Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9927EE3F-56D2-4395-A6B2-9CD88FB3F705}.Gnome_Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9927EE3F-56D2-4395-A6B2-9CD88FB3F705}.Gnome_Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9927EE3F-56D2-4395-A6B2-9CD88FB3F705}.Gnome_Release|Any CPU.Build.0 = Release|Any CPU
+		{9927EE3F-56D2-4395-A6B2-9CD88FB3F705}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9927EE3F-56D2-4395-A6B2-9CD88FB3F705}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE119B81-E7B5-4E27-9303-C0B600E657A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE119B81-E7B5-4E27-9303-C0B600E657A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE119B81-E7B5-4E27-9303-C0B600E657A9}.Gnome_Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE119B81-E7B5-4E27-9303-C0B600E657A9}.Gnome_Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE119B81-E7B5-4E27-9303-C0B600E657A9}.Gnome_Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE119B81-E7B5-4E27-9303-C0B600E657A9}.Gnome_Release|Any CPU.Build.0 = Release|Any CPU
+		{AE119B81-E7B5-4E27-9303-C0B600E657A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE119B81-E7B5-4E27-9303-C0B600E657A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D42A6780-6123-481B-AD68-EB0C9BA05455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D42A6780-6123-481B-AD68-EB0C9BA05455}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D42A6780-6123-481B-AD68-EB0C9BA05455}.Gnome_Debug|Any CPU.ActiveCfg = Gnome_Debug|Any CPU
+		{D42A6780-6123-481B-AD68-EB0C9BA05455}.Gnome_Debug|Any CPU.Build.0 = Gnome_Debug|Any CPU
+		{D42A6780-6123-481B-AD68-EB0C9BA05455}.Gnome_Release|Any CPU.ActiveCfg = Gnome_Release|Any CPU
+		{D42A6780-6123-481B-AD68-EB0C9BA05455}.Gnome_Release|Any CPU.Build.0 = Gnome_Release|Any CPU
+		{D42A6780-6123-481B-AD68-EB0C9BA05455}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D42A6780-6123-481B-AD68-EB0C9BA05455}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFE0E142-A677-4BDD-999A-743CC0058F48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFE0E142-A677-4BDD-999A-743CC0058F48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFE0E142-A677-4BDD-999A-743CC0058F48}.Gnome_Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFE0E142-A677-4BDD-999A-743CC0058F48}.Gnome_Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFE0E142-A677-4BDD-999A-743CC0058F48}.Gnome_Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFE0E142-A677-4BDD-999A-743CC0058F48}.Gnome_Release|Any CPU.Build.0 = Release|Any CPU
+		{FFE0E142-A677-4BDD-999A-743CC0058F48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFE0E142-A677-4BDD-999A-743CC0058F48}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Basenji\Basenji.csproj
+		Policies = $0
+		$0.StandardHeader = $1
+		$1.Text = @\n ${FileName}\n \n Author:\n      ${AuthorName} <${AuthorEmail}>\n\n Copyright (c) ${Year} ${CopyrightHolder}\n\n This library is free software; you can redistribute it and/or modify\n it under the terms of the GNU Lesser General Public License as\n published by the Free Software Foundation; either version 2.1 of the\n License, or (at your option) any later version.\n\n This library is distributed in the hope that it will be useful, but\n WITHOUT ANY WARRANTY; without even the implied warranty of\n MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU\n Lesser General Public License for more details.\n\n You should have received a copy of the GNU Lesser General Public\n License along with this library; if not, write to the Free Software\n Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+		$1.IncludeInNewFiles = True
+		$0.DotNetNamingPolicy = $2
+		$2.DirectoryNamespaceAssociation = None
+		$2.ResourceNamePolicy = FileFormatDefault
+		$0.TextStylePolicy = $3
+		$3.FileWidth = 120
+		$3.TabWidth = 4
+		$3.EolMarker = Unix
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/plain
+		name = Basenji
+	EndGlobalSection
+EndGlobal
