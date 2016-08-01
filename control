@@ -6,13 +6,12 @@ Build-Depends: autotools-dev,
                cli-common-dev,
                debhelper (>= 8.0.0),
                libtaglib-cil-dev (>= 2.0.4.0),
+               libgdk-pixbuf2.0-dev,
                libgio2.0-cil-dev,
                libglib2.0-cil-dev,
-               libgnome-desktop-dev,
+               libgnome-desktop-3-dev,
                libgtk2.0-cil-dev,
-               libmono-cairo2.0-cil,
-               libdbus-glib1.0-cil-dev,
-               libdbus1.0-cil-dev,
+               libmono-cairo4.0-cil,
                mono-devel (>= 2.6.7),
                pkg-config
 Standards-Version: 3.9.2
@@ -21,7 +20,6 @@ Homepage: http://launchpad.net/basenji
 Package: basenji
 Architecture: all
 Depends: librsvg2-common (>= 2.26.0),
-         udisks,
          ${cli:Depends},
          ${misc:Depends}
 Description: Cross-platform media indexing/search tool
