@@ -3,13 +3,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>12.0.0</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9927EE3F-56D2-4395-A6B2-9CD88FB3F705}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Platform.Common.DB</RootNamespace>
     <AssemblyName>Platform.Common.DB</AssemblyName>
     <AssemblyOriginatorKeyFile>.</AssemblyOriginatorKeyFile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -19,7 +18,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>3</WarningLevel>
     <Execution>
-      <Execution clr-version="Net_2_0" xmlns="" />
+      <Execution clr-version="Net_2_0" />
     </Execution>
     <ConsolePause>false</ConsolePause>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
@@ -31,7 +30,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>3</WarningLevel>
     <Execution>
-      <Execution clr-version="Net_2_0" xmlns="" />
+      <Execution clr-version="Net_2_0" />
     </Execution>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
@@ -50,7 +49,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <MonoDevelop>
-      <Properties xmlns="">
+      <Properties>
         <Deployment.LinuxDeployData generatePcFile="False" />
       </Properties>
     </MonoDevelop>

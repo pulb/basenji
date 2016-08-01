@@ -39,7 +39,7 @@ endif
 
 ifeq ($(CONFIG),GNOME_DEBUG)
 ASSEMBLY_COMPILER_COMMAND = dmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize- -debug -define:DEBUG -pkg:gtk-sharp-2.0 -pkg:gio-sharp-2.0  "-define:UNIX,DEBUG,GNOME"
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize- -debug -define:DEBUG "-define:UNIX,DEBUG,GNOME"
 ASSEMBLY = bin/Debug/Platform.dll
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
 COMPILE_TARGET = library
@@ -54,7 +54,7 @@ endif
 
 ifeq ($(CONFIG),GNOME_RELEASE)
 ASSEMBLY_COMPILER_COMMAND = dmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize+ -pkg:gtk-sharp-2.0 -pkg:gio-sharp-2.0  "-define:UNIX,GNOME"
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:3 -optimize+ "-define:UNIX,GNOME"
 ASSEMBLY = bin/Release/Platform.dll
 ASSEMBLY_MDB = 
 COMPILE_TARGET = library
@@ -91,7 +91,6 @@ FILES = \
 	src/Common/IO/DriveNotReadyException.cs \
 	src/Common/IO/DriveType.cs \
 	src/Common/IO/FileHelper.cs \
-	src/Common/Mime/MimeIconLookup.cs \
 	src/Common/Mime/MimeType.cs \
 	src/Unix/IO/UnixFileHelper.cs \
 	src/Unix/Mime/Mime.cs \
@@ -104,20 +103,19 @@ FILES = \
 	src/Win32/ThumbnailCreator.cs \
 	src/Win32/ThumbnailGenerator.cs \
 	src/Common/Diagnostics/AssertionFailedException.cs \
-	src/Unix/IO/DkDisk.cs \
 	src/Common/IO/IDriveInfoProvider.cs \
-	src/Unix/IO/DkDriveInfoProvider.cs \
 	src/Win32/IO/Win32DriveInfoProvider.cs \
 	src/Win32/IO/AudioCdWin32.cs \
-	src/Gnome/IO/GioDriveInfoProvider.cs \
-	src/Gnome/GnomeDesktop/DesktopThumbnailFactory.cs \
-	src/Gnome/GnomeDesktop/DesktopThumbnailSize.cs 
+	src/Unix/IO/GioDriveInfoProvider.cs 
 
 DATA_FILES = 
 
 RESOURCES = 
 
 EXTRAS = \
+	src \
+	src/Common/Globalization \
+	src/Win32/IO \
 	Platform.dll.config \
 	platform.pc.in 
 
@@ -125,8 +123,8 @@ REFERENCES =  \
 	System \
 	Mono.Posix \
 	System.Core \
-	-pkg:dbus-sharp-1.0 \
-	-pkg:dbus-sharp-glib-1.0
+	-pkg:gio-sharp-2.0 \
+	-pkg:glib-sharp-2.0
 
 DLL_REFERENCES = 
 

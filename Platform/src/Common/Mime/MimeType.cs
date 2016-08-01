@@ -1,6 +1,6 @@
 // MimeType.cs
 // 
-// Copyright (C) 2008, 2012 Patrick Ulbrich
+// Copyright (C) 2008, 2012, 2016 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ namespace Platform.Common.Mime
 		
 		public static string GetMimeTypeForFile(string filename) {
 			string mimeType = null;
-#if GNOME
+#if UNIX
 			GLib.File file = GLib.FileFactory.NewForPath(filename);
 			if (file.Exists) {
 				// GLib backend
@@ -40,11 +40,6 @@ namespace Platform.Common.Mime
 				mimeType = Platform.Unix.Mime.Mime.GetMimeTypeForFile(filename);
 			}
 
-#elif UNIX
-			// mono winforms backend
-			// (also takes filename extension into account, 
-			// always returns a mimetype, even if the file does not exist)
-			mimeType = Platform.Unix.Mime.Mime.GetMimeTypeForFile(filename);
 #elif WIN32
 			// win32 registry backend
 			// (uses filename extension only, always returns a mimetype)

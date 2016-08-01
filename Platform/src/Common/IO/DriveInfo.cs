@@ -1,6 +1,6 @@
 // DriveInfo.cs
 // 
-// Copyright (C) 2008 - 2011 Patrick Ulbrich
+// Copyright (C) 2008 - 2016 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -51,10 +51,10 @@ namespace Platform.Common.IO
 		{
 #if WIN32
 			dip = new Platform.Win32.IO.Win32DriveInfoProvider();
-#elif GNOME
-			dip = new Platform.Gnome.IO.GioDriveInfoProvider();
+#elif UNIX
+			dip = new Platform.Unix.IO.GioDriveInfoProvider();
 #else
-			dip = new Platform.Unix.IO.DkDriveInfoProvider();
+			throw new NotImplementedException();
 #endif
 		}
 		

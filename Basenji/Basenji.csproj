@@ -3,14 +3,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>12.0.0</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{36BB020F-AE84-4660-9193-C6A3F6DC85E3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Basenji</RootNamespace>
     <ApplicationIcon>images\basenji.ico</ApplicationIcon>
     <AssemblyName>Basenji</AssemblyName>
     <AssemblyOriginatorKeyFile>.</AssemblyOriginatorKeyFile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,11 +19,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>3</WarningLevel>
     <Execution>
-      <Execution clr-version="Net_2_0" xmlns="" />
+      <Execution clr-version="Net_2_0" />
     </Execution>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
     <CustomCommands>
-      <CustomCommands xmlns="">
+      <CustomCommands>
         <Command type="AfterBuild" command="./custom_build_commands.sh --after-build ${TargetDir}" workingdir="${ProjectDir}" />
         <Command type="AfterClean" command="./custom_build_commands.sh --after-clean ${TargetDir}" workingdir="${ProjectDir}" />
       </CustomCommands>
@@ -36,10 +35,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>3</WarningLevel>
     <Execution>
-      <Execution clr-version="Net_2_0" xmlns="" />
+      <Execution clr-version="Net_2_0" />
     </Execution>
     <CustomCommands>
-      <CustomCommands xmlns="">
+      <CustomCommands>
         <Command type="AfterBuild" command="./custom_build_commands.sh --after-build ${TargetDir}" workingdir="${ProjectDir}" />
         <Command type="AfterClean" command="./custom_build_commands.sh --after-clean ${TargetDir}" workingdir="${ProjectDir}" />
       </CustomCommands>
@@ -55,9 +54,6 @@
       <DeployService-Deploy>True</DeployService-Deploy>
       <DeployService-HasPathReferences>True</DeployService-HasPathReferences>
       <DeployService-TargetDirectoryId>Binaries</DeployService-TargetDirectoryId>
-    </Content>
-    <Content Include="Basenji.exe.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -185,11 +181,17 @@
     <Reference Include="System" />
     <Reference Include="Mono.Cairo" />
     <Reference Include="System.Core" />
+    <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="gio-sharp, Version=2.14.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gio-sharp-2.0</Package>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <MonoDevelop>
-      <Properties xmlns="">
+      <Properties>
         <Deployment.LinuxDeployData generateScript="False" />
       </Properties>
     </MonoDevelop>

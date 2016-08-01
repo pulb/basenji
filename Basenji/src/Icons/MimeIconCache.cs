@@ -1,6 +1,6 @@
 // MimeIconCache.cs
 // 
-// Copyright (C) 2008 - 2012 Patrick Ulbrich
+// Copyright (C) 2008 - 2016 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -28,8 +28,7 @@ namespace Basenji.Icons
 	public class MimeIconCache
 	{
 		private bool useCustomMimeIcons;
-		
-		private MimeIconLookup mimeIconLookup;
+
 		private CustomIconThemeMimeMapping customMimeMapping;
 		
 		private Dictionary<string, Gdk.Pixbuf> mimeIconCache;
@@ -45,8 +44,6 @@ namespace Basenji.Icons
 			
 			if (useCustomMimeIcons)
 				customMimeMapping = new CustomIconThemeMimeMapping();
-			else
-				mimeIconLookup = new MimeIconLookup();
 			
 			mimeIconCache = new Dictionary<string, Gdk.Pixbuf>();
 			
@@ -84,11 +81,18 @@ namespace Basenji.Icons
 					pb = defaultIcon.Render(widget, size);
 			} else {
 				// render system mime icons dynamically
-				string iconName = mimeIconLookup.GetIconNameForMimeType(mimeType);
-				
-				if (!string.IsNullOrEmpty(iconName) && Gtk.IconTheme.Default.HasIcon(iconName)) {
-					pb = Gtk.IconTheme.Default.LoadIcon(iconName, 
-					                                    IconUtils.GetIconSizeVal(size), 0);
+				Gtk.IconTheme iconTheme = Gtk.IconTheme.Default;
+				string iconName = null;
+
+				foreach (string name in ((GLib.ThemedIcon)GLib.Content.TypeGetIcon(mimeType)).Names) {
+					if (iconTheme.HasIcon(name)) {
+						iconName = name;
+						break;
+					}
+				}
+
+				if (!string.IsNullOrEmpty(iconName)) {
+					pb = iconTheme.LoadIcon(iconName, IconUtils.GetIconSizeVal(size), 0);
 				} else {
 					Icon fbIcon;
 					if (fallbackIcons.TryGetValue(mimeType, out fbIcon)) {

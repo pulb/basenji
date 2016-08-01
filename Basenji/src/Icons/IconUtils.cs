@@ -1,6 +1,6 @@
 // IconUtils.cs
 // 
-// Copyright (C) 2008 Patrick Ulbrich
+// Copyright (C) 2008, 2016 Patrick Ulbrich
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -26,31 +26,9 @@ namespace Basenji.Icons
 	public static class IconUtils
 	{
 		public static int GetIconSizeVal(IconSize size) {
-			int sz;
-			switch (size) {
-				case Gtk.IconSize.Button:
-					sz = 24;
-					break;
-				case Gtk.IconSize.Dialog:
-					sz = 48;
-					break;
-				case Gtk.IconSize.Dnd:
-					sz = 32;
-					break;
-				case Gtk.IconSize.LargeToolbar:
-					sz = 24;
-					break;
-				case Gtk.IconSize.Menu:
-					sz = 16;
-					break;
-				case Gtk.IconSize.SmallToolbar:
-					sz = 18;
-					break;
-				default:
-					sz = 16;
-					break;
-			}
-			return sz;
+			int w, h;
+			Gtk.Icon.SizeLookup(size, out w, out h);
+			return w;
 		}
 		
 		// keep in sync with VolumeView.GetVolumeIcon()

@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 VERSION=0.1
 PACKAGE=basenji
 prefix=/usr/local
 config=GNOME_RELEASE
 configurations=" DEBUG RELEASE GNOME_DEBUG GNOME_RELEASE"
-common_packages=" dbus-sharp-1.0;0.7.0 dbus-sharp-glib-1.0;0.5.0 glib-sharp-2.0;2.12.10 gtk-sharp-2.0;2.12.10 taglib-sharp;2.0.4.0"
+common_packages=" gio-sharp-2.0;2.22.3 glib-sharp-2.0;2.12.10 gtk-sharp-2.0;2.12.10 taglib-sharp;2.1.0.0"
 
 
 usage ()

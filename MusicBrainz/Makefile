@@ -98,7 +98,8 @@ DATA_FILES =
 
 RESOURCES = 
 
-EXTRAS = 
+EXTRAS = \
+	src 
 
 REFERENCES =  \
 	System \

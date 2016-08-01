@@ -7,16 +7,14 @@ GNU/LINUX/GNOME:
 
 Requirements:
 
-	mono (2.4 or later)
-	glib-sharp (2.12.9 or later)
-	gtk-sharp (2.12.9 or later)
-	libgnome-desktop (2.32.0 or later)
-	gio-sharp (2.22.2 or later)
-	dbus-sharp (0.7.0 or later)
-	dbus-sharp-glib (0.7.0 or later)
-	mono-cairo (2.4.2.3 or later)
-	taglib-sharp (>= 2.0.4.0)
-	udisks (1.0.1 or later)
+	mono (>= 2.4)
+	libglib2.0-cil-dev (>= 2.12.9)
+	libgtk2.0-cil-dev (>= 2.12.9)
+	libgio-cil-dev (>= 2.22.2)
+	libmono-cairo-cil (>= 2.4.2.3)
+	libtaglib-cil-dev (>= 2.0.4.0)
+	libgnome-desktop-3 (>= 3.8.4)
+	libgdk-pixbuf2 (>= 2.30.7)
 
 Compile:
 
@@ -44,4 +42,4 @@ Requirements:
 	
 Compile:
 
-	Open Basenji_win32.sln in Visual Studio 2010.
+	Open Basenji_win32.sln in Visual Studio 2012.
