@@ -55,6 +55,9 @@
       <DeployService-HasPathReferences>True</DeployService-HasPathReferences>
       <DeployService-TargetDirectoryId>Binaries</DeployService-TargetDirectoryId>
     </Content>
+    <Content Include="Basenji.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="images\LED_Off.png" />

@@ -21,6 +21,7 @@ BUILD_DIR = bin/Debug
 
 BASENJI_EXE_MDB_SOURCE=bin/Debug/Basenji.exe.mdb
 BASENJI_EXE_MDB=$(BUILD_DIR)/Basenji.exe.mdb
+BASENJI_EXE_CONFIG_SOURCE=Basenji.exe.config
 PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
@@ -49,6 +50,7 @@ PROJECT_REFERENCES =  \
 BUILD_DIR = bin/Release
 
 BASENJI_EXE_MDB=
+BASENJI_EXE_CONFIG_SOURCE=Basenji.exe.config
 PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
 PLATFORM_DLL_MDB=
 PLATFORM_DLL_CONFIG_SOURCE=../Platform/Platform.dll.config
@@ -74,6 +76,7 @@ BUILD_DIR = bin/Debug
 
 BASENJI_EXE_MDB_SOURCE=bin/Debug/Basenji.exe.mdb
 BASENJI_EXE_MDB=$(BUILD_DIR)/Basenji.exe.mdb
+BASENJI_EXE_CONFIG_SOURCE=Basenji.exe.config
 PLATFORM_DLL_SOURCE=../Platform/bin/Debug/Platform.dll
 PLATFORM_DLL_MDB_SOURCE=../Platform/bin/Debug/Platform.dll.mdb
 PLATFORM_DLL_MDB=$(BUILD_DIR)/Platform.dll.mdb
@@ -102,6 +105,7 @@ PROJECT_REFERENCES =  \
 BUILD_DIR = bin/Release
 
 BASENJI_EXE_MDB=
+BASENJI_EXE_CONFIG_SOURCE=Basenji.exe.config
 PLATFORM_DLL_SOURCE=../Platform/bin/Release/Platform.dll
 PLATFORM_DLL_MDB=
 PLATFORM_DLL_CONFIG_SOURCE=../Platform/Platform.dll.config
@@ -119,6 +123,7 @@ SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 
 PROGRAMFILES = \
 	$(BASENJI_EXE_MDB) \
+	$(BASENJI_EXE_CONFIG) \
 	$(PLATFORM_DLL) \
 	$(PLATFORM_DLL_MDB) \
 	$(PLATFORM_DLL_CONFIG) \
@@ -140,6 +145,7 @@ RESGEN=resgen2
 
 BASENJI_DESKTOP = $(BUILD_DIR)/basenji.desktop
 BASENJI = $(BUILD_DIR)/basenji
+BASENJI_EXE_CONFIG = $(BUILD_DIR)/Basenji.exe.config
 PLATFORM_DLL = $(BUILD_DIR)/Platform.dll
 PLATFORM_DLL_CONFIG = $(BUILD_DIR)/Platform.dll.config
 VOLUMEDB_DLL = $(BUILD_DIR)/VolumeDB.dll
@@ -244,6 +250,7 @@ EXTRAS = \
 	src \
 	src/Gui/Widgets/Editors \
 	src/App.cs.in \
+	Basenji.exe.config \
 	basenji.desktop.in \
 	basenji.in 
 
@@ -269,6 +276,7 @@ include $(srcdir)/custom-hooks.make
 
 $(eval $(call emit-deploy-wrapper,BASENJI_DESKTOP,basenji.desktop))
 $(eval $(call emit-deploy-wrapper,BASENJI,basenji))
+$(eval $(call emit-deploy-target,BASENJI_EXE_CONFIG))
 $(eval $(call emit-deploy-target,PLATFORM_DLL))
 $(eval $(call emit-deploy-target,PLATFORM_DLL_MDB))
 $(eval $(call emit-deploy-target,PLATFORM_DLL_CONFIG))
@@ -330,6 +338,7 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call cp,$(BASENJI_DESKTOP),$(DESTDIR)$(datadir)/applications)
 	mkdir -p '$(DESTDIR)$(bindir)'
 	$(call cp,$(BASENJI),$(DESTDIR)$(bindir))
+	$(call cp,$(BASENJI_EXE_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(PLATFORM_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
@@ -349,6 +358,7 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call rm,$(BASENJI_EXE_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(BASENJI_DESKTOP),$(DESTDIR)$(datadir)/applications)
 	$(call rm,$(BASENJI),$(DESTDIR)$(bindir))
+	$(call rm,$(BASENJI_EXE_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_DLL_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(PLATFORM_DLL_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
