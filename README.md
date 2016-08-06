@@ -20,10 +20,10 @@ implements the actual indexing, searching and storage logic.
 [Translations](https://translations.launchpad.net/basenji)
 
 ## Screenshots
-![Screenshot](screenshots/basenji-gnome.png "Basenji on GNOME 3.6")
-![Screenshot](screenshots/basenji-win.png "Basenji on Windows 7")
+![Screenshot](http://pulb.github.io/basenji/screenshots/basenji-gnome.png "Basenji on GNOME 3.6")
+![Screenshot](http://pulb.github.io/basenji/screenshots/basenji-win.png "Basenji on Windows 7")
 
-[More screenshots...](http://pulb.github.io/basenji/screenshots/screenshots.htm)
+[More screenshots...](http://pulb.github.io/basenji/screenshots-legacy/screenshots.htm)
 
 ## Building
 
