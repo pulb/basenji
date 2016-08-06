@@ -47,8 +47,8 @@ implements the actual indexing, searching and storage logic.
 	make install
 
 __NOTE:__  
-if you get a "GLib.GException: Couldn't recognize the image file format for file 'data/basenji.svg'" runtime error,  
-you most likely don't have SVG pixbuf loaders installed (package librsvg2-common in ubuntu).  
+If you get a "GLib.GException: Couldn't recognize the image file format for file 'data/basenji.svg'" runtime error,  
+you most likely don't have SVG pixbuf loaders installed (package librsvg2-common in Ubuntu).  
 	
 
 ### MS Windows
