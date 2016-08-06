@@ -46,22 +46,22 @@ implements the actual indexing, searching and storage logic.
 	make
 	make install
 
-NOTE:
-if you get a "GLib.GException: Couldn't recognize the 
-image file format for file 'data/basenji.svg'" runtime error,
-you most likely don't have SVG pixbuf loaders installed 
-(package librsvg2-common in ubuntu).
+NOTE:  
+if you get a "GLib.GException: Couldn't recognize the  
+image file format for file 'data/basenji.svg'" runtime error,  
+you most likely don't have SVG pixbuf loaders installed  
+(package librsvg2-common in ubuntu).  
 	
 
 ### MS Windows
 
 ###### Requirements
 
-.NET 4.0 Framework
-Gtk# for .NET (http://www.go-mono.com/mono-downloads/download.html)
-System.Data.SQLite (http://system.data.sqlite.org/index.html/doc/trunk/www/downloads.wiki)
-taglib-sharp (https://github.com/mono/taglib-sharp)
-SharpZipLib (http://www.icsharpcode.net/OpenSource/SharpZipLib/Default.aspx)
+* .NET 4.0 Framework or higher
+* Gtk# for .NET (http://www.go-mono.com/mono-downloads/download.html)
+* System.Data.SQLite (http://system.data.sqlite.org/index.html/doc/trunk/www/downloads.wiki)
+* taglib-sharp (https://github.com/mono/taglib-sharp)
+* SharpZipLib (http://www.icsharpcode.net/OpenSource/SharpZipLib/Default.aspx)
 	
 ###### Compile
 
