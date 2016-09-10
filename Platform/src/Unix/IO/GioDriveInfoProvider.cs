@@ -147,7 +147,9 @@ namespace Platform.Unix.IO
 					return DriveType.CDRom;
 			}
 
-			if ((icon != null) && (Array.FindIndex(((ThemedIcon)icon).Names, i => i.Contains("optical")) != -1))
+			ThemedIcon themedIcon = icon as ThemedIcon;
+			
+			if ((themedIcon != null) && (Array.FindIndex(themedIcon.Names, i => i.Contains("optical")) != -1))
 				return DriveType.CDRom;
 
 			if (dr != null)
