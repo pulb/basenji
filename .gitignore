@@ -6,3 +6,4 @@ VolumeDB/bin
 *.pidb
 *.userprefs
 *.usertasks
+*.*~
