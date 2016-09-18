@@ -1,4 +1,4 @@
-Version 1.0.2 (2016-08-05):
+Version 1.0.2 (2016-09-18):
 ===========================
 * Removed udisks-based driveinfo implementation in favour of a new GIO-based implementation
 * Removed dbus, dbus-glib, udisks and gnome-desktop2 dependencies
